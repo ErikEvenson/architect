@@ -29,6 +29,10 @@ nav:
     - Disaster Recovery: general/disaster-recovery.md
     - Cost: general/cost.md
     - Deployment: general/deployment.md
+    - Identity: general/identity.md
+    - API Design: general/api-design.md
+    - Database Migration: general/database-migration.md
+    - Capacity Planning: general/capacity-planning.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -38,16 +42,33 @@ nav:
     - CloudFront & WAF: providers/aws/cloudfront-waf.md
     - Observability: providers/aws/observability.md
     - Secrets Manager: providers/aws/secrets-manager.md
+    - Lambda & Serverless: providers/aws/lambda-serverless.md
+    - Containers (ECS/EKS): providers/aws/containers.md
+    - S3: providers/aws/s3.md
+    - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
+    - DynamoDB: providers/aws/dynamodb.md
+    - Route 53: providers/aws/route53.md
   - Azure:
     - Networking: providers/azure/networking.md
     - Compute: providers/azure/compute.md
     - Data: providers/azure/data.md
     - Security: providers/azure/security.md
+    - Observability: providers/azure/observability.md
+    - Identity (Entra ID): providers/azure/identity.md
+    - Storage: providers/azure/storage.md
+    - Containers (AKS): providers/azure/containers.md
+    - Serverless: providers/azure/serverless.md
+    - Database: providers/azure/database.md
   - GCP:
     - Networking: providers/gcp/networking.md
     - Compute: providers/gcp/compute.md
     - Data: providers/gcp/data.md
     - Security: providers/gcp/security.md
+    - Observability: providers/gcp/observability.md
+    - Storage: providers/gcp/storage.md
+    - Containers (GKE): providers/gcp/containers.md
+    - Serverless: providers/gcp/serverless.md
+    - Database: providers/gcp/database.md
   - Nutanix:
     - Infrastructure: providers/nutanix/infrastructure.md
     - Compute: providers/nutanix/compute.md
@@ -84,17 +105,31 @@ nav:
     - Security: providers/openshift/security.md
     - CI/CD: providers/openshift/ci-cd.md
     - Observability: providers/openshift/observability.md
+  - Cloudflare:
+    - CDN & DNS: providers/cloudflare/cdn-dns.md
+    - Workers: providers/cloudflare/workers.md
+    - Security: providers/cloudflare/security.md
+  - Hashicorp:
+    - Terraform: providers/hashicorp/terraform.md
+    - Vault: providers/hashicorp/vault.md
+    - Consul: providers/hashicorp/consul.md
   - Patterns:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
     - Static Site: patterns/static-site.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
+    - Event-Driven: patterns/event-driven.md
+    - Multi-Cloud: patterns/multi-cloud.md
+    - Edge Computing: patterns/edge-computing.md
+    - AI/ML Infrastructure: patterns/ai-ml-infrastructure.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
     - SOC2: compliance/soc2.md
     - FedRAMP: compliance/fedramp.md
+    - GDPR: compliance/gdpr.md
+    - ISO 27001: compliance/iso-27001.md
   - Frameworks:
     - AWS Well-Architected: frameworks/aws-well-architected.md
     - Azure Well-Architected: frameworks/azure-well-architected.md
