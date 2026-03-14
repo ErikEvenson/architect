@@ -12,12 +12,14 @@ from src.models.version import Version
 from src.rendering.base import BaseRenderer
 from src.rendering.d2_renderer import D2Renderer
 from src.rendering.diagrams_renderer import DiagramsRenderer
+from src.rendering.markdown_renderer import MarkdownRenderer
 
 logger = structlog.get_logger()
 
 RENDERERS: dict[str, BaseRenderer] = {
     "diagrams_py": DiagramsRenderer(),
     "d2": D2Renderer(),
+    "markdown": MarkdownRenderer(),
 }
 
 

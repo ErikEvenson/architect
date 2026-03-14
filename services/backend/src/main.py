@@ -14,6 +14,7 @@ from src.api.clients import router as clients_router
 from src.api.projects import router as projects_router
 from src.api.questions import router as questions_router
 from src.api.rendering import router as rendering_router
+from src.api.templates import router as templates_router
 from src.api.versions import router as versions_router
 from src.config import settings
 from src.database import get_session
@@ -63,6 +64,7 @@ def create_app() -> FastAPI:
     app.include_router(adrs_router, prefix=API_V1_PREFIX)
     app.include_router(questions_router, prefix=API_V1_PREFIX)
     app.include_router(rendering_router, prefix=API_V1_PREFIX)
+    app.include_router(templates_router, prefix=API_V1_PREFIX)
 
     return app
 
