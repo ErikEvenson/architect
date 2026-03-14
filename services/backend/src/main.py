@@ -3,12 +3,23 @@ import sys
 
 import structlog
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.api.adrs import router as adrs_router
+from src.api.artifacts import router as artifacts_router
+from src.api.clients import router as clients_router
+from src.api.projects import router as projects_router
+from src.api.questions import router as questions_router
+from src.api.versions import router as versions_router
 from src.config import settings
+from src.database import get_session
 
 logger = structlog.get_logger()
+
+API_V1_PREFIX = "/api/v1"
 
 
 def create_app() -> FastAPI:
@@ -16,6 +27,8 @@ def create_app() -> FastAPI:
         title="Architect API",
         description="Cloud architecture design tool",
         version=settings.version,
+        docs_url="/docs",
+        openapi_url="/openapi.json",
     )
 
     app.add_middleware(
@@ -26,13 +39,28 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    # Health endpoints (outside API prefix)
     @app.get("/health/live")
     async def liveness():
         return {"status": "ok"}
 
     @app.get("/health/ready")
-    async def readiness():
-        return {"status": "ok"}
+    async def readiness(session: AsyncSession = Depends(get_session)):
+        from sqlalchemy import text
+
+        try:
+            await session.execute(text("SELECT 1"))
+            return {"status": "ok"}
+        except Exception:
+            return JSONResponse(status_code=503, content={"status": "unavailable"})
+
+    # API v1 routers
+    app.include_router(clients_router, prefix=API_V1_PREFIX)
+    app.include_router(projects_router, prefix=API_V1_PREFIX)
+    app.include_router(versions_router, prefix=API_V1_PREFIX)
+    app.include_router(artifacts_router, prefix=API_V1_PREFIX)
+    app.include_router(adrs_router, prefix=API_V1_PREFIX)
+    app.include_router(questions_router, prefix=API_V1_PREFIX)
 
     return app
 
