@@ -30,3 +30,11 @@ Misconfigured caching layers cause cache stampedes, data loss on failover, and s
 - **Caching strategy** -- cache-aside vs write-through vs write-behind, TTL policies per key pattern
 - **High availability model** -- Multi-AZ failover vs application-level fallback to database
 - **Data tiering** -- ElastiCache data tiering (SSD + memory) for large datasets with uneven access patterns
+
+## Reference Architectures
+
+- [AWS Architecture Center: Caching strategies](https://aws.amazon.com/architecture/databases/) -- reference architectures for caching layers with ElastiCache in multi-tier applications
+- [AWS Well-Architected Labs: Performance Efficiency](https://www.wellarchitectedlabs.com/performance-efficiency/) -- hands-on labs for caching patterns and performance optimization
+- [AWS ElastiCache best practices](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/best-practices.html) -- official best practices for Redis cluster design, scaling, and high availability
+- [AWS Prescriptive Guidance: Caching patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/caching-strategies/) -- cache-aside, write-through, and session store reference patterns
+- [AWS ElastiCache for Redis cluster mode architecture](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.Redis-RedisCluster.html) -- reference design for horizontally scaled Redis with sharding

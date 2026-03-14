@@ -29,3 +29,11 @@ Hardcoded secrets in code repositories are the leading cause of credential leaks
 - **Cross-account secret sharing** -- resource-based policies vs cross-account KMS key grants vs replication
 - **Secret structure** -- one secret per credential vs JSON blob with multiple key-value pairs
 - **Application integration** -- SDK with caching vs CSI Secrets Store driver (EKS) vs init container injection
+
+## Reference Architectures
+
+- [AWS Architecture Center: Security, Identity, & Compliance](https://aws.amazon.com/architecture/security-identity-compliance/) -- reference architectures for secrets management in multi-account environments
+- [AWS Prescriptive Guidance: Secret management for applications](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/rotate-database-credentials-without-restarting-containers.html) -- patterns for rotating secrets without application downtime
+- [AWS Well-Architected Labs: Security - Data Protection](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for secrets management and encryption best practices
+- [AWS Secrets Manager rotation architecture](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) -- reference design for Lambda-based automatic credential rotation
+- [AWS EKS Secrets Store CSI Driver integration](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html) -- reference architecture for mounting secrets as volumes in Kubernetes pods

@@ -31,3 +31,11 @@ Database misconfiguration causes data loss, performance bottlenecks, and securit
 - **Instance class selection** -- Graviton vs Intel, memory-optimized vs general purpose, right-sizing cadence
 - **Proxy layer** -- RDS Proxy for connection pooling with Lambda and serverless vs application-level connection pooling
 - **Backup and retention strategy** -- automated backups vs manual snapshots, cross-region snapshot copy
+
+## Reference Architectures
+
+- [AWS Architecture Center: Databases](https://aws.amazon.com/architecture/databases/) -- reference architectures for Aurora, RDS Multi-AZ, and read replica topologies
+- [AWS Well-Architected Labs: Reliability - RDS and Aurora](https://www.wellarchitectedlabs.com/reliability/) -- hands-on labs for building resilient database architectures with failover testing
+- [AWS Prescriptive Guidance: Database migration and modernization](https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-databases/) -- patterns for migrating to Aurora and RDS including blue-green deployments
+- [Aurora Global Database reference architecture](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html) -- cross-region disaster recovery design with sub-second RPO
+- [AWS Database Blog: Aurora Serverless v2 architecture](https://aws.amazon.com/blogs/database/tag/aurora-serverless-v2/) -- design patterns for Aurora Serverless v2 scaling and cost optimization

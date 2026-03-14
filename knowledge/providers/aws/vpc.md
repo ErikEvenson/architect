@@ -29,3 +29,11 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - **Transit Gateway vs VPC Peering** -- centralized hub-spoke vs point-to-point for small account counts
 - **Security Group management** -- Terraform modules vs AWS Firewall Manager policies across accounts
 - **Multi-account VPC strategy** -- shared VPC (RAM) vs dedicated VPCs per account with Transit Gateway
+
+## Reference Architectures
+
+- [AWS VPC Design and Network Architecture](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-web-database-servers.html) -- official VPC scenarios including public/private subnet designs, NAT, and VPN connectivity
+- [AWS Architecture Center: Networking & Content Delivery](https://aws.amazon.com/architecture/networking-content-delivery/) -- curated reference architectures for multi-VPC, hybrid networking, and Transit Gateway designs
+- [AWS Well-Architected Labs: Networking](https://www.wellarchitectedlabs.com/reliability/) -- hands-on labs for building resilient network architectures
+- [AWS Prescriptive Guidance: Network architecture for multi-account environments](https://docs.aws.amazon.com/prescriptive-guidance/latest/robust-network-design-control-tower/) -- best practices for VPC design in AWS Organizations with Control Tower
+- [AWS Quick Start: VPC with public and private subnets](https://aws.amazon.com/quickstart/architecture/vpc/) -- deployable reference architecture for standard multi-tier VPC design

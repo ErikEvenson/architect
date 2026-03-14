@@ -32,3 +32,11 @@ OpenStack provides cloud-like infrastructure on premises but requires significan
 - **Networking model** -- provider networks (VLAN, operator-managed) vs self-service networks (VXLAN, tenant-managed), DVR vs centralized routing
 - **Upgrade strategy** -- rolling upgrade (service-by-service) vs blue-green control plane, skip-level upgrade feasibility
 - **Object storage** -- Swift (native, proven) vs Ceph RGW (unified with block storage), replication vs erasure coding
+
+## Reference Architectures
+
+- [OpenStack Architecture Design Guide](https://docs.openstack.org/arch-design/) -- official architecture guide covering compute, storage, networking, and multi-site design
+- [OpenStack Deployment Guides](https://docs.openstack.org/project-deploy-guide/) -- step-by-step deployment architectures for Kolla-Ansible, TripleO, and other deployment tools
+- [OpenStack Reference Architecture: Ceph integration](https://docs.openstack.org/cinder/latest/configuration/block-storage/drivers/ceph-rbd-volume-driver.html) -- reference design for Ceph as unified storage backend for Cinder, Glance, and Manila
+- [OpenStack High Availability Guide](https://docs.openstack.org/ha-guide/) -- reference architecture for HA control plane, database clustering, and message queue resilience
+- [Red Hat OpenStack Platform Reference Architecture](https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/) -- enterprise-supported deployment architectures with director-based installation and lifecycle management

@@ -30,3 +30,11 @@ Nutanix hyperconverged infrastructure collapses compute, storage, and networking
 - **Kubernetes platform** -- Nutanix Karbon (NKE) vs upstream Kubernetes on VMs vs Rancher/OpenShift
 - **Microsegmentation** -- Flow (built-in, category-based) vs third-party firewall appliance (Palo Alto VM-Series)
 - **Backup target** -- Nutanix Objects (on-cluster S3) vs external NAS vs cloud-tier to AWS S3/Azure Blob
+
+## Reference Architectures
+
+- [Nutanix Validated Designs](https://www.nutanix.com/go/validated-designs) -- vendor-validated reference architectures for enterprise applications including SAP, SQL Server, Oracle, and VDI
+- [Nutanix Reference Architecture Library](https://www.nutanix.com/resources/reference-architectures) -- comprehensive library of tested architectures for databases, EUC, DevOps, and hybrid cloud
+- [Nutanix Best Practice Guide for AHV](https://portal.nutanix.com/page/documents/solutions/details?targetId=BP-2071-AHV:BP-2071-AHV) -- official best practices for AHV hypervisor configuration, networking, and storage
+- [Nutanix Cloud Platform Architecture](https://www.nutanix.com/go/the-nutanix-bible) -- "The Nutanix Bible" covering distributed storage fabric, CVM architecture, and cluster design
+- [Nutanix DR and Business Continuity reference architecture](https://www.nutanix.com/resources/reference-architectures) -- validated designs for Leap-based disaster recovery and metro availability

@@ -30,3 +30,11 @@ CloudFront misconfiguration exposes origins directly to the internet, bypassing 
 - **Origin architecture** -- ALB origin vs API Gateway origin vs S3 static origin, custom origin headers for validation
 - **Shield Advanced** -- cost ($3K/mo) vs DDoS cost protection and response team access
 - **Logging and observability** -- real-time logs vs standard logs, log analysis with Athena vs third-party SIEM
+
+## Reference Architectures
+
+- [AWS Architecture Center: Networking & Content Delivery](https://aws.amazon.com/architecture/networking-content-delivery/) -- reference architectures for CloudFront with ALB, S3, and API Gateway origins
+- [AWS WAF Security Automations](https://aws.amazon.com/solutions/implementations/security-automations-for-aws-waf/) -- deployable solution for automated WAF rule management and threat protection
+- [AWS Well-Architected Labs: Edge Security with CloudFront and WAF](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for securing web applications at the edge
+- [AWS Prescriptive Guidance: DDoS mitigation with Shield and WAF](https://docs.aws.amazon.com/prescriptive-guidance/latest/ddos-mitigation/) -- reference architecture for layered DDoS protection with CloudFront, WAF, and Shield Advanced
+- [AWS CloudFront origin failover architecture](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html) -- reference design for high-availability content delivery with origin groups

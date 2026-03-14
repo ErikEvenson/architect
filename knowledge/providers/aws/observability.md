@@ -30,3 +30,11 @@ Without comprehensive observability, outages are detected by customers instead o
 - **Log retention policy** -- per-environment retention periods, archival to S3 Glacier for compliance
 - **Config rules scope** -- AWS managed rules vs custom rules, remediation automation
 - **GuardDuty findings workflow** -- Security Hub aggregation, automated remediation via EventBridge and Lambda
+
+## Reference Architectures
+
+- [AWS Architecture Center: Management & Governance](https://aws.amazon.com/architecture/management-governance/) -- reference architectures for centralized logging, monitoring, and compliance
+- [AWS Observability Best Practices](https://aws-observability.github.io/observability-best-practices/) -- comprehensive guide to CloudWatch, X-Ray, and OpenTelemetry architectures
+- [AWS Well-Architected Labs: Operational Excellence](https://www.wellarchitectedlabs.com/operational-excellence/) -- hands-on labs for building observability dashboards, alarms, and automated response
+- [AWS Security Reference Architecture (SRA): Logging and monitoring](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/log-archive.html) -- centralized logging account design with CloudTrail, Config, and GuardDuty aggregation
+- [AWS Solutions: Centralized Logging with OpenSearch](https://aws.amazon.com/solutions/implementations/centralized-logging-with-opensearch/) -- deployable solution for cross-account log aggregation and analysis

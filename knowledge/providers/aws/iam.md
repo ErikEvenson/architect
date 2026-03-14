@@ -30,3 +30,11 @@ IAM is the single most critical security control in AWS. Overly permissive polic
 - **EKS IAM integration** -- IRSA vs Pod Identity vs node-level instance profiles
 - **Automation credentials** -- OIDC federation for CI/CD (GitHub Actions, GitLab) vs long-lived keys in secrets manager
 - **Policy management** -- Terraform-managed policies vs AWS-managed policies vs custom policy-as-code
+
+## Reference Architectures
+
+- [AWS Well-Architected Framework: Security Pillar - Identity and Access Management](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/identity-and-access-management.html) -- IAM best practices within the Well-Architected Framework
+- [AWS Architecture Center: Security, Identity, & Compliance](https://aws.amazon.com/architecture/security-identity-compliance/) -- reference architectures for multi-account IAM, federation, and access control
+- [AWS Prescriptive Guidance: IAM best practices for multi-account environments](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/) -- AWS Security Reference Architecture (SRA) covering IAM at scale
+- [AWS Well-Architected Labs: Identity and Access Management](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for implementing least-privilege IAM policies and cross-account access
+- [AWS IAM Identity Center (SSO) architecture](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) -- reference architecture for centralized identity management across AWS accounts

@@ -30,3 +30,11 @@ Azure security is deeply integrated with Microsoft Entra ID, making identity con
 - **PIM vs standing access** -- just-in-time elevation for all privileged roles vs standing access for break-glass accounts
 - **Azure Policy scope** -- management group level enforcement vs subscription level, audit vs deny effect
 - **Network security model** -- NSGs with ASGs vs Azure Firewall with network rules vs microsegmentation
+
+## Reference Architectures
+
+- [Azure Architecture Center: Security architectures](https://learn.microsoft.com/en-us/azure/architecture/security/) -- curated security reference architectures including identity, network security, and threat protection
+- [Azure Landing Zone: Security](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/security) -- Cloud Adoption Framework enterprise security design with management groups, policies, and Defender for Cloud
+- [Azure Well-Architected Framework: Security pillar](https://learn.microsoft.com/en-us/azure/well-architected/security/) -- security best practices for identity, data protection, and governance
+- [Microsoft Cybersecurity Reference Architectures (MCRA)](https://learn.microsoft.com/en-us/security/adoption/mcra) -- comprehensive reference architecture for Microsoft security services including Entra ID, Defender, and Sentinel
+- [Azure Architecture Center: Identity and access management](https://learn.microsoft.com/en-us/azure/architecture/identity/) -- reference architectures for Entra ID, hybrid identity, and conditional access

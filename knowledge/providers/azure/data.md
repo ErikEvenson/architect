@@ -30,3 +30,11 @@ Azure data services have unique pricing models (DTU vs vCore, Request Units) tha
 - **Caching tier** -- Azure Cache for Redis Standard vs Premium (clustering, persistence) vs Enterprise (Redis modules)
 - **Azure SQL Managed Instance vs Azure SQL Database** -- near-100% SQL Server compatibility vs fully managed PaaS
 - **Serverless compute** -- Azure SQL Serverless with auto-pause for intermittent workloads vs provisioned for always-on
+
+## Reference Architectures
+
+- [Azure Architecture Center: Data architectures](https://learn.microsoft.com/en-us/azure/architecture/data-guide/) -- comprehensive data architecture guide covering relational, NoSQL, caching, and analytics
+- [Azure Architecture Center: Azure SQL Database high availability](https://learn.microsoft.com/en-us/azure/architecture/databases/architecture/azure-sql-database-high-availability) -- reference architectures for Azure SQL geo-replication and failover groups
+- [Azure Architecture Center: Cosmos DB multi-region design](https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/globally-distributed-mission-critical-applications-using-cosmos-db) -- reference architecture for globally distributed applications with Cosmos DB
+- [Azure Well-Architected Framework: Azure SQL Database](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-sql-database) -- reliability, security, and cost optimization guidance for Azure SQL
+- [Azure Architecture Center: Caching guidance](https://learn.microsoft.com/en-us/azure/architecture/best-practices/caching) -- reference patterns for Azure Cache for Redis in application architectures

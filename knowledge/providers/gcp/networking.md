@@ -29,3 +29,11 @@ GCP networking uses a global VPC model that differs fundamentally from AWS and A
 - **Private access model** -- Private Google Access vs Private Service Connect vs VPC Service Controls
 - **Firewall management** -- VPC firewall rules vs hierarchical policies vs Cloud Firewall Plus (L7 inspection)
 - **CDN strategy** -- Cloud CDN on load balancer vs Media CDN for streaming vs third-party CDN
+
+## Reference Architectures
+
+- [Google Cloud Architecture Center: Networking](https://cloud.google.com/architecture#networking) -- reference architectures for VPC design, hybrid connectivity, and load balancing
+- [Google Cloud Architecture Framework: System design - Networking](https://cloud.google.com/architecture/framework/system-design/networking) -- best practices for VPC, firewall, and DNS design
+- [Google Cloud: Hub-and-spoke network architecture](https://cloud.google.com/architecture/hub-spoke-network-architecture) -- reference design for multi-project networking with Shared VPC and VPC peering
+- [Google Cloud: Best practices for Cloud Armor](https://cloud.google.com/armor/docs/best-practices) -- reference patterns for WAF, DDoS protection, and rate limiting at the edge
+- [Google Cloud: Hybrid and multi-cloud network topologies](https://cloud.google.com/architecture/hybrid-and-multi-cloud-network-topologies) -- reference architectures for Cloud Interconnect, VPN, and hybrid DNS
