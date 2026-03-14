@@ -40,6 +40,8 @@ spec:
               readOnly: true
             - name: outputs
               mountPath: /app/data/outputs
+            - name: tmp
+              mountPath: /tmp
           resources:
             requests:
               cpu: 100m
@@ -77,6 +79,8 @@ spec:
         - name: outputs
           persistentVolumeClaim:
             claimName: architect-outputs
+        - name: tmp
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
