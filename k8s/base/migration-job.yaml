@@ -1,0 +1,23 @@
+# Applied separately from main kustomization.
+# Run: kubectl apply -f k8s/base/migration-job.yaml -n <namespace>
+# Delete before re-running: kubectl delete job architect-migration -n <namespace>
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: architect-migration
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: architect-db-migrations:0.1.0
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: architect-secrets
+                  key: postgres-password
+            - name: DATABASE_URL
+              value: "postgresql://architect:$(PGPASSWORD)@postgres:5432/architect"

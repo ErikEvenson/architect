@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: architect-staging
+
+resources:
+  - ../../base
+  - ../../infrastructure
+  - ../../services
+
+images:
+  - name: architect-backend
+    newName: ghcr.io/erikevenson/architect-backend
+    newTag: "0.1.0"
+  - name: architect-frontend
+    newName: ghcr.io/erikevenson/architect-frontend
+    newTag: "0.1.0"
+  - name: architect-db-migrations
+    newName: ghcr.io/erikevenson/architect-db-migrations
+    newTag: "0.1.0"

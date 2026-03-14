@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: architect-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: architect-frontend
+  template:
+    metadata:
+      labels:
+        app: architect-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: architect-frontend:0.1.0
+          ports:
+            - containerPort: 8080
+              name: health
+            - containerPort: 8443
+              name: https
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
+            - name: frontend-config
+              mountPath: /usr/share/nginx/html/config.js
+              subPath: config.js
+              readOnly: true
+            - name: tls
+              mountPath: /etc/nginx/tls
+              readOnly: true
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+        - name: frontend-config
+          configMap:
+            name: frontend-config
+        - name: tls
+          secret:
+            secretName: architect-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: architect-frontend
+spec:
+  type: NodePort
+  selector:
+    app: architect-frontend
+  ports:
+    - port: 8443
+      targetPort: 8443
+      nodePort: 30011
+      name: https

@@ -1,0 +1,49 @@
+# Runtime data (externalized to PVC)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+*.egg
+
+# Node
+node_modules/
+.npm
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+
+# TLS certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+
+# Secrets
+.env
+secrets.yaml
+architect-secrets.yaml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.tar
