@@ -35,6 +35,6 @@ Azure Storage is the foundational data service underpinning blobs, files, queues
 
 - [Azure Architecture Center: Storage architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/storage/storage-start-here) -- decision tree for selecting storage services based on workload requirements
 - [Azure Storage redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy) -- detailed comparison of LRS, ZRS, GRS, GZRS, RA-GRS, and RA-GZRS with failover behavior
-- [Azure Well-Architected Framework: Data storage](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/storage-accounts) -- best practices for storage account configuration, security, and cost optimization
+- [Azure Well-Architected Framework: Data storage](https://learn.microsoft.com/en-us/azure/well-architected/) -- best practices for storage account configuration, security, and cost optimization
 - [Azure Landing Zone: Storage](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/data-management/best-practices/data-lake-overview) -- Cloud Adoption Framework guidance for enterprise data lake and storage design
 - [Azure Architecture Center: Big data with Data Lake Gen2](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-lake) -- reference architecture for analytics workloads using hierarchical namespace storage

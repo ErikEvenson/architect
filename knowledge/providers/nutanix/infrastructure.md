@@ -33,8 +33,8 @@ Nutanix hyperconverged infrastructure collapses compute, storage, and networking
 
 ## Reference Architectures
 
-- [Nutanix Validated Designs](https://www.nutanix.com/go/validated-designs) -- vendor-validated reference architectures for enterprise applications including SAP, SQL Server, Oracle, and VDI
-- [Nutanix Reference Architecture Library](https://www.nutanix.com/resources/reference-architectures) -- comprehensive library of tested architectures for databases, EUC, DevOps, and hybrid cloud
+- [Nutanix Validated Designs](https://portal.nutanix.com/page/documents/solutions) -- vendor-validated reference architectures for enterprise applications including SAP, SQL Server, Oracle, and VDI
+- [Nutanix Reference Architecture Library](https://portal.nutanix.com/page/documents/solutions) -- comprehensive library of tested architectures for databases, EUC, DevOps, and hybrid cloud
 - [Nutanix Best Practice Guide for AHV](https://portal.nutanix.com/page/documents/solutions/details?targetId=BP-2071-AHV:BP-2071-AHV) -- official best practices for AHV hypervisor configuration, networking, and storage
-- [Nutanix Cloud Platform Architecture](https://www.nutanix.com/go/the-nutanix-bible) -- "The Nutanix Bible" covering distributed storage fabric, CVM architecture, and cluster design
-- [Nutanix DR and Business Continuity reference architecture](https://www.nutanix.com/resources/reference-architectures) -- validated designs for Leap-based disaster recovery and metro availability
+- [Nutanix Cloud Platform Architecture](https://www.nutanixbible.com/) -- "The Nutanix Bible" covering distributed storage fabric, CVM architecture, and cluster design
+- [Nutanix DR and Business Continuity reference architecture](https://portal.nutanix.com/page/documents/solutions) -- validated designs for Leap-based disaster recovery and metro availability

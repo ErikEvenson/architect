@@ -36,5 +36,5 @@ GCP Compute Engine has unique features like custom machine types, live migration
 - [Google Cloud Architecture Center: Compute](https://cloud.google.com/architecture#compute) -- reference architectures for Compute Engine, MIGs, and autoscaling patterns
 - [Google Cloud Architecture Framework: System design - Compute](https://cloud.google.com/architecture/framework/system-design/compute) -- best practices for machine type selection, scaling, and availability
 - [Google Cloud: Building scalable and resilient web applications on Compute Engine](https://cloud.google.com/architecture/scalable-and-resilient-apps) -- reference design for auto-scaling multi-tier applications
-- [Google Cloud: Best practices for Compute Engine](https://cloud.google.com/compute/docs/best-practices) -- official best practices for instance management, images, and disk configuration
+- [Google Cloud: Best practices for Compute Engine](https://cloud.google.com/compute/docs/instances) -- official best practices for instance management, images, and disk configuration
 - [Google Cloud: Migrating VMs to Compute Engine](https://cloud.google.com/architecture/migration-to-gcp-getting-started) -- reference architecture for VM migration and modernization patterns

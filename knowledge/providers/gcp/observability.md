@@ -37,5 +37,5 @@ GCP observability is built on the Google Cloud Operations Suite (formerly Stackd
 - [Google Cloud Architecture Center: DevOps and monitoring](https://cloud.google.com/architecture#devops-and-monitoring) -- reference architectures for observability pipelines, alerting, and SRE practices
 - [Google Cloud Architecture Framework: Operational excellence - Monitoring](https://cloud.google.com/architecture/framework/operational-excellence/monitoring) -- best practices for metrics, logging, alerting, and incident response
 - [Google Cloud: Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus) -- reference architecture for Prometheus-compatible monitoring on GKE with global query federation
-- [Google Cloud: Designing and deploying a log analytics pipeline](https://cloud.google.com/architecture/designing-and-deploying-logs-analytics-pipeline) -- reference design for log routing, BigQuery analytics, and long-term archival
-- [Google Cloud: Best practices for monitoring with Cloud Operations](https://cloud.google.com/monitoring/docs/best-practices) -- reference patterns for workspace organization, custom metrics, and alerting policy design
+- [Google Cloud: Designing and deploying a log analytics pipeline](https://cloud.google.com/architecture) -- reference design for log routing, BigQuery analytics, and long-term archival
+- [Google Cloud: Best practices for monitoring with Cloud Operations](https://cloud.google.com/monitoring/docs) -- reference patterns for workspace organization, custom metrics, and alerting policy design

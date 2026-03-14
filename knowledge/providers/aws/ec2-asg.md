@@ -33,8 +33,8 @@ EC2 and ASG configuration directly affects availability, performance, and cost. 
 
 ## Reference Architectures
 
-- [AWS Architecture Center: Compute](https://aws.amazon.com/architecture/compute/) -- reference architectures for EC2, Auto Scaling, and Spot integration patterns
+- [AWS Architecture Center: Compute](https://aws.amazon.com/architecture/) -- reference architectures for EC2, Auto Scaling, and Spot integration patterns
 - [AWS Well-Architected Labs: Cost Optimization - EC2 Right Sizing](https://www.wellarchitectedlabs.com/cost/) -- hands-on labs for right-sizing EC2 instances and optimizing Auto Scaling
-- [AWS Prescriptive Guidance: EC2 Auto Scaling for predictable and dynamic workloads](https://docs.aws.amazon.com/prescriptive-guidance/latest/ec2-auto-scaling/) -- scaling strategies and mixed instance policies
+- [AWS Prescriptive Guidance: EC2 Auto Scaling for predictable and dynamic workloads](https://docs.aws.amazon.com/autoscaling/ec2/userguide/) -- scaling strategies and mixed instance policies
 - [AWS Spot Instances best practices](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html) -- reference patterns for Spot diversification, capacity-optimized allocation, and interruption handling
 - [AWS EC2 Image Builder pipeline architecture](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html) -- reference architecture for automated AMI build and distribution pipelines

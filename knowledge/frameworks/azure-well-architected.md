@@ -185,6 +185,6 @@ Performance directly impacts user experience and business outcomes. Slow applica
 2. **Walk through each pillar checklist**: Use the items as discussion prompts. Mark items as addressed, not applicable, or requiring follow-up.
 3. **Identify Azure service choices**: For each component, evaluate whether the selected Azure service aligns with the pillar requirements. Consider PaaS and serverless options before IaaS.
 4. **Document trade-offs**: When optimizing one pillar conflicts with another (e.g., multi-region for reliability increases cost), document the decision and rationale as an ADR.
-5. **Run the Azure Well-Architected Review**: Use the official assessment at https://learn.microsoft.com/en-us/assessments/azure-architecture-review to get tailored recommendations.
+5. **Run the Azure Well-Architected Review**: Use the official [Azure Well-Architected Review assessment](https://learn.microsoft.com/en-us/assessments/azure-architecture-review) to get tailored recommendations.
 6. **Create an action plan**: Prioritize identified gaps by business impact and create work items with owners and timelines.
 7. **Integrate with Azure Advisor**: Enable Advisor recommendations aligned with each pillar for continuous, automated feedback.

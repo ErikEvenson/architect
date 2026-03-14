@@ -33,7 +33,7 @@ GCP offers a uniquely broad database portfolio, from globally consistent Spanner
 ## Reference Architectures
 
 - [Google Cloud Architecture Center: Databases](https://cloud.google.com/architecture#databases) -- reference architectures for Cloud SQL, Spanner, Bigtable, and Firestore design patterns
-- [Google Cloud Architecture Framework: System design - Data](https://cloud.google.com/architecture/framework/system-design/data) -- best practices for database selection, replication, and disaster recovery
+- [Google Cloud Architecture Framework: System design - Data](https://cloud.google.com/architecture/framework) -- best practices for database selection, replication, and disaster recovery
 - [Google Cloud: Cloud SQL high availability and disaster recovery](https://cloud.google.com/sql/docs/mysql/high-availability) -- reference architecture for regional HA and cross-region read replicas
-- [Google Cloud: Spanner reference architectures](https://cloud.google.com/spanner/docs/reference-architectures) -- design patterns for globally distributed, strongly consistent database workloads
+- [Google Cloud: Spanner reference architectures](https://cloud.google.com/spanner/docs) -- design patterns for globally distributed, strongly consistent database workloads
 - [Google Cloud: Best practices for Cloud Bigtable schema design](https://cloud.google.com/bigtable/docs/schema-design) -- reference patterns for row key design and table schema in high-throughput workloads

@@ -36,5 +36,5 @@ GCP IAM is fundamentally different from AWS and Azure: it operates at the projec
 - [Google Cloud Architecture Center: Security](https://cloud.google.com/architecture#security) -- reference architectures for IAM, encryption, and security operations
 - [Google Cloud Architecture Framework: Security, privacy, and compliance](https://cloud.google.com/architecture/framework/security) -- comprehensive security best practices for identity, data protection, and incident response
 - [Google Cloud: Enterprise foundations blueprint](https://cloud.google.com/architecture/security-foundations) -- reference architecture for organization structure, IAM, VPC Service Controls, and logging
-- [Google Cloud: Best practices for using VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/best-practices) -- reference patterns for data exfiltration prevention and service perimeter design
+- [Google Cloud: Best practices for using VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs) -- reference patterns for data exfiltration prevention and service perimeter design
 - [Google Cloud: Security Command Center architecture](https://cloud.google.com/security-command-center/docs/concepts-security-command-center-overview) -- reference design for centralized vulnerability management and threat detection
