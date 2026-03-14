@@ -176,6 +176,21 @@ export function VersionDetailPage() {
                   >
                     {rendering ? "Rendering..." : "Render"}
                   </button>
+                  {versionId && selected.render_status === "success" && (() => {
+                    const pngFile = selected.output_paths.find((p) => p.endsWith(".png"));
+                    const svgFile = selected.output_paths.find((p) => p.endsWith(".svg"));
+                    const openFile = pngFile || svgFile;
+                    return openFile ? (
+                      <a
+                        href={artifactsApi.getOutputUrl(versionId, selected.id, openFile)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
+                      >
+                        Open in New Tab
+                      </a>
+                    ) : null;
+                  })()}
                   {versionId && (selected.render_status === "success" || selected.source_code) && (
                     <a
                       href={artifactsApi.exportPdfUrl(versionId, selected.id)}
