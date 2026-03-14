@@ -179,7 +179,8 @@ export function VersionDetailPage() {
                   {versionId && selected.render_status === "success" && (() => {
                     const pngFile = selected.output_paths.find((p) => p.endsWith(".png"));
                     const svgFile = selected.output_paths.find((p) => p.endsWith(".svg"));
-                    const openFile = pngFile || svgFile;
+                    const htmlFile = selected.output_paths.find((p) => p.endsWith(".html"));
+                    const openFile = pngFile || svgFile || htmlFile;
                     return openFile ? (
                       <a
                         href={artifactsApi.getOutputUrl(versionId, selected.id, openFile)}
