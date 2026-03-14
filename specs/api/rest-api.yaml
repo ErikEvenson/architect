@@ -406,6 +406,71 @@ paths:
         "404":
           description: Artifact not found
 
+  # --- Rendering ---
+  /versions/{version_id}/artifacts/{artifact_id}/render:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: artifact_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      summary: Trigger render for an artifact
+      operationId: triggerRender
+      tags: [rendering]
+      responses:
+        "202":
+          description: Render triggered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+        "400":
+          description: No source code to render
+        "404":
+          description: Artifact not found
+
+  /versions/{version_id}/artifacts/{artifact_id}/outputs/{filename}:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: artifact_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filename
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get rendered output file
+      operationId: getRenderedOutput
+      tags: [rendering]
+      responses:
+        "200":
+          description: Rendered file content
+          content:
+            image/svg+xml: {}
+            image/png: {}
+            application/pdf: {}
+            text/html: {}
+        "404":
+          description: Output file not found
+
   # --- ADRs ---
   /projects/{project_id}/adrs:
     parameters:
