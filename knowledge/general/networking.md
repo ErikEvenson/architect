@@ -1,5 +1,9 @@
 # Networking
 
+## Scope
+
+This file covers **what** networking decisions need to be made. For provider-specific **how**, see the provider networking files.
+
 ## Checklist
 
 - [ ] How many availability zones should the architecture span? (2 minimum, 3 recommended)
@@ -26,3 +30,9 @@ Network design is the hardest thing to change after deployment. Poor segmentatio
 - **WAF placement** — at CDN edge vs at load balancer
 - **NAT strategy** — NAT gateway per AZ vs shared
 - **DNS failover model** — active-passive vs active-active vs latency-based
+
+## See Also
+
+- `providers/aws/vpc.md` — AWS VPC, subnets, and network configuration
+- `providers/azure/networking.md` — Azure VNet and network services
+- `providers/gcp/networking.md` — GCP VPC and network configuration

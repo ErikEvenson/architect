@@ -1,0 +1,123 @@
+site_name: Architect Knowledge Library
+site_description: Cloud architecture best practices, checklists, and compliance guides
+repo_url: https://github.com/ErikEvenson/architect
+docs_dir: knowledge
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: blue
+    accent: blue
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - Home: README.md
+  - General:
+    - Compute: general/compute.md
+    - Networking: general/networking.md
+    - Data: general/data.md
+    - Security: general/security.md
+    - Observability: general/observability.md
+    - Disaster Recovery: general/disaster-recovery.md
+    - Cost: general/cost.md
+    - Deployment: general/deployment.md
+  - AWS:
+    - VPC: providers/aws/vpc.md
+    - IAM: providers/aws/iam.md
+    - RDS & Aurora: providers/aws/rds-aurora.md
+    - EC2 & ASG: providers/aws/ec2-asg.md
+    - ElastiCache: providers/aws/elasticache.md
+    - CloudFront & WAF: providers/aws/cloudfront-waf.md
+    - Observability: providers/aws/observability.md
+    - Secrets Manager: providers/aws/secrets-manager.md
+  - Azure:
+    - Networking: providers/azure/networking.md
+    - Compute: providers/azure/compute.md
+    - Data: providers/azure/data.md
+    - Security: providers/azure/security.md
+  - GCP:
+    - Networking: providers/gcp/networking.md
+    - Compute: providers/gcp/compute.md
+    - Data: providers/gcp/data.md
+    - Security: providers/gcp/security.md
+  - Nutanix:
+    - Infrastructure: providers/nutanix/infrastructure.md
+    - Compute: providers/nutanix/compute.md
+    - Storage: providers/nutanix/storage.md
+    - Networking: providers/nutanix/networking.md
+    - Data Protection: providers/nutanix/data-protection.md
+    - Security: providers/nutanix/security.md
+    - Platform Services: providers/nutanix/platform-services.md
+    - Observability: providers/nutanix/observability.md
+  - VMware:
+    - Infrastructure: providers/vmware/infrastructure.md
+    - Compute: providers/vmware/compute.md
+    - Storage: providers/vmware/storage.md
+    - Networking: providers/vmware/networking.md
+    - Data Protection: providers/vmware/data-protection.md
+    - Security: providers/vmware/security.md
+    - Platform Services: providers/vmware/platform-services.md
+    - Observability: providers/vmware/observability.md
+  - OpenStack:
+    - Infrastructure: providers/openstack/infrastructure.md
+    - Compute: providers/openstack/compute.md
+    - Storage: providers/openstack/storage.md
+    - Networking: providers/openstack/networking.md
+    - Data Protection: providers/openstack/data-protection.md
+    - Security: providers/openstack/security.md
+    - Platform Services: providers/openstack/platform-services.md
+    - Observability: providers/openstack/observability.md
+  - OpenShift:
+    - Infrastructure: providers/openshift/infrastructure.md
+    - Compute: providers/openshift/compute.md
+    - Storage: providers/openshift/storage.md
+    - Networking: providers/openshift/networking.md
+    - Data Protection: providers/openshift/data-protection.md
+    - Security: providers/openshift/security.md
+    - CI/CD: providers/openshift/ci-cd.md
+    - Observability: providers/openshift/observability.md
+  - Patterns:
+    - Three-Tier Web: patterns/three-tier-web.md
+    - Microservices: patterns/microservices.md
+    - Data Pipeline: patterns/data-pipeline.md
+    - Static Site: patterns/static-site.md
+    - Hybrid Cloud: patterns/hybrid-cloud.md
+  - Compliance:
+    - PCI DSS: compliance/pci-dss.md
+    - HIPAA: compliance/hipaa.md
+    - SOC2: compliance/soc2.md
+    - FedRAMP: compliance/fedramp.md
+  - Frameworks:
+    - AWS Well-Architected: frameworks/aws-well-architected.md
+    - Azure Well-Architected: frameworks/azure-well-architected.md
+    - GCP Architecture Framework: frameworks/gcp-architecture-framework.md
+  - Failure Patterns:
+    - Networking: failures/networking.md
+    - Data: failures/data.md
+    - Scaling: failures/scaling.md
+    - Security: failures/security.md
+    - Deployment: failures/deployment.md
+  - References: references.md
+  - Contributing: CONTRIBUTING.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - admonition
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search

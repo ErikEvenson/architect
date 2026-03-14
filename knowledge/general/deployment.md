@@ -1,5 +1,9 @@
 # Deployment
 
+## Scope
+
+This file covers **what** deployment strategy decisions need to be made (deployment models, IaC approach, rollback procedures). For provider-specific CI/CD implementation, see the provider files.
+
 ## Checklist
 
 - [ ] What is the deployment strategy? (rolling, blue-green, canary, immutable)
@@ -27,3 +31,7 @@ Bad deployments are the #1 cause of outages. A reliable deployment pipeline with
 - **CI/CD platform** — GitHub Actions, GitLab CI, Jenkins, CodePipeline
 - **Artifact format** — Docker images vs AMIs vs packages
 - **Environment strategy** — how many environments, how they map to branches
+
+## See Also
+
+- `providers/openshift/ci-cd.md` — OpenShift CI/CD pipelines and deployment

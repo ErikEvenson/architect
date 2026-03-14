@@ -1,5 +1,9 @@
 # Disaster Recovery
 
+## Scope
+
+This file covers **what** disaster recovery strategy decisions need to be made (RPO/RTO targets, failover models, DR testing). For provider-specific data protection implementation, see the provider files.
+
 ## Checklist
 
 - [ ] What is the RPO (Recovery Point Objective)? How much data loss is acceptable?
@@ -27,3 +31,10 @@ Disasters happen — AZ outages, region outages, data corruption. Without a test
 - **Replication strategy** — synchronous (zero RPO, higher latency) vs asynchronous
 - **Failover automation** — manual vs automated (DNS health checks)
 - **DR testing cadence** — quarterly, monthly, chaos engineering
+
+## See Also
+
+- `providers/nutanix/data-protection.md` — Nutanix backup and replication
+- `providers/vmware/data-protection.md` — VMware backup and replication
+- `providers/openstack/data-protection.md` — OpenStack backup and recovery
+- `providers/openshift/data-protection.md` — OpenShift data protection

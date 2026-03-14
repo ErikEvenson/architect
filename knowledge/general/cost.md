@@ -1,5 +1,9 @@
 # Cost
 
+## Scope
+
+This file covers **what** cost strategy decisions need to be made (budgeting, right-sizing, reserved capacity, tagging). Provider-specific pricing models and cost tools vary; consult individual provider documentation for implementation details.
+
 ## Checklist
 
 - [ ] What is the monthly budget target?

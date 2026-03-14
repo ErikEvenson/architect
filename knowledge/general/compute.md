@@ -1,5 +1,9 @@
 # Compute
 
+## Scope
+
+This file covers **what** compute decisions need to be made. For provider-specific **how**, see the provider compute files.
+
 ## Checklist
 
 - [ ] What compute platform is required? (VMs, containers, serverless, bare metal)
@@ -25,3 +29,9 @@ Compute is the foundation of the application tier. Incorrect sizing leads to eit
 - **Scaling strategy** — target tracking vs step scaling vs scheduled
 - **Patching strategy** — in-place vs immutable AMI replacement
 - **Session management** — external store vs sticky sessions vs stateless
+
+## See Also
+
+- `providers/aws/ec2-asg.md` — AWS EC2 instances and Auto Scaling Groups
+- `providers/azure/compute.md` — Azure VMs and Scale Sets
+- `providers/gcp/compute.md` — GCP Compute Engine and instance groups
