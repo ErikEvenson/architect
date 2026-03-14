@@ -148,6 +148,8 @@ nav:
     - Security: providers/kubernetes/security.md
     - Observability: providers/kubernetes/observability.md
     - Operations: providers/kubernetes/operations.md
+    - K3s: providers/kubernetes/k3s.md
+    - Docker Desktop: providers/kubernetes/docker-desktop.md
   - Prometheus/Grafana:
     - Observability Stack: providers/prometheus-grafana/observability.md
   - Ceph:
@@ -165,6 +167,7 @@ nav:
     - Edge Computing: patterns/edge-computing.md
     - AI/ML Infrastructure: patterns/ai-ml-infrastructure.md
     - CDN-Fronted On-Prem: patterns/cdn-fronted-onprem.md
+    - POC / Prototype: patterns/poc-prototype.md
     - SaaS Multi-Tenant: patterns/saas-multi-tenant.md
     - DR Implementations: patterns/disaster-recovery-implementations.md
   - Compliance:

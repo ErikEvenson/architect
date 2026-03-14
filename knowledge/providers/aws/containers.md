@@ -68,5 +68,53 @@ SQS queue -> ECS service with target tracking auto-scaling based on queue depth 
 - **Fargate updates:** ARM64/Graviton support for Fargate has improved across versions, with full GA support in EKS 1.30+. Fargate Spot remains available for fault-tolerant workloads.
 - **EKS Auto Mode:** GA in EKS 1.31, Auto Mode automates node provisioning, scaling, and updates using AWS-managed Karpenter, eliminating the need to configure managed node groups or self-managed Karpenter.
 
+## ECR Authentication for Non-EKS Kubernetes
+
+EKS clusters authenticate to ECR natively via IAM instance profiles and IRSA/Pod Identity -- no additional configuration is needed for pulling images from ECR in the same account. However, K3s, kubeadm, and other self-managed Kubernetes distributions running on EC2, on-premises, or in other clouds have no built-in ECR integration. These clusters require explicit credential management because ECR tokens expire every 12 hours.
+
+### Solution 1: ECR Credential Helper on Nodes
+
+Install the [amazon-ecr-credential-helper](https://github.com/awslabs/amazon-ecr-credential-helper) on each node. Configure containerd or Docker to use it as a credential store. The helper automatically refreshes ECR tokens using the node's IAM role or configured AWS credentials.
+
+- **Pros:** No Kubernetes-level configuration, works transparently for all pods on the node.
+- **Cons:** Requires installation on every node, relies on node-level IAM permissions, tighter coupling between node configuration and workload requirements.
+- **K3s-specific:** Configure in `/etc/rancher/k3s/registries.yaml` with the ECR endpoint as a mirror.
+
+### Solution 2: CronJob with imagePullSecret Rotation
+
+Deploy a Kubernetes CronJob that runs every 6-10 hours (ECR tokens expire at 12 hours) to:
+1. Run `aws ecr get-login-password --region <region>`
+2. Create or update a `docker-registry` Secret with the new token
+3. Patch the Secret in each namespace that needs ECR access
+
+```
+CronJob (every 8h)
+  → aws ecr get-login-password
+  → kubectl create secret docker-registry ecr-creds --docker-server=<account>.dkr.ecr.<region>.amazonaws.com --docker-username=AWS --docker-password=<token> --dry-run=client -o yaml | kubectl apply -f -
+```
+
+- **Pros:** Pure Kubernetes solution, no node-level changes, works with any distribution.
+- **Cons:** Credentials expire if the CronJob fails, must replicate Secrets across namespaces, requires RBAC for the CronJob ServiceAccount to manage Secrets.
+
+### Solution 3: Open-Source Controllers
+
+Purpose-built controllers that automate ECR token refresh as Kubernetes-native operators:
+- **ecr-token-refresh:** Lightweight controller that watches namespaces and keeps imagePullSecrets updated.
+- **aws-ecr-credential:** Operator-pattern controller with CRD-based configuration.
+
+These controllers run as Deployments, watch for new namespaces, and automatically create/refresh ECR Secrets. They handle the CronJob approach's complexity (multi-namespace, failure recovery) with less manual configuration.
+
+### Cross-Account ECR Access
+
+When pulling images from a different AWS account's ECR:
+1. In the **source account** (ECR owner): Add a repository policy allowing the target account's IAM role to perform `ecr:GetDownloadUrlForLayer`, `ecr:BatchGetImage`, and `ecr:GetAuthorizationToken`.
+2. In the **target account** (K8s cluster): Configure IAM role assumption for the source account, either via node instance profile or a dedicated IAM role used by the credential refresh mechanism.
+3. Use the full ECR URI including the source account ID: `<source-account>.dkr.ecr.<region>.amazonaws.com/<repo>:<tag>`.
+
+### imagePullSecrets: ServiceAccount vs Per-Pod
+
+- **Per-pod:** Add `imagePullSecrets` to each pod spec. Explicit but requires updating every Deployment/StatefulSet manifest.
+- **ServiceAccount-level:** Attach `imagePullSecrets` to a ServiceAccount and assign that ServiceAccount to pods. Any pod using the ServiceAccount automatically inherits the pull credentials. This is the recommended approach -- create an `ecr-pull` ServiceAccount in each namespace with the ECR Secret attached, and reference it in workload manifests. Reduces duplication and centralizes credential management.
+
 ### Multi-Region Active-Active
 Global Accelerator -> ALBs in each region -> ECS/EKS services. ECR cross-region replication for images. DynamoDB global tables or Aurora Global Database for state. Route 53 health checks for DNS-level failover. CI/CD pipeline deploys to all regions with canary validation per region.
