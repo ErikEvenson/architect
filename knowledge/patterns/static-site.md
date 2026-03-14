@@ -72,6 +72,106 @@ Static sites serve pre-built HTML, CSS, and JavaScript files. They can include c
 | Monitoring | CloudWatch + Real User Monitoring | $30 |
 | **Total** | | **~$1,380/mo** |
 
+### Azure Estimates
+
+> **Disclaimer:** Azure prices are approximate, based on East US region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the Azure Pricing Calculator.
+
+#### Small (10K Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Hosting | Azure Static Web Apps (Free tier) | Free |
+| CDN | Azure CDN (1 GB transfer) | $0.08 |
+| DNS | Azure DNS (1 zone, 10K queries) | $0.90 |
+| TLS | Managed certificate (included) | Free |
+| **Total** | | **~$1/mo** |
+
+**Alternative:** Azure Static Web Apps Free tier covers this entirely with built-in CDN, SSL, and custom domains.
+
+#### Medium (1M Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Hosting | Azure Static Web Apps (Standard, $9/app) | $9 |
+| CDN | Azure CDN (100 GB transfer, 2M requests) | $9 |
+| DNS | Azure DNS (1 zone, 1M queries) | $1.30 |
+| TLS | Managed certificate (included) | Free |
+| Functions | Azure Functions (100K invocations for SSR/auth) | $1 |
+| API Backend | Azure Functions + API Management (Consumption, 500K calls) | $5 |
+| **Total** | | **~$25/mo** |
+
+#### Large (100M Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Hosting | Azure Static Web Apps (Standard, $9/app) | $9 |
+| CDN | Azure Front Door Premium (10 TB transfer, 200M requests) | $900 |
+| DNS | Azure DNS (1 zone, 100M queries) | $40 |
+| TLS | Managed certificate (included) | Free |
+| Functions | Azure Functions (10M invocations) | $50 |
+| API Backend | Azure Functions + API Management (Standard) | $700 |
+| WAF | Azure WAF on Front Door (200M requests) | $220 |
+| Monitoring | Azure Monitor + Application Insights | $30 |
+| **Total** | | **~$1,949/mo** |
+
+### GCP Estimates
+
+> **Disclaimer:** GCP prices are approximate, based on us-central1 region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the GCP Pricing Calculator.
+
+#### Small (10K Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Storage | Cloud Storage (1 GB, Standard) | $0.02 |
+| CDN | Cloud CDN (1 GB transfer, 10K requests) | $0.08 |
+| DNS | Cloud DNS (1 zone, 10K queries) | $0.50 |
+| TLS | Google-managed certificate | Free |
+| **Total** | | **~$1/mo** |
+
+**Alternative:** Firebase Hosting free tier (Spark plan) covers this with built-in CDN, SSL, and custom domains.
+
+#### Medium (1M Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Storage | Cloud Storage (5 GB, Standard) | $0.10 |
+| CDN | Cloud CDN (100 GB transfer, 2M requests) | $9 |
+| DNS | Cloud DNS (1 zone, 1M queries) | $1.00 |
+| TLS | Google-managed certificate | Free |
+| Functions | Cloud Functions (100K invocations for SSR/auth) | $1 |
+| API Backend | Cloud Functions + API Gateway (500K calls) | $4 |
+| **Total** | | **~$15/mo** |
+
+#### Large (100M Pageviews/month)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Storage | Cloud Storage (20 GB, Standard) | $0.40 |
+| CDN | Cloud CDN (10 TB transfer, 200M requests) | $750 |
+| DNS | Cloud DNS (1 zone, 100M queries) | $35 |
+| TLS | Google-managed certificate | Free |
+| Functions | Cloud Functions (10M invocations) | $50 |
+| API Backend | Cloud Functions + API Gateway (50M calls) | $175 |
+| Cloud Armor | Cloud Armor WAF (200M requests) | $180 |
+| Monitoring | Cloud Monitoring + Cloud Logging | $25 |
+| **Total** | | **~$1,215/mo** |
+
+### Provider Comparison
+
+> **Disclaimer:** All prices are approximate monthly estimates as of early 2025. Actual costs vary significantly based on region, commitment discounts, negotiated contracts, and usage patterns. Always verify with each provider's pricing calculator.
+
+| Scale | AWS | Azure | GCP |
+|-------|-----|-------|-----|
+| Small (10K PV/mo) | ~$1/mo | ~$1/mo | ~$1/mo |
+| Medium (1M PV/mo) | ~$18/mo | ~$25/mo | ~$15/mo |
+| Large (100M PV/mo) | ~$1,380/mo | ~$1,949/mo | ~$1,215/mo |
+
+**Notes:**
+- At small scale, all three providers (and platforms like Netlify/Vercel/Cloudflare Pages) are essentially free.
+- Azure API Management at Standard tier ($700/mo) significantly inflates Azure large-scale costs; Azure Functions alone are competitive.
+- GCP Cloud CDN egress pricing is generally the most competitive of the three providers.
+- For static sites, platform services (Vercel, Netlify, Cloudflare Pages) often beat self-managed cloud infrastructure on both cost and developer experience up to medium scale.
+
 ### Biggest Cost Drivers
 
 1. **CDN data transfer** — dominates at scale. CloudFront pricing decreases with committed use discounts above 10 TB/mo.

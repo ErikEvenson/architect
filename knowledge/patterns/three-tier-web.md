@@ -101,6 +101,111 @@ Internet → CDN/WAF → Load Balancer → App Servers → Cache → Database
 | Monitoring | CloudWatch + X-Ray + dashboards | $200 |
 | **Total** | | **~$9,730/mo** |
 
+### Azure Estimates
+
+> **Disclaimer:** Azure prices are approximate, based on East US region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the Azure Pricing Calculator.
+
+#### Small (100 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 2x B2s VMs (VMSS) | $60 |
+| Database | Azure SQL S2 (50 DTUs, zone-redundant) | $150 |
+| Cache | Azure Cache for Redis C0 (Basic) | $20 |
+| CDN | Azure Front Door (50 GB transfer, 1M requests) | $40 |
+| Networking | NAT Gateway (1, 30 GB processed) | $40 |
+| Load Balancer | Application Gateway v2 | $25 |
+| Monitoring | Azure Monitor basic | $15 |
+| **Total** | | **~$350/mo** |
+
+#### Medium (1,000 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 4x D2s_v5 VMs (VMSS) | $560 |
+| Database | Azure SQL P2 (250 DTUs, zone-redundant) + 1 read replica | $600 |
+| Cache | Azure Cache for Redis C2 (Standard, 2-node) | $320 |
+| CDN | Azure Front Door (500 GB transfer, 10M requests) | $100 |
+| Networking | NAT Gateway (2 AZs, 200 GB processed) | $90 |
+| Load Balancer | Application Gateway v2 (WAF tier) | $55 |
+| WAF | Azure WAF on Front Door (10M requests) | $35 |
+| Monitoring | Azure Monitor + Application Insights | $60 |
+| **Total** | | **~$1,820/mo** |
+
+#### Large (10,000 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 12x D4s_v5 VMs (VMSS) | $3,400 |
+| Database | Azure SQL Hyperscale (8 vCores, zone-redundant) + 3 read replicas | $3,500 |
+| Cache | Azure Cache for Redis P2 (Premium, clustered 6-node) | $1,900 |
+| CDN | Azure Front Door Premium (5 TB transfer, 100M requests) | $600 |
+| Networking | NAT Gateway (3 AZs, 2 TB processed) | $300 |
+| Load Balancer | Application Gateway v2 (WAF tier) | $120 |
+| WAF | Azure WAF on Front Door (custom + managed rules) | $280 |
+| Monitoring | Azure Monitor + Application Insights + Log Analytics | $250 |
+| **Total** | | **~$10,350/mo** |
+
+### GCP Estimates
+
+> **Disclaimer:** GCP prices are approximate, based on us-central1 region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the GCP Pricing Calculator.
+
+#### Small (100 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 2x e2-medium (MIG + HTTP LB) | $50 |
+| Database | Cloud SQL PostgreSQL db-custom-2-4096 (HA) | $120 |
+| Cache | Memorystore Redis Basic 1 GB | $35 |
+| CDN | Cloud CDN (50 GB transfer, 1M requests) | $8 |
+| Networking | Cloud NAT (1, 30 GB processed) | $35 |
+| Load Balancer | External HTTP(S) LB | $20 |
+| Monitoring | Cloud Monitoring basic | $10 |
+| **Total** | | **~$278/mo** |
+
+#### Medium (1,000 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 4x n2-standard-2 (MIG + HTTP LB) | $490 |
+| Database | Cloud SQL PostgreSQL db-custom-4-16384 (HA) + 1 read replica | $520 |
+| Cache | Memorystore Redis Standard 5 GB (2-node) | $280 |
+| CDN | Cloud CDN (500 GB transfer, 10M requests) | $50 |
+| Networking | Cloud NAT (2 regions, 200 GB processed) | $80 |
+| Load Balancer | External HTTP(S) LB | $25 |
+| Cloud Armor | Cloud Armor WAF (10M requests) | $30 |
+| Monitoring | Cloud Monitoring + Cloud Trace | $45 |
+| **Total** | | **~$1,520/mo** |
+
+#### Large (10,000 RPS)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Compute | 12x n2-standard-4 (MIG + HTTP LB) | $2,950 |
+| Database | AlloyDB (8 vCPUs, HA) + 3 read pool nodes | $3,100 |
+| Cache | Memorystore Redis Standard 25 GB (6-node cluster) | $1,650 |
+| CDN | Cloud CDN (5 TB transfer, 100M requests) | $400 |
+| Networking | Cloud NAT (3 regions, 2 TB processed) | $280 |
+| Load Balancer | External HTTP(S) LB | $80 |
+| Cloud Armor | Cloud Armor WAF (managed + custom rules) | $220 |
+| Monitoring | Cloud Monitoring + Cloud Trace + Cloud Logging | $180 |
+| **Total** | | **~$8,860/mo** |
+
+### Provider Comparison
+
+> **Disclaimer:** All prices are approximate monthly estimates as of early 2025. Actual costs vary significantly based on region, commitment discounts, negotiated contracts, and usage patterns. Always verify with each provider's pricing calculator.
+
+| Scale | AWS | Azure | GCP |
+|-------|-----|-------|-----|
+| Small (100 RPS) | ~$310/mo | ~$350/mo | ~$278/mo |
+| Medium (1,000 RPS) | ~$1,690/mo | ~$1,820/mo | ~$1,520/mo |
+| Large (10,000 RPS) | ~$9,730/mo | ~$10,350/mo | ~$8,860/mo |
+
+**Notes:**
+- GCP tends to be slightly cheaper for compute due to sustained-use discounts applied automatically.
+- Azure Front Door bundles WAF + CDN + load balancing, which can simplify architecture but may cost more than a la carte AWS components.
+- All three providers offer significant discounts (30-60%) for 1-year or 3-year commitments on compute and database.
+
 ### Biggest Cost Drivers
 
 1. **Database** — typically 30-40% of total cost at all scales. Multi-AZ doubles the instance cost. Read replicas add linearly.

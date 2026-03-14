@@ -75,6 +75,110 @@ Data pipelines ingest, transform, and store data for analytics, reporting, or do
 | Data Transfer | Cross-AZ and cross-region replication | $500 |
 | **Total** | | **~$23,950/mo** |
 
+### Azure Estimates
+
+> **Disclaimer:** Azure prices are approximate, based on East US region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the Azure Pricing Calculator.
+
+#### Small (10 GB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Event Hubs (1 TU, Basic) or ADLS PUT | $15 |
+| Compute | Azure Data Factory (10 pipeline runs/day, light activities) | $40 |
+| Storage | ADLS Gen2 (300 GB cumulative, Hot tier) | $7 |
+| Data Warehouse | Synapse Serverless (light queries, 500 GB scanned/mo) | $3 |
+| Orchestration | Data Factory orchestration (included) | $0 |
+| Monitoring | Azure Monitor + alerts | $15 |
+| **Total** | | **~$80/mo** |
+
+#### Medium (1 TB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Event Hubs (10 TUs, Standard) | $400 |
+| Compute | Synapse Spark Pool (4x Medium nodes, 8 hr/day) or Data Factory Data Flows | $1,100 |
+| Storage | ADLS Gen2 (30 TB cumulative, tiered: Hot + Cool) | $450 |
+| Data Warehouse | Synapse Dedicated Pool (DW200c reserved) | $700 |
+| Orchestration | Data Factory (orchestration + monitoring) | $100 |
+| Data Quality | Data Factory data flows for validation | $50 |
+| Monitoring | Azure Monitor + Log Analytics | $180 |
+| **Total** | | **~$2,980/mo** |
+
+#### Large (10 TB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Event Hubs (Dedicated 1 CU) | $4,200 |
+| Compute | Synapse Spark Pool (20x Large nodes, 12 hr/day) or HDInsight | $7,500 |
+| Storage | ADLS Gen2 (300 TB cumulative, tiered: Hot + Cool + Archive) | $3,200 |
+| Data Warehouse | Synapse Dedicated Pool (DW1000c reserved) | $5,800 |
+| Data Lake Query | Synapse Serverless (ad-hoc, 50 TB scanned/mo) | $250 |
+| Orchestration | Data Factory (complex pipelines + monitoring) | $400 |
+| Data Quality | Data Factory data flows + custom validation | $300 |
+| Monitoring | Azure Monitor + Log Analytics + Grafana | $550 |
+| Data Transfer | Cross-region replication | $450 |
+| **Total** | | **~$22,650/mo** |
+
+### GCP Estimates
+
+> **Disclaimer:** GCP prices are approximate, based on us-central1 region pricing as of early 2025. Actual costs vary by region, commitment tier, and usage patterns. Always verify with the GCP Pricing Calculator.
+
+#### Small (10 GB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Pub/Sub (10 GB/day) or GCS upload | $5 |
+| Compute | Dataflow (1 worker, 1 hr/day) or Cloud Functions | $35 |
+| Storage | GCS (300 GB cumulative, Standard) | $6 |
+| Data Warehouse | BigQuery (on-demand, 500 GB scanned/mo) | $3 |
+| Orchestration | Cloud Composer (small, or Cloud Workflows) | $0 |
+| Monitoring | Cloud Monitoring basic | $10 |
+| **Total** | | **~$59/mo** |
+
+#### Medium (1 TB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Pub/Sub (1 TB/day) | $300 |
+| Compute | Dataflow (4x n2-standard-4 workers, 8 hr/day) | $1,000 |
+| Storage | GCS (30 TB cumulative, tiered: Standard + Nearline) | $400 |
+| Data Warehouse | BigQuery (flat-rate 100 slots reserved) | $500 |
+| Orchestration | Cloud Composer (medium environment) | $350 |
+| Data Quality | Dataplex data quality tasks | $50 |
+| Monitoring | Cloud Monitoring + Cloud Logging | $150 |
+| **Total** | | **~$2,750/mo** |
+
+#### Large (10 TB/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Ingestion | Pub/Sub (10 TB/day) + Dataflow streaming ingest | $3,800 |
+| Compute | Dataflow (20x n2-highmem-8 workers, 12 hr/day) or Dataproc | $7,000 |
+| Storage | GCS (300 TB cumulative, tiered: Standard + Nearline + Coldline) | $3,000 |
+| Data Warehouse | BigQuery (flat-rate 500 slots reserved) | $4,800 |
+| Data Lake Query | BigQuery (ad-hoc on-demand, 50 TB scanned/mo) | $250 |
+| Orchestration | Cloud Composer (large environment) or self-hosted Airflow on GKE | $700 |
+| Data Quality | Dataplex data quality + custom validation | $250 |
+| Monitoring | Cloud Monitoring + Cloud Logging + Grafana | $500 |
+| Data Transfer | Cross-region replication | $400 |
+| **Total** | | **~$20,700/mo** |
+
+### Provider Comparison
+
+> **Disclaimer:** All prices are approximate monthly estimates as of early 2025. Actual costs vary significantly based on region, commitment discounts, negotiated contracts, and usage patterns. Always verify with each provider's pricing calculator.
+
+| Scale | AWS | Azure | GCP |
+|-------|-----|-------|-----|
+| Small (10 GB/day) | ~$180/mo | ~$80/mo | ~$59/mo |
+| Medium (1 TB/day) | ~$3,320/mo | ~$2,980/mo | ~$2,750/mo |
+| Large (10 TB/day) | ~$23,950/mo | ~$22,650/mo | ~$20,700/mo |
+
+**Notes:**
+- GCP BigQuery's separation of storage and compute, plus on-demand pricing ($5/TB scanned), makes it very cost-effective for variable query workloads.
+- Azure Synapse Serverless is excellent for small/medium pipelines with infrequent queries, keeping costs very low at small scale.
+- GCP Pub/Sub is generally cheaper than Kinesis or Event Hubs for message-based ingestion at moderate volumes.
+- All three providers' costs are dominated by compute (ETL) and storage accumulation at scale.
+
 ### Biggest Cost Drivers
 
 1. **Compute (ETL/ELT)** — Spark/EMR cluster hours dominate at medium and large scale. Typically 35-45% of total cost.
