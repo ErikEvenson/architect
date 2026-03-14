@@ -31,3 +31,34 @@ Security in OpenStack is not a single service -- it is a cross-cutting concern t
 - **Token format and lifetime** -- Fernet tokens (default, stateless, requires key sync across Keystone nodes) vs JWS tokens (asymmetric, no key distribution needed) -- operational simplicity vs key management
 - **Audit and compliance** -- Keystone CADF notifications to Panko (native) vs forwarding to external SIEM (Splunk, ELK) vs CloudKitty for usage/billing auditing -- depends on compliance framework (SOC2, ISO 27001, FedRAMP)
 - **Tenant isolation** -- project-level isolation (standard) vs domain-level isolation with domain admins (delegated management) vs separate OpenStack deployments per customer (strongest isolation, highest cost)
+
+## Version Notes
+
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Fernet tokens | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default | Default |
+| JWS tokens | Not available | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Application credentials | Not available | Not available | Introduced | GA | GA | GA (access rules) | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Federated identity (SAML2/OIDC) | GA (improved) | GA | GA | GA (K2K improvements) | GA | GA | GA | GA | GA (improved mapping) | GA | GA | GA | GA | GA | GA |
+| MFA (multi-factor auth) | Not available | Not available | Not available | Introduced (TOTP) | GA (MFA rules) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| OAuth 1.0a | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| OAuth 2.0 | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA |
+| Secure RBAC (system/domain/project scope) | Not available | Not available | Not available | Not available | Introduced (spec) | Tech Preview (Keystone) | Tech Preview (expanding) | Tech Preview (more services) | GA (Keystone, Nova) | GA (expanding) | GA (most services) | GA (default in some) | GA | GA (default) | GA (default) |
+| oslo.policy JSON format | Default | Default | Deprecated notice | Deprecated | Deprecated | Deprecated (YAML recommended) | Deprecated | Deprecated | Deprecated (removal warnings) | YAML default | YAML default | YAML enforced (JSON removed) | YAML only | YAML only | YAML only |
+| Keystone domains | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Keystone trust delegation | GA | GA | GA | GA | GA (improved expiry) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Barbican secret store | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Barbican PKCS11 (HSM) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Barbican Vault plugin | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Service token (send_service_token) | Not available | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA (enforced in some services) | GA | GA | GA |
+| Credential encryption rotation | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+
+**Key changes across releases:**
+- **Application credentials (Rocky+):** Introduced in Rocky and GA in Stein, application credentials allow automation to authenticate without exposing user passwords. Access rules (Ussuri+) further restrict application credentials to specific API endpoints and methods, following least-privilege principles.
+- **Federated identity improvements:** Federation via SAML2 and OIDC has been GA since before Pike with continuous improvements. Keystone-to-Keystone (K2K) federation improved in Stein. Mapping rules became more flexible across releases, supporting complex group-to-role mappings from enterprise IdPs like Azure AD, Okta, and Keycloak.
+- **MFA support (Stein+):** Multi-factor authentication was introduced in Stein with TOTP support. MFA rules (Train+) allow per-user MFA enforcement. For stronger MFA, federated identity with MFA enforced at the IdP level is recommended.
+- **OAuth 2.0 (Xena+):** OAuth 2.0 client credentials grant was introduced in Xena, providing a modern authentication mechanism for service-to-service communication and external application integration. This complements the older OAuth 1.0a support.
+- **Secure RBAC:** The secure RBAC initiative introduced system-scope, domain-scope, and project-scope personas (admin, member, reader) starting in Ussuri as a tech preview. This graduated to GA across services through Xena-Yoga and became the default in 2024.1. It replaces the legacy coarse-grained admin-or-owner policy model.
+- **oslo.policy JSON deprecation:** The legacy JSON policy file format was deprecated starting in Stein, with YAML becoming the recommended format. JSON support was fully removed in 2023.1 (Antelope). All custom policy overrides must use `policy.yaml` format.
+- **Barbican evolution:** Barbican has been stable across all releases. The HashiCorp Vault plugin (GA in Stein) enables organizations with existing Vault infrastructure to use it as the secret backend. Barbican remains required for Cinder volume encryption, Octavia TLS certificates, and Magnum cluster secrets.
+- **Service tokens (Stein+):** Service token sending was introduced in Stein to prevent token expiration issues during long-running operations. Services send both the user token and a service token, ensuring operations complete even if the user token expires mid-request. This became enforced in some services starting in 2023.1.

@@ -34,26 +34,31 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 
 ## Version Notes
 
-| Feature | Yoga (April 2022) | Zed (Oct 2022) | 2023.1 (Antelope) | 2024.1 (Caracal) |
-|---|---|---|---|---|
-| Libvirt driver | GA (libvirt 8.x) | GA (libvirt 8.x) | GA (libvirt 9.x) | GA (libvirt 10.x) |
-| QEMU version support | QEMU 6.x | QEMU 7.x | QEMU 8.x | QEMU 8.x+ |
-| Ironic (bare metal) | GA (BIOS/UEFI) | GA (improved cleaning) | GA (sharding, firmware updates) | GA (improved multi-tenant) |
-| Cyborg (accelerators) | GA (GPU, FPGA) | GA | GA (improved lifecycle) | GA (SmartNIC support) |
-| vGPU (NVIDIA MIG) | GA | GA (improved MIG support) | GA (live migration with vGPU) | GA (improved placement) |
-| Secure Boot | GA | GA | GA (improved enrollment) | GA |
-| vTPM (virtual TPM) | Tech Preview | GA | GA | GA |
-| Cells v2 (multi-cell) | GA | GA | GA (improved cross-cell operations) | GA (improved cell listing) |
-| CPU overcommit (allocation ratio) | Configurable (nova.conf) | Configurable | Configurable (placement-based) | Configurable (placement-based) |
-| Emulated NUMA topology | GA | GA | GA | GA (improved validation) |
-| Live migration (post-copy) | GA | GA | GA (improved timeout handling) | GA |
-| Server groups (soft policies) | GA | GA | GA | GA (improved scheduling) |
-| Nova metadata service | GA | GA | GA (HTTPS support) | GA (HTTPS default option) |
-| Evacuate improvements | GA | GA | GA (improved rebuild) | GA (force options) |
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Cells v2 | Optional (upgrade path) | Mandatory (single cell minimum) | GA (multi-cell) | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved cross-cell) | GA | GA (improved cell listing) | GA |
+| Placement service | In-tree (nova-placement) | In-tree | Extracted to standalone service | Standalone required | GA standalone | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Libvirt driver | libvirt 3.x | libvirt 4.x | libvirt 4.x | libvirt 5.x | libvirt 5.x | libvirt 6.x | libvirt 6.x | libvirt 7.x | libvirt 7.x | libvirt 8.x | libvirt 8.x | libvirt 9.x | libvirt 9.x | libvirt 10.x | libvirt 10.x |
+| QEMU version support | QEMU 2.x | QEMU 2.x | QEMU 3.x | QEMU 3.x | QEMU 4.x | QEMU 4.x | QEMU 5.x | QEMU 5.x | QEMU 6.x | QEMU 6.x | QEMU 7.x | QEMU 8.x | QEMU 8.x | QEMU 8.x+ | QEMU 9.x |
+| Ironic (bare metal) | GA (driver composition) | GA (BIOS config) | GA (deploy steps) | GA (fast-track deploy) | GA (deploy templates) | GA (UEFI boot) | GA (TLS boot) | GA (JSON-RPC) | GA (firmware interface) | GA (BIOS/UEFI) | GA (improved cleaning) | GA (sharding, firmware updates) | GA (improved inspection) | GA (improved multi-tenant) | GA (runbooks) |
+| vGPU support | Not available | Not available | Not available | Introduced (NVIDIA GRID) | GA (basic placement) | GA (multiple vGPU types) | GA (improved reporting) | GA (improved allocation) | GA (MIG support) | GA | GA (improved MIG) | GA (live migration with vGPU) | GA | GA (improved placement) | GA |
+| Cyborg (accelerators) | Not available | Not available | Not available | Not available | Introduced (spec only) | Tech Preview | Tech Preview | GA (GPU, FPGA) | GA | GA | GA | GA (improved lifecycle) | GA | GA (SmartNIC support) | GA |
+| Secure Boot | Not available | Not available | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA (improved enrollment) | GA | GA | GA |
+| vTPM (virtual TPM) | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA | GA | GA |
+| CPU overcommit (allocation ratio) | nova.conf global | nova.conf global | nova.conf global | Placement-aware (initial) | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Configurable | Configurable | Placement-based per aggregate | Placement-based | Placement-based | Placement-based |
+| Live migration (post-copy) | Tech Preview | GA | GA | GA | GA (QEMU native TLS) | GA | GA | GA | GA | GA | GA | GA (improved timeout) | GA | GA | GA |
+| Server groups (soft policies) | GA (soft-affinity added) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved scheduling) | GA |
+| Nova metadata service | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (HTTPS support) | GA | GA (HTTPS default option) | GA |
+| Evacuate improvements | GA | GA | GA | GA | GA | GA (improved reporting) | GA | GA | GA | GA | GA | GA (improved rebuild) | GA | GA (force options) | GA |
+| Emulated NUMA topology | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved validation) | GA |
+| nova-manage improvements | Basic | DB migration tools | DB archiving | Placement sync | Placement audit | Improved cell mgmt | Cell mapping tools | Placement heal | Archive improvements | GA | GA | GA | GA | GA | GA |
 
 **Key changes across releases:**
+- **Cells v2 mandatory (Queens):** Cells v2 became mandatory in Queens. All deployments require at least a single cell (cell0 + cell1). Pike provided the upgrade path from cells v1. Multi-cell deployments (for scaling beyond ~500 compute nodes) use separate databases and message queues per cell. Cross-cell operations (resize, migrate) improved significantly in 2023.1+.
+- **Placement service extraction (Stein):** The Placement service was extracted from Nova into a standalone project in Stein (Rocky began the separation). All deployments from Stein onward must run placement as an independent service with its own endpoint. This enables other services (Neutron, Cyborg) to report resource inventories.
 - **Libvirt and QEMU updates:** Each OpenStack release tracks newer libvirt and QEMU versions, bringing improved device emulation, security fixes, and performance. QEMU 8.x adds improved virtio device performance and new machine types. Ensure compute node OS packages are updated to match supported libvirt/QEMU versions.
-- **Ironic improvements:** Ironic (bare metal provisioning) has seen significant improvements. 2023.1 added sharding for scaling Ironic conductors across large deployments and firmware update support. 2024.1 improved multi-tenant bare metal isolation. Ironic is increasingly used for AI/ML workloads requiring direct GPU access without virtualization overhead.
-- **vGPU live migration:** Starting with 2023.1, Nova supports live migration of instances with vGPU devices (NVIDIA GRID/MIG), which was previously blocked. This enables maintenance operations on GPU hosts without instance downtime. Requires compatible NVIDIA driver versions.
+- **Ironic evolution:** Ironic introduced driver composition reform in Pike, allowing modular hardware interfaces. Fast-track deployment in Stein dramatically reduced provisioning time. Sharding in 2023.1 enabled scaling Ironic conductors across large deployments. 2024.1 improved multi-tenant bare metal isolation. Ironic is increasingly used for AI/ML workloads requiring direct GPU access.
+- **vGPU support (Stein+):** vGPU support was introduced in Stein with NVIDIA GRID. MIG (Multi-Instance GPU) support arrived in Xena. Starting with 2023.1, Nova supports live migration of instances with vGPU devices, enabling maintenance operations on GPU hosts without instance downtime. Requires compatible NVIDIA driver versions.
+- **Cyborg for accelerators (Train+):** Cyborg was introduced in Train for managing accelerator devices (GPUs, FPGAs, SmartNICs). It reached GA in Wallaby and integrates with Nova scheduling via Placement to allocate accelerator resources to instances.
 - **vTPM support:** Virtual TPM reached GA in Zed, enabling instances to use TPM 2.0 for measured boot, disk encryption (BitLocker, LUKS), and attestation. Requires libvirt 9.x+ and swtpm on compute hosts.
-- **Placement-based allocation ratios:** Recent releases moved overcommit ratio configuration from nova.conf to the Placement service, enabling per-host-aggregate overcommit ratios rather than a global setting. This allows different overcommit policies for different hardware tiers.
+- **Placement-based allocation ratios:** Starting from Stein, overcommit ratio configuration moved from nova.conf to the Placement service, enabling per-host-aggregate overcommit ratios rather than a global setting. This allows different overcommit policies for different hardware tiers.

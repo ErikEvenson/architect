@@ -30,3 +30,33 @@ Platform services transform OpenStack from raw IaaS into a platform that offers 
 - **Autoscaling approach** -- Heat autoscaling with Aodh alarms (native, simple) vs Senlin clustering (richer policies, health management) vs Kubernetes HPA via Magnum (container-native) -- workload type and scaling complexity
 - **Configuration management** -- `OS::Heat::SoftwareConfig` (Heat-native, cloud-init based) vs Ansible post-provision (flexible, idempotent) vs Packer pre-baked images (immutable infrastructure) -- deployment speed vs flexibility trade-off
 - **Data processing** -- Sahara managed clusters (Hadoop/Spark provisioned on demand) vs tenant-managed clusters on VMs (more control) vs Kubernetes-based data processing (Spark on K8s via Magnum) -- workload type and operational model
+
+## Version Notes
+
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Heat convergence engine | Tech Preview | GA | GA (default) | GA (default) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Heat template version | 2017-09-01 | 2018-03-02 | 2018-08-31 | 2018-08-31 | 2018-08-31 | 2018-08-31 | 2018-08-31 | 2021-04-16 | 2021-04-16 | 2021-04-16 | 2021-04-16 | 2021-04-16 | 2021-04-16 | 2021-04-16 | 2021-04-16 |
+| Heat external resource types | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Magnum K8s version | K8s 1.7-1.8 | K8s 1.9-1.11 | K8s 1.11-1.12 | K8s 1.13-1.14 | K8s 1.15-1.16 | K8s 1.17-1.18 | K8s 1.18-1.19 | K8s 1.20-1.21 | K8s 1.21-1.23 | K8s 1.23-1.24 | K8s 1.24-1.25 | K8s 1.25-1.27 | K8s 1.27-1.28 | K8s 1.28-1.29 | K8s 1.29-1.30 |
+| Magnum cluster driver | Fedora Atomic | Fedora Atomic | Fedora CoreOS (migration) | Fedora CoreOS | Fedora CoreOS | Fedora CoreOS (default) | Fedora CoreOS | Fedora CoreOS | Fedora CoreOS / Ubuntu | Fedora CoreOS / Ubuntu | Ubuntu (default) | Ubuntu (default) | Ubuntu (default) | Ubuntu (default) | Ubuntu (default) |
+| Magnum auto-healing | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Magnum cluster upgrades | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Trove instance management | GA | GA | GA | GA | GA | GA (major redesign) | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Trove supported datastores | MySQL, MariaDB, PostgreSQL, MongoDB, Redis, Cassandra | Same | Same | Same | Same | MySQL, MariaDB, PostgreSQL (simplified) | Same | Same | Same | Same | Same | Same | Same | Same | Same |
+| Ironic standalone (without Nova) | Tech Preview | GA | GA | GA (improved) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Ironic BIOS configuration | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Ironic deploy steps | Not available | Not available | Introduced | GA (fast-track) | GA (deploy templates) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Ironic firmware updates | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Tech Preview | GA | GA | GA (improved) | GA | GA | GA |
+| Ironic sharding | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Introduced | GA | GA | GA |
+| Senlin clustering | GA | GA | GA | GA | Maintenance mode | Maintenance mode | Maintenance mode | Maintenance mode | Maintenance mode | Effectively retired | Effectively retired | Effectively retired | Effectively retired | Effectively retired | Effectively retired |
+| Sahara data processing | GA | GA | GA | GA | Maintenance mode | Maintenance mode | Maintenance mode | Retired | Retired | Retired | Retired | Retired | Retired | Retired | Retired |
+| Zaqar messaging | GA | GA | GA | GA | Maintenance mode | Maintenance mode | Maintenance mode | Maintenance mode | Retired | Retired | Retired | Retired | Retired | Retired | Retired |
+
+**Key changes across releases:**
+- **Heat convergence engine:** The convergence engine, which enables parallel resource creation and more efficient stack updates, was tech preview in Pike, GA in Queens, and became the default in Rocky. It replaces the legacy stack-based engine with a graph-based approach that improves update performance and reliability.
+- **Magnum Kubernetes version support:** Magnum tracks upstream Kubernetes releases with a delay of 1-2 minor versions. The cluster base OS migrated from Fedora Atomic to Fedora CoreOS (Rocky-Ussuri) and then to Ubuntu as the default (Zed+). Each release supports 2-3 Kubernetes minor versions. Cluster in-place upgrades became GA in Victoria.
+- **Trove redesign (Ussuri):** Trove underwent a major architectural redesign in Ussuri, simplifying the guest agent and reducing the number of supported datastores to MySQL, MariaDB, and PostgreSQL (dropping MongoDB, Redis, Cassandra support). The redesign improved reliability and reduced operational complexity.
+- **Ironic standalone improvements:** Ironic standalone mode (without Nova integration) has been GA since Queens, enabling use cases like infrastructure provisioning and edge computing. Fast-track deployment (Stein) dramatically reduced provisioning time by skipping cleaning for trusted workloads. Deploy templates (Train) enabled reusable provisioning configurations. Sharding (2023.1) enabled scaling Ironic conductors across large deployments.
+- **Senlin status:** Senlin (clustering service for auto-scaling with rich policies) entered maintenance mode in Train due to declining community activity. It is effectively retired as of Yoga. Organizations needing auto-scaling should use Heat autoscaling with Aodh alarms or Kubernetes HPA via Magnum.
+- **Sahara and Zaqar retirement:** Sahara (data processing) entered maintenance mode in Train and was retired in Wallaby. Zaqar (messaging service) entered maintenance mode in Train and was retired in Xena. For data processing, Kubernetes-based Spark on Magnum is the recommended alternative. For messaging, external services (RabbitMQ, Kafka) are recommended.

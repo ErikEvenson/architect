@@ -30,3 +30,31 @@ OpenStack does not provide data protection by default -- it provides the buildin
 - **Backup retention** -- time-based (keep 30 days) vs count-based (keep last 10) vs GFS rotation (daily/weekly/monthly) -- compliance and storage cost constraints
 - **Backup orchestration** -- Freezer scheduler (native OpenStack integration) vs external tools (Veeam, Commvault, Rubrik with OpenStack plugins) vs custom scripts with cron -- existing tooling and support requirements
 - **Database protection** -- Trove managed backups (automated, integrated) vs application-managed backups (mysqldump/pg_dump in cron) vs Cinder snapshot of database volume (crash-consistent only) -- recovery granularity and consistency requirements
+
+## Version Notes
+
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Masakari (instance HA) | Introduced (incubated) | GA (basic host monitoring) | GA (process monitoring) | GA (recovery workflows) | GA (improved evacuation) | GA | GA (improved host monitor) | GA | GA | GA | GA | GA | GA | GA (improved notifications) | GA |
+| Cinder backup (Swift driver) | GA | GA | GA | GA (incremental improvements) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backup (Ceph driver) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backup (S3 driver) | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backup (GCS driver) | Not available | Not available | Not available | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backup chunked improvements | Basic | Basic | Improved | Improved | Improved | Improved | Improved | Improved | Improved | Improved | Improved | GA (improved chunked) | GA | GA | GA |
+| Cinder volume revert to snapshot | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Freezer (backup/DR) | GA (incubated) | GA | GA | Maintenance mode | Maintenance mode | Maintenance mode | Maintenance mode | Maintenance mode | Retired discussion | Retired discussion | Effectively retired | Effectively retired | Effectively retired | Effectively retired | Effectively retired |
+| Nova evacuate | GA | GA | GA | GA (improved error handling) | GA | GA (improved reporting) | GA | GA | GA | GA | GA | GA (improved rebuild) | GA | GA (force options) | GA |
+| Nova live-migrate (TLS) | Not available | Not available | Not available | Introduced (QEMU native TLS) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Trove automated backups | GA | GA | GA | GA | GA | GA (redesigned Trove) | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder replication v2.1 | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Boot-from-volume (evacuate support) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Swift geo-replication | GA (container sync) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+
+**Key changes across releases:**
+- **Masakari evolution (Pike+):** Masakari was incubated in Pike and became an official project in Queens. It provides instance HA by monitoring compute host failures (hostmonitor), instance failures (instancemonitor), and process failures (processmonitor). Recovery workflows improved in Stein with better orchestration of evacuate operations. Masakari requires shared storage or boot-from-volume instances -- ephemeral instances are rebuilt with empty disks on evacuate.
+- **Cinder backup driver improvements:** The S3 backup driver was added in Queens, enabling backup to any S3-compatible object store. Google Cloud Storage driver arrived in Ussuri. Chunked backup performance improvements in 2023.1 reduced backup time for large volumes. The backup service should always target storage in a different failure domain from primary Cinder backends.
+- **Freezer status changes:** Freezer was an incubated backup and DR project that entered maintenance mode around Stein. Community activity declined significantly, and the project is effectively retired as of Zed/2023.1. Organizations needing file-level backup should consider external tools (Veeam, Commvault, Rubrik with OpenStack plugins) or custom solutions using Cinder backup APIs.
+- **Nova evacuate improvements:** Evacuate error handling improved in Stein, reporting improved in Ussuri, and rebuild behavior improved in 2023.1. The `--force` option was added in 2024.1 (Caracal). Evacuate must only be used when the source host is confirmed down -- using it on a healthy host risks data corruption. Boot-from-volume instances survive evacuate because the volume is on shared storage.
+- **Nova live-migrate with TLS (Stein+):** QEMU native TLS for live migration was introduced in Stein, encrypting the migration data stream. This eliminates the need for SSH tunnelling (`live_migration_tunnelled`) and provides better performance for encrypted live migration.
+- **Trove redesign (Ussuri):** Trove was significantly redesigned in Ussuri with a simplified architecture, improved guest agent, and better integration with modern OpenStack services. Automated backups to Swift with configurable retention continue to be the primary database protection mechanism.
+- **Cinder replication v2.1:** Volume replication has been stable across all releases from Pike onward. It enables asynchronous replication between Cinder backends for DR scenarios. Combined with Masakari for compute HA and Cinder replication for storage DR, a comprehensive active-passive DR strategy can be built.

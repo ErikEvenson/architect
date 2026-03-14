@@ -31,3 +31,35 @@ Storage decisions in OpenStack are among the hardest to reverse. Cinder backend 
 - **Volume encryption** -- Barbican-managed LUKS (transparent, per-volume keys) vs no encryption (simpler, no Barbican dependency) vs tenant-managed encryption (dm-crypt inside VM) -- compliance requirements vs operational complexity
 - **Backup target** -- Swift (native integration) vs NFS (simple, external) vs S3 (off-cluster, cloud-compatible) vs Ceph secondary pool (same cluster, faster) -- durability and isolation requirements
 - **Storage tiering** -- multiple Cinder backends with volume types (SSD tier, HDD tier, replication tier) vs single backend with QoS policies -- granularity of storage service offering
+
+## Version Notes
+
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Cinder multi-attach | Not available | Introduced (tech preview) | GA (Ceph RBD, some backends) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder image volume cache | GA | GA | GA | GA (improved) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backup drivers | Swift, NFS, Ceph | Swift, NFS, Ceph, S3 | GA (S3 improvements) | GA (incremental backup) | GA | GA (Google Cloud backup) | GA | GA | GA | GA | GA | GA (improved chunked backup) | GA | GA | GA |
+| Cinder generic volume groups | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder volume revert to snapshot | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder backend drivers (new) | HPE 3PAR, Huawei | NetApp improvements | Pure Storage updates | Dell EMC PowerStore | Infinidat, TOYOU | LightOS NVMe-oF | Yadro Tatlin | DataCore SANsymphony | HPE Primera | Various updates | Various updates | Various updates | Various updates | Various updates | Various updates |
+| Cinder volume transfer improvements | Basic | GA | GA | GA | GA (transfer with snapshots) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Cinder active-active HA | Tech Preview | Tech Preview | GA (limited backends) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Swift container sync | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Swift erasure coding | GA | GA | GA (improved) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Swift S3 API (s3api) | Middleware | Middleware (improved) | GA (s3api middleware) | GA | GA | GA | GA (improved compatibility) | GA | GA | GA | GA | GA | GA | GA | GA |
+| Manila share migration | Tech Preview | GA | GA | GA (driver-assisted) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Manila share replication | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Manila share groups | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Manila access rules (cephx, IP) | GA | GA | GA | GA | GA | GA | GA (metadata-based) | GA | GA | GA | GA | GA | GA | GA | GA |
+| Glance image import | Basic | Interoperable import (introduced) | GA (web-download) | GA (glance-direct) | GA (copy-existing) | GA | GA | GA | GA | GA | GA | GA (improved plugins) | GA | GA | GA |
+| Glance multi-store | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+
+**Key changes across releases:**
+- **Cinder multi-attach (Queens+):** Multi-attach volumes were introduced in Queens and reached GA in Rocky. This allows a single Cinder volume to be attached to multiple instances simultaneously, which is required for clustered filesystems (GFS2, OCFS2) and shared database storage. Requires backend support (Ceph RBD supports it natively). Instances must use a cluster-aware filesystem to avoid data corruption.
+- **Cinder backup improvements:** S3 backup driver was added in Queens. Incremental backup support improved in Stein. Google Cloud Storage backup driver was added in Ussuri. Chunked backup performance improved in 2023.1. Backup targets should always be in a different failure domain from primary Cinder storage.
+- **Cinder active-active HA:** Active-active HA for Cinder services (allowing multiple c-vol workers for the same backend) progressed from tech preview in Pike/Queens to GA in Rocky for supported backends. This eliminates the single-point-of-failure for volume management operations.
+- **Swift container sync:** Container sync has been stable and GA throughout all releases from Pike onward. It enables cross-cluster replication for geo-distributed object storage. Global clusters with region-based read affinity became the preferred approach for multi-site Swift deployments.
+- **Swift S3 API:** The s3api middleware (replacing the older swift3 middleware) was improved across releases, reaching high S3 API compatibility. This enables applications using S3 SDKs to work against Swift without modification.
+- **Manila share migration:** Share migration reached GA in Queens with driver-assisted migration improving in Stein. Share replication (GA in Queens) enables DR for shared filesystems. Share groups (Rocky+) allow coordinated operations on related shares.
+- **Glance multi-store (Train+):** Glance multi-store support (GA in Train) allows a single Glance deployment to manage images across multiple backend stores (e.g., Ceph for local, Swift for archival), with the ability to copy images between stores.
+- **New Cinder backend drivers:** Each release adds and updates backend drivers. Notable additions include Dell EMC PowerStore (Stein), NVMe-oF backends (Ussuri+), and continuous improvements to Ceph, NetApp, Pure Storage, and HPE drivers. Always verify driver compatibility with the target OpenStack release.

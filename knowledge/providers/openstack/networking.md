@@ -33,24 +33,32 @@ Neutron architecture is the single most impactful design decision in OpenStack -
 
 ## Version Notes
 
-| Feature | Yoga (April 2022) | Zed (Oct 2022) | 2023.1 (Antelope) | 2024.1 (Caracal) |
-|---|---|---|---|---|
-| ML2/OVS | Supported (default) | Supported | Supported (deprecation notice) | Deprecated (migration recommended) |
-| ML2/OVN | GA (recommended for new) | GA (recommended) | GA (default for new deployments) | GA (default) |
-| OVN as default ML2 driver | No | No | Yes (new installs) | Yes |
-| Linux Bridge | Supported | Supported | Supported (maintenance only) | Maintenance only |
-| Octavia amphora driver | GA | GA | GA | GA (maintenance mode) |
-| Octavia OVN provider | GA (L4 only) | GA (L4 only) | GA (L4, improved health monitors) | GA (L4, recommended for OVN deployments) |
-| DVR with OVN | N/A (OVN is natively distributed) | N/A | N/A | N/A |
-| Stateless security groups | Tech Preview | GA | GA | GA |
-| BGP dynamic routing | GA | GA | GA | GA (improved VPN integration) |
-| Network QoS minimum bandwidth | GA (placement integration) | GA | GA | GA (improved enforcement) |
-| Neutron metadata via OVN | GA | GA | GA (improved reliability) | GA |
-| DPDK support (OVS) | GA | GA | GA | GA (OVN also supports DPDK) |
-| OVN interconnection (multi-site) | Tech Preview | GA | GA | GA (improved) |
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| ML2/OVS | Default | Default | Default | Default | Default | Default | Default | Default | Default | Supported (default) | Supported | Supported (deprecation notice) | Deprecation notice | Deprecated (migration recommended) | Deprecated |
+| ML2/OVN | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA (improved) | GA | GA | GA (recommended for new) | GA (recommended) | GA (default for new) | GA (default) | GA (default) | GA (default) |
+| Linux Bridge | Supported | Supported | Supported | Supported | Supported | Supported | Supported | Supported | Supported | Supported | Supported | Maintenance only | Maintenance only | Maintenance only | Maintenance only |
+| Trunk ports | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Network segments | GA | Improved (segment ranges) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Port forwarding | Not available | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| DVR (distributed routing) | GA | GA (improved) | GA | GA | GA | GA (L3 HA + DVR) | GA | GA | GA | GA | GA | GA | GA | GA | N/A (OVN is default) |
+| Neutron LBaaS v2 | Supported (deprecated) | Deprecated | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed | Removed |
+| Octavia (standalone LB) | Incubated | GA | GA | GA (flavors, TLS) | GA (amphora HA) | GA | GA (improved L7) | GA (provider framework) | GA | GA | GA | GA | GA | GA (amphora maintenance mode) | GA |
+| Octavia OVN provider | Not available | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA (L4 only) | GA (L4) | GA (L4) | GA (L4) | GA (L4, health monitors) | GA | GA (L4, recommended) | GA |
+| Stateless security groups | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA | GA | GA |
+| BGP dynamic routing | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved VPN) | GA |
+| Network QoS (bandwidth) | GA | GA | GA | GA (minimum bandwidth) | GA | GA (placement integration) | GA | GA | GA | GA (placement) | GA | GA | GA | GA (improved enforcement) | GA |
+| Network segment ranges | Not available | Introduced | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Neutron metadata via OVN | N/A | N/A | N/A | Tech Preview | GA | GA | GA | GA | GA | GA | GA | GA (improved reliability) | GA | GA | GA |
+| DPDK support (OVS) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (OVN also DPDK) | GA |
+| OVN interconnection (multi-site) | N/A | N/A | N/A | N/A | N/A | N/A | Not available | Tech Preview | Tech Preview | Tech Preview | GA | GA | GA | GA (improved) | GA |
 
 **Key changes across releases:**
-- **OVN becoming default:** OVN (Open Virtual Network) has been the recommended ML2 mechanism driver since Yoga for new deployments. Starting with 2023.1 (Antelope), OVN is the default for new installations. OVN provides distributed L3 routing, DHCP, and metadata services without separate agents, reducing operational complexity. ML2/OVS remains functional but receives only critical fixes.
-- **ML2/OVS deprecation timeline:** ML2/OVS received a formal deprecation notice in 2023.1 (Antelope). It is expected to enter maintenance-only mode and eventually be removed in a future release (estimated 2025.x or 2026.x). Organizations running ML2/OVS should plan migration to OVN. The `neutron-ovn-migration-mech` tool assists with in-place migration from ML2/OVS to ML2/OVN.
-- **Octavia amphora vs OVN provider:** Amphora-based load balancers deploy dedicated VMs (amphorae) for each load balancer, providing full L4/L7 functionality including TLS termination, HTTP cookie persistence, and L7 policy rules. The OVN provider is lightweight (no dedicated VMs) but limited to L4 load balancing. For OVN-based deployments, the OVN provider is simpler and lower overhead for L4 use cases. Amphora remains necessary for L7 features. Amphora entered maintenance mode in 2024.1 as the project focuses on the OVN provider.
-- **Migration considerations:** Migrating from ML2/OVS to ML2/OVN requires careful planning. OVN uses Geneve encapsulation (not VXLAN), so MTU calculations change. DVR behavior differs -- OVN is natively distributed, so DVR configuration is not applicable. Security group implementation changes from iptables to OVN ACLs. The migration tool handles most conversions but downtime is required for the control plane switchover.
+- **Trunk ports (Pike+):** Trunk ports were introduced in Pike, enabling NFV/VNF workloads to use sub-interfaces (VLAN-tagged sub-ports) on a single Neutron port. This is essential for virtual network functions that require multiple network segments on a single NIC.
+- **Network segment ranges (Queens+):** Queens introduced configurable network segment ranges, allowing operators to manage VLAN/VXLAN/GRE segment ID allocation ranges through the API rather than configuration files.
+- **Port forwarding (Rocky+):** Rocky introduced port forwarding (floating IP port forwarding), allowing multiple services on different internal IPs to share a single floating IP by mapping specific ports. This reduces floating IP consumption.
+- **Neutron LBaaS to Octavia migration:** Neutron LBaaS v2 was deprecated in Pike and removed in Rocky. Octavia became the standalone load balancing project, initially using amphora (VM-based) drivers. Octavia added TLS termination and flavor support in Stein, and amphora active-standby HA in Train.
+- **OVS to OVN migration timeline:** OVN was introduced as a tech preview in Rocky, reached GA in Train, became recommended for new deployments in Yoga, became the default for new installs in 2023.1 (Antelope), and ML2/OVS received formal deprecation notice in 2023.1. Organizations running ML2/OVS should plan migration to OVN using the `neutron-ovn-migration-mech` tool.
+- **DVR evolution:** DVR matured through Pike-Ussuri with improvements to L3 HA + DVR combined mode (Ussuri). With OVN becoming the default, DVR configuration is not applicable -- OVN is natively distributed. Legacy DVR on OVS remains functional but is deprecated along with ML2/OVS.
+- **Octavia amphora vs OVN provider:** Amphora-based load balancers provide full L4/L7 functionality including TLS termination and L7 policy rules. The OVN provider (GA in Wallaby) is lightweight (no dedicated VMs) but limited to L4. Amphora entered maintenance mode in 2024.1 as the project focuses on the OVN provider.
+- **Migration considerations:** Migrating from ML2/OVS to ML2/OVN requires careful planning. OVN uses Geneve encapsulation (not VXLAN), so MTU calculations change. DVR behavior differs -- OVN is natively distributed. Security group implementation changes from iptables to OVN ACLs. The migration tool handles most conversions but downtime is required for the control plane switchover.
