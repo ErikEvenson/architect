@@ -2,6 +2,8 @@ FROM python:3.12-slim AS base
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     graphviz \
+    curl \
+    && curl -fsSL https://d2lang.com/install.sh | sh -s -- \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

@@ -10,12 +10,14 @@ from src.models.artifact import Artifact
 from src.models.project import Project
 from src.models.version import Version
 from src.rendering.base import BaseRenderer
+from src.rendering.d2_renderer import D2Renderer
 from src.rendering.diagrams_renderer import DiagramsRenderer
 
 logger = structlog.get_logger()
 
 RENDERERS: dict[str, BaseRenderer] = {
     "diagrams_py": DiagramsRenderer(),
+    "d2": D2Renderer(),
 }
 
 
