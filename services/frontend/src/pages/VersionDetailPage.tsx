@@ -7,7 +7,6 @@ import { ConfirmDialog } from "../components/Common/ConfirmDialog";
 import { ArtifactList } from "../components/Artifact/ArtifactList";
 import { CreateArtifactForm } from "../components/Artifact/CreateArtifactForm";
 import { CodeEditor } from "../components/Artifact/CodeEditor";
-import { DiagramViewer } from "../components/Artifact/DiagramViewer";
 
 export function VersionDetailPage() {
   const { projectId, versionId } = useParams<{ projectId: string; versionId: string }>();
@@ -88,11 +87,6 @@ export function VersionDetailPage() {
   };
 
   if (!version) return <div className="text-gray-400">Loading...</div>;
-
-  const svgFile = selected?.output_paths.find((p) => p.endsWith(".svg"));
-  const svgUrl = svgFile && versionId
-    ? artifactsApi.getOutputUrl(versionId, selected!.id, svgFile)
-    : null;
 
   return (
     <div>
@@ -213,61 +207,7 @@ export function VersionDetailPage() {
                 </div>
               )}
 
-              {/* Diagram viewer */}
-              {selected.render_status === "success" && svgUrl && (
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-sm font-medium text-gray-400">Output</h4>
-                    <div className="flex gap-2">
-                      {(() => {
-                        const pngFile = selected.output_paths.find((p) => p.endsWith(".png"));
-                        const openUrl = pngFile && versionId
-                          ? artifactsApi.getOutputUrl(versionId, selected.id, pngFile)
-                          : svgUrl;
-                        return (
-                          <>
-                            <a
-                              href={openUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                            >
-                              Open in New Tab
-                            </a>
-                            {pngFile && versionId && (
-                              <a
-                                href={artifactsApi.getOutputUrl(versionId, selected.id, pngFile)}
-                                download
-                                className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                              >
-                                Download PNG
-                              </a>
-                            )}
-                            <a
-                              href={svgUrl}
-                              download
-                              className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                            >
-                              Download SVG
-                            </a>
-                            {versionId && (
-                              <a
-                                href={artifactsApi.exportPdfUrl(versionId, selected.id)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
-                              >
-                                PDF
-                              </a>
-                            )}
-                          </>
-                        );
-                      })()}
-                    </div>
-                  </div>
-                  <DiagramViewer svgUrl={svgUrl} />
-                </div>
-              )}
+              {/* Rendered output is not previewed inline — use Open in New Tab or PDF */}
             </div>
           ) : (
             <div className="text-center py-12 text-gray-400">
