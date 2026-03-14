@@ -2,7 +2,7 @@ import type {
   Client, ClientCreate, ClientUpdate,
   Project, ProjectCreate, ProjectUpdate,
   Version, VersionCreate, VersionUpdate,
-  Artifact,
+  Artifact, ArtifactCreate, ArtifactUpdate,
   ADR, ADRCreate, ADRUpdate,
   Question, QuestionCreate, QuestionUpdate,
 } from "./types";
@@ -60,6 +60,16 @@ export const versionsApi = {
 export const artifactsApi = {
   list: (versionId: string) => request<Artifact[]>(`/versions/${versionId}/artifacts`),
   get: (versionId: string, id: string) => request<Artifact>(`/versions/${versionId}/artifacts/${id}`),
+  create: (versionId: string, data: ArtifactCreate) =>
+    request<Artifact>(`/versions/${versionId}/artifacts`, { method: "POST", body: JSON.stringify(data) }),
+  update: (versionId: string, id: string, data: ArtifactUpdate) =>
+    request<Artifact>(`/versions/${versionId}/artifacts/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
+  delete: (versionId: string, id: string) =>
+    request<void>(`/versions/${versionId}/artifacts/${id}`, { method: "DELETE" }),
+  triggerRender: (versionId: string, id: string) =>
+    request<Artifact>(`/versions/${versionId}/artifacts/${id}/render`, { method: "POST" }),
+  getOutputUrl: (versionId: string, id: string, filename: string) =>
+    `${API_BASE}/versions/${versionId}/artifacts/${id}/outputs/${filename}`,
 };
 
 // ADRs

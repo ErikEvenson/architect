@@ -86,6 +86,22 @@ export interface Artifact {
   updated_at: string;
 }
 
+export interface ArtifactCreate {
+  name: string;
+  artifact_type: Artifact["artifact_type"];
+  engine: Artifact["engine"];
+  detail_level?: Artifact["detail_level"];
+  source_code?: string | null;
+  sort_order?: number;
+}
+
+export interface ArtifactUpdate {
+  name?: string;
+  detail_level?: Artifact["detail_level"];
+  source_code?: string | null;
+  sort_order?: number;
+}
+
 export interface ADR {
   id: string;
   project_id: string;
