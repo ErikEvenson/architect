@@ -21,6 +21,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/external-links.js
+
 nav:
   - Home: README.md
   - General:
@@ -196,6 +199,7 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.details
+  - attr_list
 
 plugins:
   - search
