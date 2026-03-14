@@ -114,12 +114,66 @@ Run the relevant Well-Architected Framework checklist as a final review pass:
 - Track any findings as questions or ADRs
 - This is a validation step, not a design step — it should confirm the design is sound
 
-### Step 9: Retrospective
+### Step 9: Generate Design Document
+
+Create a comprehensive design document artifact that compiles all project data:
+- Executive summary (project scope, providers, pattern, cost)
+- Changes from previous version (if applicable)
+- All questions and answers (table)
+- All ADRs (full text)
+- Architecture diagrams (embedded as images)
+- Infrastructure details (components table, configuration)
+- Service descriptions and dependencies
+- Cost estimate (with version comparison if applicable)
+- POC to Production gap (if POC pattern)
+- Success criteria
+
+The design document should be auto-generated from the API data — not written manually.
+
+### Step 10: Retrospective
 
 After the session:
 - Note any knowledge gaps discovered during the session
 - Create issues or PRs to add missing items to knowledge files
 - This ensures the knowledge library improves with every project
+
+## Version Changes
+
+When creating a new version of an existing project (e.g., migrating a component, adding a service, changing a provider), follow this process:
+
+### Step A: Identify What Changed
+
+Document the change clearly:
+- What component is being added, removed, or replaced?
+- Why is the change being made?
+- What version did it change from?
+
+### Step B: Load Knowledge for Changed Components
+
+Load the knowledge files specific to the **new or changed** components. For example:
+- Replacing in-cluster PostgreSQL with RDS → load `providers/aws/rds-aurora.md`
+- Adding a CDN → load `providers/cloudflare/cdn-dns.md` or `providers/aws/cloudfront-waf.md`
+- Moving from K3s to EKS → load `providers/aws/containers.md`
+
+### Step C: Walk Through New Checklist Items
+
+Walk through the checklist items in the newly loaded knowledge files — these are questions that weren't relevant in the previous version but are now. Ask one at a time, create ADRs immediately.
+
+**Do not skip this step.** Every component change introduces new decisions that must be explicitly addressed, not assumed.
+
+### Step D: Update Artifacts
+
+1. Clone artifacts from the previous version
+2. Update diagrams to reflect the change
+3. Update the cost estimate with a comparison table (old vs new)
+4. Regenerate the design document with a "Changes from vX.Y.Z" section
+
+### Step E: Create Version Change ADR
+
+Create an ADR documenting the version change itself:
+- What changed and why
+- What was considered
+- What the consequences are (cost, complexity, risk)
 
 ## API Reference
 
@@ -150,3 +204,5 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 5. **Track everything** — every question and answer goes through the API
 6. **Check failure patterns** — verify the design doesn't match known anti-patterns
 7. **Feed back gaps** — any missing knowledge items get added to the library
+8. **Version changes require new questions** — every component change triggers a knowledge file review and new checklist walkthrough for the changed components
+9. **Generate design documents** — every version gets a comprehensive design document compiled from API data
