@@ -1,0 +1,32 @@
+# OpenStack Platform Services (Heat, Magnum, Trove, Ironic, and Others)
+
+## Checklist
+
+- [ ] Is Heat deployed for infrastructure orchestration? (HOT template format, `heat_template_version` pinned to a specific release for stability, nested stacks for modularity via `OS::Heat::ResourceGroup` and `type: nested_template.yaml`, environment files for parameter separation)
+- [ ] Are Heat autoscaling policies configured? (`OS::Heat::AutoScalingGroup` with `OS::Heat::ScalingPolicy`, Ceilometer or Aodh alarms as triggers, cooldown periods set to prevent scaling thrash, `min_size`/`max_size`/`desired_capacity` defined)
+- [ ] Is Heat stack lifecycle managed? (stack update for in-place changes, `OS::Heat::SoftwareConfig` and `OS::Heat::SoftwareDeployment` for post-boot configuration, `OS::Heat::WaitCondition` for orchestration sequencing, stack abandon for resource handoff without deletion)
+- [ ] Is Magnum deployed for container orchestration? (Kubernetes cluster templates with `openstack coe cluster template create`, choice of `coe` type: kubernetes/swarm/mesos, `network-driver` flannel or calico, `volume-driver` cinder, master and node flavor selection)
+- [ ] Are Magnum cluster templates hardened? (TLS enabled by default, `master-lb-enabled` for HA control plane, `floating-ip-enabled` only when needed, `docker-storage-driver` overlay2 recommended, node auto-scaling via Magnum auto-heal and cluster resize)
+- [ ] Is Trove deployed for database-as-a-service? (supported datastores: MySQL, MariaDB, PostgreSQL, MongoDB, Redis, Cassandra; datastore versions managed via `trove-manage`; guest agent configuration for backup, replication, and clustering)
+- [ ] Are Trove database instances properly configured? (flavor selection appropriate for database workload, Cinder volume for data persistence, automated backups to Swift with retention policy, replication for read replicas, configuration groups for tuning parameters)
+- [ ] Is Ironic deployed for bare metal provisioning? (inspection via `ironic-inspector` for hardware discovery, cleaning policies between tenants via `automated_clean = True`, PXE/iPXE boot configuration, IPMI/iLO/iDRAC driver for out-of-band management)
+- [ ] Are Ironic node resources mapped to Nova scheduling? (bare metal flavor with `resources:CUSTOM_BAREMETAL_*` resource class, `resource_class` set per Ironic node, Nova `ComputeFilter` and `BaremetalOvercommitFilter` in scheduler)
+- [ ] Is Sahara evaluated for data processing needs? (Hadoop, Spark, Storm cluster provisioning, cluster templates with autoscaling, data source registration for Swift/HDFS/Manila, EDP job submission for MapReduce/Spark/Pig)
+- [ ] Is Senlin evaluated for cluster management? (generic clustering service for auto-scaling, health policy for node replacement, placement policy for AZ distribution, deletion policy for scale-down ordering -- alternative to Heat autoscaling for complex lifecycle)
+- [ ] Is Zaqar evaluated for messaging needs? (multi-tenant messaging with queues and subscriptions, webhook-based notifications, supports pooling with MongoDB/Redis/Swift backends, useful for event-driven architectures within OpenStack tenants)
+- [ ] Is Terraform with the OpenStack provider considered as an alternative or complement to Heat? (Terraform provides multi-cloud consistency, state management, plan/apply workflow, drift detection -- Heat is native but OpenStack-only)
+- [ ] Is Ansible OpenStack collection (`openstack.cloud`) used for operational automation? (module-per-resource approach, `os_server`, `os_network`, `os_security_group`, complements Heat/Terraform for day-2 operations and configuration management)
+
+## Why This Matters
+
+Platform services transform OpenStack from raw IaaS into a platform that offers managed databases, container orchestration, and bare metal provisioning as self-service capabilities. Without Heat or Terraform, infrastructure deployments are manual and non-repeatable. Magnum provides a supported path to Kubernetes on OpenStack, but cluster template configuration significantly affects security and performance -- misconfigured templates can expose the Docker socket or use insecure registries. Trove eliminates the operational burden of database management for tenants but requires careful flavor and volume sizing to prevent performance problems. Ironic enables bare metal workloads (HPC, ML training, licensed software requiring physical CPU counts) but introduces physical provisioning complexity including PXE networking, IPMI access, and hardware cleaning between tenants. Choosing between Heat and Terraform affects team skill requirements and multi-cloud portability.
+
+## Common Decisions (ADR Triggers)
+
+- **Orchestration tool** -- Heat (native, HOT templates, tightly integrated with Ceilometer for autoscaling) vs Terraform (multi-cloud, state file management, plan/apply workflow) vs Ansible (procedural, good for day-2) vs Pulumi (programming language SDKs) -- team skills and multi-cloud strategy
+- **Container platform** -- Magnum-managed Kubernetes (OpenStack-integrated, Cinder CSI, Octavia ingress) vs self-managed Kubernetes on VMs (more control, more work) vs bare metal Kubernetes via Ironic (highest performance) -- operational ownership and integration depth
+- **Database service** -- Trove managed databases (tenant self-service, automated backups, replication) vs databases in VMs (full control, tenant-managed) vs external managed database service -- operational delegation vs control
+- **Bare metal strategy** -- Ironic for tenant-facing bare metal (multi-tenant, Nova-integrated scheduling) vs Ironic for infrastructure provisioning only (control plane deployment) vs no bare metal (all workloads virtualized) -- workload requirements and hardware management
+- **Autoscaling approach** -- Heat autoscaling with Aodh alarms (native, simple) vs Senlin clustering (richer policies, health management) vs Kubernetes HPA via Magnum (container-native) -- workload type and scaling complexity
+- **Configuration management** -- `OS::Heat::SoftwareConfig` (Heat-native, cloud-init based) vs Ansible post-provision (flexible, idempotent) vs Packer pre-baked images (immutable infrastructure) -- deployment speed vs flexibility trade-off
+- **Data processing** -- Sahara managed clusters (Hadoop/Spark provisioned on demand) vs tenant-managed clusters on VMs (more control) vs Kubernetes-based data processing (Spark on K8s via Magnum) -- workload type and operational model

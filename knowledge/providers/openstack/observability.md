@@ -1,0 +1,33 @@
+# OpenStack Observability (Monitoring, Metering, Logging, Testing)
+
+## Checklist
+
+- [ ] Is Ceilometer deployed for telemetry collection? (`ceilometer-agent-compute` on each hypervisor for VM metrics, `ceilometer-agent-notification` consuming oslo.messaging notifications from all services, polling interval tuned to balance granularity vs load -- default 600s often too slow for autoscaling)
+- [ ] Is Gnocchi configured as the metrics backend? (time-series database for Ceilometer metrics, storage driver selection: file/Ceph/Swift/S3, archive policies defining retention granularity -- e.g., `1m:7d,5m:30d,1h:365d` for 1-minute granularity for 7 days then roll up)
+- [ ] Are Gnocchi archive policies sized for capacity? (metric count = resources x meters x archive policy points, Ceph or Swift backend recommended for production scale, `gnocchi-metricd` workers scaled to handle incoming measurements)
+- [ ] Is Aodh configured for alarming? (threshold alarms on Gnocchi metrics for autoscaling and alerting, composite alarms combining multiple conditions with `and`/`or` operators, `event` alarms for reacting to specific OpenStack events, alarm actions as webhook URLs to Heat or external systems)
+- [ ] Is Monasca evaluated as an alternative monitoring stack? (monitoring-as-a-service with multi-tenant metric collection, Kafka-based pipeline, built-in anomaly detection, deterministic and statistical alarm types, Grafana plugin for dashboards -- more scalable than Ceilometer/Gnocchi for large deployments)
+- [ ] Is centralized logging deployed for all OpenStack services? (Fluentd/Fluent Bit or Filebeat on each node shipping logs from `/var/log/nova/`, `/var/log/neutron/`, etc. to Elasticsearch/OpenSearch, Graylog, or Loki; structured JSON logging enabled where possible via oslo.log `[DEFAULT] use_json = True`)
+- [ ] Are log retention and rotation policies defined? (logrotate for local logs, index lifecycle management in Elasticsearch/OpenSearch for centralized logs, separate indices per service for targeted retention, consider 30-90 day hot storage with cold/frozen tiers)
+- [ ] Is Prometheus + Grafana integrated for infrastructure and service monitoring? (`openstack-exporter` for API-level metrics, `node_exporter` on all hosts, `libvirt_exporter` for hypervisor metrics, `ceph_exporter` for storage metrics, custom Grafana dashboards per service)
+- [ ] Are OpenStack service healthcheck endpoints monitored? (`/healthcheck` endpoint on each API service via oslo.middleware, HAProxy health checks against API ports, synthetic checks with `openstack token issue` for end-to-end Keystone validation)
+- [ ] Is Rally used for performance benchmarking? (`rally task start` with scenario files for Nova boot, Cinder create, Neutron network creation throughput, baseline performance established before upgrades, results stored for trend analysis)
+- [ ] Is Tempest used for functional validation? (`tempest run` after deployments and upgrades, `tempest.conf` configured for the specific cloud, custom test plugins for site-specific validation, integrated into CI/CD pipeline for pre-production verification)
+- [ ] Are infrastructure capacity metrics tracked for planning? (compute: vCPU/RAM allocation ratio trends, storage: Ceph pool utilization and growth rate, network: bandwidth utilization per provider network, Keystone: token issuance rate and latency)
+- [ ] Are oslo.messaging (RabbitMQ) health and performance monitored? (queue depth, message rate, consumer count, unacknowledged messages, cluster partition detection -- RabbitMQ problems cascade across all OpenStack services)
+- [ ] Is distributed tracing considered for API request debugging? (OSProfiler for OpenStack-native request tracing across services, integration with Jaeger or Zipkin, `--os-profile` on CLI for per-request tracing -- useful for diagnosing slow API calls)
+
+## Why This Matters
+
+OpenStack is composed of dozens of services communicating via REST APIs and message queues -- without comprehensive observability, failures cascade silently and root cause analysis becomes guesswork. Ceilometer polling intervals directly affect autoscaling responsiveness: a 600-second polling interval means 10-minute detection latency for scaling events. Gnocchi archive policy misconfiguration causes either excessive storage consumption or loss of granular historical data. RabbitMQ is the nervous system of OpenStack -- queue congestion in one service (e.g., Neutron agent heartbeats) can starve other services of message delivery. Log volume from a medium OpenStack deployment (50 compute nodes) can exceed 10 GB/day, requiring deliberate retention and aggregation strategy. Rally and Tempest are not optional extras -- they are the only reliable way to validate that an upgrade or configuration change has not introduced performance regression or functional breakage.
+
+## Common Decisions (ADR Triggers)
+
+- **Metrics stack** -- Ceilometer/Gnocchi/Aodh (native OpenStack, integrated with Heat autoscaling) vs Monasca (scalable, multi-tenant, Kafka-based) vs Prometheus/Grafana (industry standard, large ecosystem, not OpenStack-native) -- integration depth vs ecosystem breadth
+- **Logging stack** -- ELK/OpenSearch (full-text search, powerful, resource-heavy) vs Loki/Grafana (label-indexed, lightweight, pairs with Prometheus) vs Graylog (structured logging, built-in alerting) -- query capabilities vs resource footprint
+- **Log shipping** -- Fluentd (flexible, plugin-rich, Ruby) vs Fluent Bit (lightweight C, low memory) vs Filebeat (Elastic ecosystem) -- footprint on compute nodes and destination compatibility
+- **Alerting pipeline** -- Aodh alarms to Heat webhooks (native autoscaling) vs Prometheus Alertmanager (routing, silencing, grouping) vs PagerDuty/OpsGenie integration (incident management) -- operational workflow integration
+- **Performance testing** -- Rally continuous benchmarking (proactive capacity insights) vs Rally only pre-upgrade (reactive validation) vs no performance testing (risk of undetected degradation) -- operational maturity level
+- **Functional validation** -- Tempest in CI/CD (every change validated) vs Tempest post-upgrade only (periodic validation) vs manual smoke tests (lowest coverage) -- deployment confidence vs pipeline complexity
+- **Tracing** -- OSProfiler (native, per-request) vs Jaeger/OpenTelemetry (industry standard, requires instrumentation) vs no tracing (log correlation only) -- debugging capability vs implementation effort
+- **Metering for billing** -- Ceilometer + CloudKitty (rating engine for chargeback/showback) vs custom metering from Gnocchi/Prometheus (flexible but build-it-yourself) vs external billing platforms -- internal chargeback requirements
