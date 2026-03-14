@@ -1,4 +1,7 @@
 import asyncio
+import base64
+import mimetypes
+import re
 import shutil
 import tempfile
 import uuid
@@ -16,6 +19,20 @@ DEFAULT_TIMEOUT = 60
 class DiagramsRenderer(BaseRenderer):
     def __init__(self, timeout: int = DEFAULT_TIMEOUT):
         self.timeout = timeout
+
+    @staticmethod
+    def _embed_images(svg_content: str) -> str:
+        """Replace file path references in SVG with base64 data URIs."""
+        def replace_href(match: re.Match) -> str:
+            file_path = match.group(1)
+            path = Path(file_path)
+            if path.exists():
+                mime = mimetypes.guess_type(file_path)[0] or "image/png"
+                data = base64.b64encode(path.read_bytes()).decode()
+                return f'xlink:href="data:{mime};base64,{data}"'
+            return match.group(0)
+
+        return re.sub(r'xlink:href="(/[^"]+)"', replace_href, svg_content)
 
     async def validate_source(self, source_code: str) -> list[str]:
         errors = []
@@ -78,7 +95,13 @@ class DiagramsRenderer(BaseRenderer):
             for ext in ("*.svg", "*.png"):
                 for src_file in tmp_dir.glob(ext):
                     dest_file = output_dir / src_file.name
-                    shutil.copy2(str(src_file), str(dest_file))
+                    if src_file.suffix == ".svg":
+                        # Embed referenced images as base64 data URIs
+                        svg_content = src_file.read_text()
+                        svg_content = self._embed_images(svg_content)
+                        dest_file.write_text(svg_content)
+                    else:
+                        shutil.copy2(str(src_file), str(dest_file))
                     output_paths.append(src_file.name)
 
             if not output_paths:
