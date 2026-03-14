@@ -30,6 +30,37 @@ GCP networking uses a global VPC model that differs fundamentally from AWS and A
 - **Firewall management** -- VPC firewall rules vs hierarchical policies vs Cloud Firewall Plus (L7 inspection)
 - **CDN strategy** -- Cloud CDN on load balancer vs Media CDN for streaming vs third-party CDN
 
+## Pricing Links
+
+### GCP Pricing Pages
+
+- [VPC Pricing](https://cloud.google.com/vpc/pricing) — VPC itself is free; charges for egress, Cloud NAT, and network features
+- [Network Egress Pricing](https://cloud.google.com/vpc/network-pricing) — internet egress, inter-region, and inter-zone transfer rates
+- [Cloud NAT Pricing](https://cloud.google.com/nat/pricing) — $0.044/hr per gateway + $0.045/GB data processed
+- [Cloud Load Balancing Pricing](https://cloud.google.com/vpc/network-pricing#lb) — forwarding rules ($0.025/hr) + data processed ($0.008-$0.012/GB)
+- [Cloud CDN Pricing](https://cloud.google.com/cdn/pricing) — cache egress ($0.02-$0.08/GB by region) + cache fill + cache lookup fees
+- [Cloud Armor Pricing](https://cloud.google.com/armor/pricing) — Standard: $0.75/policy/mo + $0.60/rule/mo + $0.60/10K requests; Plus: $3,000/mo
+- [Cloud Interconnect Pricing](https://cloud.google.com/interconnect/pricing) — Dedicated: $1,700/mo (10 Gbps), Partner: varies by provider
+- [Cloud VPN Pricing](https://cloud.google.com/network-connectivity/pricing#vpn-pricing) — $0.075/hr per tunnel (Classic) or HA VPN
+- [Private Service Connect Pricing](https://cloud.google.com/vpc/pricing#private-service-connect-pricing) — $0.01/hr per endpoint + data processing
+- [VPC Flow Logs Pricing](https://cloud.google.com/vpc/network-pricing#flow-logs-pricing) — charged via Cloud Logging ingestion ($0.50/GB)
+- [Network Intelligence Center Pricing](https://cloud.google.com/network-intelligence-center/pricing) — connectivity tests, performance dashboard, firewall insights
+- [GCP Pricing Calculator](https://cloud.google.com/products/calculator) — interactive cost estimation tool
+
+### Common Cost Surprises
+
+1. **Inter-zone egress within the same region** — GCP charges $0.01/GB for traffic between zones in the same region. AWS does this too, but GCP's global VPC model means all subnets are regional and traffic between zones is common. Multi-zone GKE clusters with chatty services can accumulate significant costs. A GKE cluster doing 5 TB/mo inter-zone pays ~$50/mo.
+
+2. **Internet egress is more expensive than AWS** — GCP standard tier internet egress starts at $0.085/GB (first 1 TB), but premium tier (default) is $0.12/GB for many regions. 10 TB/mo of premium egress costs ~$1,100/mo vs ~$850 on AWS.
+
+3. **Cloud NAT per-VM minimum port allocation** — Cloud NAT charges per gateway ($0.044/hr) plus $0.045/GB processed. But the minimum port allocation (64 ports per VM) can require multiple NAT gateways for large clusters, multiplying the hourly cost.
+
+4. **Cloud Armor Managed Protection Plus** — $3,000/mo for the Plus tier (adaptive protection, DDoS response team). Standard tier is usage-based but charges per policy, per rule, and per request — a complex setup with many rules and high traffic can approach Plus pricing.
+
+5. **Load balancer forwarding rule charges** — each forwarding rule costs $0.025/hr (~$18/mo). Services with many ports or protocols need separate rules. A deployment with 10 forwarding rules pays ~$180/mo before any data processing.
+
+6. **Premium vs Standard network tier** — GCP defaults to Premium tier (global anycast, Google backbone). Standard tier uses ISP routing and is ~20-30% cheaper for egress but has higher latency and no global load balancing. Many teams pay Premium prices without realizing Standard tier exists.
+
 ## Reference Architectures
 
 - [Google Cloud Architecture Center: Networking](https://cloud.google.com/architecture#networking) -- reference architectures for VPC design, hybrid connectivity, and load balancing

@@ -30,6 +30,81 @@ Hybrid cloud spans on-premises infrastructure and one or more public cloud provi
 - Tight coupling between on-prem and cloud workloads (latency-sensitive cross-environment calls)
 - No consistent identity management (separate credentials per environment)
 
+## Cost Benchmarks
+
+> **Disclaimer:** Prices are rough estimates based on AWS us-east-1 pricing as of early 2025. Actual costs vary by region, reserved instance commitments, and usage patterns. Prices change over time — always verify with the provider's pricing calculator.
+
+### Connectivity Costs
+
+| Connection Type | Monthly Cost | Bandwidth | Notes |
+|----------------|-------------|-----------|-------|
+| Site-to-Site VPN (2 tunnels) | $75 | Up to 1.25 Gbps per tunnel | Cheapest option; internet-dependent latency |
+| AWS Direct Connect (1 Gbps, dedicated) | $220 port fee + partner circuit ($500-2,000) | 1 Gbps dedicated | Consistent latency; 1-3 month provisioning |
+| AWS Direct Connect (10 Gbps, dedicated) | $1,575 port fee + partner circuit ($2,000-8,000) | 10 Gbps dedicated | High throughput; required for large data volumes |
+| Direct Connect hosted connection (500 Mbps) | $100 port fee + partner fees ($300-800) | 500 Mbps shared | Lower cost entry to dedicated connectivity |
+| Redundant Direct Connect (2x 1 Gbps) | ~$1,440 + 2x partner circuits | 2 Gbps total | Required for production HA |
+
+### Data Transfer Costs
+
+| Transfer Type | Cost per GB | Notes |
+|--------------|------------|-------|
+| Inbound to AWS (from on-prem) | Free | Ingress is free |
+| Outbound from AWS (to on-prem) via internet | $0.09 | First 10 TB/mo; decreases with volume |
+| Outbound from AWS via Direct Connect | $0.02 | Significant savings over internet egress |
+| Cross-region transfer within AWS | $0.02 | Between AWS regions |
+| VPN data transfer out | $0.09 | Same as internet egress |
+
+### Example: Split Infrastructure Deployment
+
+#### Small Hybrid (dev/test in cloud, production on-prem)
+
+| Component | Monthly Estimate |
+|-----------|-----------------|
+| VPN connectivity (2 tunnels) | $75 |
+| Data transfer (100 GB/mo outbound) | $9 |
+| Transit Gateway (for VPN attachment) | $40 |
+| Cloud workloads (3x t3.medium dev/test) | $90 |
+| Route 53 (hybrid DNS) | $5 |
+| **Total cloud cost** | **~$220/mo** |
+
+#### Medium Hybrid (burst to cloud, data on-prem)
+
+| Component | Monthly Estimate |
+|-----------|-----------------|
+| Direct Connect (1 Gbps) + partner circuit | $1,200 |
+| Data transfer (1 TB/mo via DX) | $20 |
+| Cloud compute (burst: 10x m6i.large, avg 50% utilization) | $1,400 |
+| Transit Gateway + attachments | $110 |
+| CloudWatch + monitoring | $50 |
+| **Total cloud cost** | **~$2,780/mo** |
+
+#### Large Hybrid (multi-site, cloud-primary)
+
+| Component | Monthly Estimate |
+|-----------|-----------------|
+| Redundant Direct Connect (2x 10 Gbps) + circuits | $12,000 |
+| Data transfer (10 TB/mo via DX) | $200 |
+| Cloud compute (production workloads) | $15,000 |
+| Transit Gateway (multi-VPC, multi-site) | $500 |
+| AWS Outposts (on-prem, 1 rack) | $7,000 |
+| Hybrid monitoring (CloudWatch + on-prem agents) | $300 |
+| **Total cloud cost** | **~$35,000/mo** |
+
+### Biggest Cost Drivers
+
+1. **Dedicated connectivity** — Direct Connect port fees plus partner/colocation circuit costs are the baseline. Redundant connections double the cost.
+2. **Data transfer (egress)** — cloud-to-on-prem transfer at $0.02-$0.09/GB. High-volume workloads must use Direct Connect for the $0.02 rate.
+3. **Duplicate infrastructure** — running the same workload both on-prem and in cloud during migration or for DR doubles costs temporarily.
+
+### Optimization Tips
+
+- Use **Direct Connect** instead of VPN for any data transfer exceeding 500 GB/mo — the $0.02/GB vs $0.09/GB rate pays for the circuit quickly.
+- Process data **where it lives** — avoid round-tripping large datasets between on-prem and cloud.
+- Use **AWS Storage Gateway** or **DataSync** for efficient on-prem-to-cloud data movement.
+- Consider **AWS Outposts** when cloud services are needed on-prem (consistent APIs, avoids data movement).
+- Plan migrations to **minimize the hybrid period** — dual-running environments are the most expensive phase.
+- Use **Reserved Instances** for stable cloud workloads in hybrid deployments.
+
 ## Key Patterns
 
 - **Cloud Bursting**: overflow to cloud during peak demand

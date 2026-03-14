@@ -31,6 +31,37 @@ Azure networking differs significantly from AWS in subnet delegation, NSG behavi
 - **Hybrid connectivity** -- ExpressRoute (dedicated circuit) vs VPN Gateway (encrypted over internet), coexistence model
 - **DNS strategy** -- Azure DNS Private Zones vs custom DNS servers, conditional forwarding for hybrid
 
+## Pricing Links
+
+### Azure Pricing Pages
+
+- [Virtual Network Pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-network/) — VNet itself is free; charges for VNet peering, NAT Gateway, and public IPs
+- [VNet Peering Pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-network/#pricing) — $0.01/GB inbound + $0.01/GB outbound (same region); $0.035/GB cross-region
+- [Azure NAT Gateway Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-nat-gateway/) — $0.045/hr + $0.045/GB data processed
+- [Bandwidth (Data Transfer) Pricing](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) — egress, inter-region, and internet-bound transfer rates
+- [Azure Front Door Pricing](https://azure.microsoft.com/en-us/pricing/details/frontdoor/) — base fee + per-request + data transfer + WAF rules
+- [Application Gateway Pricing](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) — fixed cost (v2) + capacity units consumed
+- [Azure Firewall Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-firewall/) — Standard: $1.25/hr (~$912/mo); Premium: $1.75/hr (~$1,277/mo) + data processing
+- [Azure DDoS Protection Pricing](https://azure.microsoft.com/en-us/pricing/details/ddos-protection/) — Standard: $2,944/mo (covers up to 100 public IPs)
+- [ExpressRoute Pricing](https://azure.microsoft.com/en-us/pricing/details/expressroute/) — port fees by speed + data transfer (metered or unlimited plans)
+- [Azure Private Link Pricing](https://azure.microsoft.com/en-us/pricing/details/private-link/) — $0.01/hr per endpoint + $0.01/GB data processed
+- [Azure VPN Gateway Pricing](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/) — by SKU (Basic to VpnGw5AZ), $0.04-$1.20/hr
+- [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) — interactive cost estimation tool
+
+### Common Cost Surprises
+
+1. **Azure Firewall always-on cost** — Azure Firewall Standard costs ~$912/mo ($1.25/hr) even with zero traffic. Premium is ~$1,277/mo. Plus $0.016/GB data processing. Many teams deploy Azure Firewall for compliance without realizing the baseline cost. Consider whether NSGs + UDRs suffice for non-regulated workloads.
+
+2. **DDoS Protection Standard pricing** — $2,944/mo flat fee, regardless of the number of attacks or traffic volume. Covers up to 100 public IPs. Essential for public-facing workloads but expensive for small deployments. One subscription-level plan covers all VNets.
+
+3. **VNet peering cross-region costs** — $0.035/GB each direction for global peering (vs $0.01/GB same-region). A multi-region architecture transferring 5 TB/mo cross-region pays ~$350/mo in peering alone.
+
+4. **Application Gateway v2 minimum cost** — even at zero traffic, Application Gateway v2 costs ~$175/mo (fixed capacity units). The WAF tier adds ~$25/mo. Autoscaling can spike costs during traffic bursts.
+
+5. **ExpressRoute data overage** — metered ExpressRoute plans charge $0.025/GB outbound after the included data. Unlimited plans cost 1.5-2x the port fee. Large data transfers can make metered plans unexpectedly expensive.
+
+6. **Public IP address charges** — Standard SKU public IPs cost $0.004/hr (~$2.88/mo) each. Basic SKU is being retired. An account with 30 public IPs pays ~$86/mo.
+
 ## Reference Architectures
 
 - [Azure Architecture Center: Hub-spoke network topology](https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke) -- reference architecture for enterprise hub-spoke networking with Azure Firewall and VNet peering

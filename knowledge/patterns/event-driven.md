@@ -25,6 +25,65 @@ Event-driven architecture uses events as the primary mechanism for communication
 
 Event-driven architectures enable systems to react in real time, scale independently, and evolve without tight coupling between producers and consumers. However, they introduce complexity in debugging, ordering guarantees, and consistency. Choosing the wrong delivery guarantee leads to data loss (at-most-once) or duplicate processing (at-least-once without idempotency). Missing dead letter queues cause silent data loss. Without schema governance, event contracts drift and break consumers. The saga pattern is essential for maintaining data consistency across services but adds significant complexity compared to traditional transactions.
 
+## Cost Benchmarks
+
+> **Disclaimer:** Prices are rough estimates based on AWS us-east-1 pricing as of early 2025. Actual costs vary by region, reserved instance commitments, and usage patterns. Prices change over time — always verify with the provider's pricing calculator.
+
+### Small (100K events/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Functions | Lambda (3M invocations, 256 MB, 200ms avg) | $2 |
+| Event Bus | EventBridge (3M events) | $3 |
+| Message Queue | SQS (3M messages) | $1 |
+| Event Store | DynamoDB on-demand (3M writes, 10M reads) | $10 |
+| Monitoring | CloudWatch Logs + basic metrics | $10 |
+| **Total** | | **~$26/mo** |
+
+### Medium (10M events/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Functions | Lambda (300M invocations, 512 MB, 200ms avg) | $200 |
+| Event Bus | EventBridge (300M events) | $300 |
+| Message Broker | SQS (300M messages) + SNS fan-out (50M) | $150 |
+| Event Store | DynamoDB provisioned (write-heavy, 5K WCU) | $350 |
+| Dead Letter Queue | SQS DLQ + Lambda reprocessor | $5 |
+| Monitoring | CloudWatch + X-Ray (sampled) | $100 |
+| **Total** | | **~$1,105/mo** |
+
+### Large (1B events/day)
+
+| Component | Service | Monthly Estimate |
+|-----------|---------|-----------------|
+| Functions | Lambda (10B invocations — may hit concurrency limits) | $6,000 |
+| Streaming | MSK (6-broker kafka.m5.2xlarge) | $4,500 |
+| Event Bus | EventBridge (for routing subset, 1B events) | $1,000 |
+| Message Queue | SQS (5B messages) + SNS | $2,200 |
+| Event Store | DynamoDB (50K WCU) or S3 event archive | $3,500 |
+| Consumers | ECS Fargate (20 consumer tasks, 1 vCPU/2 GB) | $1,200 |
+| Dead Letter Queue | SQS DLQ + reprocessing pipeline | $50 |
+| Observability | Datadog or self-hosted (OpenSearch + Grafana) | $2,000 |
+| **Total** | | **~$20,450/mo** |
+
+### Biggest Cost Drivers
+
+1. **Lambda at high volume** — Lambda is cheap at low scale but at 1B+ events/day, container-based consumers on ECS/EKS are significantly cheaper. Lambda costs scale linearly with invocations; containers amortize compute cost.
+2. **EventBridge pricing** — $1 per million events adds up at scale. At 1B events/day ($30K/mo), consider Kafka or direct SQS/SNS.
+3. **Message broker (Kafka/MSK)** — MSK clusters run 24/7 regardless of throughput. Right-size brokers and consider serverless MSK for variable workloads.
+4. **Observability** — tracing every event is expensive. Use sampling (1-10%) for high-volume event streams.
+
+### Optimization Tips
+
+- Use **Lambda** for low-to-medium volume (<50M events/day) — zero idle cost, pay-per-invocation.
+- Switch to **ECS/EKS consumers** at high volume — container-based processing is 3-5x cheaper than Lambda above 100M events/day.
+- Use **SQS** instead of EventBridge for point-to-point messaging — SQS is ~3x cheaper per message.
+- Use **EventBridge** for routing and fan-out where its rules engine adds value; use SNS for simpler fan-out.
+- Enable **SQS long polling** (20s) to reduce empty receives and cost.
+- Use **S3** for event archival instead of keeping events in DynamoDB/Kafka indefinitely.
+- Consider **MSK Serverless** for variable throughput — avoids paying for idle broker capacity.
+- Use **Lambda Provisioned Concurrency** sparingly — it eliminates cold starts but adds idle cost.
+
 ## Common Decisions (ADR Triggers)
 
 - **Event backbone selection** — Kafka vs managed services (EventBridge, Pub/Sub), throughput vs operational overhead

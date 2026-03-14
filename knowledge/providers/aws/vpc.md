@@ -30,6 +30,34 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - **Security Group management** -- Terraform modules vs AWS Firewall Manager policies across accounts
 - **Multi-account VPC strategy** -- shared VPC (RAM) vs dedicated VPCs per account with Transit Gateway
 
+## Pricing Links
+
+### AWS Pricing Pages
+
+- [VPC Pricing](https://aws.amazon.com/vpc/pricing/) — VPC itself is free; charges apply for NAT Gateways, VPC Endpoints, Traffic Mirroring, and IP addresses
+- [NAT Gateway Pricing](https://aws.amazon.com/vpc/pricing/) — $0.045/hr + $0.045/GB data processed
+- [AWS Data Transfer Pricing](https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer) — egress, cross-AZ, cross-region, and internet-bound transfer rates
+- [VPC Endpoint Pricing](https://aws.amazon.com/privatelink/pricing/) — Interface endpoints: $0.01/hr per AZ + $0.01/GB; Gateway endpoints (S3, DynamoDB): free
+- [Elastic IP Pricing](https://aws.amazon.com/vpc/pricing/) — $0.005/hr for unattached EIPs; $0.005/hr for each public IPv4 address (as of Feb 2024)
+- [Transit Gateway Pricing](https://aws.amazon.com/transit-gateway/pricing/) — $0.05/hr per attachment + $0.02/GB data processed
+- [AWS Direct Connect Pricing](https://aws.amazon.com/directconnect/pricing/) — port-hour fees by speed + data transfer out rates
+- [VPC Flow Logs Pricing](https://aws.amazon.com/cloudwatch/pricing/) — charged via CloudWatch Logs ingestion ($0.50/GB) or S3 ($0.25/GB for flow logs)
+- [AWS Pricing Calculator](https://calculator.aws/) — interactive cost estimation tool
+
+### Common Cost Surprises
+
+1. **NAT Gateway data processing charges** — $0.045/GB on top of the $0.045/hr hourly charge. A workload pulling 1 TB/mo through NAT costs ~$78/mo (hourly + data). Use VPC Gateway Endpoints for S3/DynamoDB traffic to avoid this entirely.
+
+2. **Cross-AZ data transfer** — $0.01/GB each way ($0.02/GB round-trip) between Availability Zones. This is invisible in most architectures but adds up with chatty microservices. A service doing 10 TB/mo cross-AZ pays ~$200/mo.
+
+3. **Public IPv4 address charges** — since February 2024, AWS charges $0.005/hr (~$3.60/mo) for every public IPv4 address, including those on EC2, ELBs, NAT Gateways, and RDS. An account with 50 public IPs pays ~$180/mo.
+
+4. **Interface VPC Endpoint costs** — each Interface Endpoint costs $0.01/hr per AZ (~$7.20/mo per AZ). Deploying in 3 AZs costs $21.60/mo per endpoint. With 10+ endpoints, this reaches $200+/mo. Only create endpoints for heavily-used services.
+
+5. **Transit Gateway data processing** — $0.02/GB processed. High-throughput hub-spoke architectures can see significant charges. 10 TB/mo through Transit Gateway costs $200/mo in data processing alone.
+
+6. **VPC Flow Logs volume** — high-traffic environments generate massive log volumes. A busy VPC can produce 100+ GB/day of flow logs. At $0.50/GB (CloudWatch) that is $1,500/mo. Use S3 destination ($0.25/GB) and sampling where possible.
+
 ## Reference Architectures
 
 - [AWS VPC Design and Network Architecture](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-web-database-servers.html) -- official VPC scenarios including public/private subnet designs, NAT, and VPN connectivity
