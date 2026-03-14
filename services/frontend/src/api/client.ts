@@ -75,6 +75,8 @@ export const artifactsApi = {
       method: "POST",
       body: JSON.stringify({ target_version_id: targetVersionId }),
     }),
+  exportPdfUrl: (versionId: string, id: string) =>
+    `${API_BASE}/versions/${versionId}/artifacts/${id}/export-pdf`,
 };
 
 // ADRs
