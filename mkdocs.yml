@@ -141,6 +141,8 @@ nav:
     - Security: providers/kubernetes/security.md
     - Observability: providers/kubernetes/observability.md
     - Operations: providers/kubernetes/operations.md
+  - Ceph:
+    - Storage: providers/ceph/storage.md
   - Rancher:
     - Infrastructure: providers/rancher/infrastructure.md
   - Patterns:
