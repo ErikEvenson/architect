@@ -225,3 +225,4 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 9. **Generate design documents** — every version gets a comprehensive design document compiled from API data
 10. **IaC tool is a user decision** — always ask which IaC tool(s) to use, never assume. Create an ADR for the choice.
 11. **Include IaC plan** — every design document includes a resource inventory with module structure and complexity estimates
+12. **Consult vendor documentation** — use WebFetch to check reference links in knowledge files when answering questions about pricing, feature availability, configuration, or service limits. Don't rely solely on training data.
