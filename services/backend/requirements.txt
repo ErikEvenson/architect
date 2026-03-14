@@ -12,3 +12,4 @@ pymdown-extensions~=10.14
 weasyprint~=63.0
 diagrams~=0.24.0
 httpx~=0.28.0
+cairosvg~=2.7.0

@@ -38,6 +38,9 @@ class D2Renderer(BaseRenderer):
             output_path = tmp_dir / "diagram.svg"
             input_path.write_text(source_code)
 
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            # Render SVG
             process = await asyncio.create_subprocess_exec(
                 "d2",
                 f"--layout={self.layout}",
@@ -77,17 +80,31 @@ class D2Renderer(BaseRenderer):
                     error_message="D2 completed but no output file was generated",
                 )
 
-            # Copy output to final location
-            output_dir.mkdir(parents=True, exist_ok=True)
-            dest_file = output_dir / "diagram.svg"
-            shutil.copy2(str(output_path), str(dest_file))
+            # Copy SVG to output
+            dest_svg = output_dir / "diagram.svg"
+            shutil.copy2(str(output_path), str(dest_svg))
+            output_paths = ["diagram.svg"]
+
+            # Convert SVG to PNG via cairosvg
+            try:
+                import cairosvg
+
+                dest_png = output_dir / "diagram.png"
+                cairosvg.svg2png(
+                    url=str(dest_svg),
+                    write_to=str(dest_png),
+                    scale=3,
+                )
+                output_paths.append("diagram.png")
+            except Exception as png_err:
+                logger.warning("d2_png_conversion_failed", error=str(png_err))
 
             logger.info(
                 "d2_render_success",
                 artifact_id=str(artifact_id),
-                output_paths=["diagram.svg"],
+                output_paths=output_paths,
             )
-            return RenderResult(success=True, output_paths=["diagram.svg"])
+            return RenderResult(success=True, output_paths=output_paths)
 
         except FileNotFoundError:
             return RenderResult(

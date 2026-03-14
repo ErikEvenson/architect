@@ -34,6 +34,8 @@ spec:
           env:
             - name: SECRETS_DIR
               value: /app/secrets
+            - name: HOME
+              value: /home/architect
           volumeMounts:
             - name: secrets
               mountPath: /app/secrets
@@ -42,6 +44,8 @@ spec:
               mountPath: /app/data/outputs
             - name: tmp
               mountPath: /tmp
+            - name: home
+              mountPath: /home/architect
           resources:
             requests:
               cpu: 100m
@@ -80,6 +84,8 @@ spec:
           persistentVolumeClaim:
             claimName: architect-outputs
         - name: tmp
+          emptyDir: {}
+        - name: home
           emptyDir: {}
 ---
 apiVersion: v1
