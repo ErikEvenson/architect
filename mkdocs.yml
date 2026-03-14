@@ -44,6 +44,7 @@ nav:
     - Governance: general/governance.md
     - Workload Migration: general/workload-migration.md
     - Dev DNS Patterns: general/dns-dev-patterns.md
+    - TLS Certificates: general/tls-certificates.md
     - Load Balancing (On-Prem): general/load-balancing-onprem.md
     - Physical Networking: general/networking-physical.md
     - Cost Modeling (On-Prem): general/cost-onprem.md
@@ -119,6 +120,7 @@ nav:
     - Security: providers/openstack/security.md
     - Platform Services: providers/openstack/platform-services.md
     - Observability: providers/openstack/observability.md
+    - Heat (IaC): providers/openstack/heat.md
   - OpenShift:
     - Infrastructure: providers/openshift/infrastructure.md
     - Compute: providers/openshift/compute.md
@@ -154,6 +156,8 @@ nav:
     - Secrets Management: providers/kubernetes/secrets-management.md
   - Prometheus/Grafana:
     - Observability Stack: providers/prometheus-grafana/observability.md
+  - Harbor:
+    - Registry: providers/harbor/registry.md
   - Ceph:
     - Storage: providers/ceph/storage.md
   - Rancher:
