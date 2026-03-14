@@ -55,6 +55,10 @@ Write tests derived from specs BEFORE implementation. Write code to make tests p
 - `scripts/run-tests.sh` — Run all test suites
 - `scripts/bump-version.sh <service> <version>` — Bump service version
 
+## Architecture Sessions
+
+For architecture design sessions, read `knowledge/WORKFLOW.md` first.
+
 ## Default Language
 
 Python for backend. TypeScript for frontend.
