@@ -1,0 +1,1025 @@
+openapi: 3.1.0
+info:
+  title: Architect API
+  description: Cloud architecture design tool REST API
+  version: 0.1.0
+
+servers:
+  - url: /api/v1
+    description: API v1
+
+paths:
+  # --- Health ---
+  /health/live:
+    get:
+      summary: Liveness check
+      operationId: liveness
+      tags: [health]
+      responses:
+        "200":
+          description: Service is alive
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /health/ready:
+    get:
+      summary: Readiness check (verifies DB connection)
+      operationId: readiness
+      tags: [health]
+      responses:
+        "200":
+          description: Service is ready
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+        "503":
+          description: Service not ready
+
+  # --- Clients ---
+  /clients:
+    get:
+      summary: List all clients
+      operationId: listClients
+      tags: [clients]
+      responses:
+        "200":
+          description: List of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Client"
+    post:
+      summary: Create a client
+      operationId: createClient
+      tags: [clients]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientCreate"
+      responses:
+        "201":
+          description: Client created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        "409":
+          description: Client with this name already exists
+
+  /clients/{client_id}:
+    parameters:
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get a client by ID
+      operationId: getClient
+      tags: [clients]
+      responses:
+        "200":
+          description: Client details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        "404":
+          description: Client not found
+    patch:
+      summary: Update a client
+      operationId: updateClient
+      tags: [clients]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientUpdate"
+      responses:
+        "200":
+          description: Client updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        "404":
+          description: Client not found
+    delete:
+      summary: Delete a client (cascades to projects)
+      operationId: deleteClient
+      tags: [clients]
+      responses:
+        "204":
+          description: Client deleted
+        "404":
+          description: Client not found
+
+  # --- Projects ---
+  /clients/{client_id}/projects:
+    parameters:
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List projects for a client
+      operationId: listProjects
+      tags: [projects]
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      summary: Create a project
+      operationId: createProject
+      tags: [projects]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectCreate"
+      responses:
+        "201":
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "409":
+          description: Project with this name already exists for client
+
+  /clients/{client_id}/projects/{project_id}:
+    parameters:
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get a project by ID
+      operationId: getProject
+      tags: [projects]
+      responses:
+        "200":
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Project not found
+    patch:
+      summary: Update a project
+      operationId: updateProject
+      tags: [projects]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectUpdate"
+      responses:
+        "200":
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Project not found
+    delete:
+      summary: Delete a project (cascades to versions, ADRs, questions)
+      operationId: deleteProject
+      tags: [projects]
+      responses:
+        "204":
+          description: Project deleted
+        "404":
+          description: Project not found
+
+  # --- Versions ---
+  /projects/{project_id}/versions:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List versions for a project
+      operationId: listVersions
+      tags: [versions]
+      responses:
+        "200":
+          description: List of versions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
+    post:
+      summary: Create a version
+      operationId: createVersion
+      tags: [versions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VersionCreate"
+      responses:
+        "201":
+          description: Version created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "409":
+          description: Version number already exists for project
+
+  /projects/{project_id}/versions/{version_id}:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get a version by ID
+      operationId: getVersion
+      tags: [versions]
+      responses:
+        "200":
+          description: Version details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "404":
+          description: Version not found
+    patch:
+      summary: Update a version
+      operationId: updateVersion
+      tags: [versions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VersionUpdate"
+      responses:
+        "200":
+          description: Version updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "404":
+          description: Version not found
+
+  # --- Artifacts ---
+  /versions/{version_id}/artifacts:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List artifacts for a version
+      operationId: listArtifacts
+      tags: [artifacts]
+      responses:
+        "200":
+          description: List of artifacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Artifact"
+    post:
+      summary: Create an artifact
+      operationId: createArtifact
+      tags: [artifacts]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ArtifactCreate"
+      responses:
+        "201":
+          description: Artifact created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+
+  /versions/{version_id}/artifacts/{artifact_id}:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: artifact_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get an artifact by ID
+      operationId: getArtifact
+      tags: [artifacts]
+      responses:
+        "200":
+          description: Artifact details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+        "404":
+          description: Artifact not found
+    patch:
+      summary: Update an artifact
+      operationId: updateArtifact
+      tags: [artifacts]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ArtifactUpdate"
+      responses:
+        "200":
+          description: Artifact updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+        "404":
+          description: Artifact not found
+    delete:
+      summary: Delete an artifact
+      operationId: deleteArtifact
+      tags: [artifacts]
+      responses:
+        "204":
+          description: Artifact deleted
+        "404":
+          description: Artifact not found
+
+  # --- ADRs ---
+  /projects/{project_id}/adrs:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List ADRs for a project
+      operationId: listADRs
+      tags: [adrs]
+      responses:
+        "200":
+          description: List of ADRs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ADR"
+    post:
+      summary: Create an ADR (adr_number auto-assigned)
+      operationId: createADR
+      tags: [adrs]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ADRCreate"
+      responses:
+        "201":
+          description: ADR created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ADR"
+
+  /projects/{project_id}/adrs/{adr_id}:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: adr_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get an ADR by ID
+      operationId: getADR
+      tags: [adrs]
+      responses:
+        "200":
+          description: ADR details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ADR"
+        "404":
+          description: ADR not found
+    patch:
+      summary: Update an ADR
+      operationId: updateADR
+      tags: [adrs]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ADRUpdate"
+      responses:
+        "200":
+          description: ADR updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ADR"
+        "404":
+          description: ADR not found
+
+  /projects/{project_id}/adrs/{adr_id}/supersede:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: adr_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      summary: Supersede an ADR with a new one
+      operationId: supersedeADR
+      tags: [adrs]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ADRCreate"
+      responses:
+        "201":
+          description: New ADR created, old ADR marked superseded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ADR"
+        "404":
+          description: Original ADR not found
+
+  # --- Questions ---
+  /projects/{project_id}/questions:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List questions for a project
+      operationId: listQuestions
+      tags: [questions]
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [open, answered, deferred]
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [requirements, security, scaling, compliance, cost, operations]
+      responses:
+        "200":
+          description: List of questions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Question"
+    post:
+      summary: Create a question
+      operationId: createQuestion
+      tags: [questions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionCreate"
+      responses:
+        "201":
+          description: Question created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+
+  /projects/{project_id}/questions/{question_id}:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: question_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get a question by ID
+      operationId: getQuestion
+      tags: [questions]
+      responses:
+        "200":
+          description: Question details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+        "404":
+          description: Question not found
+    patch:
+      summary: Update a question (answer, change status/category)
+      operationId: updateQuestion
+      tags: [questions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionUpdate"
+      responses:
+        "200":
+          description: Question updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+        "404":
+          description: Question not found
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+      required: [status]
+
+    # --- Client ---
+    Client:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        logo_path:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, name, slug, metadata, created_at, updated_at]
+
+    ClientCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        logo_path:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          default: {}
+      required: [name]
+
+    ClientUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        logo_path:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+
+    # --- Project ---
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        client_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+          nullable: true
+        cloud_providers:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [draft, active, archived]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, client_id, name, slug, cloud_providers, status, created_at, updated_at]
+
+    ProjectCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+        cloud_providers:
+          type: array
+          items:
+            type: string
+          default: []
+        status:
+          type: string
+          enum: [draft, active, archived]
+          default: draft
+      required: [name]
+
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+        cloud_providers:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [draft, active, archived]
+
+    # --- Version ---
+    Version:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        version_number:
+          type: string
+        label:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [draft, review, approved, superseded]
+        notes:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, project_id, version_number, status, created_at, updated_at]
+
+    VersionCreate:
+      type: object
+      properties:
+        version_number:
+          type: string
+          maxLength: 20
+        label:
+          type: string
+          maxLength: 255
+          nullable: true
+        status:
+          type: string
+          enum: [draft, review, approved, superseded]
+          default: draft
+        notes:
+          type: string
+          nullable: true
+      required: [version_number]
+
+    VersionUpdate:
+      type: object
+      properties:
+        label:
+          type: string
+          maxLength: 255
+          nullable: true
+        status:
+          type: string
+          enum: [draft, review, approved, superseded]
+        notes:
+          type: string
+          nullable: true
+
+    # --- Artifact ---
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        version_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        artifact_type:
+          type: string
+          enum: [diagram, document, pdf_report]
+        detail_level:
+          type: string
+          enum: [conceptual, logical, detailed, deployment]
+        engine:
+          type: string
+          enum: [diagrams_py, d2, markdown, weasyprint]
+        source_code:
+          type: string
+          nullable: true
+        output_paths:
+          type: array
+          items:
+            type: string
+        render_status:
+          type: string
+          enum: [pending, rendering, success, error]
+        render_error:
+          type: string
+          nullable: true
+        sort_order:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, version_id, name, artifact_type, detail_level, engine, output_paths, render_status, sort_order, created_at, updated_at]
+
+    ArtifactCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        artifact_type:
+          type: string
+          enum: [diagram, document, pdf_report]
+        detail_level:
+          type: string
+          enum: [conceptual, logical, detailed, deployment]
+          default: conceptual
+        engine:
+          type: string
+          enum: [diagrams_py, d2, markdown, weasyprint]
+        source_code:
+          type: string
+          nullable: true
+        sort_order:
+          type: integer
+          default: 0
+      required: [name, artifact_type, engine]
+
+    ArtifactUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        detail_level:
+          type: string
+          enum: [conceptual, logical, detailed, deployment]
+        source_code:
+          type: string
+          nullable: true
+        sort_order:
+          type: integer
+
+    # --- ADR ---
+    ADR:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        adr_number:
+          type: integer
+        title:
+          type: string
+        status:
+          type: string
+          enum: [proposed, accepted, deprecated, superseded]
+        context:
+          type: string
+        decision:
+          type: string
+        consequences:
+          type: string
+        superseded_by:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, project_id, adr_number, title, status, context, decision, consequences, created_at, updated_at]
+
+    ADRCreate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        status:
+          type: string
+          enum: [proposed, accepted, deprecated, superseded]
+          default: proposed
+        context:
+          type: string
+        decision:
+          type: string
+        consequences:
+          type: string
+      required: [title, context, decision, consequences]
+
+    ADRUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        status:
+          type: string
+          enum: [proposed, accepted, deprecated, superseded]
+        context:
+          type: string
+        decision:
+          type: string
+        consequences:
+          type: string
+
+    # --- Question ---
+    Question:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        question_text:
+          type: string
+        answer_text:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [open, answered, deferred]
+        category:
+          type: string
+          enum: [requirements, security, scaling, compliance, cost, operations]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, project_id, question_text, status, category, created_at, updated_at]
+
+    QuestionCreate:
+      type: object
+      properties:
+        question_text:
+          type: string
+        category:
+          type: string
+          enum: [requirements, security, scaling, compliance, cost, operations]
+          default: requirements
+      required: [question_text]
+
+    QuestionUpdate:
+      type: object
+      properties:
+        question_text:
+          type: string
+        answer_text:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [open, answered, deferred]
+        category:
+          type: string
+          enum: [requirements, security, scaling, compliance, cost, operations]

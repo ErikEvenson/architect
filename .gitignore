@@ -1,5 +1,5 @@
 # Runtime data (externalized to PVC)
-data/
+/data/
 
 # Python
 __pycache__/
