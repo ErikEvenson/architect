@@ -12,9 +12,11 @@ import { DiagramViewer } from "../components/Artifact/DiagramViewer";
 export function VersionDetailPage() {
   const { projectId, versionId } = useParams<{ projectId: string; versionId: string }>();
   const [version, setVersion] = useState<Version | null>(null);
+  const [allVersions, setAllVersions] = useState<Version[]>([]);
   const [artifacts, setArtifacts] = useState<Artifact[]>([]);
   const [selected, setSelected] = useState<Artifact | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [showCloneFrom, setShowCloneFrom] = useState(false);
   const [sourceCode, setSourceCode] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<Artifact | null>(null);
   const [rendering, setRendering] = useState(false);
@@ -28,6 +30,7 @@ export function VersionDetailPage() {
   useEffect(() => {
     if (!projectId || !versionId) return;
     versionsApi.get(projectId, versionId).then(setVersion).catch(() => {});
+    versionsApi.list(projectId).then(setAllVersions).catch(() => {});
     loadArtifacts();
   }, [projectId, versionId, loadArtifacts]);
 
@@ -69,6 +72,13 @@ export function VersionDetailPage() {
     }
   };
 
+  const handleCloneFrom = async (sourceVersionId: string) => {
+    if (!versionId) return;
+    const cloned = await artifactsApi.clone(sourceVersionId, versionId);
+    setArtifacts((prev) => [...prev, ...cloned]);
+    setShowCloneFrom(false);
+  };
+
   const handleDelete = async () => {
     if (!versionId || !deleteTarget) return;
     await artifactsApi.delete(versionId, deleteTarget.id);
@@ -101,13 +111,41 @@ export function VersionDetailPage() {
         <div className="w-72 shrink-0">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-lg font-semibold text-gray-800">Artifacts</h2>
-            <button
-              onClick={() => setShowCreateForm(true)}
-              className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
-            >
-              + New
-            </button>
+            <div className="flex gap-1">
+              <button
+                onClick={() => setShowCloneFrom(!showCloneFrom)}
+                className="px-2 py-1 border border-gray-300 text-xs rounded hover:bg-gray-50"
+              >
+                Clone
+              </button>
+              <button
+                onClick={() => setShowCreateForm(true)}
+                className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+              >
+                + New
+              </button>
+            </div>
           </div>
+
+          {showCloneFrom && (
+            <div className="mb-3 bg-white p-3 rounded-lg border border-gray-200">
+              <p className="text-sm text-gray-600 mb-2">Clone artifacts from:</p>
+              <div className="space-y-1">
+                {allVersions
+                  .filter((v) => v.id !== versionId)
+                  .map((v) => (
+                    <button
+                      key={v.id}
+                      onClick={() => handleCloneFrom(v.id)}
+                      className="block w-full text-left px-3 py-1.5 text-sm hover:bg-gray-50 rounded"
+                    >
+                      v{v.version_number}{v.label ? ` — ${v.label}` : ""}
+                    </button>
+                  ))}
+              </div>
+              <button onClick={() => setShowCloneFrom(false)} className="mt-2 text-xs text-gray-500">Cancel</button>
+            </div>
+          )}
 
           {showCreateForm && (
             <div className="mb-3">

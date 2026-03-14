@@ -70,6 +70,11 @@ export const artifactsApi = {
     request<Artifact>(`/versions/${versionId}/artifacts/${id}/render`, { method: "POST" }),
   getOutputUrl: (versionId: string, id: string, filename: string) =>
     `${API_BASE}/versions/${versionId}/artifacts/${id}/outputs/${filename}`,
+  clone: (versionId: string, targetVersionId: string) =>
+    request<Artifact[]>(`/versions/${versionId}/artifacts/clone`, {
+      method: "POST",
+      body: JSON.stringify({ target_version_id: targetVersionId }),
+    }),
 };
 
 // ADRs

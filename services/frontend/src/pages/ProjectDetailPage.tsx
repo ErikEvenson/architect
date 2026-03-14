@@ -64,6 +64,12 @@ export function ProjectDetailPage() {
           >
             Questions
           </Link>
+          <Link
+            to={`/clients/${clientId}/projects/${projectId}/compare`}
+            className="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-50"
+          >
+            Compare
+          </Link>
           <button onClick={() => setConfirmDelete(true)} className="px-3 py-1.5 text-red-600 hover:text-red-800 text-sm">
             Delete
           </button>

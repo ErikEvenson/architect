@@ -1,6 +1,7 @@
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -8,6 +9,10 @@ from src.database import get_session
 from src.models.artifact import Artifact
 from src.models.version import Version
 from src.schemas.artifact import ArtifactCreate, ArtifactResponse, ArtifactUpdate
+
+
+class CloneRequest(BaseModel):
+    target_version_id: str
 
 router = APIRouter(prefix="/versions/{version_id}/artifacts", tags=["artifacts"])
 
@@ -96,3 +101,46 @@ async def delete_artifact(
         raise HTTPException(status_code=404, detail="Artifact not found")
     await session.delete(artifact)
     await session.commit()
+
+
+@router.post("/clone", response_model=list[ArtifactResponse], status_code=status.HTTP_201_CREATED)
+async def clone_artifacts(
+    version_id: uuid.UUID,
+    data: CloneRequest,
+    session: AsyncSession = Depends(get_session),
+):
+    """Clone all artifacts from this version to a target version (source code only)."""
+    await _get_version(version_id, session)
+
+    target_version_id = uuid.UUID(data.target_version_id)
+    target_version = await session.get(Version, target_version_id)
+    if not target_version:
+        raise HTTPException(status_code=404, detail="Target version not found")
+
+    # Get source artifacts
+    result = await session.execute(
+        select(Artifact)
+        .where(Artifact.version_id == version_id)
+        .order_by(Artifact.sort_order, Artifact.name)
+    )
+    source_artifacts = result.scalars().all()
+
+    cloned = []
+    for src in source_artifacts:
+        clone = Artifact(
+            version_id=target_version_id,
+            name=src.name,
+            artifact_type=src.artifact_type,
+            detail_level=src.detail_level,
+            engine=src.engine,
+            source_code=src.source_code,
+            sort_order=src.sort_order,
+        )
+        session.add(clone)
+        cloned.append(clone)
+
+    await session.commit()
+    for c in cloned:
+        await session.refresh(c)
+
+    return cloned
