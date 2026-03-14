@@ -31,3 +31,29 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 - **Placement and scheduling** -- custom host aggregates with metadata-driven scheduling vs simple AZ-based placement -- complexity vs precision trade-off
 - **Live migration model** -- shared storage live migration (faster, requires shared filesystem) vs block migration (no shared storage, slower, higher network load) vs disabling migration entirely (simplest but no host maintenance without downtime)
 - **Flavor governance** -- small curated flavor list (simpler capacity planning) vs large permutational matrix (tenant flexibility) vs per-project private flavors (controlled but operationally heavier)
+
+## Version Notes
+
+| Feature | Yoga (April 2022) | Zed (Oct 2022) | 2023.1 (Antelope) | 2024.1 (Caracal) |
+|---|---|---|---|---|
+| Libvirt driver | GA (libvirt 8.x) | GA (libvirt 8.x) | GA (libvirt 9.x) | GA (libvirt 10.x) |
+| QEMU version support | QEMU 6.x | QEMU 7.x | QEMU 8.x | QEMU 8.x+ |
+| Ironic (bare metal) | GA (BIOS/UEFI) | GA (improved cleaning) | GA (sharding, firmware updates) | GA (improved multi-tenant) |
+| Cyborg (accelerators) | GA (GPU, FPGA) | GA | GA (improved lifecycle) | GA (SmartNIC support) |
+| vGPU (NVIDIA MIG) | GA | GA (improved MIG support) | GA (live migration with vGPU) | GA (improved placement) |
+| Secure Boot | GA | GA | GA (improved enrollment) | GA |
+| vTPM (virtual TPM) | Tech Preview | GA | GA | GA |
+| Cells v2 (multi-cell) | GA | GA | GA (improved cross-cell operations) | GA (improved cell listing) |
+| CPU overcommit (allocation ratio) | Configurable (nova.conf) | Configurable | Configurable (placement-based) | Configurable (placement-based) |
+| Emulated NUMA topology | GA | GA | GA | GA (improved validation) |
+| Live migration (post-copy) | GA | GA | GA (improved timeout handling) | GA |
+| Server groups (soft policies) | GA | GA | GA | GA (improved scheduling) |
+| Nova metadata service | GA | GA | GA (HTTPS support) | GA (HTTPS default option) |
+| Evacuate improvements | GA | GA | GA (improved rebuild) | GA (force options) |
+
+**Key changes across releases:**
+- **Libvirt and QEMU updates:** Each OpenStack release tracks newer libvirt and QEMU versions, bringing improved device emulation, security fixes, and performance. QEMU 8.x adds improved virtio device performance and new machine types. Ensure compute node OS packages are updated to match supported libvirt/QEMU versions.
+- **Ironic improvements:** Ironic (bare metal provisioning) has seen significant improvements. 2023.1 added sharding for scaling Ironic conductors across large deployments and firmware update support. 2024.1 improved multi-tenant bare metal isolation. Ironic is increasingly used for AI/ML workloads requiring direct GPU access without virtualization overhead.
+- **vGPU live migration:** Starting with 2023.1, Nova supports live migration of instances with vGPU devices (NVIDIA GRID/MIG), which was previously blocked. This enables maintenance operations on GPU hosts without instance downtime. Requires compatible NVIDIA driver versions.
+- **vTPM support:** Virtual TPM reached GA in Zed, enabling instances to use TPM 2.0 for measured boot, disk encryption (BitLocker, LUKS), and attestation. Requires libvirt 9.x+ and swtpm on compute hosts.
+- **Placement-based allocation ratios:** Recent releases moved overcommit ratio configuration from nova.conf to the Placement service, enabling per-host-aggregate overcommit ratios rather than a global setting. This allows different overcommit policies for different hardware tiers.

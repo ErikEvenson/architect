@@ -29,3 +29,26 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 - **Aria Automation vs Terraform/Ansible** -- Aria Automation for GUI-driven self-service with approval workflows and lease management vs Terraform (VMware provider) + Ansible for infrastructure-as-code with pipeline integration; many organizations use both
 - **Management domain sizing** -- consolidated (management + workload on same cluster, fewer hosts) vs dedicated management domain (isolation, independent scaling); VCF recommends dedicated management domain for production
 - **Tanzu VM Service vs traditional VMs** -- VM Service for developers deploying VMs via kubectl and YAML within namespaces vs traditional vCenter VM provisioning for infrastructure teams; VM Service enables consistent developer experience across VMs and containers
+
+## Version Notes
+
+| Feature | vSphere 7 / TKGs 1.x / VCF 4.x | vSphere 8 / TKGs 2.x / VCF 5.x |
+|---|---|---|
+| Tanzu Kubernetes Grid Service | TKGs 1.x (TKC API) | TKGs 2.x (ClusterClass API) |
+| TKG standalone (multi-cloud) | TKG 1.x (management cluster) | TKG 2.x (ClusterClass, unified CLI) |
+| Supervisor cluster | vSphere 7 U2+ (NSX or VDS networking) | vSphere 8 (VDS networking simplified) |
+| VM Service | GA (vSphere 7 U2a+) | GA (improved, cloud-init support) |
+| VCF lifecycle (SDDC Manager) | VCF 4.x (vSphere 7, NSX-T 3.x) | VCF 5.x (vSphere 8, NSX 4.x) |
+| Aria Operations (monitoring) | vRealize Operations 8.x | Aria Operations 8.12+ (rebranded) |
+| Aria Automation (provisioning) | vRealize Automation 8.x | Aria Automation 8.12+ (rebranded) |
+| Aria Operations for Logs | vRealize Log Insight 8.x | Aria Operations for Logs (rebranded) |
+| Aria Automation Config | SaltStack Config | Aria Automation Config (rebranded) |
+| VMware Cloud Foundation | VCF 4.x (async component updates) | VCF 5.x (unified lifecycle, Broadcom model) |
+| HCX | HCX 4.x | HCX 4.8+ (improved migration, MON) |
+| Tanzu Mission Control | SaaS only | SaaS (Broadcom licensing changes) |
+
+**Key changes across versions:**
+- **Tanzu Kubernetes versions:** TKGs 1.x used the TanzuKubernetesCluster (TKC) API for creating Kubernetes clusters on vSphere. TKGs 2.x migrated to the upstream Cluster API ClusterClass model, providing better conformance with the CNCF ecosystem. Existing TKC-based clusters must be migrated to ClusterClass. TKG 2.x also unified the standalone and supervisor-based experiences.
+- **VCF 4.x vs 5.x:** VCF 5.x bundles vSphere 8, NSX 4.x, and vSAN 8. SDDC Manager in VCF 5.x provides more unified lifecycle management with fewer manual steps. VCF 5.x is the primary licensing model under Broadcom, with per-core subscription pricing replacing perpetual licenses for many customers.
+- **Aria suite rebranding from vRealize:** In 2023, VMware rebranded the entire vRealize suite to Aria. vRealize Operations became Aria Operations, vRealize Automation became Aria Automation, vRealize Log Insight became Aria Operations for Logs, and SaltStack Config became Aria Automation Config. The underlying technology is largely the same; the rebranding aligned products under the Aria multi-cloud management brand. Upgrade paths exist from vRealize 8.x to Aria 8.12+.
+- **Broadcom acquisition impact:** The Broadcom acquisition (completed late 2023) significantly changed VMware licensing. Many standalone products were bundled into VCF or VMware Cloud Foundation for VMware Cloud. Perpetual licenses transitioned to subscription. Tanzu and Aria products were consolidated. Customers should verify current licensing entitlements and availability of individual products vs VCF bundles.

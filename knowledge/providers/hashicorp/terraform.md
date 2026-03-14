@@ -32,6 +32,32 @@ Terraform manages the actual infrastructure. A state file out of sync with reali
 
 ## Reference Architectures
 
+## Version Notes
+
+| Feature | 1.5 | 1.6 | 1.7 | 1.8 | 1.9 |
+|---|---|---|---|---|---|
+| `import` block (declarative) | GA | GA | GA | GA | GA |
+| `removed` block | Not available | GA | GA | GA | GA |
+| `check` block (assertions) | GA | GA | GA | GA | GA |
+| `terraform test` framework | Experimental | GA | GA (improved mocking) | GA | GA |
+| Provider-defined functions | Not available | Not available | GA | GA | GA |
+| `ephemeral` resources | Not available | Not available | Not available | Not available | GA |
+| `moved` block (refactoring) | GA | GA | GA | GA | GA |
+| S3 state backend native locking | Not available | Not available | Not available | GA (no DynamoDB needed) | GA |
+| `.tf.json` generation improvements | GA | GA | GA | GA | GA |
+| Provider installation caching | GA | GA | GA (improved) | GA | GA |
+| `terraform plan -generate-config-out` | GA (import config gen) | GA | GA | GA | GA |
+| HCP Terraform (cloud block) | GA | GA | GA | GA | GA |
+| License | MPL 2.0 | BSL 1.1 | BSL 1.1 | BSL 1.1 | BSL 1.1 |
+
+**Key changes across versions:**
+- **1.5 -- Import blocks:** Introduced declarative `import` blocks that appear in `terraform plan` output and can be code-reviewed, replacing the imperative `terraform import` CLI command. Combined with `terraform plan -generate-config-out`, this enables generating HCL configuration for existing resources during import.
+- **1.6 -- Removed blocks and testing GA:** The `removed` block allows declaring that a resource should be removed from state without destroying the actual infrastructure (the inverse of import). The `terraform test` framework reached GA, enabling integration tests with `.tftest.hcl` files that create real infrastructure, run assertions, and clean up.
+- **1.7 -- Provider functions and mock testing:** Provider-defined functions allow providers to expose custom functions callable in HCL expressions (e.g., `provider::aws::arn_parse()`). The testing framework added mock providers and override capabilities for faster, isolated testing without provisioning real infrastructure.
+- **1.8 -- S3 native locking and refactoring:** The S3 backend gained native state locking using S3 conditional writes, eliminating the need for a DynamoDB table for lock management. This simplifies the most common backend configuration.
+- **1.9 -- Ephemeral resources:** Ephemeral resources are created, used during the plan/apply cycle, and then discarded -- they are never stored in state. This is designed for sensitive data like temporary credentials, reducing the security risk of secrets persisting in state files.
+- **License change (1.6):** Terraform changed from Mozilla Public License 2.0 (open source) to Business Source License 1.1 starting with version 1.6. This prompted the creation of OpenTofu, a community fork maintaining the MPL 2.0 license. Evaluate licensing implications for your organization when choosing between Terraform 1.6+ and OpenTofu.
+
 ### Multi-Account AWS with Terragrunt
 
 ```

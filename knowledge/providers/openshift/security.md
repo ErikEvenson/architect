@@ -37,6 +37,25 @@ Secret management is a persistent challenge. Kubernetes Secrets are base64-encod
 - **FIPS mode**: Required for US federal workloads (FedRAMP, FISMA). Must be enabled at install time. FIPS mode restricts cryptographic algorithms cluster-wide, which can break applications using non-FIPS-compliant crypto libraries.
 - **Red Hat ACS (StackRox) deployment**: ACS provides runtime security, network segmentation analysis, vulnerability management, and compliance dashboards beyond what the Compliance Operator offers. Evaluate whether the additional cost and complexity is justified.
 
+## Version Notes
+
+| Feature | OCP 4.12 | OCP 4.14 | OCP 4.16 |
+|---|---|---|---|
+| Pod Security Admission (PSA) | Enabled (warn/audit) | Enforced (restricted by default) | Enforced (restricted by default) |
+| SCCs | Supported | Supported | Supported (PSA coexists) |
+| Compliance Operator | 0.1.x (CIS, NIST) | 1.3.x (CIS, NIST, PCI-DSS) | 1.5.x (CIS 1.5, NIST, PCI-DSS, STIG) |
+| ACS / StackRox | 3.x (separate install) | 4.x (integrated RHACS operator) | 4.4+ (deeper OCP integration) |
+| Sigstore / cosign integration | Tech Preview | GA | GA |
+| External Secrets Operator (ESO) | Community supported | OLM-distributed | GA (Red Hat supported) |
+| FIPS mode | Supported (install-time) | Supported (install-time) | Supported (install-time) |
+| Kyverno support | Community | Community | Tech Preview |
+
+**Key changes across versions:**
+- **Pod Security Admission enforcement timeline:** OCP 4.12 enabled PSA in `warn` and `audit` modes by default, allowing teams to identify non-compliant pods without breaking workloads. OCP 4.14 began enforcing the `restricted` Pod Security Standard by default on new namespaces. Existing namespaces retained their labels. OCP 4.16 continues enforcement; namespaces must explicitly opt into `baseline` or `privileged` if needed.
+- **SCCs and PSA coexistence:** SCCs remain the primary pod security mechanism in OpenShift. PSA operates alongside SCCs -- both must be satisfied. SCCs provide finer-grained control (SELinux contexts, supplemental groups, volume types) that PSA does not cover.
+- **Compliance Operator versions:** Newer versions added additional profiles (STIG for DoD environments), improved auto-remediation reliability, and added support for tailored profiles with inheritance. Version 1.5.x in OCP 4.16 includes updated CIS Benchmark 1.5 rules.
+- **ACS/StackRox integration:** In OCP 4.12, ACS was deployed separately. Starting with OCP 4.14, the RHACS operator is available in OperatorHub with tighter integration into the OCP console for vulnerability dashboards and policy management. OCP 4.16 adds deeper integration with the OCP audit subsystem.
+
 ## Reference Architectures
 
 - **Enterprise multi-tenant security**: Azure AD OIDC with group sync, namespace-scoped Roles per team, default-deny NetworkPolicy, `restricted` SCC enforced, Quay with Clair scanning, ESO with HashiCorp Vault, Compliance Operator with CIS benchmark.

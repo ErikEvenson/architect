@@ -35,6 +35,26 @@ Multus allows pods to have multiple network interfaces -- essential for telco wo
 - **Network policy model**: Default-deny with explicit allow vs default-allow. Default-deny is recommended for production and required for many compliance frameworks (PCI-DSS, HIPAA).
 - **MetalLB vs external load balancer**: MetalLB (L2 or BGP mode) is appropriate for bare metal and some virtualized environments. External LB (F5, HAProxy, cloud LB) is preferred when existing LB infrastructure exists.
 
+## Version Notes
+
+| Feature | OCP 4.12 | OCP 4.14 | OCP 4.16 |
+|---|---|---|---|
+| OpenShift SDN | Supported | Deprecated | Removed |
+| OVN-Kubernetes | GA (default) | GA (default) | GA (default) |
+| Gateway API | Tech Preview | Tech Preview | GA |
+| Network Observability Operator | GA (1.0) | GA (1.4) | GA (1.6) |
+| AdminNetworkPolicy | Not available | Tech Preview | GA |
+| Egress QoS (OVN-K) | Not available | Tech Preview | GA |
+| IPv4/IPv6 dual-stack | GA | GA | GA |
+| Hardware offload (OVN-K) | Tech Preview | GA | GA |
+
+**Key migration notes:**
+- OCP 4.12 was the first release where OVN-Kubernetes became the default CNI for new installations. OpenShift SDN remained available but migration to OVN-K was recommended.
+- OCP 4.14 formally deprecated OpenShift SDN. In-place migration from SDN to OVN-K was supported but required node reboots.
+- OCP 4.16 removed OpenShift SDN entirely. Clusters must migrate to OVN-Kubernetes before upgrading to 4.16.
+- Gateway API moved to GA in 4.16, providing a portable alternative to OpenShift Routes for ingress configuration.
+- AdminNetworkPolicy (cluster-scoped network policy for platform teams) reached GA in 4.16, enabling platform-wide baseline rules without per-namespace NetworkPolicy objects.
+
 ## Reference Architectures
 
 - **Enterprise multi-tenant**: OVN-Kubernetes, default-deny NetworkPolicy per namespace, EgressFirewall per namespace, sharded IngressControllers (internal + external), cert-manager with internal CA, DNS forwarding to corporate DNS.

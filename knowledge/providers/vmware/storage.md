@@ -30,3 +30,28 @@ Storage is the most common bottleneck and the most consequential failure domain 
 - **vSAN encryption vs array-level encryption** -- vSAN data-at-rest encryption (host-level, requires KMS) vs array-native encryption (SED drives, controller-based), with implications for key management, performance, and compliance scope
 - **Storage DRS automation** -- fully automated for dynamic balancing vs manual recommendations for change-controlled environments; consideration of VM anti-affinity rules for datastores
 - **vSAN stretched cluster vs SRM** -- stretched cluster for active-active metro availability (requires <5ms RTT) vs SRM for asynchronous disaster recovery across longer distances
+
+## Version Notes
+
+| Feature | vSphere 7 (7.0 U3) | vSphere 8 (8.0 U2+) |
+|---|---|---|
+| vSAN architecture | OSA only | OSA and ESA |
+| vSAN ESA (Express Storage Architecture) | Not available | GA (single-tier NVMe pool) |
+| vSAN Max (disaggregated storage) | Not available | GA (8.0 U2+) |
+| vSAN OSA disk groups | Cache + Capacity tiers | Cache + Capacity tiers (unchanged) |
+| ESA storage pool model | N/A | Single-tier (no cache/capacity split) |
+| ESA compression | N/A | Improved (always-on, higher ratios) |
+| ESA snapshots | N/A | Native, memory-efficient (no performance penalty) |
+| vSAN native file services | GA | GA (improved NFS 4.1 support) |
+| Storage policy-based management (SPBM) | GA | GA (simplified ESA policies) |
+| vSAN data-at-rest encryption | GA (KMS required) | GA (Native Key Provider or KMS) |
+| vSAN HCI Mesh | GA (compute-only + storage-only) | GA (improved cross-cluster mount) |
+| vVols | GA | GA (improved provider scalability) |
+| vSAN stretched cluster | GA (<5ms RTT) | GA (<5ms RTT, ESA supported) |
+
+**Key differences between vSphere 7 and 8 storage:**
+- **vSAN OSA vs ESA:** vSphere 8 introduced ESA, a fundamentally redesigned storage architecture for all-NVMe clusters. ESA eliminates the cache/capacity tier distinction, using a single storage pool. This simplifies capacity planning (no cache-to-capacity ratio decisions), improves compression efficiency, and eliminates snapshot performance penalties. OSA remains supported in vSphere 8 for existing and mixed-drive deployments.
+- **vSAN Max:** Introduced in vSphere 8.0 U2, vSAN Max enables disaggregated storage -- dedicated storage-only nodes that provide vSAN storage to compute-only hosts, allowing independent scaling of compute and storage. This addresses a longstanding HCI limitation.
+- **Storage policy changes:** ESA simplifies storage policies by removing cache-tier-specific settings. RAID-5/6 erasure coding on ESA performs significantly better than on OSA due to the single-tier architecture. FTT and RAID policy selection remains the same conceptually but with better write performance on ESA.
+- **Snapshot improvements:** vSAN OSA snapshots are known for performance degradation with deep snapshot chains. ESA uses a new native snapshot implementation that avoids the I/O penalty, making snapshots practical for backup and cloning workflows.
+- **Native Key Provider:** vSphere 8 introduced the vSphere Native Key Provider, allowing vSAN encryption without an external KMS. This simplifies deployment for environments that do not have an existing KMIP-compliant key manager.

@@ -42,5 +42,31 @@ EKS cluster with managed node groups across 3 AZs (mix of on-demand and Spot for
 ### Batch Processing on ECS
 SQS queue -> ECS service with target tracking auto-scaling based on queue depth (ApproximateNumberOfMessagesVisible). Fargate Spot capacity provider for cost savings. DLQ for failed messages. Step Functions for multi-stage batch orchestration with Map state for parallel processing.
 
+## Version Notes
+
+| Feature | EKS 1.27 | EKS 1.28 | EKS 1.29 | EKS 1.30 | EKS 1.31 |
+|---|---|---|---|---|---|
+| Kubernetes version | 1.27 | 1.28 | 1.29 | 1.30 | 1.31 |
+| Standard support end | Nov 2024 | Jan 2025 | Mar 2025 | Jul 2025 | Oct 2025 |
+| Extended support | +12 months | +12 months | +12 months | +12 months | +12 months |
+| Karpenter version | 0.29-0.31 | 0.32-0.33 (v1beta1 API) | 0.34-0.36 (v1beta1) | 1.0 (v1 GA API) | 1.1 |
+| Sidecar containers | Not available | GA (native init containers restartPolicy) | GA | GA | GA |
+| Pod Identity | Not available | GA (EKS Pod Identity) | GA | GA | GA |
+| EKS Auto Mode | Not available | Not available | Not available | Not available | GA |
+| Access entries (API auth) | GA | GA | GA | GA | GA |
+| VPC CNI prefix delegation | GA | GA | GA | GA | GA |
+| Fargate updates | Standard | Standard | ARM64 support improved | ARM64 GA | ARM64 GA |
+| CoreDNS add-on | Managed | Managed | Managed (improved scaling) | Managed | Managed (auto-scaling) |
+| EKS Hybrid Nodes | Not available | Not available | Not available | Not available | GA |
+| GuardDuty EKS Runtime | GA | GA | GA | GA | GA |
+
+**Key changes across EKS versions:**
+- **EKS version support policy:** Each EKS version receives 14 months of standard support followed by 12 months of extended support (at additional cost). Extended support allows running older Kubernetes versions while planning upgrades but incurs per-cluster-hour charges. Plan upgrades within standard support windows to avoid costs.
+- **Karpenter versions:** Karpenter 0.32+ (EKS 1.28+) introduced the v1beta1 API with NodePool and EC2NodeClass resources, replacing the v1alpha5 Provisioner API. Karpenter 1.0 (EKS 1.30) graduated to v1 GA API. Migration from v1alpha5 to v1beta1/v1 requires updating CRDs and manifest definitions. Karpenter now supports consolidation, drift detection, and expiration policies natively.
+- **EKS Pod Identity:** Introduced in EKS 1.28, Pod Identity simplifies IAM role association for pods compared to IRSA (IAM Roles for Service Accounts). Pod Identity uses an EKS-managed agent rather than webhook mutation, reducing configuration complexity. Both IRSA and Pod Identity are supported; Pod Identity is recommended for new workloads.
+- **Sidecar containers:** EKS 1.28 added native sidecar container support via init containers with `restartPolicy: Always`. This enables proper lifecycle management for sidecars (logging, proxies) that should start before and terminate after the main container.
+- **Fargate updates:** ARM64/Graviton support for Fargate has improved across versions, with full GA support in EKS 1.30+. Fargate Spot remains available for fault-tolerant workloads.
+- **EKS Auto Mode:** GA in EKS 1.31, Auto Mode automates node provisioning, scaling, and updates using AWS-managed Karpenter, eliminating the need to configure managed node groups or self-managed Karpenter.
+
 ### Multi-Region Active-Active
 Global Accelerator -> ALBs in each region -> ECS/EKS services. ECR cross-region replication for images. DynamoDB global tables or Aurora Global Database for state. Route 53 health checks for DNS-level failover. CI/CD pipeline deploys to all regions with canary validation per region.

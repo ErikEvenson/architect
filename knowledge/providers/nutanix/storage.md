@@ -30,3 +30,30 @@ The Nutanix Distributed Storage Fabric (DSF) runs as a distributed system across
 - **Block storage access** -- vDisks on AHV (simplest) vs Volume Groups over iSCSI (shared storage for clusters, bare metal) vs Volume Groups over Fibre Channel (legacy SAN integration)
 - **Capacity management** -- Aggressive thin provisioning (higher VM density) vs conservative allocation with storage container limits, runway planning horizon
 - **Container design** -- Single container (simple) vs multiple containers segregated by workload type (DB, VDI, general) with different RF, compression, and QoS policies
+
+## Version Notes
+
+| Feature | AOS 6.x (6.5 LTS / 6.7) | AOS 7.x (7.0+) |
+|---|---|---|
+| Storage architecture | Distributed Storage Fabric | Distributed Storage Fabric (optimized) |
+| Inline compression (LZ4) | GA | GA (improved efficiency) |
+| Erasure coding (EC-X) | GA | GA (faster rebuild, reduced CPU overhead) |
+| Oplog optimization | GA (6 GB default per CVM) | GA (dynamic oplog sizing) |
+| Autonomous Extent Store (AES) | GA (metadata optimization) | GA (improved, mandatory for new containers) |
+| NVMe storage tier support | GA | GA (enhanced NVMe-oF support) |
+| Snapshot performance | GA (ROW snapshots) | GA (improved metadata handling, reduced overhead) |
+| Storage QoS (IOPS throttling) | GA (per-VM) | GA (per-VM and per-container) |
+| Data-at-rest encryption | GA (software, SED) | GA (software, SED, improved key management) |
+| Volume Groups (iSCSI) | GA | GA (improved multi-path, performance) |
+| vDisk blockmap optimization | GA | GA (reduced metadata footprint) |
+| CVM auto-pathing | GA | GA (improved failover responsiveness) |
+| Disaggregated storage (compute-only nodes) | Supported | GA (improved, flexible licensing) |
+| Capacity runway forecasting | GA (Prism Central) | GA (improved ML-based forecasting) |
+
+**Key differences between AOS 6.x and 7.x:**
+- **Performance improvements:** AOS 7.x includes significant I/O path optimizations, reducing latency for random read/write workloads by 15-25% on all-NVMe clusters. The oplog now dynamically sizes based on workload patterns rather than using a fixed allocation, improving write burst absorption.
+- **Erasure coding (EC-X):** AOS 7.x reduces the CPU overhead and rebuild time for EC-X encoded data, making erasure coding more practical for a broader range of workloads. Rebuild operations are more parallelized and less disruptive to foreground I/O.
+- **Autonomous Extent Store (AES):** AES, which optimizes metadata management and reduces CVM memory consumption, becomes mandatory for new storage containers in AOS 7.x. Existing containers can be migrated from legacy extent store to AES.
+- **Snapshot and clone efficiency:** AOS 7.x improves snapshot metadata handling, reducing the performance impact of deep snapshot chains and large numbers of concurrent clones. This benefits Era (DBaaS) and backup integration workflows.
+- **NVMe-oF support:** AOS 7.x adds enhanced NVMe over Fabrics support, enabling external hosts to access Nutanix storage with lower latency than traditional iSCSI.
+- **Disaggregated storage:** While compute-only nodes were supported in AOS 6.x, AOS 7.x improves the experience with more flexible licensing and better performance for remote storage access patterns.

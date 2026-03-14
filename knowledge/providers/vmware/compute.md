@@ -29,3 +29,29 @@ Compute configuration in vSphere directly determines application availability, p
 - **VM hardware version strategy** -- upgrade immediately for new features (virtual NVMe, Precision Clock, vPMem) vs hold at a specific version for cross-cluster compatibility and rollback flexibility
 - **NUMA-aware sizing** -- fit within NUMA boundaries for performance-critical VMs vs allow wide VMs for workloads that need large vCPU counts regardless of NUMA topology
 - **Content library architecture** -- single publisher with subscribers for multi-site template consistency vs local libraries per site for independence; published libraries require reliable WAN connectivity
+
+## Version Notes
+
+| Feature | vSphere 7 (7.0 U3) | vSphere 8 (8.0 U2+) |
+|---|---|---|
+| Maximum VM hardware version | vmx-19 | vmx-21 |
+| DPU (Data Processing Unit) support | Not available | GA (offload networking/security to SmartNIC) |
+| DRS | GA (load balancing) | GA (improved workload placement, DRS scores) |
+| vSphere Lifecycle Manager (vLCM) | GA (image-based) | GA (enhanced firmware/driver management) |
+| Update Manager (VUM) | Supported (baseline-based) | Deprecated (replaced by vLCM) |
+| vSphere Configuration Profiles | Not available | GA (host config drift remediation) |
+| DevOps Center | Not available | GA (VM Service for developer self-service) |
+| VM vGPU profiles | GA (NVIDIA GRID) | GA (improved MIG support, vGPU 16+) |
+| vSphere Fault Tolerance | GA (up to 8 vCPU) | GA (up to 8 vCPU, unchanged) |
+| Content Library | GA | GA (improved OVF deployment, check-in/check-out) |
+| vSphere+ (SaaS management) | Not available | GA (cloud-connected vCenter management) |
+| AI/ML workload support | Basic GPU passthrough | Enhanced (vSphere AI integration, DPU offload) |
+| Assignable Hardware | Not available | GA (framework for DPU, GPU, other devices) |
+
+**Key differences between vSphere 7 and 8 compute:**
+- **DPU support:** vSphere 8 introduced support for Data Processing Units (SmartNICs such as NVIDIA BlueField, AMD Pensando). DPUs offload networking, security, and storage I/O processing from the host CPU, freeing compute resources for workloads. The ESXi control plane runs on the DPU in a "stateless" host model.
+- **VM hardware versions:** vmx-21 (vSphere 8) adds support for new virtual device types and performance optimizations. Upgrading VM hardware version is one-way -- ensure all hosts in the cluster are at the target ESXi version before upgrading VMs.
+- **DRS improvements:** vSphere 8 DRS uses a workload placement scoring model that provides better initial placement and more predictable migrations. DRS scores are visible in the UI, making it easier to understand why migrations occur.
+- **Lifecycle Manager vs Update Manager:** vSphere 7 supported both vLCM (image-based, desired-state) and VUM (baseline-based, legacy). vSphere 8 deprecates VUM in favor of vLCM exclusively. vLCM manages ESXi images, firmware, and drivers as a single desired-state image per cluster. Organizations using VUM-based workflows must migrate to vLCM.
+- **vSphere Configuration Profiles:** New in vSphere 8, these enable host configuration drift detection and remediation at the cluster level, ensuring all hosts maintain consistent settings for networking, storage, and security.
+- **vSphere+:** Cloud-connected SaaS management layer that provides centralized vCenter visibility, subscription-based licensing, and lifecycle management across distributed vSphere environments.

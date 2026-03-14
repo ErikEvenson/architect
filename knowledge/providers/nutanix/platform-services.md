@@ -29,3 +29,26 @@ Nutanix platform services transform a hyperconverged cluster from basic compute 
 - **Database management** -- Nutanix Era (DBaaS, clone-based dev/test, continuous protection) vs manual DBA provisioning vs cloud-managed databases (RDS, Azure SQL)
 - **Hybrid cloud strategy** -- NC2 on AWS/Azure (consistent Nutanix management) vs native cloud VMs (cloud-native tools) vs VMware Cloud on AWS (VMware ecosystem continuity)
 - **Category governance** -- Enforced via Calm blueprints (tags applied at provisioning) vs Prism Central playbooks (auto-tag based on rules) vs manual tagging (error-prone, inconsistent)
+
+## Version Notes
+
+| Feature | Previous Versions | Current / Latest |
+|---|---|---|
+| NKE (Nutanix Kubernetes Engine) | Karbon 2.x (K8s 1.22-1.25) | NKE 2.9+ (K8s 1.26-1.29, renamed from Karbon) |
+| Nutanix Objects | Objects 3.x (S3 basic) | Objects 4.x (improved IAM, versioning, WORM 2.0) |
+| NC2 on AWS | GA (limited regions) | GA (expanded regions, improved networking) |
+| NC2 on Azure | Not available | GA (Azure integration, ExpressRoute support) |
+| Nutanix Calm | Calm 3.x (blueprints, marketplace) | Calm 4.x (improved runbooks, Terraform integration) |
+| Nutanix Era | Era 2.x (PostgreSQL, MySQL, SQL Server, Oracle) | Era 2.5+ (improved cloning, multi-cluster, SAP HANA) |
+| Prism Central | PC 2022.x | PC 2024.x (improved UI, playbooks, reporting) |
+| Nutanix Files | Files 4.x | Files 4.3+ (improved analytics, ransomware detection) |
+| AHV | AHV 20220304.x | AHV 20230302.x+ (improved live migration, GPU support) |
+| Nutanix Data Lens | Not available | GA (SaaS-based analytics, replaces on-prem File Analytics) |
+| Nutanix Unified Storage | Individual products | Unified Storage 4.x (Files + Objects + Block unified licensing) |
+
+**Key changes across versions:**
+- **NKE (formerly Karbon):** Rebranded from Karbon to Nutanix Kubernetes Engine (NKE). NKE 2.9+ supports Kubernetes 1.26-1.29, adds improved node pool management, and provides better integration with Prism Central categories for network policies. The Nutanix CSI driver supports volume snapshots and expansion.
+- **Objects 4.x:** Significant improvements to IAM policies with more granular bucket and object-level permissions. WORM 2.0 adds legal hold and governance mode in addition to compliance mode. Object versioning is now GA. Performance improvements for small-object workloads.
+- **NC2 availability:** Nutanix Cloud Clusters (NC2) expanded from AWS-only to include Azure. NC2 on Azure provides native integration with Azure networking (VNet, ExpressRoute) and allows extending Nutanix clusters to Azure for DR, cloud bursting, and migration. Both platforms are managed through Prism Central.
+- **Calm and Era updates:** Calm 4.x added native Terraform provider integration, allowing Calm blueprints to orchestrate Terraform plans. Era 2.5+ added support for SAP HANA databases, improved multi-cluster database management, and faster clone refresh operations.
+- **Unified Storage licensing:** Nutanix consolidated Files, Objects, and Block (Volume Groups) into a single Unified Storage license, simplifying procurement for customers using multiple storage services.

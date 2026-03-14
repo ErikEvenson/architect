@@ -38,6 +38,28 @@ OLM manages the operator lifecycle -- installation, upgrades, and dependency res
 - **Image lifecycle**: ImageStreams (OpenShift-native, supports import policies and triggers) vs direct registry references. ImageStreams add complexity but enable periodic re-import for base image CVE patching and automatic deployment triggers on new tags.
 - **OLM upgrade policy**: Automatic approval (operators upgrade immediately) vs manual approval (operators wait for explicit approval). Manual approval is recommended for production to prevent unexpected operator upgrades from breaking workloads.
 
+## Version Notes
+
+| Feature | OCP 4.12 | OCP 4.14 | OCP 4.16 |
+|---|---|---|---|
+| OpenShift Pipelines (Tekton) | 1.9 (Tekton 0.41) | 1.13 (Tekton 0.53) | 1.15 (Tekton 0.59) |
+| OpenShift GitOps (ArgoCD) | 1.7 (ArgoCD 2.5) | 1.11 (ArgoCD 2.9) | 1.13 (ArgoCD 2.11) |
+| Tekton Chains | Tech Preview | GA | GA |
+| Tekton Hub (ClusterTasks) | Supported | Supported (deprecation notice) | Deprecated (use Resolvers) |
+| Tekton Resolvers | Tech Preview | GA | GA |
+| S2I builds (BuildConfig) | Supported | Supported | Supported (maintenance mode) |
+| Shipwright (builds) | Tech Preview | Tech Preview | GA |
+| Jenkins on OpenShift | Deprecated | Deprecated | Removed from samples |
+| ApplicationSet controller | GA (bundled with GitOps) | GA | GA (progressive rollout) |
+| Tekton Results | Not available | Tech Preview | GA |
+
+**Key changes across versions:**
+- **Tekton/Pipelines operator:** Each OCP release ships a corresponding Pipelines operator version. ClusterTasks are being replaced by Tekton Resolvers (hub, git, bundle, cluster resolvers) which provide more flexible task sourcing. Plan to migrate ClusterTask references to Resolver-based references.
+- **GitOps operator:** Tracks upstream ArgoCD closely. OCP 4.14+ includes improved multi-tenancy support with ArgoCD AppProjects and RBAC integration with OpenShift Groups. OCP 4.16 adds progressive rollout support in ApplicationSets (canary/blue-green at the GitOps level).
+- **S2I changes:** S2I remains supported but is in maintenance mode. Red Hat recommends Shipwright (which reached GA in OCP 4.16) as the strategic build framework. Shipwright supports S2I, Buildpacks, Kaniko, and Buildah strategies through a unified Build/BuildRun API.
+- **Jenkins removal:** Jenkins was deprecated in OCP 4.12 and the Jenkins sample templates were removed in OCP 4.16. Teams should migrate to Tekton Pipelines. The `jenkins-client-plugin` for triggering Tekton PipelineRuns from legacy Jenkins is available as a migration bridge.
+- **Tekton Chains:** Reached GA in OCP 4.14, providing supply chain security through automatic pipeline attestation and image signing with Sigstore/cosign. Integrates with Tekton Results for long-term storage of pipeline run metadata.
+
 ## Reference Architectures
 
 - **Enterprise GitOps pipeline**: Tekton pipelines (clone -> build -> test -> scan -> push) triggered by GitHub webhooks, Tekton Chains for attestation, Quay for image storage with Clair scanning, ArgoCD for deployment, Kustomize overlays for environment differentiation, promotion via Git merge (dev branch -> staging branch -> prod branch).

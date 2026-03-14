@@ -30,3 +30,26 @@ AHV networking is built on Open vSwitch (OVS), providing VLAN trunking, bonding,
 - **MTU configuration** -- Standard 1500 MTU (safe, no switch changes) vs jumbo frames 9000 MTU (better throughput for storage/replication, requires end-to-end switch configuration)
 - **IP management** -- External DHCP server with relay vs Nutanix-managed IPAM (built into AHV, no external dependency) vs static IP assignment
 - **Physical NIC allocation** -- All NICs in one bond (simple, shared bandwidth) vs split bonds (dedicated bandwidth for management/CVM vs VM/storage, requires 4+ NICs per host)
+
+## Version Notes
+
+| Feature | Flow v1 (Flow Network Security) | Flow v2 (Flow Virtual Networking) |
+|---|---|---|
+| Microsegmentation | GA (category-based policies) | GA (category-based, improved rule processing) |
+| Isolation policies | GA (environment isolation) | GA (environment isolation, enhanced) |
+| Application policies | GA (AppType/AppTier-based) | GA (improved monitoring and visualization) |
+| Network function chaining | GA (service insertion) | GA (improved chaining, multi-appliance) |
+| VPC (Virtual Private Cloud) | Not available | GA (overlay networking, tenant isolation) |
+| Subnet management | VLAN-based only | VLAN and overlay subnets |
+| Floating IPs | Not available | GA (NAT for VPC workloads) |
+| VPN gateway | Not available | GA (IPsec site-to-site, VPC connectivity) |
+| Load balancing | Not available | Not available (use in-guest or third-party) |
+| Policy visualization | Basic (Prism Central) | Enhanced (flow topology maps, hit counts) |
+| Integration with AHV OVS | Direct OVS flow rules | OVS + Geneve overlay for VPC |
+
+**Key differences between Flow v1 and Flow v2:**
+- **Flow Network Security (v1):** The original Flow was purely a microsegmentation solution. It applied security policies (allow/deny rules) based on Prism Central categories at the OVS level on each AHV host. All networking remained VLAN-based with no overlay capability. Flow v1 is still available and appropriate when only microsegmentation is needed without virtual networking.
+- **Flow Virtual Networking (v2):** Flow v2 adds full virtual networking capabilities on top of microsegmentation. It introduces VPCs (Virtual Private Clouds) with overlay networking (Geneve), enabling multi-tenant network isolation without physical VLAN provisioning. Each VPC has its own IP address space, subnets, route tables, and floating IPs for NAT. VPN gateways enable site-to-site connectivity between VPCs and external networks.
+- **When to use which:** Flow v1 (Network Security) is sufficient when the goal is microsegmentation on existing VLAN-based networks. Flow v2 (Virtual Networking) is needed when the environment requires self-service networking, tenant-isolated VPCs, overlay networking to reduce VLAN sprawl, or VPN connectivity between sites. Flow v2 includes all Flow v1 microsegmentation capabilities.
+- **Licensing:** Flow Network Security is included with AHV at no additional cost. Flow Virtual Networking requires a separate license (included in some Nutanix Cloud Platform tiers).
+- **Migration:** Environments using Flow v1 microsegmentation policies can enable Flow v2 virtual networking without disrupting existing security policies. The microsegmentation rules continue to apply alongside new VPC-based networking.

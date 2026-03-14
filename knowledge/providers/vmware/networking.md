@@ -30,3 +30,30 @@ Networking misconfiguration is the leading cause of vSphere outages that affect 
 - **NSX ALB vs third-party load balancers** -- NSX ALB (Avi) for integrated VMware ecosystem, auto-discovery of pool members, and GSLB vs F5/Citrix for existing investment and advanced iRules/policies
 - **Jumbo frames vs standard MTU** -- jumbo frames (9000) for vSAN, vMotion, and NFS performance gains (15-20% throughput improvement) vs standard MTU (1500) for simplicity and compatibility; partial jumbo frame deployment causes silent failures
 - **Overlay vs VLAN-backed segments** -- overlay (Geneve) for scalability beyond 4094 VLANs and decoupling from physical network vs VLAN-backed for low-latency, no encapsulation overhead, and physical device integration
+
+## Version Notes
+
+| Feature | NSX-T 3.x (3.2) | NSX 4.x (4.1+) |
+|---|---|---|
+| Product naming | NSX-T Data Center | NSX (rebranded, dropped "-T") |
+| Manager mode (imperative API) | Supported | Deprecated (removal planned) |
+| Policy mode (declarative API) | GA (recommended) | GA (required for new features) |
+| Distributed Firewall (DFW) | GA | GA (improved rule processing, Malware Prevention) |
+| DFW Malware Prevention | Not available | GA (NSX 4.1+, distributed file inspection) |
+| Gateway Firewall | GA | GA (URL filtering, IDS/IPS improvements) |
+| NSX ALB (Avi Networks) | GA (separate deployment) | GA (tighter integration, NSX 4.x aware) |
+| Legacy NSX-T LB | Deprecated | Removed (use NSX ALB) |
+| NSX Intelligence | GA (traffic flow analysis) | GA (improved recommendations, NSX 4.x) |
+| Project-based multi-tenancy | Not available | GA (NSX 4.1+, delegated admin per project) |
+| VPC (Virtual Private Cloud) | Not available | GA (NSX 4.1+, self-service networking) |
+| Online Diagnostic System | Not available | GA (NSX 4.0+, built-in troubleshooting) |
+| Federation (multi-site) | GA | GA (improved cross-site policy sync) |
+| DPU-based acceleration | Not available | GA (NSX on DPU for SmartNIC offload) |
+| IPv6 overlay | Not available | GA (NSX 4.1+) |
+
+**Key differences between NSX-T 3.x and NSX 4.x:**
+- **Policy vs Manager mode:** NSX 4.x strongly pushes Policy mode as the sole management interface. Manager mode (the imperative, object-based API from NSX-T 3.x) is deprecated. New features are only available in Policy mode. Organizations still using Manager mode must migrate before upgrading to future NSX releases. The migration coordinator tool assists with converting Manager objects to Policy objects.
+- **Distributed Firewall improvements:** NSX 4.x adds distributed Malware Prevention, which inspects files at the hypervisor level without agents in the guest. DFW rule processing is more efficient with improved context-aware grouping and identity-based firewall rules.
+- **NSX ALB integration:** The legacy NSX-T load balancer (Tier-1 LB) was deprecated in NSX-T 3.x and removed in NSX 4.x. NSX Advanced Load Balancer (Avi Networks) is now the only supported load balancing solution. NSX 4.x provides tighter integration between NSX ALB and NSX networking/security policies.
+- **Project-based multi-tenancy and VPC:** NSX 4.1 introduced Projects and VPCs, enabling delegated network administration. Tenant administrators can manage their own network segments, security policies, and NAT rules within a Project without affecting other tenants. This is a significant improvement for service provider and large enterprise use cases.
+- **DPU-based acceleration:** NSX 4.x supports offloading distributed firewall and overlay networking to DPUs (SmartNICs), reducing host CPU overhead for networking operations.

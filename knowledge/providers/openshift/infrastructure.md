@@ -33,6 +33,29 @@ Upgrade channels control the pace of updates. The `stable` channel lags behind `
 - **Upgrade cadence**: Staying on a single EUS release reduces upgrade overhead but delays access to new features and security fixes. Fast channel suits dev/test; stable suits production.
 - **Bare metal vs virtualized vs cloud**: Bare metal with IPI requires a provisioning network and IPMI/BMC access. vSphere IPI requires specific privilege sets. Cloud IPI is simplest but may conflict with enterprise landing zone patterns.
 
+## Version Notes
+
+| Feature | OCP 4.12 | OCP 4.14 (EUS) | OCP 4.16 (EUS) |
+|---|---|---|---|
+| RHCOS base | RHEL 8.6 | RHEL 9.2 | RHEL 9.4 |
+| Kubernetes version | 1.25 | 1.27 | 1.29 |
+| CRI-O version | 1.25 | 1.27 | 1.29 |
+| Machine API | GA | GA (improved health checks) | GA (Machine API v2 preview) |
+| Cluster Autoscaler | GA | GA | GA (improved scale-down) |
+| EUS channel | Not available | Available | Available |
+| Update path (EUS-to-EUS) | N/A | 4.12 -> 4.14 (direct) | 4.14 -> 4.16 (direct) |
+| Platform Monitoring Stack | Prometheus + Thanos | Prometheus + Thanos | Prometheus + Thanos (improved retention) |
+| OLM v1 | Not available | Not available | Tech Preview |
+| Agent-based installer | Tech Preview | GA | GA |
+| Single Node OpenShift (SNO) | GA | GA | GA |
+
+**Key changes across versions:**
+- **RHCOS rebasing to RHEL 9:** OCP 4.14 rebased RHCOS from RHEL 8 to RHEL 9, bringing kernel 5.14+, updated systemd, and new default crypto policies. This is a significant change for customers relying on RHEL 8-specific kernel modules or configurations.
+- **Machine API improvements:** OCP 4.14 improved MachineHealthCheck responsiveness and added better reporting. OCP 4.16 introduced early previews of Machine API v2 with a clearer separation between infrastructure and machine lifecycle.
+- **EUS upgrade paths:** Even-numbered minor releases (4.14, 4.16) are eligible for Extended Update Support (18 months). EUS-to-EUS upgrades allow skipping odd-numbered releases (e.g., 4.14 directly to 4.16), reducing upgrade frequency for regulated environments. EUS requires a separate subscription.
+- **Agent-based installer:** Reached GA in 4.14, enabling disconnected and bare-metal installations without a bootstrap node by embedding the installation payload into an ISO.
+- **OLM v1:** Tech Preview in 4.16 introduces a new operator lifecycle model with better dependency resolution, simpler packaging, and support for non-operator content.
+
 ## Reference Architectures
 
 - **Red Hat Reference Architecture -- OpenShift on AWS**: 3 control plane (m5.2xlarge), 3+ worker (m5.4xlarge), 3 infra nodes, cross-AZ spread, EBS gp3 for etcd, ALB for ingress, Route 53 for DNS.
