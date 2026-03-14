@@ -11,6 +11,7 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [fullscreen, setFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
@@ -52,6 +53,12 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
     return () => document.removeEventListener("fullscreenchange", handler);
   }, []);
 
+  // Reset view when SVG changes
+  useEffect(() => {
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  }, [svgUrl]);
+
   return (
     <div ref={containerRef} className="relative bg-gray-700 rounded border border-gray-700 overflow-hidden">
       {/* Controls */}
@@ -89,7 +96,8 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
 
       {/* SVG viewport */}
       <div
-        className="cursor-grab active:cursor-grabbing"
+        ref={viewportRef}
+        className="cursor-grab active:cursor-grabbing overflow-hidden"
         style={{ height: fullscreen ? "100vh" : "500px" }}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
@@ -97,16 +105,27 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        <img
-          src={svgUrl}
-          alt="Diagram"
+        <div
           style={{
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-            transformOrigin: "0 0",
-            maxWidth: "none",
+            transformOrigin: "center top",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
           }}
-          draggable={false}
-        />
+        >
+          <img
+            src={svgUrl}
+            alt="Diagram"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+            }}
+            draggable={false}
+          />
+        </div>
       </div>
     </div>
   );
