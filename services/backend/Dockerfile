@@ -3,6 +3,11 @@ FROM python:3.12-slim AS base
 RUN apt-get update && apt-get install -y --no-install-recommends \
     graphviz \
     curl \
+    fonts-dejavu-core \
+    libcairo2 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libgdk-pixbuf2.0-0 \
     && curl -fsSL https://d2lang.com/install.sh | sh -s -- \
     && rm -rf /var/lib/apt/lists/*
 

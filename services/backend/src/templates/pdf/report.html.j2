@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+  size: A4;
+  margin: 2cm;
+  @bottom-center {
+    content: counter(page);
+    font-size: 10pt;
+    color: #6b7280;
+  }
+}
+@page :first {
+  margin-top: 0;
+  @bottom-center { content: none; }
+}
+body {
+  font-family: DejaVu Sans, sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+h1 { font-size: 20pt; margin-top: 1.5em; page-break-after: avoid; }
+h2 { font-size: 16pt; margin-top: 1.2em; page-break-after: avoid; border-bottom: 1px solid #d1d5db; padding-bottom: 0.2em; }
+h3 { font-size: 13pt; margin-top: 1em; page-break-after: avoid; }
+table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
+th, td { border: 1px solid #d1d5db; padding: 0.4em 0.6em; text-align: left; font-size: 10pt; }
+th { background: #f3f4f6; font-weight: 600; }
+.cover {
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+.cover h1 { font-size: 28pt; border: none; margin-bottom: 0.3em; }
+.cover .subtitle { font-size: 14pt; color: #6b7280; margin-bottom: 2em; }
+.cover .meta { font-size: 11pt; color: #9ca3af; }
+.cover .logo { max-width: 200px; max-height: 100px; margin-bottom: 2em; }
+.toc { page-break-after: always; }
+.toc h1 { font-size: 20pt; }
+.toc ul { list-style: none; padding: 0; }
+.toc li { padding: 0.3em 0; border-bottom: 1px dotted #d1d5db; }
+.toc .level { color: #9ca3af; font-size: 9pt; text-transform: uppercase; margin-left: 0.5em; }
+.section { page-break-before: always; }
+.section:first-of-type { page-break-before: avoid; }
+.diagram { page-break-inside: avoid; text-align: center; margin: 1em 0; }
+.diagram img, .diagram svg { max-width: 100%; height: auto; }
+.placeholder { border: 1px dashed #9ca3af; padding: 1em; text-align: center; color: #6b7280; margin: 1em 0; }
+.warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 0.75em 1em; margin: 1em 0; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+{# Cover Page #}
+<div class="cover">
+  {% if client_logo %}<img class="logo" src="{{ client_logo }}" alt="{{ client_name }}">{% endif %}
+  <h1>{{ project_name }}</h1>
+  <div class="subtitle">Architecture Report — v{{ version_number }}</div>
+  <div class="meta">
+    <p>{{ client_name }}</p>
+    <p>Generated {{ generated_date }}</p>
+  </div>
+</div>
+
+{# Table of Contents #}
+<div class="toc">
+  <h1>Table of Contents</h1>
+  <ul>
+    {% for artifact in artifacts %}
+    <li>
+      {{ artifact.name }}
+      <span class="level">{{ artifact.detail_level }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{# Content Sections #}
+{% if artifacts %}
+  {% for artifact in artifacts %}
+  <div class="section">
+    <h2>{{ artifact.name }}</h2>
+    {% if artifact.artifact_type == 'diagram' %}
+      {% if artifact.svg_content %}
+        <div class="diagram">{{ artifact.svg_content }}</div>
+      {% else %}
+        <div class="placeholder">Diagram not rendered</div>
+      {% endif %}
+    {% elif artifact.artifact_type == 'document' %}
+      {% if artifact.html_content %}
+        {{ artifact.html_content }}
+      {% else %}
+        <div class="placeholder">Document not rendered</div>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="warning">No artifacts found in this version. Add diagrams or documents before exporting.</div>
+{% endif %}
+
+</body>
+</html>

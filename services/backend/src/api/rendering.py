@@ -35,7 +35,7 @@ async def trigger_artifact_render(
 ):
     artifact = await _get_artifact(version_id, artifact_id, session)
 
-    if not artifact.source_code:
+    if not artifact.source_code and artifact.engine != "weasyprint":
         raise HTTPException(status_code=400, detail="No source code to render")
 
     try:
