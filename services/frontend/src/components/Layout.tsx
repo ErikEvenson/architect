@@ -38,6 +38,9 @@ export function Layout() {
           </button>
           <Link to="/" className="text-lg font-semibold text-gray-100">Architect</Link>
         </div>
+        <div className="flex items-center gap-4">
+          <Link to="/knowledge" className="text-sm text-gray-400 hover:text-gray-200">Knowledge</Link>
+        </div>
       </header>
 
       <div className="flex flex-1 overflow-hidden">

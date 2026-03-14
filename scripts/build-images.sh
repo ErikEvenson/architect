@@ -24,6 +24,7 @@ mkdir -p "$BACKEND_CTX"
 cp "$PROJECT_DIR/services/backend/Dockerfile" "$BACKEND_CTX/"
 cp "$PROJECT_DIR/services/backend/requirements.txt" "$BACKEND_CTX/"
 cp -r "$PROJECT_DIR/services/backend/src" "$BACKEND_CTX/src"
+cp -r "$PROJECT_DIR/knowledge" "$BACKEND_CTX/knowledge"
 
 sudo docker build -t "architect-backend:$BACKEND_VERSION" -t "architect-backend:latest" "$BACKEND_CTX"
 

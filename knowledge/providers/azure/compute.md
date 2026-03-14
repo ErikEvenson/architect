@@ -1,0 +1,32 @@
+# Azure Compute
+
+## Checklist
+
+- [ ] Are Virtual Machine Scale Sets (VMSS) with Flexible orchestration used instead of standalone VMs for production workloads requiring auto-scaling?
+- [ ] Are availability zones used for zone-redundant deployments, with VMs spread across at least 2 zones (3 recommended)?
+- [ ] Is the VM SKU selected from the appropriate family? (D-series general purpose, E-series memory-optimized, F-series compute-optimized, L-series storage-optimized)
+- [ ] Are managed disks used for all VMs with the appropriate tier? (Premium SSD v2 for performance, Premium SSD for production, Standard SSD for dev/test)
+- [ ] Is Azure Bastion deployed for secure administrative access, eliminating public IP addresses on VMs?
+- [ ] Are VM images built via a pipeline using Azure Image Builder or Packer with a shared image gallery for distribution?
+- [ ] Is accelerated networking enabled on supported VM SKUs for lower latency and higher throughput?
+- [ ] Are Spot VMs evaluated for fault-tolerant workloads with eviction policies and max price configured?
+- [ ] Is Azure Autoscale configured with appropriate metrics (CPU, memory, queue depth) and scale-in protection for in-flight work?
+- [ ] Are proximity placement groups used for latency-sensitive workloads that need VMs co-located in the same datacenter?
+- [ ] Is boot diagnostics enabled and serial console access configured for VM troubleshooting?
+- [ ] Are OS and data disks encrypted with Azure Disk Encryption (ADE) or server-side encryption (SSE) with customer-managed keys?
+- [ ] Is Azure Update Management or Update Manager configured for automated OS patching with maintenance windows?
+- [ ] Is the Azure VM Agent installed and healthy, with VM extensions (monitoring, antimalware, custom script) managed via policy?
+
+## Why This Matters
+
+Azure compute has unique concepts like VMSS orchestration modes, availability sets (legacy), and the shared image gallery that differ from AWS equivalents. Standalone VMs without scale sets cannot auto-scale or self-heal. Missing accelerated networking leaves significant performance on the table. Azure Bastion eliminates the need to manage jump boxes but must be planned into the network architecture.
+
+## Common Decisions (ADR Triggers)
+
+- **VMSS Flexible vs Uniform** -- mixed VM sizes and zone spreading vs homogeneous instances with faster scaling
+- **VM SKU family** -- Arm-based (Dpdsv6) vs Intel vs AMD, generation selection
+- **Purchase model** -- pay-as-you-go vs Azure Reserved VM Instances (1 or 3 year) vs Azure Savings Plan
+- **Spot VM strategy** -- eviction type (deallocate vs delete), max price, Spot priority mix in VMSS
+- **Disk strategy** -- Premium SSD v2 (configurable IOPS) vs Premium SSD (fixed tiers), ephemeral OS disks for stateless
+- **Image management** -- Azure Image Builder vs Packer, Azure Compute Gallery distribution, image lifecycle
+- **Patching strategy** -- Azure Update Manager with maintenance configurations vs custom automation

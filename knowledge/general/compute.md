@@ -1,0 +1,27 @@
+# Compute
+
+## Checklist
+
+- [ ] What compute platform is required? (VMs, containers, serverless, bare metal)
+- [ ] How many instances/replicas are needed for the expected load?
+- [ ] What instance sizing is appropriate? (CPU, memory, storage)
+- [ ] Is horizontal scaling needed? What triggers scaling? (CPU, memory, request count, queue depth)
+- [ ] What are the minimum and maximum instance counts?
+- [ ] How are instances distributed across availability zones?
+- [ ] What OS and runtime versions are required?
+- [ ] How is OS patching handled? (automated, scheduled, immutable AMIs)
+- [ ] Are there GPU or specialized hardware requirements?
+- [ ] Is the application stateless or stateful?
+- [ ] If stateful, how is state managed across instances? (external session store, sticky sessions)
+
+## Why This Matters
+
+Compute is the foundation of the application tier. Incorrect sizing leads to either wasted spend or performance issues. Missing HA configuration means single points of failure. Ignoring patching creates security vulnerabilities.
+
+## Common Decisions (ADR Triggers)
+
+- **Compute platform choice** — VMs vs containers vs serverless
+- **Instance type selection** — burstable vs general purpose vs compute-optimized
+- **Scaling strategy** — target tracking vs step scaling vs scheduled
+- **Patching strategy** — in-place vs immutable AMI replacement
+- **Session management** — external store vs sticky sessions vs stateless

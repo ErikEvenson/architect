@@ -9,6 +9,7 @@ import { ADRListPage } from "./pages/ADRListPage";
 import { ADRDetailPage } from "./pages/ADRDetailPage";
 import { QuestionListPage } from "./pages/QuestionListPage";
 import { ComparisonPage } from "./pages/ComparisonPage";
+import { KnowledgePage } from "./pages/KnowledgePage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/clients/:clientId/projects/:projectId/adrs/:adrId" element={<ADRDetailPage />} />
             <Route path="/clients/:clientId/projects/:projectId/questions" element={<QuestionListPage />} />
             <Route path="/clients/:clientId/projects/:projectId/compare" element={<ComparisonPage />} />
+            <Route path="/knowledge" element={<KnowledgePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
