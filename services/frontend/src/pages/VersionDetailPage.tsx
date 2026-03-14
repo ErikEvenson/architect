@@ -20,6 +20,7 @@ export function VersionDetailPage() {
   const [sourceCode, setSourceCode] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<Artifact | null>(null);
   const [rendering, setRendering] = useState(false);
+  const [exporting, setExporting] = useState(false);
 
   const loadArtifacts = useCallback(async () => {
     if (!versionId) return;
@@ -72,6 +73,41 @@ export function VersionDetailPage() {
     }
   };
 
+  const handleExportPDF = async () => {
+    if (!versionId) return;
+    setExporting(true);
+    try {
+      // Check if a PDF artifact already exists
+      let pdfArtifact = artifacts.find(
+        (a) => a.artifact_type === "pdf_report" && a.engine === "weasyprint"
+      );
+
+      if (!pdfArtifact) {
+        // Create one
+        pdfArtifact = await artifactsApi.create(versionId, {
+          name: "Architecture Report",
+          artifact_type: "pdf_report",
+          engine: "weasyprint",
+          sort_order: 999,
+        });
+        setArtifacts((prev) => [...prev, pdfArtifact!]);
+      }
+
+      // Trigger render
+      const rendered = await artifactsApi.triggerRender(versionId, pdfArtifact.id);
+      setArtifacts((prev) => prev.map((a) => (a.id === rendered.id ? rendered : a)));
+
+      const pdfFile = rendered.output_paths.find((p) => p.endsWith(".pdf"));
+      if (rendered.render_status === "success" && pdfFile) {
+        // Open PDF in new tab
+        const pdfUrl = artifactsApi.getOutputUrl(versionId!, rendered.id, pdfFile);
+        window.open(pdfUrl, "_blank");
+      }
+    } finally {
+      setExporting(false);
+    }
+  };
+
   const handleCloneFrom = async (sourceVersionId: string) => {
     if (!versionId) return;
     const cloned = await artifactsApi.clone(sourceVersionId, versionId);
@@ -103,6 +139,13 @@ export function VersionDetailPage() {
         </h1>
         <div className="flex items-center gap-2 mt-1">
           <StatusBadge status={version.status} />
+          <button
+            onClick={handleExportPDF}
+            disabled={exporting}
+            className="ml-4 px-3 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            {exporting ? "Exporting..." : "Export PDF"}
+          </button>
         </div>
       </div>
 
