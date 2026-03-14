@@ -24,10 +24,13 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
     fetch(svgUrl)
       .then((res) => res.text())
       .then((text) => {
-        // Add width/height 100% to the SVG root element so it scales
-        const patched = text.replace(
+        // Strip hardcoded width/height and let viewBox handle scaling
+        let patched = text
+          .replace(/(<svg[^>]*?)\s+width="[^"]*"/g, "$1")
+          .replace(/(<svg[^>]*?)\s+height="[^"]*"/g, "$1");
+        patched = patched.replace(
           /<svg\s/,
-          '<svg style="width:100%;height:100%;" '
+          '<svg width="100%" height="100%" '
         );
         setSvgContent(patched);
         setLoading(false);
