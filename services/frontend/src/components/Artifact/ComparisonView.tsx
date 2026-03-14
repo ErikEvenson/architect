@@ -5,10 +5,9 @@ import { DiagramViewer } from "./DiagramViewer";
 
 interface ComparisonViewProps {
   projectId: string;
-  clientId: string;
 }
 
-export function ComparisonView({ projectId, clientId }: ComparisonViewProps) {
+export function ComparisonView({ projectId }: ComparisonViewProps) {
   const [versions, setVersions] = useState<Version[]>([]);
   const [leftVersionId, setLeftVersionId] = useState<string>("");
   const [rightVersionId, setRightVersionId] = useState<string>("");

@@ -39,12 +39,12 @@ spec:
             - name: POSTGRES_USER
               value: "architect"
             - name: POSTGRES_PASSWORD_FILE
-              value: "/run/secrets/postgres_password"
+              value: "/etc/postgres-secrets/postgres_password"
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
             - name: secrets
-              mountPath: /run/secrets
+              mountPath: /etc/postgres-secrets
               readOnly: true
           resources:
             requests:
@@ -117,7 +117,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  PGPASSWORD=$(cat /run/secrets/postgres_password) \
+                  PGPASSWORD=$(cat /etc/postgres-secrets/postgres_password) \
                   pg_dump -h postgres -U architect architect \
                   > /backup/architect-$(date +%Y%m%d).sql && \
                   find /backup -name "architect-*.sql" -mtime +7 -delete
@@ -125,7 +125,7 @@ spec:
                 - name: backup
                   mountPath: /backup
                 - name: secrets
-                  mountPath: /run/secrets
+                  mountPath: /etc/postgres-secrets
                   readOnly: true
           volumes:
             - name: backup
