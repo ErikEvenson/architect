@@ -66,16 +66,36 @@ Walk through the loaded knowledge files' checklist items. Process in this order:
 
 For each checklist item:
 - Ask the user ONE question at a time
-- Record the question via `POST /projects/{id}/questions`
-- Record the answer via `PATCH /projects/{id}/questions/{id}`
-- If the answer implies an architectural decision, create an ADR IMMEDIATELY via `POST /projects/{id}/adrs`
-- Track which checklist items have been addressed
+- Record the question via `POST /versions/{id}/questions`
+- Record the answer via `PATCH /versions/{id}/questions/{id}`
+- If the answer implies an architectural decision, create an ADR IMMEDIATELY via `POST /versions/{id}/adrs`
+- Track coverage via `POST /versions/{id}/coverage` (record which item was addressed)
+
+**MANDATORY: Category Coverage Gate**
+
+Before proceeding to Step 6 (diagrams), verify ALL general knowledge categories have been addressed. Print this checklist and confirm each:
+
+```
+Category Coverage:
+[ ] Compute — instance types, scaling, HA
+[ ] Networking — segmentation, load balancing, DNS, CDN
+[ ] Data — database, backup, replication, encryption
+[ ] Security — access control, secrets, encryption, compliance
+[ ] Observability — monitoring, logging, alerting
+[ ] Disaster Recovery — RPO/RTO, failover, backup strategy
+[ ] Cost — budget, estimates, optimization
+[ ] Deployment — CI/CD, IaC tool, strategy
+[ ] Identity — authentication, authorization
+```
+
+Plus pattern-specific and provider-specific categories. Do NOT proceed to diagrams if any category shows uncovered Critical items.
 
 ### Step 5: Gap Analysis
 
 After walking through all checklist items:
 - Review any unchecked items — ask if they should be addressed or deferred
 - Ask: "What else am I missing?" for novel requirements not covered by checklists
+- Check coverage via `GET /versions/{id}/coverage` — verify no Critical items are unaddressed
 - Check the failure patterns — verify no anti-patterns are present in the design
 - Any gaps discovered should be noted for addition to knowledge files later
 
@@ -142,10 +162,20 @@ Create a comprehensive design document artifact that compiles all project data:
 - Service descriptions and dependencies
 - Cost estimate (with version comparison if applicable)
 - IaC plan (tool, module structure, resource inventory with complexity, effort estimate)
+- Resilience and data protection (HA, backup, RPO/RTO)
+- IaC plan (tool, module structure, resource inventory with complexity, effort estimate)
 - POC to Production gap (if POC pattern)
+- Coverage checklist (which knowledge categories were addressed, deferred, or N/A)
 - Success criteria
 
 The design document should be auto-generated from the API data — not written manually.
+
+**Coverage Artifact:** Also create a separate "Coverage Checklist" artifact that shows:
+- Every knowledge file loaded for this version
+- Every Critical item: addressed (with question ID), deferred (with reason), or N/A
+- Every Recommended item: addressed or skipped
+- Summary: X of Y Critical items addressed, Z deferred
+- Fetch via `GET /versions/{id}/coverage`
 
 ### Step 10: Retrospective
 
@@ -203,14 +233,18 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 | List projects | GET | `/clients/{id}/projects` |
 | Create project | POST | `/clients/{id}/projects` |
 | Create version | POST | `/projects/{id}/versions` |
-| Create question | POST | `/projects/{id}/questions` |
-| Answer question | PATCH | `/projects/{id}/questions/{id}` |
-| Create ADR | POST | `/projects/{id}/adrs` |
+| Create question | POST | `/versions/{id}/questions` |
+| Answer question | PATCH | `/versions/{id}/questions/{id}` |
+| Create ADR | POST | `/versions/{id}/adrs` |
 | Create artifact | POST | `/versions/{id}/artifacts` |
 | Trigger render | POST | `/versions/{id}/artifacts/{id}/render` |
-| Export PDF | POST | `/versions/{id}/artifacts/{id}/export-pdf` |
+| Export PDF | GET | `/versions/{id}/artifacts/{id}/export-pdf` |
 | List templates | GET | `/templates` |
 | Render template | POST | `/templates/render` |
+| Record coverage | POST | `/versions/{id}/coverage` |
+| Update coverage | PATCH | `/versions/{id}/coverage/{id}` |
+| List coverage | GET | `/versions/{id}/coverage` |
+| Coverage summary | GET | `/versions/{id}/coverage/summary` |
 
 ## Rules
 
