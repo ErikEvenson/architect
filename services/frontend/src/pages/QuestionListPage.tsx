@@ -8,7 +8,7 @@ import { EmptyState } from "../components/Common/EmptyState";
 const CATEGORIES = ["requirements", "security", "scaling", "compliance", "cost", "operations"] as const;
 
 export function QuestionListPage() {
-  const { projectId } = useParams<{ projectId: string }>();
+  const { versionId } = useParams<{ clientId: string; projectId: string; versionId: string }>();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [questionText, setQuestionText] = useState("");
@@ -18,16 +18,16 @@ export function QuestionListPage() {
   const [answerText, setAnswerText] = useState("");
 
   useEffect(() => {
-    if (!projectId) return;
+    if (!versionId) return;
     const params: { status?: string } = {};
     if (statusFilter) params.status = statusFilter;
-    questionsApi.list(projectId, params).then(setQuestions).catch(() => {});
-  }, [projectId, statusFilter]);
+    questionsApi.list(versionId, params).then(setQuestions).catch(() => {});
+  }, [versionId, statusFilter]);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!projectId || !questionText.trim()) return;
-    const q = await questionsApi.create(projectId, {
+    if (!versionId || !questionText.trim()) return;
+    const q = await questionsApi.create(versionId, {
       question_text: questionText.trim(),
       category: category as Question["category"],
     });
@@ -37,8 +37,8 @@ export function QuestionListPage() {
   };
 
   const handleAnswer = async (questionId: string) => {
-    if (!projectId || !answerText.trim()) return;
-    const updated = await questionsApi.update(projectId, questionId, {
+    if (!versionId || !answerText.trim()) return;
+    const updated = await questionsApi.update(versionId, questionId, {
       answer_text: answerText.trim(),
       status: "answered",
     });

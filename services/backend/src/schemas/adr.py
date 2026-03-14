@@ -30,7 +30,7 @@ class ADRUpdate(BaseModel):
 
 class ADRResponse(BaseModel):
     id: uuid.UUID
-    project_id: uuid.UUID
+    version_id: uuid.UUID
     adr_number: int
     title: str
     status: str

@@ -53,18 +53,6 @@ export function ProjectDetailPage() {
         </div>
         <div className="flex gap-2">
           <Link
-            to={`/clients/${clientId}/projects/${projectId}/adrs`}
-            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
-          >
-            ADRs
-          </Link>
-          <Link
-            to={`/clients/${clientId}/projects/${projectId}/questions`}
-            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
-          >
-            Questions
-          </Link>
-          <Link
             to={`/clients/${clientId}/projects/${projectId}/compare`}
             className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
           >

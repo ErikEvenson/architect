@@ -22,3 +22,5 @@ class Version(UUIDMixin, TimestampMixin, Base):
 
     project = relationship("Project", back_populates="versions")
     artifacts = relationship("Artifact", back_populates="version", cascade="all, delete-orphan")
+    adrs = relationship("ADR", back_populates="version", cascade="all, delete-orphan")
+    questions = relationship("Question", back_populates="version", cascade="all, delete-orphan")

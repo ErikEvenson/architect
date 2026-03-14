@@ -23,5 +23,3 @@ class Project(UUIDMixin, TimestampMixin, Base):
 
     client = relationship("Client", back_populates="projects")
     versions = relationship("Version", back_populates="project", cascade="all, delete-orphan")
-    adrs = relationship("ADR", back_populates="project", cascade="all, delete-orphan")
-    questions = relationship("Question", back_populates="project", cascade="all, delete-orphan")

@@ -34,7 +34,7 @@ class QuestionUpdate(BaseModel):
 
 class QuestionResponse(BaseModel):
     id: uuid.UUID
-    project_id: uuid.UUID
+    version_id: uuid.UUID
     question_text: str
     answer_text: str | None
     status: str

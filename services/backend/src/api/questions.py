@@ -5,29 +5,29 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import get_session
-from src.models.project import Project
 from src.models.question import Question
+from src.models.version import Version
 from src.schemas.question import QuestionCreate, QuestionResponse, QuestionUpdate
 
-router = APIRouter(prefix="/projects/{project_id}/questions", tags=["questions"])
+router = APIRouter(prefix="/versions/{version_id}/questions", tags=["questions"])
 
 
-async def _get_project(project_id: uuid.UUID, session: AsyncSession) -> Project:
-    project = await session.get(Project, project_id)
-    if not project:
-        raise HTTPException(status_code=404, detail="Project not found")
-    return project
+async def _get_version(version_id: uuid.UUID, session: AsyncSession) -> Version:
+    version = await session.get(Version, version_id)
+    if not version:
+        raise HTTPException(status_code=404, detail="Version not found")
+    return version
 
 
 @router.get("", response_model=list[QuestionResponse])
 async def list_questions(
-    project_id: uuid.UUID,
+    version_id: uuid.UUID,
     status_filter: str | None = Query(None, alias="status"),
     category: str | None = None,
     session: AsyncSession = Depends(get_session),
 ):
-    await _get_project(project_id, session)
-    query = select(Question).where(Question.project_id == project_id)
+    await _get_version(version_id, session)
+    query = select(Question).where(Question.version_id == version_id)
 
     if status_filter:
         query = query.where(Question.status == status_filter)
@@ -41,12 +41,12 @@ async def list_questions(
 
 @router.post("", response_model=QuestionResponse, status_code=status.HTTP_201_CREATED)
 async def create_question(
-    project_id: uuid.UUID, data: QuestionCreate, session: AsyncSession = Depends(get_session)
+    version_id: uuid.UUID, data: QuestionCreate, session: AsyncSession = Depends(get_session)
 ):
-    await _get_project(project_id, session)
+    await _get_version(version_id, session)
 
     question = Question(
-        project_id=project_id,
+        version_id=version_id,
         question_text=data.question_text,
         category=data.category.value,
     )
@@ -58,25 +58,25 @@ async def create_question(
 
 @router.get("/{question_id}", response_model=QuestionResponse)
 async def get_question(
-    project_id: uuid.UUID, question_id: uuid.UUID, session: AsyncSession = Depends(get_session)
+    version_id: uuid.UUID, question_id: uuid.UUID, session: AsyncSession = Depends(get_session)
 ):
-    await _get_project(project_id, session)
+    await _get_version(version_id, session)
     question = await session.get(Question, question_id)
-    if not question or question.project_id != project_id:
+    if not question or question.version_id != version_id:
         raise HTTPException(status_code=404, detail="Question not found")
     return question
 
 
 @router.patch("/{question_id}", response_model=QuestionResponse)
 async def update_question(
-    project_id: uuid.UUID,
+    version_id: uuid.UUID,
     question_id: uuid.UUID,
     data: QuestionUpdate,
     session: AsyncSession = Depends(get_session),
 ):
-    await _get_project(project_id, session)
+    await _get_version(version_id, session)
     question = await session.get(Question, question_id)
-    if not question or question.project_id != project_id:
+    if not question or question.version_id != version_id:
         raise HTTPException(status_code=404, detail="Question not found")
 
     update_data = data.model_dump(exclude_unset=True)

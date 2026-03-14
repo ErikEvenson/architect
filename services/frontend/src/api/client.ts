@@ -79,30 +79,30 @@ export const artifactsApi = {
     `${API_BASE}/versions/${versionId}/artifacts/${id}/export-pdf`,
 };
 
-// ADRs
+// ADRs (version-scoped)
 export const adrsApi = {
-  list: (projectId: string) => request<ADR[]>(`/projects/${projectId}/adrs`),
-  get: (projectId: string, id: string) => request<ADR>(`/projects/${projectId}/adrs/${id}`),
-  create: (projectId: string, data: ADRCreate) =>
-    request<ADR>(`/projects/${projectId}/adrs`, { method: "POST", body: JSON.stringify(data) }),
-  update: (projectId: string, id: string, data: ADRUpdate) =>
-    request<ADR>(`/projects/${projectId}/adrs/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
-  supersede: (projectId: string, id: string, data: ADRCreate) =>
-    request<ADR>(`/projects/${projectId}/adrs/${id}/supersede`, { method: "POST", body: JSON.stringify(data) }),
+  list: (versionId: string) => request<ADR[]>(`/versions/${versionId}/adrs`),
+  get: (versionId: string, id: string) => request<ADR>(`/versions/${versionId}/adrs/${id}`),
+  create: (versionId: string, data: ADRCreate) =>
+    request<ADR>(`/versions/${versionId}/adrs`, { method: "POST", body: JSON.stringify(data) }),
+  update: (versionId: string, id: string, data: ADRUpdate) =>
+    request<ADR>(`/versions/${versionId}/adrs/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
+  supersede: (versionId: string, id: string, data: ADRCreate) =>
+    request<ADR>(`/versions/${versionId}/adrs/${id}/supersede`, { method: "POST", body: JSON.stringify(data) }),
 };
 
-// Questions
+// Questions (version-scoped)
 export const questionsApi = {
-  list: (projectId: string, params?: { status?: string; category?: string }) => {
+  list: (versionId: string, params?: { status?: string; category?: string }) => {
     const query = new URLSearchParams();
     if (params?.status) query.set("status", params.status);
     if (params?.category) query.set("category", params.category);
     const qs = query.toString();
-    return request<Question[]>(`/projects/${projectId}/questions${qs ? `?${qs}` : ""}`);
+    return request<Question[]>(`/versions/${versionId}/questions${qs ? `?${qs}` : ""}`);
   },
-  get: (projectId: string, id: string) => request<Question>(`/projects/${projectId}/questions/${id}`),
-  create: (projectId: string, data: QuestionCreate) =>
-    request<Question>(`/projects/${projectId}/questions`, { method: "POST", body: JSON.stringify(data) }),
-  update: (projectId: string, id: string, data: QuestionUpdate) =>
-    request<Question>(`/projects/${projectId}/questions/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
+  get: (versionId: string, id: string) => request<Question>(`/versions/${versionId}/questions/${id}`),
+  create: (versionId: string, data: QuestionCreate) =>
+    request<Question>(`/versions/${versionId}/questions`, { method: "POST", body: JSON.stringify(data) }),
+  update: (versionId: string, id: string, data: QuestionUpdate) =>
+    request<Question>(`/versions/${versionId}/questions/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
 };

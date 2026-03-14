@@ -6,20 +6,20 @@ import { StatusBadge } from "../components/Common/StatusBadge";
 import { EmptyState } from "../components/Common/EmptyState";
 
 export function ADRListPage() {
-  const { clientId, projectId } = useParams<{ clientId: string; projectId: string }>();
+  const { clientId, versionId } = useParams<{ clientId: string; versionId: string }>();
   const [adrs, setAdrs] = useState<ADR[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState<ADRCreate>({ title: "", context: "", decision: "", consequences: "" });
 
   useEffect(() => {
-    if (!projectId) return;
-    adrsApi.list(projectId).then(setAdrs).catch(() => {});
-  }, [projectId]);
+    if (!versionId) return;
+    adrsApi.list(versionId).then(setAdrs).catch(() => {});
+  }, [versionId]);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!projectId || !form.title.trim()) return;
-    const adr = await adrsApi.create(projectId, form);
+    if (!versionId || !form.title.trim()) return;
+    const adr = await adrsApi.create(versionId, form);
     setAdrs((prev) => [...prev, adr]);
     setForm({ title: "", context: "", decision: "", consequences: "" });
     setShowForm(false);
@@ -82,7 +82,7 @@ export function ADRListPage() {
           {adrs.map((adr) => (
             <Link
               key={adr.id}
-              to={`/clients/${clientId}/projects/${projectId}/adrs/${adr.id}`}
+              to={`/clients/${clientId}/projects/${versionId}/adrs/${adr.id}`}
               className="block bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition"
             >
               <div className="flex items-center justify-between">

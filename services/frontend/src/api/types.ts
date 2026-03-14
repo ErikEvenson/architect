@@ -104,7 +104,7 @@ export interface ArtifactUpdate {
 
 export interface ADR {
   id: string;
-  project_id: string;
+  version_id: string;
   adr_number: number;
   title: string;
   status: "proposed" | "accepted" | "deprecated" | "superseded";
@@ -134,7 +134,7 @@ export interface ADRUpdate {
 
 export interface Question {
   id: string;
-  project_id: string;
+  version_id: string;
   question_text: string;
   answer_text: string | null;
   status: "open" | "answered" | "deferred";

@@ -6,7 +6,9 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import get_session
+from src.models.adr import ADR
 from src.models.artifact import Artifact
+from src.models.question import Question
 from src.models.version import Version
 from src.schemas.artifact import ArtifactCreate, ArtifactResponse, ArtifactUpdate
 
@@ -109,7 +111,7 @@ async def clone_artifacts(
     data: CloneRequest,
     session: AsyncSession = Depends(get_session),
 ):
-    """Clone all artifacts from this version to a target version (source code only)."""
+    """Clone all artifacts, ADRs, and questions from this version to a target version."""
     await _get_version(version_id, session)
 
     target_version_id = uuid.UUID(data.target_version_id)
@@ -117,7 +119,7 @@ async def clone_artifacts(
     if not target_version:
         raise HTTPException(status_code=404, detail="Target version not found")
 
-    # Get source artifacts
+    # Clone artifacts (source code only, no rendered outputs)
     result = await session.execute(
         select(Artifact)
         .where(Artifact.version_id == version_id)
@@ -138,6 +140,36 @@ async def clone_artifacts(
         )
         session.add(clone)
         cloned.append(clone)
+
+    # Clone ADRs (reset numbering per version)
+    adr_result = await session.execute(
+        select(ADR).where(ADR.version_id == version_id).order_by(ADR.adr_number)
+    )
+    for src_adr in adr_result.scalars().all():
+        clone_adr = ADR(
+            version_id=target_version_id,
+            adr_number=src_adr.adr_number,
+            title=src_adr.title,
+            status=src_adr.status,
+            context=src_adr.context,
+            decision=src_adr.decision,
+            consequences=src_adr.consequences,
+        )
+        session.add(clone_adr)
+
+    # Clone questions
+    q_result = await session.execute(
+        select(Question).where(Question.version_id == version_id).order_by(Question.created_at)
+    )
+    for src_q in q_result.scalars().all():
+        clone_q = Question(
+            version_id=target_version_id,
+            question_text=src_q.question_text,
+            answer_text=src_q.answer_text,
+            status=src_q.status,
+            category=src_q.category,
+        )
+        session.add(clone_q)
 
     await session.commit()
     for c in cloned:

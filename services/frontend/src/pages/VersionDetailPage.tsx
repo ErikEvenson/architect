@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { versionsApi, artifactsApi } from "../api/client";
 import type { Version, Artifact, ArtifactCreate } from "../api/types";
 import { StatusBadge } from "../components/Common/StatusBadge";
@@ -9,7 +9,7 @@ import { CreateArtifactForm } from "../components/Artifact/CreateArtifactForm";
 import { CodeEditor } from "../components/Artifact/CodeEditor";
 
 export function VersionDetailPage() {
-  const { projectId, versionId } = useParams<{ projectId: string; versionId: string }>();
+  const { clientId, projectId, versionId } = useParams<{ clientId: string; projectId: string; versionId: string }>();
   const [version, setVersion] = useState<Version | null>(null);
   const [allVersions, setAllVersions] = useState<Version[]>([]);
   const [artifacts, setArtifacts] = useState<Artifact[]>([]);
@@ -97,6 +97,18 @@ export function VersionDetailPage() {
         </h1>
         <div className="flex items-center gap-2 mt-1">
           <StatusBadge status={version.status} />
+          <Link
+            to={`/clients/${clientId}/projects/${projectId}/versions/${versionId}/adrs`}
+            className="ml-4 px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
+          >
+            ADRs
+          </Link>
+          <Link
+            to={`/clients/${clientId}/projects/${projectId}/versions/${versionId}/questions`}
+            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
+          >
+            Questions
+          </Link>
         </div>
       </div>
 

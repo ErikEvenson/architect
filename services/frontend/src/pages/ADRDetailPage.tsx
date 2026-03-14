@@ -7,17 +7,17 @@ import { StatusBadge } from "../components/Common/StatusBadge";
 const STATUS_OPTIONS = ["proposed", "accepted", "deprecated", "superseded"] as const;
 
 export function ADRDetailPage() {
-  const { projectId, adrId } = useParams<{ projectId: string; adrId: string }>();
+  const { versionId, adrId } = useParams<{ clientId: string; projectId: string; versionId: string; adrId: string }>();
   const [adr, setAdr] = useState<ADR | null>(null);
 
   useEffect(() => {
-    if (!projectId || !adrId) return;
-    adrsApi.get(projectId, adrId).then(setAdr).catch(() => {});
-  }, [projectId, adrId]);
+    if (!versionId || !adrId) return;
+    adrsApi.get(versionId, adrId).then(setAdr).catch(() => {});
+  }, [versionId, adrId]);
 
   const updateStatus = async (status: string) => {
-    if (!projectId || !adrId) return;
-    const updated = await adrsApi.update(projectId, adrId, { status: status as ADR["status"] });
+    if (!versionId || !adrId) return;
+    const updated = await adrsApi.update(versionId, adrId, { status: status as ADR["status"] });
     setAdr(updated);
   };
 
