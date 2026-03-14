@@ -6,19 +6,19 @@ This file covers **what** observability decisions need to be made. For provider-
 
 ## Checklist
 
-- [ ] Where are application logs sent? What format? (structured JSON recommended)
-- [ ] Where are infrastructure/system logs sent?
-- [ ] What metrics are collected? (CPU, memory, disk, request rate, error rate, latency)
-- [ ] Are custom application metrics needed? (business KPIs, queue depths, cache hit rates)
-- [ ] What alerting thresholds are defined? Who gets notified?
-- [ ] Is distributed tracing enabled? (request flows across services)
-- [ ] Are network flow logs enabled?
-- [ ] What is the log retention period?
-- [ ] Are dashboards defined for operational visibility?
-- [ ] Is there a centralized log aggregation system?
-- [ ] Are health checks configured for all services? (liveness and readiness)
-- [ ] Is synthetic monitoring needed? (external availability checks)
-- [ ] Are SLIs/SLOs defined for the service?
+- [ ] **[Critical]** Where are application logs sent? What format? (structured JSON recommended)
+- [ ] **[Critical]** Where are infrastructure/system logs sent?
+- [ ] **[Critical]** What metrics are collected? (CPU, memory, disk, request rate, error rate, latency)
+- [ ] **[Optional]** Are custom application metrics needed? (business KPIs, queue depths, cache hit rates)
+- [ ] **[Critical]** What alerting thresholds are defined? Who gets notified?
+- [ ] **[Recommended]** Is distributed tracing enabled? (request flows across services)
+- [ ] **[Recommended]** Are network flow logs enabled?
+- [ ] **[Recommended]** What is the log retention period?
+- [ ] **[Recommended]** Are dashboards defined for operational visibility?
+- [ ] **[Recommended]** Is there a centralized log aggregation system?
+- [ ] **[Critical]** Are health checks configured for all services? (liveness and readiness)
+- [ ] **[Optional]** Is synthetic monitoring needed? (external availability checks)
+- [ ] **[Recommended]** Are SLIs/SLOs defined for the service?
 
 ## Why This Matters
 

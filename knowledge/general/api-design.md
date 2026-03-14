@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] What API style is used and why? (REST for resource-oriented CRUD, GraphQL for flexible client queries, gRPC for high-performance service-to-service, AsyncAPI for event-driven)
-- [ ] Is there an API gateway? (Kong, AWS API Gateway, Apigee, Azure APIM — routing, auth, rate limiting, transformation, caching)
-- [ ] What versioning strategy is used? (URL path /v1/ for simplicity, Accept header for purity, query parameter for flexibility — pick one and be consistent)
-- [ ] How are rate limiting and throttling configured? (per-client limits, tiered plans, burst allowance, 429 response with Retry-After header)
-- [ ] What authentication mechanism secures the API? (OAuth 2.0 authorization code for user-facing, client credentials for service-to-service, API keys for simple integrations, JWT validation)
-- [ ] Is an OpenAPI/Swagger specification maintained? (contract-first design recommended, auto-generated client SDKs, interactive documentation)
-- [ ] How is pagination implemented? (cursor-based for large datasets, offset/limit for simple cases, Link headers, total count considerations)
-- [ ] What error response format is standardized? (RFC 7807 Problem Details, consistent error codes, actionable error messages, request correlation IDs)
-- [ ] Is CORS configured correctly? (allowed origins, methods, headers — avoid wildcard in production, preflight caching)
-- [ ] How is backward compatibility maintained? (additive changes only, deprecation timeline, sunset headers, consumer-driven contract testing)
-- [ ] What is the API lifecycle process? (design review, alpha/beta/GA stages, deprecation policy, sunset timeline — typically 6-12 months)
-- [ ] How is API documentation generated and maintained? (Swagger UI, Redoc, developer portal, example requests/responses, SDKs)
-- [ ] Is there an API linting/governance tool? (Spectral, Optic — enforcing naming conventions, response formats, security requirements)
+- [ ] **[Critical]** What API style is used and why? (REST for resource-oriented CRUD, GraphQL for flexible client queries, gRPC for high-performance service-to-service, AsyncAPI for event-driven)
+- [ ] **[Recommended]** Is there an API gateway? (Kong, AWS API Gateway, Apigee, Azure APIM — routing, auth, rate limiting, transformation, caching)
+- [ ] **[Critical]** What versioning strategy is used? (URL path /v1/ for simplicity, Accept header for purity, query parameter for flexibility — pick one and be consistent)
+- [ ] **[Recommended]** How are rate limiting and throttling configured? (per-client limits, tiered plans, burst allowance, 429 response with Retry-After header)
+- [ ] **[Critical]** What authentication mechanism secures the API? (OAuth 2.0 authorization code for user-facing, client credentials for service-to-service, API keys for simple integrations, JWT validation)
+- [ ] **[Recommended]** Is an OpenAPI/Swagger specification maintained? (contract-first design recommended, auto-generated client SDKs, interactive documentation)
+- [ ] **[Recommended]** How is pagination implemented? (cursor-based for large datasets, offset/limit for simple cases, Link headers, total count considerations)
+- [ ] **[Recommended]** What error response format is standardized? (RFC 7807 Problem Details, consistent error codes, actionable error messages, request correlation IDs)
+- [ ] **[Critical]** Is CORS configured correctly? (allowed origins, methods, headers — avoid wildcard in production, preflight caching)
+- [ ] **[Critical]** How is backward compatibility maintained? (additive changes only, deprecation timeline, sunset headers, consumer-driven contract testing)
+- [ ] **[Recommended]** What is the API lifecycle process? (design review, alpha/beta/GA stages, deprecation policy, sunset timeline — typically 6-12 months)
+- [ ] **[Optional]** How is API documentation generated and maintained? (Swagger UI, Redoc, developer portal, example requests/responses, SDKs)
+- [ ] **[Optional]** Is there an API linting/governance tool? (Spectral, Optic — enforcing naming conventions, response formats, security requirements)
 
 ## Why This Matters
 

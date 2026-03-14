@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] What migration strategy is chosen? (lift-and-shift for speed, re-platform for managed service benefits, re-architect for schema redesign or engine change)
-- [ ] What schema migration tool manages DDL changes? (Flyway for JVM, Alembic for Python, Liquibase for multi-DB, Prisma Migrate, Atlas — version-controlled, repeatable)
-- [ ] Is a dual-write pattern needed during transition? (write to both old and new databases, reconciliation process, eventual cutover — complex but enables zero-downtime)
-- [ ] Is change data capture (CDC) used for replication? (Debezium, AWS DMS, GCP Datastream — streaming changes from source to target during migration)
-- [ ] What is the cutover strategy? (blue-green database switch, progressive traffic shifting, read cutover first then write cutover)
-- [ ] How is data validated post-migration? (row count comparison, checksum validation, application-level spot checks, reconciliation reports)
-- [ ] Are performance benchmarks established before and after? (query latency p50/p95/p99, throughput, index efficiency, connection pool behavior)
-- [ ] What is the rollback strategy? (reverse replication, dual-write rollback, point-in-time restore, maximum rollback window)
-- [ ] How is downtime estimated and communicated? (maintenance window calculation, customer notification, SLA impact assessment)
-- [ ] How are large tables migrated? (partitioned migration, parallel data copy, online schema change tools like pt-online-schema-change or gh-ost)
-- [ ] What happens to application code during migration? (database abstraction layer, feature flags for query routing, ORM compatibility testing)
-- [ ] How are stored procedures, triggers, and views handled? (inventory, rewrite or eliminate, testing parity)
-- [ ] Is the migration rehearsed in a staging environment? (full dress rehearsal with production-scale data, timing measurements, runbook validation)
+- [ ] **[Critical]** What migration strategy is chosen? (lift-and-shift for speed, re-platform for managed service benefits, re-architect for schema redesign or engine change)
+- [ ] **[Critical]** What schema migration tool manages DDL changes? (Flyway for JVM, Alembic for Python, Liquibase for multi-DB, Prisma Migrate, Atlas — version-controlled, repeatable)
+- [ ] **[Recommended]** Is a dual-write pattern needed during transition? (write to both old and new databases, reconciliation process, eventual cutover — complex but enables zero-downtime)
+- [ ] **[Recommended]** Is change data capture (CDC) used for replication? (Debezium, AWS DMS, GCP Datastream — streaming changes from source to target during migration)
+- [ ] **[Critical]** What is the cutover strategy? (blue-green database switch, progressive traffic shifting, read cutover first then write cutover)
+- [ ] **[Critical]** How is data validated post-migration? (row count comparison, checksum validation, application-level spot checks, reconciliation reports)
+- [ ] **[Recommended]** Are performance benchmarks established before and after? (query latency p50/p95/p99, throughput, index efficiency, connection pool behavior)
+- [ ] **[Critical]** What is the rollback strategy? (reverse replication, dual-write rollback, point-in-time restore, maximum rollback window)
+- [ ] **[Recommended]** How is downtime estimated and communicated? (maintenance window calculation, customer notification, SLA impact assessment)
+- [ ] **[Recommended]** How are large tables migrated? (partitioned migration, parallel data copy, online schema change tools like pt-online-schema-change or gh-ost)
+- [ ] **[Recommended]** What happens to application code during migration? (database abstraction layer, feature flags for query routing, ORM compatibility testing)
+- [ ] **[Recommended]** How are stored procedures, triggers, and views handled? (inventory, rewrite or eliminate, testing parity)
+- [ ] **[Critical]** Is the migration rehearsed in a staging environment? (full dress rehearsal with production-scale data, timing measurements, runbook validation)
 
 ## Why This Matters
 

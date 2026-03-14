@@ -6,19 +6,19 @@ This file covers **what** disaster recovery strategy decisions need to be made (
 
 ## Checklist
 
-- [ ] What is the RPO (Recovery Point Objective)? How much data loss is acceptable?
-- [ ] What is the RTO (Recovery Time Objective)? How quickly must the service recover?
-- [ ] What failure scenarios must be survived? (instance, AZ, region, provider)
-- [ ] What is the failover model? (active-passive, active-active, pilot light, warm standby)
-- [ ] Is cross-region replication configured for databases?
-- [ ] Is cross-region replication configured for object storage?
-- [ ] Are backups stored in a different region from primary?
-- [ ] Is there an automated failover mechanism? (DNS failover, database failover)
-- [ ] How is failover tested? How often?
-- [ ] Is there a documented runbook for DR scenarios?
-- [ ] How is data consistency maintained during failover?
-- [ ] What is the failback procedure after recovery?
-- [ ] Are there dependencies on third-party services? What happens if they fail?
+- [ ] **[Critical]** What is the RPO (Recovery Point Objective)? How much data loss is acceptable?
+- [ ] **[Critical]** What is the RTO (Recovery Time Objective)? How quickly must the service recover?
+- [ ] **[Critical]** What failure scenarios must be survived? (instance, AZ, region, provider)
+- [ ] **[Critical]** What is the failover model? (active-passive, active-active, pilot light, warm standby)
+- [ ] **[Recommended]** Is cross-region replication configured for databases?
+- [ ] **[Recommended]** Is cross-region replication configured for object storage?
+- [ ] **[Critical]** Are backups stored in a different region from primary?
+- [ ] **[Recommended]** Is there an automated failover mechanism? (DNS failover, database failover)
+- [ ] **[Critical]** How is failover tested? How often?
+- [ ] **[Critical]** Is there a documented runbook for DR scenarios?
+- [ ] **[Recommended]** How is data consistency maintained during failover?
+- [ ] **[Recommended]** What is the failback procedure after recovery?
+- [ ] **[Recommended]** Are there dependencies on third-party services? What happens if they fail?
 
 ## Why This Matters
 

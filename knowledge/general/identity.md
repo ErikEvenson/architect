@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] What identity federation protocol is used? (SAML 2.0 for enterprise SSO, OIDC for modern apps, OAuth 2.0 for API authorization — often OIDC + OAuth 2.0 together)
-- [ ] Is single sign-on (SSO) implemented? (centralized IdP like Okta, Azure AD/Entra ID, Google Workspace, PingIdentity — SAML or OIDC integration)
-- [ ] How is user provisioning and deprovisioning automated? (SCIM 2.0 for cross-domain identity management, JIT provisioning, HR-system-driven lifecycle)
-- [ ] What MFA methods are supported? (TOTP apps, WebAuthn/FIDO2 hardware keys for phishing resistance, push notifications, SMS as fallback only)
-- [ ] How are service accounts and machine identities managed? (workload identity federation, SPIFFE/SPIRE, cloud IAM roles, short-lived credentials vs static keys)
-- [ ] Is a zero trust identity model adopted? (continuous verification, device posture checks, context-aware access, BeyondCorp approach)
-- [ ] What directory service is the identity source of truth? (Azure AD/Entra ID, on-prem Active Directory with sync, LDAP, cloud-native directory)
-- [ ] Are conditional access policies configured? (device compliance, location, risk level, application sensitivity — block or require step-up auth)
-- [ ] How is privileged access managed? (PAM tools like CyberArk or HashiCorp Vault, just-in-time access, break-glass procedures, session recording)
-- [ ] Is identity governance implemented? (access reviews, certification campaigns, role mining, segregation of duties, orphaned account detection)
-- [ ] How do APIs authenticate callers? (API keys for simple cases, JWT bearer tokens for services, mTLS for service-to-service, OAuth 2.0 client credentials flow)
-- [ ] What is the token lifecycle? (access token expiry — 15-60 min recommended, refresh token rotation, token revocation capability)
-- [ ] How are authorization decisions made? (RBAC, ABAC, ReBAC, OPA/Cedar policy engine, application-level permissions)
+- [ ] **[Critical]** What identity federation protocol is used? (SAML 2.0 for enterprise SSO, OIDC for modern apps, OAuth 2.0 for API authorization — often OIDC + OAuth 2.0 together)
+- [ ] **[Critical]** Is single sign-on (SSO) implemented? (centralized IdP like Okta, Azure AD/Entra ID, Google Workspace, PingIdentity — SAML or OIDC integration)
+- [ ] **[Critical]** How is user provisioning and deprovisioning automated? (SCIM 2.0 for cross-domain identity management, JIT provisioning, HR-system-driven lifecycle)
+- [ ] **[Critical]** What MFA methods are supported? (TOTP apps, WebAuthn/FIDO2 hardware keys for phishing resistance, push notifications, SMS as fallback only)
+- [ ] **[Critical]** How are service accounts and machine identities managed? (workload identity federation, SPIFFE/SPIRE, cloud IAM roles, short-lived credentials vs static keys)
+- [ ] **[Recommended]** Is a zero trust identity model adopted? (continuous verification, device posture checks, context-aware access, BeyondCorp approach)
+- [ ] **[Critical]** What directory service is the identity source of truth? (Azure AD/Entra ID, on-prem Active Directory with sync, LDAP, cloud-native directory)
+- [ ] **[Recommended]** Are conditional access policies configured? (device compliance, location, risk level, application sensitivity — block or require step-up auth)
+- [ ] **[Critical]** How is privileged access managed? (PAM tools like CyberArk or HashiCorp Vault, just-in-time access, break-glass procedures, session recording)
+- [ ] **[Recommended]** Is identity governance implemented? (access reviews, certification campaigns, role mining, segregation of duties, orphaned account detection)
+- [ ] **[Critical]** How do APIs authenticate callers? (API keys for simple cases, JWT bearer tokens for services, mTLS for service-to-service, OAuth 2.0 client credentials flow)
+- [ ] **[Recommended]** What is the token lifecycle? (access token expiry — 15-60 min recommended, refresh token rotation, token revocation capability)
+- [ ] **[Critical]** How are authorization decisions made? (RBAC, ABAC, ReBAC, OPA/Cedar policy engine, application-level permissions)
 
 ## Why This Matters
 

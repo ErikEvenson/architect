@@ -6,19 +6,19 @@ This file covers **what** deployment strategy decisions need to be made (deploym
 
 ## Checklist
 
-- [ ] What is the deployment strategy? (rolling, blue-green, canary, immutable)
-- [ ] How is application code built and packaged? (Docker images, AMIs, packages)
-- [ ] Is there a CI/CD pipeline? What triggers deployments?
-- [ ] How is infrastructure provisioned? (IaC — Terraform, CloudFormation, Pulumi)
-- [ ] Is infrastructure code version controlled?
-- [ ] What is the rollback procedure? How fast is rollback?
-- [ ] Are database migrations handled as part of deployment?
-- [ ] Is there a staging/pre-production environment that mirrors production?
-- [ ] Are deployments zero-downtime?
-- [ ] Is there a deployment approval process? (manual gates, change management)
-- [ ] How are feature flags managed?
-- [ ] Are deployment metrics tracked? (deploy frequency, lead time, failure rate, MTTR)
-- [ ] Is there a deployment runbook?
+- [ ] **[Critical]** What is the deployment strategy? (rolling, blue-green, canary, immutable)
+- [ ] **[Critical]** How is application code built and packaged? (Docker images, AMIs, packages)
+- [ ] **[Critical]** Is there a CI/CD pipeline? What triggers deployments?
+- [ ] **[Critical]** How is infrastructure provisioned? (IaC — Terraform, CloudFormation, Pulumi)
+- [ ] **[Critical]** Is infrastructure code version controlled?
+- [ ] **[Critical]** What is the rollback procedure? How fast is rollback?
+- [ ] **[Recommended]** Are database migrations handled as part of deployment?
+- [ ] **[Recommended]** Is there a staging/pre-production environment that mirrors production?
+- [ ] **[Recommended]** Are deployments zero-downtime?
+- [ ] **[Recommended]** Is there a deployment approval process? (manual gates, change management)
+- [ ] **[Optional]** How are feature flags managed?
+- [ ] **[Optional]** Are deployment metrics tracked? (deploy frequency, lead time, failure rate, MTTR)
+- [ ] **[Recommended]** Is there a deployment runbook?
 
 ## Why This Matters
 

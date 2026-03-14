@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] What sizing methodology is used? (bottleneck analysis, queuing theory, empirical load testing, historical trend extrapolation)
-- [ ] Which load testing tool is used? (k6 for developer-friendly scripting, Locust for Python-based distributed tests, Gatling for JVM, JMeter for protocol breadth)
-- [ ] Are performance benchmarks established for current baseline? (request latency p50/p95/p99, throughput RPS, error rate, resource utilization under load)
-- [ ] What are the growth projections? (user growth rate, data growth rate, traffic seasonality, planned marketing campaigns or launches)
-- [ ] Is 20-30% headroom maintained above peak projected load? (buffer for unexpected spikes, degradation before scaling kicks in)
-- [ ] How is burst capacity handled? (auto-scaling response time, pre-warming, reserved burst capacity, CDN absorption of traffic spikes)
-- [ ] Is auto-scaling validated under realistic conditions? (scale-up speed vs traffic ramp rate, scale-down cooldown, oscillation prevention)
-- [ ] What are the database connection limits? (max connections per instance, connection pooling configuration — PgBouncer, RDS Proxy, ProxySQL)
-- [ ] How is network bandwidth planned? (inter-AZ traffic, egress costs, VPN throughput limits, API gateway throttling)
-- [ ] What is the storage growth forecast? (data retention policy impact, log volume, backup storage, archive tiering strategy)
-- [ ] How is the capacity plan translated to cost projection? (instance sizing to pricing, reserved instance coverage, cost per transaction/user)
-- [ ] Are there known bottlenecks or single points of saturation? (single database writer, NAT gateway throughput, load balancer limits, DNS query limits)
-- [ ] What is the load testing cadence? (pre-release, quarterly, before major events — automated performance regression testing in CI/CD)
-- [ ] How are capacity limits communicated to the business? (maximum supported users, degradation thresholds, cost per additional capacity tier)
+- [ ] **[Recommended]** What sizing methodology is used? (bottleneck analysis, queuing theory, empirical load testing, historical trend extrapolation)
+- [ ] **[Recommended]** Which load testing tool is used? (k6 for developer-friendly scripting, Locust for Python-based distributed tests, Gatling for JVM, JMeter for protocol breadth)
+- [ ] **[Critical]** Are performance benchmarks established for current baseline? (request latency p50/p95/p99, throughput RPS, error rate, resource utilization under load)
+- [ ] **[Recommended]** What are the growth projections? (user growth rate, data growth rate, traffic seasonality, planned marketing campaigns or launches)
+- [ ] **[Recommended]** Is 20-30% headroom maintained above peak projected load? (buffer for unexpected spikes, degradation before scaling kicks in)
+- [ ] **[Recommended]** How is burst capacity handled? (auto-scaling response time, pre-warming, reserved burst capacity, CDN absorption of traffic spikes)
+- [ ] **[Recommended]** Is auto-scaling validated under realistic conditions? (scale-up speed vs traffic ramp rate, scale-down cooldown, oscillation prevention)
+- [ ] **[Critical]** What are the database connection limits? (max connections per instance, connection pooling configuration — PgBouncer, RDS Proxy, ProxySQL)
+- [ ] **[Recommended]** How is network bandwidth planned? (inter-AZ traffic, egress costs, VPN throughput limits, API gateway throttling)
+- [ ] **[Recommended]** What is the storage growth forecast? (data retention policy impact, log volume, backup storage, archive tiering strategy)
+- [ ] **[Optional]** How is the capacity plan translated to cost projection? (instance sizing to pricing, reserved instance coverage, cost per transaction/user)
+- [ ] **[Critical]** Are there known bottlenecks or single points of saturation? (single database writer, NAT gateway throughput, load balancer limits, DNS query limits)
+- [ ] **[Optional]** What is the load testing cadence? (pre-release, quarterly, before major events — automated performance regression testing in CI/CD)
+- [ ] **[Optional]** How are capacity limits communicated to the business? (maximum supported users, degradation thresholds, cost per additional capacity tier)
 
 ## Why This Matters
 

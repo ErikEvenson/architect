@@ -6,21 +6,21 @@ This file covers **what** data management decisions need to be made. For provide
 
 ## Checklist
 
-- [ ] What type of database is needed? (relational, document, key-value, graph, time-series)
-- [ ] What is the expected data volume? Growth rate?
-- [ ] Is the workload read-heavy, write-heavy, or balanced?
-- [ ] What replication strategy? (synchronous, asynchronous, multi-region)
-- [ ] What is the backup strategy? Frequency? Retention period?
-- [ ] Is point-in-time recovery needed?
-- [ ] Is data encryption at rest required? What key management?
-- [ ] Is data encryption in transit required?
-- [ ] Are there data residency requirements? (data must stay in specific regions)
-- [ ] Is a caching layer needed? What caching strategy? (read-through, write-behind, aside)
-- [ ] What is the connection pooling strategy?
-- [ ] Is database failover automatic or manual?
-- [ ] Are there schema migration requirements?
-- [ ] Is there a data archival strategy for old data?
-- [ ] Are there compliance requirements for data handling? (PCI, HIPAA, GDPR)
+- [ ] **[Critical]** What type of database is needed? (relational, document, key-value, graph, time-series)
+- [ ] **[Recommended]** What is the expected data volume? Growth rate?
+- [ ] **[Recommended]** Is the workload read-heavy, write-heavy, or balanced?
+- [ ] **[Critical]** What replication strategy? (synchronous, asynchronous, multi-region)
+- [ ] **[Critical]** What is the backup strategy? Frequency? Retention period?
+- [ ] **[Recommended]** Is point-in-time recovery needed?
+- [ ] **[Critical]** Is data encryption at rest required? What key management?
+- [ ] **[Critical]** Is data encryption in transit required?
+- [ ] **[Critical]** Are there data residency requirements? (data must stay in specific regions)
+- [ ] **[Recommended]** Is a caching layer needed? What caching strategy? (read-through, write-behind, aside)
+- [ ] **[Recommended]** What is the connection pooling strategy?
+- [ ] **[Critical]** Is database failover automatic or manual?
+- [ ] **[Recommended]** Are there schema migration requirements?
+- [ ] **[Optional]** Is there a data archival strategy for old data?
+- [ ] **[Critical]** Are there compliance requirements for data handling? (PCI, HIPAA, GDPR)
 
 ## Why This Matters
 

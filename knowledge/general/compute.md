@@ -6,17 +6,17 @@ This file covers **what** compute decisions need to be made. For provider-specif
 
 ## Checklist
 
-- [ ] What compute platform is required? (VMs, containers, serverless, bare metal)
-- [ ] How many instances/replicas are needed for the expected load?
-- [ ] What instance sizing is appropriate? (CPU, memory, storage)
-- [ ] Is horizontal scaling needed? What triggers scaling? (CPU, memory, request count, queue depth)
-- [ ] What are the minimum and maximum instance counts?
-- [ ] How are instances distributed across availability zones?
-- [ ] What OS and runtime versions are required?
-- [ ] How is OS patching handled? (automated, scheduled, immutable AMIs)
-- [ ] Are there GPU or specialized hardware requirements?
-- [ ] Is the application stateless or stateful?
-- [ ] If stateful, how is state managed across instances? (external session store, sticky sessions)
+- [ ] **[Critical]** What compute platform is required? (VMs, containers, serverless, bare metal)
+- [ ] **[Critical]** How many instances/replicas are needed for the expected load?
+- [ ] **[Critical]** What instance sizing is appropriate? (CPU, memory, storage)
+- [ ] **[Recommended]** Is horizontal scaling needed? What triggers scaling? (CPU, memory, request count, queue depth)
+- [ ] **[Recommended]** What are the minimum and maximum instance counts?
+- [ ] **[Critical]** How are instances distributed across availability zones?
+- [ ] **[Recommended]** What OS and runtime versions are required?
+- [ ] **[Critical]** How is OS patching handled? (automated, scheduled, immutable AMIs)
+- [ ] **[Optional]** Are there GPU or specialized hardware requirements?
+- [ ] **[Critical]** Is the application stateless or stateful?
+- [ ] **[Recommended]** If stateful, how is state managed across instances? (external session store, sticky sessions)
 
 ## Why This Matters
 
