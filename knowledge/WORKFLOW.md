@@ -100,7 +100,23 @@ Generate diagrams at appropriate detail levels:
 3. Verify render status is "success"
 4. If render fails, fix source code and re-render
 
-### Step 7: Generate Documents
+### Step 7: IaC Planning
+
+After the architecture is specified, plan the Infrastructure as Code:
+
+1. **Ask which IaC tool(s)** — this is a user decision, not assumed. Options vary by provider (see `knowledge/general/iac-planning.md`). Create an ADR for the choice.
+2. **Define module structure** — group resources by tier, service, or environment.
+3. **Define state management** — remote backend, locking, environment separation.
+4. **Create resource inventory** — list every resource to be provisioned with:
+   - IaC module assignment
+   - Provider resource type
+   - Complexity level (Simple / Moderate / Complex)
+5. **Estimate IaC effort** — based on resource count and complexity.
+6. **Note manual steps** — any resources provisioned outside IaC (bootstrap, one-time setup).
+
+Include the IaC plan in the design document.
+
+### Step 8: Generate Documents
 
 Create supporting documents:
 - **Cost Estimate** — itemized cost breakdown based on the architecture decisions
@@ -125,6 +141,7 @@ Create a comprehensive design document artifact that compiles all project data:
 - Infrastructure details (components table, configuration)
 - Service descriptions and dependencies
 - Cost estimate (with version comparison if applicable)
+- IaC plan (tool, module structure, resource inventory with complexity, effort estimate)
 - POC to Production gap (if POC pattern)
 - Success criteria
 
@@ -206,3 +223,5 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 7. **Feed back gaps** — any missing knowledge items get added to the library
 8. **Version changes require new questions** — every component change triggers a knowledge file review and new checklist walkthrough for the changed components
 9. **Generate design documents** — every version gets a comprehensive design document compiled from API data
+10. **IaC tool is a user decision** — always ask which IaC tool(s) to use, never assume. Create an ADR for the choice.
+11. **Include IaC plan** — every design document includes a resource inventory with module structure and complexity estimates

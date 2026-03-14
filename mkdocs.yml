@@ -45,6 +45,7 @@ nav:
     - Workload Migration: general/workload-migration.md
     - Dev DNS Patterns: general/dns-dev-patterns.md
     - TLS Certificates: general/tls-certificates.md
+    - IaC Planning: general/iac-planning.md
     - Load Balancing (On-Prem): general/load-balancing-onprem.md
     - Physical Networking: general/networking-physical.md
     - Cost Modeling (On-Prem): general/cost-onprem.md
