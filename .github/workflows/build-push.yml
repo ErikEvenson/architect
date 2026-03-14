@@ -44,6 +44,7 @@ jobs:
           cp services/backend/Dockerfile /tmp/build-backend/
           cp services/backend/requirements.txt /tmp/build-backend/
           cp -r services/backend/src /tmp/build-backend/src
+          cp -r knowledge /tmp/build-backend/knowledge
 
       - name: Build and push
         uses: docker/build-push-action@v6
