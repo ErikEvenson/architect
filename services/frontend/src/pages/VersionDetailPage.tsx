@@ -206,7 +206,28 @@ export function VersionDetailPage() {
               {/* Diagram viewer */}
               {selected.render_status === "success" && svgUrl && (
                 <div>
-                  <h4 className="text-sm font-medium text-gray-400 mb-1">Output</h4>
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="text-sm font-medium text-gray-400">Output</h4>
+                    <div className="flex gap-2">
+                      <a
+                        href={svgUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
+                      >
+                        Open SVG
+                      </a>
+                      {selected.output_paths.find((p) => p.endsWith(".png")) && versionId && (
+                        <a
+                          href={artifactsApi.getOutputUrl(versionId, selected.id, selected.output_paths.find((p) => p.endsWith(".png"))!)}
+                          download
+                          className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
+                        >
+                          Download PNG
+                        </a>
+                      )}
+                    </div>
+                  </div>
                   <DiagramViewer svgUrl={svgUrl} />
                 </div>
               )}
