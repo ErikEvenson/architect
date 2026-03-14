@@ -39,6 +39,9 @@ nav:
     - Testing Strategy: general/testing-strategy.md
     - Governance: general/governance.md
     - Workload Migration: general/workload-migration.md
+    - Load Balancing (On-Prem): general/load-balancing-onprem.md
+    - Physical Networking: general/networking-physical.md
+    - Cost Modeling (On-Prem): general/cost-onprem.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -141,6 +144,8 @@ nav:
     - Security: providers/kubernetes/security.md
     - Observability: providers/kubernetes/observability.md
     - Operations: providers/kubernetes/operations.md
+  - Prometheus/Grafana:
+    - Observability Stack: providers/prometheus-grafana/observability.md
   - Ceph:
     - Storage: providers/ceph/storage.md
   - Rancher:
@@ -155,6 +160,7 @@ nav:
     - Multi-Cloud: patterns/multi-cloud.md
     - Edge Computing: patterns/edge-computing.md
     - AI/ML Infrastructure: patterns/ai-ml-infrastructure.md
+    - CDN-Fronted On-Prem: patterns/cdn-fronted-onprem.md
     - SaaS Multi-Tenant: patterns/saas-multi-tenant.md
     - DR Implementations: patterns/disaster-recovery-implementations.md
   - Compliance:
