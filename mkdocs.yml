@@ -18,6 +18,9 @@ theme:
     - content.code.copy
     - toc.integrate
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: README.md
   - General:
