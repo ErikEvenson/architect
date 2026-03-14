@@ -64,6 +64,8 @@ nav:
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
     - Route 53: providers/aws/route53.md
+    - CloudFormation: providers/aws/cloudformation.md
+    - CDK: providers/aws/cdk.md
   - Azure:
     - Networking: providers/azure/networking.md
     - Compute: providers/azure/compute.md
@@ -79,6 +81,7 @@ nav:
     - Messaging: providers/azure/messaging.md
     - DevOps: providers/azure/devops.md
     - Disaster Recovery: providers/azure/disaster-recovery.md
+    - Bicep: providers/azure/bicep.md
   - GCP:
     - Networking: providers/gcp/networking.md
     - Compute: providers/gcp/compute.md
@@ -161,6 +164,10 @@ nav:
     - Registry: providers/harbor/registry.md
   - Ceph:
     - Storage: providers/ceph/storage.md
+  - Pulumi:
+    - IaC: providers/pulumi/iac.md
+  - Ansible:
+    - Configuration: providers/ansible/configuration.md
   - Rancher:
     - Infrastructure: providers/rancher/infrastructure.md
   - Patterns:
