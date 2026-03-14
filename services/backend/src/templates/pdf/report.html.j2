@@ -49,7 +49,7 @@ th { background: #f3f4f6; font-weight: 600; }
 .section { page-break-before: always; }
 .section:first-of-type { page-break-before: avoid; }
 .diagram { page-break-inside: avoid; text-align: center; margin: 1em 0; }
-.diagram img, .diagram svg { max-width: 100%; height: auto; }
+.diagram img, .diagram svg { max-width: 100%; height: auto; width: 100%; }
 .placeholder { border: 1px dashed #9ca3af; padding: 1em; text-align: center; color: #6b7280; margin: 1em 0; }
 .warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 0.75em 1em; margin: 1em 0; font-size: 10pt; }
 </style>
@@ -87,13 +87,13 @@ th { background: #f3f4f6; font-weight: 600; }
     <h2>{{ artifact.name }}</h2>
     {% if artifact.artifact_type == 'diagram' %}
       {% if artifact.svg_content %}
-        <div class="diagram">{{ artifact.svg_content }}</div>
+        <div class="diagram">{{ artifact.svg_content | safe }}</div>
       {% else %}
         <div class="placeholder">Diagram not rendered</div>
       {% endif %}
     {% elif artifact.artifact_type == 'document' %}
       {% if artifact.html_content %}
-        {{ artifact.html_content }}
+        {{ artifact.html_content | safe }}
       {% else %}
         <div class="placeholder">Document not rendered</div>
       {% endif %}
