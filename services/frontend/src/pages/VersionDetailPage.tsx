@@ -209,32 +209,40 @@ export function VersionDetailPage() {
                   <div className="flex items-center justify-between mb-1">
                     <h4 className="text-sm font-medium text-gray-400">Output</h4>
                     <div className="flex gap-2">
-                      {selected.output_paths.find((p) => p.endsWith(".png")) && versionId && (
-                        <>
-                          <a
-                            href={artifactsApi.getOutputUrl(versionId, selected.id, selected.output_paths.find((p) => p.endsWith(".png"))!)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                          >
-                            Open Image
-                          </a>
-                          <a
-                            href={artifactsApi.getOutputUrl(versionId, selected.id, selected.output_paths.find((p) => p.endsWith(".png"))!)}
-                            download
-                            className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                          >
-                            Download PNG
-                          </a>
-                        </>
-                      )}
-                      <a
-                        href={svgUrl}
-                        download
-                        className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
-                      >
-                        Download SVG
-                      </a>
+                      {(() => {
+                        const pngFile = selected.output_paths.find((p) => p.endsWith(".png"));
+                        const openUrl = pngFile && versionId
+                          ? artifactsApi.getOutputUrl(versionId, selected.id, pngFile)
+                          : svgUrl;
+                        return (
+                          <>
+                            <a
+                              href={openUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
+                            >
+                              Open in New Tab
+                            </a>
+                            {pngFile && versionId && (
+                              <a
+                                href={artifactsApi.getOutputUrl(versionId, selected.id, pngFile)}
+                                download
+                                className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
+                              >
+                                Download PNG
+                              </a>
+                            )}
+                            <a
+                              href={svgUrl}
+                              download
+                              className="px-2 py-1 text-xs border border-gray-600 rounded hover:bg-gray-700"
+                            >
+                              Download SVG
+                            </a>
+                          </>
+                        );
+                      })()}
                     </div>
                   </div>
                   <DiagramViewer svgUrl={svgUrl} />
