@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  backend:
+    name: Backend (lint + test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]" aiosqlite
+
+      - name: Lint with ruff
+        run: ruff check src/
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short --no-cov
+
+  frontend:
+    name: Frontend (build + test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: services/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+  kustomize:
+    name: Validate Kustomize overlays
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate local-dev overlay
+        run: kubectl kustomize k8s/overlays/local-dev > /dev/null
+
+      - name: Validate staging overlay
+        run: kubectl kustomize k8s/overlays/staging > /dev/null

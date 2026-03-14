@@ -1,0 +1,153 @@
+name: Build and Push
+
+on:
+  push:
+    branches: [main, master]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ghcr.io/${{ github.repository_owner }}
+
+jobs:
+  build-backend:
+    name: Build architect-backend
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(grep '^version' services/backend/pyproject.toml | head -1 | sed 's/.*"\(.*\)".*/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare build context
+        run: |
+          mkdir -p /tmp/build-backend
+          cp services/backend/Dockerfile /tmp/build-backend/
+          cp services/backend/requirements.txt /tmp/build-backend/
+          cp -r services/backend/src /tmp/build-backend/src
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: /tmp/build-backend
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ env.IMAGE_PREFIX }}/architect-backend:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_PREFIX }}/architect-backend:${{ github.sha }}
+            ${{ env.IMAGE_PREFIX }}/architect-backend:latest
+
+  build-frontend:
+    name: Build architect-frontend
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(grep '"version"' services/frontend/package.json | head -1 | sed 's/.*"\([0-9][^"]*\)".*/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: services/frontend
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ env.IMAGE_PREFIX }}/architect-frontend:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_PREFIX }}/architect-frontend:${{ github.sha }}
+            ${{ env.IMAGE_PREFIX }}/architect-frontend:latest
+
+  build-db-migrations:
+    name: Build architect-db-migrations
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(grep '^version' services/backend/pyproject.toml | head -1 | sed 's/.*"\(.*\)".*/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare build context
+        run: |
+          mkdir -p /tmp/build-db/db
+          cp db/Dockerfile /tmp/build-db/
+          cp db/requirements.txt /tmp/build-db/db/
+          cp db/alembic.ini /tmp/build-db/db/
+          cp -r db/alembic /tmp/build-db/db/alembic
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: /tmp/build-db
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ env.IMAGE_PREFIX }}/architect-db-migrations:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_PREFIX }}/architect-db-migrations:${{ github.sha }}
+            ${{ env.IMAGE_PREFIX }}/architect-db-migrations:latest
+
+  cleanup:
+    name: Cleanup old GHCR versions
+    runs-on: ubuntu-latest
+    needs: [build-backend, build-frontend, build-db-migrations]
+    permissions:
+      packages: write
+
+    steps:
+      - name: Delete old untagged versions
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: architect-backend
+          package-type: container
+          min-versions-to-keep: 10
+          delete-only-untagged-versions: true
+        continue-on-error: true
