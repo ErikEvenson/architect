@@ -1,3 +1,4 @@
+import re
 import uuid
 from pathlib import Path
 
@@ -82,7 +83,16 @@ async def _collect_sibling_artifacts(
             if svg_files:
                 svg_path = sib_output_dir / svg_files[0]
                 if svg_path.exists():
-                    entry["svg_content"] = svg_path.read_text()
+                    svg = svg_path.read_text()
+                    # Strip hardcoded width/height so CSS can control sizing
+                    svg = re.sub(r'(<svg[^>]*?)\s+width="[^"]*"', r'\1', svg)
+                    svg = re.sub(r'(<svg[^>]*?)\s+height="[^"]*"', r'\1', svg)
+                    # Remove XML declaration (not valid inside HTML)
+                    svg = re.sub(r'<\?xml[^?]*\?>\s*', '', svg)
+                    svg = re.sub(r'<!DOCTYPE[^>]*>\s*', '', svg)
+                    # Remove comments
+                    svg = re.sub(r'<!--.*?-->\s*', '', svg, flags=re.DOTALL)
+                    entry["svg_content"] = svg
 
         elif sib.artifact_type == "document" and sib.source_code:
             # Render markdown to HTML inline

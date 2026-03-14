@@ -62,6 +62,10 @@ class PDFRenderer(BaseRenderer):
             output_dir.mkdir(parents=True, exist_ok=True)
             output_path = output_dir / "report.pdf"
 
+            # Save debug HTML
+            debug_path = output_dir / "report_debug.html"
+            debug_path.write_text(html, encoding="utf-8")
+
             from weasyprint import HTML
 
             HTML(string=html).write_pdf(str(output_path))
