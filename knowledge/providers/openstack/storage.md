@@ -63,3 +63,7 @@ Storage decisions in OpenStack are among the hardest to reverse. Cinder backend 
 - **Manila share migration:** Share migration reached GA in Queens with driver-assisted migration improving in Stein. Share replication (GA in Queens) enables DR for shared filesystems. Share groups (Rocky+) allow coordinated operations on related shares.
 - **Glance multi-store (Train+):** Glance multi-store support (GA in Train) allows a single Glance deployment to manage images across multiple backend stores (e.g., Ceph for local, Swift for archival), with the ability to copy images between stores.
 - **New Cinder backend drivers:** Each release adds and updates backend drivers. Notable additions include Dell EMC PowerStore (Stein), NVMe-oF backends (Ussuri+), and continuous improvements to Ceph, NetApp, Pure Storage, and HPE drivers. Always verify driver compatibility with the target OpenStack release.
+
+## See Also
+
+- `providers/ceph/storage.md` — Ceph-specific knowledge: CRUSH maps, BlueStore, replication vs erasure coding, PG tuning, cephadm/Rook deployment, version history. Ceph is the most common Cinder/Glance/Manila backend but is also used independently outside OpenStack.
