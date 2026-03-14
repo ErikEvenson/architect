@@ -39,3 +39,69 @@ Database misconfiguration causes data loss, performance bottlenecks, and securit
 - [AWS Prescriptive Guidance: Database migration and modernization](https://docs.aws.amazon.com/dms/latest/userguide/) -- patterns for migrating to Aurora and RDS including blue-green deployments
 - [Aurora Global Database reference architecture](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html) -- cross-region disaster recovery design with sub-second RPO
 - [AWS Database Blog: Aurora Serverless v2 architecture](https://aws.amazon.com/blogs/database/) -- design patterns for Aurora Serverless v2 scaling and cost optimization
+
+## Security Group Patterns
+
+### Security Group Referencing (Recommended)
+
+Allow inbound traffic on port 5432 (PostgreSQL) or 3306 (MySQL) from the application-tier security group **by security group ID**, not by CIDR block. This is the recommended pattern because if instances change IP addresses (scaling events, replacements, failovers), access rules remain valid.
+
+```
+RDS Security Group:
+  Inbound Rule:
+    Type: PostgreSQL (TCP 5432)
+    Source: sg-0abc1234def56789 (application security group)
+```
+
+This is more maintainable and more secure than CIDR-based rules, which break when IPs change and may inadvertently allow access from unintended sources.
+
+### Private Subnet Pattern
+
+RDS should always be deployed in private subnets (subnets with no route to an internet gateway):
+
+- **Private subnets**: No internet gateway route in the subnet's route table. RDS instances are unreachable from the internet.
+- **Security group as additional layer**: Even in a private subnet, restrict inbound traffic to only the security groups that need access.
+- **Public accessibility = false**: Always set `PubliclyAccessible` to `false`. Even in a private subnet, setting this to `true` allocates a public IP and creates a DNS resolution path from the internet.
+- Defense in depth: private subnet + security group + `PubliclyAccessible=false` together provide layered protection.
+
+### EKS Pod to RDS
+
+When using Amazon VPC CNI with **Security Groups for Pods (SGP)**, pods receive their own ENI with a dedicated security group:
+
+- Assign a security group to pods via `SecurityGroupPolicy` CRD.
+- Reference the pod security group ID in the RDS security group's inbound rules.
+- This provides pod-level network isolation -- only pods with the designated security group can reach the database.
+- Without SGP, all pods share the node's security group, meaning any pod on the node can reach RDS if the node SG is allowed.
+
+### Lambda to RDS
+
+VPC-attached Lambda functions receive a security group that can be referenced in RDS security group rules:
+
+- Attach the Lambda function to the VPC and assign it a security group.
+- Add an inbound rule to the RDS security group allowing the Lambda security group on port 5432/3306.
+- **Use RDS Proxy**: Lambda functions can create many concurrent database connections due to rapid scaling. RDS Proxy pools and shares connections, preventing connection exhaustion. The Lambda security group is allowed to the RDS Proxy, and the Proxy's security group is allowed to the RDS instance.
+
+### Bastion / SSM Access
+
+For administrative database access:
+
+- **Bastion host**: Deploy a bastion in a public or private subnet with its own security group. Add an inbound rule to the RDS security group allowing the bastion's security group on the database port. Connect via SSH tunnel.
+- **SSM Session Manager port forwarding**: No security group rule is needed for SSM itself -- SSM communicates outbound to the SSM service endpoint. Use `aws ssm start-session --document-name AWS-StartPortForwardingSessionToRemoteHost` to tunnel to the RDS endpoint. The RDS security group must allow inbound from the instance running the SSM agent (its security group or the VPC CIDR).
+- SSM is preferred over bastion hosts because it eliminates the need to manage SSH keys and expose port 22.
+
+### Cross-Account Access
+
+For multi-account architectures where an application in one AWS account needs to reach RDS in another:
+
+- Establish **VPC peering** (or Transit Gateway) between the two accounts' VPCs.
+- Security group referencing works across accounts when the peering connection ID is specified: the RDS security group can reference a security group in the peered VPC using the format `account-id/sg-id` (requires the peering connection to be active and routes configured).
+- Ensure CIDR ranges do not overlap between the peered VPCs.
+- DNS resolution across the peering connection must be enabled for RDS endpoint resolution to work.
+
+### Common Security Group Mistakes
+
+- **0.0.0.0/0 on RDS security group**: Never allow all inbound traffic to a database. This is the most common and most dangerous misconfiguration.
+- **Public accessibility enabled**: Setting `PubliclyAccessible=true` allocates a public IP and makes the RDS endpoint resolvable from the internet, even if the security group is restrictive. A future SG rule change could expose the database.
+- **CIDR-based rules that break when IPs change**: Using specific IP CIDRs instead of security group references means rules become stale during scaling events, instance replacements, or failovers.
+- **Forgetting CI/CD access for migrations**: Database migration tools (Flyway, Liquibase, Alembic) running in CI/CD pipelines need database access. Allow the CI/CD runner's security group (or use SSM port forwarding from the pipeline).
+- **Overly broad VPC CIDR rules**: Allowing the entire VPC CIDR (e.g., 10.0.0.0/16) grants access to every resource in the VPC. Prefer security group references for least-privilege access.
