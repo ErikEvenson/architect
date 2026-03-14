@@ -10,8 +10,30 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
   const [dragging, setDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [fullscreen, setFullscreen] = useState(false);
+  const [svgContent, setSvgContent] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
+
+  // Fetch SVG content inline
+  useEffect(() => {
+    setLoading(true);
+    setSvgContent(null);
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+
+    fetch(svgUrl)
+      .then((res) => res.text())
+      .then((text) => {
+        // Add width/height 100% to the SVG root element so it scales
+        const patched = text.replace(
+          /<svg\s/,
+          '<svg style="width:100%;height:100%;" '
+        );
+        setSvgContent(patched);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [svgUrl]);
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
@@ -53,51 +75,44 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
     return () => document.removeEventListener("fullscreenchange", handler);
   }, []);
 
-  // Reset view when SVG changes
-  useEffect(() => {
-    setScale(1);
-    setPosition({ x: 0, y: 0 });
-  }, [svgUrl]);
-
   return (
-    <div ref={containerRef} className="relative bg-gray-700 rounded border border-gray-700 overflow-hidden">
+    <div ref={containerRef} className="relative bg-white rounded border border-gray-700 overflow-hidden">
       {/* Controls */}
       <div className="absolute top-2 right-2 z-10 flex gap-1">
         <button
           onClick={() => setScale((s) => Math.min(5, s + 0.2))}
-          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700 text-gray-200"
         >
           +
         </button>
         <button
           onClick={() => setScale((s) => Math.max(0.1, s - 0.2))}
-          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700 text-gray-200"
         >
           -
         </button>
         <button
           onClick={resetView}
-          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700 text-gray-200"
         >
           Reset
         </button>
         <button
           onClick={toggleFullscreen}
-          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700 text-gray-200"
         >
           {fullscreen ? "Exit" : "Fullscreen"}
         </button>
       </div>
 
       {/* Scale indicator */}
-      <div className="absolute bottom-2 left-2 z-10 text-xs text-gray-400 bg-gray-800/80 px-2 py-0.5 rounded">
+      <div className="absolute bottom-2 left-2 z-10 text-xs text-gray-100 bg-gray-800/80 px-2 py-0.5 rounded">
         {Math.round(scale * 100)}%
       </div>
 
       {/* SVG viewport */}
       <div
-        ref={viewportRef}
-        className="cursor-grab active:cursor-grabbing overflow-hidden"
+        className="cursor-grab active:cursor-grabbing"
         style={{ height: fullscreen ? "100vh" : "500px" }}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
@@ -105,27 +120,21 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        <div
-          style={{
-            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-            transformOrigin: "center top",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            src={svgUrl}
-            alt="Diagram"
+        {loading ? (
+          <div className="flex items-center justify-center h-full text-gray-400">Loading...</div>
+        ) : svgContent ? (
+          <div
             style={{
-              maxWidth: "100%",
-              maxHeight: "100%",
-              objectFit: "contain",
+              transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+              transformOrigin: "center top",
+              width: "100%",
+              height: "100%",
             }}
-            draggable={false}
+            dangerouslySetInnerHTML={{ __html: svgContent }}
           />
-        </div>
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">Failed to load diagram</div>
+        )}
       </div>
     </div>
   );
