@@ -1,13 +1,14 @@
-/* Make nav section headers more prominent */
+/* Make nav section headers highly prominent */
 .md-nav__item--nested > .md-nav__link {
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--md-default-fg-color--light) !important;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
-  margin-top: 0.6rem;
-  padding-top: 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #90caf9 !important;
+  border-top: 2px solid rgba(144, 202, 249, 0.3);
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.4rem;
 }
 
 /* First section header doesn't need top border */
@@ -19,13 +20,22 @@
 /* Active section header */
 .md-nav__item--nested > .md-nav__link--active,
 .md-nav__item--nested > .md-nav__link:hover {
-  color: var(--md-accent-fg-color) !important;
+  color: #42a5f5 !important;
 }
 
-/* Indent child items slightly more for clarity */
+/* Child items: smaller, normal weight, indented */
 .md-nav__item--nested .md-nav__item > .md-nav__link {
   font-weight: 400;
   text-transform: none;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: normal;
+  color: var(--md-default-fg-color--light) !important;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Active child item */
+.md-nav__item--nested .md-nav__item > .md-nav__link--active {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600;
 }
