@@ -36,48 +36,48 @@ export function ProjectDetailPage() {
     navigate(`/clients/${clientId}`);
   };
 
-  if (!project) return <div className="text-gray-500">Loading...</div>;
+  if (!project) return <div className="text-gray-400">Loading...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{project.name}</h1>
+          <h1 className="text-2xl font-bold text-gray-100">{project.name}</h1>
           <div className="flex items-center gap-2 mt-1">
             <StatusBadge status={project.status} />
             {project.cloud_providers.map((p) => (
-              <span key={p} className="text-xs bg-gray-100 px-2 py-0.5 rounded">{p}</span>
+              <span key={p} className="text-xs bg-gray-700 px-2 py-0.5 rounded">{p}</span>
             ))}
           </div>
-          {project.description && <p className="text-sm text-gray-600 mt-2">{project.description}</p>}
+          {project.description && <p className="text-sm text-gray-400 mt-2">{project.description}</p>}
         </div>
         <div className="flex gap-2">
           <Link
             to={`/clients/${clientId}/projects/${projectId}/adrs`}
-            className="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-50"
+            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
           >
             ADRs
           </Link>
           <Link
             to={`/clients/${clientId}/projects/${projectId}/questions`}
-            className="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-50"
+            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
           >
             Questions
           </Link>
           <Link
             to={`/clients/${clientId}/projects/${projectId}/compare`}
-            className="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-50"
+            className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
           >
             Compare
           </Link>
-          <button onClick={() => setConfirmDelete(true)} className="px-3 py-1.5 text-red-600 hover:text-red-800 text-sm">
+          <button onClick={() => setConfirmDelete(true)} className="px-3 py-1.5 text-red-400 hover:text-red-300 text-sm">
             Delete
           </button>
         </div>
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">Versions</h2>
+        <h2 className="text-lg font-semibold text-gray-200">Versions</h2>
         <button
           onClick={() => setShowForm(true)}
           className="px-3 py-1.5 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
@@ -87,18 +87,18 @@ export function ProjectDetailPage() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleCreateVersion} className="mb-4 bg-white p-4 rounded-lg border border-gray-200">
+        <form onSubmit={handleCreateVersion} className="mb-4 bg-gray-800 p-4 rounded-lg border border-gray-700">
           <div className="flex gap-3">
             <input
               type="text"
               value={versionNumber}
               onChange={(e) => setVersionNumber(e.target.value)}
               placeholder="Version number (e.g. 1.0.0)"
-              className="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
               autoFocus
             />
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
-            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-600">Cancel</button>
+            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-400">Cancel</button>
           </div>
         </form>
       )}
@@ -111,16 +111,16 @@ export function ProjectDetailPage() {
             <Link
               key={version.id}
               to={`/clients/${clientId}/projects/${projectId}/versions/${version.id}`}
-              className="block bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition"
+              className="block bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-gray-100">
                   v{version.version_number}
-                  {version.label && <span className="text-gray-500 font-normal ml-2">— {version.label}</span>}
+                  {version.label && <span className="text-gray-400 font-normal ml-2">— {version.label}</span>}
                 </h3>
                 <StatusBadge status={version.status} />
               </div>
-              {version.notes && <p className="text-sm text-gray-600 mt-1">{version.notes}</p>}
+              {version.notes && <p className="text-sm text-gray-400 mt-1">{version.notes}</p>}
             </Link>
           ))}
         </div>

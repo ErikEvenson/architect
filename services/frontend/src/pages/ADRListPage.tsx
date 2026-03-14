@@ -28,7 +28,7 @@ export function ADRListPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Architectural Decision Records</h1>
+        <h1 className="text-2xl font-bold text-gray-100">Architectural Decision Records</h1>
         <button
           onClick={() => setShowForm(true)}
           className="px-3 py-1.5 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
@@ -38,13 +38,13 @@ export function ADRListPage() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleCreate} className="mb-6 bg-white p-4 rounded-lg border border-gray-200 space-y-3">
+        <form onSubmit={handleCreate} className="mb-6 bg-gray-800 p-4 rounded-lg border border-gray-700 space-y-3">
           <input
             type="text"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             placeholder="Title"
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
             autoFocus
           />
           <textarea
@@ -52,25 +52,25 @@ export function ADRListPage() {
             onChange={(e) => setForm({ ...form, context: e.target.value })}
             placeholder="Context — What is the issue?"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <textarea
             value={form.decision}
             onChange={(e) => setForm({ ...form, decision: e.target.value })}
             placeholder="Decision — What was decided?"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <textarea
             value={form.consequences}
             onChange={(e) => setForm({ ...form, consequences: e.target.value })}
             placeholder="Consequences — What are the implications?"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <div className="flex gap-3">
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
-            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-600">Cancel</button>
+            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-400">Cancel</button>
           </div>
         </form>
       )}
@@ -83,15 +83,15 @@ export function ADRListPage() {
             <Link
               key={adr.id}
               to={`/clients/${clientId}/projects/${projectId}/adrs/${adr.id}`}
-              className="block bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition"
+              className="block bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-gray-100">
                   ADR-{String(adr.adr_number).padStart(3, "0")}: {adr.title}
                 </h3>
                 <StatusBadge status={adr.status} />
               </div>
-              <p className="text-sm text-gray-600 mt-1 line-clamp-2">{adr.context}</p>
+              <p className="text-sm text-gray-400 mt-1 line-clamp-2">{adr.context}</p>
             </Link>
           ))}
         </div>

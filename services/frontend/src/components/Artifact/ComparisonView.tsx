@@ -55,7 +55,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">Compare Versions</h2>
+      <h2 className="text-lg font-semibold text-gray-200 mb-4">Compare Versions</h2>
 
       <div className="grid grid-cols-2 gap-4">
         {/* Left side */}
@@ -64,7 +64,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
             <select
               value={leftVersionId}
               onChange={(e) => { setLeftVersionId(e.target.value); setLeftArtifactId(""); }}
-              className="text-sm border border-gray-300 rounded px-2 py-1 flex-1"
+              className="text-sm border border-gray-600 rounded px-2 py-1 flex-1"
             >
               <option value="">Select version...</option>
               {versions.map((v) => (
@@ -74,7 +74,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
             <select
               value={leftArtifactId}
               onChange={(e) => setLeftArtifactId(e.target.value)}
-              className="text-sm border border-gray-300 rounded px-2 py-1 flex-1"
+              className="text-sm border border-gray-600 rounded px-2 py-1 flex-1"
               disabled={!leftVersionId}
             >
               <option value="">Select artifact...</option>
@@ -86,7 +86,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
           {leftSvgUrl ? (
             <DiagramViewer svgUrl={leftSvgUrl} />
           ) : (
-            <div className="bg-gray-100 rounded border border-gray-200 h-[500px] flex items-center justify-center text-gray-400">
+            <div className="bg-gray-700 rounded border border-gray-700 h-[500px] flex items-center justify-center text-gray-400">
               Select a version and artifact
             </div>
           )}
@@ -98,7 +98,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
             <select
               value={rightVersionId}
               onChange={(e) => { setRightVersionId(e.target.value); setRightArtifactId(""); }}
-              className="text-sm border border-gray-300 rounded px-2 py-1 flex-1"
+              className="text-sm border border-gray-600 rounded px-2 py-1 flex-1"
             >
               <option value="">Select version...</option>
               {versions.map((v) => (
@@ -108,7 +108,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
             <select
               value={rightArtifactId}
               onChange={(e) => setRightArtifactId(e.target.value)}
-              className="text-sm border border-gray-300 rounded px-2 py-1 flex-1"
+              className="text-sm border border-gray-600 rounded px-2 py-1 flex-1"
               disabled={!rightVersionId}
             >
               <option value="">Select artifact...</option>
@@ -120,7 +120,7 @@ export function ComparisonView({ projectId }: ComparisonViewProps) {
           {rightSvgUrl ? (
             <DiagramViewer svgUrl={rightSvgUrl} />
           ) : (
-            <div className="bg-gray-100 rounded border border-gray-200 h-[500px] flex items-center justify-center text-gray-400">
+            <div className="bg-gray-700 rounded border border-gray-700 h-[500px] flex items-center justify-center text-gray-400">
               Select a version and artifact
             </div>
           )}

@@ -30,13 +30,13 @@ export function NavigationTree({ clients, projectsByClient, versionsByProject }:
   };
 
   return (
-    <nav className="text-sm">
+    <nav className="text-sm text-gray-300">
       {clients.map((client) => (
         <div key={client.id}>
           <button
             onClick={() => toggleClient(client.id)}
-            className={`w-full text-left px-3 py-1.5 hover:bg-gray-100 flex items-center gap-1 ${
-              params.clientId === client.id ? "font-semibold text-blue-600" : ""
+            className={`w-full text-left px-3 py-1.5 hover:bg-gray-700 flex items-center gap-1 ${
+              params.clientId === client.id ? "font-semibold text-blue-400" : ""
             }`}
           >
             <span className="text-xs">{expandedClients.has(client.id) ? "▼" : "▶"}</span>
@@ -51,8 +51,8 @@ export function NavigationTree({ clients, projectsByClient, versionsByProject }:
                 <div key={project.id}>
                   <button
                     onClick={() => toggleProject(project.id)}
-                    className={`w-full text-left px-3 py-1 hover:bg-gray-100 flex items-center gap-1 ${
-                      params.projectId === project.id ? "font-semibold text-blue-600" : ""
+                    className={`w-full text-left px-3 py-1 hover:bg-gray-700 flex items-center gap-1 ${
+                      params.projectId === project.id ? "font-semibold text-blue-400" : ""
                     }`}
                   >
                     <span className="text-xs">{expandedProjects.has(project.id) ? "▼" : "▶"}</span>
@@ -71,8 +71,8 @@ export function NavigationTree({ clients, projectsByClient, versionsByProject }:
                         <Link
                           key={version.id}
                           to={`/clients/${client.id}/projects/${project.id}/versions/${version.id}`}
-                          className={`block px-3 py-1 hover:bg-gray-100 truncate ${
-                            params.versionId === version.id ? "font-semibold text-blue-600" : ""
+                          className={`block px-3 py-1 hover:bg-gray-700 truncate ${
+                            params.versionId === version.id ? "font-semibold text-blue-400" : ""
                           }`}
                         >
                           v{version.version_number}

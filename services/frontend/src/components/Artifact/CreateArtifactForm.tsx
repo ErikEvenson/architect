@@ -19,20 +19,20 @@ export function CreateArtifactForm({ onSubmit, onCancel }: CreateArtifactFormPro
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-4 rounded-lg border border-gray-200 space-y-3">
+    <form onSubmit={handleSubmit} className="bg-gray-800 p-4 rounded-lg border border-gray-700 space-y-3">
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Artifact name"
-        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
         autoFocus
       />
       <div className="flex gap-3">
         <select
           value={artifactType}
           onChange={(e) => setArtifactType(e.target.value as Artifact["artifact_type"])}
-          className="text-sm border border-gray-300 rounded px-2 py-1.5"
+          className="text-sm border border-gray-600 rounded bg-gray-700 text-gray-100 px-2 py-1.5"
         >
           <option value="diagram">Diagram</option>
           <option value="document">Document</option>
@@ -41,7 +41,7 @@ export function CreateArtifactForm({ onSubmit, onCancel }: CreateArtifactFormPro
         <select
           value={engine}
           onChange={(e) => setEngine(e.target.value as Artifact["engine"])}
-          className="text-sm border border-gray-300 rounded px-2 py-1.5"
+          className="text-sm border border-gray-600 rounded bg-gray-700 text-gray-100 px-2 py-1.5"
         >
           <option value="diagrams_py">Python Diagrams</option>
           <option value="d2">D2</option>
@@ -51,7 +51,7 @@ export function CreateArtifactForm({ onSubmit, onCancel }: CreateArtifactFormPro
         <select
           value={detailLevel}
           onChange={(e) => setDetailLevel(e.target.value as Artifact["detail_level"])}
-          className="text-sm border border-gray-300 rounded px-2 py-1.5"
+          className="text-sm border border-gray-600 rounded bg-gray-700 text-gray-100 px-2 py-1.5"
         >
           <option value="conceptual">Conceptual</option>
           <option value="logical">Logical</option>
@@ -61,7 +61,7 @@ export function CreateArtifactForm({ onSubmit, onCancel }: CreateArtifactFormPro
       </div>
       <div className="flex gap-3">
         <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
-        <button type="button" onClick={onCancel} className="px-4 py-2 text-gray-600">Cancel</button>
+        <button type="button" onClick={onCancel} className="px-4 py-2 text-gray-400">Cancel</button>
       </div>
     </form>
   );

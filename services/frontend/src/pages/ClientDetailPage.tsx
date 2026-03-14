@@ -36,22 +36,22 @@ export function ClientDetailPage() {
     navigate("/");
   };
 
-  if (!client) return <div className="text-gray-500">Loading...</div>;
+  if (!client) return <div className="text-gray-400">Loading...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{client.name}</h1>
-          <p className="text-sm text-gray-500">{client.slug}</p>
+          <h1 className="text-2xl font-bold text-gray-100">{client.name}</h1>
+          <p className="text-sm text-gray-400">{client.slug}</p>
         </div>
-        <button onClick={() => setConfirmDelete(true)} className="px-3 py-1.5 text-red-600 hover:text-red-800 text-sm">
+        <button onClick={() => setConfirmDelete(true)} className="px-3 py-1.5 text-red-400 hover:text-red-300 text-sm">
           Delete Client
         </button>
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">Projects</h2>
+        <h2 className="text-lg font-semibold text-gray-200">Projects</h2>
         <button
           onClick={() => setShowForm(true)}
           className="px-3 py-1.5 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
@@ -61,18 +61,18 @@ export function ClientDetailPage() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleCreateProject} className="mb-4 bg-white p-4 rounded-lg border border-gray-200">
+        <form onSubmit={handleCreateProject} className="mb-4 bg-gray-800 p-4 rounded-lg border border-gray-700">
           <div className="flex gap-3">
             <input
               type="text"
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               placeholder="Project name"
-              className="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
               autoFocus
             />
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
-            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-600">Cancel</button>
+            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-400">Cancel</button>
           </div>
         </form>
       )}
@@ -85,17 +85,17 @@ export function ClientDetailPage() {
             <Link
               key={project.id}
               to={`/clients/${clientId}/projects/${project.id}`}
-              className="block bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition"
+              className="block bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-gray-900">{project.name}</h3>
+                <h3 className="font-semibold text-gray-100">{project.name}</h3>
                 <StatusBadge status={project.status} />
               </div>
-              {project.description && <p className="text-sm text-gray-600 mt-1">{project.description}</p>}
+              {project.description && <p className="text-sm text-gray-400 mt-1">{project.description}</p>}
               {project.cloud_providers.length > 0 && (
                 <div className="flex gap-1 mt-2">
                   {project.cloud_providers.map((p) => (
-                    <span key={p} className="text-xs bg-gray-100 px-2 py-0.5 rounded">{p}</span>
+                    <span key={p} className="text-xs bg-gray-700 px-2 py-0.5 rounded">{p}</span>
                   ))}
                 </div>
               )}

@@ -53,37 +53,37 @@ export function DiagramViewer({ svgUrl }: DiagramViewerProps) {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-gray-100 rounded border border-gray-200 overflow-hidden">
+    <div ref={containerRef} className="relative bg-gray-700 rounded border border-gray-700 overflow-hidden">
       {/* Controls */}
       <div className="absolute top-2 right-2 z-10 flex gap-1">
         <button
           onClick={() => setScale((s) => Math.min(5, s + 0.2))}
-          className="px-2 py-1 bg-white border border-gray-300 rounded text-sm hover:bg-gray-50"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
         >
           +
         </button>
         <button
           onClick={() => setScale((s) => Math.max(0.1, s - 0.2))}
-          className="px-2 py-1 bg-white border border-gray-300 rounded text-sm hover:bg-gray-50"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
         >
           -
         </button>
         <button
           onClick={resetView}
-          className="px-2 py-1 bg-white border border-gray-300 rounded text-sm hover:bg-gray-50"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
         >
           Reset
         </button>
         <button
           onClick={toggleFullscreen}
-          className="px-2 py-1 bg-white border border-gray-300 rounded text-sm hover:bg-gray-50"
+          className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm hover:bg-gray-700"
         >
           {fullscreen ? "Exit" : "Fullscreen"}
         </button>
       </div>
 
       {/* Scale indicator */}
-      <div className="absolute bottom-2 left-2 z-10 text-xs text-gray-500 bg-white/80 px-2 py-0.5 rounded">
+      <div className="absolute bottom-2 left-2 z-10 text-xs text-gray-400 bg-gray-800/80 px-2 py-0.5 rounded">
         {Math.round(scale * 100)}%
       </div>
 

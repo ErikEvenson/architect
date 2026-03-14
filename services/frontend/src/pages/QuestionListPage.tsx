@@ -53,9 +53,9 @@ export function QuestionListPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Questions</h1>
+          <h1 className="text-2xl font-bold text-gray-100">Questions</h1>
           {openCount > 0 && (
-            <p className="text-sm text-orange-600 mt-1">{openCount} open question{openCount !== 1 ? "s" : ""}</p>
+            <p className="text-sm text-orange-400 mt-1">{openCount} open question{openCount !== 1 ? "s" : ""}</p>
           )}
         </div>
         <button
@@ -71,7 +71,7 @@ export function QuestionListPage() {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="text-sm border border-gray-300 rounded px-2 py-1"
+          className="text-sm border border-gray-600 rounded bg-gray-700 text-gray-100 px-2 py-1"
         >
           <option value="">All statuses</option>
           <option value="open">Open</option>
@@ -81,19 +81,19 @@ export function QuestionListPage() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleCreate} className="mb-6 bg-white p-4 rounded-lg border border-gray-200 space-y-3">
+        <form onSubmit={handleCreate} className="mb-6 bg-gray-800 p-4 rounded-lg border border-gray-700 space-y-3">
           <textarea
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
             placeholder="What needs to be clarified?"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
             autoFocus
           />
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="text-sm border border-gray-300 rounded px-2 py-1"
+            className="text-sm border border-gray-600 rounded bg-gray-700 text-gray-100 px-2 py-1"
           >
             {CATEGORIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -101,7 +101,7 @@ export function QuestionListPage() {
           </select>
           <div className="flex gap-3">
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
-            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-600">Cancel</button>
+            <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-gray-400">Cancel</button>
           </div>
         </form>
       )}
@@ -111,11 +111,11 @@ export function QuestionListPage() {
       ) : (
         <div className="space-y-3">
           {questions.map((q) => (
-            <div key={q.id} className="bg-white p-4 rounded-lg border border-gray-200">
+            <div key={q.id} className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <StatusBadge status={q.status} />
-                  <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">{q.category}</span>
+                  <span className="text-xs bg-gray-700 px-2 py-0.5 rounded">{q.category}</span>
                 </div>
                 {q.status === "open" && (
                   <button
@@ -126,9 +126,9 @@ export function QuestionListPage() {
                   </button>
                 )}
               </div>
-              <p className="text-gray-900 font-medium">{q.question_text}</p>
+              <p className="text-gray-100 font-medium">{q.question_text}</p>
               {q.answer_text && (
-                <div className="mt-2 pl-3 border-l-2 border-green-300">
+                <div className="mt-2 pl-3 border-l-2 border-green-700">
                   <p className="text-sm text-gray-700">{q.answer_text}</p>
                 </div>
               )}
@@ -139,16 +139,16 @@ export function QuestionListPage() {
                     value={answerText}
                     onChange={(e) => setAnswerText(e.target.value)}
                     placeholder="Type answer..."
-                    className="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 px-3 py-1.5 border border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                     autoFocus
                   />
                   <button
                     onClick={() => handleAnswer(q.id)}
-                    className="px-3 py-1.5 bg-green-600 text-white text-sm rounded hover:bg-green-700"
+                    className="px-3 py-1.5 bg-green-700 text-white text-sm rounded hover:bg-green-600"
                   >
                     Submit
                   </button>
-                  <button onClick={() => setAnsweringId(null)} className="px-3 py-1.5 text-gray-600 text-sm">
+                  <button onClick={() => setAnsweringId(null)} className="px-3 py-1.5 text-gray-400 text-sm">
                     Cancel
                   </button>
                 </div>

@@ -4,11 +4,11 @@ import { ComparisonView } from "../components/Artifact/ComparisonView";
 export function ComparisonPage() {
   const { projectId } = useParams<{ projectId: string }>();
 
-  if (!projectId) return <div className="text-gray-500">Missing parameters</div>;
+  if (!projectId) return <div className="text-gray-400">Missing parameters</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Version Comparison</h1>
+      <h1 className="text-2xl font-bold text-gray-100 mb-6">Version Comparison</h1>
       <ComparisonView projectId={projectId} />
     </div>
   );

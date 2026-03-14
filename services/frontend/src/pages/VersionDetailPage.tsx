@@ -87,7 +87,7 @@ export function VersionDetailPage() {
     setDeleteTarget(null);
   };
 
-  if (!version) return <div className="text-gray-500">Loading...</div>;
+  if (!version) return <div className="text-gray-400">Loading...</div>;
 
   const svgFile = selected?.output_paths.find((p) => p.endsWith(".svg"));
   const svgUrl = svgFile && versionId
@@ -97,9 +97,9 @@ export function VersionDetailPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-gray-100">
           v{version.version_number}
-          {version.label && <span className="text-gray-500 font-normal ml-2">— {version.label}</span>}
+          {version.label && <span className="text-gray-400 font-normal ml-2">— {version.label}</span>}
         </h1>
         <div className="flex items-center gap-2 mt-1">
           <StatusBadge status={version.status} />
@@ -110,11 +110,11 @@ export function VersionDetailPage() {
         {/* Left panel: artifact list */}
         <div className="w-72 shrink-0">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-gray-800">Artifacts</h2>
+            <h2 className="text-lg font-semibold text-gray-200">Artifacts</h2>
             <div className="flex gap-1">
               <button
                 onClick={() => setShowCloneFrom(!showCloneFrom)}
-                className="px-2 py-1 border border-gray-300 text-xs rounded hover:bg-gray-50"
+                className="px-2 py-1 border border-gray-600 text-xs rounded hover:bg-gray-700"
               >
                 Clone
               </button>
@@ -128,8 +128,8 @@ export function VersionDetailPage() {
           </div>
 
           {showCloneFrom && (
-            <div className="mb-3 bg-white p-3 rounded-lg border border-gray-200">
-              <p className="text-sm text-gray-600 mb-2">Clone artifacts from:</p>
+            <div className="mb-3 bg-gray-800 p-3 rounded-lg border border-gray-700">
+              <p className="text-sm text-gray-400 mb-2">Clone artifacts from:</p>
               <div className="space-y-1">
                 {allVersions
                   .filter((v) => v.id !== versionId)
@@ -137,13 +137,13 @@ export function VersionDetailPage() {
                     <button
                       key={v.id}
                       onClick={() => handleCloneFrom(v.id)}
-                      className="block w-full text-left px-3 py-1.5 text-sm hover:bg-gray-50 rounded"
+                      className="block w-full text-left px-3 py-1.5 text-sm hover:bg-gray-700 rounded"
                     >
                       v{v.version_number}{v.label ? ` — ${v.label}` : ""}
                     </button>
                   ))}
               </div>
-              <button onClick={() => setShowCloneFrom(false)} className="mt-2 text-xs text-gray-500">Cancel</button>
+              <button onClick={() => setShowCloneFrom(false)} className="mt-2 text-xs text-gray-400">Cancel</button>
             </div>
           )}
 
@@ -166,19 +166,19 @@ export function VersionDetailPage() {
           {selected ? (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900">{selected.name}</h3>
+                <h3 className="text-lg font-semibold text-gray-100">{selected.name}</h3>
                 <div className="flex items-center gap-2">
                   <StatusBadge status={selected.render_status} />
                   <button
                     onClick={handleSaveSource}
-                    className="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-50"
+                    className="px-3 py-1.5 text-sm border border-gray-600 rounded hover:bg-gray-700"
                   >
                     Save
                   </button>
                   <button
                     onClick={handleRender}
                     disabled={rendering || !sourceCode.trim()}
-                    className="px-3 py-1.5 text-sm bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+                    className="px-3 py-1.5 text-sm bg-green-700 text-white rounded hover:bg-green-600 disabled:opacity-50"
                   >
                     {rendering ? "Rendering..." : "Render"}
                   </button>
@@ -187,7 +187,7 @@ export function VersionDetailPage() {
 
               {/* Source editor */}
               <div>
-                <h4 className="text-sm font-medium text-gray-600 mb-1">Source Code</h4>
+                <h4 className="text-sm font-medium text-gray-400 mb-1">Source Code</h4>
                 <CodeEditor
                   value={sourceCode}
                   onChange={setSourceCode}
@@ -197,22 +197,22 @@ export function VersionDetailPage() {
 
               {/* Render error */}
               {selected.render_status === "error" && selected.render_error && (
-                <div className="bg-red-50 border border-red-200 rounded p-3">
-                  <h4 className="text-sm font-medium text-red-800 mb-1">Render Error</h4>
-                  <pre className="text-xs text-red-700 whitespace-pre-wrap">{selected.render_error}</pre>
+                <div className="bg-red-900/30 border border-red-800 rounded p-3">
+                  <h4 className="text-sm font-medium text-red-300 mb-1">Render Error</h4>
+                  <pre className="text-xs text-red-400 whitespace-pre-wrap">{selected.render_error}</pre>
                 </div>
               )}
 
               {/* Diagram viewer */}
               {selected.render_status === "success" && svgUrl && (
                 <div>
-                  <h4 className="text-sm font-medium text-gray-600 mb-1">Output</h4>
+                  <h4 className="text-sm font-medium text-gray-400 mb-1">Output</h4>
                   <DiagramViewer svgUrl={svgUrl} />
                 </div>
               )}
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-gray-400">
               Select an artifact or create a new one.
             </div>
           )}

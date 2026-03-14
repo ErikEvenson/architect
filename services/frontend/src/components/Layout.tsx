@@ -29,22 +29,22 @@ export function Layout() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-gray-900">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shrink-0">
+      <header className="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <button onClick={toggleSidebar} className="text-gray-500 hover:text-gray-700 p-1">
+          <button onClick={toggleSidebar} className="text-gray-400 hover:text-gray-200 p-1">
             ☰
           </button>
-          <Link to="/" className="text-lg font-semibold text-gray-900">Architect</Link>
+          <Link to="/" className="text-lg font-semibold text-gray-100">Architect</Link>
         </div>
       </header>
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         {!sidebarCollapsed && (
-          <aside className="w-64 bg-gray-50 border-r border-gray-200 overflow-y-auto shrink-0">
-            <div className="p-3 border-b border-gray-200">
+          <aside className="w-64 bg-gray-800 border-r border-gray-700 overflow-y-auto shrink-0">
+            <div className="p-3 border-b border-gray-700">
               <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Projects</h2>
             </div>
             <NavigationTree
@@ -56,7 +56,7 @@ export function Layout() {
         )}
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-900">
           <Outlet />
         </main>
       </div>
