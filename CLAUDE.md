@@ -39,6 +39,7 @@ Write tests derived from specs BEFORE implementation. Write code to make tests p
 
 ## Key Rules
 
+- **NEVER commit credentials, secrets, or sensitive data to the repo.** This includes: API keys, passwords, tokens, certificates, private keys, .env files, kubeconfig files, service account JSON files, database connection strings with passwords. The repo is public — any committed secret is compromised. If a secret is accidentally committed, rotate it immediately.
 - **No project data in the git repo.** All runtime data is externalized (PostgreSQL PVC, output PVC). `data/` is gitignored.
 - **Secrets as mounted files**, not environment variables.
 - **Non-root containers** with read-only root filesystem and dropped capabilities.

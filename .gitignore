@@ -29,10 +29,20 @@ coverage/
 *.pfx
 *.jks
 
-# Secrets
+# Secrets and credentials — NEVER commit these
 .env
+.env.*
 secrets.yaml
 architect-secrets.yaml
+credentials.json
+*-credentials.json
+*.credentials
+service-account*.json
+kubeconfig
+kubeconfig.yaml
+*-kubeconfig.yaml
+token
+*.token
 
 # IDE
 .idea/
