@@ -112,7 +112,7 @@ pre code { background: none; padding: 0; color: inherit; }
 </html>"""
 
 
-@router.post("/export-pdf")
+@router.get("/export-pdf")
 async def export_artifact_pdf(
     version_id: uuid.UUID,
     artifact_id: uuid.UUID,
