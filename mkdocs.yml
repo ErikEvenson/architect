@@ -45,6 +45,7 @@ nav:
     - Workload Migration: general/workload-migration.md
     - Dev DNS Patterns: general/dns-dev-patterns.md
     - TLS Certificates: general/tls-certificates.md
+    - Hardware Sizing: general/hardware-sizing.md
     - IaC Planning: general/iac-planning.md
     - Data Migration Tools: general/data-migration-tools.md
     - Cloud Service Mapping: general/cloud-service-mapping.md
@@ -127,6 +128,8 @@ nav:
     - Platform Services: providers/openstack/platform-services.md
     - Observability: providers/openstack/observability.md
     - Heat (IaC): providers/openstack/heat.md
+    - Deployment Tools: providers/openstack/deployment-tools.md
+    - Control Plane HA: providers/openstack/control-plane-ha.md
   - OpenShift:
     - Infrastructure: providers/openshift/infrastructure.md
     - Compute: providers/openshift/compute.md
