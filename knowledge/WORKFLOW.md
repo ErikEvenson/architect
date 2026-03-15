@@ -193,13 +193,44 @@ Create a comprehensive design document artifact that compiles all project data:
 - Architecture diagrams (embedded as images)
 - Infrastructure details (components table, configuration)
 - Service descriptions and dependencies
+- **Implementation details per component** (see below)
 - Cost estimate (with version comparison if applicable)
 - IaC plan (tool, module structure, resource inventory with complexity, effort estimate)
 - Resilience and data protection (HA, backup, RPO/RTO)
-- IaC plan (tool, module structure, resource inventory with complexity, effort estimate)
 - POC to Production gap (if POC pattern)
 - Coverage checklist (which knowledge categories were addressed, deferred, or N/A)
 - Success criteria
+
+**MANDATORY: Implementation Details from Knowledge Library**
+
+For EVERY major component in the architecture (each database, compute tier, network element, storage, security control, monitoring system), generate an implementation detail section by:
+
+1. **Cross-reference the relevant knowledge file** for that component
+2. **Extract Critical and Recommended checklist items** that apply
+3. **Generate a configuration table** with specific settings, not just the decision name:
+   - Setting name
+   - Recommended value (based on project context: scale, RPO/RTO, compliance)
+   - Rationale
+4. **Include security configuration** from the knowledge file
+5. **Include monitoring/alerting recommendations**
+6. **Include common mistakes to avoid** from failure pattern files
+7. **Consult vendor documentation** (via reference links) for current best practices
+
+Example — instead of just "Aurora Multi-AZ", include:
+
+| Setting | Value | Rationale |
+|---------|-------|-----------|
+| Engine | Aurora PostgreSQL 16 | Latest stable |
+| Instance class | db.r6g.xlarge | Sized for workload |
+| Multi-AZ | Enabled | RPO requirement |
+| Backup retention | 14 days | Enterprise standard |
+| Encryption | KMS CMK | At-rest encryption |
+| Enhanced monitoring | 60s | Performance visibility |
+| Performance Insights | Enabled | Query analysis |
+| Security group | Allow 5432 from app SG only | Least privilege |
+| Deletion protection | Enabled | Prevent accidents |
+
+This transforms the design document from a decision summary into an implementation-ready specification.
 
 The design document should be auto-generated from the API data — not written manually.
 
