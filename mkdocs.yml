@@ -46,6 +46,7 @@ nav:
     - Dev DNS Patterns: general/dns-dev-patterns.md
     - TLS Certificates: general/tls-certificates.md
     - Hardware Sizing: general/hardware-sizing.md
+    - STIG Hardening: general/stig-hardening.md
     - IaC Planning: general/iac-planning.md
     - Data Migration Tools: general/data-migration-tools.md
     - Cloud Service Mapping: general/cloud-service-mapping.md
@@ -118,6 +119,8 @@ nav:
     - Security: providers/vmware/security.md
     - Platform Services: providers/vmware/platform-services.md
     - Observability: providers/vmware/observability.md
+    - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
+    - Licensing: providers/vmware/licensing.md
   - OpenStack:
     - Infrastructure: providers/openstack/infrastructure.md
     - Compute: providers/openstack/compute.md
