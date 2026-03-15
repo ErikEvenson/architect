@@ -123,6 +123,9 @@ nav:
     - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
     - Licensing: providers/vmware/licensing.md
     - NSX DFW Design: providers/vmware/nsx-dfw-design.md
+    - VMC on AWS: providers/vmware/vmc-aws.md
+    - Azure VMware Solution: providers/vmware/avs-azure.md
+    - GCVE (GCP): providers/vmware/gcve-gcp.md
   - OpenStack:
     - Infrastructure: providers/openstack/infrastructure.md
     - Compute: providers/openstack/compute.md

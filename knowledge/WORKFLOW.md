@@ -71,6 +71,16 @@ For each checklist item:
 - If the answer implies an architectural decision, create an ADR IMMEDIATELY via `POST /versions/{id}/adrs`
 - Track coverage via `POST /versions/{id}/coverage` (record which item was addressed)
 
+**MANDATORY: Hosting Model Question (for on-prem platforms)**
+
+If the project uses VMware, Nutanix, or OpenStack, ask this Critical question FIRST before any infrastructure questions:
+
+- **VMware**: "On-premises, VMware Cloud on AWS, Azure VMware Solution, or Google Cloud VMware Engine?"
+- **Nutanix**: "On-premises or Nutanix Cloud Clusters (NC2) on AWS/Azure?"
+- **OpenStack**: "Self-hosted or hosted OpenStack provider?"
+
+This determines the entire infrastructure layer — on-prem requires physical hardware design, cloud-hosted eliminates it entirely.
+
 **MANDATORY: Category Coverage Gate**
 
 Before proceeding to Step 6 (diagrams), verify ALL applicable knowledge categories have been addressed. Print this full checklist and confirm each:
