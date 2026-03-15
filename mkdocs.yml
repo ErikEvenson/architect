@@ -70,6 +70,7 @@ nav:
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
     - Route 53: providers/aws/route53.md
+    - Multi-Account Strategy: providers/aws/multi-account.md
     - CloudFormation: providers/aws/cloudformation.md
     - CDK: providers/aws/cdk.md
   - Azure:
