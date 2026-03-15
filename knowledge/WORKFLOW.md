@@ -73,22 +73,45 @@ For each checklist item:
 
 **MANDATORY: Category Coverage Gate**
 
-Before proceeding to Step 6 (diagrams), verify ALL general knowledge categories have been addressed. Print this checklist and confirm each:
+Before proceeding to Step 6 (diagrams), verify ALL applicable knowledge categories have been addressed. Print this full checklist and confirm each:
 
 ```
-Category Coverage:
-[ ] Compute — instance types, scaling, HA
+General Categories:
+[ ] Compute — instance types, sizing, scaling, HA
 [ ] Networking — segmentation, load balancing, DNS, CDN
 [ ] Data — database, backup, replication, encryption
-[ ] Security — access control, secrets, encryption, compliance
+[ ] Security — access control, secrets, encryption
 [ ] Observability — monitoring, logging, alerting
 [ ] Disaster Recovery — RPO/RTO, failover, backup strategy
 [ ] Cost — budget, estimates, optimization
 [ ] Deployment — CI/CD, IaC tool, strategy
 [ ] Identity — authentication, authorization
+[ ] Physical Infrastructure — host sizing, network switches (if on-prem)
+
+Provider-Specific (list each loaded provider file):
+[ ] {provider}/compute — provider-specific compute items
+[ ] {provider}/networking — provider-specific networking items
+[ ] {provider}/storage — provider-specific storage items
+[ ] {provider}/security — provider-specific security items
+[ ] {provider}/observability — provider-specific monitoring items
+[ ] {provider}/data-protection — provider-specific backup/DR items
+[ ] {provider}/* — any other provider files loaded
+
+Pattern-Specific (if applicable):
+[ ] {pattern} — all checklist items from the pattern file
+
+Compliance (if applicable):
+[ ] {compliance framework} — all Critical items from the compliance file
+
+Failure Patterns:
+[ ] failures/networking — verified no networking anti-patterns
+[ ] failures/data — verified no data anti-patterns
+[ ] failures/scaling — verified no scaling anti-patterns
+[ ] failures/security — verified no security anti-patterns
+[ ] failures/deployment — verified no deployment anti-patterns
 ```
 
-Plus pattern-specific and provider-specific categories. Do NOT proceed to diagrams if any category shows uncovered Critical items.
+Do NOT proceed to diagrams if any category shows uncovered Critical items. Record all coverage items via `POST /versions/{id}/coverage`.
 
 ### Step 5: Gap Analysis
 
