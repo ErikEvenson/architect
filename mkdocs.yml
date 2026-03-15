@@ -50,6 +50,7 @@ nav:
     - IaC Planning: general/iac-planning.md
     - Data Migration Tools: general/data-migration-tools.md
     - Cloud Service Mapping: general/cloud-service-mapping.md
+    - Enterprise Backup: general/enterprise-backup.md
     - Load Balancing (On-Prem): general/load-balancing-onprem.md
     - Physical Networking: general/networking-physical.md
     - Cost Modeling (On-Prem): general/cost-onprem.md
@@ -121,6 +122,7 @@ nav:
     - Observability: providers/vmware/observability.md
     - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
     - Licensing: providers/vmware/licensing.md
+    - NSX DFW Design: providers/vmware/nsx-dfw-design.md
   - OpenStack:
     - Infrastructure: providers/openstack/infrastructure.md
     - Compute: providers/openstack/compute.md
