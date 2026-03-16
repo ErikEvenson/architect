@@ -3,19 +3,19 @@
 ## Checklist
 
 - [ ] **[Critical]** Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Flex Consumption (per-function scaling, VNet integration, fast scaling with always-ready instances, GA November 2024) vs Premium (pre-warmed instances, full VNet integration) vs Dedicated (App Service plan, predictable cost)?
-- [ ] Are Durable Functions used for stateful orchestration patterns -- function chaining, fan-out/fan-in, async HTTP APIs, monitoring, and human interaction workflows?
-- [ ] Are Azure Functions bindings and triggers configured to minimize boilerplate -- input/output bindings for Blob Storage, Cosmos DB, Service Bus, and Event Hubs instead of SDK calls?
-- [ ] Is Azure Logic Apps (Standard or Consumption) deployed for low-code workflow automation with 400+ managed connectors for SaaS, on-premises, and Azure service integration?
-- [ ] Is Azure Event Grid configured as the event backbone with system topics for Azure resource events and custom topics for application-domain events?
-- [ ] Is Azure Service Bus deployed for enterprise messaging with queues (point-to-point) and topics/subscriptions (pub/sub) with dead-letter queues, sessions, and duplicate detection enabled?
+- [ ] **[Recommended]** Are Durable Functions used for stateful orchestration patterns -- function chaining, fan-out/fan-in, async HTTP APIs, monitoring, and human interaction workflows?
+- [ ] **[Recommended]** Are Azure Functions bindings and triggers configured to minimize boilerplate -- input/output bindings for Blob Storage, Cosmos DB, Service Bus, and Event Hubs instead of SDK calls?
+- [ ] **[Recommended]** Is Azure Logic Apps (Standard or Consumption) deployed for low-code workflow automation with 400+ managed connectors for SaaS, on-premises, and Azure service integration?
+- [ ] **[Recommended]** Is Azure Event Grid configured as the event backbone with system topics for Azure resource events and custom topics for application-domain events?
+- [ ] **[Recommended]** Is Azure Service Bus deployed for enterprise messaging with queues (point-to-point) and topics/subscriptions (pub/sub) with dead-letter queues, sessions, and duplicate detection enabled?
 - [ ] **[Critical]** Is Azure Event Hubs configured for high-throughput streaming ingestion with appropriate partition count (can be increased up to 1024 in Premium/Dedicated tiers but cannot be decreased) and consumer groups per downstream processor?
-- [ ] Is Event Hubs Capture enabled to automatically archive streaming events to Blob Storage or Data Lake Gen2 in Avro format for long-term retention and batch processing?
-- [ ] Are retry policies and dead-letter destinations configured for all messaging components -- Event Grid (retry + dead-letter to storage), Service Bus (max delivery count + dead-letter queue), Functions (retry policy)?
-- [ ] Is VNet integration enabled for Premium Azure Functions and Logic Apps Standard to access private endpoints and on-premises resources through VNet?
-- [ ] Are function app slots configured for production deployments with slot-based deployment swaps and pre-warm verification?
-- [ ] Are Event Grid event subscriptions filtered with subject and advanced filters to minimize unnecessary function invocations and reduce cost?
-- [ ] Is Service Bus configured with appropriate tier -- Basic (queues only) vs Standard (queues + topics, 256KB messages) vs Premium (dedicated capacity, 100MB messages, VNet integration)?
-- [ ] Are idempotency patterns implemented across all event-driven functions, handling at-least-once delivery guarantees from Event Grid, Service Bus, and Event Hubs?
+- [ ] **[Recommended]** Is Event Hubs Capture enabled to automatically archive streaming events to Blob Storage or Data Lake Gen2 in Avro format for long-term retention and batch processing?
+- [ ] **[Critical]** Are retry policies and dead-letter destinations configured for all messaging components -- Event Grid (retry + dead-letter to storage), Service Bus (max delivery count + dead-letter queue), Functions (retry policy)?
+- [ ] **[Recommended]** Is VNet integration enabled for Premium or Flex Consumption Azure Functions and Logic Apps Standard to access private endpoints and on-premises resources through VNet?
+- [ ] **[Recommended]** Are function app slots configured for production deployments with slot-based deployment swaps and pre-warm verification?
+- [ ] **[Optional]** Are Event Grid event subscriptions filtered with subject and advanced filters to minimize unnecessary function invocations and reduce cost?
+- [ ] **[Recommended]** Is Service Bus configured with appropriate tier -- Basic (queues only) vs Standard (queues + topics, 256KB messages) vs Premium (dedicated capacity, 100MB messages, VNet integration)?
+- [ ] **[Critical]** Are idempotency patterns implemented across all event-driven functions, handling at-least-once delivery guarantees from Event Grid, Service Bus, and Event Hubs?
 
 ## Why This Matters
 

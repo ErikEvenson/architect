@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Are Virtual Machine Scale Sets (VMSS) with Flexible orchestration used instead of standalone VMs for production workloads requiring auto-scaling?
-- [ ] Are availability zones used for zone-redundant deployments, with VMs spread across at least 2 zones (3 recommended)?
-- [ ] Is the VM SKU selected from the appropriate family? (D-series general purpose, E-series memory-optimized, F-series compute-optimized, L-series storage-optimized)
-- [ ] Are managed disks used for all VMs with the appropriate tier? (Premium SSD v2 for performance, Premium SSD for production, Standard SSD for dev/test)
-- [ ] Is Azure Bastion deployed for secure administrative access, eliminating public IP addresses on VMs?
+- [ ] **[Critical]** Are Virtual Machine Scale Sets (VMSS) with Flexible orchestration used instead of standalone VMs for production workloads requiring auto-scaling?
+- [ ] **[Critical]** Are availability zones used for zone-redundant deployments, with VMs spread across at least 2 zones (3 recommended)?
+- [ ] **[Critical]** Is the VM SKU selected from the appropriate family? (D-series general purpose, E-series memory-optimized, F-series compute-optimized, L-series storage-optimized, DCas/ECas Confidential VMs for TEE workloads, Cobalt 100 Dps/Eps Arm-based for cost-efficient Linux)
+- [ ] **[Recommended]** Are managed disks used for all VMs with the appropriate tier? (Premium SSD v2 for performance, Premium SSD for production, Standard SSD for dev/test)
+- [ ] **[Recommended]** Is Azure Bastion deployed for secure administrative access, eliminating public IP addresses on VMs?
 - [ ] **[Recommended]** Are VM images built via a pipeline using Azure Image Builder or Packer with Azure Compute Gallery (formerly Shared Image Gallery) for distribution?
-- [ ] Is accelerated networking enabled on supported VM SKUs for lower latency and higher throughput?
-- [ ] Are Spot VMs evaluated for fault-tolerant workloads with eviction policies and max price configured?
-- [ ] Is Azure Autoscale configured with appropriate metrics (CPU, memory, queue depth) and scale-in protection for in-flight work?
-- [ ] Are proximity placement groups used for latency-sensitive workloads that need VMs co-located in the same datacenter?
-- [ ] Is boot diagnostics enabled and serial console access configured for VM troubleshooting?
-- [ ] Are OS and data disks encrypted with Azure Disk Encryption (ADE) or server-side encryption (SSE) with customer-managed keys?
-- [ ] Is Azure Update Management or Update Manager configured for automated OS patching with maintenance windows?
-- [ ] Is the Azure VM Agent installed and healthy, with VM extensions (monitoring, antimalware, custom script) managed via policy?
+- [ ] **[Recommended]** Is accelerated networking enabled on supported VM SKUs for lower latency and higher throughput?
+- [ ] **[Optional]** Are Spot VMs evaluated for fault-tolerant workloads with eviction policies and max price configured?
+- [ ] **[Recommended]** Is Azure Autoscale configured with appropriate metrics (CPU, memory, queue depth) and scale-in protection for in-flight work?
+- [ ] **[Optional]** Are proximity placement groups used for latency-sensitive workloads that need VMs co-located in the same datacenter?
+- [ ] **[Recommended]** Is boot diagnostics enabled and serial console access configured for VM troubleshooting?
+- [ ] **[Critical]** Are OS and data disks encrypted with Azure Disk Encryption (ADE) or server-side encryption (SSE) with customer-managed keys?
+- [ ] **[Recommended]** Is Azure Update Management or Update Manager configured for automated OS patching with maintenance windows?
+- [ ] **[Recommended]** Is the Azure VM Agent installed and healthy, with VM extensions (monitoring, antimalware, custom script) managed via policy?
 
 ## Why This Matters
 

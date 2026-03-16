@@ -2,19 +2,21 @@
 
 ## Checklist
 
-- [ ] Choose API Gateway type: REST API (feature-rich, API keys, usage plans, WAF) vs HTTP API (lower cost, simpler, JWT authorizer) vs WebSocket API (real-time bidirectional)
-- [ ] Configure Lambda memory (128 MB-10,240 MB) understanding that CPU scales proportionally with memory allocation
-- [ ] Set function timeout appropriately (max 15 minutes); use Step Functions for longer workflows
-- [ ] Evaluate cold start impact: language runtime choice (Python/Node.js ~200ms vs Java/C# ~1-3s), VPC attachment adds ENI creation time, package size affects init duration
-- [ ] Enable provisioned concurrency for latency-sensitive functions that cannot tolerate cold starts (billed per GB-hour even when idle)
-- [ ] Configure reserved concurrency to prevent a single function from consuming the entire account-level concurrency limit (default 1,000)
-- [ ] Use Lambda layers for shared dependencies (max 5 layers, 250 MB unzipped total); prefer container images (up to 10 GB) for large dependencies
-- [ ] Set up dead letter queues (SQS or SNS) for async invocations to capture failed events after retry exhaustion (2 automatic retries)
-- [ ] Design idempotent handlers since Lambda may invoke functions more than once; use Powertools for idempotency with DynamoDB
-- [ ] Use Lambda@Edge (Node.js/Python, up to 5s at origin, 30s at viewer) or CloudFront Functions (JavaScript, sub-millisecond, viewer events only) for edge compute
-- [ ] Choose deployment framework: SAM (CloudFormation-based, Lambda-focused), CDK (imperative, multi-resource), Serverless Framework (plugin ecosystem), or Terraform
-- [ ] Design Step Functions workflows using Standard (up to 1 year, exactly-once) vs Express (up to 5 minutes, at-least-once) based on duration and execution guarantees
-- [ ] Configure VPC-attached Lambda only when accessing VPC resources (RDS, ElastiCache); uses Hyperplane ENIs with improved cold start since 2019 but still adds latency
+- [ ] **[Critical]** Choose API Gateway type: REST API (feature-rich, API keys, usage plans, WAF) vs HTTP API (lower cost, simpler, JWT authorizer) vs WebSocket API (real-time bidirectional)
+- [ ] **[Critical]** Configure Lambda memory (128 MB-10,240 MB) understanding that CPU scales proportionally with memory allocation
+- [ ] **[Critical]** Set function timeout appropriately (max 15 minutes); use Step Functions for longer workflows
+- [ ] **[Recommended]** Evaluate cold start impact: language runtime choice (Python/Node.js ~200ms vs Java/C# ~1-3s), VPC attachment adds ENI creation time, package size affects init duration
+- [ ] **[Recommended]** Enable Lambda SnapStart for Java, Python, and .NET functions to reduce cold start latency to sub-200ms by snapshotting initialized execution environments; no additional cost, must opt in per function version
+- [ ] **[Optional]** Enable provisioned concurrency for latency-sensitive functions that cannot tolerate cold starts (billed per GB-hour even when idle); consider SnapStart first as a free alternative for supported runtimes
+- [ ] **[Recommended]** Configure reserved concurrency to prevent a single function from consuming the entire account-level concurrency limit (default 1,000 per account per region; can be increased to tens of thousands via quota request)
+- [ ] **[Recommended]** Use Lambda layers for shared dependencies (max 5 layers, 250 MB unzipped total); prefer container images (up to 10 GB) for large dependencies
+- [ ] **[Critical]** Set up dead letter queues (SQS or SNS) for async invocations to capture failed events after retry exhaustion (2 automatic retries)
+- [ ] **[Critical]** Design idempotent handlers since Lambda may invoke functions more than once; use Powertools for idempotency with DynamoDB
+- [ ] **[Recommended]** Use Lambda@Edge (Node.js/Python, up to 5s at viewer request/response, up to 30s at origin request/response) or CloudFront Functions (JavaScript, sub-millisecond, viewer events only) for edge compute
+- [ ] **[Recommended]** Evaluate Lambda function URLs for simple HTTPS endpoints without API Gateway; supports IAM auth or no auth, streaming responses, and CORS configuration -- suitable for webhooks, single-function microservices, and internal APIs where API Gateway features are not needed
+- [ ] **[Recommended]** Choose deployment framework: SAM (CloudFormation-based, Lambda-focused), CDK (imperative, multi-resource), Serverless Framework (plugin ecosystem), or Terraform
+- [ ] **[Recommended]** Design Step Functions workflows using Standard (up to 1 year, exactly-once) vs Express (up to 5 minutes, at-least-once) based on duration and execution guarantees
+- [ ] **[Recommended]** Configure VPC-attached Lambda only when accessing VPC resources (RDS, ElastiCache); uses Hyperplane ENIs with improved cold start since 2019 but still adds latency
 
 ## Why This Matters
 
@@ -29,7 +31,8 @@ Lambda pricing is per-request plus per-GB-second of compute. A function using 1,
 - **Step Functions vs direct Lambda chaining** -- Step Functions add cost ($0.025 per 1,000 state transitions) but provide built-in retry, error handling, parallel execution, and visual debugging. Direct invocation (Lambda calling Lambda) is cheaper but creates hidden coupling and loses execution history.
 - **API Gateway REST vs HTTP API** -- REST API supports AWS WAF, API keys, usage plans, request validation, and caching. HTTP API costs ~70% less, supports JWT authorizers natively, and has lower latency. Choose REST when you need WAF integration or advanced features.
 - **Lambda@Edge vs CloudFront Functions** -- Lambda@Edge runs in regional edge caches with network access, larger memory (up to 10 GB), and longer timeout. CloudFront Functions run in every edge location with sub-millisecond execution but no network access and 10 KB code limit. Use CloudFront Functions for header manipulation and simple rewrites; Lambda@Edge for authentication, A/B testing, and origin selection.
-- **Provisioned concurrency vs accepting cold starts** -- Provisioned concurrency eliminates cold starts but adds steady-state cost. Use it for customer-facing APIs with strict P99 latency requirements; skip it for async background processing.
+- **Provisioned concurrency vs SnapStart vs accepting cold starts** -- SnapStart (Java, Python, .NET) reduces cold starts to sub-200ms at no extra cost by caching initialized snapshots. Provisioned concurrency eliminates cold starts entirely but adds steady-state cost. Use SnapStart first for supported runtimes; use provisioned concurrency for customer-facing APIs with strict P99 latency requirements where SnapStart is insufficient; accept cold starts for async background processing.
+- **Lambda function URLs vs API Gateway** -- Function URLs provide a built-in HTTPS endpoint per function with no additional cost beyond Lambda invocation charges. API Gateway adds request validation, usage plans, API keys, WAF integration, custom domain mapping, and request/response transformation. Use function URLs for webhooks, internal APIs, and simple single-function services. Use API Gateway when you need multiple routes, rate limiting, or WAF protection.
 
 ## Reference Architectures
 

@@ -46,15 +46,20 @@ Internet → CDN/WAF → Load Balancer → App Servers → Cache → Database
 - Encrypted at rest and in transit
 - Automated backups with point-in-time recovery
 
-## Common Mistakes
+## Why This Matters
 
-- Storing session state on app servers (breaks horizontal scaling)
-- Serving static files from app servers (wastes compute, slow)
-- Putting app servers in public subnets (security risk)
-- Single AZ deployment (no HA)
-- No caching layer (unnecessary database load)
-- Missing WAF (vulnerable to OWASP top 10)
-- No connection pooling (database connection exhaustion under load)
+The three-tier architecture is the most common web application pattern because it provides clear separation of concerns, independent scaling per tier, and well-understood security boundaries. Storing session state on app servers breaks horizontal scaling. Serving static files from app servers wastes compute. Putting app servers in public subnets creates unnecessary attack surface. Single AZ deployment eliminates high availability. Missing WAF leaves the application vulnerable to OWASP top 10 attacks. No connection pooling leads to database connection exhaustion under load.
+
+## Common Decisions (ADR Triggers)
+
+- **CDN and static asset strategy** — CDN provider, cache invalidation approach, origin failover
+- **Session management** — external session store (Redis) vs sticky sessions vs stateless JWTs
+- **Caching layer** — Redis vs Memcached, cache-aside vs write-through, eviction policy
+- **Database read replica strategy** — when to add replicas, routing logic, consistency trade-offs
+- **WAF rule management** — managed rules vs custom rules, false positive handling
+- **TLS termination** — at load balancer vs passthrough to app servers, certificate management
+- **Auto-scaling configuration** — scaling metric, thresholds, cooldown, minimum/maximum instances
+- **File upload handling** — direct-to-S3 with presigned URLs vs through app servers
 
 ## Cost Benchmarks
 

@@ -5,19 +5,19 @@ Purpose-built edge appliances delivered as a service (hardware-as-a-service) for
 ## Checklist
 
 - [ ] **[Critical]** Determine the appropriate SKU: Azure Stack Edge Pro 2 (latest generation, single or dual GPU), Azure Stack Edge Pro GPU (T4 GPUs), or Azure Stack Edge Mini R (ruggedized, single GPU, battery-capable). Note: Azure Stack Edge Pro FPGA was retired in February 2024 — all FPGA deployments must be migrated to GPU SKUs
-- [ ] Order the device through the Azure portal: create an Azure Stack Edge resource, select SKU and shipping destination, provide site contact details; lead times vary by region (typically 2-6 weeks)
-- [ ] Plan site requirements: rack space (Pro 2 is 1U, Mini R is portable), power (dual PSU recommended for Pro), network connectivity (1GbE management + 10/25GbE data ports), ambient temperature limits
-- [ ] Activate the device using the activation key from the Azure portal; configure network settings, DNS, proxy, and time server via the local web UI during initial setup
-- [ ] Configure edge compute: enable Kubernetes (Azure Arc-enabled) or IoT Edge runtime on the device for running containerized workloads at the edge
-- [ ] Deploy AI inference workloads: use GPU acceleration with NVIDIA T4 for ONNX, TensorFlow, or PyTorch models; leverage Azure Machine Learning for model deployment pipelines
-- [ ] Set up local storage shares: configure SMB or NFS shares backed by device storage; choose between edge local shares (data stays on device) and cloud-tiered shares (data automatically syncs to Azure Blob or Azure Files)
-- [ ] Configure data transfer: for Data Box Gateway mode, map local shares to Azure storage accounts; set bandwidth schedules to control upload timing and throttle during business hours
-- [ ] Plan certificate management: the device uses certificates for local web UI, Azure Resource Manager endpoint, Blob endpoint, and IoT Edge; use custom certificates from your CA or let the device auto-generate self-signed certificates (not recommended for production)
-- [ ] Enable security features: BitLocker encryption at rest is enabled by default; configure data-at-rest encryption keys (device-managed or customer-managed via Azure Key Vault); set up tamper detection alerts
-- [ ] Set up monitoring: use Azure Monitor integration for device health metrics, alerts on disk/CPU/memory/GPU utilization, and proactive support case creation; configure diagnostic log collection
-- [ ] Plan update management: device updates (OS/firmware) are delivered through Azure and can be scheduled; Kubernetes and IoT Edge module updates are managed separately through their respective control planes
-- [ ] Evaluate network function virtualization (NFV) scenarios: Azure Stack Edge can host virtualized network functions for SD-WAN or mobile packet core (Azure Private 5G Core) deployments
-- [ ] Document the return/replacement process: devices are Microsoft-owned; at end of use, wipe data via local UI or Azure portal and arrange return shipping; replacement devices for hardware failure are shipped proactively
+- [ ] **[Critical]** Order the device through the Azure portal: create an Azure Stack Edge resource, select SKU and shipping destination, provide site contact details; lead times vary by region (typically 2-6 weeks)
+- [ ] **[Critical]** Plan site requirements: rack space (Pro 2 is 1U, Mini R is portable), power (dual PSU recommended for Pro), network connectivity (1GbE management + 10/25GbE data ports), ambient temperature limits
+- [ ] **[Critical]** Activate the device using the activation key from the Azure portal; configure network settings, DNS, proxy, and time server via the local web UI during initial setup
+- [ ] **[Recommended]** Configure edge compute: enable Kubernetes (Azure Arc-enabled) or IoT Edge runtime on the device for running containerized workloads at the edge
+- [ ] **[Recommended]** Deploy AI inference workloads: use GPU acceleration with NVIDIA T4 for ONNX, TensorFlow, or PyTorch models; leverage Azure Machine Learning for model deployment pipelines
+- [ ] **[Recommended]** Set up local storage shares: configure SMB or NFS shares backed by device storage; choose between edge local shares (data stays on device) and cloud-tiered shares (data automatically syncs to Azure Blob or Azure Files)
+- [ ] **[Recommended]** Configure data transfer: for Data Box Gateway mode, map local shares to Azure storage accounts; set bandwidth schedules to control upload timing and throttle during business hours
+- [ ] **[Recommended]** Plan certificate management: the device uses certificates for local web UI, Azure Resource Manager endpoint, Blob endpoint, and IoT Edge; use custom certificates from your CA or let the device auto-generate self-signed certificates (not recommended for production)
+- [ ] **[Critical]** Enable security features: BitLocker encryption at rest is enabled by default; configure data-at-rest encryption keys (device-managed or customer-managed via Azure Key Vault); set up tamper detection alerts
+- [ ] **[Recommended]** Set up monitoring: use Azure Monitor integration for device health metrics, alerts on disk/CPU/memory/GPU utilization, and proactive support case creation; configure diagnostic log collection
+- [ ] **[Recommended]** Plan update management: device updates (OS/firmware) are delivered through Azure and can be scheduled; Kubernetes and IoT Edge module updates are managed separately through their respective control planes
+- [ ] **[Optional]** Evaluate network function virtualization (NFV) scenarios: Azure Stack Edge can host virtualized network functions for SD-WAN or mobile packet core (Azure Private 5G Core) deployments
+- [ ] **[Recommended]** Document the return/replacement process: devices are Microsoft-owned; at end of use, wipe data via local UI or Azure portal and arrange return shipping; replacement devices for hardware failure are shipped proactively
 
 ## Why This Matters
 

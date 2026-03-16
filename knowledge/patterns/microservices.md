@@ -21,15 +21,20 @@ Microservices decompose an application into small, independently deployable serv
 - [ ] Is there a message broker for async communication? (SQS, Kafka, RabbitMQ)
 - [ ] How are shared libraries and common code managed? (shared packages vs duplication)
 
-## Common Mistakes
+## Why This Matters
 
-- Too many services too early (start with a modular monolith)
-- Shared databases between services (tight coupling)
-- Synchronous chains across many services (latency, fragility)
-- No circuit breakers (cascading failures)
-- Missing distributed tracing (impossible to debug cross-service issues)
-- Inconsistent API contracts (breaking changes without versioning)
-- No centralized logging (debugging across services is impossible)
+Microservices enable independent deployment, scaling, and team ownership, but they introduce significant distributed systems complexity. Too many services too early creates operational overhead without proportional benefit -- start with a modular monolith. Shared databases between services create tight coupling that defeats the purpose of decomposition. Synchronous chains across many services compound latency and fragility. Missing circuit breakers allow cascading failures to propagate across the system. Without distributed tracing, debugging cross-service issues becomes impossible. Inconsistent API contracts cause breaking changes that ripple through consumers.
+
+## Common Decisions (ADR Triggers)
+
+- **Service decomposition strategy** — domain-driven design bounded contexts, team topology alignment, granularity level
+- **Communication pattern** — synchronous (REST/gRPC) vs asynchronous (messaging), when to use each
+- **API gateway selection** — managed (AWS API Gateway, Apigee) vs self-hosted (Kong, Envoy), feature requirements
+- **Service mesh adoption** — Istio vs Linkerd vs Cilium, when the complexity is justified
+- **Database per service** — strict isolation vs shared database with schema separation, data consistency approach
+- **Distributed transaction strategy** — saga pattern (choreography vs orchestration), eventual consistency model
+- **Message broker selection** — Kafka vs SQS/SNS vs RabbitMQ, ordering and delivery guarantees
+- **Observability stack** — commercial (Datadog, New Relic) vs open source (Prometheus, Grafana, Jaeger), cost at scale
 
 ## Cost Benchmarks
 

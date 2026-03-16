@@ -1,21 +1,25 @@
 # Nutanix Data Protection and Disaster Recovery
 
+## Scope
+
+Data protection, replication, backup, and disaster recovery for Nutanix environments: protection domains, Leap orchestration, NearSync and metro availability replication tiers, third-party backup integration, immutable backup targets (Objects with WORM), retention policies, and DR testing.
+
 ## Checklist
 
-- [ ] Are protection domains (PDs) configured for legacy VM-centric snapshot and replication, or has the environment migrated to Prism Central-based protection policies using Leap for orchestrated DR?
-- [ ] Are consistency groups used within protection domains to snapshot multiple related VMs simultaneously (e.g., app server + database), ensuring crash-consistent recovery points across dependent workloads?
-- [ ] Are snapshot schedules configured with appropriate RPO -- hourly for general production, NearSync (1-minute RPO) for critical databases, synchronous replication (metro availability) for zero-RPO applications?
-- [ ] Is Nutanix Leap configured with recovery plans that define VM boot order, network mappings (source-to-target VLAN mapping), IP re-addressing rules, and post-recovery scripts for automated failover?
-- [ ] Is metro availability (synchronous replication) deployed only where network latency between sites is under 5ms RTT, with a witness VM at a third site to handle split-brain scenarios?
-- [ ] Is NearSync replication configured for Tier-1 applications requiring 1-minute RPO, understanding that it requires AOS 5.17+ and consumes more network bandwidth and CVM resources than async replication?
-- [ ] Are async replication schedules configured with bandwidth throttling to prevent DR replication from saturating the WAN link and impacting production traffic?
-- [ ] Is third-party backup software (Veeam, HYCU, Commvault) integrated using Nutanix API v3 or Changed Block Tracking (CBT) for efficient incremental backups rather than full-image copies?
-- [ ] Are backup targets configured on Nutanix Objects (S3-compatible, on-cluster or separate cluster) for cost-effective, air-gapped backup storage with WORM (Write Once Read Many) for ransomware protection?
-- [ ] Are retention policies defined per workload tier -- 7-day local snapshots for fast restore, 30-day remote snapshots for DR, 90-day+ backup copies on Objects or external NAS for compliance?
-- [ ] Is DR testing performed quarterly using Leap's test failover capability, which creates an isolated network bubble to validate recovery plans without impacting production?
-- [ ] Are DR runbooks documented with clear RTO/RPO targets per application, failover procedures, DNS/IP switchover steps, and validated rollback procedures?
-- [ ] Is the replication bandwidth between primary and DR sites sized for both steady-state change rate and initial seeding, with compression enabled on replication streams to reduce WAN consumption?
-- [ ] Are Nutanix Guest Tools (NGT) installed on Windows VMs to enable application-consistent (VSS-quiesced) snapshots rather than crash-consistent snapshots?
+- [ ] [Critical] Are protection domains (PDs) configured for legacy VM-centric snapshot and replication, or has the environment migrated to Prism Central-based protection policies using Leap for orchestrated DR?
+- [ ] [Critical] Are consistency groups used within protection domains to snapshot multiple related VMs simultaneously (e.g., app server + database), ensuring crash-consistent recovery points across dependent workloads?
+- [ ] [Critical] Are snapshot schedules configured with appropriate RPO -- hourly for general production, NearSync (1-minute RPO) for critical databases, synchronous replication (metro availability) for zero-RPO applications?
+- [ ] [Critical] Is Nutanix Leap configured with recovery plans that define VM boot order, network mappings (source-to-target VLAN mapping), IP re-addressing rules, and post-recovery scripts for automated failover?
+- [ ] [Critical] Is metro availability (synchronous replication) deployed only where network latency between sites is under 5ms RTT, with a witness VM at a third site to handle split-brain scenarios?
+- [ ] [Recommended] Is NearSync replication configured for Tier-1 applications requiring 1-minute RPO, understanding that it requires AOS 5.17+ and consumes more network bandwidth and CVM resources than async replication?
+- [ ] [Recommended] Are async replication schedules configured with bandwidth throttling to prevent DR replication from saturating the WAN link and impacting production traffic?
+- [ ] [Recommended] Is third-party backup software (Veeam, HYCU, Commvault) integrated using Nutanix API v3 or Changed Block Tracking (CBT) for efficient incremental backups rather than full-image copies?
+- [ ] [Recommended] Are backup targets configured on Nutanix Objects (S3-compatible, on-cluster or separate cluster) for cost-effective, air-gapped backup storage with WORM (Write Once Read Many) for ransomware protection?
+- [ ] [Recommended] Are retention policies defined per workload tier -- 7-day local snapshots for fast restore, 30-day remote snapshots for DR, 90-day+ backup copies on Objects or external NAS for compliance?
+- [ ] [Recommended] Is DR testing performed quarterly using Leap's test failover capability, which creates an isolated network bubble to validate recovery plans without impacting production?
+- [ ] [Recommended] Are DR runbooks documented with clear RTO/RPO targets per application, failover procedures, DNS/IP switchover steps, and validated rollback procedures?
+- [ ] [Optional] Is the replication bandwidth between primary and DR sites sized for both steady-state change rate and initial seeding, with compression enabled on replication streams to reduce WAN consumption?
+- [ ] [Optional] Are Nutanix Guest Tools (NGT) installed on Windows VMs to enable application-consistent (VSS-quiesced) snapshots rather than crash-consistent snapshots?
 
 ## Why This Matters
 

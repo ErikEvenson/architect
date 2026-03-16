@@ -21,14 +21,20 @@ Hybrid cloud spans on-premises infrastructure and one or more public cloud provi
 - [ ] Are there licensing considerations for on-premises software in the cloud? (BYOL vs cloud-native)
 - [ ] What is the migration path for workloads that may move to cloud later?
 
-## Common Mistakes
+## Why This Matters
 
-- Treating cloud as just "another data center" (missing cloud-native benefits)
-- Unreliable connectivity between environments (no redundant connections)
-- Different security postures on-prem vs cloud (inconsistent compliance)
-- No unified monitoring (blind spots in one environment)
-- Tight coupling between on-prem and cloud workloads (latency-sensitive cross-environment calls)
-- No consistent identity management (separate credentials per environment)
+Hybrid cloud is a transitional or permanent state for most enterprises, not a temporary inconvenience. Treating cloud as "another data center" misses cloud-native benefits. Unreliable connectivity between environments causes cascading failures. Different security postures on-prem vs cloud create compliance gaps. Without unified monitoring, blind spots in one environment hide issues until they become outages. Tight coupling between on-prem and cloud workloads introduces latency-sensitive cross-environment calls that fail under load. Inconsistent identity management across environments creates security gaps and operational burden.
+
+## Common Decisions (ADR Triggers)
+
+- **Connectivity model** — VPN vs dedicated connection (Direct Connect, ExpressRoute), redundancy requirements, bandwidth planning
+- **Workload placement** — criteria for on-prem vs cloud placement, data gravity, latency requirements, compliance constraints
+- **Identity federation** — single IdP across both environments, directory sync approach, service account strategy
+- **Monitoring unification** — single pane of glass tool selection, metric aggregation, alert routing across environments
+- **Data synchronization** — replication strategy, consistency model, bandwidth budget for cross-environment data transfer
+- **Kubernetes strategy** — single cluster spanning both vs separate clusters with federation, platform selection (Tanzu, Karbon, EKS Anywhere)
+- **DR model** — cloud as DR target for on-prem, or on-prem as fallback, RPO/RTO alignment across environments
+- **Migration path** — how workloads transition from on-prem to cloud over time, hybrid duration planning
 
 ## Cost Benchmarks
 

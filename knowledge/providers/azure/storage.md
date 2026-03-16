@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is the storage account redundancy level selected based on durability and availability requirements -- LRS (3 copies, single datacenter), ZRS (3 copies, 3 availability zones), GRS (6 copies, 2 regions), GZRS (zone-redundant + geo-redundant)?
-- [ ] Are Blob Storage access tiers assigned appropriately -- Hot for frequent access, Cool for infrequent (30+ day), Cold for rare (90+ day), Archive for compliance/backup (180+ day, hours to rehydrate)?
-- [ ] Are lifecycle management policies configured to automatically transition blobs between tiers and delete expired objects based on last-modified or last-accessed time?
-- [ ] Are private endpoints configured for storage accounts, disabling public network access and restricting traffic to specific VNets and subnets?
-- [ ] Is Azure Data Lake Storage Gen2 (hierarchical namespace) enabled for analytics workloads requiring directory-level ACLs and high-throughput data processing?
-- [ ] Are immutability policies (time-based retention or legal hold) configured for compliance data to meet WORM (Write Once Read Many) requirements?
-- [ ] Is soft delete enabled for blobs (and containers) with an appropriate retention period (7-365 days) to protect against accidental deletion?
-- [ ] Is blob versioning enabled for data that requires point-in-time recovery and audit trails of all changes?
-- [ ] Are storage firewalls configured with allowed IP ranges, VNet rules, and resource instance rules, with exceptions only for trusted Microsoft services?
-- [ ] Is Azure Files deployed with the correct protocol (SMB 3.x for Windows, NFS 4.1 for Linux) and tier (Premium SSD for IOPS-intensive, Standard for general purpose)?
-- [ ] Is Microsoft Entra ID authorization used for blob and queue access (Azure RBAC: Storage Blob Data Reader/Contributor/Owner) instead of shared access keys?
-- [ ] Are storage account access keys rotated on a schedule, or preferably disabled entirely in favor of Entra ID and managed identity authentication?
-- [ ] Is AzCopy or Azure Data Factory configured for large-scale data migration and scheduled data movement with appropriate concurrency and bandwidth limits?
-- [ ] Are storage account diagnostics enabled, streaming blob read/write/delete metrics and logs to Log Analytics for access auditing and cost analysis?
+- [ ] **[Critical]** Is the storage account redundancy level selected based on durability and availability requirements -- LRS (3 copies, single datacenter), ZRS (3 copies, 3 availability zones), GRS (6 copies, 2 regions), GZRS (zone-redundant + geo-redundant)?
+- [ ] **[Recommended]** Are Blob Storage access tiers assigned appropriately -- Hot for frequent access, Cool for infrequent (30+ day), Cold for rare (90+ day), Archive for compliance/backup (180+ day, hours to rehydrate)?
+- [ ] **[Recommended]** Are lifecycle management policies configured to automatically transition blobs between tiers and delete expired objects based on last-modified or last-accessed time?
+- [ ] **[Critical]** Are private endpoints configured for storage accounts, disabling public network access and restricting traffic to specific VNets and subnets?
+- [ ] **[Recommended]** Is Azure Data Lake Storage Gen2 (hierarchical namespace) enabled for analytics workloads requiring directory-level ACLs and high-throughput data processing?
+- [ ] **[Recommended]** Are immutability policies (time-based retention or legal hold) configured for compliance data to meet WORM (Write Once Read Many) requirements?
+- [ ] **[Recommended]** Is soft delete enabled for blobs (and containers) with an appropriate retention period (7-365 days) to protect against accidental deletion?
+- [ ] **[Optional]** Is blob versioning enabled for data that requires point-in-time recovery and audit trails of all changes?
+- [ ] **[Critical]** Are storage firewalls configured with allowed IP ranges, VNet rules, and resource instance rules, with exceptions only for trusted Microsoft services?
+- [ ] **[Recommended]** Is Azure Files deployed with the correct protocol (SMB 3.x for Windows, NFS 4.1 for Linux) and tier (Premium SSD for IOPS-intensive, Standard for general purpose)?
+- [ ] **[Critical]** Is Microsoft Entra ID authorization used for blob and queue access (Azure RBAC: Storage Blob Data Reader/Contributor/Owner) instead of shared access keys?
+- [ ] **[Recommended]** Are storage account access keys rotated on a schedule, or preferably disabled entirely in favor of Entra ID and managed identity authentication?
+- [ ] **[Optional]** Is AzCopy or Azure Data Factory configured for large-scale data migration and scheduled data movement with appropriate concurrency and bandwidth limits?
+- [ ] **[Recommended]** Are storage account diagnostics enabled, streaming blob read/write/delete metrics and logs to Log Analytics for access auditing and cost analysis?
 
 ## Why This Matters
 
