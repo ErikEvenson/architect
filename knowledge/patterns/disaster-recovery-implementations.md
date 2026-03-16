@@ -6,18 +6,18 @@ This file covers **implementation details** for the four DR strategies, includin
 
 ## Checklist
 
-- [ ] Is the DR strategy matched to business RTO/RPO requirements? (do not over-engineer or under-engineer)
-- [ ] Is the cost of the DR strategy understood and budgeted? (DR infrastructure is insurance — size it to the risk)
-- [ ] Are failover procedures documented as runbooks? (step-by-step, no ambiguity, tested)
-- [ ] Is DR failover automated or semi-automated? (manual failover under pressure leads to mistakes)
-- [ ] Is DR tested on a regular schedule? (quarterly minimum, annually is insufficient)
-- [ ] Is data replication monitored for lag? (replication lag = data loss in a failover)
-- [ ] Are DNS TTLs configured for fast failover? (low TTLs in production, verify propagation)
-- [ ] Is the DR environment kept in sync with production? (IaC drift detection, same AMIs/images, same configurations)
-- [ ] Is there a clear decision authority for declaring a disaster? (who can trigger failover, escalation path)
-- [ ] Is failback (returning to primary) planned and tested? (failback is often harder than failover)
-- [ ] Are third-party dependencies included in DR planning? (SaaS providers, payment processors, DNS providers)
-- [ ] Is there a communication plan for DR events? (status page, customer notification, internal escalation)
+- [ ] **[Critical]** Is the DR strategy matched to business RTO/RPO requirements? (do not over-engineer or under-engineer)
+- [ ] **[Critical]** Is the cost of the DR strategy understood and budgeted? (DR infrastructure is insurance — size it to the risk)
+- [ ] **[Critical]** Are failover procedures documented as runbooks? (step-by-step, no ambiguity, tested)
+- [ ] **[Critical]** Is DR failover automated or semi-automated? (manual failover under pressure leads to mistakes)
+- [ ] **[Critical]** Is DR tested on a regular schedule? (quarterly minimum, annually is insufficient)
+- [ ] **[Critical]** Is data replication monitored for lag? (replication lag = data loss in a failover)
+- [ ] **[Recommended]** Are DNS TTLs configured for fast failover? (low TTLs in production, verify propagation)
+- [ ] **[Critical]** Is the DR environment kept in sync with production? (IaC drift detection, same AMIs/images, same configurations)
+- [ ] **[Critical]** Is there a clear decision authority for declaring a disaster? (who can trigger failover, escalation path)
+- [ ] **[Recommended]** Is failback (returning to primary) planned and tested? (failback is often harder than failover)
+- [ ] **[Recommended]** Are third-party dependencies included in DR planning? (SaaS providers, payment processors, DNS providers)
+- [ ] **[Recommended]** Is there a communication plan for DR events? (status page, customer notification, internal escalation)
 
 ## Why This Matters
 
