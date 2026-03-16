@@ -1,5 +1,18 @@
 # OpenStack Control Plane High Availability
 
+## Scope
+
+Covers OpenStack control plane high availability: HAProxy + keepalived/Pacemaker load balancing, MariaDB Galera cluster configuration, RabbitMQ clustering with quorum queues, Memcached caching, failure scenarios and recovery procedures, and upgrade considerations for HA components.
+
+## Version Notes
+
+| Release | Date | Key HA Changes |
+|---|---|---|
+| 2024.1 Caracal (29) | Apr 2024 | RabbitMQ quorum queues improvements, Galera monitoring enhancements |
+| 2024.2 Dalmatian (30) | Oct 2024 | Continued HA stability improvements |
+| 2025.1 Epoxy (31) | Apr 2025 | Classic mirrored queues deprecated in RabbitMQ 3.13+ (quorum queues required); improved oslo.messaging reconnect logic for RabbitMQ failover |
+| 2025.2 Flamingo (32) | Oct 2025 | RabbitMQ 4.x compatibility improvements; continued Galera stability improvements |
+
 ## Checklist
 
 - [ ] **[Critical]** Three controller nodes deployed for quorum-based services (Galera, RabbitMQ) — never use two nodes without an arbiter

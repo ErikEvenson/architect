@@ -1,5 +1,18 @@
 # OpenStack Heat Infrastructure as Code
 
+## Scope
+
+Covers OpenStack Heat orchestration service: HOT template format, template versioning, nested stacks, autoscaling with Aodh alarms, SoftwareConfig/SoftwareDeployment, environment files, resource registry, and comparison with Terraform and Ansible for OpenStack IaC.
+
+## Version Notes
+
+| Release | Date | Key Heat Changes |
+|---|---|---|
+| 2024.1 Caracal (29) | Apr 2024 | Continued convergence engine improvements |
+| 2024.2 Dalmatian (30) | Oct 2024 | Template validation improvements |
+| 2025.1 Epoxy (31) | Apr 2025 | Template engine stability improvements, improved error messages for stack update failures |
+| 2025.2 Flamingo (32) | Oct 2025 | Continued stability improvements, no major new template features |
+
 ## Checklist
 
 - [ ] **[Critical]** Pin `heat_template_version` to a specific date (e.g., `2021-04-16`) — using `latest` or omitting causes unpredictable behavior across OpenStack releases

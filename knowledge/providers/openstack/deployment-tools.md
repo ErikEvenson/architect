@@ -1,5 +1,18 @@
 # OpenStack Deployment Tools
 
+## Scope
+
+Covers OpenStack deployment tool selection and usage: Kolla-Ansible, OpenStack-Ansible (OSA), MAAS + Juju, Kayobe, TripleO (deprecated), RHOSO, and DevStack. Includes deployment prerequisites, inventory configuration, upgrade procedures, and day-2 operations.
+
+## Version Notes
+
+| Release | Date | Key Deployment Tool Changes |
+|---|---|---|
+| 2024.1 Caracal (29) | Apr 2024 | Kolla-Ansible and OSA support Caracal with improved upgrade procedures |
+| 2024.2 Dalmatian (30) | Oct 2024 | Kolla-Ansible Dalmatian support, TripleO nearing end of life |
+| 2025.1 Epoxy (31) | Apr 2025 | TripleO officially retired; RHOSO (Red Hat OpenStack Services on OpenShift) is the replacement for Red Hat customers; Kolla-Ansible remains primary community deployment tool |
+| 2025.2 Flamingo (32) | Oct 2025 | Kolla-Ansible Flamingo support; continued RHOSO maturation; Kayobe Flamingo support |
+
 ## Checklist
 
 - [ ] **[Critical]** Hardware meets minimum requirements for chosen deployment tool (CPU, RAM, disk, NICs)
@@ -181,7 +194,7 @@ Single-node, all-in-one OpenStack for developers and CI. Installs services direc
 | Ease of deployment | Medium | Medium-High | High | High | Medium | Low |
 | Upgrade support | Good | Good | Good | Varies | Good | None |
 | Production readiness | Yes | Yes | Yes | Yes (RHOSO) | Yes | No |
-| Community activity | High | Medium | Medium | Declining (TripleO) | Medium | High |
+| Community activity | High | Medium | Medium | Declining (TripleO retired, RHOSO active) | Medium | High |
 | Minimum nodes | 1 (AIO) | 1 (AIO) | 4+ (MAAS+3) | 4+ | 1 (AIO) | 1 |
 
 ### Day-2 Operations
