@@ -1,19 +1,25 @@
 # Cloudflare Observability
 
+## Scope
+
+Covers Cloudflare Logpush, Web Analytics, GraphQL Analytics API, Analytics Engine, Trace, health checks, Instant Logs, origin monitoring, BGP/Radar monitoring, and SIEM integration. Use alongside `security.md` for WAF/firewall event analysis and `workers.md` for Workers-specific metrics.
+
 ## Checklist
 
-- [ ] Configure Logpush jobs for HTTP request logs, firewall events, and Spectrum events to a supported destination (S3, R2, Splunk, Datadog, Azure Blob, GCS, Sumo Logic)
-- [ ] Set up Web Analytics for privacy-first, cookie-free client-side analytics (no PII collection, GDPR-friendly)
-- [ ] Evaluate GraphQL Analytics API for custom dashboards and programmatic access to zone-level, account-level, and DNS analytics
-- [ ] Configure health checks for origin servers (HTTP/HTTPS/TCP) with appropriate intervals, thresholds, and notification channels
-- [ ] Plan real-time log streaming via Logpush Instant Logs for debugging (WebSocket-based, not for production ingestion)
-- [ ] Design log retention strategy: Cloudflare retains analytics for limited periods (72 hours for most free/pro plans); Logpush to own storage for long-term retention
-- [ ] Set up origin monitoring alerts for 5xx error spikes, latency increases, and origin health check failures
-- [ ] Evaluate Cloudflare Radar and route leak detection for BGP monitoring if using BYOIP or Magic Transit
-- [ ] Configure Workers analytics and Durable Objects metrics for serverless workload observability
-- [ ] Plan cost model for Logpush: log volume can be significant at scale; filter fields and sample if needed
-- [ ] Integrate Cloudflare logs with existing SIEM (Splunk, Elastic, Sentinel) for security event correlation
-- [ ] Set up notifications (email, PagerDuty, webhook) for DDoS attacks, SSL certificate expiry, and origin unreachable events
+- [ ] [Critical] Configure Logpush jobs for HTTP request logs, firewall events, and Spectrum events to a supported destination (S3, R2, Splunk, Datadog, Azure Blob, GCS, Sumo Logic)
+- [ ] [Recommended] Set up Web Analytics for privacy-first, cookie-free client-side analytics (no PII collection, GDPR-friendly)
+- [ ] [Recommended] Evaluate GraphQL Analytics API for custom dashboards and programmatic access to zone-level, account-level, and DNS analytics
+- [ ] [Critical] Configure health checks for origin servers (HTTP/HTTPS/TCP) with appropriate intervals, thresholds, and notification channels
+- [ ] [Optional] Plan real-time log streaming via Logpush Instant Logs for debugging (WebSocket-based, not for production ingestion)
+- [ ] [Critical] Design log retention strategy: Cloudflare retains analytics for limited periods (72 hours for most free/pro plans); Logpush to own storage for long-term retention
+- [ ] [Recommended] Set up origin monitoring alerts for 5xx error spikes, latency increases, and origin health check failures
+- [ ] [Optional] Evaluate Cloudflare Radar and route leak detection for BGP monitoring if using BYOIP or Magic Transit
+- [ ] [Recommended] Configure Workers analytics and Durable Objects metrics for serverless workload observability
+- [ ] [Recommended] Plan cost model for Logpush: log volume can be significant at scale; filter fields and sample if needed
+- [ ] [Recommended] Integrate Cloudflare logs with existing SIEM (Splunk, Elastic, Sentinel) for security event correlation
+- [ ] [Critical] Set up notifications (email, PagerDuty, webhook) for DDoS attacks, SSL certificate expiry, and origin unreachable events
+- [ ] [Optional] Evaluate Analytics Engine for custom server-side metrics from Workers (write data points with dimensions and blobs, query via SQL API); suitable for high-cardinality metrics without Logpush overhead
+- [ ] [Optional] Evaluate Trace for distributed tracing of Workers requests across Service Bindings, Durable Object calls, and external fetches; provides request-level visibility into multi-Worker architectures
 
 ## Why This Matters
 

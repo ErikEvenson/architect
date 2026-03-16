@@ -1,20 +1,26 @@
 # Cloudflare CDN, DNS, and Network Services
 
+## Scope
+
+Covers Cloudflare DNS, CDN caching (including Cache Reserve and Early Hints), SSL/TLS, Origin CA, Tiered Cache, Argo Smart Routing, DDoS protection, rate limiting, load balancing, and Spectrum. Use alongside `security.md` for WAF/bot management and `workers.md` for edge compute.
+
 ## Checklist
 
-- [ ] DNS zone is active on Cloudflare with correct NS records at the registrar
-- [ ] Proxy mode (orange cloud) is enabled for records that should receive CDN/security benefits; grey cloud for records that must expose origin IP (e.g., MX, direct SSH)
-- [ ] SSL/TLS mode is set to **Full (Strict)** with a valid origin certificate; never use Flexible in production (creates unencrypted origin connection)
-- [ ] Origin certificates issued via Cloudflare Origin CA are installed on the origin server (15-year lifetime, free, only trusted by Cloudflare edge)
-- [ ] Always Use HTTPS and Automatic HTTPS Rewrites are enabled to eliminate mixed content
-- [ ] Cache rules are configured per path: static assets with long TTLs, API routes set to bypass cache, HTML with short TTLs or bypass
-- [ ] Browser TTL vs Edge TTL are set independently; Edge TTL controls how long Cloudflare caches, Browser TTL controls the Cache-Control header sent to clients
-- [ ] Tiered Cache is enabled (free) to reduce origin requests by routing cache misses through upper-tier data centers before hitting origin
-- [ ] Argo Smart Routing is evaluated for latency-sensitive applications (paid, typically 30% faster via optimized network paths)
-- [ ] DDoS protection rules are reviewed: L3/L4 protection is automatic and unmetered; L7 HTTP DDoS rules can be tuned with sensitivity and action overrides
-- [ ] Rate limiting rules are defined for authentication endpoints, API routes, and form submissions with appropriate thresholds and response codes
-- [ ] Load balancing is configured with health checks (HTTP/HTTPS/TCP), appropriate steering policy (random, hash, geo, least-outstanding-requests, least-connections), and failover pools
-- [ ] DNS CAA records are configured to authorize only Cloudflare (and any other required CAs) to issue certificates for the domain
+- [ ] [Critical] DNS zone is active on Cloudflare with correct NS records at the registrar
+- [ ] [Critical] Proxy mode (orange cloud) is enabled for records that should receive CDN/security benefits; grey cloud for records that must expose origin IP (e.g., MX, direct SSH)
+- [ ] [Critical] SSL/TLS mode is set to **Full (Strict)** with a valid origin certificate; never use Flexible in production (creates unencrypted origin connection)
+- [ ] [Recommended] Origin certificates issued via Cloudflare Origin CA are installed on the origin server (15-year lifetime, free, only trusted by Cloudflare edge)
+- [ ] [Recommended] Always Use HTTPS and Automatic HTTPS Rewrites are enabled to eliminate mixed content
+- [ ] [Critical] Cache rules are configured per path: static assets with long TTLs, API routes set to bypass cache, HTML with short TTLs or bypass
+- [ ] [Recommended] Browser TTL vs Edge TTL are set independently; Edge TTL controls how long Cloudflare caches, Browser TTL controls the Cache-Control header sent to clients
+- [ ] [Recommended] Tiered Cache is enabled (free) to reduce origin requests by routing cache misses through upper-tier data centers before hitting origin
+- [ ] [Optional] Argo Smart Routing is evaluated for latency-sensitive applications (paid, typically 30% faster via optimized network paths)
+- [ ] [Critical] DDoS protection rules are reviewed: L3/L4 protection is automatic and unmetered; L7 HTTP DDoS rules can be tuned with sensitivity and action overrides
+- [ ] [Recommended] Rate limiting rules are defined for authentication endpoints, API routes, and form submissions with appropriate thresholds and response codes
+- [ ] [Recommended] Load balancing is configured with health checks (HTTP/HTTPS/TCP), appropriate steering policy (random, hash, geo, least-outstanding-requests, least-connections), and failover pools
+- [ ] [Recommended] DNS CAA records are configured to authorize only Cloudflare (and any other required CAs) to issue certificates for the domain
+- [ ] [Optional] Cache Reserve is evaluated for persisting cached assets beyond TTL eviction; stores cache content in R2-backed persistent storage to reduce origin fetches for long-tail content
+- [ ] [Optional] Early Hints (103 responses) are enabled to let browsers preload critical assets while the origin generates the full response, improving perceived page load times
 
 ## Why This Matters
 
@@ -38,7 +44,7 @@ Cloudflare sits in the request path for every user interaction. A misconfigured 
 Users (worldwide)
   |
   v
-Cloudflare Edge (300+ PoPs)
+Cloudflare Edge (310+ PoPs)
   |-- DNS: proxied A/AAAA records
   |-- SSL: Full (Strict) with Origin CA certs
   |-- Cache: static assets (immutable, 1yr TTL)

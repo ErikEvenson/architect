@@ -57,9 +57,9 @@ Broadcom's 2024 acquisition of VMware fundamentally changed the licensing model 
 │ NSX Networking       │         ✗            │         ✓            │
 │ NSX Firewall (DFW)   │         ✗            │         ✓            │
 │ SDDC Manager         │         ✗            │         ✓            │
-│ Aria Operations      │         ✗            │         ✓            │
-│ Aria Automation      │         ✗            │         ✓            │
-│ Aria Operations Logs │         ✗            │         ✓            │
+│ VCF Operations       │         ✗            │         ✓            │
+│ VCF Automation       │         ✗            │         ✓            │
+│ VCF Operations Logs  │         ✗            │         ✓            │
 │ Tanzu (Kubernetes)   │         ✗            │         ✓            │
 │ HCX (Migration)      │         ✗            │         ✓            │
 ├──────────────────────┼──────────────────────┼──────────────────────┤

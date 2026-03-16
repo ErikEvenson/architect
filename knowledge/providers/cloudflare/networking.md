@@ -6,18 +6,19 @@ Covers Cloudflare Tunnel, Magic Transit, Magic WAN, Spectrum, WARP client, WARP 
 
 ## Checklist
 
-- [ ] Determine whether Cloudflare Tunnel (formerly Argo Tunnel) or traditional DNS/IP exposure is appropriate for origin connectivity
-- [ ] Evaluate Magic Transit for L3 DDoS protection on own IP prefixes (requires /24 minimum for BGP advertisement)
-- [ ] Decide on Magic WAN for branch-to-branch and branch-to-cloud connectivity replacing traditional SD-WAN appliances
-- [ ] Assess Spectrum for proxying non-HTTP TCP/UDP traffic (SSH, gaming, MQTT, custom protocols) through Cloudflare edge
-- [ ] Plan Cloudflare Tunnel architecture: number of connectors, redundancy (multiple cloudflared instances per origin), named tunnels vs legacy tunnels
-- [ ] Configure WARP client deployment strategy for endpoint traffic routing (split tunnel vs full tunnel, managed device enrollment)
-- [ ] Evaluate Network Interconnect (CNI) for private, dedicated connectivity to Cloudflare edge (vs public internet paths)
-- [ ] Design Cloudflare Gateway policies for DNS filtering, HTTP inspection, and egress traffic control
-- [ ] Plan IP address management: Cloudflare-assigned IPs, BYOIP for Magic Transit, static IPs for egress (Gateway)
-- [ ] Determine tunnel health-check intervals, failover behavior, and load balancing across multiple origin connectors
-- [ ] Assess Cloudflare for SaaS (SSL for SaaS) if serving traffic on customer-owned vanity domains
-- [ ] Plan Zero Trust Network Access (ZTNA) integration between Tunnel, Gateway, and Access policies
+- [ ] [Critical] Determine whether Cloudflare Tunnel (formerly Argo Tunnel) or traditional DNS/IP exposure is appropriate for origin connectivity
+- [ ] [Optional] Evaluate Magic Transit for L3 DDoS protection on own IP prefixes (requires /24 minimum for BGP advertisement)
+- [ ] [Optional] Decide on Magic WAN for branch-to-branch and branch-to-cloud connectivity replacing traditional SD-WAN appliances
+- [ ] [Optional] Assess Spectrum for proxying non-HTTP TCP/UDP traffic (SSH, gaming, MQTT, custom protocols) through Cloudflare edge
+- [ ] [Critical] Plan Cloudflare Tunnel architecture: number of connectors, redundancy (multiple cloudflared instances per origin), named tunnels vs legacy tunnels
+- [ ] [Recommended] Configure WARP client deployment strategy for endpoint traffic routing (split tunnel vs full tunnel, managed device enrollment)
+- [ ] [Optional] Evaluate Network Interconnect (CNI) for private, dedicated connectivity to Cloudflare edge (vs public internet paths)
+- [ ] [Recommended] Design Cloudflare Gateway policies for DNS filtering, HTTP inspection, and egress traffic control
+- [ ] [Recommended] Plan IP address management: Cloudflare-assigned IPs, BYOIP for Magic Transit, static IPs for egress (Gateway)
+- [ ] [Recommended] Determine tunnel health-check intervals, failover behavior, and load balancing across multiple origin connectors
+- [ ] [Optional] Assess Cloudflare for SaaS (SSL for SaaS) if serving traffic on customer-owned vanity domains
+- [ ] [Critical] Plan Zero Trust Network Access (ZTNA) integration between Tunnel, Gateway, and Access policies
+- [ ] [Optional] Evaluate WARP Connector for site-to-site connectivity without GRE/IPsec tunnels; enables private network routing between sites using software-only connectors through Cloudflare's network
 
 ## Why This Matters
 

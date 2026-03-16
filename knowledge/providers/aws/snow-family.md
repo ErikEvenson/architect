@@ -12,18 +12,18 @@ Ruggedized, portable devices for edge computing and offline data transfer. The f
 
 ## Checklist
 
-- [ ] Determine the use case category: bulk data migration to AWS (import/export to S3), edge compute in disconnected environments, or hybrid (compute + data collection for later upload)
-- [ ] Select the appropriate device: Snowcone (8TB HDD or 14TB SSD, 2 vCPUs, 4GB RAM — ultraportable at 4.5 lbs), Snowball Edge Storage Optimized (210TB usable, 40 vCPUs, 80GB RAM — for large data transfers), or Snowball Edge Compute Optimized (28TB NVMe SSD, 104 vCPUs, 416GB RAM, optional NVIDIA V100 GPU — for heavy edge compute and ML inference)
-- [ ] Order devices through the AWS Console or AWS CLI: specify the job type (import to S3, export from S3, or local compute/storage), select the device type, configure shipping address, and assign an IAM role for S3 access
-- [ ] Plan logistics and chain of custody: devices are shipped by AWS with E Ink shipping labels; track shipment via the console; physical tamper-evident seals and TPM-based chain of custody verification ensure device integrity
-- [ ] Unlock and configure the device on-site: use OpsHub (desktop GUI application) or the Snowball Edge CLI to unlock the device with the manifest file and unlock code from the console; connect to the local network
-- [ ] Configure data transfer for migration jobs: use the S3-compatible endpoint on the device to copy data via AWS CLI (`aws s3 cp`), S3 SDK, or third-party transfer tools; NFS mount is available on Storage Optimized for file-based ingestion
-- [ ] Deploy edge compute workloads: launch EC2-compatible instances (AMIs pre-loaded during ordering or transferred via OpsHub) on Snowball Edge devices; deploy IoT Greengrass on Snowcone for lightweight edge processing and Lambda execution
-- [ ] Set up clustering for Snowball Edge: cluster 5-10 Snowball Edge devices together for increased storage capacity and compute power; clustered devices provide a single S3-compatible endpoint and support EC2 instances across the cluster with local networking
-- [ ] Install AWS DataSync agent on Snowcone for automated, efficient data transfer to S3 when network connectivity is available; DataSync handles incremental transfers, compression, and integrity verification
-- [ ] Configure encryption: all data on Snow devices is encrypted with 256-bit keys managed through AWS KMS; select the KMS key during job creation; data is encrypted before being written to device storage
-- [ ] Plan for power and environmental conditions: Snowcone operates on USB-C power or optional battery; Snowball Edge requires standard AC power (110V/220V); all devices operate in 0-45C ambient temperature ranges; Snowcone is rated for harsher conditions with optional ruggedized cases
-- [ ] Document the return and data lifecycle: after use, ship the device back to AWS; for import jobs, AWS transfers data to the designated S3 bucket; AWS then performs a NIST 800-88-compliant media wipe; data on the device is cryptographically erased
+- [ ] [Critical] Determine the use case category: bulk data migration to AWS (import/export to S3), edge compute in disconnected environments, or hybrid (compute + data collection for later upload)
+- [ ] [Critical] Select the appropriate device: Snowcone (8TB HDD or 14TB SSD, 2 vCPUs, 4GB RAM — ultraportable at 4.5 lbs), Snowball Edge Storage Optimized (210TB usable, 40 vCPUs, 80GB RAM — for large data transfers), or Snowball Edge Compute Optimized (28TB NVMe SSD, 104 vCPUs, 416GB RAM, optional NVIDIA V100 GPU — for heavy edge compute and ML inference)
+- [ ] [Recommended] Order devices through the AWS Console or AWS CLI: specify the job type (import to S3, export from S3, or local compute/storage), select the device type, configure shipping address, and assign an IAM role for S3 access
+- [ ] [Recommended] Plan logistics and chain of custody: devices are shipped by AWS with E Ink shipping labels; track shipment via the console; physical tamper-evident seals and TPM-based chain of custody verification ensure device integrity
+- [ ] [Recommended] Unlock and configure the device on-site: use OpsHub (desktop GUI application) or the Snowball Edge CLI to unlock the device with the manifest file and unlock code from the console; connect to the local network
+- [ ] [Recommended] Configure data transfer for migration jobs: use the S3-compatible endpoint on the device to copy data via AWS CLI (`aws s3 cp`), S3 SDK, or third-party transfer tools; NFS mount is available on Storage Optimized for file-based ingestion
+- [ ] [Optional] Deploy edge compute workloads: launch EC2-compatible instances (AMIs pre-loaded during ordering or transferred via OpsHub) on Snowball Edge devices; deploy IoT Greengrass on Snowcone for lightweight edge processing and Lambda execution
+- [ ] [Optional] Set up clustering for Snowball Edge: cluster 5-10 Snowball Edge devices together for increased storage capacity and compute power; clustered devices provide a single S3-compatible endpoint and support EC2 instances across the cluster with local networking
+- [ ] [Optional] Install AWS DataSync agent on Snowcone for automated, efficient data transfer to S3 when network connectivity is available; DataSync handles incremental transfers, compression, and integrity verification
+- [ ] [Critical] Configure encryption: all data on Snow devices is encrypted with 256-bit keys managed through AWS KMS; select the KMS key during job creation; data is encrypted before being written to device storage
+- [ ] [Recommended] Plan for power and environmental conditions: Snowcone operates on USB-C power or optional battery; Snowball Edge requires standard AC power (110V/220V); all devices operate in 0-45C ambient temperature ranges; Snowcone is rated for harsher conditions with optional ruggedized cases
+- [ ] [Recommended] Document the return and data lifecycle: after use, ship the device back to AWS; for import jobs, AWS transfers data to the designated S3 bucket; AWS then performs a NIST 800-88-compliant media wipe; data on the device is cryptographically erased
 
 ## Why This Matters
 

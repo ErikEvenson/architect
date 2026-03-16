@@ -1,5 +1,9 @@
 # Cloudflare Storage
 
+## Scope
+
+Covers Cloudflare R2 (including Super Slurper and Sippy), KV, Durable Objects, D1, Queues, and Hyperdrive. Use alongside `workers.md` for compute bindings to these storage primitives and `cdn-dns.md` for caching strategies in front of R2.
+
 ## Checklist
 
 - [ ] Evaluate R2 for S3-compatible object storage with zero egress fees; plan bucket structure, lifecycle rules, and multi-part upload configuration
