@@ -592,6 +592,102 @@ paths:
         "404":
           description: Original ADR not found
 
+  # --- Inventory ---
+  /versions/{version_id}/inventory:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List inventory items for a version
+      operationId: listInventoryItems
+      tags: [inventory]
+      responses:
+        "200":
+          description: List of inventory items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InventoryItem"
+    post:
+      summary: Create an inventory item
+      operationId: createInventoryItem
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventoryItemCreate"
+      responses:
+        "201":
+          description: Inventory item created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryItem"
+
+  /versions/{version_id}/inventory/{item_id}:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get an inventory item by ID
+      operationId: getInventoryItem
+      tags: [inventory]
+      responses:
+        "200":
+          description: Inventory item details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryItem"
+        "404":
+          description: Inventory item not found
+    patch:
+      summary: Update an inventory item
+      operationId: updateInventoryItem
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventoryItemUpdate"
+      responses:
+        "200":
+          description: Inventory item updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryItem"
+        "404":
+          description: Inventory item not found
+    delete:
+      summary: Delete an inventory item
+      operationId: deleteInventoryItem
+      tags: [inventory]
+      responses:
+        "204":
+          description: Inventory item deleted
+        "404":
+          description: Inventory item not found
+
   # --- Questions ---
   /projects/{project_id}/questions:
     parameters:
@@ -1088,3 +1184,69 @@ components:
         category:
           type: string
           enum: [requirements, security, scaling, compliance, cost, operations]
+
+    # --- Inventory Item ---
+    InventoryItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        version_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        data_type:
+          type: string
+        data:
+          type: string
+        sort_order:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, version_id, name, data_type, data, sort_order, created_at, updated_at]
+
+    InventoryItemCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+        data_type:
+          type: string
+          maxLength: 50
+          default: custom
+        data:
+          type: string
+        sort_order:
+          type: integer
+          default: 0
+      required: [name, data]
+
+    InventoryItemUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+        data_type:
+          type: string
+          maxLength: 50
+        data:
+          type: string
+        sort_order:
+          type: integer

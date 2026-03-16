@@ -2,8 +2,8 @@
 
 ## Overview
 
-PostgreSQL 16 database `architect` with six tables supporting the core data model:
-Client → Project → Version → Artifact, plus ADR and Question per project.
+PostgreSQL 16 database `architect` with seven tables supporting the core data model:
+Client → Project → Version → Artifact/InventoryItem, plus ADR and Question per project.
 
 All tables use UUID primary keys and UTC timestamps.
 
@@ -145,6 +145,29 @@ All tables use UUID primary keys and UTC timestamps.
 - `ix_questions_project_status` on `(project_id, status)`
 - `ix_questions_category` on `category`
 
+### inventory_items
+
+| Column | Type | Constraints |
+|---|---|---|
+| id | UUID | PK, default gen_random_uuid() |
+| version_id | UUID | NOT NULL, FK → versions(id) ON DELETE CASCADE |
+| name | VARCHAR(255) | NOT NULL |
+| description | TEXT | NULL |
+| data_type | VARCHAR(50) | NOT NULL, default 'custom' |
+| data | TEXT | NOT NULL |
+| sort_order | INTEGER | NOT NULL, default 0 |
+| created_at | TIMESTAMPTZ | NOT NULL, default now() |
+| updated_at | TIMESTAMPTZ | NOT NULL, default now() |
+
+**Indexes:**
+- `ix_inventory_items_version_id` on `version_id`
+- `ix_inventory_items_version_type` on `(version_id, data_type)`
+
+**Notes:**
+- `data` stores raw source inventory content in original form (CSV, JSON, plain text, etc.)
+- `data_type` categorizes the inventory (e.g., 'vm_inventory', 'network_topology', 'server_list', 'custom')
+- Scoped to a version; cloned when cloning version artifacts
+
 ## Cascade Behavior
 
 | Parent | Child | ON DELETE |
@@ -154,6 +177,7 @@ All tables use UUID primary keys and UTC timestamps.
 | projects | adrs | CASCADE |
 | projects | questions | CASCADE |
 | versions | artifacts | CASCADE |
+| versions | inventory_items | CASCADE |
 | adrs | adrs (superseded_by) | SET NULL |
 
 ## Updated At Trigger
