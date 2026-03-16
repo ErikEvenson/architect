@@ -162,6 +162,7 @@ export function VersionDetailPage() {
           <ArtifactList
             artifacts={artifacts}
             selectedId={selected?.id ?? null}
+            versionId={versionId}
             onSelect={handleSelect}
             onDelete={setDeleteTarget}
           />
