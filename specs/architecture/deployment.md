@@ -80,11 +80,25 @@ Secrets are mounted as files into containers (not environment variables):
 
 ## Persistent Storage
 
-| PVC | Size | StorageClass | Purpose |
-|---|---|---|---|
-| `postgres-data` | 1Gi | hostpath | PostgreSQL data |
-| `architect-outputs` | 1Gi | hostpath | Rendered artifacts (diagrams, docs, PDFs) |
-| `postgres-backup` | 1Gi | hostpath | Database backups |
+| PVC | Size | StorageClass | Purpose | Retention |
+|---|---|---|---|---|
+| `postgres-data` | 1Gi | hostpath | PostgreSQL data | Retain (survives namespace deletion) |
+| `architect-outputs` | 1Gi | hostpath | Rendered artifacts (diagrams, docs, PDFs) | Delete |
+| `postgres-backup` | 1Gi | hostpath | Database backups | Delete |
+
+### PostgreSQL PV Retention
+
+The PostgreSQL PV is patched to `persistentVolumeReclaimPolicy: Retain` after deployment. This ensures project data survives namespace deletion and redeployment.
+
+**Mechanism:**
+1. After deployment, the deploy script patches the postgres PV's reclaim policy to `Retain` and labels it with `architect/namespace=<namespace>` and `architect/component=postgres-data`.
+2. On redeployment, the deploy script checks for an existing retained PV matching those labels.
+3. If found, it pre-creates the `postgres-data-postgres-0` PVC with `volumeName` set to the retained PV, and removes the PV's `claimRef` so rebinding succeeds.
+4. The StatefulSet then finds the pre-created PVC and uses the existing data.
+
+**Label scheme on PV:**
+- `architect/namespace` — the namespace this PV belongs to
+- `architect/component` — `postgres-data`
 
 ## ConfigMaps
 
