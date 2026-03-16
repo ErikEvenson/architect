@@ -115,7 +115,7 @@ export function UploadPanel({ versionId }: UploadPanelProps) {
               <div className="flex-1 min-w-0 mr-2">
                 <p className="text-sm text-gray-200 truncate">{upload.original_filename}</p>
                 <p className="text-xs text-gray-500">
-                  {formatFileSize(upload.file_size)} &middot; {new Date(upload.created_at).toLocaleDateString()}
+                  {formatFileSize(upload.file_size)} &middot; {new Date(upload.created_at).toLocaleString()}
                 </p>
               </div>
               <div className="flex items-center gap-2 shrink-0">

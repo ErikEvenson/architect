@@ -12,6 +12,7 @@ from src.models.inventory_item import InventoryItem
 from src.models.question import Question
 from src.models.version import Version
 from src.schemas.artifact import ArtifactCreate, ArtifactResponse, ArtifactUpdate
+from src.services.render_service import trigger_render
 
 
 class CloneRequest(BaseModel):
@@ -85,12 +86,25 @@ async def update_artifact(
     update_data = data.model_dump(exclude_unset=True)
     if "detail_level" in update_data:
         update_data["detail_level"] = update_data["detail_level"].value
+    if "engine" in update_data:
+        update_data["engine"] = update_data["engine"].value
+
+    source_code_changed = "source_code" in update_data and update_data["source_code"] != artifact.source_code
+    engine_changed = "engine" in update_data and update_data["engine"] != artifact.engine
 
     for key, value in update_data.items():
         setattr(artifact, key, value)
 
     await session.commit()
     await session.refresh(artifact)
+
+    # Auto-render when source_code or engine changes
+    if (source_code_changed or engine_changed) and artifact.source_code:
+        try:
+            artifact = await trigger_render(artifact.id, session)
+        except (ValueError, Exception):
+            pass  # render failure shouldn't block the update
+
     return artifact
 
 

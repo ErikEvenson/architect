@@ -70,7 +70,9 @@ export function ArtifactList({ artifacts, selectedId, versionId, onSelect, onDel
                 </div>
               </div>
               <div className="flex items-center justify-between mt-1">
-                <span className="text-xs text-gray-400">{artifact.detail_level}</span>
+                <span className="text-xs text-gray-400">
+                  {artifact.detail_level} &middot; {new Date(artifact.updated_at).toLocaleString()}
+                </span>
                 <div className="flex items-center gap-2">
                   {(() => {
                     const url = getOpenUrl(versionId, artifact);

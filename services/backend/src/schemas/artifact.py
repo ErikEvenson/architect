@@ -44,6 +44,7 @@ class ArtifactCreate(BaseModel):
 class ArtifactUpdate(BaseModel):
     name: str | None = Field(None, max_length=255)
     detail_level: DetailLevel | None = None
+    engine: Engine | None = None
     source_code: str | None = None
     sort_order: int | None = None
 
