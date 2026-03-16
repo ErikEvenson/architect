@@ -6,5 +6,6 @@ from src.models.artifact import Artifact
 from src.models.adr import ADR
 from src.models.question import Question
 from src.models.coverage import CoverageItem
+from src.models.inventory_item import InventoryItem
 
-__all__ = ["Base", "Client", "Project", "Version", "Artifact", "ADR", "Question", "CoverageItem"]
+__all__ = ["Base", "Client", "Project", "Version", "Artifact", "ADR", "Question", "CoverageItem", "InventoryItem"]

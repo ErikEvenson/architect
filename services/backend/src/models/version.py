@@ -25,3 +25,4 @@ class Version(UUIDMixin, TimestampMixin, Base):
     adrs = relationship("ADR", back_populates="version", cascade="all, delete-orphan")
     questions = relationship("Question", back_populates="version", cascade="all, delete-orphan")
     coverage_items = relationship("CoverageItem", back_populates="version", cascade="all, delete-orphan")
+    inventory_items = relationship("InventoryItem", back_populates="version", cascade="all, delete-orphan")

@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.database import get_session
 from src.models.adr import ADR
 from src.models.artifact import Artifact
+from src.models.inventory_item import InventoryItem
 from src.models.question import Question
 from src.models.version import Version
 from src.schemas.artifact import ArtifactCreate, ArtifactResponse, ArtifactUpdate
@@ -170,6 +171,23 @@ async def clone_artifacts(
             category=src_q.category,
         )
         session.add(clone_q)
+
+    # Clone inventory items
+    inv_result = await session.execute(
+        select(InventoryItem)
+        .where(InventoryItem.version_id == version_id)
+        .order_by(InventoryItem.sort_order, InventoryItem.name)
+    )
+    for src_inv in inv_result.scalars().all():
+        clone_inv = InventoryItem(
+            version_id=target_version_id,
+            name=src_inv.name,
+            description=src_inv.description,
+            data_type=src_inv.data_type,
+            data=src_inv.data,
+            sort_order=src_inv.sort_order,
+        )
+        session.add(clone_inv)
 
     await session.commit()
     for c in cloned:
