@@ -6,18 +6,20 @@ Covers Cloudflare R2 (including Super Slurper and Sippy), KV, Durable Objects, D
 
 ## Checklist
 
-- [ ] Evaluate R2 for S3-compatible object storage with zero egress fees; plan bucket structure, lifecycle rules, and multi-part upload configuration
-- [ ] Assess KV for globally distributed key-value data (eventually consistent, up to 25MB values, 512-byte keys); identify read-heavy, write-infrequent use cases
-- [ ] Determine Durable Objects requirements for strongly consistent, single-threaded stateful compute (WebSocket coordination, counters, collaborative editing)
-- [ ] Evaluate D1 for SQLite-based edge database workloads (read replicas at edge, single primary writer, 10GB max database size per database)
-- [ ] Plan Queues architecture for guaranteed message delivery between Workers (at-least-once, batched consumption, dead-letter handling)
-- [ ] Configure Hyperdrive for connection pooling to existing PostgreSQL/MySQL databases (reduces connection overhead from Workers)
-- [ ] Design data residency strategy: R2 storage locations (automatic vs jurisdiction-restricted), KV jurisdictions, Durable Object location hints
-- [ ] Plan R2 event notifications (object created/deleted) for triggering Workers on storage events
-- [ ] Assess R2 pricing model vs S3: R2 has zero egress but per-operation costs (Class A/B); model costs based on actual access patterns
-- [ ] Design cache invalidation strategy when using KV as a cache layer (KV has no built-in TTL expiration guarantees beyond "best effort")
-- [ ] Evaluate Durable Objects hibernation API for WebSocket-heavy workloads to reduce costs during idle periods
-- [ ] Plan migration path from external databases to D1 or from S3 to R2 using Workers + bulk migration tooling
+- [ ] [Critical] Evaluate R2 for S3-compatible object storage with zero egress fees; plan bucket structure, lifecycle rules, and multi-part upload configuration
+- [ ] [Recommended] Assess KV for globally distributed key-value data (eventually consistent, up to 25MB values, 512-byte keys); identify read-heavy, write-infrequent use cases
+- [ ] [Recommended] Determine Durable Objects requirements for strongly consistent, single-threaded stateful compute (WebSocket coordination, counters, collaborative editing)
+- [ ] [Optional] Evaluate D1 for SQLite-based edge database workloads (read replicas at edge, single primary writer, 10GB max database size per database)
+- [ ] [Recommended] Plan Queues architecture for guaranteed message delivery between Workers (at-least-once, batched consumption, dead-letter handling)
+- [ ] [Recommended] Configure Hyperdrive for connection pooling to existing PostgreSQL and MySQL databases (reduces connection overhead from Workers)
+- [ ] [Recommended] Design data residency strategy: R2 storage locations (automatic vs jurisdiction-restricted), KV jurisdictions, Durable Object location hints
+- [ ] [Recommended] Plan R2 event notifications (object created/deleted) for triggering Workers on storage events
+- [ ] [Recommended] Assess R2 pricing model vs S3: R2 has zero egress but per-operation costs (Class A/B); model costs based on actual access patterns
+- [ ] [Recommended] Design cache invalidation strategy when using KV as a cache layer (KV has no built-in TTL expiration guarantees beyond "best effort")
+- [ ] [Optional] Evaluate Durable Objects hibernation API for WebSocket-heavy workloads to reduce costs during idle periods
+- [ ] [Recommended] Plan migration path from external databases to D1 or from S3 to R2 using Workers + bulk migration tooling
+- [ ] [Optional] Evaluate R2 Super Slurper for bulk migration of data from existing S3-compatible or Google Cloud Storage buckets into R2; supports incremental and one-time migrations
+- [ ] [Optional] Evaluate R2 Sippy for incremental, lazy migration from S3 to R2; Sippy proxies cache misses back to the source S3 bucket, gradually populating R2 without upfront bulk copy
 
 ## Why This Matters
 
