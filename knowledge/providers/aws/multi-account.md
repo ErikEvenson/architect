@@ -123,7 +123,6 @@ Applied at the Organization Root (except excluded accounts for global services):
       "Sid": "DenyUnapprovedRegions",
       "Effect": "Deny",
       "NotAction": [
-        "a4b:*",
         "budgets:*",
         "ce:*",
         "chime:*",
@@ -132,9 +131,7 @@ Applied at the Organization Root (except excluded accounts for global services):
         "globalaccelerator:*",
         "health:*",
         "iam:*",
-        "importexport:*",
         "kms:*",
-        "mobileanalytics:*",
         "organizations:*",
         "pricing:*",
         "route53:*",
@@ -191,7 +188,7 @@ Applied at the Security OU and Workloads OU:
       "Effect": "Deny",
       "Action": [
         "guardduty:DeleteDetector",
-        "guardduty:DisassociateFromMasterAccount",
+        "guardduty:DisassociateFromAdministratorAccount",
         "guardduty:UpdateDetector"
       ],
       "Resource": "*"

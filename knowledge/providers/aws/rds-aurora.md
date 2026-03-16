@@ -2,21 +2,24 @@
 
 ## Checklist
 
-- [ ] Is Aurora chosen over standard RDS for production workloads that benefit from distributed storage, faster failover, and read scaling?
-- [ ] Is Multi-AZ enabled for all production databases? (Aurora: automatic across 3 AZs; RDS: synchronous standby in a second AZ)
-- [ ] Are read replicas configured to offload read-heavy workloads, and is the application using the reader endpoint?
-- [ ] Is Aurora Global Database configured for cross-region disaster recovery with RPO under 1 second?
-- [ ] Is Aurora Serverless v2 evaluated for variable or unpredictable workloads to reduce cost during idle periods?
-- [ ] Are DB parameter groups and cluster parameter groups customized and version-controlled rather than using defaults?
-- [ ] Is Performance Insights enabled with at least 7 days retention for query-level performance analysis?
-- [ ] Is automated backup retention set to an appropriate window (7-35 days) with point-in-time recovery tested?
-- [ ] Are database credentials stored in Secrets Manager with automatic rotation enabled?
-- [ ] Is the database deployed in private subnets with security groups restricting access to only application-tier security groups?
-- [ ] Is IAM database authentication enabled for services that support it, eliminating password management?
-- [ ] Is encryption at rest enabled using a customer-managed KMS key, and is encryption in transit enforced (ssl_mode = verify-full)?
-- [ ] Is the maintenance window scheduled during low-traffic periods, and are minor version upgrades tested before enabling auto-upgrade?
-- [ ] Are CloudWatch alarms configured for CPU, free storage, replica lag, connection count, and deadlocks?
-- [ ] Is the instance class right-sized using Performance Insights data and CloudWatch metrics, with Graviton (db.r7g) instances evaluated for cost savings?
+- [ ] **[Critical]** Is Aurora chosen over standard RDS for production workloads that benefit from distributed storage, faster failover, and read scaling?
+- [ ] **[Critical]** Is Multi-AZ enabled for all production databases? (Aurora: automatic across 3 AZs; RDS: synchronous standby in a second AZ)
+- [ ] **[Recommended]** Are read replicas configured to offload read-heavy workloads, and is the application using the reader endpoint?
+- [ ] **[Recommended]** Is Aurora Global Database configured for cross-region disaster recovery with RPO under 1 second?
+- [ ] **[Recommended]** Is Aurora Serverless v2 evaluated for variable or unpredictable workloads to reduce cost during idle periods?
+- [ ] **[Recommended]** Are DB parameter groups and cluster parameter groups customized and version-controlled rather than using defaults?
+- [ ] **[Recommended]** Is Performance Insights enabled with at least 7 days retention for query-level performance analysis?
+- [ ] **[Critical]** Is automated backup retention set to an appropriate window (7-35 days) with point-in-time recovery tested?
+- [ ] **[Critical]** Are database credentials stored in Secrets Manager with automatic rotation enabled?
+- [ ] **[Critical]** Is the database deployed in private subnets with security groups restricting access to only application-tier security groups?
+- [ ] **[Recommended]** Is IAM database authentication enabled for services that support it, eliminating password management?
+- [ ] **[Critical]** Is encryption at rest enabled using a customer-managed KMS key, and is encryption in transit enforced (ssl_mode = verify-full)?
+- [ ] **[Recommended]** Is the maintenance window scheduled during low-traffic periods, and are minor version upgrades tested before enabling auto-upgrade?
+- [ ] **[Recommended]** Are CloudWatch alarms configured for CPU, free storage, replica lag, connection count, and deadlocks?
+- [ ] **[Recommended]** Is the instance class right-sized using Performance Insights data and CloudWatch metrics, with Graviton (db.r7g) instances evaluated for cost savings?
+- [ ] **[Optional]** Evaluate Aurora Limitless Database for horizontally scaling Aurora PostgreSQL beyond single-writer limits; distributes data across multiple DB shard groups with distributed query processing for workloads exceeding single-instance write throughput (millions of write transactions per second)
+- [ ] **[Recommended]** Understand RDS Extended Support pricing for major engine versions past community end-of-life; AWS charges additional per-vCPU-hour fees (Year 1: $0.10, Year 2: $0.20, Year 3: $0.40) -- plan engine version upgrades before EOL to avoid escalating costs
+- [ ] **[Recommended]** Evaluate Aurora I/O-Optimized cluster configuration for I/O-intensive workloads where I/O costs exceed 25% of total Aurora spend; eliminates per-I/O charges in exchange for ~30% higher compute and storage pricing, providing predictable costs for high-I/O applications
 
 ## Why This Matters
 
@@ -31,6 +34,9 @@ Database misconfiguration causes data loss, performance bottlenecks, and securit
 - **Instance class selection** -- Graviton vs Intel, memory-optimized vs general purpose, right-sizing cadence
 - **Proxy layer** -- RDS Proxy for connection pooling with Lambda and serverless vs application-level connection pooling
 - **Backup and retention strategy** -- automated backups vs manual snapshots, cross-region snapshot copy
+- **Aurora I/O-Optimized vs Standard** -- I/O-Optimized eliminates per-I/O charges at ~30% higher compute/storage cost; cost-effective when I/O exceeds 25% of Aurora bill; Standard is better for low-I/O workloads
+- **Aurora Limitless Database vs sharding alternatives** -- managed horizontal scaling for Aurora PostgreSQL vs application-level sharding vs Citus vs moving to DynamoDB for extreme write throughput needs
+- **RDS Extended Support vs engine upgrade** -- accepting extended support surcharges for delayed upgrades vs planning timely major version upgrades; balance upgrade risk against escalating Year 1/2/3 per-vCPU costs
 
 ## Reference Architectures
 

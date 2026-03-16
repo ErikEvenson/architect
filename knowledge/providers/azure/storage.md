@@ -25,7 +25,7 @@ Azure Storage is the foundational data service underpinning blobs, files, queues
 
 - **Redundancy tier** -- LRS (lowest cost, single datacenter risk) vs ZRS (zone resilience, ~25% more) vs GRS/GZRS (regional failover, ~2x cost); RA-GRS adds read access to secondary region
 - **Blob Storage vs Data Lake Gen2** -- flat namespace for simple object storage vs hierarchical namespace for analytics with directory-level POSIX ACLs
-- **Azure Files vs third-party NAS** -- native SMB/NFS with Azure AD integration vs NetApp Azure Files (ANF) for enterprise NAS features and sub-millisecond latency
+- **Azure Files vs third-party NAS** -- native SMB/NFS with Azure AD integration vs Azure NetApp Files (ANF) for enterprise NAS features and sub-millisecond latency
 - **Access key vs Entra ID vs SAS tokens** -- shared keys (simple but risky) vs RBAC with managed identities (recommended) vs scoped SAS tokens (time-limited, delegated)
 - **Lifecycle management strategy** -- rule-based tier transitions based on age vs last-access-time tracking (requires enabling access time tracking)
 - **Standard vs Premium storage** -- HDD-backed (cost-optimized, GPv2) vs SSD-backed (performance-optimized, BlockBlobStorage or FileStorage) with different billing models

@@ -20,6 +20,8 @@ Infrastructure as Code using declarative JSON/YAML templates to provision and ma
 - [ ] **[Optional]** Use StackSets for multi-account, multi-region deployments with AWS Organizations integration
 - [ ] **[Optional]** Adopt SAM (`sam deploy --guided`) for serverless workloads to simplify Lambda, API Gateway, and DynamoDB definitions
 - [ ] **[Optional]** Implement custom resources (Lambda-backed) for provisioning resources not yet supported by CloudFormation
+- [ ] **[Recommended]** Enable Git Sync to automatically trigger stack updates from commits to a linked Git repository (GitHub, Bitbucket, or AWS CodeConnections), eliminating manual `update-stack` calls in CI/CD pipelines
+- [ ] **[Recommended]** Deploy CloudFormation Hooks to proactively validate resource configurations before creation or update (e.g., enforce encryption, block public access) -- Hooks run as pre-create/pre-update/pre-delete handlers and can FAIL the operation if policy is violated
 
 ---
 
@@ -237,6 +239,47 @@ sam local invoke OrderFunction --event event.json  # Local testing
 sam deploy --guided                                  # Interactive deploy
 ```
 
+## Git Sync
+
+Git Sync connects a CloudFormation stack to a Git repository, automatically deploying template changes when commits are pushed:
+
+```bash
+# Stack file in Git repo must be at a specified path
+# Configuration is done via AWS Console or CLI
+aws cloudformation create-stack \
+  --stack-name my-app \
+  --template-body file://template.yaml \
+  # Git Sync is configured as a stack property linking to a Git repo
+```
+
+Git Sync eliminates the need for separate CI/CD pipelines for simple stack deployments. The stack monitors a specified branch and file path, triggering updates when the template file changes. For production workloads requiring approval gates, testing, and multi-environment promotion, a full CI/CD pipeline is still recommended.
+
+## CloudFormation Hooks
+
+Hooks provide proactive, deploy-time policy enforcement:
+
+```yaml
+# Hook configuration (registered as a CloudFormation extension)
+# Example: Block S3 buckets without encryption
+TypeName: MyOrg::S3::EncryptionCheck
+Handlers:
+  preCreate:
+    targetNames:
+      - AWS::S3::Bucket
+    permissions: []
+  preUpdate:
+    targetNames:
+      - AWS::S3::Bucket
+    permissions: []
+```
+
+Hooks run before resource creation, update, or deletion and can:
+- **PASS** the operation (allow it to proceed)
+- **FAIL** the operation (block it with an error message)
+- **WARN** (log a warning but allow the operation)
+
+Unlike Guard (which validates templates offline), Hooks run within the CloudFormation service during stack operations, catching policy violations that may not be visible in the template alone (e.g., cross-resource dependencies).
+
 ## CloudFormation vs Terraform
 
 | Aspect | CloudFormation | Terraform |
@@ -261,6 +304,8 @@ sam deploy --guided                                  # Interactive deploy
 - **Custom resources vs waiting for native support**: Custom resources add Lambda maintenance burden. Decide when the operational need justifies building one versus waiting for AWS to add native support.
 - **SAM vs raw CloudFormation for serverless**: SAM reduces boilerplate but adds a transform layer. Teams mixing serverless and traditional resources must decide on one or both approaches.
 - **State protection strategy**: Define which resources get stack policies, which stacks get termination protection, and how drift is monitored and remediated.
+- **Git Sync vs CI/CD pipeline deployments**: Git Sync provides automatic stack updates on commit for simpler workflows; CI/CD pipelines (CodePipeline, GitHub Actions) offer more control with approval gates, testing stages, and multi-environment promotion. Document when each approach is appropriate.
+- **CloudFormation Hooks vs Guard vs Config Rules**: Hooks enforce policy at deploy-time (blocking non-compliant creates/updates), Guard validates templates pre-deployment (shift-left), and Config Rules detect non-compliance post-deployment (detective). A comprehensive strategy may use all three layers.
 
 ---
 

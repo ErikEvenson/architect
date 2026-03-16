@@ -2,12 +2,16 @@
 
 ## Overview
 
-**NIST SP 800-171** defines 110 security requirements for protecting Controlled Unclassified Information (CUI) in non-federal systems. It is the foundation for the **Cybersecurity Maturity Model Certification (CMMC 2.0)**, which the Department of Defense uses to assess contractor cybersecurity posture.
+**NIST SP 800-171** defines security requirements for protecting Controlled Unclassified Information (CUI) in non-federal systems. It is the foundation for the **Cybersecurity Maturity Model Certification (CMMC 2.0)**, which the Department of Defense uses to assess contractor cybersecurity posture.
+
+**NIST 800-171 Revision 3** (May 2024) restructured the control families and updated requirements to align more closely with NIST SP 800-53 Rev. 5. Rev. 3 reorganizes the 110 controls from Rev. 2 into a different structure with updated control text and new organization-defined parameters (ODPs). The DoD has confirmed that CMMC 2.0 Level 2 assessments will continue to reference Rev. 2 until a future rulemaking formally adopts Rev. 3. Organizations should begin gap analysis against Rev. 3 now but maintain compliance with Rev. 2 for current CMMC assessments.
 
 **CMMC 2.0 Levels:**
 - **Level 1 (Foundational):** 17 practices — basic cyber hygiene (self-assessment)
-- **Level 2 (Advanced):** 110 practices — aligned 1:1 with NIST 800-171 (third-party assessment for critical contracts)
+- **Level 2 (Advanced):** 110 practices — aligned 1:1 with NIST 800-171 Rev. 2 (third-party assessment for critical contracts)
 - **Level 3 (Expert):** 110+ practices — NIST 800-171 plus subset of NIST 800-172 (government-led assessment)
+
+**CMMC Phase 2 Timeline:** CMMC Phase 1 (began 2025) requires Level 1 and Level 2 self-assessments in applicable contracts. **Phase 2** is scheduled for **November 2026**, when Level 2 third-party (C3PAO) assessments become a requirement in applicable DoD contracts. Organizations expecting to bid on contracts requiring Level 2 certification should begin C3PAO assessment preparation well in advance of the November 2026 deadline.
 
 **Applicability:** Required for any organization handling CUI under DoD contracts. Increasingly adopted by other federal agencies and as a general cybersecurity framework.
 

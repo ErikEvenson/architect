@@ -1,20 +1,24 @@
 # VMware Compute
 
+## Scope
+
+This document covers VMware vSphere compute configuration including cluster sizing, DRS, HA, resource management, VM hardware versions, encryption, Fault Tolerance, content libraries, NUMA awareness, and lifecycle management.
+
 ## Checklist
 
-- [ ] Are vSphere clusters sized with N+1 (or N+2 for critical workloads) host capacity to accommodate DRS rebalancing and HA failover without performance degradation?
-- [ ] Is DRS configured with the appropriate automation level (fully automated for general workloads, partially automated for latency-sensitive VMs) and migration threshold tuned to avoid excessive vMotion?
-- [ ] Are VM-host affinity rules defined for licensing compliance (e.g., Oracle, SQL Server pinning to specific hosts) and anti-affinity rules separating redundant VMs across hosts?
-- [ ] Is HA admission control configured with the correct policy (percentage-based for uniform clusters, slot-based for heterogeneous, dedicated failover host for deterministic failover) reserving sufficient capacity for the planned number of host failures?
-- [ ] Are VMs right-sized with appropriate vCPU counts (avoiding over-provisioning past physical core count per host) and memory reservations set for critical workloads to prevent ballooning and swapping?
-- [ ] Are resource pools structured to enforce shares, limits, and reservations at the business-unit or tier level, avoiding deeply nested resource pool hierarchies that cause unexpected resource allocation behavior?
-- [ ] Is EVC (Enhanced vMotion Compatibility) mode set at the cluster level to the lowest common CPU generation, ensuring vMotion compatibility during rolling hardware refreshes?
-- [ ] Are VM hardware versions intentionally managed (not auto-upgraded) to maintain compatibility with the oldest ESXi host in the cluster and to control feature exposure?
-- [ ] Is VM encryption (vSphere Native Key Provider or external KMS like HyTrust, Thales) configured for workloads requiring encryption at rest, with an understanding that encrypted VMs cannot use some features (e.g., fault tolerance, suspend/resume)?
-- [ ] Is vSphere Fault Tolerance (FT) reserved only for single-vCPU or dual-vCPU mission-critical VMs requiring zero-downtime failover, with HA used as the standard availability mechanism for all other workloads?
-- [ ] Are content libraries configured for VM template distribution across vCenters, with subscriber libraries pulling from a publisher to ensure consistent golden images and OVF templates?
-- [ ] Is NUMA topology respected in VM sizing (vCPUs and memory fitting within a single NUMA node) to avoid cross-NUMA memory access latency, especially for databases and latency-sensitive applications?
-- [ ] Are vMotion network interfaces configured on dedicated VMkernel adapters with sufficient bandwidth (10GbE minimum, 25GbE recommended) and multi-NIC vMotion enabled for large-memory VM migrations?
+- [ ] **[Critical]** Are vSphere clusters sized with N+1 (or N+2 for critical workloads) host capacity to accommodate DRS rebalancing and HA failover without performance degradation?
+- [ ] **[Critical]** Is DRS configured with the appropriate automation level (fully automated for general workloads, partially automated for latency-sensitive VMs) and migration threshold tuned to avoid excessive vMotion?
+- [ ] **[Recommended]** Are VM-host affinity rules defined for licensing compliance (e.g., Oracle, SQL Server pinning to specific hosts) and anti-affinity rules separating redundant VMs across hosts?
+- [ ] **[Critical]** Is HA admission control configured with the correct policy (percentage-based for uniform clusters, slot-based for heterogeneous, dedicated failover host for deterministic failover) reserving sufficient capacity for the planned number of host failures?
+- [ ] **[Critical]** Are VMs right-sized with appropriate vCPU counts (avoiding over-provisioning past physical core count per host) and memory reservations set for critical workloads to prevent ballooning and swapping?
+- [ ] **[Recommended]** Are resource pools structured to enforce shares, limits, and reservations at the business-unit or tier level, avoiding deeply nested resource pool hierarchies that cause unexpected resource allocation behavior?
+- [ ] **[Recommended]** Is EVC (Enhanced vMotion Compatibility) mode set at the cluster level to the lowest common CPU generation, ensuring vMotion compatibility during rolling hardware refreshes?
+- [ ] **[Recommended]** Are VM hardware versions intentionally managed (not auto-upgraded) to maintain compatibility with the oldest ESXi host in the cluster and to control feature exposure?
+- [ ] **[Recommended]** Is VM encryption (vSphere Native Key Provider or external KMS like Entrust, Thales CipherTrust) configured for workloads requiring encryption at rest, with an understanding that encrypted VMs cannot use some features (e.g., fault tolerance, suspend/resume)?
+- [ ] **[Optional]** Is vSphere Fault Tolerance (FT) reserved only for single-vCPU or dual-vCPU mission-critical VMs requiring zero-downtime failover, with HA used as the standard availability mechanism for all other workloads?
+- [ ] **[Recommended]** Are content libraries configured for VM template distribution across vCenters, with subscriber libraries pulling from a publisher to ensure consistent golden images and OVF templates?
+- [ ] **[Recommended]** Is NUMA topology respected in VM sizing (vCPUs and memory fitting within a single NUMA node) to avoid cross-NUMA memory access latency, especially for databases and latency-sensitive applications?
+- [ ] **[Recommended]** Are vMotion network interfaces configured on dedicated VMkernel adapters with sufficient bandwidth (10GbE minimum, 25GbE recommended) and multi-NIC vMotion enabled for large-memory VM migrations?
 
 ## Why This Matters
 
@@ -32,21 +36,29 @@ Compute configuration in vSphere directly determines application availability, p
 
 ## Version Notes
 
-| Feature | vSphere 7 (7.0 U3) | vSphere 8 (8.0 U2+) |
-|---|---|---|
-| Maximum VM hardware version | vmx-19 | vmx-21 |
-| DPU (Data Processing Unit) support | Not available | GA (offload networking/security to SmartNIC) |
-| DRS | GA (load balancing) | GA (improved workload placement, DRS scores) |
-| vSphere Lifecycle Manager (vLCM) | GA (image-based) | GA (enhanced firmware/driver management) |
-| Update Manager (VUM) | Supported (baseline-based) | Deprecated (replaced by vLCM) |
-| vSphere Configuration Profiles | Not available | GA (host config drift remediation) |
-| DevOps Center | Not available | GA (VM Service for developer self-service) |
-| VM vGPU profiles | GA (NVIDIA GRID) | GA (improved MIG support, vGPU 16+) |
-| vSphere Fault Tolerance | GA (up to 8 vCPU) | GA (up to 8 vCPU, unchanged) |
-| Content Library | GA | GA (improved OVF deployment, check-in/check-out) |
-| vSphere+ (SaaS management) | Not available | GA (cloud-connected vCenter management) |
-| AI/ML workload support | Basic GPU passthrough | Enhanced (vSphere AI integration, DPU offload) |
-| Assignable Hardware | Not available | GA (framework for DPU, GPU, other devices) |
+| Feature | vSphere 7 (7.0 U3) | vSphere 8 (8.0 U2+) | vSphere 9 / VCF 9.0 |
+|---|---|---|---|
+| Maximum VM hardware version | vmx-19 | vmx-21 | vmx-22 |
+| DPU (Data Processing Unit) support | Not available | GA (offload networking/security to SmartNIC) | GA (enhanced) |
+| DRS | GA (load balancing) | GA (improved workload placement, DRS scores) | GA |
+| vSphere Lifecycle Manager (vLCM) | GA (image-based) | GA (enhanced firmware/driver management) | GA (sole lifecycle tool) |
+| Update Manager (VUM) | Supported (baseline-based) | Deprecated (replaced by vLCM) | **Removed** |
+| Host Profiles | GA | GA | **Deprecated** (use vSphere Configuration Profiles) |
+| Auto Deploy | GA | GA | **Deprecated** |
+| vSphere Configuration Profiles | Not available | GA (host config drift remediation) | GA (replaces Host Profiles) |
+| DevOps Center | Not available | GA (VM Service for developer self-service) | GA |
+| VM vGPU profiles | GA (NVIDIA GRID) | GA (improved MIG support, vGPU 16+) | GA (enhanced AI/ML) |
+| vSphere Fault Tolerance | GA (up to 8 vCPU) | GA (up to 8 vCPU, unchanged) | GA |
+| Content Library | GA | GA (improved OVF deployment, check-in/check-out) | GA |
+| vSphere+ (SaaS management) | Not available | GA (cloud-connected vCenter management) | GA |
+| AI/ML workload support | Basic GPU passthrough | Enhanced (vSphere AI integration, DPU offload) | Enhanced (VCF AI focus) |
+| Assignable Hardware | Not available | GA (framework for DPU, GPU, other devices) | GA |
+
+**Key changes in vSphere 9 / VCF 9.0 compute:**
+- **VUM removed:** VMware Update Manager (VUM) is fully removed in vSphere 9. All host lifecycle management must use vSphere Lifecycle Manager (vLCM) with image-based desired state. Organizations still using VUM baselines must migrate to vLCM before upgrading.
+- **Host Profiles deprecated:** Host Profiles are deprecated in vSphere 9 in favor of vSphere Configuration Profiles. Plan migration from Host Profiles to Configuration Profiles for host configuration management.
+- **Auto Deploy deprecated:** vSphere Auto Deploy is deprecated in vSphere 9. Evaluate alternative stateless host provisioning approaches using vLCM image-based management.
+- **Version number alignment:** VCF jumped from 5.x directly to 9.0 to align all component versions (vSphere 9, ESXi 9, vSAN 9, NSX 9). There is no VCF 6.x, 7.x, or 8.x.
 
 **Key differences between vSphere 7 and 8 compute:**
 - **DPU support:** vSphere 8 introduced support for Data Processing Units (SmartNICs such as NVIDIA BlueField, AMD Pensando). DPUs offload networking, security, and storage I/O processing from the host CPU, freeing compute resources for workloads. The ESXi control plane runs on the DPU in a "stateless" host model.

@@ -4,7 +4,7 @@ Purpose-built edge appliances delivered as a service (hardware-as-a-service) for
 
 ## Checklist
 
-- [ ] Determine the appropriate SKU: Azure Stack Edge Pro 2 (latest generation, single or dual GPU), Azure Stack Edge Pro GPU (T4 GPUs), Azure Stack Edge Pro FPGA (being retired — migrate to GPU SKU), or Azure Stack Edge Mini R (ruggedized, single GPU, battery-capable)
+- [ ] **[Critical]** Determine the appropriate SKU: Azure Stack Edge Pro 2 (latest generation, single or dual GPU), Azure Stack Edge Pro GPU (T4 GPUs), or Azure Stack Edge Mini R (ruggedized, single GPU, battery-capable). Note: Azure Stack Edge Pro FPGA was retired in February 2024 — all FPGA deployments must be migrated to GPU SKUs
 - [ ] Order the device through the Azure portal: create an Azure Stack Edge resource, select SKU and shipping destination, provide site contact details; lead times vary by region (typically 2-6 weeks)
 - [ ] Plan site requirements: rack space (Pro 2 is 1U, Mini R is portable), power (dual PSU recommended for Pro), network connectivity (1GbE management + 10/25GbE data ports), ambient temperature limits
 - [ ] Activate the device using the activation key from the Azure portal; configure network settings, DNS, proxy, and time server via the local web UI during initial setup
@@ -33,7 +33,7 @@ AI inference at the edge is the primary differentiator. Rather than streaming ra
 Pro devices are datacenter/closet-grade 1U appliances with higher compute and storage capacity, suitable for permanent installations. Mini R is ruggedized (IP65-rated), battery-capable, and portable, designed for field operations, disaster response, or deployments in harsh environments. Record the deployment environment and mobility requirements to justify the SKU selection.
 
 ### GPU vs. FPGA SKU
-FPGA SKUs are being retired. New deployments should use GPU SKUs. If migrating from FPGA, document the model conversion plan (FPGA models to ONNX/GPU-compatible formats) and timeline.
+FPGA SKUs were retired in February 2024. New deployments must use GPU SKUs. If migrating from FPGA, document the model conversion plan (FPGA models to ONNX/GPU-compatible formats) and timeline.
 
 ### Kubernetes (Arc-enabled) vs. IoT Edge runtime
 Both run containers on the device. Kubernetes (Arc-enabled) provides standard K8s APIs, Helm chart deployment, and GitOps via Flux. IoT Edge provides module-based deployment managed through IoT Hub, with built-in message routing and device twin capabilities. Choose Kubernetes for cloud-native teams and workloads that may migrate between edge and cloud. Choose IoT Edge for IoT-centric scenarios with device management, message brokering, and integration with IoT Hub analytics.

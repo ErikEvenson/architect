@@ -8,32 +8,32 @@ This file covers **VDI platform migration**: decision frameworks for moving betw
 
 ### Platform Decision
 
-- [ ] [Critical] Has a decision tree been applied? (re-platform on new hypervisor vs cloud VDI vs hybrid)
-- [ ] [Critical] Are current VDI workload profiles documented? (user types, session counts, resource consumption per persona)
-- [ ] [Critical] Has the target connection broker been selected? (Omnissa Horizon, Citrix CVAD, Azure Virtual Desktop, Windows 365, Dizzion Frame)
-- [ ] [Recommended] Is a hybrid VDI architecture evaluated? (on-prem for persistent power users, cloud for task workers and burst)
-- [ ] [Optional] Has a multi-broker strategy been considered? (Citrix for on-prem, AVD for cloud — common in phased migrations)
+- [ ] **[Critical]** Has a decision tree been applied? (re-platform on new hypervisor vs cloud VDI vs hybrid)
+- [ ] **[Critical]** Are current VDI workload profiles documented? (user types, session counts, resource consumption per persona)
+- [ ] **[Critical]** Has the target connection broker been selected? (Omnissa Horizon, Citrix CVAD, Azure Virtual Desktop, Windows 365, Dizzion Frame)
+- [ ] **[Recommended]** Is a hybrid VDI architecture evaluated? (on-prem for persistent power users, cloud for task workers and burst)
+- [ ] **[Optional]** Has a multi-broker strategy been considered? (Citrix for on-prem, AVD for cloud — common in phased migrations)
 
 ### Hypervisor and Broker Compatibility
 
-- [ ] [Critical] Is the target hypervisor supported by the chosen broker? (Horizon on AHV requires 2512+, Citrix on AHV requires Prism Central plugin)
-- [ ] [Critical] Are vGPU/GPU passthrough requirements validated on the target hypervisor? (NVIDIA vGPU driver support varies by hypervisor)
-- [ ] [Recommended] Has the connection broker version matrix been checked against the target hypervisor version?
-- [ ] [Recommended] Are published application requirements validated? (RDSH farms, App Volumes, App Layering support on target platform)
+- [ ] **[Critical]** Is the target hypervisor supported by the chosen broker? (Horizon on AHV requires 2512+, Citrix on AHV requires Prism Central plugin)
+- [ ] **[Critical]** Are vGPU/GPU passthrough requirements validated on the target hypervisor? (NVIDIA vGPU driver support varies by hypervisor)
+- [ ] **[Recommended]** Has the connection broker version matrix been checked against the target hypervisor version?
+- [ ] **[Recommended]** Are published application requirements validated? (RDSH farms, App Volumes, App Layering support on target platform)
 
 ### Image and Profile Migration
 
-- [ ] [Critical] Is the desktop image strategy defined for the target platform? (MCS, PVS, linked clones, full clones, Redirect-on-Write)
-- [ ] [Critical] Is user profile migration planned? (FSLogix, Omnissa DEM, Citrix UPM — container format compatibility)
-- [ ] [Recommended] Are application layers portable? (Citrix App Layering, Omnissa App Volumes — may require rebuild on new hypervisor)
-- [ ] [Recommended] Is print and peripheral redirection tested on the target platform? (USB redirection, printer mapping, scanner support)
+- [ ] **[Critical]** Is the desktop image strategy defined for the target platform? (MCS, PVS, linked clones, full clones, Redirect-on-Write)
+- [ ] **[Critical]** Is user profile migration planned? (FSLogix, Omnissa DEM, Citrix UPM — container format compatibility)
+- [ ] **[Recommended]** Are application layers portable? (Citrix App Layering, Omnissa App Volumes — may require rebuild on new hypervisor)
+- [ ] **[Recommended]** Is print and peripheral redirection tested on the target platform? (USB redirection, printer mapping, scanner support)
 
 ### Performance and Licensing
 
-- [ ] [Critical] Are performance baselines captured before migration? (Login VSI, Lakeside SysTrack, ControlUp)
-- [ ] [Critical] Are licensing implications mapped? (Windows VDA, RDS CALs, Horizon subscription, Citrix Universal, Microsoft 365 E3/E5 for AVD)
-- [ ] [Recommended] Is a proof of concept planned with representative user personas? (minimum 2-week pilot per persona)
-- [ ] [Optional] Has hardware BOM impact been assessed? (cloud VDI eliminates on-prem compute; on-prem VDI may require new GPU hosts)
+- [ ] **[Critical]** Are performance baselines captured before migration? (Login VSI, Lakeside SysTrack, ControlUp)
+- [ ] **[Critical]** Are licensing implications mapped? (Windows VDA, RDS CALs, Horizon subscription, Citrix Universal, Microsoft 365 E3/E5 for AVD)
+- [ ] **[Recommended]** Is a proof of concept planned with representative user personas? (minimum 2-week pilot per persona)
+- [ ] **[Optional]** Has hardware BOM impact been assessed? (cloud VDI eliminates on-prem compute; on-prem VDI may require new GPU hosts)
 
 ## Why This Matters
 

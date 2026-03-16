@@ -1,10 +1,12 @@
-# PCI DSS v4.0 - Cloud Control Mapping
+# PCI DSS v4.0.1 - Cloud Control Mapping
 
 ## Overview
 
-PCI DSS (Payment Card Industry Data Security Standard) v4.0 applies to any entity that stores, processes, or transmits cardholder data. In cloud environments, responsibility is shared between the cloud provider and the customer. The provider typically covers physical security and infrastructure controls; the customer is responsible for configuration, application security, and data handling.
+PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any entity that stores, processes, or transmits cardholder data. In cloud environments, responsibility is shared between the cloud provider and the customer. The provider typically covers physical security and infrastructure controls; the customer is responsible for configuration, application security, and data handling.
 
-**Effective Date:** PCI DSS v4.0 became mandatory March 31, 2024. Future-dated requirements become mandatory March 31, 2025.
+**Current Version:** PCI DSS v4.0.1 (June 2024) -- a limited revision of v4.0 with clarifications and corrections to guidance; no new or removed requirements. Organizations validated against v4.0 remain compliant.
+
+**Effective Date:** PCI DSS v4.0 became mandatory March 31, 2024. Future-dated requirements became mandatory March 31, 2025. All assessments should now reference v4.0.1.
 
 **Scope:** Any system component that stores, processes, or transmits cardholder data (CHD) or sensitive authentication data (SAD), plus any component that could affect the security of those systems.
 
@@ -350,7 +352,7 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0 applies to any entit
 - [ ] Responsibility matrix (RACI) between organization and cloud provider is documented
 - [ ] Cloud provider's shared responsibility model is reviewed and gaps are addressed
 - [ ] PCI DSS scope is reviewed at least annually and after significant infrastructure changes
-- [ ] Targeted risk analysis is performed for each PCI DSS requirement with flexibility (v4.0 customized approach)
+- [ ] Targeted risk analysis is performed for each PCI DSS requirement with flexibility (v4.0.1 customized approach)
 
 ---
 

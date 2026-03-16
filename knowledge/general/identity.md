@@ -1,5 +1,9 @@
 # Identity and Access Management
 
+## Scope
+
+This file covers **identity and access management decisions** including federation protocols, SSO, MFA, service identities, privileged access, and authorization models. For provider-specific IAM implementation, see `providers/aws/iam.md`, `providers/azure/identity.md`, or `providers/gcp/iam.md`. For governance and organizational controls, see `general/governance.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** What identity federation protocol is used? (SAML 2.0 for enterprise SSO, OIDC for modern apps, OAuth 2.0 for API authorization — often OIDC + OAuth 2.0 together)

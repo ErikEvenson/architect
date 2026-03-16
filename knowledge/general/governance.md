@@ -6,18 +6,18 @@ This file covers **organizational governance practices** for cloud environments:
 
 ## Checklist
 
-- [ ] Are mandatory tags defined and enforced? (owner, environment, cost-center, project at minimum)
-- [ ] Is there a resource naming convention? (documented, consistent across providers, enforced via policy)
-- [ ] Is the account/subscription/project structure defined? (landing zones, organizational units, separation of concerns)
-- [ ] Is policy-as-code implemented? (OPA/Gatekeeper, HashiCorp Sentinel, Azure Policy, AWS SCPs)
-- [ ] Are Service Control Policies or Organization Policies restricting dangerous actions? (prevent disabling logging, public S3 buckets, unapproved regions)
-- [ ] Are budget alerts and spending controls in place? (per account, per team, per project)
-- [ ] Is there a FinOps practice? (cost visibility, allocation, optimization cadence)
-- [ ] Is there a Cloud Center of Excellence or platform team? (standards, enablement, shared services)
-- [ ] Are guardrails automated rather than gate-based? (prevent vs approve — guardrails scale, gates do not)
-- [ ] Is there a service catalog of approved architectures? (pre-approved patterns, self-service provisioning)
-- [ ] Is there a process for requesting exceptions to governance policies?
-- [ ] Are resource lifecycle policies defined? (TTL for dev environments, cleanup automation)
+- [ ] **[Critical]** Are mandatory tags defined and enforced? (owner, environment, cost-center, project at minimum)
+- [ ] **[Critical]** Is there a resource naming convention? (documented, consistent across providers, enforced via policy)
+- [ ] **[Critical]** Is the account/subscription/project structure defined? (landing zones, organizational units, separation of concerns)
+- [ ] **[Recommended]** Is policy-as-code implemented? (OPA/Gatekeeper, HashiCorp Sentinel, Azure Policy, AWS SCPs)
+- [ ] **[Critical]** Are Service Control Policies or Organization Policies restricting dangerous actions? (prevent disabling logging, public S3 buckets, unapproved regions)
+- [ ] **[Critical]** Are budget alerts and spending controls in place? (per account, per team, per project)
+- [ ] **[Recommended]** Is there a FinOps practice? (cost visibility, allocation, optimization cadence)
+- [ ] **[Optional]** Is there a Cloud Center of Excellence or platform team? (standards, enablement, shared services)
+- [ ] **[Recommended]** Are guardrails automated rather than gate-based? (prevent vs approve — guardrails scale, gates do not)
+- [ ] **[Optional]** Is there a service catalog of approved architectures? (pre-approved patterns, self-service provisioning)
+- [ ] **[Recommended]** Is there a process for requesting exceptions to governance policies?
+- [ ] **[Recommended]** Are resource lifecycle policies defined? (TTL for dev environments, cleanup automation)
 
 ## Why This Matters
 
@@ -113,7 +113,7 @@ Organization Root
 | Provider | Tool | What It Provides |
 |----------|------|-----------------|
 | **AWS** | Control Tower + Account Factory | Automated account provisioning, guardrails, SSO |
-| **Azure** | Cloud Adoption Framework Landing Zones | Management groups, policy, Blueprints, Hub-spoke networking |
+| **Azure** | Cloud Adoption Framework Landing Zones | Management groups, policy, deployment stacks (Blueprints deprecated July 2026), Hub-spoke networking |
 | **GCP** | Cloud Foundation Toolkit | Organization, folders, projects, shared VPC |
 
 ### Account Separation Principles

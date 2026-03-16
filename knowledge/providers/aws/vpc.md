@@ -2,20 +2,22 @@
 
 ## Checklist
 
-- [ ] What CIDR block size for the VPC? (Plan for growth; /16 gives 65K IPs, avoid overlaps with peered VPCs and on-premises ranges)
-- [ ] How many tiers of subnets? (public, private-app, private-data, private-management is a common four-tier model)
-- [ ] Are subnets sized correctly per AZ? (each subnet loses 5 IPs to AWS; ensure room for ENIs, Lambda, EKS pods)
-- [ ] Is a NAT Gateway deployed per AZ for high availability, or is a shared NAT Gateway acceptable for cost savings?
-- [ ] Are VPC Endpoints (Gateway and Interface) configured for S3, DynamoDB, ECR, CloudWatch, STS, and other frequently used services to avoid NAT costs and improve security?
-- [ ] Are Security Groups following least-privilege with source-based references (other SGs, prefix lists) rather than broad CIDR rules?
-- [ ] Are NACLs used as a secondary stateless defense layer at subnet boundaries, with explicit deny rules for known bad ranges?
-- [ ] Is VPC Flow Logs enabled and shipping to CloudWatch Logs or S3 for network forensics and anomaly detection?
-- [ ] Is Transit Gateway used for multi-VPC or multi-account connectivity instead of a mesh of VPC peering connections?
-- [ ] Are route tables correctly segmented so public subnets route through IGW, private subnets through NAT, and isolated subnets have no internet route?
-- [ ] Is DNS resolution enabled (enableDnsSupport, enableDnsHostnames) for private hosted zone and VPC endpoint DNS?
-- [ ] Are secondary CIDR blocks planned if the primary range may be exhausted (e.g., high-density EKS workloads)?
-- [ ] Is IPv6 dual-stack needed for any workloads, and are egress-only internet gateways configured accordingly?
-- [ ] Are prefix lists used for managing CIDR groups referenced across multiple security groups and route tables?
+- [ ] **[Critical]** What CIDR block size for the VPC? (Plan for growth; /16 gives 65K IPs, avoid overlaps with peered VPCs and on-premises ranges)
+- [ ] **[Critical]** How many tiers of subnets? (public, private-app, private-data, private-management is a common four-tier model)
+- [ ] **[Critical]** Are subnets sized correctly per AZ? (each subnet loses 5 IPs to AWS; ensure room for ENIs, Lambda, EKS pods)
+- [ ] **[Recommended]** Is a NAT Gateway deployed per AZ for high availability, or is a shared NAT Gateway acceptable for cost savings?
+- [ ] **[Recommended]** Are VPC Endpoints (Gateway and Interface) configured for S3, DynamoDB, ECR, CloudWatch, STS, and other frequently used services to avoid NAT costs and improve security?
+- [ ] **[Critical]** Are Security Groups following least-privilege with source-based references (other SGs, prefix lists) rather than broad CIDR rules?
+- [ ] **[Optional]** Are NACLs used as a secondary stateless defense layer at subnet boundaries, with explicit deny rules for known bad ranges?
+- [ ] **[Recommended]** Is VPC Flow Logs enabled and shipping to CloudWatch Logs or S3 for network forensics and anomaly detection?
+- [ ] **[Recommended]** Is Transit Gateway used for multi-VPC or multi-account connectivity instead of a mesh of VPC peering connections?
+- [ ] **[Critical]** Are route tables correctly segmented so public subnets route through IGW, private subnets through NAT, and isolated subnets have no internet route?
+- [ ] **[Recommended]** Is DNS resolution enabled (enableDnsSupport, enableDnsHostnames) for private hosted zone and VPC endpoint DNS?
+- [ ] **[Optional]** Are secondary CIDR blocks planned if the primary range may be exhausted (e.g., high-density EKS workloads)?
+- [ ] **[Optional]** Is IPv6 dual-stack needed for any workloads, and are egress-only internet gateways configured accordingly?
+- [ ] **[Optional]** Are prefix lists used for managing CIDR groups referenced across multiple security groups and route tables?
+- [ ] **[Optional]** Evaluate VPC Lattice for application-layer service-to-service networking; provides service discovery, traffic management, and access controls across VPCs and accounts without Transit Gateway or VPC peering; supports weighted routing, HTTP/gRPC path-based routing, and IAM auth policies at the service network level
+- [ ] **[Optional]** Evaluate AWS Verified Access for zero-trust access to corporate applications without a VPN; validates user identity and device posture against trust providers (IAM Identity Center, Okta, CrowdStrike, Jamf) before granting access to internal applications behind a Verified Access endpoint
 
 ## Why This Matters
 
@@ -29,6 +31,8 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - **Transit Gateway vs VPC Peering** -- centralized hub-spoke vs point-to-point for small account counts
 - **Security Group management** -- Terraform modules vs AWS Firewall Manager policies across accounts
 - **Multi-account VPC strategy** -- shared VPC (RAM) vs dedicated VPCs per account with Transit Gateway
+- **Service-to-service networking** -- VPC Lattice (application-layer, L7 routing, IAM auth) vs Transit Gateway (network-layer, L3/L4) vs VPC peering (simple point-to-point); VPC Lattice is ideal for microservice connectivity across VPCs and accounts with built-in observability
+- **Corporate application access** -- AWS Verified Access (zero-trust, no VPN, identity+device posture) vs Client VPN vs Direct Connect for internal application access
 
 ## Pricing Links
 

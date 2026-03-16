@@ -1,5 +1,9 @@
 # Capacity Planning
 
+## Scope
+
+This file covers **capacity planning and performance sizing** including load testing, growth projections, auto-scaling validation, database connection limits, and cost projection. For compute instance selection, see `general/compute.md`. For testing strategies including load testing tools, see `general/testing-strategy.md`.
+
 ## Checklist
 
 - [ ] **[Recommended]** What sizing methodology is used? (bottleneck analysis, queuing theory, empirical load testing, historical trend extrapolation)

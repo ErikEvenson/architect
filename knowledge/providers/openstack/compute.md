@@ -1,21 +1,25 @@
 # OpenStack Compute (Nova)
 
+## Scope
+
+Covers Nova compute service configuration: hypervisor drivers, flavors, CPU/NUMA/huge page tuning, PCI passthrough, vGPU, availability zones, host aggregates, cells v2 architecture, live migration, scheduling, and quotas.
+
 ## Checklist
 
-- [ ] Is the compute driver selected appropriately? (libvirt/KVM for production virtualization, libvirt/QEMU for nested/dev environments, Ironic for bare metal provisioning, VMware vCenter for ESXi integration)
-- [ ] Are Nova flavors defined with deliberate sizing tiers (m1.small, c1.xlarge, etc.) including CPU, RAM, disk, and ephemeral storage, with flavor access restricted per project where needed?
-- [ ] Is CPU pinning (`hw:cpu_policy=dedicated`) configured for latency-sensitive workloads, and are shared (floating) CPUs allocated for general-purpose instances to avoid CPU overcommit conflicts?
-- [ ] Is NUMA topology awareness enabled (`hw:numa_nodes`, `hw:numa_cpus`, `hw:numa_mem`) for workloads requiring memory locality, and are compute hosts validated for consistent NUMA geometry?
-- [ ] Are huge pages configured (`hw:mem_page_size=large` or `1GB`) for high-throughput workloads (DPDK, databases), and is the host reserved memory (`reserved_host_memory_mb`) adjusted accordingly?
-- [ ] Are PCI passthrough devices (GPUs, SR-IOV NICs, FPGAs) configured in `nova.conf` with `[pci] alias` and `passthrough_whitelist`, and are corresponding flavor extra specs (`pci_passthrough:alias`) defined?
-- [ ] Are availability zones defined to represent physical failure domains (power, network, cooling) and are hosts assigned to zones via host aggregates with `availability_zone` metadata?
-- [ ] Are host aggregates configured with metadata keys (e.g., `ssd=true`, `gpu=nvidia-a100`) and matching flavor extra specs (`aggregate_instance_extra_specs`) to direct workloads to appropriate hardware?
-- [ ] Are server groups used to enforce placement policy? (`affinity` for co-location of tightly coupled services, `anti-affinity` for HA distribution, `soft-anti-affinity` for best-effort separation)
-- [ ] Is live migration enabled and tested? (shared storage or block migration, `live_migration_uri`, `live_migration_tunnelled`, timeout and completion settings in `nova.conf`)
-- [ ] Is the Nova cells v2 architecture properly configured? (single cell for small deployments, multiple cells for scale beyond ~500 compute nodes, separate cell databases and message queues)
-- [ ] Are compute overcommit ratios set intentionally? (`cpu_allocation_ratio` default 16:1, `ram_allocation_ratio` default 1.5:1, `disk_allocation_ratio` default 1.0 -- production often uses lower CPU ratios like 4:1 or 2:1)
-- [ ] Is the Nova scheduler configured with appropriate filters and weights? (`AggregateInstanceExtraSpecsFilter`, `NUMATopologyFilter`, `PciPassthroughFilter`, `ServerGroupAntiAffinityFilter`)
-- [ ] Are Nova quota limits set per project for instances, cores, RAM, key pairs, server groups, and server group members to prevent resource exhaustion?
+- [ ] **[Critical]** Is the compute driver selected appropriately? (libvirt/KVM for production virtualization, libvirt/QEMU for nested/dev environments, Ironic for bare metal provisioning, VMware vCenter for ESXi integration)
+- [ ] **[Critical]** Are Nova flavors defined with deliberate sizing tiers (m1.small, c1.xlarge, etc.) including CPU, RAM, disk, and ephemeral storage, with flavor access restricted per project where needed?
+- [ ] **[Critical]** Are availability zones defined to represent physical failure domains (power, network, cooling) and are hosts assigned to zones via host aggregates with `availability_zone` metadata?
+- [ ] **[Critical]** Is the Nova cells v2 architecture properly configured? (single cell for small deployments, multiple cells for scale beyond ~500 compute nodes, separate cell databases and message queues)
+- [ ] **[Critical]** Are compute overcommit ratios set intentionally? (`cpu_allocation_ratio` default 16:1, `ram_allocation_ratio` default 1.5:1, `disk_allocation_ratio` default 1.0 -- production often uses lower CPU ratios like 4:1 or 2:1)
+- [ ] **[Critical]** Are Nova quota limits set per project for instances, cores, RAM, key pairs, server groups, and server group members to prevent resource exhaustion?
+- [ ] **[Recommended]** Is CPU pinning (`hw:cpu_policy=dedicated`) configured for latency-sensitive workloads, and are shared (floating) CPUs allocated for general-purpose instances to avoid CPU overcommit conflicts?
+- [ ] **[Recommended]** Is NUMA topology awareness enabled (`hw:numa_nodes`, `hw:numa_cpus`, `hw:numa_mem`) for workloads requiring memory locality, and are compute hosts validated for consistent NUMA geometry?
+- [ ] **[Recommended]** Are huge pages configured (`hw:mem_page_size=large` or `1GB`) for high-throughput workloads (DPDK, databases), and is the host reserved memory (`reserved_host_memory_mb`) adjusted accordingly?
+- [ ] **[Recommended]** Are host aggregates configured with metadata keys (e.g., `ssd=true`, `gpu=nvidia-a100`) and matching flavor extra specs (`aggregate_instance_extra_specs`) to direct workloads to appropriate hardware?
+- [ ] **[Recommended]** Are server groups used to enforce placement policy? (`affinity` for co-location of tightly coupled services, `anti-affinity` for HA distribution, `soft-anti-affinity` for best-effort separation)
+- [ ] **[Recommended]** Is live migration enabled and tested? (shared storage or block migration, `live_migration_uri`, `live_migration_tunnelled`, timeout and completion settings in `nova.conf`)
+- [ ] **[Recommended]** Is the Nova scheduler configured with appropriate filters and weights? (`AggregateInstanceExtraSpecsFilter`, `NUMATopologyFilter`, `PciPassthroughFilter`, `ServerGroupAntiAffinityFilter`)
+- [ ] **[Optional]** Are PCI passthrough devices (GPUs, SR-IOV NICs, FPGAs) configured in `nova.conf` with `[pci] alias` and `passthrough_whitelist`, and are corresponding flavor extra specs (`pci_passthrough:alias`) defined?
 
 ## Why This Matters
 
@@ -34,24 +38,24 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 
 ## Version Notes
 
-| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Cells v2 | Optional (upgrade path) | Mandatory (single cell minimum) | GA (multi-cell) | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved cross-cell) | GA | GA (improved cell listing) | GA |
-| Placement service | In-tree (nova-placement) | In-tree | Extracted to standalone service | Standalone required | GA standalone | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
-| Libvirt driver | libvirt 3.x | libvirt 4.x | libvirt 4.x | libvirt 5.x | libvirt 5.x | libvirt 6.x | libvirt 6.x | libvirt 7.x | libvirt 7.x | libvirt 8.x | libvirt 8.x | libvirt 9.x | libvirt 9.x | libvirt 10.x | libvirt 10.x |
-| QEMU version support | QEMU 2.x | QEMU 2.x | QEMU 3.x | QEMU 3.x | QEMU 4.x | QEMU 4.x | QEMU 5.x | QEMU 5.x | QEMU 6.x | QEMU 6.x | QEMU 7.x | QEMU 8.x | QEMU 8.x | QEMU 8.x+ | QEMU 9.x |
-| Ironic (bare metal) | GA (driver composition) | GA (BIOS config) | GA (deploy steps) | GA (fast-track deploy) | GA (deploy templates) | GA (UEFI boot) | GA (TLS boot) | GA (JSON-RPC) | GA (firmware interface) | GA (BIOS/UEFI) | GA (improved cleaning) | GA (sharding, firmware updates) | GA (improved inspection) | GA (improved multi-tenant) | GA (runbooks) |
-| vGPU support | Not available | Not available | Not available | Introduced (NVIDIA GRID) | GA (basic placement) | GA (multiple vGPU types) | GA (improved reporting) | GA (improved allocation) | GA (MIG support) | GA | GA (improved MIG) | GA (live migration with vGPU) | GA | GA (improved placement) | GA |
-| Cyborg (accelerators) | Not available | Not available | Not available | Not available | Introduced (spec only) | Tech Preview | Tech Preview | GA (GPU, FPGA) | GA | GA | GA | GA (improved lifecycle) | GA | GA (SmartNIC support) | GA |
-| Secure Boot | Not available | Not available | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA (improved enrollment) | GA | GA | GA |
-| vTPM (virtual TPM) | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA | GA | GA |
-| CPU overcommit (allocation ratio) | nova.conf global | nova.conf global | nova.conf global | Placement-aware (initial) | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Configurable | Configurable | Placement-based per aggregate | Placement-based | Placement-based | Placement-based |
-| Live migration (post-copy) | Tech Preview | GA | GA | GA | GA (QEMU native TLS) | GA | GA | GA | GA | GA | GA | GA (improved timeout) | GA | GA | GA |
-| Server groups (soft policies) | GA (soft-affinity added) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved scheduling) | GA |
-| Nova metadata service | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (HTTPS support) | GA | GA (HTTPS default option) | GA |
-| Evacuate improvements | GA | GA | GA | GA | GA | GA (improved reporting) | GA | GA | GA | GA | GA | GA (improved rebuild) | GA | GA (force options) | GA |
-| Emulated NUMA topology | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved validation) | GA |
-| nova-manage improvements | Basic | DB migration tools | DB archiving | Placement sync | Placement audit | Improved cell mgmt | Cell mapping tools | Placement heal | Archive improvements | GA | GA | GA | GA | GA | GA |
+| Feature | Pike (16) Oct 2017 | Queens (17) Feb 2018 | Rocky (18) Aug 2018 | Stein (19) Apr 2019 | Train (20) Oct 2019 | Ussuri (21) May 2020 | Victoria (22) Oct 2020 | Wallaby (23) Apr 2021 | Xena (24) Oct 2021 | Yoga (25) Mar 2022 | Zed (26) Oct 2022 | 2023.1 Antelope (27) | 2023.2 Bobcat (28) | 2024.1 Caracal (29) | 2024.2 Dalmatian (30) | 2025.1 Epoxy (31) | 2025.2 Flamingo (32) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Cells v2 | Optional (upgrade path) | Mandatory (single cell minimum) | GA (multi-cell) | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved cross-cell) | GA | GA (improved cell listing) | GA | GA | GA |
+| Placement service | In-tree (nova-placement) | In-tree | Extracted to standalone service | Standalone required | GA standalone | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA |
+| Libvirt driver | libvirt 3.x | libvirt 4.x | libvirt 4.x | libvirt 5.x | libvirt 5.x | libvirt 6.x | libvirt 6.x | libvirt 7.x | libvirt 7.x | libvirt 8.x | libvirt 8.x | libvirt 9.x | libvirt 9.x | libvirt 10.x | libvirt 10.x | libvirt 10.x+ | libvirt 10.x+ |
+| QEMU version support | QEMU 2.x | QEMU 2.x | QEMU 3.x | QEMU 3.x | QEMU 4.x | QEMU 4.x | QEMU 5.x | QEMU 5.x | QEMU 6.x | QEMU 6.x | QEMU 7.x | QEMU 8.x | QEMU 8.x | QEMU 8.x+ | QEMU 9.x | QEMU 9.x+ | QEMU 9.x+ |
+| Ironic (bare metal) | GA (driver composition) | GA (BIOS config) | GA (deploy steps) | GA (fast-track deploy) | GA (deploy templates) | GA (UEFI boot) | GA (TLS boot) | GA (JSON-RPC) | GA (firmware interface) | GA (BIOS/UEFI) | GA (improved cleaning) | GA (sharding, firmware updates) | GA (improved inspection) | GA (improved multi-tenant) | GA (runbooks) | GA (improved runbooks) | GA (secure boot enhancements) |
+| vGPU support | Not available | Not available | Not available | Introduced (NVIDIA GRID) | GA (basic placement) | GA (multiple vGPU types) | GA (improved reporting) | GA (improved allocation) | GA (MIG support) | GA | GA (improved MIG) | GA (live migration with vGPU) | GA | GA (improved placement) | GA | GA (improved live migration) | GA (improved MIG scheduling) |
+| Cyborg (accelerators) | Not available | Not available | Not available | Not available | Introduced (spec only) | Tech Preview | Tech Preview | GA (GPU, FPGA) | GA | GA | GA | GA (improved lifecycle) | GA | GA (SmartNIC support) | GA | GA | GA |
+| Secure Boot | Not available | Not available | Not available | Not available | Not available | Tech Preview | GA | GA | GA | GA | GA | GA (improved enrollment) | GA | GA | GA | GA | GA (improved key management) |
+| vTPM (virtual TPM) | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Not available | Tech Preview | Tech Preview | GA | GA | GA | GA | GA | GA | GA |
+| CPU overcommit (allocation ratio) | nova.conf global | nova.conf global | nova.conf global | Placement-aware (initial) | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Placement-aware | Configurable | Configurable | Placement-based per aggregate | Placement-based | Placement-based | Placement-based | Placement-based | Placement-based |
+| Live migration (post-copy) | Tech Preview | GA | GA | GA | GA (QEMU native TLS) | GA | GA | GA | GA | GA | GA | GA (improved timeout) | GA | GA | GA | GA (improved parallel migration) | GA |
+| Server groups (soft policies) | GA (soft-affinity added) | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved scheduling) | GA | GA | GA |
+| Nova metadata service | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (HTTPS support) | GA | GA (HTTPS default option) | GA | GA | GA |
+| Evacuate improvements | GA | GA | GA | GA | GA | GA (improved reporting) | GA | GA | GA | GA | GA | GA (improved rebuild) | GA | GA (force options) | GA | GA | GA |
+| Emulated NUMA topology | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA | GA (improved validation) | GA | GA | GA |
+| nova-manage improvements | Basic | DB migration tools | DB archiving | Placement sync | Placement audit | Improved cell mgmt | Cell mapping tools | Placement heal | Archive improvements | GA | GA | GA | GA | GA | GA | GA (improved DB cleanup) | GA |
 
 **Key changes across releases:**
 - **Cells v2 mandatory (Queens):** Cells v2 became mandatory in Queens. All deployments require at least a single cell (cell0 + cell1). Pike provided the upgrade path from cells v1. Multi-cell deployments (for scaling beyond ~500 compute nodes) use separate databases and message queues per cell. Cross-cell operations (resize, migrate) improved significantly in 2023.1+.
@@ -62,3 +66,5 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 - **Cyborg for accelerators (Train+):** Cyborg was introduced in Train for managing accelerator devices (GPUs, FPGAs, SmartNICs). It reached GA in Wallaby and integrates with Nova scheduling via Placement to allocate accelerator resources to instances.
 - **vTPM support:** Virtual TPM reached GA in Zed, enabling instances to use TPM 2.0 for measured boot, disk encryption (BitLocker, LUKS), and attestation. Requires libvirt 9.x+ and swtpm on compute hosts.
 - **Placement-based allocation ratios:** Starting from Stein, overcommit ratio configuration moved from nova.conf to the Placement service, enabling per-host-aggregate overcommit ratios rather than a global setting. This allows different overcommit policies for different hardware tiers.
+- **Epoxy (2025.1) compute changes:** libvirt 10.x+ required as minimum version. Improved parallel live migration support allows multiple instances to be migrated simultaneously from a single host during maintenance. Ironic runbooks improved with better error handling and retry logic. vGPU live migration improvements for NVIDIA MIG instances.
+- **Flamingo (2025.2) compute changes:** Improved MIG scheduling for multi-instance GPU workloads. Secure boot key management improvements simplify custom key enrollment. Continued improvements to Cyborg accelerator lifecycle management.

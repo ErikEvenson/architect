@@ -2,13 +2,13 @@
 
 ## Checklist
 
-- [ ] Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Premium (pre-warmed instances, VNet integration) vs Dedicated (App Service plan, predictable cost)?
+- [ ] **[Critical]** Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Flex Consumption (per-function scaling, VNet integration, fast scaling with always-ready instances, GA November 2024) vs Premium (pre-warmed instances, full VNet integration) vs Dedicated (App Service plan, predictable cost)?
 - [ ] Are Durable Functions used for stateful orchestration patterns -- function chaining, fan-out/fan-in, async HTTP APIs, monitoring, and human interaction workflows?
 - [ ] Are Azure Functions bindings and triggers configured to minimize boilerplate -- input/output bindings for Blob Storage, Cosmos DB, Service Bus, and Event Hubs instead of SDK calls?
 - [ ] Is Azure Logic Apps (Standard or Consumption) deployed for low-code workflow automation with 400+ managed connectors for SaaS, on-premises, and Azure service integration?
 - [ ] Is Azure Event Grid configured as the event backbone with system topics for Azure resource events and custom topics for application-domain events?
 - [ ] Is Azure Service Bus deployed for enterprise messaging with queues (point-to-point) and topics/subscriptions (pub/sub) with dead-letter queues, sessions, and duplicate detection enabled?
-- [ ] Is Azure Event Hubs configured for high-throughput streaming ingestion with appropriate partition count (cannot be changed after creation) and consumer groups per downstream processor?
+- [ ] **[Critical]** Is Azure Event Hubs configured for high-throughput streaming ingestion with appropriate partition count (can be increased up to 1024 in Premium/Dedicated tiers but cannot be decreased) and consumer groups per downstream processor?
 - [ ] Is Event Hubs Capture enabled to automatically archive streaming events to Blob Storage or Data Lake Gen2 in Avro format for long-term retention and batch processing?
 - [ ] Are retry policies and dead-letter destinations configured for all messaging components -- Event Grid (retry + dead-letter to storage), Service Bus (max delivery count + dead-letter queue), Functions (retry policy)?
 - [ ] Is VNet integration enabled for Premium Azure Functions and Logic Apps Standard to access private endpoints and on-premises resources through VNet?
@@ -23,12 +23,12 @@ Azure's serverless ecosystem is more fragmented than AWS Lambda + EventBridge, r
 
 ## Common Decisions (ADR Triggers)
 
-- **Functions Consumption vs Premium vs Dedicated** -- zero-cost at idle with cold starts vs pre-warmed instances with VNet integration ($0.173/vCPU/hr) vs App Service plan sharing with web apps
+- **Functions Consumption vs Flex Consumption vs Premium vs Dedicated** -- zero-cost at idle with cold starts vs Flex Consumption (per-function scaling, VNet support, always-ready instances for reduced cold starts, pay-per-execution with provisioned baseline) vs Premium with pre-warmed instances ($0.173/vCPU/hr) vs App Service plan sharing with web apps
 - **Event Grid vs Service Bus vs Event Hubs** -- reactive event distribution (fire-and-forget) vs transactional messaging (guaranteed delivery, ordering) vs streaming ingestion (high-throughput, partitioned)
 - **Durable Functions vs Logic Apps** -- code-first orchestration in C#/Python/JS with unit testing vs low-code visual designer with managed connectors and no-code transforms
 - **Logic Apps Consumption vs Standard** -- pay-per-action serverless vs single-tenant with VNet support, local development, and workflow hosting on App Service Environment
 - **Service Bus sessions vs partitions** -- ordered message processing per session ID (FIFO per group) vs throughput scaling across partitions (no ordering guarantee)
-- **Event Hubs partition count** -- more partitions enable more parallel consumers but increase cost; 4-32 for most workloads, cannot be changed after creation (Kafka-compatible API available)
+- **Event Hubs partition count** -- more partitions enable more parallel consumers but increase cost; 4-32 for most workloads; Premium/Dedicated tiers allow increasing partition count up to 1024 after creation but partitions cannot be decreased (Kafka-compatible API available)
 - **Function language runtime** -- .NET (fastest cold start, best integration) vs Python/Node.js (faster development) vs Java (slowest cold start on Consumption, use Premium)
 
 ## Reference Architectures

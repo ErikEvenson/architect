@@ -7,7 +7,7 @@
 - [ ] Is the VM SKU selected from the appropriate family? (D-series general purpose, E-series memory-optimized, F-series compute-optimized, L-series storage-optimized)
 - [ ] Are managed disks used for all VMs with the appropriate tier? (Premium SSD v2 for performance, Premium SSD for production, Standard SSD for dev/test)
 - [ ] Is Azure Bastion deployed for secure administrative access, eliminating public IP addresses on VMs?
-- [ ] Are VM images built via a pipeline using Azure Image Builder or Packer with a shared image gallery for distribution?
+- [ ] **[Recommended]** Are VM images built via a pipeline using Azure Image Builder or Packer with Azure Compute Gallery (formerly Shared Image Gallery) for distribution?
 - [ ] Is accelerated networking enabled on supported VM SKUs for lower latency and higher throughput?
 - [ ] Are Spot VMs evaluated for fault-tolerant workloads with eviction policies and max price configured?
 - [ ] Is Azure Autoscale configured with appropriate metrics (CPU, memory, queue depth) and scale-in protection for in-flight work?
@@ -19,16 +19,16 @@
 
 ## Why This Matters
 
-Azure compute has unique concepts like VMSS orchestration modes, availability sets (legacy), and the shared image gallery that differ from AWS equivalents. Standalone VMs without scale sets cannot auto-scale or self-heal. Missing accelerated networking leaves significant performance on the table. Azure Bastion eliminates the need to manage jump boxes but must be planned into the network architecture.
+Azure compute has unique concepts like VMSS orchestration modes, availability sets (legacy), and Azure Compute Gallery (formerly Shared Image Gallery) that differ from AWS equivalents. Standalone VMs without scale sets cannot auto-scale or self-heal. Missing accelerated networking leaves significant performance on the table. Azure Bastion eliminates the need to manage jump boxes but must be planned into the network architecture. Confidential VMs (DCasv5/ECasv5 series) provide hardware-based trusted execution environments using AMD SEV-SNP or Intel TDX for workloads requiring VM memory encryption. Cobalt 100 Arm-based VMs (Dpsv6/Dpdsv6/Epsv6 series) provide a cost-effective, high-performance alternative for Linux workloads with up to 50% better price-performance than comparable x86 instances.
 
 ## Common Decisions (ADR Triggers)
 
 - **VMSS Flexible vs Uniform** -- mixed VM sizes and zone spreading vs homogeneous instances with faster scaling
-- **VM SKU family** -- Arm-based (Dpdsv6) vs Intel vs AMD, generation selection
+- **VM SKU family** -- Cobalt 100 Arm-based (Dpsv6/Epsv6, best price-performance for Linux) vs Intel vs AMD, generation selection; Confidential VMs (DCasv5/ECasv5) for TEE-protected workloads
 - **Purchase model** -- pay-as-you-go vs Azure Reserved VM Instances (1 or 3 year) vs Azure Savings Plan
 - **Spot VM strategy** -- eviction type (deallocate vs delete), max price, Spot priority mix in VMSS
 - **Disk strategy** -- Premium SSD v2 (configurable IOPS) vs Premium SSD (fixed tiers), ephemeral OS disks for stateless
-- **Image management** -- Azure Image Builder vs Packer, Azure Compute Gallery distribution, image lifecycle
+- **Image management** -- Azure Image Builder vs Packer, Azure Compute Gallery (formerly Shared Image Gallery) distribution, image lifecycle
 - **Patching strategy** -- Azure Update Manager with maintenance configurations vs custom automation
 
 ## Reference Architectures

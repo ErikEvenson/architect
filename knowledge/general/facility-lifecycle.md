@@ -6,19 +6,19 @@ This file covers **data center facility lifecycle management**: lease-driven mig
 
 ## Checklist
 
-- [ ] [Critical] Are all facility lease expiry dates documented with at least 18 months of lead time before the earliest expiry?
-- [ ] [Critical] Are sites sequenced for migration based on lease urgency, with earliest-expiring leases migrated first?
-- [ ] [Critical] Is there a contingency plan if migration cannot complete before a lease expires? (extension, temporary colocation, staged decommission)
-- [ ] [Critical] Are lease extension negotiation timelines identified? (most leases require 6-12 months notice for extension)
-- [ ] [Critical] Is the decommission timeline aligned with the lease end date, including buffer for handback activities?
-- [ ] [Critical] Are insurance and liability policies reviewed for the transition period? (coverage gaps between facility exit and cloud operational state)
-- [ ] [Recommended] Is a cost comparison completed for lease extension vs accelerated migration?
-- [ ] [Recommended] Is a formal data center exit plan documented? (phased approach, stakeholder sign-off, regulatory notifications)
-- [ ] [Recommended] Are asset disposition requirements defined? (ITAD vendor selection, chain-of-custody documentation, certificates of destruction)
-- [ ] [Recommended] Are e-waste compliance obligations mapped to applicable jurisdictions? (WEEE, R2, e-Stewards, state-level regulations)
-- [ ] [Recommended] Are facility handback requirements documented? (clean room condition, cable removal, raised floor restoration, environmental remediation)
-- [ ] [Optional] Is a facility handback walkthrough scheduled with the landlord before decommission begins?
-- [ ] [Optional] Are historical maintenance records and environmental reports compiled for handback documentation?
+- [ ] **[Critical]** Are all facility lease expiry dates documented with at least 18 months of lead time before the earliest expiry?
+- [ ] **[Critical]** Are sites sequenced for migration based on lease urgency, with earliest-expiring leases migrated first?
+- [ ] **[Critical]** Is there a contingency plan if migration cannot complete before a lease expires? (extension, temporary colocation, staged decommission)
+- [ ] **[Critical]** Are lease extension negotiation timelines identified? (most leases require 6-12 months notice for extension)
+- [ ] **[Critical]** Is the decommission timeline aligned with the lease end date, including buffer for handback activities?
+- [ ] **[Critical]** Are insurance and liability policies reviewed for the transition period? (coverage gaps between facility exit and cloud operational state)
+- [ ] **[Recommended]** Is a cost comparison completed for lease extension vs accelerated migration?
+- [ ] **[Recommended]** Is a formal data center exit plan documented? (phased approach, stakeholder sign-off, regulatory notifications)
+- [ ] **[Recommended]** Are asset disposition requirements defined? (ITAD vendor selection, chain-of-custody documentation, certificates of destruction)
+- [ ] **[Recommended]** Are e-waste compliance obligations mapped to applicable jurisdictions? (WEEE, R2, e-Stewards, state-level regulations)
+- [ ] **[Recommended]** Are facility handback requirements documented? (clean room condition, cable removal, raised floor restoration, environmental remediation)
+- [ ] **[Optional]** Is a facility handback walkthrough scheduled with the landlord before decommission begins?
+- [ ] **[Optional]** Are historical maintenance records and environmental reports compiled for handback documentation?
 
 ## Why This Matters
 

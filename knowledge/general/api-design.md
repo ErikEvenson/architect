@@ -1,5 +1,9 @@
 # API Design
 
+## Scope
+
+This file covers **API design decisions** including API style selection, versioning, rate limiting, authentication, error handling, and lifecycle management. For deployment strategies, see `general/deployment.md`. For security controls on APIs, see `general/security.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** What API style is used and why? (REST for resource-oriented CRUD, GraphQL for flexible client queries, gRPC for high-performance service-to-service, AsyncAPI for event-driven)

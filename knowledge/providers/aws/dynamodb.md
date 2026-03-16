@@ -2,19 +2,21 @@
 
 ## Checklist
 
-- [ ] Design primary key carefully: partition key alone (unique item access) or composite key (partition key + sort key for hierarchical data and range queries); key design determines data distribution and query patterns
-- [ ] Evaluate single-table design vs multi-table design: single-table maximizes query efficiency by co-locating related entities for single-request access patterns but increases complexity; multi-table is simpler for teams new to DynamoDB
-- [ ] Choose capacity mode: on-demand (pay per request, auto-scales to any level, ~6x unit cost) vs provisioned (predictable pricing, requires capacity planning, supports reserved capacity for 1/3-year discounts up to 77% savings)
-- [ ] Configure auto-scaling for provisioned capacity with target utilization (typically 70%), scale-in cooldown (5-15 minutes to prevent thrashing), and scale-out cooldown (0-1 minute for fast response)
-- [ ] Design Global Secondary Indexes (GSI) for alternative access patterns: each GSI is a full table copy consuming separate throughput; limit to 20 GSIs per table; project only needed attributes to reduce storage and write costs
-- [ ] Use Local Secondary Indexes (LSI) only when you need an alternative sort key on the same partition key; LSIs must be created at table creation time, share the table's throughput, and enforce a 10 GB per partition key limit
-- [ ] Enable DynamoDB Streams for change data capture: choose stream view type (KEYS_ONLY, NEW_IMAGE, OLD_IMAGE, NEW_AND_OLD_IMAGES); Lambda triggers process stream records with exactly-once per-item guarantee within a shard
-- [ ] Configure Time To Live (TTL) on a designated attribute for automatic item expiration at no cost; expired items are deleted within 48 hours and appear in Streams with a deletion marker for downstream processing
-- [ ] Enable point-in-time recovery (PITR) for continuous backups with 35-day recovery window; supports restore to any second within the window to a new table; on-demand backups for long-term retention
-- [ ] Implement DAX (DynamoDB Accelerator) for microsecond read latency on read-heavy workloads; DAX is a write-through cache requiring no application code changes (same API); choose r-type instances for memory-intensive caching
-- [ ] Configure global tables for multi-region active-active replication with sub-second replication latency; requires DynamoDB Streams enabled, same table name in all regions, and on-demand or provisioned capacity in each region
-- [ ] Avoid hot partitions by distributing writes across partition keys; use write sharding (append random suffix to partition key) for high-throughput counters; adaptive capacity automatically isolates hot items but doesn't prevent throttling
-- [ ] Use DynamoDB transactions (TransactWriteItems, TransactGetItems) for ACID operations across up to 100 items or 4 MB; transactions cost 2x the WCU/RCU of non-transactional operations
+- [ ] **[Critical]** Design primary key carefully: partition key alone (unique item access) or composite key (partition key + sort key for hierarchical data and range queries); key design determines data distribution and query patterns
+- [ ] **[Recommended]** Evaluate single-table design vs multi-table design: single-table maximizes query efficiency by co-locating related entities for single-request access patterns but increases complexity; multi-table is simpler for teams new to DynamoDB
+- [ ] **[Critical]** Choose capacity mode: on-demand (pay per request, auto-scales to any level, ~6x unit cost) vs provisioned (predictable pricing, requires capacity planning, supports reserved capacity for 1/3-year discounts up to 77% savings)
+- [ ] **[Recommended]** Configure auto-scaling for provisioned capacity with target utilization (typically 70%), scale-in cooldown (5-15 minutes to prevent thrashing), and scale-out cooldown (0-1 minute for fast response)
+- [ ] **[Recommended]** Design Global Secondary Indexes (GSI) for alternative access patterns: each GSI is a full table copy consuming separate throughput; limit to 20 GSIs per table; project only needed attributes to reduce storage and write costs
+- [ ] **[Optional]** Use Local Secondary Indexes (LSI) only when you need an alternative sort key on the same partition key; LSIs must be created at table creation time, share the table's throughput, and enforce a 10 GB per partition key limit
+- [ ] **[Recommended]** Enable DynamoDB Streams for change data capture: choose stream view type (KEYS_ONLY, NEW_IMAGE, OLD_IMAGE, NEW_AND_OLD_IMAGES); Lambda triggers process stream records with exactly-once per-item guarantee within a shard
+- [ ] **[Recommended]** Configure Time To Live (TTL) on a designated attribute for automatic item expiration at no cost; expired items are deleted within 48 hours and appear in Streams with a deletion marker for downstream processing
+- [ ] **[Critical]** Enable point-in-time recovery (PITR) for continuous backups with 35-day recovery window; supports restore to any second within the window to a new table; on-demand backups for long-term retention
+- [ ] **[Optional]** Implement DAX (DynamoDB Accelerator) for microsecond read latency on read-heavy workloads; DAX is a write-through cache requiring no application code changes (same API); choose r-type instances for memory-intensive caching
+- [ ] **[Optional]** Configure global tables for multi-region active-active replication with sub-second replication latency; requires DynamoDB Streams enabled, same table name in all regions, and on-demand or provisioned capacity in each region
+- [ ] **[Recommended]** Avoid hot partitions by distributing writes across partition keys; use write sharding (append random suffix to partition key) for high-throughput counters; adaptive capacity automatically isolates hot items but doesn't prevent throttling
+- [ ] **[Optional]** Use DynamoDB transactions (TransactWriteItems, TransactGetItems) for ACID operations across up to 100 items or 4 MB; transactions cost 2x the WCU/RCU of non-transactional operations
+- [ ] **[Optional]** Evaluate DynamoDB zero-ETL integration with Amazon Redshift for near-real-time analytics on DynamoDB data without building custom ETL pipelines; automatically replicates DynamoDB table data to Redshift for SQL-based analytics, joins with other data sources, and complex aggregations
+- [ ] **[Optional]** Use DynamoDB import from S3 to bulk-load data from S3 in CSV, DynamoDB JSON, or Amazon Ion format into a new DynamoDB table without consuming write capacity; cost-effective for initial data loads, migrations, and restoring from S3-based backups
 
 ## Why This Matters
 

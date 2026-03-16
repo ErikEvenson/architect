@@ -66,6 +66,7 @@ For architecture design sessions, read `knowledge/WORKFLOW.md` first.
 - **When adding a new knowledge file**, update the WORKFLOW.md Category Coverage Gate if the new file represents a conditional category (e.g., "include when VDI workloads are in scope").
 - **Every knowledge file must follow the standard format**: Scope, Checklist with [Critical]/[Recommended]/[Optional] tags, Why This Matters, Common Decisions (ADR Triggers). See existing files for examples.
 - **Cross-reference knowledge files during design.** When a component is added to the architecture, find and load the relevant knowledge file(s). Do not rely solely on general knowledge — the knowledge library contains specific checklist items that prevent common mistakes.
+- **Update mkdocs.yml nav when adding knowledge files.** The GitHub Pages sidebar is manually configured in `mkdocs.yml`. Every new knowledge file must be added to the `nav:` section. Run `scripts/check-nav.sh` to verify no files are missing.
 
 ## Default Language
 

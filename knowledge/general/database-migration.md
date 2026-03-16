@@ -1,5 +1,9 @@
 # Database Migration
 
+## Scope
+
+This file covers **database migration strategy and execution** including migration approaches, schema migration tooling, replication, cutover planning, and rollback. For general workload migration, see `general/workload-migration.md`. For database design decisions, see `general/data.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** What migration strategy is chosen? (lift-and-shift for speed, re-platform for managed service benefits, re-architect for schema redesign or engine change)

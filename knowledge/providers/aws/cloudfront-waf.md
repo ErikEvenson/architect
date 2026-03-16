@@ -2,20 +2,22 @@
 
 ## Checklist
 
-- [ ] Is CloudFront configured as the entry point for all public-facing content, with the origin (ALB, S3, API Gateway) not directly accessible?
-- [ ] Is Origin Access Control (OAC) used for S3 origins to replace legacy Origin Access Identity (OAI)?
-- [ ] Are cache behaviors configured per path pattern with appropriate TTLs, and are cache policies and origin request policies used instead of legacy forwarding settings?
-- [ ] Is a custom cache policy defined that only forwards the minimum necessary headers, cookies, and query strings to maximize cache hit ratio?
-- [ ] Is origin failover configured with an origin group for automatic failover to a secondary origin on 5xx errors?
-- [ ] Are response headers policies configured to set security headers (HSTS, X-Content-Type-Options, X-Frame-Options, CSP)?
-- [ ] Is AWS WAF associated with the CloudFront distribution with at least the AWS Managed Rules core rule set (AWSManagedRulesCommonRuleSet)?
-- [ ] Are WAF rate-based rules configured to prevent DDoS and brute-force attacks at the edge?
-- [ ] Is AWS Shield Advanced enabled for high-value applications needing DDoS cost protection and SRT support?
-- [ ] Are geographic restrictions (geo-blocking) or geo-match conditions applied where required by licensing or regulation?
-- [ ] Is real-time logging enabled to S3 or Kinesis Data Firehose for traffic analysis and incident investigation?
-- [ ] Are CloudFront Functions or Lambda@Edge used for header manipulation, URL rewrites, A/B testing, or authentication at the edge?
-- [ ] Is TLS 1.2 minimum enforced on the viewer-side, and is the origin connection using a custom SSL certificate with SNI?
-- [ ] Is field-level encryption configured for sensitive form fields that must remain encrypted through to the application?
+- [ ] **[Critical]** Is CloudFront configured as the entry point for all public-facing content, with the origin (ALB, S3, API Gateway) not directly accessible?
+- [ ] **[Critical]** Is Origin Access Control (OAC) used for S3 origins to replace legacy Origin Access Identity (OAI)?
+- [ ] **[Recommended]** Are cache behaviors configured per path pattern with appropriate TTLs, and are cache policies and origin request policies used instead of legacy forwarding settings?
+- [ ] **[Recommended]** Is a custom cache policy defined that only forwards the minimum necessary headers, cookies, and query strings to maximize cache hit ratio?
+- [ ] **[Recommended]** Is origin failover configured with an origin group for automatic failover to a secondary origin on 5xx errors?
+- [ ] **[Recommended]** Are response headers policies configured to set security headers (HSTS, X-Content-Type-Options, X-Frame-Options, CSP)?
+- [ ] **[Critical]** Is AWS WAF associated with the CloudFront distribution with at least the AWS Managed Rules core rule set (AWSManagedRulesCommonRuleSet)?
+- [ ] **[Recommended]** Are WAF rate-based rules configured to prevent DDoS and brute-force attacks at the edge?
+- [ ] **[Optional]** Is AWS Shield Advanced enabled for high-value applications needing DDoS cost protection and SRT support?
+- [ ] **[Optional]** Are geographic restrictions (geo-blocking) or geo-match conditions applied where required by licensing or regulation?
+- [ ] **[Recommended]** Is real-time logging enabled to S3 or Amazon Data Firehose for traffic analysis and incident investigation?
+- [ ] **[Recommended]** Are CloudFront Functions or Lambda@Edge used for header manipulation, URL rewrites, A/B testing, or authentication at the edge?
+- [ ] **[Critical]** Is TLS 1.2 minimum enforced on the viewer-side, and is the origin connection using a custom SSL certificate with SNI?
+- [ ] **[Optional]** Is field-level encryption configured for sensitive form fields that must remain encrypted through to the application?
+- [ ] **[Optional]** Evaluate CloudFront KeyValueStore for low-latency key-value lookups at the edge within CloudFront Functions; stores up to 5 MB of data (keys up to 512 bytes, values up to 1 KB) with global eventual consistency; ideal for URL rewrites, A/B testing configuration, feature flags, and redirect maps without origin requests
+- [ ] **[Optional]** Evaluate CloudFront VPC origins for connecting CloudFront directly to origins in private VPC subnets (ALBs, NLBs, EC2 instances) without requiring public IP addresses or internet-facing load balancers; eliminates the need for custom origin headers or WAF rules to restrict direct origin access
 
 ## Why This Matters
 

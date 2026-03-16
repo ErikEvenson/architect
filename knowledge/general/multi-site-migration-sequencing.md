@@ -6,19 +6,19 @@ This file covers **sequencing and coordination of migrations across multiple phy
 
 ## Checklist
 
-- [ ] [Critical] Has a pilot site been selected based on low risk, representative workloads, and cooperative local staff?
-- [ ] [Critical] Are inter-site dependencies mapped? (DR pairs, AD/LDAP replication, shared databases, cross-site backup targets)
-- [ ] [Critical] Are go/no-go criteria defined and agreed upon between migration waves?
-- [ ] [Critical] Is a rollback plan defined at the appropriate scope for each wave? (per-VM, per-application, per-site)
-- [ ] [Critical] Is there a site readiness checklist that must be completed before each site's migration begins?
-- [ ] [Recommended] Is urgency-based sequencing factored in? (lease expiry, licensing deadlines, end-of-support dates, contract renewals)
-- [ ] [Recommended] Is the staffing model decided? (dedicated team per site, traveling team, hub-and-spoke)
-- [ ] [Recommended] Are hardware procurement lead times mapped per site and factored into the schedule?
-- [ ] [Recommended] Is a lessons-learned feedback loop established between waves? (retrospective after each wave, process updates before next)
-- [ ] [Recommended] Are regional constraints accounted for? (timezone coverage, local team availability, language, regulatory differences)
-- [ ] [Recommended] Is the parallel vs sequential execution model decided based on staff capacity and risk tolerance?
-- [ ] [Optional] Are site-local stakeholders identified and briefed on their responsibilities during migration?
-- [ ] [Optional] Is there a shared dashboard or tracking tool for cross-site migration status?
+- [ ] **[Critical]** Has a pilot site been selected based on low risk, representative workloads, and cooperative local staff?
+- [ ] **[Critical]** Are inter-site dependencies mapped? (DR pairs, AD/LDAP replication, shared databases, cross-site backup targets)
+- [ ] **[Critical]** Are go/no-go criteria defined and agreed upon between migration waves?
+- [ ] **[Critical]** Is a rollback plan defined at the appropriate scope for each wave? (per-VM, per-application, per-site)
+- [ ] **[Critical]** Is there a site readiness checklist that must be completed before each site's migration begins?
+- [ ] **[Recommended]** Is urgency-based sequencing factored in? (lease expiry, licensing deadlines, end-of-support dates, contract renewals)
+- [ ] **[Recommended]** Is the staffing model decided? (dedicated team per site, traveling team, hub-and-spoke)
+- [ ] **[Recommended]** Are hardware procurement lead times mapped per site and factored into the schedule?
+- [ ] **[Recommended]** Is a lessons-learned feedback loop established between waves? (retrospective after each wave, process updates before next)
+- [ ] **[Recommended]** Are regional constraints accounted for? (timezone coverage, local team availability, language, regulatory differences)
+- [ ] **[Recommended]** Is the parallel vs sequential execution model decided based on staff capacity and risk tolerance?
+- [ ] **[Optional]** Are site-local stakeholders identified and briefed on their responsibilities during migration?
+- [ ] **[Optional]** Is there a shared dashboard or tracking tool for cross-site migration status?
 
 ## Why This Matters
 

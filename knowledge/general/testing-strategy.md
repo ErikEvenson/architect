@@ -6,19 +6,19 @@ This file covers **cloud-native testing practices** including load testing, chao
 
 ## Checklist
 
-- [ ] What load testing tool is used? (k6, Locust, Gatling, JMeter — pick one and standardize)
-- [ ] Are performance baselines established for critical user journeys? (p50, p95, p99 latency targets)
-- [ ] Is load testing integrated into CI/CD or run on a schedule?
-- [ ] Are SLIs defined and measured? (latency, error rate, throughput, saturation)
-- [ ] Are SLOs set with error budgets? (e.g., 99.9% availability = 43.8 min/month downtime budget)
-- [ ] Is synthetic monitoring configured for critical paths? (Datadog Synthetics, CloudWatch Synthetics, Grafana Synthetic Monitoring)
-- [ ] Is chaos engineering practiced? (Chaos Monkey, Litmus, Gremlin, AWS FIS — start small)
-- [ ] Are game days scheduled regularly? (quarterly recommended, involve oncall teams)
-- [ ] Is canary analysis automated? (compare canary metrics against baseline before full rollout)
-- [ ] How are integration tests run against cloud services? (localstack, testcontainers, ephemeral environments)
-- [ ] Is there a test environment strategy? (ephemeral per-PR, shared staging, production-like load test env)
-- [ ] Are failure injection tests run before major releases? (network partitions, dependency failures, resource exhaustion)
-- [ ] Is there a contract testing strategy for service-to-service APIs? (Pact, schema validation)
+- [ ] **[Recommended]** What load testing tool is used? (k6, Locust, Gatling, JMeter — pick one and standardize)
+- [ ] **[Critical]** Are performance baselines established for critical user journeys? (p50, p95, p99 latency targets)
+- [ ] **[Recommended]** Is load testing integrated into CI/CD or run on a schedule?
+- [ ] **[Critical]** Are SLIs defined and measured? (latency, error rate, throughput, saturation)
+- [ ] **[Critical]** Are SLOs set with error budgets? (e.g., 99.9% availability = 43.8 min/month downtime budget)
+- [ ] **[Recommended]** Is synthetic monitoring configured for critical paths? (Datadog Synthetics, CloudWatch Synthetics, Grafana Synthetic Monitoring)
+- [ ] **[Recommended]** Is chaos engineering practiced? (Chaos Monkey, Litmus, Gremlin, AWS FIS — start small)
+- [ ] **[Optional]** Are game days scheduled regularly? (quarterly recommended, involve oncall teams)
+- [ ] **[Recommended]** Is canary analysis automated? (compare canary metrics against baseline before full rollout)
+- [ ] **[Recommended]** How are integration tests run against cloud services? (localstack, testcontainers, ephemeral environments)
+- [ ] **[Recommended]** Is there a test environment strategy? (ephemeral per-PR, shared staging, production-like load test env)
+- [ ] **[Recommended]** Are failure injection tests run before major releases? (network partitions, dependency failures, resource exhaustion)
+- [ ] **[Optional]** Is there a contract testing strategy for service-to-service APIs? (Pact, schema validation)
 
 ## Why This Matters
 
