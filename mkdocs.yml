@@ -64,6 +64,8 @@ nav:
     - Virtual Appliance Migration: general/virtual-appliance-migration.md
     - Managed Services Scoping: general/managed-services-scoping.md
     - Pursuit Methodology: general/pursuit-methodology.md
+    - Hardware Asset Disposition: general/hardware-asset-disposition.md
+    - Tier 0 Security Enclaves: general/tier0-security-enclaves.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -218,6 +220,7 @@ nav:
     - Migration Cutover: patterns/migration-cutover.md
     - Hypervisor Migration: patterns/hypervisor-migration.md
     - Azure Stack HCI Migration: patterns/azure-stack-hci-migration.md
+    - Datacenter Relocation: patterns/datacenter-relocation.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
