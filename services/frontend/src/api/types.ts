@@ -154,3 +154,13 @@ export interface QuestionUpdate {
   status?: Question["status"];
   category?: Question["category"];
 }
+
+export interface Upload {
+  id: string;
+  version_id: string;
+  original_filename: string;
+  content_type: string;
+  file_size: number;
+  created_at: string;
+  updated_at: string;
+}

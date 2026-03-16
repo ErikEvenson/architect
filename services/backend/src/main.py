@@ -13,6 +13,7 @@ from src.api.artifacts import router as artifacts_router
 from src.api.clients import router as clients_router
 from src.api.coverage import router as coverage_router
 from src.api.inventory import router as inventory_router
+from src.api.uploads import router as uploads_router
 from src.api.projects import router as projects_router
 from src.api.questions import router as questions_router
 from src.api.knowledge import router as knowledge_router
@@ -71,6 +72,7 @@ def create_app() -> FastAPI:
     app.include_router(knowledge_router, prefix=API_V1_PREFIX)
     app.include_router(coverage_router, prefix=API_V1_PREFIX)
     app.include_router(inventory_router, prefix=API_V1_PREFIX)
+    app.include_router(uploads_router, prefix=API_V1_PREFIX)
 
     return app
 

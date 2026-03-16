@@ -5,6 +5,7 @@ import type {
   Artifact, ArtifactCreate, ArtifactUpdate,
   ADR, ADRCreate, ADRUpdate,
   Question, QuestionCreate, QuestionUpdate,
+  Upload,
 } from "./types";
 
 const API_BASE = "/api/v1";
@@ -89,6 +90,28 @@ export const adrsApi = {
     request<ADR>(`/versions/${versionId}/adrs/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
   supersede: (versionId: string, id: string, data: ADRCreate) =>
     request<ADR>(`/versions/${versionId}/adrs/${id}/supersede`, { method: "POST", body: JSON.stringify(data) }),
+};
+
+// Uploads (version-scoped)
+export const uploadsApi = {
+  list: (versionId: string) => request<Upload[]>(`/versions/${versionId}/uploads`),
+  upload: async (versionId: string, file: File): Promise<Upload> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch(`${API_BASE}/versions/${versionId}/uploads`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({ detail: res.statusText }));
+      throw new Error(error.detail || res.statusText);
+    }
+    return res.json();
+  },
+  delete: (versionId: string, id: string) =>
+    request<void>(`/versions/${versionId}/uploads/${id}`, { method: "DELETE" }),
+  downloadUrl: (versionId: string, id: string) =>
+    `${API_BASE}/versions/${versionId}/uploads/${id}/download`,
 };
 
 // Questions (version-scoped)

@@ -7,6 +7,7 @@ import { ConfirmDialog } from "../components/Common/ConfirmDialog";
 import { ArtifactList } from "../components/Artifact/ArtifactList";
 import { CreateArtifactForm } from "../components/Artifact/CreateArtifactForm";
 import { CodeEditor } from "../components/Artifact/CodeEditor";
+import { UploadPanel } from "../components/Upload/UploadPanel";
 
 export function VersionDetailPage() {
   const { clientId, projectId, versionId } = useParams<{ clientId: string; projectId: string; versionId: string }>();
@@ -166,6 +167,13 @@ export function VersionDetailPage() {
             onSelect={handleSelect}
             onDelete={setDeleteTarget}
           />
+
+          {/* Uploads section */}
+          {versionId && (
+            <div className="mt-6 pt-6 border-t border-gray-700">
+              <UploadPanel versionId={versionId} />
+            </div>
+          )}
         </div>
 
         {/* Right panel: editor + viewer */}

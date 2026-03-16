@@ -5,6 +5,7 @@ from src.schemas.artifact import ArtifactCreate, ArtifactResponse, ArtifactUpdat
 from src.schemas.adr import ADRCreate, ADRResponse, ADRUpdate
 from src.schemas.question import QuestionCreate, QuestionResponse, QuestionUpdate
 from src.schemas.inventory_item import InventoryItemCreate, InventoryItemResponse, InventoryItemUpdate
+from src.schemas.upload import UploadResponse
 
 __all__ = [
     "ClientCreate", "ClientResponse", "ClientUpdate",
@@ -14,4 +15,5 @@ __all__ = [
     "ADRCreate", "ADRResponse", "ADRUpdate",
     "QuestionCreate", "QuestionResponse", "QuestionUpdate",
     "InventoryItemCreate", "InventoryItemResponse", "InventoryItemUpdate",
+    "UploadResponse",
 ]
