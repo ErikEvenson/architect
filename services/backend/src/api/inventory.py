@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.api.artifacts import _update_content_timestamp
 from src.database import get_session
 from src.models.inventory_item import InventoryItem
 from src.models.version import Version
@@ -74,6 +75,8 @@ async def update_inventory_item(
         raise HTTPException(status_code=404, detail="Inventory item not found")
 
     update_data = data.model_dump(exclude_unset=True)
+    if "data" in update_data and update_data["data"] and update_data["data"] != item.data:
+        update_data["data"] = _update_content_timestamp(update_data["data"])
     for key, value in update_data.items():
         setattr(item, key, value)
 

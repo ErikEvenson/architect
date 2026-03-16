@@ -1,4 +1,6 @@
+import re
 import uuid
+from datetime import datetime, timezone, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
@@ -19,6 +21,27 @@ class CloneRequest(BaseModel):
     target_version_id: str
 
 router = APIRouter(prefix="/versions/{version_id}/artifacts", tags=["artifacts"])
+
+# Pattern matches "Last updated: YYYY-MM-DD HH:MM UTC" in various comment styles
+_CT = timezone(timedelta(hours=-6))
+
+_TIMESTAMP_PATTERNS = [
+    # Markdown italic: *Last updated: ...*
+    (re.compile(r"\*Last updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2} [A-Z]{2,4}\*"), "*Last updated: {ts}*"),
+    # Comment line: # Last updated: ...
+    (re.compile(r"# Last updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2} [A-Z]{2,4}"), "# Last updated: {ts}"),
+    # Plain text: Last updated: ...
+    (re.compile(r"Last updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2} [A-Z]{2,4}"), "Last updated: {ts}"),
+]
+
+
+def _update_content_timestamp(content: str) -> str:
+    """Update 'Last updated' timestamp in content, if present."""
+    ts = datetime.now(_CT).strftime("%Y-%m-%d %H:%M CT")
+    for pattern, replacement in _TIMESTAMP_PATTERNS:
+        if pattern.search(content):
+            return pattern.sub(replacement.format(ts=ts), content)
+    return content
 
 
 async def _get_version(version_id: uuid.UUID, session: AsyncSession) -> Version:
@@ -91,6 +114,9 @@ async def update_artifact(
 
     source_code_changed = "source_code" in update_data and update_data["source_code"] != artifact.source_code
     engine_changed = "engine" in update_data and update_data["engine"] != artifact.engine
+
+    if source_code_changed and update_data["source_code"]:
+        update_data["source_code"] = _update_content_timestamp(update_data["source_code"])
 
     for key, value in update_data.items():
         setattr(artifact, key, value)
