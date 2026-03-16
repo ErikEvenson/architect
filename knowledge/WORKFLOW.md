@@ -85,8 +85,10 @@ This determines the entire infrastructure layer — on-prem requires physical ha
 
 Before proceeding to Step 6 (diagrams), verify ALL applicable knowledge categories have been addressed. Print this full checklist and confirm each:
 
+**IMPORTANT: This checklist must be generated dynamically by scanning the `knowledge/` directory.** Do NOT rely on a hardcoded list — new knowledge files are added regularly. At the start of each session, scan `knowledge/general/*.md`, `knowledge/providers/{provider}/*.md`, `knowledge/patterns/{pattern}.md`, `knowledge/compliance/*.md`, and `knowledge/failures/*.md` to build the complete checklist for the project.
+
 ```
-General Categories:
+General Categories (scan knowledge/general/*.md for ALL files):
 [ ] Compute — instance types, sizing, scaling, HA
 [ ] Networking — segmentation, load balancing, DNS, CDN
 [ ] Data — database, backup, replication, encryption
@@ -98,17 +100,32 @@ General Categories:
 [ ] Identity — authentication, authorization
 [ ] Physical Infrastructure — host sizing, network switches (if on-prem)
 
-Provider-Specific (list each loaded provider file):
+Conditional General Categories (include when applicable):
+[ ] Inventory Analysis — if raw VM/server inventory data was provided
+[ ] Virtual Appliance Migration — if virtual appliances (F5, Infoblox, etc.) exist
+[ ] VDI Migration Strategy — if VDI/Horizon workloads are in scope
+[ ] Multi-Site Migration Sequencing — if multiple sites are being migrated
+[ ] Physical Server Scope — if physical servers exist alongside VMs
+[ ] Colocation Constraints — if any sites are in colocation facilities
+[ ] Facility Lifecycle — if facility lease expiry or decommission is a factor
+[ ] Workload Migration — if migrating from one platform to another
+[ ] Database Migration — if databases are being migrated
+[ ] Capacity Planning — if sizing new infrastructure
+[ ] Hardware Sizing — if on-prem hardware procurement is needed
+
+Provider-Specific (scan knowledge/providers/{provider}/*.md for ALL files):
 [ ] {provider}/compute — provider-specific compute items
 [ ] {provider}/networking — provider-specific networking items
 [ ] {provider}/storage — provider-specific storage items
 [ ] {provider}/security — provider-specific security items
 [ ] {provider}/observability — provider-specific monitoring items
 [ ] {provider}/data-protection — provider-specific backup/DR items
+[ ] {provider}/migration-tools — provider-specific migration tooling (if migrating)
 [ ] {provider}/* — any other provider files loaded
 
 Pattern-Specific (if applicable):
 [ ] {pattern} — all checklist items from the pattern file
+[ ] hypervisor-migration — if migrating between hypervisors (VMware to Nutanix, etc.)
 
 Compliance (if applicable):
 [ ] {compliance framework} — all Critical items from the compliance file

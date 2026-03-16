@@ -59,6 +59,14 @@ Write tests derived from specs BEFORE implementation. Write code to make tests p
 
 For architecture design sessions, read `knowledge/WORKFLOW.md` first.
 
+### Knowledge Library Maintenance
+
+- **Checklists are dynamically generated.** Never rely on a hardcoded list of knowledge categories. At the start of each session, scan `knowledge/` to discover ALL available files. New knowledge files are added regularly.
+- **After every session, run a retrospective** (Step 10 in WORKFLOW.md). Identify any topics that came up during the session that no knowledge file covers. Create GitHub issues labeled `knowledge-gap` for each.
+- **When adding a new knowledge file**, update the WORKFLOW.md Category Coverage Gate if the new file represents a conditional category (e.g., "include when VDI workloads are in scope").
+- **Every knowledge file must follow the standard format**: Scope, Checklist with [Critical]/[Recommended]/[Optional] tags, Why This Matters, Common Decisions (ADR Triggers). See existing files for examples.
+- **Cross-reference knowledge files during design.** When a component is added to the architecture, find and load the relevant knowledge file(s). Do not rely solely on general knowledge — the knowledge library contains specific checklist items that prevent common mistakes.
+
 ## Default Language
 
 Python for backend. TypeScript for frontend.
