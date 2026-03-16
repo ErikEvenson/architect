@@ -168,6 +168,28 @@ All tables use UUID primary keys and UTC timestamps.
 - `data_type` categorizes the inventory (e.g., 'vm_inventory', 'network_topology', 'server_list', 'custom')
 - Scoped to a version; cloned when cloning version artifacts
 
+### uploads
+
+| Column | Type | Constraints |
+|---|---|---|
+| id | UUID | PK, default gen_random_uuid() |
+| version_id | UUID | NOT NULL, FK → versions(id) ON DELETE CASCADE |
+| original_filename | VARCHAR(500) | NOT NULL |
+| stored_filename | VARCHAR(500) | NOT NULL |
+| content_type | VARCHAR(255) | NOT NULL, default 'application/octet-stream' |
+| file_size | BIGINT | NOT NULL |
+| created_at | TIMESTAMPTZ | NOT NULL, default now() |
+| updated_at | TIMESTAMPTZ | NOT NULL, default now() |
+
+**Indexes:**
+- `ix_uploads_version_id` on `version_id`
+
+**Notes:**
+- Binary files stored on PVC at `{output_dir}/{client}/{project}/{version}/uploads/{upload_id}/{stored_filename}`
+- `original_filename` preserves the user's filename; `stored_filename` may be sanitized
+- `file_size` in bytes
+- Scoped to a version; files on disk deleted via CASCADE trigger or application logic
+
 ## Cascade Behavior
 
 | Parent | Child | ON DELETE |
@@ -178,6 +200,7 @@ All tables use UUID primary keys and UTC timestamps.
 | projects | questions | CASCADE |
 | versions | artifacts | CASCADE |
 | versions | inventory_items | CASCADE |
+| versions | uploads | CASCADE |
 | adrs | adrs (superseded_by) | SET NULL |
 
 ## Updated At Trigger

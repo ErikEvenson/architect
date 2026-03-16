@@ -688,6 +688,99 @@ paths:
         "404":
           description: Inventory item not found
 
+  # --- Uploads ---
+  /versions/{version_id}/uploads:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: List uploaded files for a version
+      operationId: listUploads
+      tags: [uploads]
+      responses:
+        "200":
+          description: List of uploads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Upload"
+    post:
+      summary: Upload a file
+      operationId: createUpload
+      tags: [uploads]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+              required: [file]
+      responses:
+        "201":
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Upload"
+
+  /versions/{version_id}/uploads/{upload_id}:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: upload_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    delete:
+      summary: Delete an uploaded file
+      operationId: deleteUpload
+      tags: [uploads]
+      responses:
+        "204":
+          description: Upload deleted
+        "404":
+          description: Upload not found
+
+  /versions/{version_id}/uploads/{upload_id}/download:
+    parameters:
+      - name: version_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: upload_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Download an uploaded file
+      operationId: downloadUpload
+      tags: [uploads]
+      responses:
+        "200":
+          description: File content
+        "404":
+          description: Upload not found
+
   # --- Questions ---
   /projects/{project_id}/questions:
     parameters:
@@ -1250,3 +1343,27 @@ components:
           type: string
         sort_order:
           type: integer
+
+    # --- Upload ---
+    Upload:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        version_id:
+          type: string
+          format: uuid
+        original_filename:
+          type: string
+        content_type:
+          type: string
+        file_size:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required: [id, version_id, original_filename, content_type, file_size, created_at, updated_at]
