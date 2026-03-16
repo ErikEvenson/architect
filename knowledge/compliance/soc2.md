@@ -30,11 +30,11 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Organizational structure and reporting lines for security are documented
-- [ ] Board/management oversight of security program is evidenced
-- [ ] Code of conduct and ethics policy covers technology and data handling
-- [ ] Cloud governance framework (Organizations, Management Groups, Resource Manager hierarchy) is implemented
-- [ ] Compliance monitoring dashboards are configured (Audit Manager, Compliance Manager)
+- [ ] **[Recommended]** Organizational structure and reporting lines for security are documented
+- [ ] **[Recommended]** Board/management oversight of security program is evidenced
+- [ ] **[Recommended]** Code of conduct and ethics policy covers technology and data handling
+- [ ] **[Recommended]** Cloud governance framework (Organizations, Management Groups, Resource Manager hierarchy) is implemented
+- [ ] **[Critical]** Compliance monitoring dashboards are configured (Audit Manager, Compliance Manager)
 
 ---
 
@@ -52,11 +52,11 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Security policies are documented, approved, and distributed to relevant personnel
-- [ ] Security alert notifications are configured and routed to appropriate teams
-- [ ] External communication channels exist for security disclosures and incident notifications
-- [ ] System changes are communicated to affected stakeholders
-- [ ] Cloud provider security bulletins and advisories are monitored
+- [ ] **[Recommended]** Security policies are documented, approved, and distributed to relevant personnel
+- [ ] **[Recommended]** Security alert notifications are configured and routed to appropriate teams
+- [ ] **[Recommended]** External communication channels exist for security disclosures and incident notifications
+- [ ] **[Recommended]** System changes are communicated to affected stakeholders
+- [ ] **[Recommended]** Cloud provider security bulletins and advisories are monitored
 
 ---
 
@@ -75,12 +75,12 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Formal risk assessment process is established and conducted at least annually
-- [ ] Risk register includes cloud-specific risks (misconfiguration, data exposure, account compromise)
-- [ ] Vulnerability scanning is automated and continuous
-- [ ] Threat detection services are enabled across all accounts/subscriptions/projects
-- [ ] Risk tolerance levels are defined and drive control implementation decisions
-- [ ] Third-party and supply chain risks are assessed (including cloud provider risk)
+- [ ] **[Recommended]** Formal risk assessment process is established and conducted at least annually
+- [ ] **[Recommended]** Risk register includes cloud-specific risks (misconfiguration, data exposure, account compromise)
+- [ ] **[Critical]** Vulnerability scanning is automated and continuous
+- [ ] **[Recommended]** Threat detection services are enabled across all accounts/subscriptions/projects
+- [ ] **[Recommended]** Risk tolerance levels are defined and drive control implementation decisions
+- [ ] **[Recommended]** Third-party and supply chain risks are assessed (including cloud provider risk)
 
 ---
 
@@ -99,12 +99,12 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Continuous monitoring is implemented across all cloud environments
-- [ ] Security Hub / Defender for Cloud / Security Command Center aggregates findings
-- [ ] Control deficiencies are tracked in a ticketing system with SLAs for remediation
-- [ ] Compliance drift is detected and alerted upon
-- [ ] Management reviews monitoring results at defined intervals
-- [ ] Independent evaluations (internal audit, external assessments) supplement ongoing monitoring
+- [ ] **[Recommended]** Continuous monitoring is implemented across all cloud environments
+- [ ] **[Recommended]** Security Hub / Defender for Cloud / Security Command Center aggregates findings
+- [ ] **[Recommended]** Control deficiencies are tracked in a ticketing system with SLAs for remediation
+- [ ] **[Critical]** Compliance drift is detected and alerted upon
+- [ ] **[Recommended]** Management reviews monitoring results at defined intervals
+- [ ] **[Recommended]** Independent evaluations (internal audit, external assessments) supplement ongoing monitoring
 
 ---
 
@@ -123,13 +123,13 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Infrastructure is deployed via code (IaC) with version control and peer review
-- [ ] CI/CD pipelines enforce quality gates (testing, security scanning, approval)
-- [ ] Change management process requires approval before production deployment
-- [ ] Segregation of duties is enforced (developers cannot deploy to production unilaterally)
-- [ ] Environment separation (dev, staging, production) prevents unauthorized access to production data
-- [ ] Automated controls are preferred over manual controls for consistency
-- [ ] Technology controls are mapped to specific risks they mitigate
+- [ ] **[Recommended]** Infrastructure is deployed via code (IaC) with version control and peer review
+- [ ] **[Recommended]** CI/CD pipelines enforce quality gates (testing, security scanning, approval)
+- [ ] **[Recommended]** Change management process requires approval before production deployment
+- [ ] **[Critical]** Segregation of duties is enforced (developers cannot deploy to production unilaterally)
+- [ ] **[Recommended]** Environment separation (dev, staging, production) prevents unauthorized access to production data
+- [ ] **[Recommended]** Automated controls are preferred over manual controls for consistency
+- [ ] **[Recommended]** Technology controls are mapped to specific risks they mitigate
 
 ---
 
@@ -152,18 +152,18 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Identity provider is centralized (SSO/federation for all cloud accounts)
-- [ ] MFA is enforced for all human users (phishing-resistant methods preferred)
-- [ ] Least privilege is enforced -- permissions are scoped to specific resources and actions
-- [ ] Service accounts use short-lived credentials (STS, managed identities, workload identity)
-- [ ] Network access follows defense-in-depth (security groups + NACLs/firewall rules)
-- [ ] All data is encrypted at rest using customer-managed keys for sensitive workloads
-- [ ] All data in transit uses TLS 1.2+
-- [ ] Secrets are stored in dedicated services and rotated automatically
-- [ ] Access is reviewed and recertified at least quarterly
-- [ ] Physical access is managed by cloud provider (verify SOC 2 report from provider)
-- [ ] Deprovisioning removes access within defined SLA (same day recommended)
-- [ ] Root/global admin accounts are secured with hardware MFA and monitored for usage
+- [ ] **[Recommended]** Identity provider is centralized (SSO/federation for all cloud accounts)
+- [ ] **[Critical]** MFA is enforced for all human users (phishing-resistant methods preferred)
+- [ ] **[Critical]** Least privilege is enforced -- permissions are scoped to specific resources and actions
+- [ ] **[Critical]** Service accounts use short-lived credentials (STS, managed identities, workload identity)
+- [ ] **[Critical]** Network access follows defense-in-depth (security groups + NACLs/firewall rules)
+- [ ] **[Critical]** All data is encrypted at rest using customer-managed keys for sensitive workloads
+- [ ] **[Recommended]** All data in transit uses TLS 1.2+
+- [ ] **[Recommended]** Secrets are stored in dedicated services and rotated automatically
+- [ ] **[Recommended]** Access is reviewed and recertified at least quarterly
+- [ ] **[Recommended]** Physical access is managed by cloud provider (verify SOC 2 report from provider)
+- [ ] **[Recommended]** Deprovisioning removes access within defined SLA (same day recommended)
+- [ ] **[Critical]** Root/global admin accounts are secured with hardware MFA and monitored for usage
 
 ---
 
@@ -184,14 +184,14 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Threat detection is enabled in all environments (GuardDuty, Defender, SCC)
-- [ ] Vulnerability scanning covers infrastructure, containers, and application dependencies
-- [ ] Patch management process ensures critical patches are applied within defined SLAs
-- [ ] Incident response plan is documented, includes escalation procedures, and is tested at least annually
-- [ ] Security events are correlated in a SIEM for real-time analysis
-- [ ] Alerting thresholds are tuned to minimize false positives while catching true threats
-- [ ] On-call rotation ensures 24/7 coverage for security incidents
-- [ ] Post-incident reviews are conducted and lessons learned are implemented
+- [ ] **[Recommended]** Threat detection is enabled in all environments (GuardDuty, Defender, SCC)
+- [ ] **[Critical]** Vulnerability scanning covers infrastructure, containers, and application dependencies
+- [ ] **[Recommended]** Patch management process ensures critical patches are applied within defined SLAs
+- [ ] **[Critical]** Incident response plan is documented, includes escalation procedures, and is tested at least annually
+- [ ] **[Recommended]** Security events are correlated in a SIEM for real-time analysis
+- [ ] **[Recommended]** Alerting thresholds are tuned to minimize false positives while catching true threats
+- [ ] **[Recommended]** On-call rotation ensures 24/7 coverage for security incidents
+- [ ] **[Recommended]** Post-incident reviews are conducted and lessons learned are implemented
 
 ---
 
@@ -211,15 +211,15 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] All changes go through a formal change management process (request, review, approve, deploy, verify)
-- [ ] Changes are tracked in version control with meaningful commit messages
-- [ ] Infrastructure changes are deployed via IaC -- no manual console changes in production
-- [ ] Peer review (pull request) is required for all code and infrastructure changes
-- [ ] Automated testing validates changes before production deployment
-- [ ] Rollback procedures are documented and tested
-- [ ] Emergency change procedures exist with post-facto review and approval
-- [ ] CloudTrail / Activity Log / Audit Logs capture all infrastructure changes
-- [ ] Unauthorized changes are detected and alerted via Config / Policy / Asset Inventory
+- [ ] **[Recommended]** All changes go through a formal change management process (request, review, approve, deploy, verify)
+- [ ] **[Recommended]** Changes are tracked in version control with meaningful commit messages
+- [ ] **[Recommended]** Infrastructure changes are deployed via IaC -- no manual console changes in production
+- [ ] **[Recommended]** Peer review (pull request) is required for all code and infrastructure changes
+- [ ] **[Recommended]** Automated testing validates changes before production deployment
+- [ ] **[Recommended]** Rollback procedures are documented and tested
+- [ ] **[Recommended]** Emergency change procedures exist with post-facto review and approval
+- [ ] **[Critical]** CloudTrail / Activity Log / Audit Logs capture all infrastructure changes
+- [ ] **[Recommended]** Unauthorized changes are detected and alerted via Config / Policy / Asset Inventory
 
 ---
 
@@ -237,13 +237,13 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Risk mitigation strategies are defined for each identified risk (accept, mitigate, transfer, avoid)
-- [ ] Cloud provider's SOC 2 Type II report is reviewed at least annually
-- [ ] Complementary User Entity Controls (CUECs) from provider SOC reports are implemented
-- [ ] Vendor risk assessments are conducted for all critical third-party services
-- [ ] Business continuity and disaster recovery plans are maintained and tested
-- [ ] Cyber insurance coverage aligns with identified residual risks
-- [ ] Risk acceptance decisions are documented and approved by management
+- [ ] **[Recommended]** Risk mitigation strategies are defined for each identified risk (accept, mitigate, transfer, avoid)
+- [ ] **[Recommended]** Cloud provider's SOC 2 Type II report is reviewed at least annually
+- [ ] **[Recommended]** Complementary User Entity Controls (CUECs) from provider SOC reports are implemented
+- [ ] **[Recommended]** Vendor risk assessments are conducted for all critical third-party services
+- [ ] **[Critical]** Business continuity and disaster recovery plans are maintained and tested
+- [ ] **[Recommended]** Cyber insurance coverage aligns with identified residual risks
+- [ ] **[Recommended]** Risk acceptance decisions are documented and approved by management
 
 ---
 
@@ -267,17 +267,17 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] SLAs are defined and documented for all customer-facing services
-- [ ] Architecture supports the committed SLA (Multi-AZ minimum for 99.9%+)
-- [ ] Auto-scaling is configured with appropriate min/max/desired settings
-- [ ] Health checks and automated failover are configured
-- [ ] DDoS protection is enabled (Shield/DDoS Protection/Cloud Armor)
-- [ ] Disaster recovery plan defines RPO and RTO and is tested at least annually
-- [ ] Backup and restore procedures are documented and tested
-- [ ] Capacity planning is reviewed quarterly to prevent resource exhaustion
-- [ ] Incident communication procedures include customer notification for availability events
-- [ ] Dependencies are identified and monitored (third-party services, APIs)
-- [ ] Runbooks exist for common availability scenarios (failover, scaling, recovery)
+- [ ] **[Recommended]** SLAs are defined and documented for all customer-facing services
+- [ ] **[Recommended]** Architecture supports the committed SLA (Multi-AZ minimum for 99.9%+)
+- [ ] **[Recommended]** Auto-scaling is configured with appropriate min/max/desired settings
+- [ ] **[Critical]** Health checks and automated failover are configured
+- [ ] **[Recommended]** DDoS protection is enabled (Shield/DDoS Protection/Cloud Armor)
+- [ ] **[Critical]** Disaster recovery plan defines RPO and RTO and is tested at least annually
+- [ ] **[Critical]** Backup and restore procedures are documented and tested
+- [ ] **[Recommended]** Capacity planning is reviewed quarterly to prevent resource exhaustion
+- [ ] **[Recommended]** Incident communication procedures include customer notification for availability events
+- [ ] **[Recommended]** Dependencies are identified and monitored (third-party services, APIs)
+- [ ] **[Critical]** Runbooks exist for common availability scenarios (failover, scaling, recovery)
 
 ---
 
@@ -300,16 +300,16 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Input validation is enforced at all system boundaries (API gateway, application layer)
-- [ ] Data processing outputs are verified against expected results (reconciliation)
-- [ ] Error handling captures and reports processing failures without data loss
-- [ ] Dead letter queues capture failed messages for investigation and reprocessing
-- [ ] Processing completeness is monitored (record counts, checksums, reconciliation reports)
-- [ ] Transaction integrity is enforced for multi-step operations (ACID where applicable)
-- [ ] Processing SLAs (timeliness) are defined and monitored
-- [ ] Batch processing includes validation checkpoints and rollback capability
-- [ ] Data lineage is tracked for critical processing pipelines
-- [ ] Customers are notified of processing errors that affect their data
+- [ ] **[Recommended]** Input validation is enforced at all system boundaries (API gateway, application layer)
+- [ ] **[Recommended]** Data processing outputs are verified against expected results (reconciliation)
+- [ ] **[Recommended]** Error handling captures and reports processing failures without data loss
+- [ ] **[Recommended]** Dead letter queues capture failed messages for investigation and reprocessing
+- [ ] **[Recommended]** Processing completeness is monitored (record counts, checksums, reconciliation reports)
+- [ ] **[Recommended]** Transaction integrity is enforced for multi-step operations (ACID where applicable)
+- [ ] **[Recommended]** Processing SLAs (timeliness) are defined and monitored
+- [ ] **[Recommended]** Batch processing includes validation checkpoints and rollback capability
+- [ ] **[Recommended]** Data lineage is tracked for critical processing pipelines
+- [ ] **[Recommended]** Customers are notified of processing errors that affect their data
 
 ---
 
@@ -334,17 +334,17 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Data classification scheme is defined (public, internal, confidential, restricted)
-- [ ] All resources are tagged/labeled with their data classification
-- [ ] Automated data discovery scans identify unclassified confidential data
-- [ ] Encryption at rest uses customer-managed keys for confidential data
-- [ ] Encryption in transit uses TLS 1.2+ for all confidential data flows
-- [ ] DLP controls prevent unauthorized exfiltration of confidential data
-- [ ] VPC Service Controls / PrivateLink / Private Link restricts data access to authorized networks
-- [ ] Data masking is applied when full access to confidential data is not required
-- [ ] Data retention and deletion policies are enforced automatically via lifecycle rules
-- [ ] Confidential data is purged when no longer needed (crypto-shredding via key deletion is acceptable)
-- [ ] Confidentiality obligations are defined in customer contracts and enforced technically
+- [ ] **[Recommended]** Data classification scheme is defined (public, internal, confidential, restricted)
+- [ ] **[Recommended]** All resources are tagged/labeled with their data classification
+- [ ] **[Recommended]** Automated data discovery scans identify unclassified confidential data
+- [ ] **[Critical]** Encryption at rest uses customer-managed keys for confidential data
+- [ ] **[Critical]** Encryption in transit uses TLS 1.2+ for all confidential data flows
+- [ ] **[Recommended]** DLP controls prevent unauthorized exfiltration of confidential data
+- [ ] **[Recommended]** VPC Service Controls / PrivateLink / Private Link restricts data access to authorized networks
+- [ ] **[Recommended]** Data masking is applied when full access to confidential data is not required
+- [ ] **[Critical]** Data retention and deletion policies are enforced automatically via lifecycle rules
+- [ ] **[Critical]** Confidential data is purged when no longer needed (crypto-shredding via key deletion is acceptable)
+- [ ] **[Recommended]** Confidentiality obligations are defined in customer contracts and enforced technically
 
 ---
 
@@ -356,8 +356,8 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Privacy notice is accessible to data subjects before or at the time of data collection
-- [ ] Notice includes types of data collected, purposes, retention, sharing, and individual rights
+- [ ] **[Recommended]** Privacy notice is accessible to data subjects before or at the time of data collection
+- [ ] **[Critical]** Notice includes types of data collected, purposes, retention, sharing, and individual rights
 
 ### P2: Choice and Consent
 
@@ -372,9 +372,9 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Consent mechanisms are implemented for data collection (opt-in where required)
-- [ ] Consent preferences are stored and enforced programmatically
-- [ ] Consent withdrawal mechanisms are functional and trigger data handling changes
+- [ ] **[Recommended]** Consent mechanisms are implemented for data collection (opt-in where required)
+- [ ] **[Recommended]** Consent preferences are stored and enforced programmatically
+- [ ] **[Recommended]** Consent withdrawal mechanisms are functional and trigger data handling changes
 
 ### P3: Collection
 
@@ -382,8 +382,8 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Data collection is limited to what is necessary for stated purposes (data minimization)
-- [ ] Collection methods are documented and consistent with privacy notice
+- [ ] **[Recommended]** Data collection is limited to what is necessary for stated purposes (data minimization)
+- [ ] **[Recommended]** Collection methods are documented and consistent with privacy notice
 
 ### P4: Use, Retention, and Disposal
 
@@ -399,10 +399,10 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Data retention periods are defined for each category of personal information
-- [ ] Automated deletion enforces retention policies (lifecycle rules, TTL)
-- [ ] Personal information is not used for purposes beyond those stated in the privacy notice
-- [ ] Data inventory tracks where personal information is stored across all systems
+- [ ] **[Critical]** Data retention periods are defined for each category of personal information
+- [ ] **[Critical]** Automated deletion enforces retention policies (lifecycle rules, TTL)
+- [ ] **[Recommended]** Personal information is not used for purposes beyond those stated in the privacy notice
+- [ ] **[Recommended]** Data inventory tracks where personal information is stored across all systems
 
 ### P5: Access
 
@@ -410,9 +410,9 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Self-service mechanisms allow data subjects to view their personal information
-- [ ] Data subject access requests (DSARs) can be fulfilled within required timeframes
-- [ ] Authentication verifies data subject identity before granting access to their data
+- [ ] **[Recommended]** Self-service mechanisms allow data subjects to view their personal information
+- [ ] **[Recommended]** Data subject access requests (DSARs) can be fulfilled within required timeframes
+- [ ] **[Critical]** Authentication verifies data subject identity before granting access to their data
 
 ### P6: Disclosure and Notification
 
@@ -420,9 +420,9 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Third-party data sharing is documented and aligned with privacy notice
-- [ ] Data processing agreements are in place with third parties receiving personal information
-- [ ] Breach notification procedures comply with applicable privacy laws (GDPR 72 hours, CCPA, etc.)
+- [ ] **[Recommended]** Third-party data sharing is documented and aligned with privacy notice
+- [ ] **[Recommended]** Data processing agreements are in place with third parties receiving personal information
+- [ ] **[Critical]** Breach notification procedures comply with applicable privacy laws (GDPR 72 hours, CCPA, etc.)
 
 ### P7: Quality
 
@@ -430,9 +430,9 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Data validation ensures accuracy at point of collection
-- [ ] Mechanisms exist for data subjects to correct inaccurate information
-- [ ] Data quality checks are performed periodically
+- [ ] **[Recommended]** Data validation ensures accuracy at point of collection
+- [ ] **[Recommended]** Mechanisms exist for data subjects to correct inaccurate information
+- [ ] **[Recommended]** Data quality checks are performed periodically
 
 ### P8: Monitoring and Enforcement
 
@@ -447,11 +447,11 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 #### Architect Checklist
 
-- [ ] Privacy compliance is monitored continuously (automated scanning for PII exposure)
-- [ ] Access to personal information is logged and auditable
-- [ ] Privacy impact assessments (PIAs) are conducted for new systems processing personal information
-- [ ] Complaint and dispute resolution procedures are documented and accessible
-- [ ] Privacy program effectiveness is reviewed at least annually
+- [ ] **[Critical]** Privacy compliance is monitored continuously (automated scanning for PII exposure)
+- [ ] **[Recommended]** Access to personal information is logged and auditable
+- [ ] **[Recommended]** Privacy impact assessments (PIAs) are conducted for new systems processing personal information
+- [ ] **[Recommended]** Complaint and dispute resolution procedures are documented and accessible
+- [ ] **[Recommended]** Privacy program effectiveness is reviewed at least annually
 
 ---
 
@@ -459,23 +459,35 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 ### Evidence Collection
 
-- [ ] Cloud provider's SOC 2 Type II report is obtained (available via AWS Artifact, Azure Service Trust Portal, GCP Compliance Reports)
-- [ ] CUECs (Complementary User Entity Controls) from provider report are mapped to customer controls
-- [ ] All controls are documented with evidence of design and operating effectiveness
-- [ ] Policy documents are current (reviewed and approved within the audit period)
-- [ ] Access review evidence is collected (quarterly reviews with approvals)
-- [ ] Change management records demonstrate consistent process adherence
-- [ ] Incident response testing evidence is available (tabletop exercises, simulations)
-- [ ] Vulnerability scan and penetration test reports cover the audit period
-- [ ] Business continuity / DR test results are documented
-- [ ] Training completion records are available for all in-scope personnel
+- [ ] **[Critical]** Cloud provider's SOC 2 Type II report is obtained (available via AWS Artifact, Azure Service Trust Portal, GCP Compliance Reports)
+- [ ] **[Recommended]** CUECs (Complementary User Entity Controls) from provider report are mapped to customer controls
+- [ ] **[Recommended]** All controls are documented with evidence of design and operating effectiveness
+- [ ] **[Recommended]** Policy documents are current (reviewed and approved within the audit period)
+- [ ] **[Recommended]** Access review evidence is collected (quarterly reviews with approvals)
+- [ ] **[Recommended]** Change management records demonstrate consistent process adherence
+- [ ] **[Critical]** Incident response testing evidence is available (tabletop exercises, simulations)
+- [ ] **[Critical]** Vulnerability scan and penetration test reports cover the audit period
+- [ ] **[Recommended]** Business continuity / DR test results are documented
+- [ ] **[Critical]** Training completion records are available for all in-scope personnel
 
 ### Common Audit Findings to Prevent
 
-- [ ] No orphaned accounts (terminated employee access still active)
-- [ ] No overly permissive IAM policies (wildcard permissions)
-- [ ] No unencrypted data at rest or in transit
-- [ ] No missing MFA on privileged accounts
-- [ ] No gaps in logging (all regions, all accounts)
-- [ ] No undocumented exceptions to security policies
-- [ ] No missing evidence for control operation during the audit period
+- [ ] **[Recommended]** No orphaned accounts (terminated employee access still active)
+- [ ] **[Recommended]** No overly permissive IAM policies (wildcard permissions)
+- [ ] **[Critical]** No unencrypted data at rest or in transit
+- [ ] **[Critical]** No missing MFA on privileged accounts
+- [ ] **[Recommended]** No gaps in logging (all regions, all accounts)
+- [ ] **[Recommended]** No undocumented exceptions to security policies
+- [ ] **[Recommended]** No missing evidence for control operation during the audit period
+
+## Common Decisions (ADR Triggers)
+
+- **TSC scope selection** — which Trust Service Criteria beyond Security (Availability, Processing Integrity, Confidentiality, Privacy) to include
+- **Audit period and type** — Type I vs Type II, audit period length (6 vs 12 months), auditor selection
+- **Evidence collection architecture** — automated evidence collection tooling, continuous compliance monitoring, screenshot vs API-based evidence
+- **Access review process** — quarterly review scope, approval workflow, access recertification tooling
+- **Change management process** — CAB structure, emergency change policy, evidence of approval for every change
+- **Incident response program** — incident classification, escalation procedures, tabletop exercise frequency
+- **Vendor management** — cloud provider SOC report review cadence, CUEC mapping, subservice organization monitoring
+- **Logging and monitoring architecture** — centralized logging, retention policy, alerting thresholds, anomaly detection
+- **Business continuity and DR** — BCP/DR testing frequency, test documentation, recovery time validation

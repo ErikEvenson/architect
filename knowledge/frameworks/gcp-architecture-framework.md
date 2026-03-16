@@ -18,18 +18,18 @@ Focuses on designing cloud systems that meet functional and non-functional requi
 
 ### Checklist
 
-- [ ] Define system requirements (availability, latency, throughput, data residency) before selecting services
-- [ ] Choose between regional, multi-regional, and global architectures based on user distribution and availability needs
-- [ ] Use managed services (Cloud Run, Cloud SQL, BigQuery, Pub/Sub) to reduce operational burden
-- [ ] Design for loose coupling using asynchronous messaging (Pub/Sub, Cloud Tasks) between components
-- [ ] Implement API-first design with Cloud Endpoints or Apigee for service interfaces
-- [ ] Select appropriate compute platforms: GKE for containerized workloads, Cloud Run for stateless services, Compute Engine for custom VM requirements
-- [ ] Design data architecture with appropriate storage (Cloud Storage, Firestore, Spanner, BigQuery) matched to access patterns
-- [ ] Use VPC design with shared VPCs and proper subnet segmentation for network isolation
-- [ ] Plan for multi-tenancy, data partitioning, and resource isolation in shared-service architectures
-- [ ] Document architecture decisions and system design rationale in Architecture Decision Records
-- [ ] Design for portability where business requirements warrant it (containers, Kubernetes, open standards)
-- [ ] Plan capacity and quotas: understand Google Cloud quota limits and request increases proactively
+- [ ] **[Critical]** Define system requirements (availability, latency, throughput, data residency) before selecting services
+- [ ] **[Critical]** Choose between regional, multi-regional, and global architectures based on user distribution and availability needs
+- [ ] **[Recommended]** Use managed services (Cloud Run, Cloud SQL, BigQuery, Pub/Sub) to reduce operational burden
+- [ ] **[Recommended]** Design for loose coupling using asynchronous messaging (Pub/Sub, Cloud Tasks) between components
+- [ ] **[Recommended]** Implement API-first design with Cloud Endpoints or Apigee for service interfaces
+- [ ] **[Recommended]** Select appropriate compute platforms: GKE for containerized workloads, Cloud Run for stateless services, Compute Engine for custom VM requirements
+- [ ] **[Recommended]** Design data architecture with appropriate storage (Cloud Storage, Firestore, Spanner, BigQuery) matched to access patterns
+- [ ] **[Recommended]** Use VPC design with shared VPCs and proper subnet segmentation for network isolation
+- [ ] **[Recommended]** Plan for multi-tenancy, data partitioning, and resource isolation in shared-service architectures
+- [ ] **[Recommended]** Document architecture decisions and system design rationale in Architecture Decision Records
+- [ ] **[Recommended]** Design for portability where business requirements warrant it (containers, Kubernetes, open standards)
+- [ ] **[Recommended]** Plan capacity and quotas: understand Google Cloud quota limits and request increases proactively
 
 ### Why This Matters
 
@@ -51,18 +51,18 @@ Focuses on deploying, operating, and monitoring workloads to ensure reliable del
 
 ### Checklist
 
-- [ ] Use infrastructure as code (Terraform, Deployment Manager, or Pulumi) for all Google Cloud resource provisioning
-- [ ] Implement CI/CD pipelines with Cloud Build or external tools (GitHub Actions, GitLab CI) with automated testing
-- [ ] Instrument applications with Cloud Trace, Cloud Logging, and Cloud Monitoring for full observability
-- [ ] Define SLIs, SLOs, and error budgets following Google SRE practices for each service
-- [ ] Create Cloud Monitoring dashboards and alerting policies aligned with SLOs
-- [ ] Implement progressive rollout strategies (canary deployments, traffic splitting in Cloud Run or GKE)
-- [ ] Use Cloud Deploy for managed continuous delivery pipelines with approval gates
-- [ ] Establish incident management processes with defined roles (incident commander, communications lead)
-- [ ] Conduct blameless postmortems for all significant incidents and track action items to completion
-- [ ] Automate routine operational tasks using Cloud Functions, Cloud Scheduler, and Workflows
-- [ ] Maintain runbooks for common operational scenarios and emergency procedures
-- [ ] Use Organization Policy constraints and resource hierarchy (org, folders, projects) for governance
+- [ ] **[Recommended]** Use infrastructure as code (Terraform, Deployment Manager, or Pulumi) for all Google Cloud resource provisioning
+- [ ] **[Recommended]** Implement CI/CD pipelines with Cloud Build or external tools (GitHub Actions, GitLab CI) with automated testing
+- [ ] **[Critical]** Instrument applications with Cloud Trace, Cloud Logging, and Cloud Monitoring for full observability
+- [ ] **[Critical]** Define SLIs, SLOs, and error budgets following Google SRE practices for each service
+- [ ] **[Critical]** Create Cloud Monitoring dashboards and alerting policies aligned with SLOs
+- [ ] **[Recommended]** Implement progressive rollout strategies (canary deployments, traffic splitting in Cloud Run or GKE)
+- [ ] **[Recommended]** Use Cloud Deploy for managed continuous delivery pipelines with approval gates
+- [ ] **[Critical]** Establish incident management processes with defined roles (incident commander, communications lead)
+- [ ] **[Critical]** Conduct blameless postmortems for all significant incidents and track action items to completion
+- [ ] **[Recommended]** Automate routine operational tasks using Cloud Functions, Cloud Scheduler, and Workflows
+- [ ] **[Recommended]** Maintain runbooks for common operational scenarios and emergency procedures
+- [ ] **[Recommended]** Use Organization Policy constraints and resource hierarchy (org, folders, projects) for governance
 
 ### Why This Matters
 
@@ -84,18 +84,18 @@ Focuses on protecting data, systems, and workloads while meeting regulatory and 
 
 ### Checklist
 
-- [ ] Use Google Cloud Identity or Cloud Identity Platform for centralized identity management with MFA
-- [ ] Implement least-privilege IAM using predefined roles, custom roles, and IAM Conditions
-- [ ] Use VPC Service Controls to create security perimeters around sensitive Google Cloud services
-- [ ] Enable Security Command Center (Premium) for asset discovery, vulnerability scanning, and threat detection
-- [ ] Enforce organization policies for resource location, public access prevention, and service restrictions
-- [ ] Use customer-managed encryption keys (CMEK) with Cloud KMS for sensitive data at rest
-- [ ] Implement private networking: Private Google Access, Private Service Connect, and internal-only endpoints
-- [ ] Secure container workloads with Binary Authorization, container scanning, and GKE Workload Identity
-- [ ] Store secrets in Secret Manager with automated rotation and IAM-controlled access
-- [ ] Enable VPC Flow Logs and Cloud Audit Logs for all projects; centralize logs in a dedicated project
-- [ ] Implement data loss prevention (DLP) scanning for sensitive data in storage and data pipelines
-- [ ] Conduct compliance mapping against relevant standards (SOC 2, ISO 27001, HIPAA, PCI DSS) using Assured Workloads where applicable
+- [ ] **[Critical]** Use Google Cloud Identity or Cloud Identity Platform for centralized identity management with MFA
+- [ ] **[Critical]** Implement least-privilege IAM using predefined roles, custom roles, and IAM Conditions
+- [ ] **[Critical]** Use VPC Service Controls to create security perimeters around sensitive Google Cloud services
+- [ ] **[Critical]** Enable Security Command Center (Premium) for asset discovery, vulnerability scanning, and threat detection
+- [ ] **[Recommended]** Enforce organization policies for resource location, public access prevention, and service restrictions
+- [ ] **[Critical]** Use customer-managed encryption keys (CMEK) with Cloud KMS for sensitive data at rest
+- [ ] **[Recommended]** Implement private networking: Private Google Access, Private Service Connect, and internal-only endpoints
+- [ ] **[Recommended]** Secure container workloads with Binary Authorization, container scanning, and GKE Workload Identity
+- [ ] **[Critical]** Store secrets in Secret Manager with automated rotation and IAM-controlled access
+- [ ] **[Critical]** Enable VPC Flow Logs and Cloud Audit Logs for all projects; centralize logs in a dedicated project
+- [ ] **[Recommended]** Implement data loss prevention (DLP) scanning for sensitive data in storage and data pipelines
+- [ ] **[Critical]** Conduct compliance mapping against relevant standards (SOC 2, ISO 27001, HIPAA, PCI DSS) using Assured Workloads where applicable
 
 ### Why This Matters
 
@@ -117,18 +117,18 @@ Focuses on building systems that perform their intended functions and recover qu
 
 ### Checklist
 
-- [ ] Define availability targets and error budgets using SLIs and SLOs for each service
-- [ ] Deploy across multiple zones within a region for standard high availability
-- [ ] Implement multi-region architectures for workloads requiring very high availability (99.99%+)
-- [ ] Use regional or multi-regional storage classes for data durability and availability
-- [ ] Implement health checks and auto-healing with managed instance groups or GKE pod probes
-- [ ] Design for graceful degradation: serve cached or static responses when backend services are impaired
-- [ ] Use Cloud Load Balancing (global or regional) for traffic distribution and automatic failover
-- [ ] Implement retry logic with exponential backoff and jitter for all inter-service calls
-- [ ] Back up critical data using automated snapshot schedules and cross-region replication
-- [ ] Test disaster recovery procedures regularly, including full failover and data restoration
-- [ ] Use Chaos engineering practices to validate resilience assumptions under failure conditions
-- [ ] Monitor against SLOs and use error budget policies to govern the pace of change
+- [ ] **[Critical]** Define availability targets and error budgets using SLIs and SLOs for each service
+- [ ] **[Critical]** Deploy across multiple zones within a region for standard high availability
+- [ ] **[Critical]** Implement multi-region architectures for workloads requiring very high availability (99.99%+)
+- [ ] **[Critical]** Use regional or multi-regional storage classes for data durability and availability
+- [ ] **[Critical]** Implement health checks and auto-healing with managed instance groups or GKE pod probes
+- [ ] **[Recommended]** Design for graceful degradation: serve cached or static responses when backend services are impaired
+- [ ] **[Critical]** Use Cloud Load Balancing (global or regional) for traffic distribution and automatic failover
+- [ ] **[Recommended]** Implement retry logic with exponential backoff and jitter for all inter-service calls
+- [ ] **[Recommended]** Back up critical data using automated snapshot schedules and cross-region replication
+- [ ] **[Critical]** Test disaster recovery procedures regularly, including full failover and data restoration
+- [ ] **[Recommended]** Use Chaos engineering practices to validate resilience assumptions under failure conditions
+- [ ] **[Critical]** Monitor against SLOs and use error budget policies to govern the pace of change
 
 ### Why This Matters
 
@@ -150,18 +150,18 @@ Focuses on maximizing the business value of Google Cloud investments by eliminat
 
 ### Checklist
 
-- [ ] Set up billing accounts, budgets, and alerts using Cloud Billing and Budgets API
-- [ ] Implement a labeling strategy for cost allocation across teams, projects, and environments
-- [ ] Use billing export to BigQuery for detailed cost analysis and custom reporting
-- [ ] Right-size Compute Engine instances using Recommender and Cloud Monitoring utilization data
-- [ ] Purchase Committed Use Discounts (CUDs) for stable, predictable workloads
-- [ ] Use Preemptible VMs or Spot VMs for fault-tolerant batch processing and development workloads
-- [ ] Select appropriate Cloud Storage classes (Standard, Nearline, Coldline, Archive) with lifecycle rules
-- [ ] Evaluate serverless options (Cloud Run, Cloud Functions, BigQuery) for variable and unpredictable workloads
-- [ ] Shut down or scale non-production environments outside business hours using Cloud Scheduler and automation
-- [ ] Identify and clean up unused resources: idle VMs, orphaned disks, unattached static IPs
-- [ ] Use Active Assist recommendations (idle resources, right-sizing, CUD suggestions) and act on them monthly
-- [ ] Measure unit economics: track cost per request, cost per user, or cost per data pipeline run
+- [ ] **[Critical]** Set up billing accounts, budgets, and alerts using Cloud Billing and Budgets API
+- [ ] **[Recommended]** Implement a labeling strategy for cost allocation across teams, projects, and environments
+- [ ] **[Recommended]** Use billing export to BigQuery for detailed cost analysis and custom reporting
+- [ ] **[Recommended]** Right-size Compute Engine instances using Recommender and Cloud Monitoring utilization data
+- [ ] **[Recommended]** Purchase Committed Use Discounts (CUDs) for stable, predictable workloads
+- [ ] **[Recommended]** Use Preemptible VMs or Spot VMs for fault-tolerant batch processing and development workloads
+- [ ] **[Recommended]** Select appropriate Cloud Storage classes (Standard, Nearline, Coldline, Archive) with lifecycle rules
+- [ ] **[Recommended]** Evaluate serverless options (Cloud Run, Cloud Functions, BigQuery) for variable and unpredictable workloads
+- [ ] **[Recommended]** Shut down or scale non-production environments outside business hours using Cloud Scheduler and automation
+- [ ] **[Recommended]** Identify and clean up unused resources: idle VMs, orphaned disks, unattached static IPs
+- [ ] **[Recommended]** Use Active Assist recommendations (idle resources, right-sizing, CUD suggestions) and act on them monthly
+- [ ] **[Recommended]** Measure unit economics: track cost per request, cost per user, or cost per data pipeline run
 
 ### Why This Matters
 
@@ -183,18 +183,18 @@ Focuses on designing systems that meet performance requirements and maintain res
 
 ### Checklist
 
-- [ ] Define latency, throughput, and concurrency targets for each user-facing and backend service
-- [ ] Select machine types and configurations (CPU, memory, GPU, TPU) matched to workload profiles
-- [ ] Use Cloud CDN and Cloud Load Balancing to cache content and route users to the nearest serving location
-- [ ] Implement Memorystore (Redis or Memcached) for application-level caching of frequently accessed data
-- [ ] Design database schemas and queries for performance: use appropriate indexes, partitioning, and read replicas
-- [ ] Use autoscaling for compute (GKE HPA/VPA, managed instance groups, Cloud Run concurrency) to match demand
-- [ ] Implement asynchronous processing with Pub/Sub and Cloud Tasks to decouple latency-sensitive paths
-- [ ] Use Cloud Profiler and Cloud Trace to identify application-level performance bottlenecks
-- [ ] Conduct load testing with representative traffic patterns before production launches
-- [ ] Optimize network performance: use Premium Tier networking, place resources close to users, minimize cross-region traffic
-- [ ] Evaluate BigQuery, Dataflow, and Dataproc for large-scale data processing performance requirements
-- [ ] Review and adopt new Google Cloud features (new machine families, service enhancements) that improve performance
+- [ ] **[Recommended]** Define latency, throughput, and concurrency targets for each user-facing and backend service
+- [ ] **[Recommended]** Select machine types and configurations (CPU, memory, GPU, TPU) matched to workload profiles
+- [ ] **[Recommended]** Use Cloud CDN and Cloud Load Balancing to cache content and route users to the nearest serving location
+- [ ] **[Recommended]** Implement Memorystore (Redis or Memcached) for application-level caching of frequently accessed data
+- [ ] **[Recommended]** Design database schemas and queries for performance: use appropriate indexes, partitioning, and read replicas
+- [ ] **[Recommended]** Use autoscaling for compute (GKE HPA/VPA, managed instance groups, Cloud Run concurrency) to match demand
+- [ ] **[Recommended]** Implement asynchronous processing with Pub/Sub and Cloud Tasks to decouple latency-sensitive paths
+- [ ] **[Recommended]** Use Cloud Profiler and Cloud Trace to identify application-level performance bottlenecks
+- [ ] **[Recommended]** Conduct load testing with representative traffic patterns before production launches
+- [ ] **[Recommended]** Optimize network performance: use Premium Tier networking, place resources close to users, minimize cross-region traffic
+- [ ] **[Recommended]** Evaluate BigQuery, Dataflow, and Dataproc for large-scale data processing performance requirements
+- [ ] **[Recommended]** Review and adopt new Google Cloud features (new machine families, service enhancements) that improve performance
 
 ### Why This Matters
 
@@ -221,3 +221,14 @@ Performance is a feature that directly affects user satisfaction and business ou
 5. **Document trade-offs as ADRs**: When pillar recommendations conflict (e.g., multi-region for reliability vs. single-region for cost), document the decision, alternatives considered, and rationale.
 6. **Leverage Google Cloud tools**: Use Active Assist Recommender, Security Command Center, and Cloud Monitoring to validate architecture decisions with data rather than assumptions.
 7. **Plan for iteration**: Architecture reviews are not one-time events. Schedule follow-up reviews and use SLO dashboards, cost reports, and security findings to track improvement over time.
+
+## Common Decisions (ADR Triggers)
+
+- **Pillar prioritization** — which pillars to focus on first based on workload characteristics and team maturity
+- **Compute platform selection** — GKE vs Cloud Run vs Compute Engine, managed vs self-managed trade-offs
+- **Data architecture** — BigQuery vs Cloud SQL vs Spanner, storage tier selection, data residency
+- **Security posture** — Security Command Center tier, BeyondCorp adoption, VPC Service Controls scope
+- **Cost optimization** — committed use discounts vs sustained use, preemptible/spot VM strategy, active assist
+- **Operational model** — IaC tooling (Terraform vs Config Connector vs Pulumi), Cloud Monitoring vs third-party
+- **Reliability architecture** — regional vs multi-regional, Chaos Studio adoption, SLO-based alerting
+- **Architecture review cadence** — framework assessment frequency, risk-based prioritization of improvements

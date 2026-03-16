@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Choose Service type for each workload: ClusterIP (internal), NodePort (development/legacy), LoadBalancer (external, cloud-integrated), ExternalName (DNS CNAME alias)
-- [ ] Evaluate Ingress vs Gateway API: Ingress is stable but limited (HTTP/HTTPS only, no header-based routing); Gateway API is the successor with richer routing, multi-tenancy, and protocol support
-- [ ] Select and deploy an ingress controller: NGINX Ingress, Traefik, HAProxy, Contour, Emissary, or cloud-provider native (AWS ALB, GCP GCLB)
-- [ ] Design NetworkPolicy rules: default-deny all ingress/egress per namespace, then allow specific traffic flows; verify CNI supports NetworkPolicies
-- [ ] Evaluate CNI plugin: Calico (policy + BGP), Cilium (eBPF, policy, observability, service mesh), Flannel (simple overlay), AWS VPC CNI, Azure CNI, GKE Dataplane v2
-- [ ] Plan DNS architecture: CoreDNS configuration, ndots setting optimization, DNS caching (NodeLocal DNSCache for large clusters)
-- [ ] Assess service mesh requirements: Istio (feature-rich, complex), Linkerd (lightweight, simple), Cilium service mesh (eBPF-based, no sidecars)
-- [ ] Configure external DNS controller to automatically create DNS records for Services and Ingress resources
-- [ ] Plan IP address management: pod CIDR sizing (plan for growth), service CIDR, avoiding conflicts with VPC/corporate networks
-- [ ] Evaluate MetalLB for bare-metal LoadBalancer service support (L2 mode for simple setups, BGP mode for production)
-- [ ] Design egress traffic strategy: egress gateways, NAT, or direct pod IP egress; consider implications for firewall rules at destination
-- [ ] Configure appropriate session affinity settings for stateful client connections (service.spec.sessionAffinity, consistent hash in service mesh)
-- [ ] Plan TLS termination: at ingress controller, at service mesh sidecar (mTLS), or at application; evaluate cert-manager for automated certificate lifecycle
+- [ ] **[Recommended]** Choose Service type for each workload: ClusterIP (internal), NodePort (development/legacy), LoadBalancer (external, cloud-integrated), ExternalName (DNS CNAME alias)
+- [ ] **[Recommended]** Evaluate Ingress vs Gateway API: Ingress is stable but limited (HTTP/HTTPS only, no header-based routing); Gateway API is the successor with richer routing, multi-tenancy, and protocol support
+- [ ] **[Critical]** Select and deploy an ingress controller: NGINX Ingress, Traefik, HAProxy, Contour, Emissary, or cloud-provider native (AWS ALB, GCP GCLB)
+- [ ] **[Critical]** Design NetworkPolicy rules: default-deny all ingress/egress per namespace, then allow specific traffic flows; verify CNI supports NetworkPolicies
+- [ ] **[Critical]** Evaluate CNI plugin: Calico (policy + BGP), Cilium (eBPF, policy, observability, service mesh), Flannel (simple overlay), AWS VPC CNI, Azure CNI, GKE Dataplane v2
+- [ ] **[Recommended]** Plan DNS architecture: CoreDNS configuration, ndots setting optimization, DNS caching (NodeLocal DNSCache for large clusters)
+- [ ] **[Optional]** Assess service mesh requirements: Istio (feature-rich, complex), Linkerd (lightweight, simple), Cilium service mesh (eBPF-based, no sidecars)
+- [ ] **[Recommended]** Configure external DNS controller to automatically create DNS records for Services and Ingress resources
+- [ ] **[Critical]** Plan IP address management: pod CIDR sizing (plan for growth), service CIDR, avoiding conflicts with VPC/corporate networks
+- [ ] **[Recommended]** Evaluate MetalLB for bare-metal LoadBalancer service support (L2 mode for simple setups, BGP mode for production)
+- [ ] **[Recommended]** Design egress traffic strategy: egress gateways, NAT, or direct pod IP egress; consider implications for firewall rules at destination
+- [ ] **[Optional]** Configure appropriate session affinity settings for stateful client connections (service.spec.sessionAffinity, consistent hash in service mesh)
+- [ ] **[Recommended]** Plan TLS termination: at ingress controller, at service mesh sidecar (mTLS), or at application; evaluate cert-manager for automated certificate lifecycle
 
 ## Why This Matters
 

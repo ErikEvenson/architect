@@ -6,19 +6,19 @@ Edge computing moves computation and data storage closer to the sources of data 
 
 ## Checklist
 
-- [ ] What is the latency requirement driving edge deployment? (sub-50ms response, real-time processing, regulatory data locality)
-- [ ] Which edge compute platform is used? (Cloudflare Workers, Lambda@Edge, CloudFront Functions, Fastly Compute, Deno Deploy, Cloud Run)
-- [ ] Is IoT edge processing required? (AWS Greengrass, Azure IoT Edge, Google Coral — local inference, data filtering, protocol translation)
-- [ ] What runs at the edge vs the origin? (static content, personalization, A/B testing, authentication, data aggregation, ML inference)
-- [ ] How is code deployed to edge locations? (global deployment pipelines, canary rollouts across regions, rollback strategy)
-- [ ] Is offline capability required? (local data storage, conflict resolution on reconnect, queue-and-sync patterns)
-- [ ] How is edge-to-cloud data synchronization handled? (eventual consistency, batched uploads, real-time streaming, conflict resolution)
-- [ ] What data is aggregated or filtered at the edge before sending to cloud? (reducing bandwidth costs, preprocessing sensor data, privacy filtering)
-- [ ] How is content personalization implemented at the edge? (cookie/header-based routing, A/B testing at CDN, geo-based content)
-- [ ] What is the edge security model? (TLS termination, DDoS mitigation, bot detection, WAF at edge, device attestation for IoT)
-- [ ] How are edge devices/nodes monitored? (health checks, remote management, OTA updates, fleet management)
-- [ ] What are the compute and memory constraints at edge locations? (worker memory limits, execution time limits, cold start impact)
-- [ ] Is 5G/MEC (Multi-access Edge Computing) relevant? (carrier edge, ultra-low latency use cases, private 5G networks)
+- [ ] **[Critical]** What is the latency requirement driving edge deployment? (sub-50ms response, real-time processing, regulatory data locality)
+- [ ] **[Critical]** Which edge compute platform is used? (Cloudflare Workers, Lambda@Edge, CloudFront Functions, Fastly Compute, Deno Deploy, Cloud Run)
+- [ ] **[Recommended]** Is IoT edge processing required? (AWS Greengrass, Azure IoT Edge, Google Coral — local inference, data filtering, protocol translation)
+- [ ] **[Critical]** What runs at the edge vs the origin? (static content, personalization, A/B testing, authentication, data aggregation, ML inference)
+- [ ] **[Recommended]** How is code deployed to edge locations? (global deployment pipelines, canary rollouts across regions, rollback strategy)
+- [ ] **[Recommended]** Is offline capability required? (local data storage, conflict resolution on reconnect, queue-and-sync patterns)
+- [ ] **[Critical]** How is edge-to-cloud data synchronization handled? (eventual consistency, batched uploads, real-time streaming, conflict resolution)
+- [ ] **[Recommended]** What data is aggregated or filtered at the edge before sending to cloud? (reducing bandwidth costs, preprocessing sensor data, privacy filtering)
+- [ ] **[Optional]** How is content personalization implemented at the edge? (cookie/header-based routing, A/B testing at CDN, geo-based content)
+- [ ] **[Critical]** What is the edge security model? (TLS termination, DDoS mitigation, bot detection, WAF at edge, device attestation for IoT)
+- [ ] **[Recommended]** How are edge devices/nodes monitored? (health checks, remote management, OTA updates, fleet management)
+- [ ] **[Recommended]** What are the compute and memory constraints at edge locations? (worker memory limits, execution time limits, cold start impact)
+- [ ] **[Optional]** Is 5G/MEC (Multi-access Edge Computing) relevant? (carrier edge, ultra-low latency use cases, private 5G networks)
 
 ## Why This Matters
 

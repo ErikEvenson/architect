@@ -36,12 +36,12 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Risk analysis covering all ePHI is documented and updated at least annually
-- [ ] Risk management plan addresses identified risks with specific mitigation measures
-- [ ] AWS Audit Manager / Azure Compliance Manager / Assured Workloads is configured with HIPAA assessment
-- [ ] Security Hub / Defender for Cloud / Security Command Center provides continuous compliance monitoring
-- [ ] System activity logs are reviewed regularly (automated alerting preferred)
-- [ ] Sanction policy is documented and enforceable
+- [ ] **[Critical]** Risk analysis covering all ePHI is documented and updated at least annually
+- [ ] **[Recommended]** Risk management plan addresses identified risks with specific mitigation measures
+- [ ] **[Critical]** AWS Audit Manager / Azure Compliance Manager / Assured Workloads is configured with HIPAA assessment
+- [ ] **[Critical]** Security Hub / Defender for Cloud / Security Command Center provides continuous compliance monitoring
+- [ ] **[Recommended]** System activity logs are reviewed regularly (automated alerting preferred)
+- [ ] **[Recommended]** Sanction policy is documented and enforceable
 
 ---
 
@@ -51,9 +51,9 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] A Security Officer is designated with documented responsibilities
-- [ ] Security responsibilities for cloud environments are clearly assigned (cloud team, security team, DevOps)
-- [ ] Cloud provider's shared responsibility model is documented and gaps are assigned to internal teams
+- [ ] **[Recommended]** A Security Officer is designated with documented responsibilities
+- [ ] **[Recommended]** Security responsibilities for cloud environments are clearly assigned (cloud team, security team, DevOps)
+- [ ] **[Recommended]** Cloud provider's shared responsibility model is documented and gaps are assigned to internal teams
 
 ---
 
@@ -77,11 +77,11 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Onboarding process includes access approval workflow before granting ePHI access
-- [ ] Access reviews are conducted periodically (at least quarterly for ePHI systems)
-- [ ] Offboarding process includes automated revocation of all cloud access within 24 hours
-- [ ] SCIM provisioning is enabled for automated identity lifecycle management
-- [ ] Role changes trigger access re-evaluation
+- [ ] **[Critical]** Onboarding process includes access approval workflow before granting ePHI access
+- [ ] **[Critical]** Access reviews are conducted periodically (at least quarterly for ePHI systems)
+- [ ] **[Recommended]** Offboarding process includes automated revocation of all cloud access within 24 hours
+- [ ] **[Recommended]** SCIM provisioning is enabled for automated identity lifecycle management
+- [ ] **[Recommended]** Role changes trigger access re-evaluation
 
 ---
 
@@ -106,12 +106,12 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] ePHI workloads are isolated in dedicated accounts/subscriptions/projects
-- [ ] RBAC roles are defined for each job function with minimum necessary access
-- [ ] No wildcard (*) permissions exist for resources containing ePHI
-- [ ] Access to ePHI datasets uses fine-grained controls (row-level, column-level where applicable)
-- [ ] Access authorization is documented and approved by data owner
-- [ ] Minimum necessary standard is applied -- users access only the ePHI they need
+- [ ] **[Critical]** ePHI workloads are isolated in dedicated accounts/subscriptions/projects
+- [ ] **[Recommended]** RBAC roles are defined for each job function with minimum necessary access
+- [ ] **[Critical]** No wildcard (*) permissions exist for resources containing ePHI
+- [ ] **[Critical]** Access to ePHI datasets uses fine-grained controls (row-level, column-level where applicable)
+- [ ] **[Critical]** Access authorization is documented and approved by data owner
+- [ ] **[Critical]** Minimum necessary standard is applied -- users access only the ePHI they need
 
 ---
 
@@ -136,11 +136,11 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Security awareness training includes cloud-specific topics (phishing, credential handling, MFA)
-- [ ] Failed login alerts are configured in GuardDuty / Entra / Cloud Audit Logs
-- [ ] Password policies enforce strong passwords (minimum 12 characters recommended)
-- [ ] Anti-malware is deployed on all systems that process ePHI
-- [ ] Periodic security reminders are distributed to all personnel with ePHI access
+- [ ] **[Critical]** Security awareness training includes cloud-specific topics (phishing, credential handling, MFA)
+- [ ] **[Critical]** Failed login alerts are configured in GuardDuty / Entra / Cloud Audit Logs
+- [ ] **[Recommended]** Password policies enforce strong passwords (minimum 12 characters recommended)
+- [ ] **[Critical]** Anti-malware is deployed on all systems that process ePHI
+- [ ] **[Critical]** Periodic security reminders are distributed to all personnel with ePHI access
 
 ---
 
@@ -163,12 +163,12 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Incident response plan specifically addresses ePHI breaches
-- [ ] HIPAA Breach Notification Rule requirements are incorporated (60-day notification window)
-- [ ] Automated threat detection is enabled (GuardDuty, Sentinel, Chronicle)
-- [ ] Incident response playbooks are defined for common cloud scenarios (credential compromise, data exposure, ransomware)
-- [ ] Forensic capabilities are pre-configured (snapshot automation, log preservation)
-- [ ] Incidents are documented with root cause analysis and remediation tracking
+- [ ] **[Critical]** Incident response plan specifically addresses ePHI breaches
+- [ ] **[Critical]** HIPAA Breach Notification Rule requirements are incorporated (60-day notification window)
+- [ ] **[Recommended]** Automated threat detection is enabled (GuardDuty, Sentinel, Chronicle)
+- [ ] **[Critical]** Incident response playbooks are defined for common cloud scenarios (credential compromise, data exposure, ransomware)
+- [ ] **[Recommended]** Forensic capabilities are pre-configured (snapshot automation, log preservation)
+- [ ] **[Recommended]** Incidents are documented with root cause analysis and remediation tracking
 
 ---
 
@@ -195,15 +195,15 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Automated backups are configured for all systems storing ePHI
-- [ ] Backups are encrypted and stored in a separate region/zone
-- [ ] Backup restoration is tested at least annually
-- [ ] RPO (Recovery Point Objective) and RTO (Recovery Time Objective) are defined for ePHI systems
-- [ ] Disaster recovery plan is documented and tested at least annually
-- [ ] Multi-AZ or multi-region deployment is used for critical ePHI systems
-- [ ] Infrastructure as code enables rapid environment reconstruction
-- [ ] Emergency mode operations are documented (degraded-mode procedures)
-- [ ] Application and data criticality analysis is completed and drives DR priorities
+- [ ] **[Critical]** Automated backups are configured for all systems storing ePHI
+- [ ] **[Critical]** Backups are encrypted and stored in a separate region/zone
+- [ ] **[Critical]** Backup restoration is tested at least annually
+- [ ] **[Critical]** RPO (Recovery Point Objective) and RTO (Recovery Time Objective) are defined for ePHI systems
+- [ ] **[Critical]** Disaster recovery plan is documented and tested at least annually
+- [ ] **[Critical]** Multi-AZ or multi-region deployment is used for critical ePHI systems
+- [ ] **[Recommended]** Infrastructure as code enables rapid environment reconstruction
+- [ ] **[Recommended]** Emergency mode operations are documented (degraded-mode procedures)
+- [ ] **[Recommended]** Application and data criticality analysis is completed and drives DR priorities
 
 ---
 
@@ -213,10 +213,10 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Technical evaluations (vulnerability scans, penetration tests) are conducted at least annually
-- [ ] Non-technical evaluations (policy reviews, process audits) are conducted at least annually
-- [ ] Evaluations are triggered by environmental or operational changes
-- [ ] Findings are documented with remediation plans and timelines
+- [ ] **[Critical]** Technical evaluations (vulnerability scans, penetration tests) are conducted at least annually
+- [ ] **[Recommended]** Non-technical evaluations (policy reviews, process audits) are conducted at least annually
+- [ ] **[Recommended]** Evaluations are triggered by environmental or operational changes
+- [ ] **[Recommended]** Findings are documented with remediation plans and timelines
 
 ---
 
@@ -226,11 +226,11 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] BAA is executed with the cloud provider (AWS, Azure, GCP) before any ePHI is stored or processed
-- [ ] Only BAA-eligible services are used for ePHI workloads
-- [ ] BAAs are in place with all third-party services that access, store, or transmit ePHI
-- [ ] BAA-eligible service list is reviewed when adopting new cloud services
-- [ ] Subcontractor chains are documented (cloud provider subprocessors)
+- [ ] **[Critical]** BAA is executed with the cloud provider (AWS, Azure, GCP) before any ePHI is stored or processed
+- [ ] **[Critical]** Only BAA-eligible services are used for ePHI workloads
+- [ ] **[Critical]** BAAs are in place with all third-party services that access, store, or transmit ePHI
+- [ ] **[Recommended]** BAA-eligible service list is reviewed when adopting new cloud services
+- [ ] **[Recommended]** Subcontractor chains are documented (cloud provider subprocessors)
 
 ---
 
@@ -257,10 +257,10 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Cloud provider's physical security certifications (SOC 2 Type II, ISO 27001, HITRUST) are verified
-- [ ] Data residency requirements are met through region selection
-- [ ] On-premises components (if any) have documented facility access controls
-- [ ] Dedicated/isolated compute is used if required by organizational policy
+- [ ] **[Critical]** Cloud provider's physical security certifications (SOC 2 Type II, ISO 27001, HITRUST) are verified
+- [ ] **[Critical]** Data residency requirements are met through region selection
+- [ ] **[Critical]** On-premises components (if any) have documented facility access controls
+- [ ] **[Recommended]** Dedicated/isolated compute is used if required by organizational policy
 
 ---
 
@@ -270,9 +270,9 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Workstation policies cover remote access to cloud-hosted ePHI
-- [ ] Virtual desktop infrastructure (VDI) is considered for accessing ePHI (WorkSpaces, Azure Virtual Desktop, Chrome Remote Desktop)
-- [ ] Screen lock and timeout policies are enforced on workstations accessing ePHI
+- [ ] **[Critical]** Workstation policies cover remote access to cloud-hosted ePHI
+- [ ] **[Critical]** Virtual desktop infrastructure (VDI) is considered for accessing ePHI (WorkSpaces, Azure Virtual Desktop, Chrome Remote Desktop)
+- [ ] **[Critical]** Screen lock and timeout policies are enforced on workstations accessing ePHI
 
 ---
 
@@ -290,9 +290,9 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Endpoint management (MDM/MAM) is deployed on devices accessing ePHI
-- [ ] Zero trust access (Verified Access, Conditional Access, BeyondCorp) is used for ePHI applications
-- [ ] Device compliance policies are enforced (encryption, OS version, anti-malware)
+- [ ] **[Critical]** Endpoint management (MDM/MAM) is deployed on devices accessing ePHI
+- [ ] **[Critical]** Zero trust access (Verified Access, Conditional Access, BeyondCorp) is used for ePHI applications
+- [ ] **[Critical]** Device compliance policies are enforced (encryption, OS version, anti-malware)
 
 ---
 
@@ -318,11 +318,11 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] All storage volumes containing ePHI are encrypted at rest using customer-managed keys
-- [ ] Cloud provider's data destruction procedures align with NIST 800-88
-- [ ] Snapshot and backup lifecycle policies automatically delete expired ePHI copies
-- [ ] Asset inventory tracks all resources that store or process ePHI
-- [ ] Decommissioning procedures ensure ePHI is wiped before releasing resources
+- [ ] **[Critical]** All storage volumes containing ePHI are encrypted at rest using customer-managed keys
+- [ ] **[Recommended]** Cloud provider's data destruction procedures align with NIST 800-88
+- [ ] **[Critical]** Snapshot and backup lifecycle policies automatically delete expired ePHI copies
+- [ ] **[Critical]** Asset inventory tracks all resources that store or process ePHI
+- [ ] **[Critical]** Decommissioning procedures ensure ePHI is wiped before releasing resources
 
 ---
 
@@ -352,15 +352,15 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Every user has a unique identifier -- no shared accounts for ePHI access
-- [ ] MFA is required for all human access to systems containing ePHI
-- [ ] Session timeout is enforced (15 minutes recommended)
-- [ ] ePHI is encrypted at rest using AES-256 or equivalent
-- [ ] Customer-managed encryption keys (CMK/CMEK) are used for ePHI
-- [ ] Break-glass (emergency access) procedures are documented and tested
-- [ ] Break-glass account usage triggers immediate alerts
-- [ ] Temporary/short-lived credentials are used instead of long-lived keys
-- [ ] Federated SSO centralizes authentication for all ePHI systems
+- [ ] **[Critical]** Every user has a unique identifier -- no shared accounts for ePHI access
+- [ ] **[Critical]** MFA is required for all human access to systems containing ePHI
+- [ ] **[Recommended]** Session timeout is enforced (15 minutes recommended)
+- [ ] **[Critical]** ePHI is encrypted at rest using AES-256 or equivalent
+- [ ] **[Critical]** Customer-managed encryption keys (CMK/CMEK) are used for ePHI
+- [ ] **[Recommended]** Break-glass (emergency access) procedures are documented and tested
+- [ ] **[Recommended]** Break-glass account usage triggers immediate alerts
+- [ ] **[Critical]** Temporary/short-lived credentials are used instead of long-lived keys
+- [ ] **[Critical]** Federated SSO centralizes authentication for all ePHI systems
 
 ---
 
@@ -380,14 +380,14 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] CloudTrail / Activity Log / Audit Logs capture all management and data access events for ePHI systems
-- [ ] Data access logging is enabled (S3 access logs, database audit logs, storage analytics)
-- [ ] Logs are centralized in a dedicated, access-restricted logging account/project
-- [ ] Log retention meets organizational and regulatory requirements (minimum 6 years recommended for HIPAA)
-- [ ] Logs are immutable (write-once, no delete permissions for operational accounts)
-- [ ] SIEM is deployed for real-time monitoring and alerting
-- [ ] Audit log review procedures are documented and followed
-- [ ] Log access is restricted to authorized security personnel
+- [ ] **[Critical]** CloudTrail / Activity Log / Audit Logs capture all management and data access events for ePHI systems
+- [ ] **[Critical]** Data access logging is enabled (S3 access logs, database audit logs, storage analytics)
+- [ ] **[Recommended]** Logs are centralized in a dedicated, access-restricted logging account/project
+- [ ] **[Critical]** Log retention meets organizational and regulatory requirements (minimum 6 years recommended for HIPAA)
+- [ ] **[Critical]** Logs are immutable (write-once, no delete permissions for operational accounts)
+- [ ] **[Recommended]** SIEM is deployed for real-time monitoring and alerting
+- [ ] **[Critical]** Audit log review procedures are documented and followed
+- [ ] **[Recommended]** Log access is restricted to authorized security personnel
 
 ---
 
@@ -411,13 +411,13 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Object versioning is enabled on all storage containing ePHI
-- [ ] Object Lock / Immutable storage is used for ePHI that must not be modified
-- [ ] Database integrity checks (checksums, consistency validation) are enabled
-- [ ] Point-in-time recovery is enabled for databases containing ePHI
-- [ ] File integrity monitoring detects unauthorized changes to ePHI application files
-- [ ] Backup vault lock / immutability prevents deletion of ePHI backups
-- [ ] Digital signatures or checksums verify ePHI integrity during processing
+- [ ] **[Critical]** Object versioning is enabled on all storage containing ePHI
+- [ ] **[Critical]** Object Lock / Immutable storage is used for ePHI that must not be modified
+- [ ] **[Recommended]** Database integrity checks (checksums, consistency validation) are enabled
+- [ ] **[Critical]** Point-in-time recovery is enabled for databases containing ePHI
+- [ ] **[Critical]** File integrity monitoring detects unauthorized changes to ePHI application files
+- [ ] **[Critical]** Backup vault lock / immutability prevents deletion of ePHI backups
+- [ ] **[Critical]** Digital signatures or checksums verify ePHI integrity during processing
 
 ---
 
@@ -436,11 +436,11 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] Multi-factor authentication is enforced for all ePHI access (something you know + something you have/are)
-- [ ] Phishing-resistant MFA (FIDO2/WebAuthn) is preferred over SMS-based MFA
-- [ ] Service-to-service authentication uses mutual TLS or signed tokens (not shared secrets)
-- [ ] Patient-facing portals use strong authentication (MFA for patient access to ePHI)
-- [ ] Authentication mechanisms are centralized (SSO/federation)
+- [ ] **[Critical]** Multi-factor authentication is enforced for all ePHI access (something you know + something you have/are)
+- [ ] **[Critical]** Phishing-resistant MFA (FIDO2/WebAuthn) is preferred over SMS-based MFA
+- [ ] **[Critical]** Service-to-service authentication uses mutual TLS or signed tokens (not shared secrets)
+- [ ] **[Critical]** Patient-facing portals use strong authentication (MFA for patient access to ePHI)
+- [ ] **[Critical]** Authentication mechanisms are centralized (SSO/federation)
 
 ---
 
@@ -465,15 +465,15 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 #### Architect Checklist
 
-- [ ] TLS 1.2 or higher is enforced on all ePHI transmission channels
-- [ ] Internal service-to-service communication uses mTLS within the ePHI environment
-- [ ] Private connectivity (PrivateLink, Private Link, Private Service Connect) is used instead of public internet where possible
-- [ ] VPN encryption is used for administrative access to ePHI environments
-- [ ] Email containing ePHI is encrypted (TLS at minimum, end-to-end encryption preferred)
-- [ ] HSTS is enabled on all web applications handling ePHI
-- [ ] API endpoints enforce HTTPS-only (HTTP is rejected, not redirected)
-- [ ] ePHI transmitted to external parties uses end-to-end encryption
-- [ ] Weak cipher suites and protocols (SSL 3.0, TLS 1.0, TLS 1.1) are disabled
+- [ ] **[Critical]** TLS 1.2 or higher is enforced on all ePHI transmission channels
+- [ ] **[Critical]** Internal service-to-service communication uses mTLS within the ePHI environment
+- [ ] **[Recommended]** Private connectivity (PrivateLink, Private Link, Private Service Connect) is used instead of public internet where possible
+- [ ] **[Critical]** VPN encryption is used for administrative access to ePHI environments
+- [ ] **[Critical]** Email containing ePHI is encrypted (TLS at minimum, end-to-end encryption preferred)
+- [ ] **[Critical]** HSTS is enabled on all web applications handling ePHI
+- [ ] **[Recommended]** API endpoints enforce HTTPS-only (HTTP is rejected, not redirected)
+- [ ] **[Critical]** ePHI transmitted to external parties uses end-to-end encryption
+- [ ] **[Recommended]** Weak cipher suites and protocols (SSL 3.0, TLS 1.0, TLS 1.1) are disabled
 
 ---
 
@@ -483,25 +483,25 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 AWS maintains a list of HIPAA-eligible services. Before using any AWS service for ePHI:
 
-- [ ] Verify the service is on the current HIPAA Eligible Services list
-- [ ] Confirm BAA is in place via AWS Artifact
-- [ ] Review the service-specific security configuration guidance
+- [ ] **[Recommended]** Verify the service is on the current HIPAA Eligible Services list
+- [ ] **[Recommended]** Confirm BAA is in place via AWS Artifact
+- [ ] **[Recommended]** Review the service-specific security configuration guidance
 
 ### Azure HIPAA/HITRUST Services
 
 Azure offers HITRUST CSF compliance for many services:
 
-- [ ] Verify the service is covered under the Microsoft BAA
-- [ ] Review Azure compliance documentation on the Service Trust Portal
-- [ ] Use Azure Policy HIPAA/HITRUST initiative for automated compliance checking
+- [ ] **[Recommended]** Verify the service is covered under the Microsoft BAA
+- [ ] **[Critical]** Review Azure compliance documentation on the Service Trust Portal
+- [ ] **[Critical]** Use Azure Policy HIPAA/HITRUST initiative for automated compliance checking
 
 ### GCP HIPAA Covered Services
 
 GCP maintains a list of HIPAA-covered services:
 
-- [ ] Verify the service is on the current GCP HIPAA covered services list
-- [ ] Confirm BAA is in place via GCP console
-- [ ] Review the GCP HIPAA implementation guide
+- [ ] **[Recommended]** Verify the service is on the current GCP HIPAA covered services list
+- [ ] **[Recommended]** Confirm BAA is in place via GCP console
+- [ ] **[Recommended]** Review the GCP HIPAA implementation guide
 
 ---
 
@@ -512,3 +512,36 @@ GCP maintains a list of HIPAA-covered services:
 - Breach Notification Rule (45 CFR 164 Subpart D) requires notification within 60 days of discovery
 - Penalties range from $100 to $50,000 per violation, up to $1.5 million per year per violation category
 - State laws may impose stricter requirements (e.g., CCPA, state breach notification laws)
+
+---
+
+## Regulatory Update: Proposed Security Rule Overhaul
+
+**HIPAA Security Rule NPRM (Notice of Proposed Rulemaking):** In January 2025, HHS published a proposed overhaul of the HIPAA Security Rule -- the most significant update since its original adoption. Key proposed changes include:
+
+- **Eliminating the "addressable" distinction** -- all implementation specifications would become required
+- **Mandatory encryption** of ePHI at rest and in transit (no longer addressable)
+- **72-hour restoration requirement** -- ability to restore systems and data within 72 hours of an incident
+- **Technology asset inventory and network mapping** -- required to be maintained and updated at least annually
+- **Vulnerability scanning** every 6 months and penetration testing annually
+- **Multi-factor authentication** required for all access to ePHI (not just remote access)
+- **Annual compliance audits** -- covered entities and business associates must audit compliance at least annually
+- **Anti-malware protection** required on all systems that handle ePHI
+- **Network segmentation** -- required where technically feasible to limit scope of ePHI exposure
+- **Business associate verification** -- covered entities must obtain written verification of BA security compliance annually
+
+**Expected Timeline:** The final rule is expected to be published by approximately May 2026, with compliance timelines likely providing 180 days to 1 year after the effective date. Cloud architects should begin evaluating their architectures against the proposed requirements now, as the final rule may impose strict implementation deadlines.
+
+**Impact on Cloud Architecture:** The proposed rule would effectively mandate encryption, MFA, network segmentation, and automated vulnerability scanning -- controls that many cloud-native architectures already implement but that must be verified and documented. The 72-hour restoration requirement has direct implications for backup, DR, and business continuity architecture.
+
+## Common Decisions (ADR Triggers)
+
+- **BAA scope and cloud service selection** — which cloud services are BAA-eligible, service-by-service risk assessment
+- **ePHI encryption strategy** — encryption at rest and in transit, key management (customer-managed vs provider-managed), FIPS validation
+- **Access control architecture** — RBAC model for ePHI, break-glass procedures, access review cadence
+- **Audit logging architecture** — what ePHI access events to log, retention period, immutable storage, monitoring and alerting
+- **Backup and DR strategy** — 72-hour restoration capability (proposed rule), RPO/RTO targets, geographic redundancy
+- **De-identification and data masking** — Safe Harbor vs Expert Determination method, use of de-identified data for analytics
+- **Network segmentation model** — ePHI enclave design, microsegmentation, zero-trust approach
+- **Incident response architecture** — breach detection, 60-day notification timeline, forensic evidence preservation
+- **Business associate management** — BA verification process, BA security assessment cadence, subcontractor chain management

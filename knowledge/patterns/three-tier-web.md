@@ -6,20 +6,20 @@ A three-tier architecture separates presentation (web), business logic (applicat
 
 ## Checklist
 
-- [ ] Is the web tier serving static assets separately from dynamic content? (CDN + object storage recommended)
-- [ ] Is there a caching layer between the app tier and database? (Redis/Memcached)
-- [ ] How are user sessions managed? (stateless app servers + external session store recommended)
-- [ ] Is the load balancer configured for health checks on the app tier?
-- [ ] Are app servers in private subnets with no direct internet access?
-- [ ] Is the database in an isolated subnet accessible only from the app tier?
-- [ ] Is there a WAF protecting the web tier? (OWASP top 10 rules)
-- [ ] Is TLS terminated at the load balancer or passed through?
-- [ ] Is there connection pooling between app tier and database?
-- [ ] Is the app tier horizontally scalable? (no local state, shared-nothing)
-- [ ] Are database read replicas used to offload read traffic?
-- [ ] Is there a content delivery strategy for global users? (CDN, multi-region)
-- [ ] How are file uploads handled? (direct to object storage recommended, not through app servers)
-- [ ] Is rate limiting configured at the load balancer or WAF?
+- [ ] **[Recommended]** Is the web tier serving static assets separately from dynamic content? (CDN + object storage recommended)
+- [ ] **[Recommended]** Is there a caching layer between the app tier and database? (Redis/Memcached)
+- [ ] **[Recommended]** How are user sessions managed? (stateless app servers + external session store recommended)
+- [ ] **[Critical]** Is the load balancer configured for health checks on the app tier?
+- [ ] **[Critical]** Are app servers in private subnets with no direct internet access?
+- [ ] **[Critical]** Is the database in an isolated subnet accessible only from the app tier?
+- [ ] **[Recommended]** Is there a WAF protecting the web tier? (OWASP top 10 rules)
+- [ ] **[Critical]** Is TLS terminated at the load balancer or passed through?
+- [ ] **[Recommended]** Is there connection pooling between app tier and database?
+- [ ] **[Critical]** Is the app tier horizontally scalable? (no local state, shared-nothing)
+- [ ] **[Recommended]** Are database read replicas used to offload read traffic?
+- [ ] **[Optional]** Is there a content delivery strategy for global users? (CDN, multi-region)
+- [ ] **[Optional]** How are file uploads handled? (direct to object storage recommended, not through app servers)
+- [ ] **[Recommended]** Is rate limiting configured at the load balancer or WAF?
 
 ## Tier Boundaries
 

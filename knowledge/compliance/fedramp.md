@@ -53,17 +53,17 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] Account management procedures cover the full lifecycle: creation, modification, disabling, removal
-- [ ] Automated account management enforces inactive account disabling (90 days for Moderate/High)
-- [ ] Least privilege is enforced -- IAM Access Analyzer / Access Reviews / IAM Recommender are enabled
-- [ ] Separation of duties prevents single individuals from controlling entire critical processes
-- [ ] Information flow enforcement uses VPC Service Controls, NACLs, security groups, and firewalls
-- [ ] Remote access requires MFA and encrypted connections (VPN, Session Manager, IAP)
-- [ ] Session lock activates after 15 minutes of inactivity (AC-11)
-- [ ] Failed logon attempts are limited (3 attempts for High, lockout for 30 minutes minimum)
-- [ ] Privileged accounts are managed separately from regular user accounts
-- [ ] Service accounts follow least privilege and are reviewed quarterly
-- [ ] Publicly accessible resources are reviewed monthly and authorized explicitly
+- [ ] **[Recommended]** Account management procedures cover the full lifecycle: creation, modification, disabling, removal
+- [ ] **[Recommended]** Automated account management enforces inactive account disabling (90 days for Moderate/High)
+- [ ] **[Critical]** Least privilege is enforced -- IAM Access Analyzer / Access Reviews / IAM Recommender are enabled
+- [ ] **[Critical]** Separation of duties prevents single individuals from controlling entire critical processes
+- [ ] **[Critical]** Information flow enforcement uses VPC Service Controls, NACLs, security groups, and firewalls
+- [ ] **[Critical]** Remote access requires MFA and encrypted connections (VPN, Session Manager, IAP)
+- [ ] **[Recommended]** Session lock activates after 15 minutes of inactivity (AC-11)
+- [ ] **[Recommended]** Failed logon attempts are limited (3 attempts for High, lockout for 30 minutes minimum)
+- [ ] **[Recommended]** Privileged accounts are managed separately from regular user accounts
+- [ ] **[Critical]** Service accounts follow least privilege and are reviewed quarterly
+- [ ] **[Recommended]** Publicly accessible resources are reviewed monthly and authorized explicitly
 
 ---
 
@@ -104,18 +104,18 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] CloudTrail / Activity Log / Audit Logs are enabled in all regions and accounts/subscriptions/projects
-- [ ] Data access events (S3/Storage/Cloud Storage reads/writes) are logged for systems with federal data
-- [ ] Audit records include: who, what, when, where, source, outcome for every event
-- [ ] Log storage uses immutable storage (Object Lock, immutable blobs, locked retention)
-- [ ] CloudTrail log file integrity validation is enabled
-- [ ] Audit log retention meets FedRAMP requirements (minimum 1 year, 90 days immediately accessible for Moderate; 1 year immediately accessible for High)
-- [ ] Alerts fire on audit processing failures (logging pipeline errors, storage failures)
-- [ ] SIEM is deployed for automated log analysis and correlation
-- [ ] Audit records are reviewed at least weekly (daily for High)
-- [ ] Time synchronization uses authoritative NTP sources (provider-managed NTP)
-- [ ] Log access is restricted to authorized security personnel via IAM
-- [ ] Cross-account/cross-project logging aggregation is configured
+- [ ] **[Critical]** CloudTrail / Activity Log / Audit Logs are enabled in all regions and accounts/subscriptions/projects
+- [ ] **[Recommended]** Data access events (S3/Storage/Cloud Storage reads/writes) are logged for systems with federal data
+- [ ] **[Recommended]** Audit records include: who, what, when, where, source, outcome for every event
+- [ ] **[Critical]** Log storage uses immutable storage (Object Lock, immutable blobs, locked retention)
+- [ ] **[Recommended]** CloudTrail log file integrity validation is enabled
+- [ ] **[Critical]** Audit log retention meets FedRAMP requirements (minimum 1 year, 90 days immediately accessible for Moderate; 1 year immediately accessible for High)
+- [ ] **[Recommended]** Alerts fire on audit processing failures (logging pipeline errors, storage failures)
+- [ ] **[Recommended]** SIEM is deployed for automated log analysis and correlation
+- [ ] **[Recommended]** Audit records are reviewed at least weekly (daily for High)
+- [ ] **[Recommended]** Time synchronization uses authoritative NTP sources (provider-managed NTP)
+- [ ] **[Recommended]** Log access is restricted to authorized security personnel via IAM
+- [ ] **[Recommended]** Cross-account/cross-project logging aggregation is configured
 
 ---
 
@@ -148,15 +148,15 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] Security controls are assessed at least annually (or per FedRAMP ConMon requirements)
-- [ ] Continuous monitoring plan covers all FedRAMP controls with monthly OS/database scans and annual assessments
-- [ ] POA&M is maintained with milestones, responsible parties, and completion dates
-- [ ] High-risk POA&M items are remediated within 30 days, Moderate within 90 days, Low within 180 days
-- [ ] Penetration testing is conducted annually by an independent assessor (3PAO)
-- [ ] All system interconnections are documented and authorized
-- [ ] Significant changes trigger reassessment per FedRAMP Significant Change Request process
-- [ ] Monthly vulnerability scan results are submitted to FedRAMP PMO
-- [ ] Annual assessment report is submitted per FedRAMP ConMon requirements
+- [ ] **[Recommended]** Security controls are assessed at least annually (or per FedRAMP ConMon requirements)
+- [ ] **[Recommended]** Continuous monitoring plan covers all FedRAMP controls with monthly OS/database scans and annual assessments
+- [ ] **[Recommended]** POA&M is maintained with milestones, responsible parties, and completion dates
+- [ ] **[Recommended]** High-risk POA&M items are remediated within 30 days, Moderate within 90 days, Low within 180 days
+- [ ] **[Critical]** Penetration testing is conducted annually by an independent assessor (3PAO)
+- [ ] **[Recommended]** All system interconnections are documented and authorized
+- [ ] **[Recommended]** Significant changes trigger reassessment per FedRAMP Significant Change Request process
+- [ ] **[Critical]** Monthly vulnerability scan results are submitted to FedRAMP PMO
+- [ ] **[Recommended]** Annual assessment report is submitted per FedRAMP ConMon requirements
 
 ---
 
@@ -194,17 +194,17 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] Baseline configurations are established using CIS benchmarks or DISA STIGs
-- [ ] Configuration baselines are enforced via policy-as-code (Config Rules, Azure Policy, Organization Policy)
-- [ ] Configuration drift is detected automatically and triggers alerts
-- [ ] Change control process includes security impact analysis before approval
-- [ ] Only authorized personnel can make production changes (enforce via IAM, pipeline controls)
-- [ ] System component inventory is automated and continuously updated
-- [ ] Least functionality: only required ports, protocols, and services are enabled
-- [ ] Hardened base images (CIS, STIG) are used for all compute instances
-- [ ] Software allow-lists restrict installation to approved software
-- [ ] Configuration management plan documents roles, responsibilities, and processes
-- [ ] FIPS 140-2/140-3 validated cryptographic modules are used (required for FedRAMP)
+- [ ] **[Recommended]** Baseline configurations are established using CIS benchmarks or DISA STIGs
+- [ ] **[Recommended]** Configuration baselines are enforced via policy-as-code (Config Rules, Azure Policy, Organization Policy)
+- [ ] **[Recommended]** Configuration drift is detected automatically and triggers alerts
+- [ ] **[Recommended]** Change control process includes security impact analysis before approval
+- [ ] **[Recommended]** Only authorized personnel can make production changes (enforce via IAM, pipeline controls)
+- [ ] **[Recommended]** System component inventory is automated and continuously updated
+- [ ] **[Recommended]** Least functionality: only required ports, protocols, and services are enabled
+- [ ] **[Recommended]** Hardened base images (CIS, STIG) are used for all compute instances
+- [ ] **[Recommended]** Software allow-lists restrict installation to approved software
+- [ ] **[Recommended]** Configuration management plan documents roles, responsibilities, and processes
+- [ ] **[Critical]** FIPS 140-2/140-3 validated cryptographic modules are used (required for FedRAMP)
 
 ---
 
@@ -239,18 +239,18 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] Contingency plan is documented and covers all FedRAMP-required elements
-- [ ] Contingency plan is tested at least annually (functional exercise for Moderate/High)
-- [ ] RPO and RTO are defined and validated through testing
-- [ ] Backups are performed according to defined schedule (at least daily for Moderate/High)
-- [ ] Backups are stored at an alternate site (different region) with equivalent security controls
-- [ ] Backup integrity is verified through periodic restoration testing
-- [ ] Alternate processing site (secondary region) can resume operations within defined RTO
-- [ ] Multi-region or cross-region architectures support failover
-- [ ] Infrastructure as code enables rapid environment reconstruction
-- [ ] Contingency training is provided to key personnel at least annually
-- [ ] Alternate telecommunications paths exist for critical connectivity
-- [ ] Recovery procedures restore the system to a known, secure state
+- [ ] **[Recommended]** Contingency plan is documented and covers all FedRAMP-required elements
+- [ ] **[Recommended]** Contingency plan is tested at least annually (functional exercise for Moderate/High)
+- [ ] **[Recommended]** RPO and RTO are defined and validated through testing
+- [ ] **[Critical]** Backups are performed according to defined schedule (at least daily for Moderate/High)
+- [ ] **[Critical]** Backups are stored at an alternate site (different region) with equivalent security controls
+- [ ] **[Critical]** Backup integrity is verified through periodic restoration testing
+- [ ] **[Recommended]** Alternate processing site (secondary region) can resume operations within defined RTO
+- [ ] **[Critical]** Multi-region or cross-region architectures support failover
+- [ ] **[Recommended]** Infrastructure as code enables rapid environment reconstruction
+- [ ] **[Recommended]** Contingency training is provided to key personnel at least annually
+- [ ] **[Recommended]** Alternate telecommunications paths exist for critical connectivity
+- [ ] **[Critical]** Recovery procedures restore the system to a known, secure state
 
 ---
 
@@ -285,18 +285,18 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] All users are uniquely identified (no shared accounts)
-- [ ] MFA is required for all privileged access (IA-2(1))
-- [ ] MFA is required for all non-privileged access (IA-2(2)) for Moderate/High
-- [ ] MFA uses phishing-resistant mechanisms (FIDO2, PIV/CAC) for High baseline
-- [ ] PIV/CAC authentication is supported for federal users (IA-2(12))
-- [ ] Password complexity meets FedRAMP requirements (minimum 12 characters for Moderate/High per NIST 800-63B)
-- [ ] Authenticator management includes secure distribution, verification, and revocation
-- [ ] FIPS 140-2/140-3 validated cryptographic modules are used for authentication
-- [ ] FIPS endpoints are enabled for AWS API calls (--use-fips-endpoint)
-- [ ] Service accounts use managed identities or short-lived credentials
-- [ ] Identifier reuse is prevented (unique IDs, no reassignment for minimum period)
-- [ ] Non-organizational users (contractors, partners) are identified and authenticated with equivalent rigor
+- [ ] **[Recommended]** All users are uniquely identified (no shared accounts)
+- [ ] **[Critical]** MFA is required for all privileged access (IA-2(1))
+- [ ] **[Critical]** MFA is required for all non-privileged access (IA-2(2)) for Moderate/High
+- [ ] **[Critical]** MFA uses phishing-resistant mechanisms (FIDO2, PIV/CAC) for High baseline
+- [ ] **[Critical]** PIV/CAC authentication is supported for federal users (IA-2(12))
+- [ ] **[Recommended]** Password complexity meets FedRAMP requirements (minimum 12 characters for Moderate/High per NIST 800-63B)
+- [ ] **[Recommended]** Authenticator management includes secure distribution, verification, and revocation
+- [ ] **[Critical]** FIPS 140-2/140-3 validated cryptographic modules are used for authentication
+- [ ] **[Critical]** FIPS endpoints are enabled for AWS API calls (--use-fips-endpoint)
+- [ ] **[Critical]** Service accounts use managed identities or short-lived credentials
+- [ ] **[Recommended]** Identifier reuse is prevented (unique IDs, no reassignment for minimum period)
+- [ ] **[Recommended]** Non-organizational users (contractors, partners) are identified and authenticated with equivalent rigor
 
 ---
 
@@ -330,18 +330,18 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] Incident response plan is documented and covers FedRAMP-required elements
-- [ ] Incident response plan addresses federal-specific reporting requirements (US-CERT within 1 hour for High, 1 hour for data breaches)
-- [ ] Incident response team roles and responsibilities are defined
-- [ ] Incident response training is provided to all personnel at least annually
-- [ ] Incident response testing (tabletop or functional exercise) is conducted at least annually
-- [ ] Automated threat detection is enabled across all environments (GuardDuty, Sentinel, Chronicle)
-- [ ] Automated response playbooks handle common incident types (compromised credentials, malware, data exposure)
-- [ ] Forensic capabilities are pre-configured (automated snapshots, log preservation, isolated analysis environment)
-- [ ] Incidents are tracked from detection through resolution with documented lessons learned
-- [ ] FedRAMP PMO and authorizing agency are notified per required timelines
-- [ ] Evidence preservation procedures maintain chain of custody for federal investigations
-- [ ] Post-incident analysis feeds into continuous improvement of security controls
+- [ ] **[Critical]** Incident response plan is documented and covers FedRAMP-required elements
+- [ ] **[Critical]** Incident response plan addresses federal-specific reporting requirements (US-CERT within 1 hour for High, 1 hour for data breaches)
+- [ ] **[Critical]** Incident response team roles and responsibilities are defined
+- [ ] **[Critical]** Incident response training is provided to all personnel at least annually
+- [ ] **[Critical]** Incident response testing (tabletop or functional exercise) is conducted at least annually
+- [ ] **[Recommended]** Automated threat detection is enabled across all environments (GuardDuty, Sentinel, Chronicle)
+- [ ] **[Critical]** Automated response playbooks handle common incident types (compromised credentials, malware, data exposure)
+- [ ] **[Recommended]** Forensic capabilities are pre-configured (automated snapshots, log preservation, isolated analysis environment)
+- [ ] **[Recommended]** Incidents are tracked from detection through resolution with documented lessons learned
+- [ ] **[Recommended]** FedRAMP PMO and authorizing agency are notified per required timelines
+- [ ] **[Recommended]** Evidence preservation procedures maintain chain of custody for federal investigations
+- [ ] **[Recommended]** Post-incident analysis feeds into continuous improvement of security controls
 
 ---
 
@@ -380,20 +380,20 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 ### Architect Checklist
 
-- [ ] FIPS 140-2/140-3 validated cryptographic modules are used for all cryptographic operations
-- [ ] FIPS endpoints are enabled for all cloud API calls
-- [ ] Encryption at rest uses customer-managed keys (CMK/CMEK) backed by FIPS-validated HSMs
-- [ ] Encryption in transit uses TLS 1.2+ with FIPS-approved cipher suites
-- [ ] DDoS protection is enabled (Shield Advanced, DDoS Protection Standard, Cloud Armor)
-- [ ] Boundary protection includes firewall, IDS/IPS, WAF at all network boundaries
-- [ ] Network architecture implements defense-in-depth (public, DMZ, private, data tiers)
-- [ ] VPC Service Controls / PrivateLink / Private Link prevents data exfiltration
-- [ ] DNSSEC is enabled for authoritative DNS zones
-- [ ] Session management prevents session hijacking (secure cookies, session rotation)
-- [ ] Cryptographic key management follows NIST SP 800-57 guidance
-- [ ] Key rotation is automated and documented
-- [ ] Certificates are issued from approved Certificate Authorities
-- [ ] Managed sub-networks isolate publicly accessible components from internal components
+- [ ] **[Critical]** FIPS 140-2/140-3 validated cryptographic modules are used for all cryptographic operations
+- [ ] **[Critical]** FIPS endpoints are enabled for all cloud API calls
+- [ ] **[Critical]** Encryption at rest uses customer-managed keys (CMK/CMEK) backed by FIPS-validated HSMs
+- [ ] **[Critical]** Encryption in transit uses TLS 1.2+ with FIPS-approved cipher suites
+- [ ] **[Recommended]** DDoS protection is enabled (Shield Advanced, DDoS Protection Standard, Cloud Armor)
+- [ ] **[Critical]** Boundary protection includes firewall, IDS/IPS, WAF at all network boundaries
+- [ ] **[Recommended]** Network architecture implements defense-in-depth (public, DMZ, private, data tiers)
+- [ ] **[Recommended]** VPC Service Controls / PrivateLink / Private Link prevents data exfiltration
+- [ ] **[Recommended]** DNSSEC is enabled for authoritative DNS zones
+- [ ] **[Recommended]** Session management prevents session hijacking (secure cookies, session rotation)
+- [ ] **[Critical]** Cryptographic key management follows NIST SP 800-57 guidance
+- [ ] **[Critical]** Key rotation is automated and documented
+- [ ] **[Recommended]** Certificates are issued from approved Certificate Authorities
+- [ ] **[Recommended]** Managed sub-networks isolate publicly accessible components from internal components
 
 ---
 
@@ -403,28 +403,28 @@ FedRAMP (Federal Risk and Authorization Management Program) provides a standardi
 
 AWS GovCloud regions (us-gov-west-1, us-gov-east-1) are FedRAMP High authorized.
 
-- [ ] GovCloud is used for FedRAMP High workloads
-- [ ] Standard AWS regions are used only for FedRAMP Moderate (with appropriate controls)
-- [ ] FIPS endpoints are enabled for all API calls
-- [ ] GovCloud-specific service availability is verified before architecture design
+- [ ] **[Recommended]** GovCloud is used for FedRAMP High workloads
+- [ ] **[Recommended]** Standard AWS regions are used only for FedRAMP Moderate (with appropriate controls)
+- [ ] **[Critical]** FIPS endpoints are enabled for all API calls
+- [ ] **[Recommended]** GovCloud-specific service availability is verified before architecture design
 
 ### Azure Government
 
 Azure Government regions are FedRAMP High authorized. Azure DoD regions provide IL4/IL5.
 
-- [ ] Azure Government is used for FedRAMP High workloads
-- [ ] Azure Government service availability is verified (not all commercial services are available)
-- [ ] Azure Government URLs (.us suffix) are used in all configurations
-- [ ] Azure Government is used for DoD workloads requiring IL4/IL5
+- [ ] **[Recommended]** Azure Government is used for FedRAMP High workloads
+- [ ] **[Recommended]** Azure Government service availability is verified (not all commercial services are available)
+- [ ] **[Recommended]** Azure Government URLs (.us suffix) are used in all configurations
+- [ ] **[Recommended]** Azure Government is used for DoD workloads requiring IL4/IL5
 
 ### Google Cloud (FedRAMP)
 
 GCP has FedRAMP High authorization for select services. Assured Workloads provides compliance guardrails.
 
-- [ ] Assured Workloads is configured for FedRAMP workloads
-- [ ] FedRAMP-authorized GCP services are verified on the FedRAMP Marketplace
-- [ ] Assured Workloads enforces data residency and access controls
-- [ ] Organization Policy constraints align with FedRAMP requirements
+- [ ] **[Recommended]** Assured Workloads is configured for FedRAMP workloads
+- [ ] **[Recommended]** FedRAMP-authorized GCP services are verified on the FedRAMP Marketplace
+- [ ] **[Critical]** Assured Workloads enforces data residency and access controls
+- [ ] **[Recommended]** Organization Policy constraints align with FedRAMP requirements
 
 ---
 
@@ -434,31 +434,31 @@ FedRAMP requires ongoing monitoring activities after authorization:
 
 ### Monthly Requirements
 
-- [ ] Vulnerability scans (OS, database, web application) are performed monthly
-- [ ] Scan results are submitted to the FedRAMP PMO or authorizing agency
-- [ ] POA&M is updated with new findings and remediation progress
-- [ ] Unique vulnerability count and remediation statistics are reported
+- [ ] **[Critical]** Vulnerability scans (OS, database, web application) are performed monthly
+- [ ] **[Recommended]** Scan results are submitted to the FedRAMP PMO or authorizing agency
+- [ ] **[Recommended]** POA&M is updated with new findings and remediation progress
+- [ ] **[Recommended]** Unique vulnerability count and remediation statistics are reported
 
 ### Quarterly Requirements
 
-- [ ] Quarterly POA&M deliverable is submitted
-- [ ] Deviation requests are submitted for any overdue POA&M items
+- [ ] **[Recommended]** Quarterly POA&M deliverable is submitted
+- [ ] **[Recommended]** Deviation requests are submitted for any overdue POA&M items
 
 ### Annual Requirements
 
-- [ ] Annual security assessment by a 3PAO (Third-Party Assessment Organization)
-- [ ] Penetration testing is conducted by the 3PAO
-- [ ] Security Authorization Package (SAP, SAR, POA&M) is updated
-- [ ] Contingency plan is tested
-- [ ] Incident response plan is tested
-- [ ] Security awareness training is completed by all personnel
+- [ ] **[Recommended]** Annual security assessment by a 3PAO (Third-Party Assessment Organization)
+- [ ] **[Critical]** Penetration testing is conducted by the 3PAO
+- [ ] **[Critical]** Security Authorization Package (SAP, SAR, POA&M) is updated
+- [ ] **[Recommended]** Contingency plan is tested
+- [ ] **[Critical]** Incident response plan is tested
+- [ ] **[Recommended]** Security awareness training is completed by all personnel
 
 ### Significant Change Process
 
-- [ ] Significant changes are identified per FedRAMP guidance (new services, architecture changes, data flow changes)
-- [ ] Significant Change Request is submitted to authorizing agency before implementation
-- [ ] Security impact analysis is performed for all significant changes
-- [ ] 3PAO assessment may be required for significant changes
+- [ ] **[Recommended]** Significant changes are identified per FedRAMP guidance (new services, architecture changes, data flow changes)
+- [ ] **[Recommended]** Significant Change Request is submitted to authorizing agency before implementation
+- [ ] **[Recommended]** Security impact analysis is performed for all significant changes
+- [ ] **[Recommended]** 3PAO assessment may be required for significant changes
 
 ---
 
@@ -468,34 +468,45 @@ FedRAMP requires ongoing monitoring activities after authorization:
 
 FIPS-validated cryptography is mandatory for FedRAMP at all impact levels.
 
-- [ ] All cryptographic modules are FIPS 140-2 or 140-3 validated
-- [ ] Cloud provider FIPS validation certificates are documented (CMVP certificate numbers)
-- [ ] FIPS endpoints are used for all API calls to cloud providers
-- [ ] TLS configurations use only FIPS-approved algorithms
-- [ ] HSMs used for key management are FIPS 140-2 Level 3 or higher
+- [ ] **[Critical]** All cryptographic modules are FIPS 140-2 or 140-3 validated
+- [ ] **[Critical]** Cloud provider FIPS validation certificates are documented (CMVP certificate numbers)
+- [ ] **[Critical]** FIPS endpoints are used for all API calls to cloud providers
+- [ ] **[Critical]** TLS configurations use only FIPS-approved algorithms
+- [ ] **[Critical]** HSMs used for key management are FIPS 140-2 Level 3 or higher
 
 ### Data Residency
 
 Federal data must remain within the United States (including territories) unless explicitly authorized.
 
-- [ ] All data storage is configured in US regions only
-- [ ] Replication does not cross US borders
-- [ ] CDN edge locations are restricted to US territories where required
-- [ ] Data residency constraints are enforced via Organization Policy / SCPs / Azure Policy
+- [ ] **[Recommended]** All data storage is configured in US regions only
+- [ ] **[Recommended]** Replication does not cross US borders
+- [ ] **[Recommended]** CDN edge locations are restricted to US territories where required
+- [ ] **[Critical]** Data residency constraints are enforced via Organization Policy / SCPs / Azure Policy
 
 ### Personnel Security
 
-- [ ] All personnel with access to federal data have completed background investigations
-- [ ] Personnel screening requirements are met for the system's impact level
-- [ ] Access is revoked within 24 hours of personnel termination
-- [ ] Contractor and third-party personnel meet equivalent screening requirements
+- [ ] **[Recommended]** All personnel with access to federal data have completed background investigations
+- [ ] **[Recommended]** Personnel screening requirements are met for the system's impact level
+- [ ] **[Recommended]** Access is revoked within 24 hours of personnel termination
+- [ ] **[Recommended]** Contractor and third-party personnel meet equivalent screening requirements
 
 ### Supply Chain Risk Management (SR)
 
 NIST 800-53 Rev. 5 added supply chain controls, relevant for FedRAMP.
 
-- [ ] Supply chain risk management plan is documented
-- [ ] Third-party components and services are assessed for supply chain risk
-- [ ] Software Bill of Materials (SBOM) is maintained for custom applications
-- [ ] Provenance of software artifacts is verified (signed images, verified sources)
-- [ ] Acquisition strategies include security requirements
+- [ ] **[Recommended]** Supply chain risk management plan is documented
+- [ ] **[Recommended]** Third-party components and services are assessed for supply chain risk
+- [ ] **[Recommended]** Software Bill of Materials (SBOM) is maintained for custom applications
+- [ ] **[Recommended]** Provenance of software artifacts is verified (signed images, verified sources)
+- [ ] **[Recommended]** Acquisition strategies include security requirements
+
+## Common Decisions (ADR Triggers)
+
+- **FedRAMP impact level selection** — Class B (Low) vs Class C (Moderate) vs Class D (High), based on data sensitivity and agency requirements
+- **Cloud region selection** — commercial vs GovCloud, data residency requirements, IL level support
+- **FedRAMP 20x vs traditional authorization** — automated pathway eligibility, organizational readiness for machine-readable controls
+- **Encryption and FIPS validation** — FIPS 140-2 vs 140-3 validated modules, key management architecture, encryption scope
+- **Continuous monitoring architecture** — ConMon tooling, POA&M management, monthly/quarterly reporting automation
+- **Supply chain security model** — SBOM generation, container image provenance, third-party component assessment
+- **Logging and audit architecture** — centralized SIEM, log retention periods, immutable storage, FedRAMP-specific event monitoring
+- **Boundary definition** — system boundary scope, interconnection agreements, shared services model

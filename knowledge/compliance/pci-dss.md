@@ -29,16 +29,16 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Cardholder Data Environment (CDE) is isolated in dedicated VPC/VNet with no direct internet ingress
-- [ ] Security groups follow least-privilege: only required ports/protocols are open
-- [ ] NACLs or firewall rules provide defense-in-depth at the subnet level
-- [ ] All inbound and outbound traffic rules are documented with business justification
-- [ ] Network segmentation is validated (CDE separated from non-CDE workloads)
-- [ ] VPC Flow Logs / NSG Flow Logs are enabled and retained for at least 12 months
-- [ ] WAF is deployed in front of all public-facing payment applications
-- [ ] Network architecture diagram is current and reviewed at least annually
-- [ ] All wireless networks connected to the CDE use strong encryption (WPA3 or equivalent)
-- [ ] Internal and external network penetration testing is performed at least annually
+- [ ] **[Critical]** Cardholder Data Environment (CDE) is isolated in dedicated VPC/VNet with no direct internet ingress
+- [ ] **[Recommended]** Security groups follow least-privilege: only required ports/protocols are open
+- [ ] **[Critical]** NACLs or firewall rules provide defense-in-depth at the subnet level
+- [ ] **[Recommended]** All inbound and outbound traffic rules are documented with business justification
+- [ ] **[Critical]** Network segmentation is validated (CDE separated from non-CDE workloads)
+- [ ] **[Recommended]** VPC Flow Logs / NSG Flow Logs are enabled and retained for at least 12 months
+- [ ] **[Critical]** WAF is deployed in front of all public-facing payment applications
+- [ ] **[Recommended]** Network architecture diagram is current and reviewed at least annually
+- [ ] **[Critical]** All wireless networks connected to the CDE use strong encryption (WPA3 or equivalent)
+- [ ] **[Critical]** Internal and external network penetration testing is performed at least annually
 
 ---
 
@@ -58,15 +58,15 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] All default vendor passwords are changed before deployment (databases, OS, middleware)
-- [ ] Only one primary function per server (or container) to minimize attack surface
-- [ ] Hardened base images (CIS benchmarks) are used for all compute instances
-- [ ] Unnecessary services, protocols, and ports are disabled
-- [ ] Configuration baselines are enforced via policy-as-code (AWS Config Rules, Azure Policy, OPA)
-- [ ] Secrets are stored in dedicated secrets management services, never in code or config files
-- [ ] System inventory is maintained and automatically updated
-- [ ] TLS 1.2+ is required for all administrative and data access; TLS 1.0/1.1 are disabled
-- [ ] Configuration drift detection is enabled and alerts on non-compliant changes
+- [ ] **[Recommended]** All default vendor passwords are changed before deployment (databases, OS, middleware)
+- [ ] **[Recommended]** Only one primary function per server (or container) to minimize attack surface
+- [ ] **[Recommended]** Hardened base images (CIS benchmarks) are used for all compute instances
+- [ ] **[Recommended]** Unnecessary services, protocols, and ports are disabled
+- [ ] **[Recommended]** Configuration baselines are enforced via policy-as-code (AWS Config Rules, Azure Policy, OPA)
+- [ ] **[Recommended]** Secrets are stored in dedicated secrets management services, never in code or config files
+- [ ] **[Recommended]** System inventory is maintained and automatically updated
+- [ ] **[Recommended]** TLS 1.2+ is required for all administrative and data access; TLS 1.0/1.1 are disabled
+- [ ] **[Recommended]** Configuration drift detection is enabled and alerts on non-compliant changes
 
 ---
 
@@ -87,16 +87,16 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Primary Account Numbers (PANs) are rendered unreadable wherever stored (encryption, hashing, truncation, or tokenization)
-- [ ] Sensitive Authentication Data (SAD) is never stored after authorization
-- [ ] Customer-managed keys (CMK/CMEK) are used for encrypting cardholder data, not provider-managed keys
-- [ ] Key rotation is automated (at least annually for data-encrypting keys)
-- [ ] Split knowledge and dual control are enforced for key management operations
-- [ ] HSM is used for key storage in environments processing high volumes of transactions
-- [ ] Data retention policies are defined and enforced -- cardholder data is deleted when no longer needed
-- [ ] Data discovery scans (Macie, Purview, DLP API) run regularly to detect unprotected cardholder data
-- [ ] Masking is applied when displaying PANs (show only first 6 / last 4 digits)
-- [ ] Backups containing cardholder data are encrypted with the same rigor as primary data
+- [ ] **[Critical]** Primary Account Numbers (PANs) are rendered unreadable wherever stored (encryption, hashing, truncation, or tokenization)
+- [ ] **[Critical]** Sensitive Authentication Data (SAD) is never stored after authorization
+- [ ] **[Critical]** Customer-managed keys (CMK/CMEK) are used for encrypting cardholder data, not provider-managed keys
+- [ ] **[Critical]** Key rotation is automated (at least annually for data-encrypting keys)
+- [ ] **[Critical]** Split knowledge and dual control are enforced for key management operations
+- [ ] **[Recommended]** HSM is used for key storage in environments processing high volumes of transactions
+- [ ] **[Critical]** Data retention policies are defined and enforced -- cardholder data is deleted when no longer needed
+- [ ] **[Critical]** Data discovery scans (Macie, Purview, DLP API) run regularly to detect unprotected cardholder data
+- [ ] **[Recommended]** Masking is applied when displaying PANs (show only first 6 / last 4 digits)
+- [ ] **[Critical]** Backups containing cardholder data are encrypted with the same rigor as primary data
 
 ---
 
@@ -116,14 +116,14 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] TLS 1.2 or higher is enforced on all connections transmitting cardholder data
-- [ ] SSL/TLS certificates use trusted Certificate Authorities and are not self-signed in production
-- [ ] Certificate rotation is automated via ACM, Key Vault, or Certificate Manager
-- [ ] Internal service-to-service communication uses mTLS (mutual TLS) in the CDE
-- [ ] VPN or private connectivity (Direct Connect, ExpressRoute, Interconnect) is used for backend data transfers
-- [ ] Weak cipher suites (RC4, DES, 3DES, MD5) are explicitly disabled
-- [ ] HSTS headers are enabled on all web-facing payment applications
-- [ ] End-to-end encryption is verified -- no unencrypted hops between services
+- [ ] **[Critical]** TLS 1.2 or higher is enforced on all connections transmitting cardholder data
+- [ ] **[Recommended]** SSL/TLS certificates use trusted Certificate Authorities and are not self-signed in production
+- [ ] **[Recommended]** Certificate rotation is automated via ACM, Key Vault, or Certificate Manager
+- [ ] **[Recommended]** Internal service-to-service communication uses mTLS (mutual TLS) in the CDE
+- [ ] **[Critical]** VPN or private connectivity (Direct Connect, ExpressRoute, Interconnect) is used for backend data transfers
+- [ ] **[Recommended]** Weak cipher suites (RC4, DES, 3DES, MD5) are explicitly disabled
+- [ ] **[Recommended]** HSTS headers are enabled on all web-facing payment applications
+- [ ] **[Critical]** End-to-end encryption is verified -- no unencrypted hops between services
 
 ---
 
@@ -143,14 +143,14 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Anti-malware solutions are deployed on all systems commonly affected by malware (Windows, Linux servers)
-- [ ] Anti-malware signatures are updated automatically and frequently (at least daily)
-- [ ] Container images are scanned for malware and vulnerabilities before deployment
-- [ ] Periodic full-system scans are configured in addition to real-time scanning
-- [ ] Anti-malware logs are sent to centralized logging and reviewed
-- [ ] Users cannot disable or alter anti-malware mechanisms
-- [ ] Phishing protection mechanisms are deployed for email and messaging systems
-- [ ] File integrity monitoring (FIM) is enabled for critical system files and configuration files
+- [ ] **[Recommended]** Anti-malware solutions are deployed on all systems commonly affected by malware (Windows, Linux servers)
+- [ ] **[Recommended]** Anti-malware signatures are updated automatically and frequently (at least daily)
+- [ ] **[Recommended]** Container images are scanned for malware and vulnerabilities before deployment
+- [ ] **[Recommended]** Periodic full-system scans are configured in addition to real-time scanning
+- [ ] **[Recommended]** Anti-malware logs are sent to centralized logging and reviewed
+- [ ] **[Recommended]** Users cannot disable or alter anti-malware mechanisms
+- [ ] **[Recommended]** Phishing protection mechanisms are deployed for email and messaging systems
+- [ ] **[Recommended]** File integrity monitoring (FIM) is enabled for critical system files and configuration files
 
 ---
 
@@ -171,17 +171,17 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] All custom and third-party software is inventoried and tracked
-- [ ] Critical and high vulnerabilities are patched within 30 days of release; all others within 90 days
-- [ ] Automated vulnerability scanning runs at least weekly on all CDE components
-- [ ] Secure coding practices are followed (OWASP Top 10 mitigated)
-- [ ] Code reviews are performed before production deployment (manual or automated)
-- [ ] SAST (static analysis) and DAST (dynamic analysis) are integrated into CI/CD pipelines
-- [ ] Software composition analysis (SCA) is used to track third-party library vulnerabilities
-- [ ] Change management processes require testing, approval, and rollback procedures
-- [ ] Production and development/test environments are separated
-- [ ] Public-facing web applications are protected by a WAF or undergo application security assessments at least annually
-- [ ] Bespoke and custom software undergoes security review before release
+- [ ] **[Recommended]** All custom and third-party software is inventoried and tracked
+- [ ] **[Recommended]** Critical and high vulnerabilities are patched within 30 days of release; all others within 90 days
+- [ ] **[Critical]** Automated vulnerability scanning runs at least weekly on all CDE components
+- [ ] **[Recommended]** Secure coding practices are followed (OWASP Top 10 mitigated)
+- [ ] **[Recommended]** Code reviews are performed before production deployment (manual or automated)
+- [ ] **[Recommended]** SAST (static analysis) and DAST (dynamic analysis) are integrated into CI/CD pipelines
+- [ ] **[Recommended]** Software composition analysis (SCA) is used to track third-party library vulnerabilities
+- [ ] **[Recommended]** Change management processes require testing, approval, and rollback procedures
+- [ ] **[Recommended]** Production and development/test environments are separated
+- [ ] **[Critical]** Public-facing web applications are protected by a WAF or undergo application security assessments at least annually
+- [ ] **[Recommended]** Bespoke and custom software undergoes security review before release
 
 ---
 
@@ -201,14 +201,14 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Access to cardholder data is restricted to individuals with documented business need
-- [ ] RBAC is implemented -- roles are defined and assigned based on job function
-- [ ] Least privilege is enforced for all accounts (no wildcard permissions in CDE)
-- [ ] Access control lists are reviewed at least every six months
-- [ ] IAM Access Analyzer / Entra Access Reviews / IAM Recommender are enabled
-- [ ] Privileged access requires just-in-time elevation (PIM or equivalent)
-- [ ] Default "deny all" access policy is in place -- access is explicitly granted
-- [ ] Service accounts have minimal permissions and are reviewed regularly
+- [ ] **[Critical]** Access to cardholder data is restricted to individuals with documented business need
+- [ ] **[Recommended]** RBAC is implemented -- roles are defined and assigned based on job function
+- [ ] **[Critical]** Least privilege is enforced for all accounts (no wildcard permissions in CDE)
+- [ ] **[Critical]** Access control lists are reviewed at least every six months
+- [ ] **[Recommended]** IAM Access Analyzer / Entra Access Reviews / IAM Recommender are enabled
+- [ ] **[Recommended]** Privileged access requires just-in-time elevation (PIM or equivalent)
+- [ ] **[Recommended]** Default "deny all" access policy is in place -- access is explicitly granted
+- [ ] **[Recommended]** Service accounts have minimal permissions and are reviewed regularly
 
 ---
 
@@ -228,16 +228,16 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Every user has a unique ID -- no shared or group accounts for CDE access
-- [ ] Multi-factor authentication (MFA) is required for all access to the CDE
-- [ ] MFA is required for all non-console administrative access
-- [ ] MFA is required for all remote network access
-- [ ] Password policies enforce minimum 12 characters (or 8 characters with additional complexity)
-- [ ] Passwords are changed at least every 90 days (v4.0 allows longer with risk analysis)
-- [ ] Failed login attempts lock accounts after no more than 10 attempts
-- [ ] Session timeout is enforced after 15 minutes of inactivity
-- [ ] Service accounts and application credentials use short-lived tokens where possible
-- [ ] Federated identity (SSO) is used to centralize authentication
+- [ ] **[Critical]** Every user has a unique ID -- no shared or group accounts for CDE access
+- [ ] **[Critical]** Multi-factor authentication (MFA) is required for all access to the CDE
+- [ ] **[Critical]** MFA is required for all non-console administrative access
+- [ ] **[Critical]** MFA is required for all remote network access
+- [ ] **[Recommended]** Password policies enforce minimum 12 characters (or 8 characters with additional complexity)
+- [ ] **[Recommended]** Passwords are changed at least every 90 days (v4.0 allows longer with risk analysis)
+- [ ] **[Recommended]** Failed login attempts lock accounts after no more than 10 attempts
+- [ ] **[Recommended]** Session timeout is enforced after 15 minutes of inactivity
+- [ ] **[Critical]** Service accounts and application credentials use short-lived tokens where possible
+- [ ] **[Critical]** Federated identity (SSO) is used to centralize authentication
 
 ---
 
@@ -256,13 +256,13 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Cloud provider's physical security certifications are verified (SOC 2 Type II, ISO 27001)
-- [ ] Data center locations are documented and aligned with data residency requirements
-- [ ] Media (disk snapshots, backups) containing cardholder data are encrypted and access-controlled
-- [ ] Decommissioned storage (EBS, disks) is securely wiped per provider's data destruction policy
-- [ ] Visitor access to on-premises components (if any) is logged and escorted
-- [ ] Point-of-interaction (POI) devices are inventoried and inspected for tampering (if applicable)
-- [ ] Paper records containing cardholder data are stored securely and destroyed via cross-cut shredding
+- [ ] **[Critical]** Cloud provider's physical security certifications are verified (SOC 2 Type II, ISO 27001)
+- [ ] **[Critical]** Data center locations are documented and aligned with data residency requirements
+- [ ] **[Critical]** Media (disk snapshots, backups) containing cardholder data are encrypted and access-controlled
+- [ ] **[Recommended]** Decommissioned storage (EBS, disks) is securely wiped per provider's data destruction policy
+- [ ] **[Recommended]** Visitor access to on-premises components (if any) is logged and escorted
+- [ ] **[Critical]** Point-of-interaction (POI) devices are inventoried and inspected for tampering (if applicable)
+- [ ] **[Critical]** Paper records containing cardholder data are stored securely and destroyed via cross-cut shredding
 
 ---
 
@@ -284,16 +284,16 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] All access to cardholder data is logged (who, what, when, where, success/failure)
-- [ ] CloudTrail / Activity Log / Audit Logs are enabled in all regions and accounts
-- [ ] Logs are stored centrally and retained for at least 12 months (3 months immediately accessible)
-- [ ] Log integrity is protected (CloudTrail validation, immutable storage, locked retention)
-- [ ] SIEM or equivalent is deployed for log correlation and alerting
-- [ ] Alerts are configured for critical security events (privilege escalation, failed logins, config changes)
-- [ ] Time synchronization is enforced across all systems (NTP from authoritative source)
-- [ ] Logs are reviewed at least daily (automated review is acceptable)
-- [ ] Automated mechanisms detect and alert on anomalies and suspicious activity
-- [ ] Log access is restricted to authorized personnel only
+- [ ] **[Critical]** All access to cardholder data is logged (who, what, when, where, success/failure)
+- [ ] **[Critical]** CloudTrail / Activity Log / Audit Logs are enabled in all regions and accounts
+- [ ] **[Recommended]** Logs are stored centrally and retained for at least 12 months (3 months immediately accessible)
+- [ ] **[Critical]** Log integrity is protected (CloudTrail validation, immutable storage, locked retention)
+- [ ] **[Recommended]** SIEM or equivalent is deployed for log correlation and alerting
+- [ ] **[Recommended]** Alerts are configured for critical security events (privilege escalation, failed logins, config changes)
+- [ ] **[Recommended]** Time synchronization is enforced across all systems (NTP from authoritative source)
+- [ ] **[Recommended]** Logs are reviewed at least daily (automated review is acceptable)
+- [ ] **[Recommended]** Automated mechanisms detect and alert on anomalies and suspicious activity
+- [ ] **[Recommended]** Log access is restricted to authorized personnel only
 
 ---
 
@@ -314,14 +314,14 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Internal vulnerability scans are run at least quarterly and after significant changes
-- [ ] External vulnerability scans are performed quarterly by an ASV (Approved Scanning Vendor)
-- [ ] Internal and external penetration tests are conducted at least annually and after significant changes
-- [ ] Segmentation testing validates CDE isolation at least annually (every 6 months for service providers)
-- [ ] IDS/IPS is deployed to monitor traffic at the CDE perimeter and critical internal points
-- [ ] File integrity monitoring (FIM) detects unauthorized changes to critical files
-- [ ] Change detection mechanisms alert on unauthorized modifications to payment pages (Requirement 11.6.1)
-- [ ] All identified vulnerabilities are ranked by risk and remediated per defined timelines
+- [ ] **[Critical]** Internal vulnerability scans are run at least quarterly and after significant changes
+- [ ] **[Critical]** External vulnerability scans are performed quarterly by an ASV (Approved Scanning Vendor)
+- [ ] **[Critical]** Internal and external penetration tests are conducted at least annually and after significant changes
+- [ ] **[Critical]** Segmentation testing validates CDE isolation at least annually (every 6 months for service providers)
+- [ ] **[Critical]** IDS/IPS is deployed to monitor traffic at the CDE perimeter and critical internal points
+- [ ] **[Recommended]** File integrity monitoring (FIM) detects unauthorized changes to critical files
+- [ ] **[Recommended]** Change detection mechanisms alert on unauthorized modifications to payment pages (Requirement 11.6.1)
+- [ ] **[Recommended]** All identified vulnerabilities are ranked by risk and remediated per defined timelines
 
 ---
 
@@ -342,17 +342,17 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 ### Architect Checklist
 
-- [ ] Information security policy is established, published, and reviewed at least annually
-- [ ] Acceptable use policies cover all system components and technologies
-- [ ] Risk assessment is performed at least annually and upon significant changes
-- [ ] Security awareness training is conducted upon hire and at least annually
-- [ ] Incident response plan is documented, tested annually, and includes cardholder data breach procedures
-- [ ] Third-party service providers are identified, risk-assessed, and monitored
-- [ ] Service provider compliance status (PCI DSS, SOC 2) is reviewed annually
-- [ ] Responsibility matrix (RACI) between organization and cloud provider is documented
-- [ ] Cloud provider's shared responsibility model is reviewed and gaps are addressed
-- [ ] PCI DSS scope is reviewed at least annually and after significant infrastructure changes
-- [ ] Targeted risk analysis is performed for each PCI DSS requirement with flexibility (v4.0.1 customized approach)
+- [ ] **[Recommended]** Information security policy is established, published, and reviewed at least annually
+- [ ] **[Recommended]** Acceptable use policies cover all system components and technologies
+- [ ] **[Recommended]** Risk assessment is performed at least annually and upon significant changes
+- [ ] **[Recommended]** Security awareness training is conducted upon hire and at least annually
+- [ ] **[Critical]** Incident response plan is documented, tested annually, and includes cardholder data breach procedures
+- [ ] **[Recommended]** Third-party service providers are identified, risk-assessed, and monitored
+- [ ] **[Critical]** Service provider compliance status (PCI DSS, SOC 2) is reviewed annually
+- [ ] **[Recommended]** Responsibility matrix (RACI) between organization and cloud provider is documented
+- [ ] **[Recommended]** Cloud provider's shared responsibility model is reviewed and gaps are addressed
+- [ ] **[Critical]** PCI DSS scope is reviewed at least annually and after significant infrastructure changes
+- [ ] **[Recommended]** Targeted risk analysis is performed for each PCI DSS requirement with flexibility (v4.0.1 customized approach)
 
 ---
 
@@ -375,8 +375,20 @@ PCI DSS compliance in the cloud requires understanding the shared responsibility
 
 ### Multi-Cloud Considerations
 
-- [ ] Each cloud provider's PCI DSS attestation of compliance (AOC) is obtained and reviewed
-- [ ] CDE scope includes all cloud environments where cardholder data is stored, processed, or transmitted
-- [ ] Consistent security controls are applied across providers (policy-as-code recommended)
-- [ ] Centralized logging aggregates events from all cloud providers
-- [ ] Network segmentation between cloud providers is validated
+- [ ] **[Critical]** Each cloud provider's PCI DSS attestation of compliance (AOC) is obtained and reviewed
+- [ ] **[Critical]** CDE scope includes all cloud environments where cardholder data is stored, processed, or transmitted
+- [ ] **[Recommended]** Consistent security controls are applied across providers (policy-as-code recommended)
+- [ ] **[Recommended]** Centralized logging aggregates events from all cloud providers
+- [ ] **[Critical]** Network segmentation between cloud providers is validated
+
+## Common Decisions (ADR Triggers)
+
+- **CDE scope reduction** — tokenization vs encryption, network segmentation to minimize scope, point-to-point encryption
+- **Network segmentation architecture** — CDE isolation design, firewall rules, microsegmentation, validation testing
+- **Encryption and key management** — TDE vs application-level encryption, key custodian model, rotation policy, HSM usage
+- **Vulnerability management program** — scanning tool selection, frequency (quarterly ASV + internal), remediation SLA
+- **Logging and monitoring architecture** — centralized log aggregation, file integrity monitoring, event correlation, 1-year retention
+- **WAF and DDoS protection** — WAF rule management, managed vs custom rules, DDoS mitigation tier
+- **Access control model** — least privilege implementation, privileged access management, MFA for CDE access
+- **Cloud provider responsibility mapping** — shared responsibility documentation per service, AOC review process
+- **Penetration testing strategy** — application and network pen test scope, frequency, segmentation validation

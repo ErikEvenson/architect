@@ -13,7 +13,7 @@ This file covers **what** compute decisions need to be made. For provider-specif
 - [ ] **[Recommended]** What are the minimum and maximum instance counts?
 - [ ] **[Critical]** How are instances distributed across availability zones?
 - [ ] **[Recommended]** What OS and runtime versions are required?
-- [ ] **[Critical]** How is OS patching handled? (automated, scheduled, immutable AMIs)
+- [ ] **[Critical]** How is OS patching handled? (automated, scheduled, immutable image replacement)
 - [ ] **[Optional]** Are there GPU or specialized hardware requirements?
 - [ ] **[Critical]** Is the application stateless or stateful?
 - [ ] **[Recommended]** If stateful, how is state managed across instances? (external session store, sticky sessions)
@@ -27,7 +27,7 @@ Compute is the foundation of the application tier. Incorrect sizing leads to eit
 - **Compute platform choice** — VMs vs containers vs serverless
 - **Instance type selection** — burstable vs general purpose vs compute-optimized
 - **Scaling strategy** — target tracking vs step scaling vs scheduled
-- **Patching strategy** — in-place vs immutable AMI replacement
+- **Patching strategy** — in-place vs immutable image replacement
 - **Session management** — external store vs sticky sessions vs stateless
 
 ## See Also

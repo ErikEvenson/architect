@@ -37,16 +37,16 @@ The following architectural decisions should be captured as Architecture Decisio
 
 Articles 44-49, Schrems II (CJEU Case C-311/18)
 
-- [ ] Identify all cloud regions where personal data is stored, processed, or transited
-- [ ] Confirm selected cloud regions are within the EU/EEA or in countries with an EU adequacy decision (Andorra, Argentina, Canada (commercial), Faroe Islands, Guernsey, Israel, Isle of Man, Japan, Jersey, New Zealand, Republic of Korea, Switzerland, UK, Uruguay, and the EU-US Data Privacy Framework)
-- [ ] Where data is transferred to non-adequate countries, implement Standard Contractual Clauses (SCCs) — use the June 2021 modular version
-- [ ] Conduct Transfer Impact Assessments (TIAs) for each non-adequate country transfer, documenting local surveillance laws and supplementary measures
-- [ ] Implement supplementary technical measures where TIAs identify risks (encryption with EU-held keys, pseudonymization before transfer, split processing)
-- [ ] Configure cloud provider settings to prevent data replication to non-approved regions
-- [ ] Document data flow maps showing all cross-border transfers, including sub-processor chains
-- [ ] Review cloud provider sub-processor lists and set up change notifications
-- [ ] Verify that cloud provider support and operations staff access from non-adequate countries is covered by appropriate safeguards
-- [ ] Establish a process to re-evaluate transfers when adequacy decisions change or are invalidated
+- [ ] **[Recommended]** Identify all cloud regions where personal data is stored, processed, or transited
+- [ ] **[Recommended]** Confirm selected cloud regions are within the EU/EEA or in countries with an EU adequacy decision (Andorra, Argentina, Canada (commercial), Faroe Islands, Guernsey, Israel, Isle of Man, Japan, Jersey, New Zealand, Republic of Korea, Switzerland, UK, Uruguay, and the EU-US Data Privacy Framework)
+- [ ] **[Recommended]** Where data is transferred to non-adequate countries, implement Standard Contractual Clauses (SCCs) — use the June 2021 modular version
+- [ ] **[Recommended]** Conduct Transfer Impact Assessments (TIAs) for each non-adequate country transfer, documenting local surveillance laws and supplementary measures
+- [ ] **[Critical]** Implement supplementary technical measures where TIAs identify risks (encryption with EU-held keys, pseudonymization before transfer, split processing)
+- [ ] **[Recommended]** Configure cloud provider settings to prevent data replication to non-approved regions
+- [ ] **[Critical]** Document data flow maps showing all cross-border transfers, including sub-processor chains
+- [ ] **[Recommended]** Review cloud provider sub-processor lists and set up change notifications
+- [ ] **[Recommended]** Verify that cloud provider support and operations staff access from non-adequate countries is covered by appropriate safeguards
+- [ ] **[Recommended]** Establish a process to re-evaluate transfers when adequacy decisions change or are invalidated
 
 **Cloud Service Mappings:**
 
@@ -59,17 +59,17 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Right to Erasure (Article 17)
 
-- [ ] Inventory all data stores containing personal data (databases, object storage, caches, search indices, data warehouses, message queues, logs)
-- [ ] Design deletion pipelines that propagate erasure requests to all stores, including replicas and read-replicas
-- [ ] Address backup retention conflicts — document whether backups are excluded from erasure (with legal justification) or whether backup-level deletion is implemented
-- [ ] Implement soft-delete with configurable retention periods before hard deletion
-- [ ] Handle cascading deletions in relational data (foreign key references, derived data, aggregated data)
-- [ ] Ensure deletion from analytics and machine learning training datasets
-- [ ] Implement verification mechanisms to confirm deletion completeness
-- [ ] Document exceptions to erasure (legal hold, regulatory retention requirements, freedom of expression) per Article 17(3)
-- [ ] Design for deletion in event-sourced or append-only architectures (crypto-shredding as an alternative)
-- [ ] Set up automated deletion for data that exceeds its defined retention period
-- [ ] Test deletion pipelines regularly and document test results
+- [ ] **[Recommended]** Inventory all data stores containing personal data (databases, object storage, caches, search indices, data warehouses, message queues, logs)
+- [ ] **[Critical]** Design deletion pipelines that propagate erasure requests to all stores, including replicas and read-replicas
+- [ ] **[Critical]** Address backup retention conflicts — document whether backups are excluded from erasure (with legal justification) or whether backup-level deletion is implemented
+- [ ] **[Critical]** Implement soft-delete with configurable retention periods before hard deletion
+- [ ] **[Critical]** Handle cascading deletions in relational data (foreign key references, derived data, aggregated data)
+- [ ] **[Critical]** Ensure deletion from analytics and machine learning training datasets
+- [ ] **[Critical]** Implement verification mechanisms to confirm deletion completeness
+- [ ] **[Critical]** Document exceptions to erasure (legal hold, regulatory retention requirements, freedom of expression) per Article 17(3)
+- [ ] **[Critical]** Design for deletion in event-sourced or append-only architectures (crypto-shredding as an alternative)
+- [ ] **[Critical]** Set up automated deletion for data that exceeds its defined retention period
+- [ ] **[Critical]** Test deletion pipelines regularly and document test results
 
 **Cloud Service Mappings:**
 
@@ -83,14 +83,14 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Right of Access / Data Portability (Articles 15, 20)
 
-- [ ] Build data export mechanisms that can produce a machine-readable copy of all personal data for a given data subject
-- [ ] Support common portable formats (JSON, CSV, XML) for data portability
-- [ ] Implement identity verification for access requests to prevent unauthorized disclosure
-- [ ] Design export to include data from all processing systems (not just the primary database)
-- [ ] Set response time targets (one month, extendable by two months for complex requests)
-- [ ] Handle large dataset exports efficiently (streaming, async generation with notification)
-- [ ] Include metadata about processing purposes, recipients, retention periods, and data sources in access responses
-- [ ] Redact third-party personal data from access request responses where disclosure would adversely affect others' rights
+- [ ] **[Recommended]** Build data export mechanisms that can produce a machine-readable copy of all personal data for a given data subject
+- [ ] **[Recommended]** Support common portable formats (JSON, CSV, XML) for data portability
+- [ ] **[Recommended]** Implement identity verification for access requests to prevent unauthorized disclosure
+- [ ] **[Recommended]** Design export to include data from all processing systems (not just the primary database)
+- [ ] **[Recommended]** Set response time targets (one month, extendable by two months for complex requests)
+- [ ] **[Recommended]** Handle large dataset exports efficiently (streaming, async generation with notification)
+- [ ] **[Critical]** Include metadata about processing purposes, recipients, retention periods, and data sources in access responses
+- [ ] **[Recommended]** Redact third-party personal data from access request responses where disclosure would adversely affect others' rights
 
 **Cloud Service Mappings:**
 
@@ -102,16 +102,16 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Consent Management (Articles 6, 7)
 
-- [ ] Implement granular consent collection — separate consent for each distinct processing purpose
-- [ ] Record consent with timestamp, version of privacy notice, IP address, and specific purposes consented to
-- [ ] Provide a mechanism for data subjects to withdraw consent as easily as they gave it
-- [ ] Propagate consent withdrawal to all downstream processing systems in near-real-time
-- [ ] Implement purpose limitation — technical controls to prevent data processing beyond the consented purposes
-- [ ] Version consent records so that processing can be traced back to the consent that was in effect at the time
-- [ ] Handle pre-checked boxes prohibition — ensure no default-on consent
-- [ ] Implement age verification for consent where processing children's data (Article 8, age thresholds vary by member state: 13-16)
-- [ ] Design consent flows that meet the "freely given, specific, informed, and unambiguous" standard
-- [ ] Integrate consent management with marketing platforms, analytics, and third-party data sharing
+- [ ] **[Recommended]** Implement granular consent collection — separate consent for each distinct processing purpose
+- [ ] **[Recommended]** Record consent with timestamp, version of privacy notice, IP address, and specific purposes consented to
+- [ ] **[Recommended]** Provide a mechanism for data subjects to withdraw consent as easily as they gave it
+- [ ] **[Recommended]** Propagate consent withdrawal to all downstream processing systems in near-real-time
+- [ ] **[Recommended]** Implement purpose limitation — technical controls to prevent data processing beyond the consented purposes
+- [ ] **[Recommended]** Version consent records so that processing can be traced back to the consent that was in effect at the time
+- [ ] **[Recommended]** Handle pre-checked boxes prohibition — ensure no default-on consent
+- [ ] **[Recommended]** Implement age verification for consent where processing children's data (Article 8, age thresholds vary by member state: 13-16)
+- [ ] **[Recommended]** Design consent flows that meet the "freely given, specific, informed, and unambiguous" standard
+- [ ] **[Recommended]** Integrate consent management with marketing platforms, analytics, and third-party data sharing
 
 **Cloud Service Mappings:**
 
@@ -123,24 +123,24 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Data Protection Impact Assessments (Article 35)
 
-- [ ] Identify processing activities that require a DPIA (systematic monitoring, large-scale processing of special categories, automated decision-making with legal effects, new technologies)
-- [ ] Conduct DPIAs before processing begins, not retrospectively
-- [ ] Include the following in each DPIA: systematic description of processing, necessity and proportionality assessment, risk assessment for data subjects, measures to mitigate risks
-- [ ] Consult the Data Protection Officer (DPO) during DPIA preparation
-- [ ] Consult the supervisory authority (Article 36) when residual risk remains high after mitigation
-- [ ] Review and update DPIAs when processing changes materially
-- [ ] Document DPIA outcomes and link them to Architecture Decision Records
-- [ ] Maintain a DPIA register tied to the processing activities register (Article 30)
+- [ ] **[Recommended]** Identify processing activities that require a DPIA (systematic monitoring, large-scale processing of special categories, automated decision-making with legal effects, new technologies)
+- [ ] **[Recommended]** Conduct DPIAs before processing begins, not retrospectively
+- [ ] **[Recommended]** Include the following in each DPIA: systematic description of processing, necessity and proportionality assessment, risk assessment for data subjects, measures to mitigate risks
+- [ ] **[Recommended]** Consult the Data Protection Officer (DPO) during DPIA preparation
+- [ ] **[Recommended]** Consult the supervisory authority (Article 36) when residual risk remains high after mitigation
+- [ ] **[Recommended]** Review and update DPIAs when processing changes materially
+- [ ] **[Recommended]** Document DPIA outcomes and link them to Architecture Decision Records
+- [ ] **[Recommended]** Maintain a DPIA register tied to the processing activities register (Article 30)
 
 ### Data Processing Agreements (Article 28)
 
-- [ ] Review cloud provider DPAs for Article 28(3) mandatory clauses: processing only on documented instructions, confidentiality obligations, security measures, sub-processor management, assistance with data subject rights, deletion/return at end of contract, audit rights, information provision
-- [ ] Verify that cloud provider DPA covers all services in use (some providers have different DPAs for different service tiers)
-- [ ] Track sub-processor lists and subscribe to change notifications from cloud providers
-- [ ] Evaluate new sub-processors within the objection window defined in the DPA
-- [ ] Maintain a register of all data processing agreements
-- [ ] Ensure DPAs with cloud providers include provisions for cross-border transfers (SCCs as appropriate)
-- [ ] Confirm DPA covers incident notification obligations and timeframes
+- [ ] **[Critical]** Review cloud provider DPAs for Article 28(3) mandatory clauses: processing only on documented instructions, confidentiality obligations, security measures, sub-processor management, assistance with data subject rights, deletion/return at end of contract, audit rights, information provision
+- [ ] **[Recommended]** Verify that cloud provider DPA covers all services in use (some providers have different DPAs for different service tiers)
+- [ ] **[Recommended]** Track sub-processor lists and subscribe to change notifications from cloud providers
+- [ ] **[Recommended]** Evaluate new sub-processors within the objection window defined in the DPA
+- [ ] **[Recommended]** Maintain a register of all data processing agreements
+- [ ] **[Critical]** Ensure DPAs with cloud providers include provisions for cross-border transfers (SCCs as appropriate)
+- [ ] **[Recommended]** Confirm DPA covers incident notification obligations and timeframes
 
 **Cloud Provider DPA References:**
 
@@ -152,17 +152,17 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Privacy by Design and by Default (Article 25)
 
-- [ ] Implement encryption at rest for all personal data stores
-- [ ] Implement encryption in transit (TLS 1.2+ minimum) for all data flows containing personal data
-- [ ] Apply data minimization — collect and retain only the personal data necessary for each processing purpose
-- [ ] Implement pseudonymization where full identification is not required for processing
-- [ ] Default to the most privacy-protective settings for new services and features
-- [ ] Apply access controls following the principle of least privilege for personal data access
-- [ ] Implement data segregation between tenants in multi-tenant architectures
-- [ ] Use confidential computing where processing highly sensitive personal data
-- [ ] Implement automated data classification to identify and tag personal data
-- [ ] Design APIs and interfaces to return only the minimum necessary personal data
-- [ ] Apply network segmentation to isolate personal data processing environments
+- [ ] **[Critical]** Implement encryption at rest for all personal data stores
+- [ ] **[Critical]** Implement encryption in transit (TLS 1.2+ minimum) for all data flows containing personal data
+- [ ] **[Recommended]** Apply data minimization — collect and retain only the personal data necessary for each processing purpose
+- [ ] **[Recommended]** Implement pseudonymization where full identification is not required for processing
+- [ ] **[Recommended]** Default to the most privacy-protective settings for new services and features
+- [ ] **[Critical]** Apply access controls following the principle of least privilege for personal data access
+- [ ] **[Critical]** Implement data segregation between tenants in multi-tenant architectures
+- [ ] **[Recommended]** Use confidential computing where processing highly sensitive personal data
+- [ ] **[Recommended]** Implement automated data classification to identify and tag personal data
+- [ ] **[Recommended]** Design APIs and interfaces to return only the minimum necessary personal data
+- [ ] **[Critical]** Apply network segmentation to isolate personal data processing environments
 
 **Cloud Service Mappings:**
 
@@ -177,16 +177,16 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Breach Notification (Articles 33, 34)
 
-- [ ] Implement automated threat detection and anomaly monitoring for personal data stores
-- [ ] Design alert routing to ensure the DPO and incident response team are notified immediately upon detecting a potential breach
-- [ ] Build a breach assessment workflow to determine whether notification is required (risk to rights and freedoms of natural persons)
-- [ ] Prepare notification templates for both supervisory authority (Article 33) and affected data subjects (Article 34)
-- [ ] Implement a 72-hour notification timer that triggers escalation if the supervisory authority has not been notified
-- [ ] Document the breach register (Article 33(5)) — all breaches, regardless of whether they were notified, including facts, effects, and remedial actions
-- [ ] Test breach notification procedures through tabletop exercises at least annually
-- [ ] Integrate cloud provider security alerts into the breach detection pipeline
-- [ ] Implement forensic logging sufficient to determine the scope and impact of a breach (what data, which data subjects, what time period)
-- [ ] Establish communication channels with relevant supervisory authorities in advance
+- [ ] **[Recommended]** Implement automated threat detection and anomaly monitoring for personal data stores
+- [ ] **[Critical]** Design alert routing to ensure the DPO and incident response team are notified immediately upon detecting a potential breach
+- [ ] **[Critical]** Build a breach assessment workflow to determine whether notification is required (risk to rights and freedoms of natural persons)
+- [ ] **[Recommended]** Prepare notification templates for both supervisory authority (Article 33) and affected data subjects (Article 34)
+- [ ] **[Recommended]** Implement a 72-hour notification timer that triggers escalation if the supervisory authority has not been notified
+- [ ] **[Critical]** Document the breach register (Article 33(5)) — all breaches, regardless of whether they were notified, including facts, effects, and remedial actions
+- [ ] **[Critical]** Test breach notification procedures through tabletop exercises at least annually
+- [ ] **[Critical]** Integrate cloud provider security alerts into the breach detection pipeline
+- [ ] **[Critical]** Implement forensic logging sufficient to determine the scope and impact of a breach (what data, which data subjects, what time period)
+- [ ] **[Recommended]** Establish communication channels with relevant supervisory authorities in advance
 
 **Cloud Service Mappings:**
 
@@ -200,26 +200,53 @@ Articles 44-49, Schrems II (CJEU Case C-311/18)
 
 ### Data Protection Officer (Articles 37-39)
 
-- [ ] Determine whether a DPO appointment is mandatory (public authority, core activities involving large-scale systematic monitoring, or large-scale processing of special categories)
-- [ ] Ensure the DPO has access to all cloud monitoring and audit tools relevant to personal data processing
-- [ ] Provide the DPO with the ability to generate compliance reports from cloud-native tools
-- [ ] Configure DPO as a contact point in breach notification workflows
-- [ ] Ensure DPO is involved in DPIA processes and architecture reviews involving personal data
-- [ ] Publish DPO contact details and communicate them to the supervisory authority
+- [ ] **[Recommended]** Determine whether a DPO appointment is mandatory (public authority, core activities involving large-scale systematic monitoring, or large-scale processing of special categories)
+- [ ] **[Recommended]** Ensure the DPO has access to all cloud monitoring and audit tools relevant to personal data processing
+- [ ] **[Critical]** Provide the DPO with the ability to generate compliance reports from cloud-native tools
+- [ ] **[Critical]** Configure DPO as a contact point in breach notification workflows
+- [ ] **[Recommended]** Ensure DPO is involved in DPIA processes and architecture reviews involving personal data
+- [ ] **[Recommended]** Publish DPO contact details and communicate them to the supervisory authority
 
 ### Legitimate Interest Assessments (Article 6(1)(f))
 
-- [ ] Document the legitimate interest assessment (LIA) for each processing activity relying on this lawful basis
-- [ ] Structure LIAs with three tests: purpose test (is the interest legitimate?), necessity test (is the processing necessary for that interest?), balancing test (do the individual's interests override?)
-- [ ] Link LIA documentation to the relevant data processing activities in the Article 30 register
-- [ ] Review LIAs when processing scope changes or when new data categories are introduced
-- [ ] Implement technical safeguards identified in the balancing test (e.g., additional pseudonymization, access restrictions, retention limits)
-- [ ] Provide a mechanism for data subjects to exercise their right to object to processing based on legitimate interest (Article 21)
+- [ ] **[Recommended]** Document the legitimate interest assessment (LIA) for each processing activity relying on this lawful basis
+- [ ] **[Recommended]** Structure LIAs with three tests: purpose test (is the interest legitimate?), necessity test (is the processing necessary for that interest?), balancing test (do the individual's interests override?)
+- [ ] **[Recommended]** Link LIA documentation to the relevant data processing activities in the Article 30 register
+- [ ] **[Critical]** Review LIAs when processing scope changes or when new data categories are introduced
+- [ ] **[Critical]** Implement technical safeguards identified in the balancing test (e.g., additional pseudonymization, access restrictions, retention limits)
+- [ ] **[Critical]** Provide a mechanism for data subjects to exercise their right to object to processing based on legitimate interest (Article 21)
 
 ### Records of Processing Activities (Article 30)
 
-- [ ] Maintain a register of all processing activities as controller (Article 30(1)) and processor (Article 30(2))
-- [ ] Include in each record: purposes, data subject categories, personal data categories, recipient categories, transfers to third countries, retention periods, technical and organizational security measures
-- [ ] Link processing activity records to the cloud infrastructure (which services, which regions, which data stores)
-- [ ] Review and update the register at least annually and upon any material change to processing
-- [ ] Make the register available to the supervisory authority on request
+- [ ] **[Recommended]** Maintain a register of all processing activities as controller (Article 30(1)) and processor (Article 30(2))
+- [ ] **[Critical]** Include in each record: purposes, data subject categories, personal data categories, recipient categories, transfers to third countries, retention periods, technical and organizational security measures
+- [ ] **[Recommended]** Link processing activity records to the cloud infrastructure (which services, which regions, which data stores)
+- [ ] **[Recommended]** Review and update the register at least annually and upon any material change to processing
+- [ ] **[Recommended]** Make the register available to the supervisory authority on request
+
+---
+
+## Regulatory Updates
+
+### EU Digital Omnibus Package (November 2025)
+
+The European Commission published the Digital Omnibus Directive in November 2025, proposing targeted amendments to GDPR and related digital regulations. Key proposed changes relevant to cloud architecture:
+
+- **Simplified record-keeping** for SMEs (fewer than 250 employees) -- reduced documentation burden for organizations that process personal data only incidentally
+- **Streamlined DPO requirements** -- raised threshold for mandatory DPO appointment, potentially reducing obligations for smaller organizations
+- **Cross-border enforcement reform** -- new mechanisms to accelerate cross-border complaint handling between supervisory authorities
+- **Alignment with AI Act** -- clarifications on how GDPR obligations interact with the EU AI Act for AI systems processing personal data
+
+Architects should monitor the legislative process as the Omnibus package progresses through the European Parliament and Council. Final adoption is expected no earlier than late 2026 or 2027.
+
+### UK Data Use and Access Act (DUAA) -- June 2025
+
+The UK Data Use and Access Act received Royal Assent in June 2025, replacing certain aspects of UK GDPR and the Data Protection Act 2018. Key changes affecting cloud architecture:
+
+- **Recognized legitimate interests** -- specific processing activities (e.g., fraud prevention, network security) are explicitly recognized as legitimate interests without requiring a balancing test
+- **Reduced cookie consent requirements** -- consent is no longer required for analytics and similar non-intrusive cookies, though tracking cookies still require consent
+- **Smart Data schemes** -- new framework enabling sector-specific data portability (similar to Open Banking), requiring API-based data sharing infrastructure
+- **Automated decision-making** -- refined rules replacing GDPR Article 22, with new safeguards and transparency requirements
+- **International transfers** -- new "data protection test" replacing adequacy decisions for certain transfers, potentially simplifying UK-to-third-country data flows
+
+For organizations processing both EU and UK personal data, cloud architectures must accommodate the divergence between EU GDPR and the UK DUAA. Consider separate data processing configurations where requirements differ.

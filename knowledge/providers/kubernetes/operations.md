@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Choose package management approach: Helm (templated charts, release management, hooks) vs Kustomize (overlay-based, no templating, built into kubectl) vs hybrid (Helm for third-party, Kustomize for in-house)
-- [ ] Implement GitOps with ArgoCD or Flux: define application sources, sync policies (auto vs manual), health checks, and drift detection
-- [ ] Plan cluster upgrade strategy: in-place rolling upgrade (control plane then nodes), blue-green (new cluster, traffic shift), or canary (upgrade subset of nodes first)
-- [ ] Design etcd backup and restore procedures: automated snapshots (etcdctl snapshot save), off-cluster storage, tested restore runbook
-- [ ] Configure certificate rotation: kubeadm auto-rotation (control plane certs), kubelet certificate rotation (--rotate-certificates), manual rotation procedures for custom CAs
-- [ ] Set up resource quotas per namespace: CPU/memory requests and limits, PVC count and storage, object count (pods, services, configmaps)
-- [ ] Configure LimitRanges per namespace: default resource requests/limits for containers that do not specify them, min/max constraints
-- [ ] Plan kubectl debugging workflows: ephemeral containers (kubectl debug), port-forward for service debugging, logs --previous for crashed container logs
-- [ ] Design Helm chart repository strategy: OCI registries (preferred, supported since Helm 3.8), ChartMuseum, or Git-based (Flux HelmRepository)
-- [ ] Implement Helm hooks for lifecycle management: pre-install/pre-upgrade (schema migration), post-install (seed data), pre-delete (backup)
-- [ ] Plan rollback procedures: Helm rollback (revision history), ArgoCD sync to previous commit, kubectl rollout undo for deployments
-- [ ] Design multi-environment promotion: dev -> staging -> production with GitOps (branch-per-env, directory-per-env, or ApplicationSet generators)
-- [ ] Configure cluster autoscaler or Karpenter for node lifecycle management: scale-up thresholds, scale-down delays, node group design
+- [ ] **[Recommended]** Choose package management approach: Helm (templated charts, release management, hooks) vs Kustomize (overlay-based, no templating, built into kubectl) vs hybrid (Helm for third-party, Kustomize for in-house)
+- [ ] **[Recommended]** Implement GitOps with ArgoCD or Flux: define application sources, sync policies (auto vs manual), health checks, and drift detection
+- [ ] **[Critical]** Plan cluster upgrade strategy: in-place rolling upgrade (control plane then nodes), blue-green (new cluster, traffic shift), or canary (upgrade subset of nodes first)
+- [ ] **[Recommended]** Design etcd backup and restore procedures: automated snapshots (etcdctl snapshot save), off-cluster storage, tested restore runbook
+- [ ] **[Recommended]** Configure certificate rotation: kubeadm auto-rotation (control plane certs), kubelet certificate rotation (--rotate-certificates), manual rotation procedures for custom CAs
+- [ ] **[Recommended]** Set up resource quotas per namespace: CPU/memory requests and limits, PVC count and storage, object count (pods, services, configmaps)
+- [ ] **[Recommended]** Configure LimitRanges per namespace: default resource requests/limits for containers that do not specify them, min/max constraints
+- [ ] **[Recommended]** Plan kubectl debugging workflows: ephemeral containers (kubectl debug), port-forward for service debugging, logs --previous for crashed container logs
+- [ ] **[Recommended]** Design Helm chart repository strategy: OCI registries (preferred, supported since Helm 3.8), ChartMuseum, or Git-based (Flux HelmRepository)
+- [ ] **[Recommended]** Implement Helm hooks for lifecycle management: pre-install/pre-upgrade (schema migration), post-install (seed data), pre-delete (backup)
+- [ ] **[Recommended]** Plan rollback procedures: Helm rollback (revision history), ArgoCD sync to previous commit, kubectl rollout undo for deployments
+- [ ] **[Recommended]** Design multi-environment promotion: dev -> staging -> production with GitOps (branch-per-env, directory-per-env, or ApplicationSet generators)
+- [ ] **[Recommended]** Configure cluster autoscaler or Karpenter for node lifecycle management: scale-up thresholds, scale-down delays, node group design
 
 ## Why This Matters
 

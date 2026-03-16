@@ -6,19 +6,19 @@ Multi-tenant SaaS architectures serve multiple customers (tenants) from shared i
 
 ## Checklist
 
-- [ ] What is the tenant isolation model? (silo, pool, or bridge — decision depends on compliance, cost, and customer requirements)
-- [ ] How is per-tenant data isolated? (database-per-tenant, schema-per-tenant, row-level security, or hybrid)
-- [ ] Is noisy neighbor prevention implemented? (rate limiting, resource quotas, throttling per tenant)
-- [ ] How is tenant-aware routing handled? (subdomain, header, JWT claim, path prefix)
-- [ ] Is tenant onboarding automated? (provisioning, configuration, data seeding, DNS)
-- [ ] How is billing and metering implemented? (usage tracking, plan enforcement, overage handling)
-- [ ] Are SLA tiers supported? (different isolation, performance, or availability per pricing tier)
-- [ ] Is data residency configurable per tenant? (regional deployment, data sovereignty compliance)
-- [ ] How is tenant admin separated from platform admin? (RBAC scoping, tenant-scoped operations)
-- [ ] Is tenant-level monitoring and logging in place? (metrics per tenant, cost attribution)
-- [ ] How are tenant-specific customizations handled? (feature flags, configuration, not code branches)
-- [ ] Is cross-tenant data leakage prevented at every layer? (API, database, cache, logs, error messages)
-- [ ] Is tenant offboarding and data deletion automated? (GDPR right to erasure, data retention policies)
+- [ ] **[Critical]** What is the tenant isolation model? (silo, pool, or bridge — decision depends on compliance, cost, and customer requirements)
+- [ ] **[Critical]** How is per-tenant data isolated? (database-per-tenant, schema-per-tenant, row-level security, or hybrid)
+- [ ] **[Critical]** Is noisy neighbor prevention implemented? (rate limiting, resource quotas, throttling per tenant)
+- [ ] **[Critical]** How is tenant-aware routing handled? (subdomain, header, JWT claim, path prefix)
+- [ ] **[Recommended]** Is tenant onboarding automated? (provisioning, configuration, data seeding, DNS)
+- [ ] **[Critical]** How is billing and metering implemented? (usage tracking, plan enforcement, overage handling)
+- [ ] **[Recommended]** Are SLA tiers supported? (different isolation, performance, or availability per pricing tier)
+- [ ] **[Recommended]** Is data residency configurable per tenant? (regional deployment, data sovereignty compliance)
+- [ ] **[Critical]** How is tenant admin separated from platform admin? (RBAC scoping, tenant-scoped operations)
+- [ ] **[Recommended]** Is tenant-level monitoring and logging in place? (metrics per tenant, cost attribution)
+- [ ] **[Recommended]** How are tenant-specific customizations handled? (feature flags, configuration, not code branches)
+- [ ] **[Critical]** Is cross-tenant data leakage prevented at every layer? (API, database, cache, logs, error messages)
+- [ ] **[Recommended]** Is tenant offboarding and data deletion automated? (GDPR right to erasure, data retention policies)
 
 ## Why This Matters
 

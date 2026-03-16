@@ -6,20 +6,20 @@ Hybrid cloud spans on-premises infrastructure and one or more public cloud provi
 
 ## Checklist
 
-- [ ] What workloads stay on-premises vs move to cloud? What is the decision criteria?
-- [ ] How are on-premises and cloud networks connected? (VPN, dedicated connection, SD-WAN)
-- [ ] What is the bandwidth and latency between on-premises and cloud?
-- [ ] Is there a single identity provider across both environments? (AD federation, SAML, OIDC)
-- [ ] How is DNS managed across both environments? (split-horizon DNS)
-- [ ] Are there data residency or sovereignty requirements keeping data on-premises?
-- [ ] How are workloads deployed consistently across both environments? (same CI/CD, IaC)
-- [ ] Is there a container orchestration platform spanning both? (Kubernetes — Tanzu, Karbon, EKS Anywhere)
-- [ ] How is monitoring unified across both environments? (single pane of glass)
-- [ ] How are secrets managed across both environments?
-- [ ] What is the DR strategy? (cloud as DR for on-prem, or vice versa)
-- [ ] How is data synchronized between on-premises and cloud?
-- [ ] Are there licensing considerations for on-premises software in the cloud? (BYOL vs cloud-native)
-- [ ] What is the migration path for workloads that may move to cloud later?
+- [ ] **[Critical]** What workloads stay on-premises vs move to cloud? What is the decision criteria?
+- [ ] **[Critical]** How are on-premises and cloud networks connected? (VPN, dedicated connection, SD-WAN)
+- [ ] **[Recommended]** What is the bandwidth and latency between on-premises and cloud?
+- [ ] **[Critical]** Is there a single identity provider across both environments? (AD federation, SAML, OIDC)
+- [ ] **[Recommended]** How is DNS managed across both environments? (split-horizon DNS)
+- [ ] **[Critical]** Are there data residency or sovereignty requirements keeping data on-premises?
+- [ ] **[Recommended]** How are workloads deployed consistently across both environments? (same CI/CD, IaC)
+- [ ] **[Recommended]** Is there a container orchestration platform spanning both? (Kubernetes — Tanzu, Karbon, EKS Anywhere)
+- [ ] **[Recommended]** How is monitoring unified across both environments? (single pane of glass)
+- [ ] **[Critical]** How are secrets managed across both environments?
+- [ ] **[Critical]** What is the DR strategy? (cloud as DR for on-prem, or vice versa)
+- [ ] **[Recommended]** How is data synchronized between on-premises and cloud?
+- [ ] **[Recommended]** Are there licensing considerations for on-premises software in the cloud? (BYOL vs cloud-native)
+- [ ] **[Optional]** What is the migration path for workloads that may move to cloud later?
 
 ## Why This Matters
 

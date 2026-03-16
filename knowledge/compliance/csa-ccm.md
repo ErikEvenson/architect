@@ -1,6 +1,6 @@
-# CSA CCM v4 — Cloud Security Alliance Cloud Controls Matrix
+# CSA CCM v4.1 — Cloud Security Alliance Cloud Controls Matrix
 
-Reference: Cloud Controls Matrix (CCM) v4.0
+Reference: Cloud Controls Matrix (CCM) v4.1 (released January 2026)
 Published by: Cloud Security Alliance (CSA)
 Scope: Cloud service providers and cloud service customers. The CCM provides a controls framework specifically designed for cloud computing environments and maps to other standards (ISO 27001, NIST SP 800-53, PCI DSS, GDPR, etc.).
 
@@ -12,7 +12,7 @@ The CSA CCM is the de facto cloud security controls framework. Unlike general-pu
 
 CSA STAR (Security, Trust, Assurance, and Risk) certification is based on the CCM and is increasingly requested in cloud procurement. Cloud architects who design against CCM controls can demonstrate security posture to customers through a recognized, cloud-specific framework.
 
-The CCM v4 organizes 197 controls into 17 domains. Each control has a unique identifier (e.g., IAM-01) that can be referenced in Architecture Decision Records, risk assessments, and compliance documentation.
+CCM v4.1 (January 2026) expanded the framework to 207 controls across 17 domains, adding coverage for AI/ML security, software supply chain integrity, and zero-trust architecture principles. Each control has a unique identifier (e.g., IAM-01) that can be referenced in Architecture Decision Records, risk assessments, and compliance documentation. Organizations certified against CCM v4.0 (197 controls) should plan their transition to v4.1 to address the 10 new controls.
 
 ---
 
@@ -41,27 +41,27 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### AIS-01: Application and Interface Security Policy
 
-- [ ] Define an application security policy covering cloud-hosted applications and APIs
-- [ ] Include security requirements for application design, development, deployment, and operation
-- [ ] Align application security policy with the organization's overall information security policy
+- [ ] **[Recommended]** Define an application security policy covering cloud-hosted applications and APIs
+- [ ] **[Recommended]** Include security requirements for application design, development, deployment, and operation
+- [ ] **[Recommended]** Align application security policy with the organization's overall information security policy
 
 #### AIS-02: Application Security Baseline
 
-- [ ] Establish security baselines for all cloud-hosted applications
-- [ ] Include OWASP Top 10 mitigations in the baseline
-- [ ] Implement automated compliance checking against the baseline
+- [ ] **[Recommended]** Establish security baselines for all cloud-hosted applications
+- [ ] **[Recommended]** Include OWASP Top 10 mitigations in the baseline
+- [ ] **[Critical]** Implement automated compliance checking against the baseline
 
 #### AIS-03: Application Security Metrics
 
-- [ ] Define and track application security metrics (vulnerability density, mean time to remediate, scan coverage)
-- [ ] Report application security metrics to management at planned intervals
+- [ ] **[Recommended]** Define and track application security metrics (vulnerability density, mean time to remediate, scan coverage)
+- [ ] **[Recommended]** Report application security metrics to management at planned intervals
 
 #### AIS-04: Secure Application Design and Development
 
-- [ ] Implement a secure SDLC for cloud-hosted applications
-- [ ] Conduct threat modeling for new applications and major changes
-- [ ] Integrate SAST, DAST, and SCA into CI/CD pipelines
-- [ ] Implement secure API design (authentication, authorization, input validation, output encoding, rate limiting)
+- [ ] **[Recommended]** Implement a secure SDLC for cloud-hosted applications
+- [ ] **[Recommended]** Conduct threat modeling for new applications and major changes
+- [ ] **[Recommended]** Integrate SAST, DAST, and SCA into CI/CD pipelines
+- [ ] **[Critical]** Implement secure API design (authentication, authorization, input validation, output encoding, rate limiting)
 
 **Cloud Service Mappings:**
 
@@ -74,15 +74,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### AIS-05: Automated Application Security Testing
 
-- [ ] Automate security testing in the CI/CD pipeline
-- [ ] Fail builds that contain critical or high-severity vulnerabilities (unless explicitly accepted via risk exception)
-- [ ] Scan container images before deployment
+- [ ] **[Recommended]** Automate security testing in the CI/CD pipeline
+- [ ] **[Recommended]** Fail builds that contain critical or high-severity vulnerabilities (unless explicitly accepted via risk exception)
+- [ ] **[Recommended]** Scan container images before deployment
 
 #### AIS-06: Automated Secure Application Deployment
 
-- [ ] Implement infrastructure as code with security controls baked in
-- [ ] Use immutable deployment patterns (blue/green, canary) where feasible
-- [ ] Enforce deployment approvals and audit trails
+- [ ] **[Recommended]** Implement infrastructure as code with security controls baked in
+- [ ] **[Critical]** Use immutable deployment patterns (blue/green, canary) where feasible
+- [ ] **[Recommended]** Enforce deployment approvals and audit trails
 
 **Cloud Service Mappings:**
 
@@ -93,23 +93,23 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### AIS-07: Application Vulnerability Remediation
 
-- [ ] Define remediation SLAs by severity (e.g., Critical: 24h, High: 7d, Medium: 30d, Low: 90d)
-- [ ] Track remediation progress and escalate overdue items
-- [ ] Re-scan after remediation to verify fixes
+- [ ] **[Recommended]** Define remediation SLAs by severity (e.g., Critical: 24h, High: 7d, Medium: 30d, Low: 90d)
+- [ ] **[Recommended]** Track remediation progress and escalate overdue items
+- [ ] **[Recommended]** Re-scan after remediation to verify fixes
 
 ### AAC — Audit & Assurance
 
 #### AAC-01: Audit and Assurance Policy
 
-- [ ] Define an audit policy covering cloud environments
-- [ ] Include requirements for internal and external audits
-- [ ] Define audit scope, frequency, and reporting requirements
+- [ ] **[Recommended]** Define an audit policy covering cloud environments
+- [ ] **[Recommended]** Include requirements for internal and external audits
+- [ ] **[Critical]** Define audit scope, frequency, and reporting requirements
 
 #### AAC-02: Independent Assessments
 
-- [ ] Conduct independent assessments of cloud security controls at planned intervals
-- [ ] Verify cloud provider compliance certifications (SOC 2 Type II, ISO 27001, CSA STAR)
-- [ ] Review cloud provider audit reports and assess findings relevant to the organization
+- [ ] **[Recommended]** Conduct independent assessments of cloud security controls at planned intervals
+- [ ] **[Critical]** Verify cloud provider compliance certifications (SOC 2 Type II, ISO 27001, CSA STAR)
+- [ ] **[Recommended]** Review cloud provider audit reports and assess findings relevant to the organization
 
 **Cloud Service Mappings:**
 
@@ -119,27 +119,27 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### AAC-03: Risk-Based Planning Assessment
 
-- [ ] Base audit planning on risk assessment results
-- [ ] Prioritize audit areas based on risk level and business impact
-- [ ] Include cloud-specific risks in audit planning (misconfiguration, data exposure, access control gaps)
+- [ ] **[Recommended]** Base audit planning on risk assessment results
+- [ ] **[Recommended]** Prioritize audit areas based on risk level and business impact
+- [ ] **[Critical]** Include cloud-specific risks in audit planning (misconfiguration, data exposure, access control gaps)
 
 #### AAC-04: Audit and Assurance Requirement Compliance
 
-- [ ] Map audit requirements to specific CCM controls
-- [ ] Track audit findings and corrective actions to closure
-- [ ] Share relevant audit results with cloud service customers (for CSPs)
+- [ ] **[Recommended]** Map audit requirements to specific CCM controls
+- [ ] **[Recommended]** Track audit findings and corrective actions to closure
+- [ ] **[Recommended]** Share relevant audit results with cloud service customers (for CSPs)
 
 #### AAC-05: Audit Management Process
 
-- [ ] Manage the audit lifecycle (planning, execution, reporting, follow-up)
-- [ ] Maintain independence of audit function from operations
-- [ ] Protect audit evidence and reports
+- [ ] **[Recommended]** Manage the audit lifecycle (planning, execution, reporting, follow-up)
+- [ ] **[Recommended]** Maintain independence of audit function from operations
+- [ ] **[Recommended]** Protect audit evidence and reports
 
 #### AAC-06: Internal Audit Planning
 
-- [ ] Develop an internal audit plan covering cloud environments
-- [ ] Ensure auditors have access to necessary cloud management tools and logs
-- [ ] Use cloud-native compliance tools to support continuous auditing
+- [ ] **[Recommended]** Develop an internal audit plan covering cloud environments
+- [ ] **[Recommended]** Ensure auditors have access to necessary cloud management tools and logs
+- [ ] **[Critical]** Use cloud-native compliance tools to support continuous auditing
 
 **Cloud Service Mappings:**
 
@@ -152,21 +152,21 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### BCR-01: Business Continuity Management Policy
 
-- [ ] Define a business continuity policy covering cloud-hosted workloads
-- [ ] Include RPO/RTO targets for each workload tier
-- [ ] Define roles and responsibilities for business continuity management
+- [ ] **[Recommended]** Define a business continuity policy covering cloud-hosted workloads
+- [ ] **[Recommended]** Include RPO/RTO targets for each workload tier
+- [ ] **[Recommended]** Define roles and responsibilities for business continuity management
 
 #### BCR-02: Risk Assessment
 
-- [ ] Conduct business impact analysis (BIA) for cloud-hosted workloads
-- [ ] Identify single points of failure in cloud architecture
-- [ ] Assess cloud provider availability SLAs against business requirements
+- [ ] **[Recommended]** Conduct business impact analysis (BIA) for cloud-hosted workloads
+- [ ] **[Recommended]** Identify single points of failure in cloud architecture
+- [ ] **[Recommended]** Assess cloud provider availability SLAs against business requirements
 
 #### BCR-03: Business Continuity Strategy
 
-- [ ] Design cloud architecture to meet RPO/RTO targets (multi-AZ, multi-region, multi-cloud as appropriate)
-- [ ] Document recovery procedures for each critical workload
-- [ ] Implement automated failover where RPO/RTO targets require it
+- [ ] **[Recommended]** Design cloud architecture to meet RPO/RTO targets (multi-AZ, multi-region, multi-cloud as appropriate)
+- [ ] **[Critical]** Document recovery procedures for each critical workload
+- [ ] **[Critical]** Implement automated failover where RPO/RTO targets require it
 
 **Cloud Service Mappings:**
 
@@ -178,21 +178,21 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### BCR-04: Business Continuity Planning
 
-- [ ] Develop recovery plans for all critical cloud workloads
-- [ ] Include communication plans for stakeholders during disruption
-- [ ] Address data integrity verification after recovery
+- [ ] **[Critical]** Develop recovery plans for all critical cloud workloads
+- [ ] **[Recommended]** Include communication plans for stakeholders during disruption
+- [ ] **[Critical]** Address data integrity verification after recovery
 
 #### BCR-05: Documentation
 
-- [ ] Document all business continuity plans, procedures, and contact information
-- [ ] Store documentation in a location accessible during outage (not solely in the cloud environment being recovered)
+- [ ] **[Recommended]** Document all business continuity plans, procedures, and contact information
+- [ ] **[Recommended]** Store documentation in a location accessible during outage (not solely in the cloud environment being recovered)
 
 #### BCR-06: Business Continuity Exercises
 
-- [ ] Test business continuity plans at least annually
-- [ ] Include cloud-specific failure scenarios (region outage, service degradation, API throttling)
-- [ ] Document test results and update plans based on findings
-- [ ] Conduct chaos engineering exercises for critical workloads
+- [ ] **[Recommended]** Test business continuity plans at least annually
+- [ ] **[Recommended]** Include cloud-specific failure scenarios (region outage, service degradation, API throttling)
+- [ ] **[Recommended]** Document test results and update plans based on findings
+- [ ] **[Recommended]** Conduct chaos engineering exercises for critical workloads
 
 **Cloud Service Mappings:**
 
@@ -202,48 +202,48 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### BCR-07: Communication
 
-- [ ] Define communication procedures during business continuity events
-- [ ] Include cloud provider communication channels (status pages, support tickets, TAM escalation)
+- [ ] **[Recommended]** Define communication procedures during business continuity events
+- [ ] **[Recommended]** Include cloud provider communication channels (status pages, support tickets, TAM escalation)
 
 #### BCR-08: Backup
 
-- [ ] Implement automated backup for all critical data and configurations
-- [ ] Store backups in a separate region or account from the primary workload
-- [ ] Test backup restoration regularly
-- [ ] Encrypt backups at rest and in transit
-- [ ] Define backup retention periods aligned with business and regulatory requirements
+- [ ] **[Critical]** Implement automated backup for all critical data and configurations
+- [ ] **[Critical]** Store backups in a separate region or account from the primary workload
+- [ ] **[Critical]** Test backup restoration regularly
+- [ ] **[Critical]** Encrypt backups at rest and in transit
+- [ ] **[Critical]** Define backup retention periods aligned with business and regulatory requirements
 
 #### BCR-09: Disaster Recovery Plan
 
-- [ ] Develop DR plans for cloud workloads based on BIA results
-- [ ] Implement automated DR runbooks where possible
-- [ ] Test DR procedures at least annually with documented results
+- [ ] **[Recommended]** Develop DR plans for cloud workloads based on BIA results
+- [ ] **[Recommended]** Implement automated DR runbooks where possible
+- [ ] **[Recommended]** Test DR procedures at least annually with documented results
 
 #### BCR-11: Equipment Redundancy
 
-- [ ] Design for infrastructure redundancy (multiple availability zones, load balancing)
-- [ ] Eliminate single points of failure in networking, compute, and storage layers
-- [ ] Implement health checks and automated replacement of unhealthy instances
+- [ ] **[Recommended]** Design for infrastructure redundancy (multiple availability zones, load balancing)
+- [ ] **[Recommended]** Eliminate single points of failure in networking, compute, and storage layers
+- [ ] **[Recommended]** Implement health checks and automated replacement of unhealthy instances
 
 ### CCC — Change Control & Configuration Management
 
 #### CCC-01: Change Management Policy
 
-- [ ] Define a change management policy covering cloud infrastructure and applications
-- [ ] Classify changes by risk level (standard, normal, emergency)
-- [ ] Define approval requirements for each change class
+- [ ] **[Recommended]** Define a change management policy covering cloud infrastructure and applications
+- [ ] **[Recommended]** Classify changes by risk level (standard, normal, emergency)
+- [ ] **[Recommended]** Define approval requirements for each change class
 
 #### CCC-02: Quality Testing
 
-- [ ] Implement quality testing for all changes before production deployment
-- [ ] Include security testing in the change testing process
-- [ ] Automate testing in CI/CD pipelines
+- [ ] **[Recommended]** Implement quality testing for all changes before production deployment
+- [ ] **[Recommended]** Include security testing in the change testing process
+- [ ] **[Recommended]** Automate testing in CI/CD pipelines
 
 #### CCC-03: Change Management Technology
 
-- [ ] Use infrastructure as code (IaC) for all cloud resource changes
-- [ ] Implement version control for all configuration and infrastructure code
-- [ ] Use deployment pipelines with automated testing and approval gates
+- [ ] **[Recommended]** Use infrastructure as code (IaC) for all cloud resource changes
+- [ ] **[Recommended]** Implement version control for all configuration and infrastructure code
+- [ ] **[Recommended]** Use deployment pipelines with automated testing and approval gates
 
 **Cloud Service Mappings:**
 
@@ -255,9 +255,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CCC-04: Unauthorized Change Protection
 
-- [ ] Implement controls to detect and prevent unauthorized changes
-- [ ] Alert on configuration changes that bypass the approved change process
-- [ ] Implement guardrails to prevent non-compliant resource creation
+- [ ] **[Recommended]** Implement controls to detect and prevent unauthorized changes
+- [ ] **[Recommended]** Alert on configuration changes that bypass the approved change process
+- [ ] **[Recommended]** Implement guardrails to prevent non-compliant resource creation
 
 **Cloud Service Mappings:**
 
@@ -268,46 +268,46 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CCC-05: Change Agreements
 
-- [ ] Include change notification requirements in cloud provider agreements
-- [ ] Monitor cloud provider change notifications (API changes, deprecations, feature changes)
-- [ ] Assess impact of cloud provider changes on the organization
+- [ ] **[Recommended]** Include change notification requirements in cloud provider agreements
+- [ ] **[Recommended]** Monitor cloud provider change notifications (API changes, deprecations, feature changes)
+- [ ] **[Recommended]** Assess impact of cloud provider changes on the organization
 
 #### CCC-06: Change Management Baseline
 
-- [ ] Maintain configuration baselines for all cloud environments
-- [ ] Detect and report deviation from baselines
-- [ ] Remediate unauthorized deviations
+- [ ] **[Recommended]** Maintain configuration baselines for all cloud environments
+- [ ] **[Recommended]** Detect and report deviation from baselines
+- [ ] **[Recommended]** Remediate unauthorized deviations
 
 #### CCC-07: Detection of Baseline Deviation
 
-- [ ] Implement continuous monitoring for configuration baseline deviations
-- [ ] Automate remediation of common deviations where safe to do so
-- [ ] Escalate deviations that cannot be auto-remediated
+- [ ] **[Recommended]** Implement continuous monitoring for configuration baseline deviations
+- [ ] **[Recommended]** Automate remediation of common deviations where safe to do so
+- [ ] **[Recommended]** Escalate deviations that cannot be auto-remediated
 
 #### CCC-09: Change Restoration
 
-- [ ] Implement rollback capabilities for cloud infrastructure changes
-- [ ] Test rollback procedures as part of change management
-- [ ] Document rollback procedures in change records
+- [ ] **[Recommended]** Implement rollback capabilities for cloud infrastructure changes
+- [ ] **[Recommended]** Test rollback procedures as part of change management
+- [ ] **[Recommended]** Document rollback procedures in change records
 
 ### CEK — Cryptography, Encryption & Key Management
 
 #### CEK-01: Encryption and Key Management Policy
 
-- [ ] Define a cryptographic policy covering algorithms, key lengths, and key management
-- [ ] Specify approved algorithms (AES-256 for symmetric, RSA-2048+ or ECDSA P-256+ for asymmetric)
-- [ ] Define key lifecycle management (generation, distribution, storage, rotation, revocation, destruction)
+- [ ] **[Critical]** Define a cryptographic policy covering algorithms, key lengths, and key management
+- [ ] **[Recommended]** Specify approved algorithms (AES-256 for symmetric, RSA-2048+ or ECDSA P-256+ for asymmetric)
+- [ ] **[Recommended]** Define key lifecycle management (generation, distribution, storage, rotation, revocation, destruction)
 
 #### CEK-02: CEK Roles and Responsibilities
 
-- [ ] Assign roles and responsibilities for cryptographic key management
-- [ ] Separate key management duties from data access duties where feasible
+- [ ] **[Critical]** Assign roles and responsibilities for cryptographic key management
+- [ ] **[Critical]** Separate key management duties from data access duties where feasible
 
 #### CEK-03: Data Encryption
 
-- [ ] Encrypt data at rest for all cloud storage services
-- [ ] Encrypt data in transit using TLS 1.2 or higher
-- [ ] Evaluate encryption in use (confidential computing) for sensitive workloads
+- [ ] **[Critical]** Encrypt data at rest for all cloud storage services
+- [ ] **[Critical]** Encrypt data in transit using TLS 1.2 or higher
+- [ ] **[Critical]** Evaluate encryption in use (confidential computing) for sensitive workloads
 
 **Cloud Service Mappings:**
 
@@ -319,15 +319,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CEK-04: Encryption Algorithm
 
-- [ ] Use only approved cryptographic algorithms and key lengths
-- [ ] Plan for post-quantum cryptography migration where applicable
-- [ ] Prohibit use of deprecated algorithms (DES, 3DES, RC4, MD5, SHA-1 for signing)
+- [ ] **[Recommended]** Use only approved cryptographic algorithms and key lengths
+- [ ] **[Recommended]** Plan for post-quantum cryptography migration where applicable
+- [ ] **[Recommended]** Prohibit use of deprecated algorithms (DES, 3DES, RC4, MD5, SHA-1 for signing)
 
 #### CEK-05: Key Generation
 
-- [ ] Generate cryptographic keys using approved random number generators
-- [ ] Generate keys within hardware security modules (HSMs) for high-sensitivity use cases
-- [ ] Document key generation procedures
+- [ ] **[Recommended]** Generate cryptographic keys using approved random number generators
+- [ ] **[Recommended]** Generate keys within hardware security modules (HSMs) for high-sensitivity use cases
+- [ ] **[Recommended]** Document key generation procedures
 
 **Cloud Service Mappings:**
 
@@ -337,9 +337,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CEK-06: Key Rotation
 
-- [ ] Implement automated key rotation for encryption keys
-- [ ] Define rotation periods (e.g., annually for master keys, per-use for data encryption keys)
-- [ ] Ensure key rotation does not cause data unavailability
+- [ ] **[Critical]** Implement automated key rotation for encryption keys
+- [ ] **[Critical]** Define rotation periods (e.g., annually for master keys, per-use for data encryption keys)
+- [ ] **[Critical]** Ensure key rotation does not cause data unavailability
 
 **Cloud Service Mappings:**
 
@@ -349,15 +349,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CEK-07: Key Revocation
 
-- [ ] Define procedures for key revocation (compromised keys, personnel changes)
-- [ ] Implement key revocation that takes effect promptly across all systems using the key
-- [ ] Maintain revocation records
+- [ ] **[Recommended]** Define procedures for key revocation (compromised keys, personnel changes)
+- [ ] **[Recommended]** Implement key revocation that takes effect promptly across all systems using the key
+- [ ] **[Recommended]** Maintain revocation records
 
 #### CEK-08: Key Destruction
 
-- [ ] Define procedures for key destruction at end of lifecycle
-- [ ] Implement cryptographic key destruction that prevents key recovery
-- [ ] Use scheduled destruction with a waiting period to prevent accidental data loss
+- [ ] **[Recommended]** Define procedures for key destruction at end of lifecycle
+- [ ] **[Critical]** Implement cryptographic key destruction that prevents key recovery
+- [ ] **[Recommended]** Use scheduled destruction with a waiting period to prevent accidental data loss
 
 **Cloud Service Mappings:**
 
@@ -367,9 +367,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CEK-09: Encryption and Key Management Audit Logging
 
-- [ ] Log all key management operations (creation, rotation, access, deletion)
-- [ ] Log all encryption/decryption operations for audit-sensitive data
-- [ ] Alert on anomalous key usage patterns
+- [ ] **[Critical]** Log all key management operations (creation, rotation, access, deletion)
+- [ ] **[Critical]** Log all encryption/decryption operations for audit-sensitive data
+- [ ] **[Recommended]** Alert on anomalous key usage patterns
 
 **Cloud Service Mappings:**
 
@@ -379,9 +379,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### CEK-14: Certificate and Key Management
 
-- [ ] Implement automated certificate lifecycle management (issuance, renewal, revocation)
-- [ ] Monitor certificate expiration and alert before expiry
-- [ ] Use managed certificate services where possible
+- [ ] **[Recommended]** Implement automated certificate lifecycle management (issuance, renewal, revocation)
+- [ ] **[Recommended]** Monitor certificate expiration and alert before expiry
+- [ ] **[Recommended]** Use managed certificate services where possible
 
 **Cloud Service Mappings:**
 
@@ -393,21 +393,21 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### DSP-01: Security and Privacy Policy and Procedures
 
-- [ ] Define data security and privacy policies covering cloud-hosted data
-- [ ] Address the data lifecycle: creation, storage, use, sharing, archival, and destruction
-- [ ] Align with applicable privacy regulations (GDPR, CCPA, etc.)
+- [ ] **[Recommended]** Define data security and privacy policies covering cloud-hosted data
+- [ ] **[Recommended]** Address the data lifecycle: creation, storage, use, sharing, archival, and destruction
+- [ ] **[Recommended]** Align with applicable privacy regulations (GDPR, CCPA, etc.)
 
 #### DSP-02: Secure Disposal
 
-- [ ] Implement data disposal procedures for cloud environments
-- [ ] Verify cloud provider data disposal mechanisms (cryptographic erasure, physical destruction)
-- [ ] Implement automated data retention and disposal via lifecycle policies
+- [ ] **[Recommended]** Implement data disposal procedures for cloud environments
+- [ ] **[Critical]** Verify cloud provider data disposal mechanisms (cryptographic erasure, physical destruction)
+- [ ] **[Critical]** Implement automated data retention and disposal via lifecycle policies
 
 #### DSP-03: Data Inventory
 
-- [ ] Maintain an inventory of data stored and processed in cloud environments
-- [ ] Classify data by sensitivity level (public, internal, confidential, restricted)
-- [ ] Map data flows between cloud services, regions, and third parties
+- [ ] **[Recommended]** Maintain an inventory of data stored and processed in cloud environments
+- [ ] **[Recommended]** Classify data by sensitivity level (public, internal, confidential, restricted)
+- [ ] **[Recommended]** Map data flows between cloud services, regions, and third parties
 
 **Cloud Service Mappings:**
 
@@ -418,52 +418,52 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### DSP-04: Data Classification
 
-- [ ] Implement a data classification scheme with at least 3-4 levels
-- [ ] Tag cloud resources with classification labels
-- [ ] Automate data classification where possible using content inspection
+- [ ] **[Recommended]** Implement a data classification scheme with at least 3-4 levels
+- [ ] **[Recommended]** Tag cloud resources with classification labels
+- [ ] **[Recommended]** Automate data classification where possible using content inspection
 
 #### DSP-05: Data Flow Documentation
 
-- [ ] Document all data flows into, within, and out of cloud environments
-- [ ] Include data flows to third parties and sub-processors
-- [ ] Update data flow documentation when architecture changes
+- [ ] **[Recommended]** Document all data flows into, within, and out of cloud environments
+- [ ] **[Recommended]** Include data flows to third parties and sub-processors
+- [ ] **[Recommended]** Update data flow documentation when architecture changes
 
 #### DSP-07: Data Protection by Design and Default
 
-- [ ] Apply data minimization principles to cloud workloads
-- [ ] Implement privacy-enhancing technologies (pseudonymization, anonymization, differential privacy)
-- [ ] Default to the most restrictive data access settings
+- [ ] **[Recommended]** Apply data minimization principles to cloud workloads
+- [ ] **[Recommended]** Implement privacy-enhancing technologies (pseudonymization, anonymization, differential privacy)
+- [ ] **[Recommended]** Default to the most restrictive data access settings
 
 #### DSP-08: Data Privacy by Design and Default
 
-- [ ] Integrate privacy requirements into the system design process
-- [ ] Conduct privacy impact assessments for new cloud workloads processing personal data
-- [ ] Implement consent management and purpose limitation controls
+- [ ] **[Recommended]** Integrate privacy requirements into the system design process
+- [ ] **[Recommended]** Conduct privacy impact assessments for new cloud workloads processing personal data
+- [ ] **[Recommended]** Implement consent management and purpose limitation controls
 
 #### DSP-10: Sensitive Data Transfer
 
-- [ ] Encrypt sensitive data in transit
-- [ ] Implement access controls for data transfer mechanisms (APIs, file transfers, database exports)
-- [ ] Log all sensitive data transfers
+- [ ] **[Critical]** Encrypt sensitive data in transit
+- [ ] **[Critical]** Implement access controls for data transfer mechanisms (APIs, file transfers, database exports)
+- [ ] **[Critical]** Log all sensitive data transfers
 
 #### DSP-11: Personal Data Access, Reversal, Rectification and Deletion
 
-- [ ] Implement mechanisms for data subjects to access their personal data
-- [ ] Support data portability in machine-readable formats
-- [ ] Implement data correction and deletion mechanisms across all cloud data stores
-- [ ] Verify deletion completeness (primary stores, replicas, backups, caches)
+- [ ] **[Recommended]** Implement mechanisms for data subjects to access their personal data
+- [ ] **[Recommended]** Support data portability in machine-readable formats
+- [ ] **[Critical]** Implement data correction and deletion mechanisms across all cloud data stores
+- [ ] **[Critical]** Verify deletion completeness (primary stores, replicas, backups, caches)
 
 #### DSP-14: Data Retention and Deletion
 
-- [ ] Define data retention periods based on legal, regulatory, and business requirements
-- [ ] Implement automated retention enforcement through lifecycle policies
-- [ ] Delete data when the retention period expires
+- [ ] **[Critical]** Define data retention periods based on legal, regulatory, and business requirements
+- [ ] **[Critical]** Implement automated retention enforcement through lifecycle policies
+- [ ] **[Critical]** Delete data when the retention period expires
 
 #### DSP-16: Data Geographical Restrictions
 
-- [ ] Implement controls to enforce data residency requirements
-- [ ] Use cloud provider region restriction capabilities (organization policies, SCPs)
-- [ ] Monitor for data replication or transfer outside approved regions
+- [ ] **[Critical]** Implement controls to enforce data residency requirements
+- [ ] **[Recommended]** Use cloud provider region restriction capabilities (organization policies, SCPs)
+- [ ] **[Recommended]** Monitor for data replication or transfer outside approved regions
 
 **Cloud Service Mappings:**
 
@@ -474,104 +474,104 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### DSP-17: Non-Production Data
 
-- [ ] Prohibit use of production personal data in non-production environments
-- [ ] Implement data masking or synthetic data generation for non-production use
-- [ ] Apply equivalent security controls if production data must be used in non-production (with justification)
+- [ ] **[Recommended]** Prohibit use of production personal data in non-production environments
+- [ ] **[Recommended]** Implement data masking or synthetic data generation for non-production use
+- [ ] **[Recommended]** Apply equivalent security controls if production data must be used in non-production (with justification)
 
 ### GRC — Governance, Risk Management and Compliance
 
 #### GRC-01: Governance Program
 
-- [ ] Establish an information security governance program covering cloud environments
-- [ ] Define governance structure, roles, and reporting lines
-- [ ] Include cloud security in board-level reporting
+- [ ] **[Recommended]** Establish an information security governance program covering cloud environments
+- [ ] **[Recommended]** Define governance structure, roles, and reporting lines
+- [ ] **[Recommended]** Include cloud security in board-level reporting
 
 #### GRC-02: Risk Management Program
 
-- [ ] Implement a risk management program that includes cloud-specific risks
-- [ ] Conduct risk assessments at planned intervals and when significant changes occur
-- [ ] Maintain a risk register with cloud-specific risks (vendor lock-in, data exposure, misconfiguration, service outage)
-- [ ] Define risk acceptance criteria and escalation procedures
+- [ ] **[Recommended]** Implement a risk management program that includes cloud-specific risks
+- [ ] **[Recommended]** Conduct risk assessments at planned intervals and when significant changes occur
+- [ ] **[Recommended]** Maintain a risk register with cloud-specific risks (vendor lock-in, data exposure, misconfiguration, service outage)
+- [ ] **[Recommended]** Define risk acceptance criteria and escalation procedures
 
 #### GRC-03: Organizational Policy
 
-- [ ] Develop and maintain information security policies covering cloud usage
-- [ ] Review policies at planned intervals (at least annually)
-- [ ] Communicate policies to all relevant personnel
+- [ ] **[Recommended]** Develop and maintain information security policies covering cloud usage
+- [ ] **[Recommended]** Review policies at planned intervals (at least annually)
+- [ ] **[Recommended]** Communicate policies to all relevant personnel
 
 #### GRC-05: Information Security Program
 
-- [ ] Implement an information security program that covers cloud environments
-- [ ] Define security metrics and KPIs for cloud workloads
-- [ ] Report security program status to management
+- [ ] **[Recommended]** Implement an information security program that covers cloud environments
+- [ ] **[Recommended]** Define security metrics and KPIs for cloud workloads
+- [ ] **[Recommended]** Report security program status to management
 
 #### GRC-06: Governance Responsibility Model
 
-- [ ] Document the shared responsibility model for each cloud provider and service
-- [ ] Map responsibilities to organizational roles
-- [ ] Verify that no responsibilities fall through gaps between CSP and CSC
+- [ ] **[Recommended]** Document the shared responsibility model for each cloud provider and service
+- [ ] **[Recommended]** Map responsibilities to organizational roles
+- [ ] **[Recommended]** Verify that no responsibilities fall through gaps between CSP and CSC
 
 #### GRC-08: Special Interest Groups
 
-- [ ] Participate in relevant cloud security communities and information sharing groups (CSA, ISAC)
-- [ ] Monitor cloud security threat intelligence from industry groups
+- [ ] **[Recommended]** Participate in relevant cloud security communities and information sharing groups (CSA, ISAC)
+- [ ] **[Recommended]** Monitor cloud security threat intelligence from industry groups
 
 ### HRS — Human Resources
 
 #### HRS-01: Background Screening Policy
 
-- [ ] Define background screening requirements for personnel with cloud access
-- [ ] Scale screening depth to privilege level and data sensitivity
-- [ ] Include cloud administrators and DevOps engineers in enhanced screening
+- [ ] **[Recommended]** Define background screening requirements for personnel with cloud access
+- [ ] **[Recommended]** Scale screening depth to privilege level and data sensitivity
+- [ ] **[Recommended]** Include cloud administrators and DevOps engineers in enhanced screening
 
 #### HRS-02: Acceptable Use of Technology Policy
 
-- [ ] Define acceptable use policies for cloud services and resources
-- [ ] Include personal use restrictions, approved service lists, and data handling rules
-- [ ] Cover BYOD policies for devices accessing cloud environments
+- [ ] **[Recommended]** Define acceptable use policies for cloud services and resources
+- [ ] **[Recommended]** Include personal use restrictions, approved service lists, and data handling rules
+- [ ] **[Recommended]** Cover BYOD policies for devices accessing cloud environments
 
 #### HRS-03: Clean Desk Policy
 
-- [ ] Implement clean desk policies for workstations accessing cloud management tools
-- [ ] Include clean screen requirements (screen lock, session timeout)
+- [ ] **[Recommended]** Implement clean desk policies for workstations accessing cloud management tools
+- [ ] **[Recommended]** Include clean screen requirements (screen lock, session timeout)
 
 #### HRS-04: Return of Assets
 
-- [ ] Ensure all cloud access credentials and tokens are revoked upon termination
-- [ ] Revoke VPN and remote access immediately upon termination
-- [ ] Remove terminated users from all cloud IAM systems
+- [ ] **[Critical]** Ensure all cloud access credentials and tokens are revoked upon termination
+- [ ] **[Recommended]** Revoke VPN and remote access immediately upon termination
+- [ ] **[Recommended]** Remove terminated users from all cloud IAM systems
 
 #### HRS-06: Security Awareness Training
 
-- [ ] Deliver cloud security awareness training to all personnel
-- [ ] Include phishing awareness, credential security, and cloud-specific risks
-- [ ] Conduct role-specific training for cloud administrators and developers
-- [ ] Test training effectiveness through assessments and simulated attacks
+- [ ] **[Recommended]** Deliver cloud security awareness training to all personnel
+- [ ] **[Recommended]** Include phishing awareness, credential security, and cloud-specific risks
+- [ ] **[Recommended]** Conduct role-specific training for cloud administrators and developers
+- [ ] **[Recommended]** Test training effectiveness through assessments and simulated attacks
 
 #### HRS-09: Personnel Roles and Responsibilities
 
-- [ ] Define and document security responsibilities for all roles interacting with cloud environments
-- [ ] Include cloud security responsibilities in job descriptions
+- [ ] **[Recommended]** Define and document security responsibilities for all roles interacting with cloud environments
+- [ ] **[Recommended]** Include cloud security responsibilities in job descriptions
 
 ### IAM — Identity & Access Management
 
 #### IAM-01: Identity and Access Management Policy
 
-- [ ] Define an IAM policy covering cloud environments
-- [ ] Include authentication, authorization, and account management requirements
-- [ ] Address service accounts, API keys, and machine identities
+- [ ] **[Recommended]** Define an IAM policy covering cloud environments
+- [ ] **[Critical]** Include authentication, authorization, and account management requirements
+- [ ] **[Recommended]** Address service accounts, API keys, and machine identities
 
 #### IAM-02: Strong Password Policy
 
-- [ ] Enforce strong password requirements (minimum length, complexity, rotation)
-- [ ] Implement account lockout after failed authentication attempts
-- [ ] Prohibit password reuse
+- [ ] **[Recommended]** Enforce strong password requirements (minimum length, complexity, rotation)
+- [ ] **[Critical]** Implement account lockout after failed authentication attempts
+- [ ] **[Recommended]** Prohibit password reuse
 
 #### IAM-03: Identity Inventory
 
-- [ ] Maintain an inventory of all identities (human and non-human) with cloud access
-- [ ] Include service accounts, API keys, OAuth tokens, and machine identities
-- [ ] Review identity inventory regularly and remove stale entries
+- [ ] **[Recommended]** Maintain an inventory of all identities (human and non-human) with cloud access
+- [ ] **[Recommended]** Include service accounts, API keys, OAuth tokens, and machine identities
+- [ ] **[Recommended]** Review identity inventory regularly and remove stale entries
 
 **Cloud Service Mappings:**
 
@@ -582,15 +582,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-04: Separation of Duties
 
-- [ ] Enforce separation of duties through cloud IAM roles
-- [ ] Prevent single individuals from having end-to-end control over critical processes
-- [ ] Implement multi-person approval for high-risk operations
+- [ ] **[Critical]** Enforce separation of duties through cloud IAM roles
+- [ ] **[Recommended]** Prevent single individuals from having end-to-end control over critical processes
+- [ ] **[Recommended]** Implement multi-person approval for high-risk operations
 
 #### IAM-05: Least Privilege
 
-- [ ] Apply least privilege for all cloud IAM assignments
-- [ ] Regularly review and right-size permissions
-- [ ] Use cloud-native tools to identify and remove excessive permissions
+- [ ] **[Critical]** Apply least privilege for all cloud IAM assignments
+- [ ] **[Recommended]** Regularly review and right-size permissions
+- [ ] **[Recommended]** Use cloud-native tools to identify and remove excessive permissions
 
 **Cloud Service Mappings:**
 
@@ -600,27 +600,27 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-06: User Access Provisioning
 
-- [ ] Implement formal user access provisioning and deprovisioning processes
-- [ ] Automate provisioning through IdP integration (SCIM, SAML JIT)
-- [ ] Implement approval workflows for access requests
+- [ ] **[Recommended]** Implement formal user access provisioning and deprovisioning processes
+- [ ] **[Recommended]** Automate provisioning through IdP integration (SCIM, SAML JIT)
+- [ ] **[Recommended]** Implement approval workflows for access requests
 
 #### IAM-07: User Access Review
 
-- [ ] Conduct periodic access reviews for all cloud environments (at least quarterly for privileged access)
-- [ ] Remove or adjust access that is no longer appropriate
-- [ ] Document access review results
+- [ ] **[Recommended]** Conduct periodic access reviews for all cloud environments (at least quarterly for privileged access)
+- [ ] **[Recommended]** Remove or adjust access that is no longer appropriate
+- [ ] **[Recommended]** Document access review results
 
 #### IAM-08: User Access Revocation
 
-- [ ] Revoke access promptly upon termination or role change
-- [ ] Automate access revocation through IdP lifecycle management
-- [ ] Verify revocation completeness across all cloud accounts and services
+- [ ] **[Recommended]** Revoke access promptly upon termination or role change
+- [ ] **[Recommended]** Automate access revocation through IdP lifecycle management
+- [ ] **[Recommended]** Verify revocation completeness across all cloud accounts and services
 
 #### IAM-09: Multi-Factor Authentication
 
-- [ ] Require MFA for all human access to cloud management consoles and APIs
-- [ ] Require MFA for all privileged access
-- [ ] Enforce phishing-resistant MFA (FIDO2, hardware tokens) for administrative access
+- [ ] **[Critical]** Require MFA for all human access to cloud management consoles and APIs
+- [ ] **[Critical]** Require MFA for all privileged access
+- [ ] **[Critical]** Enforce phishing-resistant MFA (FIDO2, hardware tokens) for administrative access
 
 **Cloud Service Mappings:**
 
@@ -630,10 +630,10 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-10: Privileged Access Management
 
-- [ ] Implement privileged access management (PAM) for cloud environments
-- [ ] Use just-in-time access for privileged roles
-- [ ] Monitor and record privileged access sessions
-- [ ] Require approval workflows for privilege elevation
+- [ ] **[Recommended]** Implement privileged access management (PAM) for cloud environments
+- [ ] **[Recommended]** Use just-in-time access for privileged roles
+- [ ] **[Recommended]** Monitor and record privileged access sessions
+- [ ] **[Recommended]** Require approval workflows for privilege elevation
 
 **Cloud Service Mappings:**
 
@@ -643,9 +643,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-12: User ID Management
 
-- [ ] Enforce unique user IDs (no shared accounts)
-- [ ] Implement naming conventions for user IDs and service accounts
-- [ ] Prohibit use of root/global admin accounts for day-to-day operations
+- [ ] **[Recommended]** Enforce unique user IDs (no shared accounts)
+- [ ] **[Recommended]** Implement naming conventions for user IDs and service accounts
+- [ ] **[Recommended]** Prohibit use of root/global admin accounts for day-to-day operations
 
 **Cloud Service Mappings:**
 
@@ -655,9 +655,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-13: Identity Federation
 
-- [ ] Implement identity federation with the organization's IdP for cloud access
-- [ ] Use standards-based federation (SAML 2.0, OIDC)
-- [ ] Minimize use of cloud-native IAM users in favor of federated identities
+- [ ] **[Recommended]** Implement identity federation with the organization's IdP for cloud access
+- [ ] **[Recommended]** Use standards-based federation (SAML 2.0, OIDC)
+- [ ] **[Recommended]** Minimize use of cloud-native IAM users in favor of federated identities
 
 **Cloud Service Mappings:**
 
@@ -667,9 +667,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IAM-14: Workload Identity Management
 
-- [ ] Use managed identities for workload-to-service authentication (no long-lived credentials)
-- [ ] Implement workload identity federation for cross-platform authentication
-- [ ] Rotate any long-lived credentials that cannot be replaced with managed identities
+- [ ] **[Critical]** Use managed identities for workload-to-service authentication (no long-lived credentials)
+- [ ] **[Critical]** Implement workload identity federation for cross-platform authentication
+- [ ] **[Critical]** Rotate any long-lived credentials that cannot be replaced with managed identities
 
 **Cloud Service Mappings:**
 
@@ -682,21 +682,21 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IVS-01: Infrastructure and Virtualization Security Policy
 
-- [ ] Define an infrastructure security policy covering cloud environments
-- [ ] Address network security, compute security, and storage security
+- [ ] **[Recommended]** Define an infrastructure security policy covering cloud environments
+- [ ] **[Recommended]** Address network security, compute security, and storage security
 
 #### IVS-02: Capacity and Resource Planning
 
-- [ ] Plan capacity for security workloads (logging, monitoring, scanning)
-- [ ] Implement resource quotas and limits to prevent resource exhaustion
-- [ ] Monitor resource utilization and set alerts for thresholds
+- [ ] **[Recommended]** Plan capacity for security workloads (logging, monitoring, scanning)
+- [ ] **[Recommended]** Implement resource quotas and limits to prevent resource exhaustion
+- [ ] **[Recommended]** Monitor resource utilization and set alerts for thresholds
 
 #### IVS-03: Network Security
 
-- [ ] Implement network segmentation using cloud-native constructs (VPCs, subnets, security groups)
-- [ ] Apply zero-trust network principles (verify explicitly, least privilege access, assume breach)
-- [ ] Restrict network access to management interfaces
-- [ ] Implement private endpoints for cloud service access where available
+- [ ] **[Critical]** Implement network segmentation using cloud-native constructs (VPCs, subnets, security groups)
+- [ ] **[Critical]** Apply zero-trust network principles (verify explicitly, least privilege access, assume breach)
+- [ ] **[Recommended]** Restrict network access to management interfaces
+- [ ] **[Recommended]** Implement private endpoints for cloud service access where available
 
 **Cloud Service Mappings:**
 
@@ -708,9 +708,9 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IVS-04: OS Hardening and Base Controls
 
-- [ ] Harden operating system configurations using industry benchmarks (CIS Benchmarks)
-- [ ] Use hardened machine images (golden images) for cloud compute instances
-- [ ] Implement automated compliance checking for OS configurations
+- [ ] **[Recommended]** Harden operating system configurations using industry benchmarks (CIS Benchmarks)
+- [ ] **[Recommended]** Use hardened machine images (golden images) for cloud compute instances
+- [ ] **[Critical]** Implement automated compliance checking for OS configurations
 
 **Cloud Service Mappings:**
 
@@ -721,15 +721,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IVS-05: Production and Non-Production Environments
 
-- [ ] Separate production and non-production environments using different cloud accounts/subscriptions/projects
-- [ ] Apply production-grade security controls to environments containing production data
-- [ ] Restrict network connectivity between production and non-production environments
+- [ ] **[Recommended]** Separate production and non-production environments using different cloud accounts/subscriptions/projects
+- [ ] **[Recommended]** Apply production-grade security controls to environments containing production data
+- [ ] **[Recommended]** Restrict network connectivity between production and non-production environments
 
 #### IVS-06: Segmentation and Segregation
 
-- [ ] Implement microsegmentation for workloads requiring isolation
-- [ ] Isolate management networks from application networks
-- [ ] Implement service mesh for workload-to-workload security where applicable
+- [ ] **[Critical]** Implement microsegmentation for workloads requiring isolation
+- [ ] **[Recommended]** Isolate management networks from application networks
+- [ ] **[Recommended]** Implement service mesh for workload-to-workload security where applicable
 
 **Cloud Service Mappings:**
 
@@ -739,24 +739,24 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### IVS-09: Network Defense
 
-- [ ] Implement DDoS protection for internet-facing workloads
-- [ ] Deploy web application firewalls for web-facing applications
-- [ ] Implement intrusion detection for cloud networks
+- [ ] **[Recommended]** Implement DDoS protection for internet-facing workloads
+- [ ] **[Critical]** Deploy web application firewalls for web-facing applications
+- [ ] **[Critical]** Implement intrusion detection for cloud networks
 
 ### LOG — Logging and Monitoring
 
 #### LOG-01: Logging and Monitoring Policy
 
-- [ ] Define a logging and monitoring policy covering all cloud environments
-- [ ] Specify which events must be logged (authentication, authorization, data access, configuration changes, security events)
-- [ ] Define log retention periods
+- [ ] **[Recommended]** Define a logging and monitoring policy covering all cloud environments
+- [ ] **[Critical]** Specify which events must be logged (authentication, authorization, data access, configuration changes, security events)
+- [ ] **[Critical]** Define log retention periods
 
 #### LOG-02: Security Monitoring and Alerting
 
-- [ ] Implement real-time security monitoring for cloud environments
-- [ ] Define alert thresholds and notification procedures
-- [ ] Implement automated response for high-confidence alerts where appropriate
-- [ ] Integrate cloud security alerts with the organization's SIEM or security operations center
+- [ ] **[Recommended]** Implement real-time security monitoring for cloud environments
+- [ ] **[Recommended]** Define alert thresholds and notification procedures
+- [ ] **[Recommended]** Implement automated response for high-confidence alerts where appropriate
+- [ ] **[Recommended]** Integrate cloud security alerts with the organization's SIEM or security operations center
 
 **Cloud Service Mappings:**
 
@@ -767,15 +767,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### LOG-03: Security Monitoring and Alerting Access
 
-- [ ] Restrict access to security logs and monitoring tools to authorized personnel
-- [ ] Implement role-based access to logging and monitoring systems
-- [ ] Protect the integrity of log data
+- [ ] **[Recommended]** Restrict access to security logs and monitoring tools to authorized personnel
+- [ ] **[Recommended]** Implement role-based access to logging and monitoring systems
+- [ ] **[Recommended]** Protect the integrity of log data
 
 #### LOG-04: Audit Logging
 
-- [ ] Enable audit logging for all cloud services in scope
-- [ ] Capture at minimum: who, what, when, where, outcome for each event
-- [ ] Store audit logs in a centralized, tamper-resistant location
+- [ ] **[Critical]** Enable audit logging for all cloud services in scope
+- [ ] **[Recommended]** Capture at minimum: who, what, when, where, outcome for each event
+- [ ] **[Critical]** Store audit logs in a centralized, tamper-resistant location
 
 **Cloud Service Mappings:**
 
@@ -786,21 +786,21 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### LOG-05: Audit Log Monitoring and Response
 
-- [ ] Monitor audit logs for security-relevant events
-- [ ] Implement correlation rules to detect attack patterns
-- [ ] Respond to detected events per incident management procedures
+- [ ] **[Critical]** Monitor audit logs for security-relevant events
+- [ ] **[Recommended]** Implement correlation rules to detect attack patterns
+- [ ] **[Recommended]** Respond to detected events per incident management procedures
 
 #### LOG-06: Clock Synchronization
 
-- [ ] Ensure all cloud resources use synchronized time sources
-- [ ] Verify that cloud provider time synchronization meets audit requirements
-- [ ] Include timestamps in all log entries using UTC
+- [ ] **[Recommended]** Ensure all cloud resources use synchronized time sources
+- [ ] **[Recommended]** Verify that cloud provider time synchronization meets audit requirements
+- [ ] **[Recommended]** Include timestamps in all log entries using UTC
 
 #### LOG-07: Encryption Monitoring and Reporting
 
-- [ ] Monitor encryption status for all data stores
-- [ ] Alert on unencrypted resources
-- [ ] Report encryption compliance status
+- [ ] **[Critical]** Monitor encryption status for all data stores
+- [ ] **[Critical]** Alert on unencrypted resources
+- [ ] **[Critical]** Report encryption compliance status
 
 **Cloud Service Mappings:**
 
@@ -810,58 +810,58 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### LOG-09: Log Protection
 
-- [ ] Protect logs from unauthorized modification and deletion
-- [ ] Implement write-once-read-many (WORM) storage for critical logs
-- [ ] Implement access controls on log storage
+- [ ] **[Critical]** Protect logs from unauthorized modification and deletion
+- [ ] **[Recommended]** Implement write-once-read-many (WORM) storage for critical logs
+- [ ] **[Critical]** Implement access controls on log storage
 
 #### LOG-13: Failures and Anomalies Detection
 
-- [ ] Implement anomaly detection for cloud workloads
-- [ ] Monitor for unusual API call patterns, data access patterns, and resource usage
-- [ ] Alert on deviations from established baselines
+- [ ] **[Recommended]** Implement anomaly detection for cloud workloads
+- [ ] **[Recommended]** Monitor for unusual API call patterns, data access patterns, and resource usage
+- [ ] **[Recommended]** Alert on deviations from established baselines
 
 ### SEF — Security Incident Management, E-Discovery & Cloud Forensics
 
 #### SEF-01: Security Incident Management Policy
 
-- [ ] Define an incident management policy covering cloud environments
-- [ ] Include incident classification, escalation, and notification procedures
-- [ ] Define roles and responsibilities for incident response
+- [ ] **[Recommended]** Define an incident management policy covering cloud environments
+- [ ] **[Recommended]** Include incident classification, escalation, and notification procedures
+- [ ] **[Critical]** Define roles and responsibilities for incident response
 
 #### SEF-02: Service Management Policy
 
-- [ ] Integrate cloud service management with incident management
-- [ ] Include cloud provider support escalation procedures
-- [ ] Define SLAs for incident response and resolution
+- [ ] **[Recommended]** Integrate cloud service management with incident management
+- [ ] **[Recommended]** Include cloud provider support escalation procedures
+- [ ] **[Critical]** Define SLAs for incident response and resolution
 
 #### SEF-03: Incident Response Plans
 
-- [ ] Develop incident response plans for cloud-specific scenarios (credential compromise, data exposure, ransomware, supply chain attack, cryptomining)
-- [ ] Include containment, eradication, and recovery procedures
-- [ ] Define communication plans for stakeholders, customers, and regulators
+- [ ] **[Critical]** Develop incident response plans for cloud-specific scenarios (credential compromise, data exposure, ransomware, supply chain attack, cryptomining)
+- [ ] **[Critical]** Include containment, eradication, and recovery procedures
+- [ ] **[Recommended]** Define communication plans for stakeholders, customers, and regulators
 
 #### SEF-04: Incident Response Testing
 
-- [ ] Test incident response plans at least annually through tabletop exercises
-- [ ] Conduct technical response exercises (red team, purple team, game days)
-- [ ] Update plans based on test results
+- [ ] **[Critical]** Test incident response plans at least annually through tabletop exercises
+- [ ] **[Recommended]** Conduct technical response exercises (red team, purple team, game days)
+- [ ] **[Recommended]** Update plans based on test results
 
 #### SEF-05: Incident Response Metrics
 
-- [ ] Define and track incident response metrics (MTTD, MTTR, number of incidents by severity)
-- [ ] Report metrics to management at planned intervals
+- [ ] **[Critical]** Define and track incident response metrics (MTTD, MTTR, number of incidents by severity)
+- [ ] **[Recommended]** Report metrics to management at planned intervals
 
 #### SEF-06: Event Triage Processes
 
-- [ ] Define event triage procedures for cloud security events
-- [ ] Implement automated triage for high-volume, low-complexity events
-- [ ] Escalate events that meet incident criteria
+- [ ] **[Recommended]** Define event triage procedures for cloud security events
+- [ ] **[Recommended]** Implement automated triage for high-volume, low-complexity events
+- [ ] **[Recommended]** Escalate events that meet incident criteria
 
 #### SEF-07: Evidence Management
 
-- [ ] Define evidence collection procedures for cloud environments
-- [ ] Implement forensic-ready logging (sufficient detail, tamper-proof storage)
-- [ ] Address cloud-specific forensic challenges (ephemeral resources, shared infrastructure, provider cooperation)
+- [ ] **[Recommended]** Define evidence collection procedures for cloud environments
+- [ ] **[Critical]** Implement forensic-ready logging (sufficient detail, tamper-proof storage)
+- [ ] **[Recommended]** Address cloud-specific forensic challenges (ephemeral resources, shared infrastructure, provider cooperation)
 
 **Cloud Service Mappings:**
 
@@ -874,51 +874,51 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### STA-01: Supply Chain Management Policy
 
-- [ ] Define a supply chain risk management policy
-- [ ] Include cloud providers, SaaS applications, and open source dependencies
-- [ ] Define vendor assessment requirements and frequency
+- [ ] **[Recommended]** Define a supply chain risk management policy
+- [ ] **[Recommended]** Include cloud providers, SaaS applications, and open source dependencies
+- [ ] **[Recommended]** Define vendor assessment requirements and frequency
 
 #### STA-02: Supply Chain Risk Management
 
-- [ ] Assess supply chain risks for all critical cloud dependencies
-- [ ] Include sub-processor risk in cloud provider assessments
-- [ ] Monitor supply chain threat intelligence (dependency vulnerabilities, provider security incidents)
+- [ ] **[Recommended]** Assess supply chain risks for all critical cloud dependencies
+- [ ] **[Recommended]** Include sub-processor risk in cloud provider assessments
+- [ ] **[Recommended]** Monitor supply chain threat intelligence (dependency vulnerabilities, provider security incidents)
 
 #### STA-03: Third-Party Assessment
 
-- [ ] Conduct or obtain security assessments for cloud providers and third-party services
-- [ ] Review SOC 2 Type II reports, ISO 27001 certificates, and CSA STAR reports
-- [ ] Assess third-party controls against the organization's security requirements
+- [ ] **[Recommended]** Conduct or obtain security assessments for cloud providers and third-party services
+- [ ] **[Recommended]** Review SOC 2 Type II reports, ISO 27001 certificates, and CSA STAR reports
+- [ ] **[Recommended]** Assess third-party controls against the organization's security requirements
 
 #### STA-04: Supply Chain Agreements
 
-- [ ] Include security requirements in cloud provider contracts
-- [ ] Define incident notification requirements
-- [ ] Include audit rights and compliance reporting requirements
+- [ ] **[Recommended]** Include security requirements in cloud provider contracts
+- [ ] **[Recommended]** Define incident notification requirements
+- [ ] **[Critical]** Include audit rights and compliance reporting requirements
 
 #### STA-05: Supply Chain Monitoring and Review
 
-- [ ] Monitor cloud provider security posture on an ongoing basis
-- [ ] Subscribe to cloud provider security bulletins and advisories
-- [ ] Review cloud provider compliance certifications when renewed
+- [ ] **[Recommended]** Monitor cloud provider security posture on an ongoing basis
+- [ ] **[Recommended]** Subscribe to cloud provider security bulletins and advisories
+- [ ] **[Critical]** Review cloud provider compliance certifications when renewed
 
 #### STA-07: Supply Chain Data Security Assessment
 
-- [ ] Assess cloud provider data security controls
-- [ ] Verify data encryption, access controls, and data segregation
-- [ ] Assess data recovery and backup capabilities
+- [ ] **[Recommended]** Assess cloud provider data security controls
+- [ ] **[Critical]** Verify data encryption, access controls, and data segregation
+- [ ] **[Critical]** Assess data recovery and backup capabilities
 
 #### STA-09: Third-Party Deficiency Remediation
 
-- [ ] Track and follow up on deficiencies identified in third-party assessments
-- [ ] Define escalation procedures for critical deficiencies
-- [ ] Include remediation timelines in supplier agreements
+- [ ] **[Recommended]** Track and follow up on deficiencies identified in third-party assessments
+- [ ] **[Recommended]** Define escalation procedures for critical deficiencies
+- [ ] **[Recommended]** Include remediation timelines in supplier agreements
 
 #### STA-14: Supply Chain Data Security Assessment
 
-- [ ] Conduct software composition analysis for open source dependencies
-- [ ] Implement container image scanning for base image vulnerabilities
-- [ ] Use trusted artifact registries and verify artifact integrity (signatures, SBOMs)
+- [ ] **[Recommended]** Conduct software composition analysis for open source dependencies
+- [ ] **[Recommended]** Implement container image scanning for base image vulnerabilities
+- [ ] **[Recommended]** Use trusted artifact registries and verify artifact integrity (signatures, SBOMs)
 
 **Cloud Service Mappings:**
 
@@ -931,15 +931,15 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### TVM-01: Threat and Vulnerability Management Policy
 
-- [ ] Define a vulnerability management policy covering cloud environments
-- [ ] Define scanning requirements (scope, frequency, tools)
-- [ ] Define remediation SLAs by severity
+- [ ] **[Recommended]** Define a vulnerability management policy covering cloud environments
+- [ ] **[Critical]** Define scanning requirements (scope, frequency, tools)
+- [ ] **[Recommended]** Define remediation SLAs by severity
 
 #### TVM-02: Vulnerability Management
 
-- [ ] Implement automated vulnerability scanning for all cloud resources (VMs, containers, serverless, infrastructure configurations)
-- [ ] Scan at least weekly for externally-facing resources and upon deployment for new resources
-- [ ] Prioritize remediation based on risk (CVSS score, exploitability, exposure, asset criticality)
+- [ ] **[Critical]** Implement automated vulnerability scanning for all cloud resources (VMs, containers, serverless, infrastructure configurations)
+- [ ] **[Recommended]** Scan at least weekly for externally-facing resources and upon deployment for new resources
+- [ ] **[Recommended]** Prioritize remediation based on risk (CVSS score, exploitability, exposure, asset criticality)
 
 **Cloud Service Mappings:**
 
@@ -950,22 +950,22 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### TVM-03: Vulnerability Remediation Procedure
 
-- [ ] Define remediation procedures including patching, configuration changes, and compensating controls
-- [ ] Track remediation progress and escalate overdue items
-- [ ] Re-scan after remediation to verify fixes
+- [ ] **[Recommended]** Define remediation procedures including patching, configuration changes, and compensating controls
+- [ ] **[Recommended]** Track remediation progress and escalate overdue items
+- [ ] **[Recommended]** Re-scan after remediation to verify fixes
 
 #### TVM-04: Detection Updates
 
-- [ ] Ensure vulnerability scanning tools are updated with latest detection signatures
-- [ ] Subscribe to cloud provider vulnerability notifications
-- [ ] Monitor CVE databases and security advisories for cloud services in use
+- [ ] **[Critical]** Ensure vulnerability scanning tools are updated with latest detection signatures
+- [ ] **[Recommended]** Subscribe to cloud provider vulnerability notifications
+- [ ] **[Recommended]** Monitor CVE databases and security advisories for cloud services in use
 
 #### TVM-06: Penetration Testing
 
-- [ ] Conduct penetration testing of cloud environments at least annually
-- [ ] Include cloud-specific attack vectors (SSRF for metadata services, IAM misconfigurations, storage bucket enumeration)
-- [ ] Review cloud provider penetration testing policies and obtain authorization where required
-- [ ] Remediate findings based on severity and risk
+- [ ] **[Critical]** Conduct penetration testing of cloud environments at least annually
+- [ ] **[Recommended]** Include cloud-specific attack vectors (SSRF for metadata services, IAM misconfigurations, storage bucket enumeration)
+- [ ] **[Critical]** Review cloud provider penetration testing policies and obtain authorization where required
+- [ ] **[Recommended]** Remediate findings based on severity and risk
 
 **Cloud Provider Penetration Testing Policies:**
 
@@ -977,41 +977,41 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### TVM-07: Vulnerability Identification and Reporting
 
-- [ ] Implement a vulnerability disclosure program (or accept reports through a designated channel)
-- [ ] Triage and respond to externally reported vulnerabilities
-- [ ] Track vulnerabilities from identification through remediation
+- [ ] **[Recommended]** Implement a vulnerability disclosure program (or accept reports through a designated channel)
+- [ ] **[Recommended]** Triage and respond to externally reported vulnerabilities
+- [ ] **[Recommended]** Track vulnerabilities from identification through remediation
 
 #### TVM-09: Vulnerability Management Metrics
 
-- [ ] Track vulnerability management metrics (scan coverage, open vulnerabilities by severity, mean time to remediate, SLA compliance)
-- [ ] Report metrics to management at planned intervals
-- [ ] Use metrics to drive continuous improvement
+- [ ] **[Critical]** Track vulnerability management metrics (scan coverage, open vulnerabilities by severity, mean time to remediate, SLA compliance)
+- [ ] **[Recommended]** Report metrics to management at planned intervals
+- [ ] **[Recommended]** Use metrics to drive continuous improvement
 
 ### UEM — Universal Endpoint Management
 
 #### UEM-01: Endpoint Devices Policy
 
-- [ ] Define an endpoint security policy for devices accessing cloud environments
-- [ ] Include requirements for device encryption, patching, antivirus/EDR, and screen lock
-- [ ] Address BYOD and contractor device requirements
+- [ ] **[Recommended]** Define an endpoint security policy for devices accessing cloud environments
+- [ ] **[Critical]** Include requirements for device encryption, patching, antivirus/EDR, and screen lock
+- [ ] **[Recommended]** Address BYOD and contractor device requirements
 
 #### UEM-02: Mobile Device Management
 
-- [ ] Implement mobile device management (MDM) for devices accessing cloud resources
-- [ ] Enforce device compliance policies (encryption, PIN, OS version)
-- [ ] Implement remote wipe capability for lost or stolen devices
+- [ ] **[Recommended]** Implement mobile device management (MDM) for devices accessing cloud resources
+- [ ] **[Critical]** Enforce device compliance policies (encryption, PIN, OS version)
+- [ ] **[Recommended]** Implement remote wipe capability for lost or stolen devices
 
 #### UEM-03: BYOD Policy
 
-- [ ] Define BYOD security requirements for cloud access
-- [ ] Implement containerization or application-level controls for BYOD
-- [ ] Restrict data download/caching on BYOD devices
+- [ ] **[Recommended]** Define BYOD security requirements for cloud access
+- [ ] **[Recommended]** Implement containerization or application-level controls for BYOD
+- [ ] **[Recommended]** Restrict data download/caching on BYOD devices
 
 #### UEM-04: Endpoint Management and Compliance
 
-- [ ] Implement endpoint compliance checking before granting cloud access
-- [ ] Integrate endpoint security posture into conditional access decisions
-- [ ] Monitor endpoint compliance continuously
+- [ ] **[Critical]** Implement endpoint compliance checking before granting cloud access
+- [ ] **[Recommended]** Integrate endpoint security posture into conditional access decisions
+- [ ] **[Critical]** Monitor endpoint compliance continuously
 
 **Cloud Service Mappings:**
 
@@ -1021,24 +1021,24 @@ The following architectural decisions should be captured as Architecture Decisio
 
 #### UEM-06: Endpoint Operating System Security
 
-- [ ] Enforce OS patching on endpoints accessing cloud environments
-- [ ] Implement OS-level security configurations (firewall, disk encryption, secure boot)
-- [ ] Monitor OS security posture
+- [ ] **[Recommended]** Enforce OS patching on endpoints accessing cloud environments
+- [ ] **[Critical]** Implement OS-level security configurations (firewall, disk encryption, secure boot)
+- [ ] **[Recommended]** Monitor OS security posture
 
 #### UEM-09: Anti-Malware Detection and Prevention
 
-- [ ] Deploy anti-malware/EDR on all endpoints accessing cloud environments
-- [ ] Ensure anti-malware signatures and detection models are updated
-- [ ] Monitor and respond to endpoint security alerts
+- [ ] **[Recommended]** Deploy anti-malware/EDR on all endpoints accessing cloud environments
+- [ ] **[Recommended]** Ensure anti-malware signatures and detection models are updated
+- [ ] **[Recommended]** Monitor and respond to endpoint security alerts
 
 #### UEM-11: Remote Endpoint Management
 
-- [ ] Implement remote management capabilities for endpoints (patching, configuration, wipe)
-- [ ] Secure remote management channels
-- [ ] Audit remote management activities
+- [ ] **[Recommended]** Implement remote management capabilities for endpoints (patching, configuration, wipe)
+- [ ] **[Recommended]** Secure remote management channels
+- [ ] **[Recommended]** Audit remote management activities
 
 #### UEM-13: Endpoint Encryption
 
-- [ ] Enforce full-disk encryption on all endpoints accessing cloud environments
-- [ ] Manage encryption keys centrally
-- [ ] Verify encryption compliance through endpoint management tools
+- [ ] **[Critical]** Enforce full-disk encryption on all endpoints accessing cloud environments
+- [ ] **[Critical]** Manage encryption keys centrally
+- [ ] **[Critical]** Verify encryption compliance through endpoint management tools

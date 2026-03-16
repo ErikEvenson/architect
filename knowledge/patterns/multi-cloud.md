@@ -6,19 +6,19 @@ Multi-cloud architecture uses two or more public cloud providers simultaneously 
 
 ## Checklist
 
-- [ ] What is the business justification for multi-cloud? (regulatory requirement, M&A inheritance, best-of-breed services, negotiation leverage — not just "avoiding lock-in")
-- [ ] What abstraction layer is used for infrastructure? (Terraform, Pulumi, Crossplane — avoid provider-specific IaC like CloudFormation or ARM in multi-cloud)
-- [ ] Is Kubernetes the workload portability layer? (EKS, GKE, AKS, or self-managed — standardized deployment across providers)
-- [ ] How is identity federated across providers? (centralized IdP, cross-cloud role assumption, workload identity federation)
-- [ ] How is networking connected between clouds? (dedicated interconnects, VPN, DNS delegation, overlapping CIDR avoidance)
-- [ ] Where does data reside and why? (data sovereignty, data gravity, egress cost implications, replication strategy)
-- [ ] Which services are provider-native vs abstracted? (databases, AI/ML, managed services — accept lock-in for high-value differentiators)
-- [ ] How is observability unified? (Datadog, Grafana Cloud, or provider-native tools with aggregation — single pane of glass)
-- [ ] How is security policy enforced consistently? (OPA/Gatekeeper, cloud-agnostic policy engine, unified SIEM)
-- [ ] What is the cost comparison methodology? (normalized pricing, reserved/committed use, egress costs, support tiers)
-- [ ] How are shared services deployed? (CI/CD, secrets management, container registry — centralized vs per-provider)
-- [ ] What is the disaster recovery strategy across providers? (active-active, active-passive, provider failover)
-- [ ] How is DNS managed across providers? (Route 53, Cloud DNS, external DNS like Cloudflare — health-check-based routing)
+- [ ] **[Critical]** What is the business justification for multi-cloud? (regulatory requirement, M&A inheritance, best-of-breed services, negotiation leverage — not just "avoiding lock-in")
+- [ ] **[Critical]** What abstraction layer is used for infrastructure? (Terraform, Pulumi, Crossplane — avoid provider-specific IaC like CloudFormation or ARM in multi-cloud)
+- [ ] **[Recommended]** Is Kubernetes the workload portability layer? (EKS, GKE, AKS, or self-managed — standardized deployment across providers)
+- [ ] **[Critical]** How is identity federated across providers? (centralized IdP, cross-cloud role assumption, workload identity federation)
+- [ ] **[Critical]** How is networking connected between clouds? (dedicated interconnects, VPN, DNS delegation, overlapping CIDR avoidance)
+- [ ] **[Critical]** Where does data reside and why? (data sovereignty, data gravity, egress cost implications, replication strategy)
+- [ ] **[Recommended]** Which services are provider-native vs abstracted? (databases, AI/ML, managed services — accept lock-in for high-value differentiators)
+- [ ] **[Recommended]** How is observability unified? (Datadog, Grafana Cloud, or provider-native tools with aggregation — single pane of glass)
+- [ ] **[Critical]** How is security policy enforced consistently? (OPA/Gatekeeper, cloud-agnostic policy engine, unified SIEM)
+- [ ] **[Recommended]** What is the cost comparison methodology? (normalized pricing, reserved/committed use, egress costs, support tiers)
+- [ ] **[Recommended]** How are shared services deployed? (CI/CD, secrets management, container registry — centralized vs per-provider)
+- [ ] **[Critical]** What is the disaster recovery strategy across providers? (active-active, active-passive, provider failover)
+- [ ] **[Recommended]** How is DNS managed across providers? (Route 53, Cloud DNS, external DNS like Cloudflare — health-check-based routing)
 
 ## Why This Matters
 

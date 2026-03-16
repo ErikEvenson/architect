@@ -17,18 +17,18 @@ The **Sarbanes-Oxley Act (SOX)** requires publicly traded companies to establish
 
 ## Checklist
 
-- [ ] Are all systems that process financial data identified and in scope? (ERP, billing, revenue recognition, GL, reporting)
-- [ ] Is user access provisioning tied to HR processes? (joiner-mover-leaver automation, approval workflows)
-- [ ] Are access reviews conducted quarterly for financially significant applications? (recertification campaigns)
-- [ ] Is privileged access managed with just-in-time elevation? (PIM/PAM, time-limited, approved, logged)
-- [ ] Is segregation of duties enforced? (no single person can initiate, approve, and execute financial transactions)
-- [ ] Are all changes to financial systems approved before deployment? (change advisory board, documented approval)
-- [ ] Is there a separate test environment for financial applications? (changes tested before production)
-- [ ] Are emergency changes documented with retrospective approval? (no uncontrolled changes)
-- [ ] Are automated jobs monitored and alerted on failure? (batch processing, ETL, financial calculations)
-- [ ] Are backups tested for restorability? (not just backed up — proven recoverable)
-- [ ] Is there evidence of control operation for auditors? (logs, screenshots, tickets — auditors need proof)
-- [ ] Are cloud provider SOC 1/SOC 2 reports reviewed annually? (complementary user entity controls identified)
+- [ ] **[Critical]** Are all systems that process financial data identified and in scope? (ERP, billing, revenue recognition, GL, reporting)
+- [ ] **[Critical]** Is user access provisioning tied to HR processes? (joiner-mover-leaver automation, approval workflows)
+- [ ] **[Critical]** Are access reviews conducted quarterly for financially significant applications? (recertification campaigns)
+- [ ] **[Critical]** Is privileged access managed with just-in-time elevation? (PIM/PAM, time-limited, approved, logged)
+- [ ] **[Critical]** Is segregation of duties enforced? (no single person can initiate, approve, and execute financial transactions)
+- [ ] **[Critical]** Are all changes to financial systems approved before deployment? (change advisory board, documented approval)
+- [ ] **[Recommended]** Is there a separate test environment for financial applications? (changes tested before production)
+- [ ] **[Critical]** Are emergency changes documented with retrospective approval? (no uncontrolled changes)
+- [ ] **[Recommended]** Are automated jobs monitored and alerted on failure? (batch processing, ETL, financial calculations)
+- [ ] **[Critical]** Are backups tested for restorability? (not just backed up — proven recoverable)
+- [ ] **[Critical]** Is there evidence of control operation for auditors? (logs, screenshots, tickets — auditors need proof)
+- [ ] **[Recommended]** Are cloud provider SOC 1/SOC 2 reports reviewed annually? (complementary user entity controls identified)
 
 ## Why This Matters
 

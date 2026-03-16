@@ -6,20 +6,20 @@ AI/ML infrastructure encompasses the compute, storage, pipelines, and operationa
 
 ## Checklist
 
-- [ ] What GPU/accelerator instance types are needed? (NVIDIA A100, H100, L4 for inference, T4 for cost-effective inference, Google TPUs, AWS Trainium/Inferentia)
-- [ ] Is a managed ML platform used? (SageMaker, Vertex AI, Azure ML — vs self-managed Kubernetes with GPU operators)
-- [ ] What is the training pipeline architecture? (data ingestion, preprocessing, distributed training, hyperparameter tuning, model evaluation)
-- [ ] How is model serving implemented? (real-time endpoints, batch transform, streaming inference — latency vs throughput requirements)
-- [ ] Is there a feature store? (Feast, SageMaker Feature Store, Vertex Feature Store — online/offline feature consistency)
-- [ ] How is experiment tracking managed? (MLflow, Weights & Biases, Neptune — hyperparameters, metrics, artifacts, reproducibility)
-- [ ] Is there a model registry with versioning? (MLflow Registry, SageMaker Model Registry — approval workflows, staging/production promotion)
-- [ ] How are A/B tests and canary deployments handled for models? (traffic splitting, shadow mode, champion/challenger testing)
-- [ ] What is the data labeling pipeline? (SageMaker Ground Truth, Label Studio, Scale AI — quality control, annotation guidelines)
-- [ ] Is distributed training required? (data parallelism, model parallelism, pipeline parallelism — Horovod, DeepSpeed, PyTorch FSDP)
-- [ ] What model optimization techniques are applied? (quantization INT8/FP16, knowledge distillation, pruning, ONNX conversion for portability)
-- [ ] How are inference costs managed? (spot/preemptible instances for training, right-sized inference endpoints, auto-scaling to zero, model compilation)
-- [ ] How is model drift and data drift detected? (monitoring input distributions, prediction distributions, ground truth feedback loops)
-- [ ] What is the GPU cost management strategy? (reserved instances, spot training with checkpointing, inference auto-scaling, multi-tenancy)
+- [ ] **[Critical]** What GPU/accelerator instance types are needed? (NVIDIA A100, H100, L4 for inference, T4 for cost-effective inference, Google TPUs, AWS Trainium/Inferentia)
+- [ ] **[Recommended]** Is a managed ML platform used? (SageMaker, Vertex AI, Azure ML — vs self-managed Kubernetes with GPU operators)
+- [ ] **[Critical]** What is the training pipeline architecture? (data ingestion, preprocessing, distributed training, hyperparameter tuning, model evaluation)
+- [ ] **[Critical]** How is model serving implemented? (real-time endpoints, batch transform, streaming inference — latency vs throughput requirements)
+- [ ] **[Recommended]** Is there a feature store? (Feast, SageMaker Feature Store, Vertex Feature Store — online/offline feature consistency)
+- [ ] **[Recommended]** How is experiment tracking managed? (MLflow, Weights & Biases, Neptune — hyperparameters, metrics, artifacts, reproducibility)
+- [ ] **[Recommended]** Is there a model registry with versioning? (MLflow Registry, SageMaker Model Registry — approval workflows, staging/production promotion)
+- [ ] **[Optional]** How are A/B tests and canary deployments handled for models? (traffic splitting, shadow mode, champion/challenger testing)
+- [ ] **[Optional]** What is the data labeling pipeline? (SageMaker Ground Truth, Label Studio, Scale AI — quality control, annotation guidelines)
+- [ ] **[Recommended]** Is distributed training required? (data parallelism, model parallelism, pipeline parallelism — Horovod, DeepSpeed, PyTorch FSDP)
+- [ ] **[Recommended]** What model optimization techniques are applied? (quantization INT8/FP16, knowledge distillation, pruning, ONNX conversion for portability)
+- [ ] **[Critical]** How are inference costs managed? (spot/preemptible instances for training, right-sized inference endpoints, auto-scaling to zero, model compilation)
+- [ ] **[Recommended]** How is model drift and data drift detected? (monitoring input distributions, prediction distributions, ground truth feedback loops)
+- [ ] **[Critical]** What is the GPU cost management strategy? (reserved instances, spot training with checkpointing, inference auto-scaling, multi-tenancy)
 
 ## Why This Matters
 

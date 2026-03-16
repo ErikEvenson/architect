@@ -6,20 +6,20 @@ Microservices decompose an application into small, independently deployable serv
 
 ## Checklist
 
-- [ ] What is the service decomposition strategy? (by business domain, bounded contexts)
-- [ ] How do services communicate? (synchronous REST/gRPC vs asynchronous messaging)
-- [ ] Is there an API gateway for external traffic? (routing, auth, rate limiting)
-- [ ] Is there a service mesh for internal traffic? (mTLS, observability, traffic management)
-- [ ] Does each service have its own database? (database per service pattern)
-- [ ] How is distributed tracing implemented? (correlation IDs across service boundaries)
-- [ ] How are cross-service transactions handled? (saga pattern, eventual consistency)
-- [ ] Is there a circuit breaker pattern for inter-service calls?
-- [ ] How is service discovery implemented? (DNS, service registry, mesh)
-- [ ] What is the deployment strategy per service? (independent deploys recommended)
-- [ ] Is there a centralized logging and log aggregation system?
-- [ ] How are API contracts managed? (OpenAPI specs, schema registry, contract testing)
-- [ ] Is there a message broker for async communication? (SQS, Kafka, RabbitMQ)
-- [ ] How are shared libraries and common code managed? (shared packages vs duplication)
+- [ ] **[Critical]** What is the service decomposition strategy? (by business domain, bounded contexts)
+- [ ] **[Critical]** How do services communicate? (synchronous REST/gRPC vs asynchronous messaging)
+- [ ] **[Recommended]** Is there an API gateway for external traffic? (routing, auth, rate limiting)
+- [ ] **[Optional]** Is there a service mesh for internal traffic? (mTLS, observability, traffic management)
+- [ ] **[Critical]** Does each service have its own database? (database per service pattern)
+- [ ] **[Recommended]** How is distributed tracing implemented? (correlation IDs across service boundaries)
+- [ ] **[Critical]** How are cross-service transactions handled? (saga pattern, eventual consistency)
+- [ ] **[Recommended]** Is there a circuit breaker pattern for inter-service calls?
+- [ ] **[Recommended]** How is service discovery implemented? (DNS, service registry, mesh)
+- [ ] **[Recommended]** What is the deployment strategy per service? (independent deploys recommended)
+- [ ] **[Critical]** Is there a centralized logging and log aggregation system?
+- [ ] **[Recommended]** How are API contracts managed? (OpenAPI specs, schema registry, contract testing)
+- [ ] **[Recommended]** Is there a message broker for async communication? (SQS, Kafka, RabbitMQ)
+- [ ] **[Optional]** How are shared libraries and common code managed? (shared packages vs duplication)
 
 ## Why This Matters
 

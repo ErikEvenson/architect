@@ -6,30 +6,36 @@ Data pipelines ingest, transform, and store data for analytics, reporting, or do
 
 ## Checklist
 
-- [ ] Is the pipeline batch, streaming, or hybrid?
-- [ ] What is the data ingestion source? (APIs, databases, files, IoT devices, message queues)
-- [ ] What is the expected data volume? (GB/day, events/second)
-- [ ] What is the latency requirement? (real-time, near-real-time, daily batch)
-- [ ] What transformation logic is needed? (ETL vs ELT)
-- [ ] What is the target data store? (data warehouse, data lake, operational database)
-- [ ] Is schema evolution supported? (backward/forward compatible changes)
-- [ ] How is data quality validated? (schema validation, null checks, range checks)
-- [ ] Is exactly-once processing required or is at-least-once acceptable?
-- [ ] How are failed records handled? (dead letter queue, retry, manual review)
-- [ ] Is data partitioning strategy defined? (by date, by tenant, by region)
-- [ ] What is the data retention policy? (hot, warm, cold, archive tiers)
-- [ ] Is the pipeline idempotent? (safe to re-run without duplicates)
-- [ ] How is pipeline orchestration managed? (Airflow, Step Functions, Dagster)
-- [ ] Are data lineage and audit trails maintained?
+- [ ] **[Critical]** Is the pipeline batch, streaming, or hybrid?
+- [ ] **[Critical]** What is the data ingestion source? (APIs, databases, files, IoT devices, message queues)
+- [ ] **[Critical]** What is the expected data volume? (GB/day, events/second)
+- [ ] **[Critical]** What is the latency requirement? (real-time, near-real-time, daily batch)
+- [ ] **[Recommended]** What transformation logic is needed? (ETL vs ELT)
+- [ ] **[Critical]** What is the target data store? (data warehouse, data lake, operational database)
+- [ ] **[Recommended]** Is schema evolution supported? (backward/forward compatible changes)
+- [ ] **[Critical]** How is data quality validated? (schema validation, null checks, range checks)
+- [ ] **[Critical]** Is exactly-once processing required or is at-least-once acceptable?
+- [ ] **[Critical]** How are failed records handled? (dead letter queue, retry, manual review)
+- [ ] **[Recommended]** Is data partitioning strategy defined? (by date, by tenant, by region)
+- [ ] **[Recommended]** What is the data retention policy? (hot, warm, cold, archive tiers)
+- [ ] **[Critical]** Is the pipeline idempotent? (safe to re-run without duplicates)
+- [ ] **[Recommended]** How is pipeline orchestration managed? (Airflow, Step Functions, Dagster)
+- [ ] **[Optional]** Are data lineage and audit trails maintained?
 
-## Common Mistakes
+## Why This Matters
 
-- No dead letter queue (failed records silently lost)
-- No idempotency (re-runs create duplicates)
-- Monolithic pipeline (one failure blocks everything)
-- No data validation (garbage in, garbage out)
-- Missing backpressure handling (producer overwhelms consumer)
-- No monitoring on pipeline lag (data freshness degrades silently)
+Data pipelines are the backbone of analytics, reporting, and downstream data consumption. Without dead letter queues, failed records are silently lost. Missing idempotency means re-runs create duplicates. Monolithic pipelines create single points of failure where one bad record blocks everything. No data validation leads to garbage-in, garbage-out that corrupts downstream analysis. Missing backpressure handling allows producers to overwhelm consumers. Without monitoring on pipeline lag, data freshness degrades silently until stakeholders notice stale dashboards.
+
+## Common Decisions (ADR Triggers)
+
+- **Batch vs streaming vs hybrid** — latency requirements, data volume, processing complexity
+- **Ingestion platform** — Kafka vs Kinesis vs Pub/Sub vs Event Hubs, ordering and retention requirements
+- **ETL vs ELT** — transform before loading vs transform in the warehouse, tool selection
+- **Orchestration tool** — Airflow vs Step Functions vs Dagster vs Prefect, managed vs self-hosted
+- **Data warehouse selection** — Redshift vs BigQuery vs Synapse vs Snowflake, pricing model and query patterns
+- **Data quality framework** — Great Expectations vs Glue Data Quality vs Dataplex, validation scope and alerting
+- **Schema evolution strategy** — backward/forward compatibility, schema registry, format selection (Avro, Parquet, JSON)
+- **Data retention and tiering** — hot/warm/cold lifecycle, archive policy, cost optimization
 
 ## Cost Benchmarks
 
@@ -193,7 +199,7 @@ Data pipelines ingest, transform, and store data for analytics, reporting, or do
 - Choose **Athena** over always-on Redshift for ad-hoc or infrequent queries ($5/TB scanned).
 - Use **Glue** for simple ETL jobs instead of provisioning full EMR clusters.
 - Partition data by date/region in S3 — reduces Athena scan costs and improves query speed.
-- Use **Kinesis Data Firehose** for simple ingestion to S3 (no shard management, pay per GB).
+- Use **Amazon Data Firehose** for simple ingestion to S3 (no shard management, pay per GB).
 - Consider **columnar formats** (Parquet, ORC) — 3-5x compression reduces storage and query costs.
 
 ## Key Patterns

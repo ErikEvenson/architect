@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Implement RBAC with least-privilege: create namespace-scoped Roles (not ClusterRoles) for application teams, bind to groups (not individual users) via RoleBindings
-- [ ] Enforce Pod Security Standards (PSS): apply restricted profile to production namespaces, baseline to development, privileged only to system namespaces
-- [ ] Deploy a policy engine (OPA/Gatekeeper or Kyverno) for custom admission policies beyond PSS: image registry allowlists, label requirements, resource limit enforcement
-- [ ] Design secrets management strategy: external-secrets-operator (sync from Vault/AWS SM/GCP SM), sealed-secrets (encrypted in Git), or CSI secrets store driver (mount from Vault)
-- [ ] Configure image signing and verification: Cosign for signing, Kyverno/Connaisseur/Sigstore Policy Controller for admission-time verification
-- [ ] Plan admission controller pipeline: validating webhooks before mutating webhooks, ensure failure mode is understood (fail-open vs fail-closed)
-- [ ] Implement runtime security monitoring: Falco for syscall-based threat detection, Tetragon for eBPF-based enforcement, or cloud-native equivalents
-- [ ] Configure audit logging: set audit policy to capture authentication, authorization, and resource modification events; ship to SIEM
-- [ ] Plan service account token management: disable automounting of default service account tokens, use bound service account tokens (audience-scoped, time-limited)
-- [ ] Implement network segmentation: namespace-level NetworkPolicies with default-deny, allow only required pod-to-pod and egress flows
-- [ ] Evaluate image scanning in CI/CD (Trivy, Grype, Snyk) and runtime (continuous scanning of running images for new CVEs)
-- [ ] Plan etcd encryption at rest: configure EncryptionConfiguration for Secrets, use KMS provider for key management (AWS KMS, GCP KMS, Azure Key Vault)
-- [ ] Design break-glass procedures: emergency access methods that bypass normal RBAC for incident response, with audit trail
+- [ ] **[Critical]** Implement RBAC with least-privilege: create namespace-scoped Roles (not ClusterRoles) for application teams, bind to groups (not individual users) via RoleBindings
+- [ ] **[Recommended]** Enforce Pod Security Standards (PSS): apply restricted profile to production namespaces, baseline to development, privileged only to system namespaces
+- [ ] **[Recommended]** Deploy a policy engine (OPA/Gatekeeper or Kyverno) for custom admission policies beyond PSS: image registry allowlists, label requirements, resource limit enforcement
+- [ ] **[Recommended]** Design secrets management strategy: external-secrets-operator (sync from Vault/AWS SM/GCP SM), sealed-secrets (encrypted in Git), or CSI secrets store driver (mount from Vault)
+- [ ] **[Recommended]** Configure image signing and verification: Cosign for signing, Kyverno/Connaisseur/Sigstore Policy Controller for admission-time verification
+- [ ] **[Recommended]** Plan admission controller pipeline: validating webhooks before mutating webhooks, ensure failure mode is understood (fail-open vs fail-closed)
+- [ ] **[Recommended]** Implement runtime security monitoring: Falco for syscall-based threat detection, Tetragon for eBPF-based enforcement, or cloud-native equivalents
+- [ ] **[Recommended]** Configure audit logging: set audit policy to capture authentication, authorization, and resource modification events; ship to SIEM
+- [ ] **[Recommended]** Plan service account token management: disable automounting of default service account tokens, use bound service account tokens (audience-scoped, time-limited)
+- [ ] **[Recommended]** Implement network segmentation: namespace-level NetworkPolicies with default-deny, allow only required pod-to-pod and egress flows
+- [ ] **[Recommended]** Evaluate image scanning in CI/CD (Trivy, Grype, Snyk) and runtime (continuous scanning of running images for new CVEs)
+- [ ] **[Recommended]** Plan etcd encryption at rest: configure EncryptionConfiguration for Secrets, use KMS provider for key management (AWS KMS, GCP KMS, Azure Key Vault)
+- [ ] **[Recommended]** Design break-glass procedures: emergency access methods that bypass normal RBAC for incident response, with audit trail
 
 ## Why This Matters
 

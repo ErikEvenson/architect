@@ -26,19 +26,19 @@
 
 ## Checklist
 
-- [ ] Is CUI identified and categorized across all systems? (know what you are protecting and where it resides)
-- [ ] Is the CUI boundary (enclave) defined and documented? (system security plan, network diagrams)
-- [ ] Is the cloud environment deployed in a FedRAMP-authorized region? (GovCloud, Azure Government, or Assured Workloads for IL4+)
-- [ ] Is multi-factor authentication enforced for all users accessing CUI? (FIPS 140-2 validated MFA)
-- [ ] Are audit logs comprehensive and tamper-evident? (who accessed what CUI, when, from where)
-- [ ] Is encryption FIPS 140-2 validated for data at rest and in transit? (not just enabled — validated modules)
-- [ ] Is a System Security Plan (SSP) documented? (maps each of the 110 controls to implementation)
-- [ ] Is a Plan of Action and Milestones (POA&M) maintained? (for controls not yet fully implemented)
-- [ ] Are incident response procedures defined and tested? (72-hour DoD reporting requirement)
-- [ ] Is media sanitization handled per NIST 800-88? (before reuse or disposal of storage)
-- [ ] Is access control based on least privilege with separation of duties? (role-based, regularly reviewed)
-- [ ] Are personnel security requirements met? (background checks, CUI handling training)
-- [ ] Is there a continuous monitoring program? (ongoing assessment, not point-in-time)
+- [ ] **[Critical]** Is CUI identified and categorized across all systems? (know what you are protecting and where it resides)
+- [ ] **[Critical]** Is the CUI boundary (enclave) defined and documented? (system security plan, network diagrams)
+- [ ] **[Critical]** Is the cloud environment deployed in a FedRAMP-authorized region? (GovCloud, Azure Government, or Assured Workloads for IL4+)
+- [ ] **[Critical]** Is multi-factor authentication enforced for all users accessing CUI? (FIPS 140-2 validated MFA)
+- [ ] **[Critical]** Are audit logs comprehensive and tamper-evident? (who accessed what CUI, when, from where)
+- [ ] **[Critical]** Is encryption FIPS 140-2 validated for data at rest and in transit? (not just enabled — validated modules)
+- [ ] **[Critical]** Is a System Security Plan (SSP) documented? (maps each of the 110 controls to implementation)
+- [ ] **[Recommended]** Is a Plan of Action and Milestones (POA&M) maintained? (for controls not yet fully implemented)
+- [ ] **[Critical]** Are incident response procedures defined and tested? (72-hour DoD reporting requirement)
+- [ ] **[Recommended]** Is media sanitization handled per NIST 800-88? (before reuse or disposal of storage)
+- [ ] **[Critical]** Is access control based on least privilege with separation of duties? (role-based, regularly reviewed)
+- [ ] **[Recommended]** Are personnel security requirements met? (background checks, CUI handling training)
+- [ ] **[Critical]** Is there a continuous monitoring program? (ongoing assessment, not point-in-time)
 
 ## Why This Matters
 

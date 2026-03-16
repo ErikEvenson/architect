@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Choose appropriate workload controller: Deployment (stateless), StatefulSet (stateful, ordered), DaemonSet (per-node), Job (run-to-completion), CronJob (scheduled)
-- [ ] Set resource requests (scheduling guarantee) and limits (hard cap) for CPU and memory on every container; understand the relationship to QoS classes (Guaranteed, Burstable, BestEffort)
-- [ ] Configure Horizontal Pod Autoscaler (HPA) with appropriate metrics: CPU/memory (metrics-server), custom metrics (Prometheus Adapter), or external metrics (cloud provider)
-- [ ] Evaluate Vertical Pod Autoscaler (VPA) for right-sizing resource requests based on observed usage; note VPA and HPA on CPU/memory are mutually exclusive
-- [ ] Assess KEDA for event-driven autoscaling (queue depth, HTTP request rate, cron schedules, custom scalers) as a complement to HPA
-- [ ] Design pod topology spread constraints to distribute pods across zones, nodes, or custom topology domains for high availability
-- [ ] Configure pod disruption budgets (PDBs) to ensure minimum availability during voluntary disruptions (node drains, cluster upgrades, rollouts)
-- [ ] Plan node affinity/anti-affinity rules: requiredDuringScheduling for hard constraints, preferredDuringScheduling for soft preferences
-- [ ] Set pod anti-affinity to prevent co-scheduling of replicas on the same node or zone (critical for HA of stateful workloads)
-- [ ] Configure priority classes and preemption for workload tiering (system-critical > production > batch); set at least three priority levels
-- [ ] Plan init containers for setup tasks (schema migration, config generation, dependency readiness checks) that must complete before app containers start
-- [ ] Design liveness, readiness, and startup probes: liveness for deadlock detection, readiness for traffic routing, startup for slow-starting containers
-- [ ] Evaluate ephemeral containers for debugging running pods without restarting (kubectl debug)
+- [ ] **[Recommended]** Choose appropriate workload controller: Deployment (stateless), StatefulSet (stateful, ordered), DaemonSet (per-node), Job (run-to-completion), CronJob (scheduled)
+- [ ] **[Recommended]** Set resource requests (scheduling guarantee) and limits (hard cap) for CPU and memory on every container; understand the relationship to QoS classes (Guaranteed, Burstable, BestEffort)
+- [ ] **[Recommended]** Configure Horizontal Pod Autoscaler (HPA) with appropriate metrics: CPU/memory (metrics-server), custom metrics (Prometheus Adapter), or external metrics (cloud provider)
+- [ ] **[Optional]** Evaluate Vertical Pod Autoscaler (VPA) for right-sizing resource requests based on observed usage; note VPA and HPA on CPU/memory are mutually exclusive
+- [ ] **[Recommended]** Assess KEDA for event-driven autoscaling (queue depth, HTTP request rate, cron schedules, custom scalers) as a complement to HPA
+- [ ] **[Recommended]** Design pod topology spread constraints to distribute pods across zones, nodes, or custom topology domains for high availability
+- [ ] **[Recommended]** Configure pod disruption budgets (PDBs) to ensure minimum availability during voluntary disruptions (node drains, cluster upgrades, rollouts)
+- [ ] **[Recommended]** Plan node affinity/anti-affinity rules: requiredDuringScheduling for hard constraints, preferredDuringScheduling for soft preferences
+- [ ] **[Recommended]** Set pod anti-affinity to prevent co-scheduling of replicas on the same node or zone (critical for HA of stateful workloads)
+- [ ] **[Recommended]** Configure priority classes and preemption for workload tiering (system-critical > production > batch); set at least three priority levels
+- [ ] **[Recommended]** Plan init containers for setup tasks (schema migration, config generation, dependency readiness checks) that must complete before app containers start
+- [ ] **[Recommended]** Design liveness, readiness, and startup probes: liveness for deadlock detection, readiness for traffic routing, startup for slow-starting containers
+- [ ] **[Recommended]** Evaluate ephemeral containers for debugging running pods without restarting (kubectl debug)
 
 ## Why This Matters
 

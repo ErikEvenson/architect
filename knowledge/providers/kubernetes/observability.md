@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Deploy Prometheus for metrics collection: evaluate kube-prometheus-stack (Prometheus Operator + Grafana + alerting rules) vs lightweight Prometheus (single binary)
-- [ ] Install metrics-server for core resource metrics (CPU/memory) required by HPA and `kubectl top`; do not confuse with Prometheus (different purpose)
-- [ ] Deploy kube-state-metrics to expose Kubernetes object state as Prometheus metrics (deployment replicas, pod phase, node conditions, PVC status)
-- [ ] Select logging stack: Fluentd (feature-rich, plugin ecosystem) vs Fluent Bit (lightweight, preferred for K8s) vs Vector (Rust-based, high performance) as collectors; Loki (label-indexed) vs Elasticsearch (full-text search) as backends
-- [ ] Plan distributed tracing: OpenTelemetry SDK instrumentation, collector deployment (sidecar vs DaemonSet vs Deployment), backend (Jaeger, Tempo, Zipkin, or cloud-native)
-- [ ] Configure Kubernetes event collection: events have 1-hour default TTL; export to persistent storage via event-exporter or kube-eventer for post-incident analysis
-- [ ] Design custom metrics pipeline for HPA: Prometheus Adapter (exposes Prometheus queries as Kubernetes custom metrics API) or KEDA (wider scaler support)
-- [ ] Plan Grafana dashboard strategy: use upstream community dashboards as base (kube-prometheus-stack includes 20+ dashboards), customize per-team views
-- [ ] Configure alerting pipeline: Prometheus Alertmanager for routing, grouping, inhibition, and silencing; integrate with PagerDuty/Slack/OpsGenie
-- [ ] Evaluate OpenTelemetry Collector as a unified telemetry pipeline (metrics, logs, traces) to reduce agent proliferation
-- [ ] Plan storage retention: Prometheus local storage (15-day default), long-term with Thanos or Cortex or Mimir for multi-cluster aggregation and extended retention
-- [ ] Implement SLO monitoring: define SLIs (latency p99, error rate, availability), use Pyrra or Sloth to generate SLO-based alerting rules and burn-rate alerts
+- [ ] **[Recommended]** Deploy Prometheus for metrics collection: evaluate kube-prometheus-stack (Prometheus Operator + Grafana + alerting rules) vs lightweight Prometheus (single binary)
+- [ ] **[Recommended]** Install metrics-server for core resource metrics (CPU/memory) required by HPA and `kubectl top`; do not confuse with Prometheus (different purpose)
+- [ ] **[Recommended]** Deploy kube-state-metrics to expose Kubernetes object state as Prometheus metrics (deployment replicas, pod phase, node conditions, PVC status)
+- [ ] **[Recommended]** Select logging stack: Fluentd (feature-rich, plugin ecosystem) vs Fluent Bit (lightweight, preferred for K8s) vs Vector (Rust-based, high performance) as collectors; Loki (label-indexed) vs Elasticsearch (full-text search) as backends
+- [ ] **[Recommended]** Plan distributed tracing: OpenTelemetry SDK instrumentation, collector deployment (sidecar vs DaemonSet vs Deployment), backend (Jaeger, Tempo, Zipkin, or cloud-native)
+- [ ] **[Recommended]** Configure Kubernetes event collection: events have 1-hour default TTL; export to persistent storage via event-exporter or kube-eventer for post-incident analysis
+- [ ] **[Recommended]** Design custom metrics pipeline for HPA: Prometheus Adapter (exposes Prometheus queries as Kubernetes custom metrics API) or KEDA (wider scaler support)
+- [ ] **[Recommended]** Plan Grafana dashboard strategy: use upstream community dashboards as base (kube-prometheus-stack includes 20+ dashboards), customize per-team views
+- [ ] **[Recommended]** Configure alerting pipeline: Prometheus Alertmanager for routing, grouping, inhibition, and silencing; integrate with PagerDuty/Slack/OpsGenie
+- [ ] **[Recommended]** Evaluate OpenTelemetry Collector as a unified telemetry pipeline (metrics, logs, traces) to reduce agent proliferation
+- [ ] **[Recommended]** Plan storage retention: Prometheus local storage (15-day default), long-term with Thanos or Cortex or Mimir for multi-cluster aggregation and extended retention
+- [ ] **[Recommended]** Implement SLO monitoring: define SLIs (latency p99, error rate, availability), use Pyrra or Sloth to generate SLO-based alerting rules and burn-rate alerts
 
 ## Why This Matters
 

@@ -6,20 +6,20 @@ Event-driven architecture uses events as the primary mechanism for communication
 
 ## Checklist
 
-- [ ] What is the event backbone? (Kafka, EventBridge, Pub/Sub, SNS/SQS, Event Hubs)
-- [ ] Is event sourcing used? (append-only event log as source of truth vs traditional state storage)
-- [ ] Is CQRS applied? (separate read/write models, independent scaling of query and command sides)
-- [ ] Choreography or orchestration? (decentralized event reactions vs centralized workflow engine like Step Functions or Temporal)
-- [ ] Is there an event schema registry? (Confluent Schema Registry, AWS Glue, Apicurio — enforcing contracts)
-- [ ] What is the event versioning strategy? (schema evolution, backward/forward compatibility, Avro vs Protobuf vs JSON Schema)
-- [ ] What delivery guarantee is required? (exactly-once, at-least-once, at-most-once — and idempotency strategy for at-least-once)
-- [ ] How is event ordering preserved? (partition keys, sequence numbers, single-partition topics for strict ordering)
-- [ ] Is there a dead letter queue for failed event processing? (DLQ monitoring, alerting, replay mechanism)
-- [ ] How are distributed transactions handled? (saga pattern — compensating transactions, orchestrated vs choreographed sagas)
-- [ ] Is event replay supported? (rebuilding state from event log, retention policies, compaction)
-- [ ] How is backpressure managed? (consumer throttling, queue depth monitoring, auto-scaling consumers)
-- [ ] What is the event retention policy? (hours, days, indefinite — cost vs replay capability tradeoff)
-- [ ] How are event consumers monitored? (consumer lag, processing latency, error rates, partition assignment)
+- [ ] **[Critical]** What is the event backbone? (Kafka, EventBridge, Pub/Sub, SNS/SQS, Event Hubs)
+- [ ] **[Recommended]** Is event sourcing used? (append-only event log as source of truth vs traditional state storage)
+- [ ] **[Recommended]** Is CQRS applied? (separate read/write models, independent scaling of query and command sides)
+- [ ] **[Critical]** Choreography or orchestration? (decentralized event reactions vs centralized workflow engine like Step Functions or Temporal)
+- [ ] **[Recommended]** Is there an event schema registry? (Confluent Schema Registry, AWS Glue, Apicurio — enforcing contracts)
+- [ ] **[Recommended]** What is the event versioning strategy? (schema evolution, backward/forward compatibility, Avro vs Protobuf vs JSON Schema)
+- [ ] **[Critical]** What delivery guarantee is required? (exactly-once, at-least-once, at-most-once — and idempotency strategy for at-least-once)
+- [ ] **[Critical]** How is event ordering preserved? (partition keys, sequence numbers, single-partition topics for strict ordering)
+- [ ] **[Critical]** Is there a dead letter queue for failed event processing? (DLQ monitoring, alerting, replay mechanism)
+- [ ] **[Critical]** How are distributed transactions handled? (saga pattern — compensating transactions, orchestrated vs choreographed sagas)
+- [ ] **[Recommended]** Is event replay supported? (rebuilding state from event log, retention policies, compaction)
+- [ ] **[Recommended]** How is backpressure managed? (consumer throttling, queue depth monitoring, auto-scaling consumers)
+- [ ] **[Recommended]** What is the event retention policy? (hours, days, indefinite — cost vs replay capability tradeoff)
+- [ ] **[Recommended]** How are event consumers monitored? (consumer lag, processing latency, error rates, partition assignment)
 
 ## Why This Matters
 

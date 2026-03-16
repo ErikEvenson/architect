@@ -18,18 +18,18 @@ Focuses on ensuring a workload performs its intended function correctly and cons
 
 ### Checklist
 
-- [ ] Define availability targets (SLAs, SLOs, SLIs) for each workload tier based on business requirements
-- [ ] Identify and mitigate single points of failure using redundancy across Availability Zones and regions
-- [ ] Implement health modeling to distinguish between healthy, degraded, and unhealthy states
-- [ ] Design for self-healing using Azure auto-restart, auto-scaling, and health probes
-- [ ] Use retry policies with exponential backoff and circuit breaker patterns for transient fault handling
-- [ ] Implement geo-redundancy for data (GRS/GZRS storage, geo-replication for databases)
-- [ ] Define and test disaster recovery procedures with documented RTO and RPO targets
-- [ ] Use Azure Traffic Manager or Front Door for multi-region traffic routing and failover
-- [ ] Conduct failure mode analysis (FMA) during design to identify and mitigate potential failures
-- [ ] Implement structured chaos engineering tests using Azure Chaos Studio
-- [ ] Monitor reliability metrics and set alerts for SLO breaches using Azure Monitor
-- [ ] Design workload components to degrade gracefully rather than fail completely under stress
+- [ ] **[Critical]** Define availability targets (SLAs, SLOs, SLIs) for each workload tier based on business requirements
+- [ ] **[Critical]** Identify and mitigate single points of failure using redundancy across Availability Zones and regions
+- [ ] **[Critical]** Implement health modeling to distinguish between healthy, degraded, and unhealthy states
+- [ ] **[Recommended]** Design for self-healing using Azure auto-restart, auto-scaling, and health probes
+- [ ] **[Recommended]** Use retry policies with exponential backoff and circuit breaker patterns for transient fault handling
+- [ ] **[Critical]** Implement geo-redundancy for data (GRS/GZRS storage, geo-replication for databases)
+- [ ] **[Critical]** Define and test disaster recovery procedures with documented RTO and RPO targets
+- [ ] **[Critical]** Use Azure Traffic Manager or Front Door for multi-region traffic routing and failover
+- [ ] **[Recommended]** Conduct failure mode analysis (FMA) during design to identify and mitigate potential failures
+- [ ] **[Recommended]** Implement structured chaos engineering tests using Azure Chaos Studio
+- [ ] **[Critical]** Monitor reliability metrics and set alerts for SLO breaches using Azure Monitor
+- [ ] **[Recommended]** Design workload components to degrade gracefully rather than fail completely under stress
 
 ### Why This Matters
 
@@ -51,18 +51,18 @@ Focuses on protecting the workload from threats, including data, identity, netwo
 
 ### Checklist
 
-- [ ] Use Microsoft Entra ID (Azure AD) for identity management with conditional access policies and MFA
-- [ ] Implement least-privilege access using Azure RBAC and Privileged Identity Management (PIM)
-- [ ] Segment networks using Virtual Networks, NSGs, and Azure Firewall with zero-trust principles
-- [ ] Encrypt data at rest (Azure Storage Service Encryption, TDE for databases) and in transit (TLS 1.2+)
-- [ ] Use Azure Key Vault for all secrets, certificates, and encryption key management
-- [ ] Enable Microsoft Defender for Cloud for security posture management and threat protection
-- [ ] Implement Azure DDoS Protection for public-facing workloads
-- [ ] Use managed identities instead of credentials for service-to-service authentication
-- [ ] Scan container images and application dependencies for vulnerabilities in the CI/CD pipeline
-- [ ] Establish security baselines using Azure Policy and monitor compliance continuously
-- [ ] Log all security events to a centralized SIEM (Microsoft Sentinel) for detection and response
-- [ ] Conduct regular threat modeling using STRIDE or similar methodology during design reviews
+- [ ] **[Critical]** Use Microsoft Entra ID (Azure AD) for identity management with conditional access policies and MFA
+- [ ] **[Recommended]** Implement least-privilege access using Azure RBAC and Privileged Identity Management (PIM)
+- [ ] **[Recommended]** Segment networks using Virtual Networks, NSGs, and Azure Firewall with zero-trust principles
+- [ ] **[Critical]** Encrypt data at rest (Azure Storage Service Encryption, TDE for databases) and in transit (TLS 1.2+)
+- [ ] **[Critical]** Use Azure Key Vault for all secrets, certificates, and encryption key management
+- [ ] **[Critical]** Enable Microsoft Defender for Cloud for security posture management and threat protection
+- [ ] **[Recommended]** Implement Azure DDoS Protection for public-facing workloads
+- [ ] **[Recommended]** Use managed identities instead of credentials for service-to-service authentication
+- [ ] **[Recommended]** Scan container images and application dependencies for vulnerabilities in the CI/CD pipeline
+- [ ] **[Critical]** Establish security baselines using Azure Policy and monitor compliance continuously
+- [ ] **[Critical]** Log all security events to a centralized SIEM (Microsoft Sentinel) for detection and response
+- [ ] **[Critical]** Conduct regular threat modeling using STRIDE or similar methodology during design reviews
 
 ### Why This Matters
 
@@ -84,18 +84,18 @@ Focuses on reducing unnecessary expenditure and improving operational efficiency
 
 ### Checklist
 
-- [ ] Establish a cost model and budget for each workload using Azure Cost Management + Billing
-- [ ] Implement a tagging strategy for cost allocation, chargeback, and showback across teams
-- [ ] Right-size compute resources using Azure Advisor recommendations and utilization data
-- [ ] Use Azure Reserved Instances or Savings Plans for predictable, steady-state workloads
-- [ ] Leverage Azure Spot VMs for fault-tolerant, interruptible batch and development workloads
-- [ ] Select appropriate storage tiers (Hot, Cool, Cold, Archive) and configure lifecycle management
-- [ ] Choose PaaS and serverless options (App Service, Functions, Cosmos DB serverless) over IaaS where feasible
-- [ ] Set budget alerts and anomaly detection to catch unexpected spending early
-- [ ] Shut down or scale down non-production environments outside business hours using automation
-- [ ] Review Azure Advisor cost recommendations monthly and act on applicable suggestions
-- [ ] Measure cost efficiency as cost per business unit (transaction, user, request) not just absolute spend
-- [ ] Evaluate Azure Hybrid Benefit and dev/test pricing for applicable workloads
+- [ ] **[Critical]** Establish a cost model and budget for each workload using Azure Cost Management + Billing
+- [ ] **[Recommended]** Implement a tagging strategy for cost allocation, chargeback, and showback across teams
+- [ ] **[Recommended]** Right-size compute resources using Azure Advisor recommendations and utilization data
+- [ ] **[Recommended]** Use Azure Reserved Instances or Savings Plans for predictable, steady-state workloads
+- [ ] **[Recommended]** Leverage Azure Spot VMs for fault-tolerant, interruptible batch and development workloads
+- [ ] **[Recommended]** Select appropriate storage tiers (Hot, Cool, Cold, Archive) and configure lifecycle management
+- [ ] **[Recommended]** Choose PaaS and serverless options (App Service, Functions, Cosmos DB serverless) over IaaS where feasible
+- [ ] **[Critical]** Set budget alerts and anomaly detection to catch unexpected spending early
+- [ ] **[Recommended]** Shut down or scale down non-production environments outside business hours using automation
+- [ ] **[Recommended]** Review Azure Advisor cost recommendations monthly and act on applicable suggestions
+- [ ] **[Recommended]** Measure cost efficiency as cost per business unit (transaction, user, request) not just absolute spend
+- [ ] **[Recommended]** Evaluate Azure Hybrid Benefit and dev/test pricing for applicable workloads
 
 ### Why This Matters
 
@@ -117,18 +117,18 @@ Focuses on the processes and practices that keep a workload running in productio
 
 ### Checklist
 
-- [ ] Use infrastructure as code (Bicep, ARM templates, Terraform) for all Azure resource provisioning
-- [ ] Implement CI/CD pipelines (Azure DevOps, GitHub Actions) with automated testing and staged rollouts
-- [ ] Instrument applications with Application Insights for distributed tracing, metrics, and logs
-- [ ] Define and monitor operational health using Azure Monitor dashboards and workbooks
-- [ ] Create and maintain runbooks in Azure Automation for routine operational tasks
-- [ ] Implement blue-green or canary deployment strategies to reduce deployment risk
-- [ ] Establish incident management processes with clear escalation paths and on-call rotations
-- [ ] Conduct blameless post-incident reviews and feed learnings back into processes and automation
-- [ ] Use Azure Resource Graph for cross-subscription inventory and compliance queries
-- [ ] Automate compliance and governance checks using Azure Policy and management groups
-- [ ] Maintain documentation for architecture decisions, operational procedures, and recovery plans
-- [ ] Set up alerts with appropriate severity levels and actionable notifications (avoid alert fatigue)
+- [ ] **[Recommended]** Use infrastructure as code (Bicep, ARM templates, Terraform) for all Azure resource provisioning
+- [ ] **[Recommended]** Implement CI/CD pipelines (Azure DevOps, GitHub Actions) with automated testing and staged rollouts
+- [ ] **[Recommended]** Instrument applications with Application Insights for distributed tracing, metrics, and logs
+- [ ] **[Recommended]** Define and monitor operational health using Azure Monitor dashboards and workbooks
+- [ ] **[Recommended]** Create and maintain runbooks in Azure Automation for routine operational tasks
+- [ ] **[Recommended]** Implement blue-green or canary deployment strategies to reduce deployment risk
+- [ ] **[Critical]** Establish incident management processes with clear escalation paths and on-call rotations
+- [ ] **[Critical]** Conduct blameless post-incident reviews and feed learnings back into processes and automation
+- [ ] **[Critical]** Use Azure Resource Graph for cross-subscription inventory and compliance queries
+- [ ] **[Critical]** Automate compliance and governance checks using Azure Policy and management groups
+- [ ] **[Recommended]** Maintain documentation for architecture decisions, operational procedures, and recovery plans
+- [ ] **[Recommended]** Set up alerts with appropriate severity levels and actionable notifications (avoid alert fatigue)
 
 ### Why This Matters
 
@@ -150,18 +150,18 @@ Focuses on the ability of a workload to scale and meet the demands placed on it 
 
 ### Checklist
 
-- [ ] Define performance targets (latency, throughput, response time) based on user expectations and SLAs
-- [ ] Select compute SKUs and configurations appropriate for workload characteristics and scale requirements
-- [ ] Implement horizontal scaling with Azure VM Scale Sets, App Service auto-scale, or AKS cluster autoscaler
-- [ ] Use Azure CDN or Front Door to cache static content and reduce latency for global users
-- [ ] Implement application-level caching with Azure Cache for Redis for frequently accessed data
-- [ ] Choose database services and tiers matched to query patterns (Cosmos DB, SQL Database, PostgreSQL Flexible)
-- [ ] Use Azure Load Testing to validate performance under expected and peak load conditions
-- [ ] Monitor performance metrics continuously and set alerts for degradation using Application Insights
-- [ ] Optimize data access patterns: use read replicas, partitioning, and appropriate indexing strategies
-- [ ] Evaluate asynchronous messaging patterns (Service Bus, Event Hubs) to decouple and scale components
-- [ ] Profile application code to identify bottlenecks before scaling infrastructure
-- [ ] Review Azure Advisor performance recommendations and new SKU options periodically
+- [ ] **[Critical]** Define performance targets (latency, throughput, response time) based on user expectations and SLAs
+- [ ] **[Recommended]** Select compute SKUs and configurations appropriate for workload characteristics and scale requirements
+- [ ] **[Recommended]** Implement horizontal scaling with Azure VM Scale Sets, App Service auto-scale, or AKS cluster autoscaler
+- [ ] **[Recommended]** Use Azure CDN or Front Door to cache static content and reduce latency for global users
+- [ ] **[Recommended]** Implement application-level caching with Azure Cache for Redis for frequently accessed data
+- [ ] **[Recommended]** Choose database services and tiers matched to query patterns (Cosmos DB, SQL Database, PostgreSQL Flexible)
+- [ ] **[Recommended]** Use Azure Load Testing to validate performance under expected and peak load conditions
+- [ ] **[Recommended]** Monitor performance metrics continuously and set alerts for degradation using Application Insights
+- [ ] **[Recommended]** Optimize data access patterns: use read replicas, partitioning, and appropriate indexing strategies
+- [ ] **[Recommended]** Evaluate asynchronous messaging patterns (Service Bus, Event Hubs) to decouple and scale components
+- [ ] **[Recommended]** Profile application code to identify bottlenecks before scaling infrastructure
+- [ ] **[Recommended]** Review Azure Advisor performance recommendations and new SKU options periodically
 
 ### Why This Matters
 
@@ -188,3 +188,13 @@ Performance directly impacts user experience and business outcomes. Slow applica
 5. **Run the Azure Well-Architected Review**: Use the official [Azure Well-Architected Review assessment](https://learn.microsoft.com/en-us/assessments/azure-architecture-review) to get tailored recommendations.
 6. **Create an action plan**: Prioritize identified gaps by business impact and create work items with owners and timelines.
 7. **Integrate with Azure Advisor**: Enable Advisor recommendations aligned with each pillar for continuous, automated feedback.
+
+## Common Decisions (ADR Triggers)
+
+- **Pillar prioritization** — which pillars to focus on first based on workload maturity and business requirements
+- **Reliability architecture** — single-region vs multi-region, availability zone usage, health modeling approach
+- **Security posture** — Microsoft Defender tier selection, Sentinel vs third-party SIEM, identity architecture
+- **Cost optimization** — Azure Reservations vs Savings Plans, advisor recommendations, spot VM usage
+- **Operational model** — IaC tooling (Bicep vs Terraform), Azure Monitor vs third-party observability
+- **Performance baseline** — Azure Load Testing adoption, autoscale configuration, CDN strategy
+- **Well-Architected Review cadence** — Azure Advisor integration, assessment frequency, remediation tracking

@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Define StorageClasses for each tier: high-performance SSD (io2/pd-ssd), general-purpose (gp3/pd-balanced), cost-optimized HDD (sc1/pd-standard), and set a default StorageClass
-- [ ] Select and deploy CSI drivers for target storage backends: cloud-native (EBS CSI, GCE PD CSI, Azure Disk CSI), distributed (Ceph/Rook, Longhorn, OpenEBS), or NFS (NFS CSI)
-- [ ] Design StatefulSet storage patterns: VolumeClaimTemplates for per-pod volumes, naming convention (data-{statefulset}-{ordinal}), plan PVC lifecycle on scale-down
-- [ ] Plan access mode requirements: ReadWriteOnce (block storage, single-node), ReadWriteMany (NFS, EFS, CephFS for shared access), ReadOnlyMany (shared config/data)
-- [ ] Configure volume snapshots: VolumeSnapshotClass, scheduled snapshots via external tools (Velero, Kasten), snapshot-based cloning for dev/test environments
-- [ ] Evaluate dynamic provisioning vs pre-provisioned volumes: dynamic for cloud environments, static PVs for on-premises with existing storage arrays
-- [ ] Plan volume expansion strategy: enable allowVolumeExpansion in StorageClass, understand that expansion is online for some drivers (EBS, GCE PD) but requires restart for others
-- [ ] Configure reclaim policies: Retain for production data (prevents accidental deletion), Delete for ephemeral/dev environments
-- [ ] Assess local PV requirements for latency-sensitive workloads (databases, caches): local PVs provide direct disk access but lose data on node failure
-- [ ] Design backup strategy: Velero for PV snapshots + Kubernetes resource backup, application-level backups (pg_dump, mongodump) for consistency
-- [ ] Plan storage capacity tracking: enable CSIStorageCapacity for topology-aware scheduling, monitor PVC usage vs capacity for alerting
-- [ ] Evaluate ephemeral volumes (emptyDir, generic ephemeral) for temporary data: set sizeLimit on emptyDir to prevent node disk exhaustion
+- [ ] **[Recommended]** Define StorageClasses for each tier: high-performance SSD (io2/pd-ssd), general-purpose (gp3/pd-balanced), cost-optimized HDD (sc1/pd-standard), and set a default StorageClass
+- [ ] **[Recommended]** Select and deploy CSI drivers for target storage backends: cloud-native (EBS CSI, GCE PD CSI, Azure Disk CSI), distributed (Ceph/Rook, Longhorn, OpenEBS), or NFS (NFS CSI)
+- [ ] **[Critical]** Design StatefulSet storage patterns: VolumeClaimTemplates for per-pod volumes, naming convention (data-{statefulset}-{ordinal}), plan PVC lifecycle on scale-down
+- [ ] **[Recommended]** Plan access mode requirements: ReadWriteOnce (block storage, single-node), ReadWriteMany (NFS, EFS, CephFS for shared access), ReadOnlyMany (shared config/data)
+- [ ] **[Recommended]** Configure volume snapshots: VolumeSnapshotClass, scheduled snapshots via external tools (Velero, Kasten), snapshot-based cloning for dev/test environments
+- [ ] **[Recommended]** Evaluate dynamic provisioning vs pre-provisioned volumes: dynamic for cloud environments, static PVs for on-premises with existing storage arrays
+- [ ] **[Recommended]** Plan volume expansion strategy: enable allowVolumeExpansion in StorageClass, understand that expansion is online for some drivers (EBS, GCE PD) but requires restart for others
+- [ ] **[Recommended]** Configure reclaim policies: Retain for production data (prevents accidental deletion), Delete for ephemeral/dev environments
+- [ ] **[Recommended]** Assess local PV requirements for latency-sensitive workloads (databases, caches): local PVs provide direct disk access but lose data on node failure
+- [ ] **[Recommended]** Design backup strategy: Velero for PV snapshots + Kubernetes resource backup, application-level backups (pg_dump, mongodump) for consistency
+- [ ] **[Recommended]** Plan storage capacity tracking: enable CSIStorageCapacity for topology-aware scheduling, monitor PVC usage vs capacity for alerting
+- [ ] **[Recommended]** Evaluate ephemeral volumes (emptyDir, generic ephemeral) for temporary data: set sizeLimit on emptyDir to prevent node disk exhaustion
 
 ## Why This Matters
 
