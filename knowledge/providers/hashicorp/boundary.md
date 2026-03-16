@@ -19,6 +19,10 @@
 
 Boundary implements identity-based access to infrastructure, replacing network-based controls (VPNs, bastion hosts, shared SSH keys) with a model where access is granted based on user identity and role, credentials are injected just-in-time and never exposed to users, and all sessions are recorded and auditable. This directly addresses the security risks of traditional access patterns: shared credentials, permanent network access, lack of session visibility, and credential sprawl. The multi-hop worker architecture eliminates VPN dependencies for accessing private networks, while Vault integration ensures credentials are dynamic, short-lived, and automatically rotated. Session recording provides a complete audit trail for compliance (SOC2, PCI-DSS, HIPAA) without requiring dedicated jump hosts with recording agents.
 
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+
 ## Common Decisions (ADR Triggers)
 
 - **Boundary vs bastion hosts / jump boxes**: Bastion hosts provide a familiar model but require SSH key management, OS patching, and logging configuration. Boundary eliminates the bastion host entirely: users authenticate with their IdP, Boundary injects credentials and proxies the session. Choose Boundary when eliminating shared credentials and VPN dependencies is a priority.

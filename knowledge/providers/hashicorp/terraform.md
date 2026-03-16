@@ -2,8 +2,8 @@
 
 ## Checklist
 
-- [ ] State is stored in a remote backend (S3 + DynamoDB for locking, GCS, Azure Blob, or Terraform Cloud); local state is never used beyond initial prototyping
-- [ ] State locking is enabled and tested; DynamoDB table exists for S3 backend, or backend natively supports locking (GCS, Terraform Cloud, Azure with lease)
+- [ ] State is stored in a remote backend (S3 + DynamoDB for locking, GCS, Azure Blob, or Terraform Cloud); local state is never used beyond initial prototyping; note that Terraform 1.8+ supports S3 native locking without DynamoDB
+- [ ] State locking is enabled and tested; DynamoDB table exists for S3 backend (pre-1.8), S3 native locking (1.8+), or backend natively supports locking (GCS, Terraform Cloud, Azure with lease)
 - [ ] State file access is restricted via IAM policies; state contains sensitive values (passwords, keys, certificates) in plaintext and must be treated as a secret
 - [ ] Workspaces or directory-based separation isolates environments (dev/staging/production); workspace-based separation uses `terraform.workspace` conditionals, directory-based uses separate backend configs
 - [ ] Modules are versioned and sourced from a registry (Terraform Registry, private registry, or Git tags); `source` references pin to a specific version, never `main` branch
@@ -20,8 +20,13 @@
 
 Terraform manages the actual infrastructure. A state file out of sync with reality causes resource duplication, accidental destruction, or drift that is expensive to reconcile. State locking prevents two engineers or CI pipelines from applying conflicting changes simultaneously, which can corrupt state or create partial deployments. Unpinned provider versions mean that `terraform init` on Tuesday may pull a different provider version than Monday, changing plan behavior silently. Module versioning without pinning means that a module author's breaking change propagates to all consumers on their next `init`. Lifecycle rules prevent Terraform from destroying a production database during a refactor. These are not edge cases; they are the primary failure modes teams encounter when scaling Terraform usage beyond a single operator.
 
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+
 ## Common Decisions (ADR Triggers)
 
+- **OpenTofu vs Terraform**: The BSL 1.1 license change in Terraform 1.6 prompted the creation of OpenTofu, a community-maintained fork under MPL 2.0. OpenTofu tracks Terraform feature parity with some divergences (e.g., client-side state encryption). Evaluate whether the BSL terms affect your use case (competitive SaaS offerings are restricted; internal infrastructure use is unaffected). ADR required when adopting Terraform 1.6+ or migrating an existing Terraform codebase.
 - **State backend selection**: S3 + DynamoDB is the most common for AWS shops (cheap, reliable, well-documented). Terraform Cloud provides state management, locking, run history, and policy enforcement in one service but adds cost and vendor dependency. GCS and Azure Blob are natural choices for their respective clouds. Document the backend, who has access, and the backup/recovery strategy.
 - **Workspace-based vs directory-based environment separation**: Workspaces share the same code with different state files, requiring conditionals (`terraform.workspace == "prod"`) for environment-specific values. Directory-based separation (envs/dev/, envs/prod/) duplicates backend config but makes each environment's configuration explicit. Workspaces are simpler for small differences; directories are clearer for large divergence. Terragrunt offers a third approach with DRY configuration and automatic backend config generation.
 - **Module granularity**: One module per logical component (VPC, EKS cluster, RDS instance) vs large modules that bundle related resources (entire application stack). Fine-grained modules are more reusable but require more wiring. Coarse modules are faster to deploy but harder to customize. Decide based on team size and reuse requirements.

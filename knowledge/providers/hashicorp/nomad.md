@@ -19,6 +19,10 @@
 
 Nomad provides workload orchestration with significantly lower operational complexity than Kubernetes. Its single-binary architecture, first-class support for non-containerized workloads (raw binaries, JVMs, VMs), and deep HashiCorp ecosystem integration (Consul for service mesh, Vault for secrets) make it particularly suited for organizations that run heterogeneous workloads or lack dedicated platform engineering teams. The multi-region federation model is simpler than Kubernetes federation, making Nomad attractive for globally distributed deployments. However, Nomad's ecosystem is smaller than Kubernetes': fewer third-party integrations, less community tooling, and a smaller hiring pool. The architectural decision to use Nomad vs Kubernetes significantly impacts team structure, hiring, and long-term ecosystem access.
 
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+
 ## Common Decisions (ADR Triggers)
 
 - **Nomad vs Kubernetes**: Nomad is simpler to operate (single binary, fewer moving parts), supports non-container workloads natively, and integrates tightly with Consul/Vault. Kubernetes has a vastly larger ecosystem, more third-party integrations, and a bigger talent pool. Choose Nomad when operational simplicity is paramount and workloads are heterogeneous; choose Kubernetes when ecosystem breadth and hiring are priorities.

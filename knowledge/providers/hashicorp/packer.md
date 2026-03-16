@@ -19,6 +19,10 @@
 
 Packer automates the creation of machine images, ensuring that every deployment target (VM, container base image, cloud instance) starts from an identical, tested, and hardened baseline. Without Packer, teams rely on snowflake images built manually or through ad-hoc scripts, leading to configuration drift, unreproducible builds, and security gaps. In multi-cloud environments, Packer's ability to produce images for multiple platforms from a single template eliminates the divergence that occurs when each cloud team maintains separate image-building processes. HCP Packer adds a registry layer that tracks which images are deployed where, enables coordinated revocation of compromised images, and provides a promotion workflow (dev -> staging -> prod) that brings software release discipline to infrastructure images.
 
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+
 ## Common Decisions (ADR Triggers)
 
 - **Baked images (Packer) vs configured-at-boot (cloud-init/Ansible)**: Baked images provide faster boot times, reduced runtime dependencies, and immutable infrastructure semantics. Configured-at-boot offers flexibility and smaller image counts but increases boot time and adds runtime failure modes. Best practice: bake security hardening and base packages with Packer; configure environment-specific settings (hostnames, credentials) at boot via cloud-init.

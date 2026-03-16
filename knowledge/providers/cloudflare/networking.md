@@ -1,5 +1,9 @@
 # Cloudflare Networking
 
+## Scope
+
+Covers Cloudflare Tunnel, Magic Transit, Magic WAN, Spectrum, WARP client, WARP Connector, Network Interconnect (CNI), Gateway, SSL for SaaS, and ZTNA. These services are part of the Cloudflare One SASE platform. Use alongside `security.md` for Zero Trust Access policies and `cdn-dns.md` for DNS and proxy configuration.
+
 ## Checklist
 
 - [ ] Determine whether Cloudflare Tunnel (formerly Argo Tunnel) or traditional DNS/IP exposure is appropriate for origin connectivity

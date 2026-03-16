@@ -14,12 +14,17 @@
 - [ ] Transit secrets engine is used for encryption-as-a-service when applications need to encrypt data without managing encryption keys directly; key rotation is scheduled
 - [ ] Audit logging is enabled on at least two audit devices (file + syslog, or file + socket); Vault refuses to process requests if all audit devices fail (security property)
 - [ ] Vault Agent or Vault Sidecar Injector is deployed for Kubernetes workloads to handle authentication, secret retrieval, and lease renewal without application-level Vault SDK integration
+- [ ] **[Recommended]** Is the Vault Secrets Operator (VSO) evaluated for Kubernetes-native secret syncing as an alternative to Agent/Sidecar Injector?
 - [ ] Namespaces (Enterprise) isolate tenants or teams with independent auth, policies, and secrets engines; root namespace is reserved for platform administration
 - [ ] Disaster recovery and performance replication (Enterprise) or regular Raft snapshots (OSS) are configured and tested with documented RTO/RPO
 
 ## Why This Matters
 
 Vault is the system that protects every other system's credentials. If Vault is unavailable, applications cannot retrieve secrets and new deployments stall. If Vault is compromised, every secret it manages is exposed. Auto-unseal eliminates the operational burden of manual unsealing (which blocks automated recovery) but transfers trust to the cloud KMS, which must be separately secured. Dynamic secrets eliminate the credential rotation problem entirely: a leaked database password expires in an hour without any intervention. But applications must handle credential rotation during their lifetime, or connections fail mid-request. Audit logging is a security invariant: Vault will halt operations if it cannot write audit logs, which means an audit backend failure causes an outage unless redundant backends are configured.
+
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 

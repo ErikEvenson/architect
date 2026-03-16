@@ -13,12 +13,17 @@
 - [ ] Prepared queries are configured for failover scenarios: query a service locally first, then failover to neighboring datacenters based on network coordinates (RTT-based)
 - [ ] WAN federation connects multiple datacenters; WAN gossip pool operates over port 8302; services in one DC can discover services in others via `service.dc2.consul` DNS queries
 - [ ] Consul on Kubernetes uses the official Helm chart with connect-inject enabled; `connectInject.default: false` requires explicit annotation (`consul.hashicorp.com/connect-inject: "true"`) per pod
+- [ ] **[Recommended]** Is Consul Dataplane used instead of traditional client agents for Kubernetes deployments (eliminates DaemonSet requirement)?
 - [ ] KV store usage is limited to configuration data and coordination (leader election, distributed locks); it is not a general-purpose database; values are limited to 512 KB
 - [ ] Consul Template is deployed on application hosts to render configuration files from Consul KV and service catalog data, with automatic reload of dependent services on change
 
 ## Why This Matters
 
 Consul provides the service discovery layer that enables dynamic infrastructure. Without reliable service discovery, applications hardcode IP addresses and ports, making scaling, failover, and deployment changes manual and error-prone. The service mesh (Connect) provides mutual TLS between services without application code changes, but misconfigured intentions can either block legitimate traffic (outage) or allow unauthorized communication (security gap). The ACL system prevents unauthorized service registration (a rogue service could intercept traffic by registering with a legitimate service name). Gossip encryption prevents network-level attackers from joining the cluster or reading service catalog data. In multi-datacenter deployments, WAN federation enables global service discovery and failover, but network partitions between datacenters can cause split-brain scenarios that must be understood and planned for.
+
+## License
+
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 

@@ -11,7 +11,7 @@ This file covers **VMware licensing under Broadcom ownership**: edition selectio
 - [ ] **[Critical]** Has the transition plan from perpetual licenses (if applicable) been documented, including support renewal deadlines, subscription start dates, and budget impact of moving from CapEx (perpetual) to OpEx (subscription)?
 - [ ] **[Critical]** Has a Broadcom-authorized partner been identified for quoting, since VMware licensing is no longer available through all resellers and pricing is not publicly listed?
 - [ ] **[Critical]** Are CPU core counts factored into hardware selection decisions — evaluating whether fewer high-core-count servers (higher license cost, fewer servers to manage) or more lower-core-count servers (lower license cost, more physical infrastructure) optimizes total cost of ownership?
-- [ ] **[Critical]** Has the 72-core minimum per CPU (effective April 2025) been factored into licensing calculations, since servers with fewer than 72 physical cores per CPU still incur licensing for 72 cores?
+- [ ] **[Critical]** Has the per-CPU core minimum been correctly applied? Broadcom announced a 72-core minimum per CPU for April 2025 but reversed this in April 2025 after customer backlash, returning to the 16-core minimum per CPU. Verify that licensing calculations use the current 16-core minimum.
 - [ ] **[Critical]** Has the VMware renewal date been identified and used as a migration planning milestone, since late renewals incur a 20% penalty on first-year subscription price?
 - [ ] **[Recommended]** Has a VCF vs VVF feature comparison been performed against actual requirements, since VCF includes vSAN (eliminating external SAN/NAS licensing), NSX (eliminating physical east-west firewall licensing), and Aria (eliminating third-party monitoring/automation licensing)?
 - [ ] **[Recommended]** Is the total cost of ownership (TCO) analysis comparing VMware subscription against alternatives (Nutanix, Proxmox, OpenStack, Azure Stack HCI) documented as an ADR, including migration costs, retraining, and ecosystem tool compatibility?
@@ -22,6 +22,9 @@ This file covers **VMware licensing under Broadcom ownership**: edition selectio
 - [ ] **[Recommended]** Has the vSphere end-of-support timeline been mapped against migration plans, since vSphere 7.x reached end of general support on October 2, 2025 and vSphere 8.x is scheduled for October 2027?
 - [ ] **[Optional]** Has Broadcom's partner program change impact been assessed — specifically whether your existing VMware partner is still authorized and whether alternative partners offer better pricing or support?
 - [ ] **[Optional]** Is a license optimization review scheduled annually to right-size core counts, retire unused hosts, and evaluate whether workload consolidation can reduce the licensed core footprint?
+- [ ] **[Recommended]** Has VVF regional availability been verified? Broadcom discontinued VVF sales in parts of EMEA (December 2025), forcing VCF as the only option in affected regions. Confirm VVF is available in all required geographies before selecting it.
+- [ ] **[Recommended]** Is vSphere 9 standalone availability understood? vSphere 9 is available only through VCF — there is no standalone vSphere 9 SKU. Organizations that need vSphere 9 must purchase VCF.
+- [ ] **[Recommended]** For hyperscaler VMware deployments (VMC on AWS, Azure VMware Solution, Google Cloud VMware Engine), has the Bring Your Own License (BYOL) model effective November 1, 2025 been evaluated? BYOL allows applying existing VMware subscriptions to hyperscaler-hosted VMware services, potentially reducing costs versus hyperscaler-provided licensing.
 - [ ] **[Optional]** Has VMware Explore (formerly VMworld) or Broadcom partner briefing intelligence been gathered on upcoming licensing changes, since Broadcom has made multiple adjustments since the initial 2024 restructure?
 
 ## Why This Matters
@@ -160,8 +163,10 @@ Broadcom completed its acquisition of VMware in November 2023. Beginning in earl
 - **February 2024** — Perpetual license sales end; subscription-only model takes effect; partner program reset begins
 - **April 2024** — Product SKU consolidation from ~8,000 SKUs to approximately 4 bundled offerings
 - **July 2024** — vSphere 7.x end-of-general-support extended by 6 months (from April 2025 to October 2025)
-- **April 2025** — Minimum core requirement per CPU increases from 16 to 72 cores
+- **April 2025** — Broadcom announces 72-core minimum per CPU but reverses the decision the same month after widespread customer backlash, returning to 16-core minimum
 - **October 2025** — vSphere 7.x and vSAN 7.x reach end of general support
+- **November 2025** — BYOL model for hyperscaler VMware services (VMC on AWS, AVS, GCVE) takes effect
+- **December 2025** — VVF discontinued in parts of EMEA; VCF becomes the only available edition in affected regions
 
 ### Transition from Perpetual to Subscription-Only Licensing
 
@@ -223,7 +228,7 @@ Customer-reported price increases since the Broadcom acquisition have been subst
 
 - **Typical range:** 2x to 10x compared to pre-acquisition costs
 - **Extreme cases:** 8x to 15x increases reported, particularly for smaller organizations
-- **SMB impact:** Small and mid-size businesses with low core counts are disproportionately affected by minimum core requirements (72-core minimum effective April 2025)
+- **SMB impact:** Small and mid-size businesses with low core counts were threatened by the announced 72-core minimum, which Broadcom reversed in April 2025 after customer backlash (16-core minimum remains in effect)
 - **Per-core vs per-socket:** The shift from per-socket to per-core pricing particularly impacts organizations with high-core-count CPUs (64+ cores per socket)
 
 **Price increase drivers:**
@@ -231,25 +236,30 @@ Customer-reported price increases since the Broadcom acquisition have been subst
 1. **Subscription vs perpetual** — recurring annual cost replaces one-time purchase plus modest support renewal
 2. **Per-core vs per-socket** — high-core-count servers cost dramatically more under per-core pricing
 3. **Bundle consolidation** — paying for components (vSAN, NSX, Aria) that were not previously licensed
-4. **Minimum core requirements** — 72-core minimum per CPU (April 2025) means small deployments pay for cores they do not have
+4. **Minimum core requirements** — 16-core minimum per CPU remains in effect (the announced 72-core minimum was reversed in April 2025); small deployments with fewer than 16 physical cores per CPU still pay for 16 cores
 5. **Late renewal penalty** — 20% surcharge on first-year subscription price if renewal deadline is missed
 6. **Reduced competition among partners** — fewer authorized resellers means less pricing pressure
 
 ```
-72-Core Minimum Impact Example (April 2025+):
+72-Core Minimum — ANNOUNCED THEN REVERSED (April 2025):
 
-  Server with 2 CPUs × 16 cores each = 32 physical cores
-  Licensed cores under old model:      32 cores (or 2 sockets)
-  Licensed cores under 72-core min:    144 cores (72 per CPU × 2 CPUs)
-  Overpayment:                         112 cores (350% more than physical)
+  Broadcom announced a 72-core minimum per CPU effective April 2025,
+  but reversed the decision the same month after widespread customer
+  backlash. The 16-core minimum per CPU remains in effect.
 
-  Server with 2 CPUs × 64 cores each = 128 physical cores
-  Licensed cores under 72-core min:    128 cores (physical exceeds minimum)
+  Current 16-Core Minimum Impact:
+
+  Server with 2 CPUs × 12 cores each = 24 physical cores
+  Licensed cores under 16-core min:    32 cores (16 per CPU × 2 CPUs)
+  Overpayment:                         8 cores (33% more than physical)
+
+  Server with 2 CPUs × 32 cores each = 64 physical cores
+  Licensed cores under 16-core min:    64 cores (physical exceeds minimum)
   Overpayment:                         0 cores (minimum does not apply)
 
-Key Insight: The 72-core minimum disproportionately impacts smaller
-             servers and SMBs. Organizations with high-core-count CPUs
-             are less affected since physical cores exceed the minimum.
+Key Insight: The 16-core minimum per CPU has modest impact on most
+             modern servers. The reversed 72-core minimum would have
+             disproportionately impacted SMBs and smaller servers.
 ```
 
 ### Partner and Channel Program Changes

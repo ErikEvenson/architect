@@ -1,20 +1,24 @@
 # Cloudflare Security Services
 
+## Scope
+
+Covers Cloudflare WAF (managed and custom rules), Bot Management, Turnstile, Zero Trust Access, Cloudflare Tunnel, Gateway, API Shield, mTLS, Cloudflare Email Security, Browser Isolation, CASB, and DLP. Use alongside `networking.md` for tunnel architecture and `cdn-dns.md` for DDoS and SSL/TLS configuration.
+
 ## Checklist
 
-- [ ] WAF is enabled with Cloudflare Managed Ruleset and OWASP Core Ruleset; paranoia level is set appropriately (PL1 for most applications, PL2+ introduces false positives that must be tuned)
-- [ ] Custom WAF rules are created for application-specific threats: blocking unexpected content types, enforcing required headers, restricting HTTP methods per path
-- [ ] Rate limiting rules are configured for login endpoints (e.g., 5 requests/10 seconds per IP), password reset, account creation, and any endpoint that triggers expensive operations
-- [ ] Bot management is configured: verified bots (Googlebot, etc.) are allowed, automated threats are challenged or blocked based on bot score thresholds (typically score < 30 = bot)
-- [ ] Turnstile is deployed on public forms as a CAPTCHA alternative; widget mode (managed, non-interactive, invisible) is chosen based on UX requirements
-- [ ] Zero Trust Access policies are configured for internal applications: identity provider integration (Okta, Azure AD, Google Workspace), device posture checks, and session duration limits
-- [ ] Cloudflare Tunnel (cloudflared) replaces VPN for exposing internal services; no public inbound ports required on origin infrastructure
-- [ ] Gateway DNS and HTTP policies filter outbound traffic from corporate networks: block malware domains, enforce SaaS tenant restrictions, log DNS queries for threat hunting
-- [ ] API Shield is configured for API endpoints: schema validation (upload OpenAPI spec), sequence enforcement, and volumetric abuse detection per endpoint
-- [ ] mTLS client certificates are deployed for machine-to-machine authentication where applicable; Cloudflare can validate client certs at the edge before requests reach origin
-- [ ] Email security (Area 1) is configured for phishing protection if email flows through or is evaluated by Cloudflare; DMARC management is enabled for domain spoofing prevention
-- [ ] Browser Isolation is enabled for high-risk web browsing: rendering pages in Cloudflare's cloud and streaming draw commands to the user's browser, preventing data exfiltration and drive-by downloads
-- [ ] Security headers are set via Transform Rules or Workers: Content-Security-Policy, X-Frame-Options, Strict-Transport-Security, X-Content-Type-Options
+- [ ] [Critical] WAF is enabled with Cloudflare Managed Ruleset and OWASP Core Ruleset; paranoia level is set appropriately (PL1 for most applications, PL2+ introduces false positives that must be tuned)
+- [ ] [Recommended] Custom WAF rules are created for application-specific threats: blocking unexpected content types, enforcing required headers, restricting HTTP methods per path
+- [ ] [Critical] Rate limiting rules are configured for login endpoints (e.g., 5 requests/10 seconds per IP), password reset, account creation, and any endpoint that triggers expensive operations
+- [ ] [Recommended] Bot management is configured: verified bots (Googlebot, etc.) are allowed, automated threats are challenged or blocked based on bot score thresholds (typically score < 30 = bot)
+- [ ] [Recommended] Turnstile is deployed on public forms as a CAPTCHA alternative; widget mode (managed, non-interactive, invisible) is chosen based on UX requirements
+- [ ] [Critical] Zero Trust Access policies are configured for internal applications: identity provider integration (Okta, Azure AD, Google Workspace), device posture checks, and session duration limits
+- [ ] [Critical] Cloudflare Tunnel (cloudflared) replaces VPN for exposing internal services; no public inbound ports required on origin infrastructure
+- [ ] [Recommended] Gateway DNS and HTTP policies filter outbound traffic from corporate networks: block malware domains, enforce SaaS tenant restrictions, log DNS queries for threat hunting
+- [ ] [Recommended] API Shield is configured for API endpoints: schema validation (upload OpenAPI spec), sequence enforcement, and volumetric abuse detection per endpoint
+- [ ] [Optional] mTLS client certificates are deployed for machine-to-machine authentication where applicable; Cloudflare can validate client certs at the edge before requests reach origin
+- [ ] [Recommended] Cloudflare Email Security is configured for phishing protection if email flows through or is evaluated by Cloudflare; DMARC management is enabled for domain spoofing prevention
+- [ ] [Optional] Browser Isolation is enabled for high-risk web browsing: rendering pages in Cloudflare's cloud and streaming draw commands to the user's browser, preventing data exfiltration and drive-by downloads
+- [ ] [Recommended] Security headers are set via Transform Rules or Workers: Content-Security-Policy, X-Frame-Options, Strict-Transport-Security, X-Content-Type-Options
 
 ## Why This Matters
 
