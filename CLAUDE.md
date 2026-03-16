@@ -39,8 +39,8 @@ Write tests derived from specs BEFORE implementation. Write code to make tests p
 
 ## Key Rules
 
+- **NEVER commit project data to the git repo. This is the #1 rule.** Client data, VM inventories, architecture session content, uploaded files, questions, answers, ADRs, and any data entered through the API or UI must NEVER appear in git. All project data lives exclusively in PostgreSQL (PVC) and the output volume (PVC). The `data/` directory is gitignored. This includes: no client names, no server names, no IP addresses, no infrastructure details, no site names, no VM lists — nothing that came from a client engagement belongs in the repo. When writing code, use generic examples in comments and specs (e.g., "vm_inventory", "server_list"), never real client data.
 - **NEVER commit credentials, secrets, or sensitive data to the repo.** This includes: API keys, passwords, tokens, certificates, private keys, .env files, kubeconfig files, service account JSON files, database connection strings with passwords. The repo is public — any committed secret is compromised. If a secret is accidentally committed, rotate it immediately.
-- **No project data in the git repo.** All runtime data is externalized (PostgreSQL PVC, output PVC). `data/` is gitignored.
 - **Secrets as mounted files**, not environment variables.
 - **Non-root containers** with read-only root filesystem and dropped capabilities.
 - **TLS everywhere** via mkcert for local dev.
