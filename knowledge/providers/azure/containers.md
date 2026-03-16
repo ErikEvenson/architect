@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is AKS deployed with system and user node pools separated, with system pools reserved for critical add-ons (CoreDNS, konnectivity) and user pools for application workloads?
-- [ ] Is the AKS networking model selected -- Azure CNI (pods get VNet IPs, required for Windows nodes and advanced networking) vs Azure CNI Overlay (pod CIDR separate from VNet) vs kubenet (simpler, limited scale)?
-- [ ] Is the cluster autoscaler enabled on user node pools with appropriate min/max node counts, and is the Horizontal Pod Autoscaler (HPA) configured for application-level scaling?
-- [ ] Is AKS workload identity configured to federate Kubernetes service accounts with Microsoft Entra ID managed identities, replacing pod-managed identity (deprecated)?
-- [ ] Is Azure Container Registry (ACR) deployed with geo-replication for multi-region AKS clusters, integrated via managed identity (not admin credentials or image pull secrets)?
-- [ ] Is Azure Policy for AKS (Gatekeeper) enforcing cluster-level governance -- no privileged containers, required resource limits, allowed image registries, no latest tags?
-- [ ] Is GitOps with Flux v2 configured as an AKS extension for declarative cluster configuration and application deployment from Git repositories?
-- [ ] Are AKS backup and disaster recovery strategies defined -- Azure Backup for AKS (Velero-based), cross-region cluster deployment, and persistent volume snapshot policies?
-- [ ] Is Azure Container Apps evaluated for microservices that do not require full Kubernetes control -- serverless scaling to zero, built-in Dapr for service invocation, pub/sub, and state management?
-- [ ] Is Azure Container Instances (ACI) used only for appropriate workloads -- burst scaling from AKS (virtual nodes), CI/CD build agents, or short-lived batch tasks?
-- [ ] Are AKS node pool VM SKUs selected based on workload profile -- general purpose (D-series), memory-optimized (E-series), compute-optimized (F-series), or GPU (NC/ND-series)?
-- [ ] Is Azure Monitor Container Insights enabled with Prometheus metrics collection and Grafana dashboards for cluster and workload observability?
-- [ ] Are AKS maintenance windows configured to control when node image upgrades and Kubernetes version upgrades are applied to minimize disruption?
-- [ ] Is ingress configured with appropriate controller -- NGINX Ingress Controller, Application Gateway Ingress Controller (AGIC), or Azure-managed Istio service mesh for mTLS and traffic management?
+- [ ] **[Critical]** Is AKS deployed with system and user node pools separated, with system pools reserved for critical add-ons (CoreDNS, konnectivity) and user pools for application workloads?
+- [ ] **[Critical]** Is the AKS networking model selected -- Azure CNI (pods get VNet IPs, required for Windows nodes and advanced networking) vs Azure CNI Overlay (pod CIDR separate from VNet) vs kubenet (simpler, limited scale)?
+- [ ] **[Recommended]** Is the cluster autoscaler enabled on user node pools with appropriate min/max node counts, and is the Horizontal Pod Autoscaler (HPA) configured for application-level scaling?
+- [ ] **[Critical]** Is AKS workload identity configured to federate Kubernetes service accounts with Microsoft Entra ID managed identities, replacing pod-managed identity (deprecated)?
+- [ ] **[Recommended]** Is Azure Container Registry (ACR) deployed with geo-replication for multi-region AKS clusters, integrated via managed identity (not admin credentials or image pull secrets)?
+- [ ] **[Critical]** Is Azure Policy for AKS (Gatekeeper) enforcing cluster-level governance -- no privileged containers, required resource limits, allowed image registries, no latest tags?
+- [ ] **[Recommended]** Is GitOps with Flux v2 configured as an AKS extension for declarative cluster configuration and application deployment from Git repositories?
+- [ ] **[Critical]** Are AKS backup and disaster recovery strategies defined -- Azure Backup for AKS (Velero-based), cross-region cluster deployment, and persistent volume snapshot policies?
+- [ ] **[Optional]** Is Azure Container Apps evaluated for microservices that do not require full Kubernetes control -- serverless scaling to zero, built-in Dapr for service invocation, pub/sub, and state management?
+- [ ] **[Optional]** Is Azure Container Instances (ACI) used only for appropriate workloads -- burst scaling from AKS (virtual nodes), CI/CD build agents, or short-lived batch tasks?
+- [ ] **[Recommended]** Are AKS node pool VM SKUs selected based on workload profile -- general purpose (D-series), memory-optimized (E-series), compute-optimized (F-series), or GPU (NC/ND-series)?
+- [ ] **[Recommended]** Is Azure Monitor Container Insights enabled with Prometheus metrics collection and Grafana dashboards for cluster and workload observability?
+- [ ] **[Recommended]** Are AKS maintenance windows configured to control when node image upgrades and Kubernetes version upgrades are applied to minimize disruption?
+- [ ] **[Recommended]** Is ingress configured with appropriate controller -- NGINX Ingress Controller, Application Gateway Ingress Controller (AGIC), or Azure-managed Istio service mesh for mTLS and traffic management?
 
 ## Why This Matters
 

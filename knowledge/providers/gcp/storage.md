@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Is the appropriate Cloud Storage class selected per data access pattern? (Standard for frequent access, Nearline for <1/month, Coldline for <1/quarter, Archive for <1/year)
-- [ ] Are Cloud Storage lifecycle policies configured to automatically transition objects between storage classes and delete expired objects, with age, creation date, and custom time conditions?
-- [ ] Is uniform bucket-level access enabled on all buckets (enforced via organization policy) to prevent ACL-based access and simplify IAM management?
-- [ ] Is object versioning enabled on buckets requiring data protection, with lifecycle rules to limit the number of retained noncurrent versions or delete them after a set period?
-- [ ] Are retention policies and bucket locks configured for compliance workloads, understanding that locked retention policies are irreversible and prevent object deletion?
-- [ ] Is dual-region or multi-region storage configured for high-availability workloads, with turbo replication (15-minute RPO) enabled for dual-region buckets requiring fast geo-redundancy?
-- [ ] Are signed URLs or signed policy documents used for time-limited access to private objects, with V4 signatures and appropriate expiration times (max 7 days)?
-- [ ] Is the correct Persistent Disk type selected for Compute Engine and GKE workloads? (pd-balanced for general use, pd-ssd for high IOPS, pd-extreme for >100K IOPS with provisioned throughput, pd-standard for cost-sensitive batch)
-- [ ] Is Filestore configured with the appropriate tier (Basic HDD, Basic SSD, Zonal, Regional, Enterprise) for NFS workloads, with capacity planned for performance scaling?
-- [ ] Are Cloud Storage FUSE mounts used only for appropriate workloads (ML training data, batch processing), understanding POSIX compliance limitations and caching behavior?
-- [ ] Are Storage Transfer Service or Transfer Appliance configured for large-scale data migrations, with bandwidth and scheduling policies to avoid network saturation?
-- [ ] Are bucket-level notifications configured via Pub/Sub for event-driven processing of object creates, deletes, and metadata updates?
-- [ ] Is requestor-pays enabled on shared data buckets to shift egress and operation costs to data consumers rather than the bucket owner?
+- [ ] **[Critical]** Is the appropriate Cloud Storage class selected per data access pattern? (Standard for frequent access, Nearline for <1/month, Coldline for <1/quarter, Archive for <1/year)
+- [ ] **[Recommended]** Are Cloud Storage lifecycle policies configured to automatically transition objects between storage classes and delete expired objects, with age, creation date, and custom time conditions?
+- [ ] **[Critical]** Is uniform bucket-level access enabled on all buckets (enforced via organization policy) to prevent ACL-based access and simplify IAM management?
+- [ ] **[Recommended]** Is object versioning enabled on buckets requiring data protection, with lifecycle rules to limit the number of retained noncurrent versions or delete them after a set period?
+- [ ] **[Critical]** Are retention policies and bucket locks configured for compliance workloads, understanding that locked retention policies are irreversible and prevent object deletion?
+- [ ] **[Recommended]** Is dual-region or multi-region storage configured for high-availability workloads, with turbo replication (15-minute RPO) enabled for dual-region buckets requiring fast geo-redundancy?
+- [ ] **[Recommended]** Are signed URLs or signed policy documents used for time-limited access to private objects, with V4 signatures and appropriate expiration times (max 7 days)?
+- [ ] **[Recommended]** Is the correct Persistent Disk type selected for Compute Engine and GKE workloads? (pd-balanced for general use, pd-ssd for high IOPS, pd-extreme for >100K IOPS with provisioned throughput, pd-standard for cost-sensitive batch)
+- [ ] **[Recommended]** Is Filestore configured with the appropriate tier (Basic HDD, Basic SSD, Zonal, Regional, Enterprise) for NFS workloads, with capacity planned for performance scaling?
+- [ ] **[Optional]** Are Cloud Storage FUSE mounts used only for appropriate workloads (ML training data, batch processing), understanding POSIX compliance limitations and caching behavior?
+- [ ] **[Optional]** Are Storage Transfer Service or Transfer Appliance configured for large-scale data migrations, with bandwidth and scheduling policies to avoid network saturation?
+- [ ] **[Optional]** Are bucket-level notifications configured via Pub/Sub for event-driven processing of object creates, deletes, and metadata updates?
+- [ ] **[Optional]** Is requestor-pays enabled on shared data buckets to shift egress and operation costs to data consumers rather than the bucket owner?
 
 ## Why This Matters
 

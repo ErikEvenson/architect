@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Are AHV virtual switches configured with appropriate uplink assignments -- separate virtual switches (or at minimum separate VLANs) for management, VM production traffic, storage (iSCSI/backplane), and backup traffic?
-- [ ] Is the bond mode on each virtual switch selected based on infrastructure capabilities -- active-backup for management (simple failover), balance-slb for VM traffic (no switch config needed), LACP (802.3ad) where switch LAG configuration is available?
-- [ ] Are VLANs configured on AHV virtual switches with trunk ports carrying tagged traffic, and are VLAN IDs consistent with the physical switch configuration to prevent silent packet drops?
-- [ ] Is Flow microsegmentation enabled in Prism Central with application-centric security policies using categories (AppType, AppTier, Environment) rather than IP-based rules?
-- [ ] Are Flow isolation policies configured to enforce hard boundaries between environments (e.g., Production vs Development) where no traffic should cross regardless of application rules?
-- [ ] Are Flow application policies configured in Monitor mode first to observe traffic patterns before switching to Apply mode, preventing accidental service disruption?
-- [ ] Is the CVM backplane network (192.168.5.0/24 by default) on a dedicated VLAN or isolated subnet, never exposed to VM or external traffic?
-- [ ] Are jumbo frames (MTU 9000) configured end-to-end for storage and CVM backplane traffic -- on AHV host NICs, physical switches, and any iSCSI-connected hosts -- to reduce CPU overhead and improve throughput?
-- [ ] Is network function chaining configured in Flow to steer traffic through virtual security appliances (Palo Alto VM-Series, Fortinet FortiGate-VM) for north-south inspection before reaching VMs?
-- [ ] Are load balancing requirements addressed using in-guest solutions (HAProxy, NGINX, Keepalived) or Nutanix-integrated options, since AHV does not include a native L4/L7 load balancer?
-- [ ] Is VPN connectivity to the Nutanix cluster established through a dedicated virtual router appliance or physical firewall, with route tables ensuring management and VM traffic use appropriate gateways?
-- [ ] Is AHV host networking using at least 2x 10GbE (or 2x 25GbE for all-NVMe clusters) per host, with separate bond groups for management+CVM and VM+storage where port count allows?
-- [ ] Are IP address management (IPAM) settings configured in AHV for VM networks where DHCP relay is not available, using Nutanix-managed IPAM for automatic IP assignment from defined pools?
-- [ ] Is DNS resolution configured for both Prism Element and Prism Central, with A records and PTR records for CVM IPs, host IPs, cluster virtual IP, and iSCSI data services IP?
+- [ ] **[Critical]** Are AHV virtual switches configured with appropriate uplink assignments -- separate virtual switches (or at minimum separate VLANs) for management, VM production traffic, storage (iSCSI/backplane), and backup traffic?
+- [ ] **[Critical]** Is the bond mode on each virtual switch selected based on infrastructure capabilities -- active-backup for management (simple failover), balance-slb for VM traffic (no switch config needed), LACP (802.3ad) where switch LAG configuration is available?
+- [ ] **[Critical]** Are VLANs configured on AHV virtual switches with trunk ports carrying tagged traffic, and are VLAN IDs consistent with the physical switch configuration to prevent silent packet drops?
+- [ ] **[Recommended]** Is Flow microsegmentation enabled in Prism Central with application-centric security policies using categories (AppType, AppTier, Environment) rather than IP-based rules?
+- [ ] **[Critical]** Are Flow isolation policies configured to enforce hard boundaries between environments (e.g., Production vs Development) where no traffic should cross regardless of application rules?
+- [ ] **[Recommended]** Are Flow application policies configured in Monitor mode first to observe traffic patterns before switching to Apply mode, preventing accidental service disruption?
+- [ ] **[Critical]** Is the CVM backplane network (192.168.5.0/24 by default) on a dedicated VLAN or isolated subnet, never exposed to VM or external traffic?
+- [ ] **[Recommended]** Are jumbo frames (MTU 9000) configured end-to-end for storage and CVM backplane traffic -- on AHV host NICs, physical switches, and any iSCSI-connected hosts -- to reduce CPU overhead and improve throughput?
+- [ ] **[Optional]** Is network function chaining configured in Flow to steer traffic through virtual security appliances (Palo Alto VM-Series, Fortinet FortiGate-VM) for north-south inspection before reaching VMs?
+- [ ] **[Recommended]** Are load balancing requirements addressed using in-guest solutions (HAProxy, NGINX, Keepalived) or Nutanix-integrated options, since AHV does not include a native L4/L7 load balancer?
+- [ ] **[Recommended]** Is VPN connectivity to the Nutanix cluster established through a dedicated virtual router appliance or physical firewall, with route tables ensuring management and VM traffic use appropriate gateways?
+- [ ] **[Critical]** Is AHV host networking using at least 2x 10GbE (or 2x 25GbE for all-NVMe clusters) per host, with separate bond groups for management+CVM and VM+storage where port count allows?
+- [ ] **[Recommended]** Are IP address management (IPAM) settings configured in AHV for VM networks where DHCP relay is not available, using Nutanix-managed IPAM for automatic IP assignment from defined pools?
+- [ ] **[Critical]** Is DNS resolution configured for both Prism Element and Prism Central, with A records and PTR records for CVM IPs, host IPs, cluster virtual IP, and iSCSI data services IP?
 
 ## Why This Matters
 

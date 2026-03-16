@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is Cloud Monitoring configured with workspaces scoped to the correct set of projects, with a designated metrics-scoping project for multi-project visibility?
-- [ ] Are custom metrics defined using the monitoring.googleapis.com/user/ prefix with appropriate metric kinds (gauge, delta, cumulative) and value types for application-specific KPIs?
-- [ ] Are uptime checks configured for critical endpoints with appropriate check frequencies (1-15 min), regions, and content matching, feeding into alerting policies?
-- [ ] Are alerting policies configured with appropriate conditions (metric threshold, metric absence, forecasted), notification channels (PagerDuty, Slack, email), and documentation runbooks?
-- [ ] Is Cloud Logging configured with a log router that uses inclusion/exclusion filters to control log volume and cost, routing only actionable logs to storage sinks?
-- [ ] Are log sinks configured to route audit logs and security-critical logs to Cloud Storage (long-term archival), BigQuery (analytics), or Pub/Sub (SIEM integration)?
-- [ ] Are log-based metrics created for application-specific error patterns, latency distributions, and business events that are not captured by default platform metrics?
-- [ ] Is Cloud Trace enabled with appropriate sampling rates (default 1 request/1000 for App Engine, configurable for GKE/Compute) and propagation context across services?
-- [ ] Is Error Reporting configured for all application runtimes with proper exception grouping, and are new error notifications routed to the development team?
-- [ ] Is Cloud Profiler deployed to production services for continuous CPU and heap profiling with minimal overhead (<5%), using the appropriate agent for each runtime?
-- [ ] Is Managed Service for Prometheus deployed for GKE workloads, with PodMonitoring and ClusterPodMonitoring resources configured for scrape targets?
-- [ ] Are Grafana dashboards connected to Cloud Monitoring via the Google Cloud Monitoring data source plugin, or is Managed Grafana (via Marketplace) used for unified visualization?
-- [ ] Are log retention periods configured per log bucket (default 30 days for _Default, 400 days for _Required), with custom buckets created for compliance-driven retention?
-- [ ] Is the Operations Suite agent (Ops Agent) installed on Compute Engine VMs for system and application log/metric collection, replacing the legacy Monitoring and Logging agents?
+- [ ] **[Critical]** Is Cloud Monitoring configured with workspaces scoped to the correct set of projects, with a designated metrics-scoping project for multi-project visibility?
+- [ ] **[Optional]** Are custom metrics defined using the monitoring.googleapis.com/user/ prefix with appropriate metric kinds (gauge, delta, cumulative) and value types for application-specific KPIs?
+- [ ] **[Recommended]** Are uptime checks configured for critical endpoints with appropriate check frequencies (1-15 min), regions, and content matching, feeding into alerting policies?
+- [ ] **[Critical]** Are alerting policies configured with appropriate conditions (metric threshold, metric absence, forecasted), notification channels (PagerDuty, Slack, email), and documentation runbooks?
+- [ ] **[Critical]** Is Cloud Logging configured with a log router that uses inclusion/exclusion filters to control log volume and cost, routing only actionable logs to storage sinks?
+- [ ] **[Critical]** Are log sinks configured to route audit logs and security-critical logs to Cloud Storage (long-term archival), BigQuery (analytics), or Pub/Sub (SIEM integration)?
+- [ ] **[Recommended]** Are log-based metrics created for application-specific error patterns, latency distributions, and business events that are not captured by default platform metrics?
+- [ ] **[Recommended]** Is Cloud Trace enabled with appropriate sampling rates (default 1 request/1000 for App Engine, configurable for GKE/Compute) and propagation context across services?
+- [ ] **[Recommended]** Is Error Reporting configured for all application runtimes with proper exception grouping, and are new error notifications routed to the development team?
+- [ ] **[Optional]** Is Cloud Profiler deployed to production services for continuous CPU and heap profiling with minimal overhead (<5%), using the appropriate agent for each runtime?
+- [ ] **[Recommended]** Is Managed Service for Prometheus deployed for GKE workloads, with PodMonitoring and ClusterPodMonitoring resources configured for scrape targets?
+- [ ] **[Optional]** Are Grafana dashboards connected to Cloud Monitoring via the Google Cloud Monitoring data source plugin, or is Managed Grafana (via Marketplace) used for unified visualization?
+- [ ] **[Recommended]** Are log retention periods configured per log bucket (default 30 days for _Default, 400 days for _Required), with custom buckets created for compliance-driven retention?
+- [ ] **[Recommended]** Is the Operations Suite agent (Ops Agent) installed on Compute Engine VMs for system and application log/metric collection, replacing the legacy Monitoring and Logging agents?
 
 ## Why This Matters
 

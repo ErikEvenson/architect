@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Consul server cluster has 3 or 5 nodes (odd number required for Raft consensus); 3 nodes tolerates 1 failure, 5 tolerates 2; more than 5 is not recommended due to replication overhead
-- [ ] Consul client agents run on every node that hosts services (as a DaemonSet in Kubernetes, or as a system service on VMs); services register with their local agent
-- [ ] ACL system is enabled and bootstrapped; default policy is `deny`; each service has a token with minimum required permissions for registration, discovery, and intention management
-- [ ] Gossip encryption is enabled with a shared symmetric key (`encrypt` config); all agents in the datacenter must use the same key; key rotation uses the `consul keyring` command
-- [ ] TLS is enabled for RPC and HTTP communication between agents; `verify_incoming` and `verify_outgoing` are both true; auto_encrypt simplifies client certificate distribution
-- [ ] Health checks are defined for every service: HTTP (GET /health), TCP, gRPC, script, or TTL-based; check intervals and timeouts are tuned to avoid flapping (10s-30s interval, 5s timeout typical)
-- [ ] DNS interface is configured and resolvers point to Consul for the `.consul` domain (e.g., `web.service.consul` resolves to healthy instances of the "web" service)
-- [ ] Service mesh (Connect) is enabled with sidecar proxies (Envoy) for mTLS between services; intentions define which services can communicate (allow/deny per source-destination pair)
-- [ ] Prepared queries are configured for failover scenarios: query a service locally first, then failover to neighboring datacenters based on network coordinates (RTT-based)
-- [ ] WAN federation connects multiple datacenters; WAN gossip pool operates over port 8302; services in one DC can discover services in others via `service.dc2.consul` DNS queries
-- [ ] Consul on Kubernetes uses the official Helm chart with connect-inject enabled; `connectInject.default: false` requires explicit annotation (`consul.hashicorp.com/connect-inject: "true"`) per pod
+- [ ] **[Critical]** Consul server cluster has 3 or 5 nodes (odd number required for Raft consensus); 3 nodes tolerates 1 failure, 5 tolerates 2; more than 5 is not recommended due to replication overhead
+- [ ] **[Recommended]** Consul client agents run on every node that hosts services (as a DaemonSet in Kubernetes, or as a system service on VMs); services register with their local agent
+- [ ] **[Critical]** ACL system is enabled and bootstrapped; default policy is `deny`; each service has a token with minimum required permissions for registration, discovery, and intention management
+- [ ] **[Critical]** Gossip encryption is enabled with a shared symmetric key (`encrypt` config); all agents in the datacenter must use the same key; key rotation uses the `consul keyring` command
+- [ ] **[Critical]** TLS is enabled for RPC and HTTP communication between agents; `verify_incoming` and `verify_outgoing` are both true; auto_encrypt simplifies client certificate distribution
+- [ ] **[Recommended]** Health checks are defined for every service: HTTP (GET /health), TCP, gRPC, script, or TTL-based; check intervals and timeouts are tuned to avoid flapping (10s-30s interval, 5s timeout typical)
+- [ ] **[Recommended]** DNS interface is configured and resolvers point to Consul for the `.consul` domain (e.g., `web.service.consul` resolves to healthy instances of the "web" service)
+- [ ] **[Recommended]** Service mesh (Connect) is enabled with sidecar proxies (Envoy) for mTLS between services; intentions define which services can communicate (allow/deny per source-destination pair)
+- [ ] **[Optional]** Prepared queries are configured for failover scenarios: query a service locally first, then failover to neighboring datacenters based on network coordinates (RTT-based)
+- [ ] **[Optional]** WAN federation connects multiple datacenters; WAN gossip pool operates over port 8302; services in one DC can discover services in others via `service.dc2.consul` DNS queries
+- [ ] **[Recommended]** Consul on Kubernetes uses the official Helm chart with connect-inject enabled; `connectInject.default: false` requires explicit annotation (`consul.hashicorp.com/connect-inject: "true"`) per pod
 - [ ] **[Recommended]** Is Consul Dataplane used instead of traditional client agents for Kubernetes deployments (eliminates DaemonSet requirement)?
-- [ ] KV store usage is limited to configuration data and coordination (leader election, distributed locks); it is not a general-purpose database; values are limited to 512 KB
-- [ ] Consul Template is deployed on application hosts to render configuration files from Consul KV and service catalog data, with automatic reload of dependent services on change
+- [ ] **[Recommended]** KV store usage is limited to configuration data and coordination (leader election, distributed locks); it is not a general-purpose database; values are limited to 512 KB
+- [ ] **[Optional]** Consul Template is deployed on application hosts to render configuration files from Consul KV and service catalog data, with automatic reload of dependent services on change
 
 ## Why This Matters
 

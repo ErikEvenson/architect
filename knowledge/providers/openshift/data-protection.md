@@ -2,10 +2,10 @@
 
 ## Checklist
 
-- [ ] Deploy OADP operator (OpenShift API for Data Protection) with Velero and appropriate plugins (AWS, Azure, GCP, CSI)
-- [ ] Configure backup storage location (BSL): S3-compatible object storage (AWS S3, MinIO, ODF MCG)
-- [ ] Configure volume snapshot location (VSL): CSI snapshots for block storage, Restic/Kopia for filesystem-level backup
-- [ ] Define scheduled backup policies via `Schedule` CRDs: daily application backups, weekly full-cluster backups
+- [ ] **[Critical]** Deploy OADP operator (OpenShift API for Data Protection) with Velero and appropriate plugins (AWS, Azure, GCP, CSI)
+- [ ] **[Critical]** Configure backup storage location (BSL): S3-compatible object storage (AWS S3, MinIO, ODF MCG)
+- [ ] **[Critical]** Configure volume snapshot location (VSL): CSI snapshots for block storage, Restic/Kopia for filesystem-level backup
+- [ ] **[Critical]** Define scheduled backup policies via `Schedule` CRDs: daily application backups, weekly full-cluster backups
 - [ ] Implement etcd backup and restore procedures: automated CronJob or manual `etcdctl snapshot save` via debug pod
 - [ ] Design namespace-level backup strategy: label selectors for application grouping, include/exclude resource filters
 - [ ] Test restore procedures regularly: full namespace restore, single resource restore, cross-cluster restore

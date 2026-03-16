@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Deploy OpenShift Pipelines operator (Tekton) for cloud-native CI/CD pipelines
-- [ ] Deploy OpenShift GitOps operator (ArgoCD) for declarative continuous delivery
-- [ ] Define pipeline architecture: Tekton Pipelines with Tasks, TaskRuns, PipelineRuns, and Workspaces
-- [ ] Configure Tekton Triggers for webhook-based pipeline execution (GitHub, GitLab, Bitbucket webhooks)
-- [ ] Evaluate Source-to-Image (S2I) builds for simple language-specific containerization vs Dockerfile/Buildah builds
-- [ ] Set up BuildConfig resources for OpenShift-native builds (S2I, Docker, Custom, Pipeline strategies)
-- [ ] Configure ImageStreams for image lifecycle management, tag policies, and automatic deployment triggers
-- [ ] Deploy Quay registry (or mirror registry for disconnected) as the enterprise container image repository
-- [ ] Design GitOps repository structure: app-of-apps, monorepo, or repo-per-team pattern
-- [ ] Define promotion strategy: namespace-based (dev/staging/prod) vs cluster-based (dev cluster/prod cluster)
-- [ ] Configure Operator Lifecycle Manager (OLM) for installing and upgrading operators with approval policies
-- [ ] Implement Helm chart deployment strategy: Helm operator, ArgoCD Helm support, or Tekton Helm tasks
-- [ ] Set up artifact signing: Tekton Chains for pipeline attestation and image signing with Sigstore/cosign
-- [ ] Configure pipeline security: dedicated service accounts, SCC restrictions, workspace cleanup, secret injection via Vault
+- [ ] **[Recommended]** Deploy OpenShift Pipelines operator (Tekton) for cloud-native CI/CD pipelines
+- [ ] **[Recommended]** Deploy OpenShift GitOps operator (ArgoCD) for declarative continuous delivery
+- [ ] **[Recommended]** Define pipeline architecture: Tekton Pipelines with Tasks, TaskRuns, PipelineRuns, and Workspaces
+- [ ] **[Recommended]** Configure Tekton Triggers for webhook-based pipeline execution (GitHub, GitLab, Bitbucket webhooks)
+- [ ] **[Recommended]** Evaluate Source-to-Image (S2I) builds for simple language-specific containerization vs Dockerfile/Buildah builds
+- [ ] **[Recommended]** Set up BuildConfig resources for OpenShift-native builds (S2I, Docker, Custom, Pipeline strategies)
+- [ ] **[Recommended]** Configure ImageStreams for image lifecycle management, tag policies, and automatic deployment triggers
+- [ ] **[Recommended]** Deploy Quay registry (or mirror registry for disconnected) as the enterprise container image repository
+- [ ] **[Recommended]** Design GitOps repository structure: app-of-apps, monorepo, or repo-per-team pattern
+- [ ] **[Recommended]** Define promotion strategy: namespace-based (dev/staging/prod) vs cluster-based (dev cluster/prod cluster)
+- [ ] **[Recommended]** Configure Operator Lifecycle Manager (OLM) for installing and upgrading operators with approval policies
+- [ ] **[Optional]** Implement Helm chart deployment strategy: Helm operator, ArgoCD Helm support, or Tekton Helm tasks
+- [ ] **[Recommended]** Set up artifact signing: Tekton Chains for pipeline attestation and image signing with Sigstore/cosign
+- [ ] **[Critical]** Configure pipeline security: dedicated service accounts, SCC restrictions, workspace cleanup, secret injection via Vault
 
 ## Why This Matters
 

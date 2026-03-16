@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Determine deployment model: self-managed Boundary (controllers + workers) vs HCP Boundary (managed control plane, self-hosted workers)
-- [ ] Design target types for each access pattern: TCP (generic), SSH (session injection, key signing), RDP, HTTP, Kubernetes API server
-- [ ] Plan credential injection strategy: Vault credential libraries (dynamic database creds, SSH certificates, AD passwords) vs static credential stores
-- [ ] Configure worker types: PKI workers (trusted by controller via certificate) vs KMS workers (join via shared KMS), ingress workers vs egress workers
-- [ ] Design multi-hop worker topology for accessing private networks without VPN (ingress worker in DMZ -> egress worker in private subnet)
-- [ ] Plan session recording configuration: storage buckets (S3/MinIO), retention policies, and playback access controls
-- [ ] Architect auth method integration: OIDC (Okta, Azure AD, Auth0), LDAP, password (dev only); map IdP groups to Boundary roles
-- [ ] Define scope hierarchy: global -> org -> project; plan org/project structure aligned to team boundaries and access policies
-- [ ] Configure managed groups to auto-assign roles based on IdP group membership (eliminates manual role assignment)
-- [ ] Design host catalog strategy: static (manually registered hosts), dynamic (AWS, Azure, GCP plugin-based discovery), or Consul-based
-- [ ] Plan alias configuration for user-friendly target addressing (e.g., `boundary connect ssh -target-name prod-db` instead of target IDs)
-- [ ] Evaluate Boundary Desktop client vs CLI for end-user experience; plan distribution and auto-update strategy
+- [ ] **[Recommended]** Determine deployment model: self-managed Boundary (controllers + workers) vs HCP Boundary (managed control plane, self-hosted workers)
+- [ ] **[Recommended]** Design target types for each access pattern: TCP (generic), SSH (session injection, key signing), RDP, HTTP, Kubernetes API server
+- [ ] **[Critical]** Plan credential injection strategy: Vault credential libraries (dynamic database creds, SSH certificates, AD passwords) vs static credential stores
+- [ ] **[Recommended]** Configure worker types: PKI workers (trusted by controller via certificate) vs KMS workers (join via shared KMS), ingress workers vs egress workers
+- [ ] **[Recommended]** Design multi-hop worker topology for accessing private networks without VPN (ingress worker in DMZ -> egress worker in private subnet)
+- [ ] **[Recommended]** Plan session recording configuration: storage buckets (S3/MinIO), retention policies, and playback access controls
+- [ ] **[Critical]** Architect auth method integration: OIDC (Okta, Azure AD, Auth0), LDAP, password (dev only); map IdP groups to Boundary roles
+- [ ] **[Recommended]** Define scope hierarchy: global -> org -> project; plan org/project structure aligned to team boundaries and access policies
+- [ ] **[Recommended]** Configure managed groups to auto-assign roles based on IdP group membership (eliminates manual role assignment)
+- [ ] **[Recommended]** Design host catalog strategy: static (manually registered hosts), dynamic (AWS, Azure, GCP plugin-based discovery), or Consul-based
+- [ ] **[Optional]** Plan alias configuration for user-friendly target addressing (e.g., `boundary connect ssh -target-name prod-db` instead of target IDs)
+- [ ] **[Optional]** Evaluate Boundary Desktop client vs CLI for end-user experience; plan distribution and auto-update strategy
 
 ## Why This Matters
 

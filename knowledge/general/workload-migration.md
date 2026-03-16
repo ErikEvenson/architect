@@ -6,18 +6,18 @@ This file covers **cloud migration strategy and execution**: the 6 Rs framework,
 
 ## Checklist
 
-- [ ] Has each workload been categorized using the 6 Rs? (rehost, replatform, refactor, repurchase, retire, retain)
-- [ ] Is there a workload discovery and dependency mapping completed? (network flows, application dependencies, data flows)
-- [ ] Are migration waves defined based on dependencies and complexity? (start with low-risk, build confidence)
-- [ ] Is a cutover plan documented for each wave? (sequence, timing, validation steps, communication plan)
-- [ ] Is a rollback plan tested for each migrated workload? (revert procedure, data sync back, DNS failback)
-- [ ] Are assessment tools deployed? (AWS MGN, Azure Migrate, Google Migrate for Compute Engine)
-- [ ] Is hybrid coexistence architecture designed? (connectivity, DNS split, data replication during migration period)
-- [ ] Are performance baselines captured before migration? (latency, throughput, error rates — for comparison post-migration)
-- [ ] Is there a database migration strategy per workload? (online vs offline, replication lag tolerance, schema changes)
-- [ ] Are compliance and data residency requirements mapped? (which data can move where, regulatory constraints)
-- [ ] Is there a training plan for operations teams? (cloud-native operations differ from on-prem)
-- [ ] Is cost modeling done for post-migration state? (avoid surprises — cloud costs are operational, not capital)
+- [ ] **[Critical]** Has each workload been categorized using the 6 Rs? (rehost, replatform, refactor, repurchase, retire, retain)
+- [ ] **[Critical]** Is there a workload discovery and dependency mapping completed? (network flows, application dependencies, data flows)
+- [ ] **[Critical]** Are migration waves defined based on dependencies and complexity? (start with low-risk, build confidence)
+- [ ] **[Critical]** Is a cutover plan documented for each wave? (sequence, timing, validation steps, communication plan)
+- [ ] **[Critical]** Is a rollback plan tested for each migrated workload? (revert procedure, data sync back, DNS failback)
+- [ ] **[Recommended]** Are assessment tools deployed? (AWS MGN, Azure Migrate, Google Migrate for Compute Engine)
+- [ ] **[Critical]** Is hybrid coexistence architecture designed? (connectivity, DNS split, data replication during migration period)
+- [ ] **[Critical]** Are performance baselines captured before migration? (latency, throughput, error rates — for comparison post-migration)
+- [ ] **[Critical]** Is there a database migration strategy per workload? (online vs offline, replication lag tolerance, schema changes)
+- [ ] **[Critical]** Are compliance and data residency requirements mapped? (which data can move where, regulatory constraints)
+- [ ] **[Recommended]** Is there a training plan for operations teams? (cloud-native operations differ from on-prem)
+- [ ] **[Recommended]** Is cost modeling done for post-migration state? (avoid surprises — cloud costs are operational, not capital)
 
 ## Why This Matters
 

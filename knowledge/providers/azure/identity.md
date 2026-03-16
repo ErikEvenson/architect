@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Is Microsoft Entra ID (formerly Azure AD) configured as the sole identity provider with legacy Azure AD endpoints migrated to the Entra ID branding?
-- [ ] Are managed identities (system-assigned or user-assigned) used for all Azure resource-to-resource authentication, eliminating stored credentials and connection strings?
-- [ ] Are conditional access policies enforced requiring MFA, compliant devices, and trusted locations for all privileged and sensitive application access?
-- [ ] Is Privileged Identity Management (PIM) enabled for just-in-time (JIT) activation of Azure AD roles and Azure resource roles with approval workflows and time-bound access?
-- [ ] Are app registrations and service principals configured with certificate or federated credentials (not client secrets), and are unused registrations identified and cleaned up?
-- [ ] Is Azure AD B2C (or Azure AD External Identities) deployed for customer-facing identity with custom user flows, branded sign-in pages, and social identity provider federation?
-- [ ] Are RBAC assignments following least-privilege with custom role definitions scoped to specific actions rather than broad built-in roles where needed?
-- [ ] Are Azure AD security groups and dynamic membership rules used to automate role assignments and conditional access targeting based on user attributes?
-- [ ] Is MFA enforced for all users via security defaults (small orgs) or conditional access policies (enterprise), with phishing-resistant methods (FIDO2, Windows Hello, certificate-based) preferred over SMS?
-- [ ] Is identity governance configured with access reviews on a quarterly cadence for privileged roles, group memberships, and application assignments?
-- [ ] Are emergency access (break-glass) accounts created, excluded from conditional access, monitored with alerts, and tested periodically?
-- [ ] Is cross-tenant access configured with Entra ID cross-tenant access settings for B2B collaboration, restricting which external organizations can be trusted?
-- [ ] Are sign-in and audit logs streaming to Log Analytics with Microsoft Sentinel analytics rules for impossible-travel, suspicious MFA, and credential-stuffing detection?
+- [ ] **[Critical]** Is Microsoft Entra ID (formerly Azure AD) configured as the sole identity provider with legacy Azure AD endpoints migrated to the Entra ID branding?
+- [ ] **[Critical]** Are managed identities (system-assigned or user-assigned) used for all Azure resource-to-resource authentication, eliminating stored credentials and connection strings?
+- [ ] **[Critical]** Are conditional access policies enforced requiring MFA, compliant devices, and trusted locations for all privileged and sensitive application access?
+- [ ] **[Critical]** Is Privileged Identity Management (PIM) enabled for just-in-time (JIT) activation of Azure AD roles and Azure resource roles with approval workflows and time-bound access?
+- [ ] **[Critical]** Are app registrations and service principals configured with certificate or federated credentials (not client secrets), and are unused registrations identified and cleaned up?
+- [ ] **[Optional]** Is Azure AD B2C (or Azure AD External Identities) deployed for customer-facing identity with custom user flows, branded sign-in pages, and social identity provider federation?
+- [ ] **[Critical]** Are RBAC assignments following least-privilege with custom role definitions scoped to specific actions rather than broad built-in roles where needed?
+- [ ] **[Recommended]** Are Azure AD security groups and dynamic membership rules used to automate role assignments and conditional access targeting based on user attributes?
+- [ ] **[Critical]** Is MFA enforced for all users via security defaults (small orgs) or conditional access policies (enterprise), with phishing-resistant methods (FIDO2, Windows Hello, certificate-based) preferred over SMS?
+- [ ] **[Recommended]** Is identity governance configured with access reviews on a quarterly cadence for privileged roles, group memberships, and application assignments?
+- [ ] **[Critical]** Are emergency access (break-glass) accounts created, excluded from conditional access, monitored with alerts, and tested periodically?
+- [ ] **[Recommended]** Is cross-tenant access configured with Entra ID cross-tenant access settings for B2B collaboration, restricting which external organizations can be trusted?
+- [ ] **[Critical]** Are sign-in and audit logs streaming to Log Analytics with Microsoft Sentinel analytics rules for impossible-travel, suspicious MFA, and credential-stuffing detection?
 
 ## Why This Matters
 

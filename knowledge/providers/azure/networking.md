@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is the VNet address space planned to avoid overlaps with on-premises networks and peered VNets, with subnets sized for service delegation requirements?
-- [ ] Are Network Security Groups (NSGs) applied at the subnet level with rules following least-privilege, using Application Security Groups (ASGs) for role-based grouping?
-- [ ] Is Azure Front Door configured as the global entry point for web applications, providing CDN, WAF, and global load balancing in a single service?
-- [ ] Is Azure Application Gateway (L7) or Azure Load Balancer (L4) deployed for internal and regional load balancing with health probes configured?
-- [ ] Is Azure WAF (on Front Door or Application Gateway) configured with OWASP 3.2 managed rule set and custom rules for application-specific protection?
-- [ ] Is Azure Traffic Manager configured for DNS-based global traffic routing when Front Door is not used? (priority, weighted, performance, geographic routing)
-- [ ] Are Private Endpoints configured for PaaS services (Azure SQL, Storage, Key Vault, Cosmos DB) to eliminate public internet exposure?
-- [ ] Is Azure Bastion deployed for secure RDP/SSH access to VMs without exposing management ports to the internet?
-- [ ] Is VNet Peering or Azure Virtual WAN configured for multi-VNet connectivity with appropriate route tables and no transitive routing gaps?
-- [ ] Are User-Defined Routes (UDRs) configured to force traffic through Azure Firewall or NVA for inspection where required?
-- [ ] Is Azure DDoS Protection Standard enabled for VNets hosting public-facing workloads?
-- [ ] Is Azure DNS Private Zones configured for name resolution of Private Endpoints and internal services?
-- [ ] Are NSG Flow Logs enabled and flowing to Log Analytics for network traffic analysis and threat detection?
-- [ ] Is ExpressRoute or VPN Gateway configured for hybrid connectivity with redundant circuits and appropriate SKU?
+- [ ] **[Critical]** Is the VNet address space planned to avoid overlaps with on-premises networks and peered VNets, with subnets sized for service delegation requirements?
+- [ ] **[Critical]** Are Network Security Groups (NSGs) applied at the subnet level with rules following least-privilege, using Application Security Groups (ASGs) for role-based grouping?
+- [ ] **[Recommended]** Is Azure Front Door configured as the global entry point for web applications, providing CDN, WAF, and global load balancing in a single service?
+- [ ] **[Recommended]** Is Azure Application Gateway (L7) or Azure Load Balancer (L4) deployed for internal and regional load balancing with health probes configured?
+- [ ] **[Critical]** Is Azure WAF (on Front Door or Application Gateway) configured with OWASP 3.2 managed rule set and custom rules for application-specific protection?
+- [ ] **[Recommended]** Is Azure Traffic Manager configured for DNS-based global traffic routing when Front Door is not used? (priority, weighted, performance, geographic routing)
+- [ ] **[Critical]** Are Private Endpoints configured for PaaS services (Azure SQL, Storage, Key Vault, Cosmos DB) to eliminate public internet exposure?
+- [ ] **[Recommended]** Is Azure Bastion deployed for secure RDP/SSH access to VMs without exposing management ports to the internet?
+- [ ] **[Critical]** Is VNet Peering or Azure Virtual WAN configured for multi-VNet connectivity with appropriate route tables and no transitive routing gaps?
+- [ ] **[Recommended]** Are User-Defined Routes (UDRs) configured to force traffic through Azure Firewall or NVA for inspection where required?
+- [ ] **[Recommended]** Is Azure DDoS Protection Standard enabled for VNets hosting public-facing workloads?
+- [ ] **[Critical]** Is Azure DNS Private Zones configured for name resolution of Private Endpoints and internal services?
+- [ ] **[Recommended]** Are NSG Flow Logs enabled and flowing to Log Analytics for network traffic analysis and threat detection?
+- [ ] **[Recommended]** Is ExpressRoute or VPN Gateway configured for hybrid connectivity with redundant circuits and appropriate SKU?
 
 ## Why This Matters
 

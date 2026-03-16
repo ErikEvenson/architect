@@ -2,21 +2,21 @@
 
 ## Checklist
 
-- [ ] Choose orchestrator: ECS (AWS-native, simpler, tighter AWS integration) vs EKS (Kubernetes-compatible, portable, broader ecosystem) based on team expertise and portability requirements
-- [ ] Select ECS launch type: EC2 (full instance control, GPU support, larger task sizes, cost savings with reserved instances) vs Fargate (no instance management, per-vCPU/memory billing, faster scaling)
-- [ ] Configure ECR repositories with image scanning (basic or enhanced via Inspector), lifecycle policies to expire untagged/old images, and cross-region replication for multi-region deployments
-- [ ] Define ECS task definitions with appropriate CPU/memory combinations (Fargate has fixed ratios: 0.25-16 vCPU, 0.5-120 GB memory), IAM task roles (not instance roles), and log configuration
-- [ ] Set up service discovery using AWS Cloud Map for service-to-service communication with DNS-based or API-based discovery; use ECS Service Connect or VPC Lattice for advanced traffic management (App Mesh is deprecated, discontinuation September 30, 2026)
-- [ ] Evaluate EKS Auto Mode (GA in EKS 1.31) for automated node provisioning, scaling, and updates using AWS-managed Karpenter — eliminates the need to manage node groups or self-managed Karpenter
-- [ ] Use EKS Pod Identity for new workloads requiring IAM role association (GA in EKS 1.28+) — simpler than IRSA, uses an EKS-managed agent instead of webhook mutation; both IRSA and Pod Identity are supported but Pod Identity is recommended
-- [ ] Configure capacity providers: Fargate/Fargate Spot for ECS, managed node groups/Fargate profiles for EKS; use Fargate Spot for fault-tolerant workloads (up to 70% savings, 2-minute interruption notice)
-- [ ] Evaluate Graviton (ARM-based) instances for ECS EC2 and EKS node groups -- typically 20-40% better price-performance than x86 equivalents for containerized workloads
-- [ ] Implement container health checks at both the Docker HEALTHCHECK level and ALB/NLB target group level; configure deregistration delay to allow in-flight requests to complete
-- [ ] Enable Container Insights (CloudWatch) for cluster, service, and task-level metrics including CPU, memory, network, and disk utilization; adds cost but essential for production observability
-- [ ] Use EKS managed node groups for automatic node provisioning, AMI updates, and graceful draining; consider Karpenter for faster, more flexible node autoscaling than Cluster Autoscaler
-- [ ] Configure EKS add-ons (CoreDNS, kube-proxy, VPC CNI, EBS CSI driver) as managed add-ons for automatic version compatibility and updates
-- [ ] Evaluate Bottlerocket OS for container-optimized nodes: minimal attack surface, atomic updates, API-driven configuration, no SSH by default; supports both ECS and EKS
-- [ ] Design task/pod placement with spread strategies across AZs for high availability; use binpack strategy for cost optimization on EC2 launch type
+- [ ] **[Critical]** Choose orchestrator: ECS (AWS-native, simpler, tighter AWS integration) vs EKS (Kubernetes-compatible, portable, broader ecosystem) based on team expertise and portability requirements
+- [ ] **[Critical]** Select ECS launch type: EC2 (full instance control, GPU support, larger task sizes, cost savings with reserved instances) vs Fargate (no instance management, per-vCPU/memory billing, faster scaling)
+- [ ] **[Critical]** Configure ECR repositories with image scanning (basic or enhanced via Inspector), lifecycle policies to expire untagged/old images, and cross-region replication for multi-region deployments
+- [ ] **[Critical]** Define ECS task definitions with appropriate CPU/memory combinations (Fargate has fixed ratios: 0.25-16 vCPU, 0.5-120 GB memory), IAM task roles (not instance roles), and log configuration
+- [ ] **[Recommended]** Set up service discovery using AWS Cloud Map for service-to-service communication with DNS-based or API-based discovery; use ECS Service Connect or VPC Lattice for advanced traffic management (App Mesh is deprecated, discontinuation September 30, 2026)
+- [ ] **[Optional]** Evaluate EKS Auto Mode (GA in EKS 1.31) for automated node provisioning, scaling, and updates using AWS-managed Karpenter — eliminates the need to manage node groups or self-managed Karpenter
+- [ ] **[Recommended]** Use EKS Pod Identity for new workloads requiring IAM role association (GA in EKS 1.28+) — simpler than IRSA, uses an EKS-managed agent instead of webhook mutation; both IRSA and Pod Identity are supported but Pod Identity is recommended
+- [ ] **[Recommended]** Configure capacity providers: Fargate/Fargate Spot for ECS, managed node groups/Fargate profiles for EKS; use Fargate Spot for fault-tolerant workloads (up to 70% savings, 2-minute interruption notice)
+- [ ] **[Optional]** Evaluate Graviton (ARM-based) instances for ECS EC2 and EKS node groups -- typically 20-40% better price-performance than x86 equivalents for containerized workloads
+- [ ] **[Critical]** Implement container health checks at both the Docker HEALTHCHECK level and ALB/NLB target group level; configure deregistration delay to allow in-flight requests to complete
+- [ ] **[Recommended]** Enable Container Insights (CloudWatch) for cluster, service, and task-level metrics including CPU, memory, network, and disk utilization; adds cost but essential for production observability
+- [ ] **[Recommended]** Use EKS managed node groups for automatic node provisioning, AMI updates, and graceful draining; consider Karpenter for faster, more flexible node autoscaling than Cluster Autoscaler
+- [ ] **[Recommended]** Configure EKS add-ons (CoreDNS, kube-proxy, VPC CNI, EBS CSI driver) as managed add-ons for automatic version compatibility and updates
+- [ ] **[Optional]** Evaluate Bottlerocket OS for container-optimized nodes: minimal attack surface, atomic updates, API-driven configuration, no SSH by default; supports both ECS and EKS
+- [ ] **[Critical]** Design task/pod placement with spread strategies across AZs for high availability; use binpack strategy for cost optimization on EC2 launch type
 
 ## Why This Matters
 

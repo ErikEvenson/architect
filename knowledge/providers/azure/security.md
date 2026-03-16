@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is Microsoft Entra ID (Azure AD) configured as the identity provider with Conditional Access policies enforcing MFA, device compliance, and location-based access?
-- [ ] Are managed identities (system-assigned or user-assigned) used for Azure resource-to-resource authentication instead of service principal secrets?
-- [ ] Is Azure Key Vault deployed for secret, key, and certificate management, with RBAC-based access control (not legacy access policies)?
-- [ ] Is Key Vault configured with soft-delete and purge protection enabled to prevent accidental or malicious secret deletion?
-- [ ] Is Azure RBAC applied following least-privilege with custom roles where built-in roles are too broad?
-- [ ] Is Microsoft Defender for Cloud enabled with at least Defender for Servers, Defender for SQL, and Defender for Key Vault plans?
-- [ ] Is Secure Score monitored and used to prioritize security improvements across the environment?
-- [ ] Are NSG Flow Logs (version 2) enabled for all NSGs and flowing to Log Analytics with Traffic Analytics for threat detection?
-- [ ] Is Azure Policy used to enforce organizational standards (e.g., require encryption, deny public IPs, enforce tagging)?
-- [ ] Is Privileged Identity Management (PIM) configured for just-in-time elevation of privileged roles with approval workflows?
-- [ ] Are diagnostic settings configured to send Entra ID sign-in and audit logs to Log Analytics and/or a SIEM?
-- [ ] Is Azure Private Link used for all PaaS services to eliminate public endpoint exposure?
-- [ ] Are management groups and Azure Policy used to enforce guardrails across subscriptions in a landing zone architecture?
-- [ ] Is Microsoft Sentinel deployed as the SIEM/SOAR for security event aggregation, detection rules, and automated response playbooks?
+- [ ] **[Critical]** Is Microsoft Entra ID (Azure AD) configured as the identity provider with Conditional Access policies enforcing MFA, device compliance, and location-based access?
+- [ ] **[Critical]** Are managed identities (system-assigned or user-assigned) used for Azure resource-to-resource authentication instead of service principal secrets?
+- [ ] **[Critical]** Is Azure Key Vault deployed for secret, key, and certificate management, with RBAC-based access control (not legacy access policies)?
+- [ ] **[Critical]** Is Key Vault configured with soft-delete and purge protection enabled to prevent accidental or malicious secret deletion?
+- [ ] **[Critical]** Is Azure RBAC applied following least-privilege with custom roles where built-in roles are too broad?
+- [ ] **[Critical]** Is Microsoft Defender for Cloud enabled with at least Defender for Servers, Defender for SQL, and Defender for Key Vault plans?
+- [ ] **[Recommended]** Is Secure Score monitored and used to prioritize security improvements across the environment?
+- [ ] **[Recommended]** Are NSG Flow Logs (version 2) enabled for all NSGs and flowing to Log Analytics with Traffic Analytics for threat detection?
+- [ ] **[Critical]** Is Azure Policy used to enforce organizational standards (e.g., require encryption, deny public IPs, enforce tagging)?
+- [ ] **[Critical]** Is Privileged Identity Management (PIM) configured for just-in-time elevation of privileged roles with approval workflows?
+- [ ] **[Critical]** Are diagnostic settings configured to send Entra ID sign-in and audit logs to Log Analytics and/or a SIEM?
+- [ ] **[Critical]** Is Azure Private Link used for all PaaS services to eliminate public endpoint exposure?
+- [ ] **[Recommended]** Are management groups and Azure Policy used to enforce guardrails across subscriptions in a landing zone architecture?
+- [ ] **[Recommended]** Is Microsoft Sentinel deployed as the SIEM/SOAR for security event aggregation, detection rules, and automated response playbooks?
 
 ## Why This Matters
 

@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Is Cloud SQL selected for relational workloads, with the appropriate tier and high availability configuration (regional instance with automatic failover)?
-- [ ] Are Cloud SQL instances configured with private IP only (no public IP), using Private Service Connect or private services access?
-- [ ] Is Cloud SQL configured with automated backups, point-in-time recovery, and cross-region read replicas for disaster recovery?
-- [ ] Is Cloud Spanner evaluated for workloads requiring global strong consistency, horizontal scaling, and 99.999% availability SLA?
-- [ ] Is Cloud Spanner node count and processing units right-sized based on read/write throughput, with autoscaler configured?
-- [ ] Is Memorystore for Redis configured with the appropriate tier? (Basic for caching without HA, Standard for replication and failover)
-- [ ] Is Memorystore deployed with AUTH enabled, in-transit encryption, and private service access (no public IP)?
-- [ ] Is Cloud Bigtable evaluated for high-throughput, low-latency NoSQL workloads (time-series, IoT, analytics) with cluster sizing based on storage and throughput needs?
-- [ ] Is Firestore selected for serverless document database workloads, with the appropriate mode (Native for mobile/web, Datastore for server-side)?
-- [ ] Are database connections using Cloud SQL Auth Proxy or Cloud SQL Connector libraries for secure IAM-based authentication?
-- [ ] Is customer-managed encryption (CMEK) enabled for Cloud SQL, Spanner, and Bigtable using Cloud KMS?
-- [ ] Are maintenance windows configured for Cloud SQL during low-traffic periods, and is the database flag configuration version-controlled?
-- [ ] Is AlloyDB evaluated for PostgreSQL workloads requiring analytical and transactional performance with columnar engine?
+- [ ] **[Critical]** Is Cloud SQL selected for relational workloads, with the appropriate tier and high availability configuration (regional instance with automatic failover)?
+- [ ] **[Critical]** Are Cloud SQL instances configured with private IP only (no public IP), using Private Service Connect or private services access?
+- [ ] **[Critical]** Is Cloud SQL configured with automated backups, point-in-time recovery, and cross-region read replicas for disaster recovery?
+- [ ] **[Recommended]** Is Cloud Spanner evaluated for workloads requiring global strong consistency, horizontal scaling, and 99.999% availability SLA?
+- [ ] **[Recommended]** Is Cloud Spanner node count and processing units right-sized based on read/write throughput, with autoscaler configured?
+- [ ] **[Recommended]** Is Memorystore for Redis configured with the appropriate tier? (Basic for caching without HA, Standard for replication and failover)
+- [ ] **[Critical]** Is Memorystore deployed with AUTH enabled, in-transit encryption, and private service access (no public IP)?
+- [ ] **[Optional]** Is Cloud Bigtable evaluated for high-throughput, low-latency NoSQL workloads (time-series, IoT, analytics) with cluster sizing based on storage and throughput needs?
+- [ ] **[Recommended]** Is Firestore selected for serverless document database workloads, with the appropriate mode (Native for mobile/web, Datastore for server-side)?
+- [ ] **[Critical]** Are database connections using Cloud SQL Auth Proxy or Cloud SQL Connector libraries for secure IAM-based authentication?
+- [ ] **[Recommended]** Is customer-managed encryption (CMEK) enabled for Cloud SQL, Spanner, and Bigtable using Cloud KMS?
+- [ ] **[Recommended]** Are maintenance windows configured for Cloud SQL during low-traffic periods, and is the database flag configuration version-controlled?
+- [ ] **[Optional]** Is AlloyDB evaluated for PostgreSQL workloads requiring analytical and transactional performance with columnar engine?
 
 ## Why This Matters
 

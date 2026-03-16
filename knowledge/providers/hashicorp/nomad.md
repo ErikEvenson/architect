@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Determine job type for each workload: service (long-running), batch (short-lived, exit code matters), system (runs on every node matching constraints), sysbatch (batch on every node)
-- [ ] Select appropriate task drivers: Docker (most common), exec (raw binary), Java, QEMU, containerd (community), Podman (community); plan driver plugin installation
-- [ ] Design Consul integration for service discovery, health checking, and Consul Connect (service mesh with mTLS and intentions)
-- [ ] Plan Vault integration for dynamic secrets injection (database credentials, PKI certificates, AWS STS tokens) into tasks via template stanza
-- [ ] Architect multi-region federation: configure servers in each region, set up WAN gossip, design job multi-region block with failover strategies
-- [ ] Configure autoscaling: Nomad Autoscaler with target plugins (Prometheus, Datadog, AWS ASG), scaling policies (target-value, threshold), and cooldown periods
-- [ ] Plan CSI plugin deployment for persistent storage (EBS, EFS, Ceph, Portworx); configure volume registration and per-alloc volume claims
-- [ ] Design ACL policy structure: tokens, policies, capabilities (submit-job, read-job, alloc-lifecycle), namespace-scoped permissions, Sentinel policies (Enterprise)
-- [ ] Configure resource management: CPU, memory (hard/soft limits), disk, network (port allocation: static, dynamic, mapped), device plugins (GPU)
-- [ ] Evaluate spread and affinity scheduling constraints for rack-awareness, availability zone distribution, and hardware targeting
-- [ ] Plan upgrade strategy: server upgrades (one at a time, leader last), client upgrades (drain then upgrade), job version rollback procedures
-- [ ] Design namespace isolation strategy for multi-team environments: resource quotas per namespace, ACL policies, Sentinel policies for governance
+- [ ] **[Recommended]** Determine job type for each workload: service (long-running), batch (short-lived, exit code matters), system (runs on every node matching constraints), sysbatch (batch on every node)
+- [ ] **[Recommended]** Select appropriate task drivers: Docker (most common), exec (raw binary), Java, QEMU, containerd (community), Podman (community); plan driver plugin installation
+- [ ] **[Recommended]** Design Consul integration for service discovery, health checking, and Consul Connect (service mesh with mTLS and intentions)
+- [ ] **[Recommended]** Plan Vault integration for dynamic secrets injection (database credentials, PKI certificates, AWS STS tokens) into tasks via template stanza
+- [ ] **[Optional]** Architect multi-region federation: configure servers in each region, set up WAN gossip, design job multi-region block with failover strategies
+- [ ] **[Optional]** Configure autoscaling: Nomad Autoscaler with target plugins (Prometheus, Datadog, AWS ASG), scaling policies (target-value, threshold), and cooldown periods
+- [ ] **[Recommended]** Plan CSI plugin deployment for persistent storage (EBS, EFS, Ceph, Portworx); configure volume registration and per-alloc volume claims
+- [ ] **[Critical]** Design ACL policy structure: tokens, policies, capabilities (submit-job, read-job, alloc-lifecycle), namespace-scoped permissions, Sentinel policies (Enterprise)
+- [ ] **[Recommended]** Configure resource management: CPU, memory (hard/soft limits), disk, network (port allocation: static, dynamic, mapped), device plugins (GPU)
+- [ ] **[Recommended]** Evaluate spread and affinity scheduling constraints for rack-awareness, availability zone distribution, and hardware targeting
+- [ ] **[Critical]** Plan upgrade strategy: server upgrades (one at a time, leader last), client upgrades (drain then upgrade), job version rollback procedures
+- [ ] **[Recommended]** Design namespace isolation strategy for multi-team environments: resource quotas per namespace, ACL policies, Sentinel policies for governance
 
 ## Why This Matters
 

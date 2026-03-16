@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is a centralized Log Analytics workspace deployed with appropriate retention period (30-730 days) and pricing tier (per-GB vs commitment tier) for the expected ingestion volume?
-- [ ] Are diagnostic settings enabled for all Azure resources, streaming platform metrics and resource logs to the Log Analytics workspace?
-- [ ] Is Application Insights configured for all application workloads with appropriate sampling rate to balance cost and telemetry fidelity?
-- [ ] Are Azure Monitor action groups configured with appropriate notification channels (email, SMS, webhook, ITSM, Logic App) and suppression rules to prevent alert fatigue?
-- [ ] Are metric alerts, log alerts, and activity log alerts defined for critical thresholds (CPU, memory, error rates, latency P95/P99, availability)?
-- [ ] Is Azure Monitor Workbooks used to create shared, interactive dashboards combining metrics, logs, and parameters for operational visibility?
-- [ ] Is Network Watcher enabled in every region with NSG flow logs (version 2) streaming to Log Analytics for traffic analytics and anomaly detection?
-- [ ] Is Connection Monitor configured to continuously test connectivity between Azure VMs, on-premises endpoints, and external URLs with latency and packet-loss thresholds?
-- [ ] Is Microsoft Sentinel (SIEM) deployed with data connectors for Azure AD sign-in logs, Azure Activity, Microsoft 365, and threat intelligence feeds?
-- [ ] Are Kusto Query Language (KQL) queries saved as functions in the workspace for reusable operational and security investigations?
-- [ ] Is cost management for monitoring configured -- data collection rules (DCRs) filtering unnecessary logs, ingestion caps on Log Analytics, and daily caps on Application Insights?
-- [ ] Are Azure Dashboards configured for executive and operational views, pinning key metrics from Azure Monitor, Application Insights, and Resource Health?
-- [ ] Is distributed tracing enabled end-to-end with Application Insights correlation across microservices using W3C TraceContext propagation?
-- [ ] Are smart detection and dynamic thresholds configured in Azure Monitor to detect anomalies without manually setting static alert thresholds?
+- [ ] **[Critical]** Is a centralized Log Analytics workspace deployed with appropriate retention period (30-730 days) and pricing tier (per-GB vs commitment tier) for the expected ingestion volume?
+- [ ] **[Critical]** Are diagnostic settings enabled for all Azure resources, streaming platform metrics and resource logs to the Log Analytics workspace?
+- [ ] **[Recommended]** Is Application Insights configured for all application workloads with appropriate sampling rate to balance cost and telemetry fidelity?
+- [ ] **[Critical]** Are Azure Monitor action groups configured with appropriate notification channels (email, SMS, webhook, ITSM, Logic App) and suppression rules to prevent alert fatigue?
+- [ ] **[Critical]** Are metric alerts, log alerts, and activity log alerts defined for critical thresholds (CPU, memory, error rates, latency P95/P99, availability)?
+- [ ] **[Optional]** Is Azure Monitor Workbooks used to create shared, interactive dashboards combining metrics, logs, and parameters for operational visibility?
+- [ ] **[Recommended]** Is Network Watcher enabled in every region with NSG flow logs (version 2) streaming to Log Analytics for traffic analytics and anomaly detection?
+- [ ] **[Optional]** Is Connection Monitor configured to continuously test connectivity between Azure VMs, on-premises endpoints, and external URLs with latency and packet-loss thresholds?
+- [ ] **[Recommended]** Is Microsoft Sentinel (SIEM) deployed with data connectors for Azure AD sign-in logs, Azure Activity, Microsoft 365, and threat intelligence feeds?
+- [ ] **[Optional]** Are Kusto Query Language (KQL) queries saved as functions in the workspace for reusable operational and security investigations?
+- [ ] **[Recommended]** Is cost management for monitoring configured -- data collection rules (DCRs) filtering unnecessary logs, ingestion caps on Log Analytics, and daily caps on Application Insights?
+- [ ] **[Optional]** Are Azure Dashboards configured for executive and operational views, pinning key metrics from Azure Monitor, Application Insights, and Resource Health?
+- [ ] **[Recommended]** Is distributed tracing enabled end-to-end with Application Insights correlation across microservices using W3C TraceContext propagation?
+- [ ] **[Optional]** Are smart detection and dynamic thresholds configured in Azure Monitor to detect anomalies without manually setting static alert thresholds?
 
 ## Why This Matters
 

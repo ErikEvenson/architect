@@ -4,19 +4,19 @@ Hyper-converged infrastructure (HCI) solution that runs Azure services on-premis
 
 ## Checklist
 
-- [ ] Select validated hardware nodes from Dell, HPE, Lenovo, or other Azure Local Integrated System partners; confirm CPU, memory, and NVMe/SSD requirements for target workloads
-- [ ] Plan cluster sizing: minimum 1 node (single-node) up to 16 nodes per cluster; account for N+1 node fault tolerance for production workloads
-- [ ] Design networking topology: choose between Network ATC (simplified intent-based) and manual SDN configuration; plan for management, compute, and storage traffic separation
-- [ ] Configure Storage Spaces Direct (S2D): select drive tiers (NVMe cache + SSD capacity or all-NVMe), plan volume layout, enable thin provisioning for efficient capacity utilization
-- [ ] Register the cluster with Azure Arc and verify Azure subscription linkage for billing and management
-- [ ] Deploy AKS hybrid (AKS on Azure Local) if running containerized workloads: plan control plane sizing, node pool configuration, and container networking (Calico or Flannel)
-- [ ] Plan Azure Virtual Desktop (AVD) session host deployment on Azure Local if delivering virtual desktops from on-premises infrastructure
-- [ ] Configure Azure Backup and Azure Site Recovery for VM protection; set up Azure Monitor and Azure Defender for Cloud for observability and security posture management
-- [ ] Set up Lifecycle Manager (formerly Windows Admin Center updates) for coordinated firmware, driver, and OS updates with rolling node-by-node upgrades
-- [ ] Design stretch clustering across two sites if multi-site HA is required: configure synchronous replication (up to ~5ms RTT between sites) and a cloud witness in Azure for quorum
-- [ ] Plan for disconnected or partially connected scenarios: understand which features require continuous Azure connectivity (billing heartbeat, Arc agent check-in) versus those that operate offline
-- [ ] Evaluate SQL Managed Instance on Azure Local for on-prem managed SQL with Azure parity features (automated patching, point-in-time restore)
-- [ ] Document licensing model: Azure Local uses a per-physical-core/month subscription model billed through Azure; Windows Server guest licensing is included in the subscription
+- [ ] **[Critical]** Select validated hardware nodes from Dell, HPE, Lenovo, or other Azure Local Integrated System partners; confirm CPU, memory, and NVMe/SSD requirements for target workloads
+- [ ] **[Critical]** Plan cluster sizing: minimum 1 node (single-node) up to 16 nodes per cluster; account for N+1 node fault tolerance for production workloads
+- [ ] **[Critical]** Design networking topology: choose between Network ATC (simplified intent-based) and manual SDN configuration; plan for management, compute, and storage traffic separation
+- [ ] **[Critical]** Configure Storage Spaces Direct (S2D): select drive tiers (NVMe cache + SSD capacity or all-NVMe), plan volume layout, enable thin provisioning for efficient capacity utilization
+- [ ] **[Critical]** Register the cluster with Azure Arc and verify Azure subscription linkage for billing and management
+- [ ] **[Recommended]** Deploy AKS hybrid (AKS on Azure Local) if running containerized workloads: plan control plane sizing, node pool configuration, and container networking (Calico or Flannel)
+- [ ] **[Optional]** Plan Azure Virtual Desktop (AVD) session host deployment on Azure Local if delivering virtual desktops from on-premises infrastructure
+- [ ] **[Critical]** Configure Azure Backup and Azure Site Recovery for VM protection; set up Azure Monitor and Azure Defender for Cloud for observability and security posture management
+- [ ] **[Recommended]** Set up Lifecycle Manager (formerly Windows Admin Center updates) for coordinated firmware, driver, and OS updates with rolling node-by-node upgrades
+- [ ] **[Optional]** Design stretch clustering across two sites if multi-site HA is required: configure synchronous replication (up to ~5ms RTT between sites) and a cloud witness in Azure for quorum
+- [ ] **[Recommended]** Plan for disconnected or partially connected scenarios: understand which features require continuous Azure connectivity (billing heartbeat, Arc agent check-in) versus those that operate offline
+- [ ] **[Optional]** Evaluate SQL Managed Instance on Azure Local for on-prem managed SQL with Azure parity features (automated patching, point-in-time restore)
+- [ ] **[Recommended]** Document licensing model: Azure Local uses a per-physical-core/month subscription model billed through Azure; Windows Server guest licensing is included in the subscription
 
 ## Why This Matters
 

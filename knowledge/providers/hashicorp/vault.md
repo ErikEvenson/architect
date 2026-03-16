@@ -2,21 +2,21 @@
 
 ## Checklist
 
-- [ ] Vault is deployed in HA mode with Raft storage (integrated) or Consul backend; single-node Vault is never acceptable for production
-- [ ] Auto-unseal is configured using a cloud KMS (AWS KMS, Azure Key Vault, GCP Cloud KMS) to eliminate manual unseal key management and enable automated restarts
-- [ ] Unseal key shares and recovery keys are distributed according to Shamir's Secret Sharing threshold (e.g., 5 shares, 3 required); root token is revoked after initial setup
-- [ ] Auth methods are configured for each consumer type: AppRole for CI/CD and applications, Kubernetes auth for pods, OIDC for human operators, AWS IAM for EC2/Lambda
-- [ ] Policies follow least privilege: each application role has a policy granting access only to its specific secret paths with minimum required capabilities (read, list, create, update, delete)
-- [ ] KV v2 secrets engine is used (not v1) for versioning, soft-delete, metadata, and check-and-set operations; max versions and delete_version_after are configured per mount
-- [ ] Dynamic secrets are used for databases (PostgreSQL, MySQL, MongoDB), AWS IAM, and cloud credentials; static credentials are eliminated wherever dynamic alternatives exist
-- [ ] Lease TTLs and max TTLs are set appropriately: short-lived database credentials (1 hour default, 24 hour max), longer for less sensitive secrets; applications handle lease renewal
-- [ ] PKI secrets engine is configured with an offline root CA; intermediate CAs are mounted in Vault and issue short-lived certificates (30-90 days) with automated renewal
-- [ ] Transit secrets engine is used for encryption-as-a-service when applications need to encrypt data without managing encryption keys directly; key rotation is scheduled
-- [ ] Audit logging is enabled on at least two audit devices (file + syslog, or file + socket); Vault refuses to process requests if all audit devices fail (security property)
-- [ ] Vault Agent or Vault Sidecar Injector is deployed for Kubernetes workloads to handle authentication, secret retrieval, and lease renewal without application-level Vault SDK integration
+- [ ] **[Critical]** Vault is deployed in HA mode with Raft storage (integrated) or Consul backend; single-node Vault is never acceptable for production
+- [ ] **[Critical]** Auto-unseal is configured using a cloud KMS (AWS KMS, Azure Key Vault, GCP Cloud KMS) to eliminate manual unseal key management and enable automated restarts
+- [ ] **[Critical]** Unseal key shares and recovery keys are distributed according to Shamir's Secret Sharing threshold (e.g., 5 shares, 3 required); root token is revoked after initial setup
+- [ ] **[Critical]** Auth methods are configured for each consumer type: AppRole for CI/CD and applications, Kubernetes auth for pods, OIDC for human operators, AWS IAM for EC2/Lambda
+- [ ] **[Critical]** Policies follow least privilege: each application role has a policy granting access only to its specific secret paths with minimum required capabilities (read, list, create, update, delete)
+- [ ] **[Recommended]** KV v2 secrets engine is used (not v1) for versioning, soft-delete, metadata, and check-and-set operations; max versions and delete_version_after are configured per mount
+- [ ] **[Recommended]** Dynamic secrets are used for databases (PostgreSQL, MySQL, MongoDB), AWS IAM, and cloud credentials; static credentials are eliminated wherever dynamic alternatives exist
+- [ ] **[Recommended]** Lease TTLs and max TTLs are set appropriately: short-lived database credentials (1 hour default, 24 hour max), longer for less sensitive secrets; applications handle lease renewal
+- [ ] **[Recommended]** PKI secrets engine is configured with an offline root CA; intermediate CAs are mounted in Vault and issue short-lived certificates (30-90 days) with automated renewal
+- [ ] **[Optional]** Transit secrets engine is used for encryption-as-a-service when applications need to encrypt data without managing encryption keys directly; key rotation is scheduled
+- [ ] **[Critical]** Audit logging is enabled on at least two audit devices (file + syslog, or file + socket); Vault refuses to process requests if all audit devices fail (security property)
+- [ ] **[Recommended]** Vault Agent or Vault Sidecar Injector is deployed for Kubernetes workloads to handle authentication, secret retrieval, and lease renewal without application-level Vault SDK integration
 - [ ] **[Recommended]** Is the Vault Secrets Operator (VSO) evaluated for Kubernetes-native secret syncing as an alternative to Agent/Sidecar Injector?
-- [ ] Namespaces (Enterprise) isolate tenants or teams with independent auth, policies, and secrets engines; root namespace is reserved for platform administration
-- [ ] Disaster recovery and performance replication (Enterprise) or regular Raft snapshots (OSS) are configured and tested with documented RTO/RPO
+- [ ] **[Optional]** Namespaces (Enterprise) isolate tenants or teams with independent auth, policies, and secrets engines; root namespace is reserved for platform administration
+- [ ] **[Critical]** Disaster recovery and performance replication (Enterprise) or regular Raft snapshots (OSS) are configured and tested with documented RTO/RPO
 
 ## Why This Matters
 

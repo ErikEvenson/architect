@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Migrate from JSON templates to HCL2 format (JSON is legacy; HCL2 supports variables, locals, dynamic blocks, and functions)
-- [ ] Select appropriate builders for target platforms: amazon-ebs, azure-arm, googlecompute, vmware-iso, qemu, docker, vsphere-iso, proxmox
-- [ ] Design multi-cloud image pipeline: single HCL2 template with multiple source blocks producing AMIs, Azure images, and GCP images from one build
-- [ ] Plan provisioner strategy: prefer cloud-init/user-data for boot-time config; use shell/ansible/chef provisioners for bake-time hardening
-- [ ] Configure post-processors: manifest (outputs artifact IDs), docker-tag/docker-push, vagrant, compress, checksum, artifice
-- [ ] Integrate Packer builds into CI/CD pipeline (GitHub Actions, GitLab CI, Jenkins): trigger on base image updates, security patches, or application releases
-- [ ] Implement image testing: use Packer's post-processor to launch the built image, run InSpec/Goss/Serverspec tests, then promote or discard
-- [ ] Design variable management: use .pkrvars.hcl files per environment, HCP Packer for variable sets, or CI/CD secret injection for credentials
-- [ ] Plan image naming and tagging conventions: include build timestamp, git SHA, base OS version, and security patch date in image metadata
-- [ ] Evaluate HCP Packer registry for image lifecycle tracking: channel assignments (dev, staging, production), ancestry tracking, revocation of vulnerable images
-- [ ] Configure builder-specific optimizations: spot/preemptible instances for builds, VPC/subnet selection, instance type sizing for build speed vs cost
-- [ ] Plan golden image hierarchy: base OS image -> hardened OS image -> application-specific image (layered pipeline with parent tracking)
+- [ ] **[Recommended]** Migrate from JSON templates to HCL2 format (JSON is legacy; HCL2 supports variables, locals, dynamic blocks, and functions)
+- [ ] **[Recommended]** Select appropriate builders for target platforms: amazon-ebs, azure-arm, googlecompute, vmware-iso, qemu, docker, vsphere-iso, proxmox
+- [ ] **[Optional]** Design multi-cloud image pipeline: single HCL2 template with multiple source blocks producing AMIs, Azure images, and GCP images from one build
+- [ ] **[Recommended]** Plan provisioner strategy: prefer cloud-init/user-data for boot-time config; use shell/ansible/chef provisioners for bake-time hardening
+- [ ] **[Recommended]** Configure post-processors: manifest (outputs artifact IDs), docker-tag/docker-push, vagrant, compress, checksum, artifice
+- [ ] **[Recommended]** Integrate Packer builds into CI/CD pipeline (GitHub Actions, GitLab CI, Jenkins): trigger on base image updates, security patches, or application releases
+- [ ] **[Recommended]** Implement image testing: use Packer's post-processor to launch the built image, run InSpec/Goss/Serverspec tests, then promote or discard
+- [ ] **[Recommended]** Design variable management: use .pkrvars.hcl files per environment, HCP Packer for variable sets, or CI/CD secret injection for credentials
+- [ ] **[Recommended]** Plan image naming and tagging conventions: include build timestamp, git SHA, base OS version, and security patch date in image metadata
+- [ ] **[Optional]** Evaluate HCP Packer registry for image lifecycle tracking: channel assignments (dev, staging, production), ancestry tracking, revocation of vulnerable images
+- [ ] **[Optional]** Configure builder-specific optimizations: spot/preemptible instances for builds, VPC/subnet selection, instance type sizing for build speed vs cost
+- [ ] **[Recommended]** Plan golden image hierarchy: base OS image -> hardened OS image -> application-specific image (layered pipeline with parent tracking)
 
 ## Why This Matters
 

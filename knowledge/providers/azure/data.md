@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Is Azure SQL Database chosen for relational workloads, with the appropriate purchasing model? (vCore for predictable performance, DTU for simpler workloads, Hyperscale for large databases)
-- [ ] Is Azure SQL configured with zone-redundant high availability (available in Premium, Business Critical, and Hyperscale tiers)?
-- [ ] Is auto-failover groups configured for Azure SQL when cross-region disaster recovery is required?
-- [ ] Is Cosmos DB selected for globally distributed, multi-model workloads, with the appropriate consistency level chosen? (strong, bounded staleness, session, consistent prefix, eventual)
-- [ ] Are Cosmos DB Request Units (RUs) right-sized, with autoscale configured for variable workloads and provisioned throughput for predictable workloads?
-- [ ] Is Cosmos DB multi-region write enabled only when the application can handle conflict resolution, otherwise using single-write with read replicas?
-- [ ] Is Azure Cache for Redis deployed in private subnets with the appropriate tier? (Standard for basic caching, Premium for persistence/clustering, Enterprise for RediSearch/RedisBloom)
-- [ ] Is Azure Cache for Redis zone-redundant (Premium and Enterprise tiers) for production workloads?
-- [ ] Are geo-replication configurations tested for failover and failback procedures with documented RTO/RPO?
-- [ ] Is Transparent Data Encryption (TDE) enabled with customer-managed keys for Azure SQL and Cosmos DB?
-- [ ] Are Private Endpoints configured for all data services to prevent public network access?
-- [ ] Are database connections using managed identity authentication where supported instead of connection strings with passwords?
-- [ ] Is Azure SQL Intelligent Performance (automatic tuning, Query Performance Insight) enabled for self-tuning and diagnostics?
-- [ ] Are long-term backup retention (LTR) policies configured for compliance, with backups stored in a separate region?
+- [ ] **[Critical]** Is Azure SQL Database chosen for relational workloads, with the appropriate purchasing model? (vCore for predictable performance, DTU for simpler workloads, Hyperscale for large databases)
+- [ ] **[Critical]** Is Azure SQL configured with zone-redundant high availability (available in Premium, Business Critical, and Hyperscale tiers)?
+- [ ] **[Critical]** Is auto-failover groups configured for Azure SQL when cross-region disaster recovery is required?
+- [ ] **[Critical]** Is Cosmos DB selected for globally distributed, multi-model workloads, with the appropriate consistency level chosen? (strong, bounded staleness, session, consistent prefix, eventual)
+- [ ] **[Recommended]** Are Cosmos DB Request Units (RUs) right-sized, with autoscale configured for variable workloads and provisioned throughput for predictable workloads?
+- [ ] **[Recommended]** Is Cosmos DB multi-region write enabled only when the application can handle conflict resolution, otherwise using single-write with read replicas?
+- [ ] **[Recommended]** Is Azure Cache for Redis deployed in private subnets with the appropriate tier? (Standard for basic caching, Premium for persistence/clustering, Enterprise for RediSearch/RedisBloom)
+- [ ] **[Recommended]** Is Azure Cache for Redis zone-redundant (Premium and Enterprise tiers) for production workloads?
+- [ ] **[Critical]** Are geo-replication configurations tested for failover and failback procedures with documented RTO/RPO?
+- [ ] **[Critical]** Is Transparent Data Encryption (TDE) enabled with customer-managed keys for Azure SQL and Cosmos DB?
+- [ ] **[Critical]** Are Private Endpoints configured for all data services to prevent public network access?
+- [ ] **[Critical]** Are database connections using managed identity authentication where supported instead of connection strings with passwords?
+- [ ] **[Optional]** Is Azure SQL Intelligent Performance (automatic tuning, Query Performance Insight) enabled for self-tuning and diagnostics?
+- [ ] **[Recommended]** Are long-term backup retention (LTR) policies configured for compliance, with backups stored in a separate region?
 
 ## Why This Matters
 

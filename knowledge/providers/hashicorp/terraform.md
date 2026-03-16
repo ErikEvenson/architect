@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] State is stored in a remote backend (S3 + DynamoDB for locking, GCS, Azure Blob, or Terraform Cloud); local state is never used beyond initial prototyping; note that Terraform 1.8+ supports S3 native locking without DynamoDB
-- [ ] State locking is enabled and tested; DynamoDB table exists for S3 backend (pre-1.8), S3 native locking (1.8+), or backend natively supports locking (GCS, Terraform Cloud, Azure with lease)
-- [ ] State file access is restricted via IAM policies; state contains sensitive values (passwords, keys, certificates) in plaintext and must be treated as a secret
-- [ ] Workspaces or directory-based separation isolates environments (dev/staging/production); workspace-based separation uses `terraform.workspace` conditionals, directory-based uses separate backend configs
-- [ ] Modules are versioned and sourced from a registry (Terraform Registry, private registry, or Git tags); `source` references pin to a specific version, never `main` branch
-- [ ] Provider versions are constrained in `required_providers` block with pessimistic version constraints (`~> 5.0`); unconstrained providers risk breaking changes on `terraform init`
-- [ ] Lifecycle rules are used deliberately: `prevent_destroy` on databases and stateful resources, `ignore_changes` on fields managed outside Terraform (e.g., ASG desired count, tags managed by external systems)
-- [ ] `terraform plan` output is reviewed and approved before `terraform apply` in CI/CD; no auto-apply without plan review except in controlled Terraform Cloud workspaces
-- [ ] Sensitive variables are marked with `sensitive = true` and injected via environment variables (`TF_VAR_*`), Vault, or Terraform Cloud variable sets; never hardcoded in `.tf` files
-- [ ] Import blocks (`import {}`) and `moved {}` blocks are used for adopting existing resources and refactoring without destroy/recreate cycles
-- [ ] `.terraform.lock.hcl` is committed to version control to ensure consistent provider versions across team members and CI/CD
-- [ ] Data sources are used to reference resources managed outside the current Terraform configuration; cross-state references use `terraform_remote_state` or data sources against the actual API
-- [ ] CI/CD pipeline runs `terraform fmt -check`, `terraform validate`, and `tflint` or `checkov` before `terraform plan`
+- [ ] **[Critical]** State is stored in a remote backend (S3 + DynamoDB for locking, GCS, Azure Blob, or Terraform Cloud); local state is never used beyond initial prototyping; note that Terraform 1.8+ supports S3 native locking without DynamoDB
+- [ ] **[Critical]** State locking is enabled and tested; DynamoDB table exists for S3 backend (pre-1.8), S3 native locking (1.8+), or backend natively supports locking (GCS, Terraform Cloud, Azure with lease)
+- [ ] **[Critical]** State file access is restricted via IAM policies; state contains sensitive values (passwords, keys, certificates) in plaintext and must be treated as a secret
+- [ ] **[Recommended]** Workspaces or directory-based separation isolates environments (dev/staging/production); workspace-based separation uses `terraform.workspace` conditionals, directory-based uses separate backend configs
+- [ ] **[Recommended]** Modules are versioned and sourced from a registry (Terraform Registry, private registry, or Git tags); `source` references pin to a specific version, never `main` branch
+- [ ] **[Critical]** Provider versions are constrained in `required_providers` block with pessimistic version constraints (`~> 5.0`); unconstrained providers risk breaking changes on `terraform init`
+- [ ] **[Critical]** Lifecycle rules are used deliberately: `prevent_destroy` on databases and stateful resources, `ignore_changes` on fields managed outside Terraform (e.g., ASG desired count, tags managed by external systems)
+- [ ] **[Critical]** `terraform plan` output is reviewed and approved before `terraform apply` in CI/CD; no auto-apply without plan review except in controlled Terraform Cloud workspaces
+- [ ] **[Critical]** Sensitive variables are marked with `sensitive = true` and injected via environment variables (`TF_VAR_*`), Vault, or Terraform Cloud variable sets; never hardcoded in `.tf` files
+- [ ] **[Recommended]** Import blocks (`import {}`) and `moved {}` blocks are used for adopting existing resources and refactoring without destroy/recreate cycles
+- [ ] **[Recommended]** `.terraform.lock.hcl` is committed to version control to ensure consistent provider versions across team members and CI/CD
+- [ ] **[Recommended]** Data sources are used to reference resources managed outside the current Terraform configuration; cross-state references use `terraform_remote_state` or data sources against the actual API
+- [ ] **[Recommended]** CI/CD pipeline runs `terraform fmt -check`, `terraform validate`, and `tflint` or `checkov` before `terraform plan`
 
 ## Why This Matters
 

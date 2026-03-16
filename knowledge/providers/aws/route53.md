@@ -2,18 +2,18 @@
 
 ## Checklist
 
-- [ ] Choose hosted zone type: public (resolves from the internet) vs private (resolves only within associated VPCs); a domain can have both for split-horizon DNS serving different records internally vs externally
-- [ ] Use alias records instead of CNAME for zone apex (naked domain) pointing to AWS resources (ALB, CloudFront, S3, API Gateway, Global Accelerator); alias records are free (no query charges) and resolve faster than CNAME
-- [ ] Select routing policy based on requirements: simple (single resource), weighted (traffic splitting for canary/blue-green, 0-255 weights), latency-based (nearest region), failover (active/passive DR), geolocation (country/continent routing), geoproximity (bias-adjustable), multi-value answer (up to 8 healthy random records)
-- [ ] Configure health checks for all failover and routing policy records: endpoint checks (HTTP/HTTPS/TCP, 10 or 30 second intervals, from 8+ global locations), calculated checks (combine multiple checks with AND/OR logic), CloudWatch alarm-based checks (for non-IP resources)
-- [ ] Set health check thresholds appropriately: failure threshold (1-10, default 3 consecutive failures), request interval (10 seconds at $1/month or 30 seconds at $0.50/month), and regions to check from (minimum 3 recommended)
-- [ ] Enable DNSSEC signing for public hosted zones to protect against DNS spoofing; requires a KMS key (asymmetric, ECC_NIST_P256) in us-east-1 for the Key Signing Key (KSK); establish a chain of trust with DS record at the registrar
-- [ ] Configure Route 53 Resolver for hybrid DNS: inbound endpoints (on-premises resolves AWS private hosted zones, $0.125/hour per ENI) and outbound endpoints (VPC resolves on-premises DNS via forwarding rules, $0.125/hour per ENI)
-- [ ] Set appropriate TTL values: lower TTL (60s) for records that may change during failover or deployment; higher TTL (300-3600s) for stable records to reduce query costs and improve resolution speed; alias records inherit the target resource's TTL
-- [ ] Use Route 53 domain registration for automatic hosted zone creation and DNS management; supports domain transfer with transfer lock and privacy protection (WHOIS redaction free for supported TLDs)
-- [ ] Configure Resolver DNS Firewall to block DNS queries to known malicious domains or allow-list only approved domains; operates on VPC-level with rule group associations and priority ordering
-- [ ] Enable query logging for public hosted zones (to CloudWatch Logs) or Resolver query logging for VPC DNS queries (to CloudWatch Logs, S3, or Kinesis Data Firehose) for security analysis and troubleshooting
-- [ ] Design for multi-account DNS: centralized hosted zones in a shared services account with cross-account IAM roles for record management, or Route 53 Resolver rules shared via AWS RAM for consistent hybrid DNS across accounts
+- [ ] **[Critical]** Choose hosted zone type: public (resolves from the internet) vs private (resolves only within associated VPCs); a domain can have both for split-horizon DNS serving different records internally vs externally
+- [ ] **[Recommended]** Use alias records instead of CNAME for zone apex (naked domain) pointing to AWS resources (ALB, CloudFront, S3, API Gateway, Global Accelerator); alias records are free (no query charges) and resolve faster than CNAME
+- [ ] **[Critical]** Select routing policy based on requirements: simple (single resource), weighted (traffic splitting for canary/blue-green, 0-255 weights), latency-based (nearest region), failover (active/passive DR), geolocation (country/continent routing), geoproximity (bias-adjustable), multi-value answer (up to 8 healthy random records)
+- [ ] **[Critical]** Configure health checks for all failover and routing policy records: endpoint checks (HTTP/HTTPS/TCP, 10 or 30 second intervals, from 8+ global locations), calculated checks (combine multiple checks with AND/OR logic), CloudWatch alarm-based checks (for non-IP resources)
+- [ ] **[Recommended]** Set health check thresholds appropriately: failure threshold (1-10, default 3 consecutive failures), request interval (10 seconds at $1/month or 30 seconds at $0.50/month), and regions to check from (minimum 3 recommended)
+- [ ] **[Recommended]** Enable DNSSEC signing for public hosted zones to protect against DNS spoofing; requires a KMS key (asymmetric, ECC_NIST_P256) in us-east-1 for the Key Signing Key (KSK); establish a chain of trust with DS record at the registrar
+- [ ] **[Critical]** Configure Route 53 Resolver for hybrid DNS: inbound endpoints (on-premises resolves AWS private hosted zones, $0.125/hour per ENI) and outbound endpoints (VPC resolves on-premises DNS via forwarding rules, $0.125/hour per ENI)
+- [ ] **[Critical]** Set appropriate TTL values: lower TTL (60s) for records that may change during failover or deployment; higher TTL (300-3600s) for stable records to reduce query costs and improve resolution speed; alias records inherit the target resource's TTL
+- [ ] **[Optional]** Use Route 53 domain registration for automatic hosted zone creation and DNS management; supports domain transfer with transfer lock and privacy protection (WHOIS redaction free for supported TLDs)
+- [ ] **[Recommended]** Configure Resolver DNS Firewall to block DNS queries to known malicious domains or allow-list only approved domains; operates on VPC-level with rule group associations and priority ordering
+- [ ] **[Recommended]** Enable query logging for public hosted zones (to CloudWatch Logs) or Resolver query logging for VPC DNS queries (to CloudWatch Logs, S3, or Kinesis Data Firehose) for security analysis and troubleshooting
+- [ ] **[Recommended]** Design for multi-account DNS: centralized hosted zones in a shared services account with cross-account IAM roles for record management, or Route 53 Resolver rules shared via AWS RAM for consistent hybrid DNS across accounts
 
 ## Why This Matters
 

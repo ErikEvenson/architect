@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Define worker node instance types or VM sizes per workload class (general, memory-optimized, compute-optimized, GPU)
-- [ ] Create MachineSets per availability zone with appropriate labels and taints
-- [ ] Configure MachineConfigPools (master, worker, custom) for OS-level configuration (kernel args, sysctls, chrony)
-- [ ] Apply node labels for workload placement (e.g., `node-role.kubernetes.io/infra`, app-tier labels)
-- [ ] Define taints and tolerations for dedicated node pools (GPU, high-memory, compliance-sensitive)
-- [ ] Set pod resource requests and limits for all workloads; enforce via LimitRanges and ResourceQuotas per namespace
-- [ ] Configure Horizontal Pod Autoscaler (HPA) with CPU/memory or custom metrics from Prometheus
-- [ ] Evaluate Vertical Pod Autoscaler (VPA) for workloads with unpredictable resource patterns
-- [ ] Set cluster autoscaler boundaries (min/max replicas per MachineSet, scale-down delay, expendable pods)
-- [ ] Plan node overcommit ratios: set `ClusterResourceOverride` admission webhook for CPU/memory overcommit
-- [ ] Provision infrastructure nodes and move router, registry, monitoring, and logging pods to them
-- [ ] Install NVIDIA GPU Operator and Node Feature Discovery (NFD) operator for ML/AI workloads
-- [ ] Configure pod topology spread constraints for HA across zones and failure domains
-- [ ] Define pod disruption budgets (PDBs) for critical workloads to protect during node drains and upgrades
+- [ ] **[Recommended]** Define worker node instance types or VM sizes per workload class (general, memory-optimized, compute-optimized, GPU)
+- [ ] **[Critical]** Create MachineSets per availability zone with appropriate labels and taints
+- [ ] **[Recommended]** Configure MachineConfigPools (master, worker, custom) for OS-level configuration (kernel args, sysctls, chrony)
+- [ ] **[Recommended]** Apply node labels for workload placement (e.g., `node-role.kubernetes.io/infra`, app-tier labels)
+- [ ] **[Recommended]** Define taints and tolerations for dedicated node pools (GPU, high-memory, compliance-sensitive)
+- [ ] **[Critical]** Set pod resource requests and limits for all workloads; enforce via LimitRanges and ResourceQuotas per namespace
+- [ ] **[Recommended]** Configure Horizontal Pod Autoscaler (HPA) with CPU/memory or custom metrics from Prometheus
+- [ ] **[Optional]** Evaluate Vertical Pod Autoscaler (VPA) for workloads with unpredictable resource patterns
+- [ ] **[Recommended]** Set cluster autoscaler boundaries (min/max replicas per MachineSet, scale-down delay, expendable pods)
+- [ ] **[Optional]** Plan node overcommit ratios: set `ClusterResourceOverride` admission webhook for CPU/memory overcommit
+- [ ] **[Recommended]** Provision infrastructure nodes and move router, registry, monitoring, and logging pods to them
+- [ ] **[Optional]** Install NVIDIA GPU Operator and Node Feature Discovery (NFD) operator for ML/AI workloads
+- [ ] **[Recommended]** Configure pod topology spread constraints for HA across zones and failure domains
+- [ ] **[Critical]** Define pod disruption budgets (PDBs) for critical workloads to protect during node drains and upgrades
 
 ## Why This Matters
 
