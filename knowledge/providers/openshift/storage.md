@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Select primary storage backend: OpenShift Data Foundation (ODF/Ceph), cloud-native CSI (EBS, Azure Disk, GCE PD), vSphere CSI, NFS, or third-party (NetApp Trident, Pure Storage, Dell CSI)
-- [ ] Define StorageClasses with appropriate reclaim policies (Retain for production data, Delete for ephemeral)
-- [ ] Configure dynamic provisioning for all storage classes; avoid manual PV creation
-- [ ] Plan access mode requirements: ReadWriteOnce (RWO) for databases, ReadWriteMany (RWX) for shared filesystems, ReadOnlyMany (ROX) for content distribution
-- [ ] Size ODF cluster if using Ceph: minimum 3 nodes, 30+ CPU cores and 72+ GB RAM for ODF services, raw disk capacity planning with replication factor
-- [ ] Configure storage for platform components: internal registry (S3 or ODF RWX), logging (block or object storage for Loki), monitoring (block storage for Prometheus TSDB)
-- [ ] Set ResourceQuotas for PVC counts and total storage per namespace to prevent runaway provisioning
-- [ ] Enable CSI volume snapshots (`VolumeSnapshot`, `VolumeSnapshotClass`) for backup and cloning
-- [ ] Configure volume cloning for fast provisioning of database test environments
-- [ ] Plan local storage operator deployment for bare metal nodes requiring direct-attached NVMe/SSD
-- [ ] Define data migration strategy for moving workloads between storage backends or clusters
-- [ ] Evaluate encryption at rest: ODF encryption (dm-crypt), cloud KMS integration, or storage-layer encryption
-- [ ] Configure storage topology constraints to ensure PVs are provisioned in the same zone as pods
+- [ ] **[Critical]** Select primary storage backend: OpenShift Data Foundation (ODF/Ceph), cloud-native CSI (EBS, Azure Disk, GCE PD), vSphere CSI, NFS, or third-party (NetApp Trident, Pure Storage, Dell CSI)
+- [ ] **[Critical]** Define StorageClasses with appropriate reclaim policies (Retain for production data, Delete for ephemeral)
+- [ ] **[Recommended]** Configure dynamic provisioning for all storage classes; avoid manual PV creation
+- [ ] **[Critical]** Plan access mode requirements: ReadWriteOnce (RWO) for databases, ReadWriteMany (RWX) for shared filesystems, ReadOnlyMany (ROX) for content distribution
+- [ ] **[Critical]** Size ODF cluster if using Ceph: minimum 3 nodes, 30+ CPU cores and 72+ GB RAM for ODF services, raw disk capacity planning with replication factor
+- [ ] **[Critical]** Configure storage for platform components: internal registry (S3 or ODF RWX), logging (block or object storage for Loki), monitoring (block storage for Prometheus TSDB)
+- [ ] **[Recommended]** Set ResourceQuotas for PVC counts and total storage per namespace to prevent runaway provisioning
+- [ ] **[Recommended]** Enable CSI volume snapshots (`VolumeSnapshot`, `VolumeSnapshotClass`) for backup and cloning
+- [ ] **[Optional]** Configure volume cloning for fast provisioning of database test environments
+- [ ] **[Optional]** Plan local storage operator deployment for bare metal nodes requiring direct-attached NVMe/SSD
+- [ ] **[Recommended]** Define data migration strategy for moving workloads between storage backends or clusters
+- [ ] **[Critical]** Evaluate encryption at rest: ODF encryption (dm-crypt), cloud KMS integration, or storage-layer encryption
+- [ ] **[Critical]** Configure storage topology constraints to ensure PVs are provisioned in the same zone as pods
 
 ## Why This Matters
 

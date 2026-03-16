@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Choose between OCP (Red Hat OpenShift Container Platform) and OKD (community upstream)
-- [ ] Select deployment model: IPI (Installer-Provisioned Infrastructure) vs UPI (User-Provisioned Infrastructure)
-- [ ] Determine target platform (bare metal, vSphere, AWS, Azure, GCP, RHV/OpenStack, IBM Power/Z)
-- [ ] Size control plane nodes (minimum 3 for HA; 8 vCPU / 16 GB RAM recommended for production)
-- [ ] Plan worker node capacity based on workload projections and resource overhead
-- [ ] Decide whether to use dedicated infrastructure nodes for routers, registry, and monitoring
-- [ ] Configure RHCOS (Red Hat CoreOS) as the immutable node OS managed via Ignition configs
-- [ ] Set up Machine API with MachineSets per availability zone or failure domain
-- [ ] Define MachineHealthChecks to auto-remediate unhealthy nodes
-- [ ] Configure cluster autoscaler with min/max node boundaries and scale-down policies
-- [ ] Select upgrade channel (stable, fast, candidate, eus) aligned with change management policy
-- [ ] Plan OpenShift lifecycle: minor version support windows, EUS (Extended Update Support) eligibility
-- [ ] Establish day-2 operations procedures: certificate rotation, etcd defragmentation, node draining
-- [ ] Define cluster topology: single cluster, hub-spoke with RHACM, or fleet management model
+- [ ] **[Recommended]** Choose between OCP (Red Hat OpenShift Container Platform) and OKD (community upstream)
+- [ ] **[Critical]** Select deployment model: IPI (Installer-Provisioned Infrastructure) vs UPI (User-Provisioned Infrastructure)
+- [ ] **[Critical]** Determine target platform (bare metal, vSphere, AWS, Azure, GCP, RHV/OpenStack, IBM Power/Z)
+- [ ] **[Critical]** Size control plane nodes (minimum 3 for HA; 8 vCPU / 16 GB RAM recommended for production)
+- [ ] **[Critical]** Plan worker node capacity based on workload projections and resource overhead
+- [ ] **[Recommended]** Decide whether to use dedicated infrastructure nodes for routers, registry, and monitoring
+- [ ] **[Critical]** Configure RHCOS (Red Hat CoreOS) as the immutable node OS managed via Ignition configs
+- [ ] **[Critical]** Set up Machine API with MachineSets per availability zone or failure domain
+- [ ] **[Recommended]** Define MachineHealthChecks to auto-remediate unhealthy nodes
+- [ ] **[Recommended]** Configure cluster autoscaler with min/max node boundaries and scale-down policies
+- [ ] **[Critical]** Select upgrade channel (stable, fast, candidate, eus) aligned with change management policy
+- [ ] **[Recommended]** Plan OpenShift lifecycle: minor version support windows, EUS (Extended Update Support) eligibility
+- [ ] **[Critical]** Establish day-2 operations procedures: certificate rotation, etcd defragmentation, node draining
+- [ ] **[Recommended]** Define cluster topology: single cluster, hub-spoke with RHACM, or fleet management model
 
 ## Why This Matters
 

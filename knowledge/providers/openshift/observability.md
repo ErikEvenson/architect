@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Configure the built-in monitoring stack: Prometheus, Alertmanager, and Grafana (read-only in OCP; custom Grafana for write dashboards)
-- [ ] Enable user workload monitoring via `cluster-monitoring-config` ConfigMap (`enableUserWorkload: true`)
-- [ ] Define ServiceMonitor and PodMonitor CRDs for application metric scraping
-- [ ] Configure Alertmanager receivers: email, PagerDuty, Slack, webhook, or OpsGenie integration
-- [ ] Create PrometheusRule CRDs for custom alerting rules (application SLOs, error budgets, saturation thresholds)
-- [ ] Deploy OpenShift Logging operator with LokiStack (Vector as collector, Loki as store, ODF/S3 for object storage backend)
-- [ ] Configure ClusterLogForwarder for log routing: forward to external systems (Splunk, Elasticsearch, Kafka, Syslog, CloudWatch)
-- [ ] Deploy distributed tracing: Tempo operator for trace storage, OpenTelemetry Collector operator for instrumentation
-- [ ] Install Network Observability operator for eBPF-based flow collection (NetObserv FlowCollector CR)
-- [ ] Build capacity dashboards: CPU/memory utilization per namespace, PVC usage trends, node saturation metrics
-- [ ] Configure retention policies: Prometheus TSDB retention (default 15d), Loki retention, external system retention alignment
-- [ ] Set up must-gather and sos-report procedures for Red Hat support case diagnostics
-- [ ] Plan metric cardinality management: identify high-cardinality labels, set per-namespace scrape limits
+- [ ] **[Critical]** Configure the built-in monitoring stack: Prometheus, Alertmanager, and Grafana (read-only in OCP; custom Grafana for write dashboards)
+- [ ] **[Recommended]** Enable user workload monitoring via `cluster-monitoring-config` ConfigMap (`enableUserWorkload: true`)
+- [ ] **[Recommended]** Define ServiceMonitor and PodMonitor CRDs for application metric scraping
+- [ ] **[Critical]** Configure Alertmanager receivers: email, PagerDuty, Slack, webhook, or OpsGenie integration
+- [ ] **[Recommended]** Create PrometheusRule CRDs for custom alerting rules (application SLOs, error budgets, saturation thresholds)
+- [ ] **[Recommended]** Deploy OpenShift Logging operator with LokiStack (Vector as collector, Loki as store, ODF/S3 for object storage backend)
+- [ ] **[Recommended]** Configure ClusterLogForwarder for log routing: forward to external systems (Splunk, Elasticsearch, Kafka, Syslog, CloudWatch)
+- [ ] **[Optional]** Deploy distributed tracing: Tempo operator for trace storage, OpenTelemetry Collector operator for instrumentation
+- [ ] **[Optional]** Install Network Observability operator for eBPF-based flow collection (NetObserv FlowCollector CR)
+- [ ] **[Recommended]** Build capacity dashboards: CPU/memory utilization per namespace, PVC usage trends, node saturation metrics
+- [ ] **[Recommended]** Configure retention policies: Prometheus TSDB retention (default 15d), Loki retention, external system retention alignment
+- [ ] **[Recommended]** Set up must-gather and sos-report procedures for Red Hat support case diagnostics
+- [ ] **[Optional]** Plan metric cardinality management: identify high-cardinality labels, set per-namespace scrape limits
 
 ## Why This Matters
 

@@ -2,20 +2,20 @@
 
 ## Checklist
 
-- [ ] Review and restrict Security Context Constraints (SCCs): avoid granting `anyuid` or `privileged` SCCs to application workloads
-- [ ] Configure OAuth identity provider: LDAP, Active Directory, OIDC (Keycloak, Azure AD, Okta), GitHub, or HTPasswd for break-glass access
-- [ ] Define RBAC strategy: ClusterRoles for platform operations, namespaced Roles for application teams, Groups synced from identity provider
-- [ ] Enable pod security admission (PSA) labels per namespace: `restricted`, `baseline`, or `privileged` (enforces Kubernetes pod security standards)
-- [ ] Configure image signature verification and image policy (ImagePolicy admission, Sigstore/cosign integration)
-- [ ] Deploy Quay registry with Clair vulnerability scanning; define policies to block images with critical CVEs
-- [ ] Implement network policies for namespace-to-namespace isolation (default-deny ingress and egress)
-- [ ] Install Compliance Operator and run CIS OpenShift Benchmark, NIST 800-53, and PCI-DSS scans; remediate findings
-- [ ] Configure audit logging: API server audit policy, forwarding audit logs to SIEM (Splunk, Elastic, QRadar)
-- [ ] Manage secrets: evaluate Sealed Secrets, External Secrets Operator (ESO) with HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault
-- [ ] Enable FIPS mode at install time if required (cannot be enabled post-install; affects crypto libraries cluster-wide)
-- [ ] Configure certificate rotation: API server certs, ingress certs, service-serving certs (auto-rotated by service-ca operator)
-- [ ] Implement image pull policies: restrict registries via `ImageContentSourcePolicy` or `ImageDigestMirrorSet`, enforce `Always` pull policy for mutable tags
-- [ ] Set up cluster-admin break-glass procedures: HTPasswd identity provider with emergency admin user, audit trail for privileged operations
+- [ ] **[Critical]** Review and restrict Security Context Constraints (SCCs): avoid granting `anyuid` or `privileged` SCCs to application workloads
+- [ ] **[Critical]** Configure OAuth identity provider: LDAP, Active Directory, OIDC (Keycloak, Azure AD, Okta), GitHub, or HTPasswd for break-glass access
+- [ ] **[Critical]** Define RBAC strategy: ClusterRoles for platform operations, namespaced Roles for application teams, Groups synced from identity provider
+- [ ] **[Critical]** Enable pod security admission (PSA) labels per namespace: `restricted`, `baseline`, or `privileged` (enforces Kubernetes pod security standards)
+- [ ] **[Recommended]** Configure image signature verification and image policy (ImagePolicy admission, Sigstore/cosign integration)
+- [ ] **[Recommended]** Deploy Quay registry with Clair vulnerability scanning; define policies to block images with critical CVEs
+- [ ] **[Critical]** Implement network policies for namespace-to-namespace isolation (default-deny ingress and egress)
+- [ ] **[Recommended]** Install Compliance Operator and run CIS OpenShift Benchmark, NIST 800-53, and PCI-DSS scans; remediate findings
+- [ ] **[Critical]** Configure audit logging: API server audit policy, forwarding audit logs to SIEM (Splunk, Elastic, QRadar)
+- [ ] **[Critical]** Manage secrets: evaluate Sealed Secrets, External Secrets Operator (ESO) with HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault
+- [ ] **[Critical]** Enable FIPS mode at install time if required (cannot be enabled post-install; affects crypto libraries cluster-wide)
+- [ ] **[Critical]** Configure certificate rotation: API server certs, ingress certs, service-serving certs (auto-rotated by service-ca operator)
+- [ ] **[Recommended]** Implement image pull policies: restrict registries via `ImageContentSourcePolicy` or `ImageDigestMirrorSet`, enforce `Always` pull policy for mutable tags
+- [ ] **[Critical]** Set up cluster-admin break-glass procedures: HTPasswd identity provider with emergency admin user, audit trail for privileged operations
 
 ## Why This Matters
 

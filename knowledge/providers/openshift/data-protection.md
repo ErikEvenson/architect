@@ -6,16 +6,16 @@
 - [ ] **[Critical]** Configure backup storage location (BSL): S3-compatible object storage (AWS S3, MinIO, ODF MCG)
 - [ ] **[Critical]** Configure volume snapshot location (VSL): CSI snapshots for block storage, Restic/Kopia for filesystem-level backup
 - [ ] **[Critical]** Define scheduled backup policies via `Schedule` CRDs: daily application backups, weekly full-cluster backups
-- [ ] Implement etcd backup and restore procedures: automated CronJob or manual `etcdctl snapshot save` via debug pod
-- [ ] Design namespace-level backup strategy: label selectors for application grouping, include/exclude resource filters
-- [ ] Test restore procedures regularly: full namespace restore, single resource restore, cross-cluster restore
-- [ ] Plan PV backup approach: CSI VolumeSnapshot (fast, storage-level) vs Restic/Kopia (portable, file-level, slower)
-- [ ] Configure backup encryption: Velero supports server-side encryption (SSE-S3, SSE-KMS) for backup artifacts
-- [ ] Set retention policies: backup TTL per schedule, snapshot lifecycle, storage cost management
-- [ ] Document disaster recovery runbook: cluster rebuild, etcd restore, application restore priorities (RPO/RTO targets)
-- [ ] Evaluate RHACM for multi-cluster failover: managed cluster backup, hub recovery, application DR policies
-- [ ] Plan GitOps-based DR: rebuild cluster from Git (infrastructure-as-code + GitOps manifests) vs restore from backup
-- [ ] Back up cluster configuration: OAuth, certificates, custom CRDs, operator configurations, cluster-scoped resources
+- [ ] **[Critical]** Implement etcd backup and restore procedures: automated CronJob or manual `etcdctl snapshot save` via debug pod
+- [ ] **[Recommended]** Design namespace-level backup strategy: label selectors for application grouping, include/exclude resource filters
+- [ ] **[Critical]** Test restore procedures regularly: full namespace restore, single resource restore, cross-cluster restore
+- [ ] **[Recommended]** Plan PV backup approach: CSI VolumeSnapshot (fast, storage-level) vs Restic/Kopia (portable, file-level, slower)
+- [ ] **[Critical]** Configure backup encryption: Velero supports server-side encryption (SSE-S3, SSE-KMS) for backup artifacts
+- [ ] **[Recommended]** Set retention policies: backup TTL per schedule, snapshot lifecycle, storage cost management
+- [ ] **[Critical]** Document disaster recovery runbook: cluster rebuild, etcd restore, application restore priorities (RPO/RTO targets)
+- [ ] **[Optional]** Evaluate RHACM for multi-cluster failover: managed cluster backup, hub recovery, application DR policies
+- [ ] **[Recommended]** Plan GitOps-based DR: rebuild cluster from Git (infrastructure-as-code + GitOps manifests) vs restore from backup
+- [ ] **[Critical]** Back up cluster configuration: OAuth, certificates, custom CRDs, operator configurations, cluster-scoped resources
 
 ## Why This Matters
 

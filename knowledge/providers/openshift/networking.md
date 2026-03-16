@@ -2,19 +2,19 @@
 
 ## Checklist
 
-- [ ] Select CNI plugin: OVN-Kubernetes (default since OCP 4.12+) vs OpenShift SDN (legacy, deprecated)
-- [ ] Design cluster network CIDR, service network CIDR, and host prefix (cannot be changed post-install)
-- [ ] Configure NetworkPolicy resources for namespace isolation (default-deny ingress/egress per namespace)
-- [ ] Set up ingress: OpenShift Routes (HAProxy-based IngressController) with TLS termination strategy (edge, passthrough, re-encrypt)
-- [ ] Plan external load balancing: cloud LB (NLB/ALB on AWS, Azure LB), MetalLB (bare metal/vSphere), F5 BIG-IP
-- [ ] Configure egress controls: EgressNetworkPolicy (OpenShift SDN), EgressFirewall (OVN-K), EgressIP for predictable source IPs
-- [ ] Evaluate Multus CNI for workloads requiring multiple network interfaces (SR-IOV, MACVLAN, bridge)
-- [ ] Deploy OpenShift Service Mesh (Istio-based, managed by `ServiceMeshControlPlane` CR) if mTLS or advanced traffic management is needed
-- [ ] Install cert-manager operator for automated TLS certificate lifecycle (Let's Encrypt, Venafi, internal CA)
-- [ ] Configure DNS operator: cluster DNS (CoreDNS), custom DNS forwarding for split-horizon or hybrid cloud DNS
-- [ ] Enable network observability operator for eBPF-based flow collection and traffic visualization
-- [ ] Plan for IPv4/IPv6 dual-stack or single-stack based on enterprise network requirements
-- [ ] Define IngressController sharding for multi-tenant or multi-domain routing (route labels, namespace selectors)
+- [ ] **[Critical]** Select CNI plugin: OVN-Kubernetes (default since OCP 4.12+) vs OpenShift SDN (legacy, deprecated)
+- [ ] **[Critical]** Design cluster network CIDR, service network CIDR, and host prefix (cannot be changed post-install)
+- [ ] **[Critical]** Configure NetworkPolicy resources for namespace isolation (default-deny ingress/egress per namespace)
+- [ ] **[Critical]** Set up ingress: OpenShift Routes (HAProxy-based IngressController) with TLS termination strategy (edge, passthrough, re-encrypt)
+- [ ] **[Recommended]** Plan external load balancing: cloud LB (NLB/ALB on AWS, Azure LB), MetalLB (bare metal/vSphere), F5 BIG-IP
+- [ ] **[Critical]** Configure egress controls: EgressNetworkPolicy (OpenShift SDN), EgressFirewall (OVN-K), EgressIP for predictable source IPs
+- [ ] **[Optional]** Evaluate Multus CNI for workloads requiring multiple network interfaces (SR-IOV, MACVLAN, bridge)
+- [ ] **[Optional]** Deploy OpenShift Service Mesh (Istio-based, managed by `ServiceMeshControlPlane` CR) if mTLS or advanced traffic management is needed
+- [ ] **[Recommended]** Install cert-manager operator for automated TLS certificate lifecycle (Let's Encrypt, Venafi, internal CA)
+- [ ] **[Recommended]** Configure DNS operator: cluster DNS (CoreDNS), custom DNS forwarding for split-horizon or hybrid cloud DNS
+- [ ] **[Optional]** Enable network observability operator for eBPF-based flow collection and traffic visualization
+- [ ] **[Recommended]** Plan for IPv4/IPv6 dual-stack or single-stack based on enterprise network requirements
+- [ ] **[Optional]** Define IngressController sharding for multi-tenant or multi-domain routing (route labels, namespace selectors)
 
 ## Why This Matters
 
