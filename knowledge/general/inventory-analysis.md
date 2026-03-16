@@ -240,6 +240,59 @@ Calculate the percentage of VMs in each tier. A healthy distribution for a typic
 
 **Outlier detection:** VMs in the XL tier warrant individual review. They often have the highest migration risk, the longest cutover windows, and the greatest licensing impact. They may also be candidates for right-sizing if actual utilization is significantly below allocation.
 
+## Multi-Source Inventory Reconciliation
+
+### Why Sources Disagree
+
+In real-world engagements, VM counts from different sources rarely match. Understanding *why* they disagree is more important than picking one number:
+
+| Discrepancy Pattern | Common Cause | Resolution |
+|---|---|---|
+| Source A has significantly more VMs than Source B | Source A includes multiple hypervisors (ESX + AHV + Hyper-V); Source B is hypervisor-filtered (VMware-only) | Identify the scope filter applied to each source; determine if the "missing" VMs are on different hypervisors, powered off, or at out-of-scope sites |
+| Source A is a diagram with round numbers; Source B is a live export with exact counts | Diagram is a point-in-time snapshot, likely created for a presentation; live export is current state | Use the live export as authoritative; the diagram provides context (site details, facility info) but not current counts |
+| Source A shows VMs at 50+ sites; Source B shows VMs at 5 sites | Different location scoping -- Source A is a global export, Source B is filtered to in-scope locations | Apply consistent location filters to both sources before comparing |
+| VM counts are close but don't match exactly | VM creation/deletion between export timestamps, template VMs included in one source, Nutanix CVM/infrastructure VMs counted differently | Quantify the delta; if < 5%, accept the live export as authoritative; investigate larger deltas |
+| Cluster counts don't match between hardware management (OneView/iLO) and hypervisor management (vCenter/Prism) | Hardware management sees physical nodes; hypervisor management sees logical clusters; a single physical cluster may present differently in each tool | Map physical nodes to logical clusters; document the mapping for future reference |
+
+### Reconciliation Methodology
+
+1. **Establish the question first** -- "How many VMs need to migrate?" is a different question from "How many VMs exist?" or "How many VMs are in scope?" Each requires a different filter applied to the same data.
+
+2. **Identify scope filters for each source** -- Every data source has implicit filters: which hypervisors, which sites, which power states, which VM types (workload vs. infrastructure). Document these filters.
+
+3. **Start with the most complete source** -- The source with the most VMs is usually the least filtered. Use it as the base and explain why other sources show fewer VMs by identifying what each one excludes.
+
+4. **Reconcile top-down** -- Start with total counts, then break down by site, then by hypervisor, then by cluster. Discrepancies become visible at the level where they're introduced.
+
+5. **Document the reconciliation** -- Create a table showing each source, its count, and the explanation for differences. This table becomes a reference for the entire project team and prevents repeated "why don't these numbers match?" conversations.
+
+### Real-World Example
+
+A common pattern in VMware-to-Nutanix migrations:
+
+```
+Datacenter diagram:        5,908 VMs  (VMware-only, point-in-time)
+HPE OneView export:       12,082 VMs  (all hypervisors, current)
+Difference:               +6,174 VMs
+
+Breakdown of difference:
+  Already on Nutanix AHV:  5,064  (not in VMware-only diagram)
+  Azure Stack HCI (HyperV):  724  (not in VMware-only diagram)
+  ESX growth since diagram:  386  (new VMs since diagram was created)
+  Total explained:         6,174  ✓
+```
+
+The diagram was not wrong -- it accurately showed VMware VMs at the time it was created. The OneView export revealed the full picture including VMs on other hypervisors and recent growth. Without reconciliation, the project would have been scoped to 5,908 VMs instead of the actual 7,018 requiring migration.
+
+### Checklist Additions for Multi-Source Reconciliation
+
+- [ ] **[Critical]** Have at least two independent data sources been compared before finalizing migration scope? (Do not rely on a single export, diagram, or verbal estimate)
+- [ ] **[Critical]** Is the scope filter for each data source documented? (Which hypervisors, sites, power states, VM types are included or excluded)
+- [ ] **[Critical]** Is the reconciliation documented in a table showing each source, its count, and the explanation for differences?
+- [ ] **[Recommended]** Is the authoritative source identified per data dimension? (Live hypervisor export for VM counts, facility records for site details, CMDB for ownership)
+- [ ] **[Recommended]** Are point-in-time snapshots (diagrams, presentations) dated and noted as potentially stale?
+- [ ] **[Optional]** Is a reconciliation review scheduled periodically during the project? (VM counts change as VMs are created, migrated, or decommissioned during the project lifecycle)
+
 ## See Also
 
 - `general/workload-migration.md` -- Migration strategy, wave planning, cutover procedures
@@ -247,3 +300,4 @@ Calculate the percentage of VMs in each tier. A healthy distribution for a typic
 - `general/hardware-sizing.md` -- Target environment capacity planning
 - `general/capacity-planning.md` -- Capacity planning methodology
 - `general/cost-onprem.md` -- On-premises cost modeling
+- `general/managed-services-scoping.md` -- Managed services commercial and operational scoping

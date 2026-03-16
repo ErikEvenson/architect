@@ -62,6 +62,7 @@ nav:
     - Physical Server Scope: general/physical-server-scope.md
     - VDI Migration Strategy: general/vdi-migration-strategy.md
     - Virtual Appliance Migration: general/virtual-appliance-migration.md
+    - Managed Services Scoping: general/managed-services-scoping.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -126,6 +127,7 @@ nav:
     - Platform Services: providers/nutanix/platform-services.md
     - Observability: providers/nutanix/observability.md
     - Migration Tools: providers/nutanix/migration-tools.md
+    - In-Place AHV Conversion: providers/nutanix/in-place-conversion.md
   - VMware:
     - Infrastructure: providers/vmware/infrastructure.md
     - Compute: providers/vmware/compute.md
@@ -214,6 +216,7 @@ nav:
     - DR Implementations: patterns/disaster-recovery-implementations.md
     - Migration Cutover: patterns/migration-cutover.md
     - Hypervisor Migration: patterns/hypervisor-migration.md
+    - Azure Stack HCI Migration: patterns/azure-stack-hci-migration.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
