@@ -63,6 +63,7 @@ nav:
     - VDI Migration Strategy: general/vdi-migration-strategy.md
     - Virtual Appliance Migration: general/virtual-appliance-migration.md
     - Managed Services Scoping: general/managed-services-scoping.md
+    - Pursuit Methodology: general/pursuit-methodology.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
