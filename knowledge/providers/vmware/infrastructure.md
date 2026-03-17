@@ -40,8 +40,8 @@ VMware remains the most widely deployed virtualization platform in enterprise da
 
 ## Reference Architectures
 
-- [VMware Validated Solutions](https://core.vmware.com/vmware-validated-solutions) -- tested and validated architectures for VCF, private cloud, and edge deployments
-- [VMware Cloud Foundation Architecture Guide](https://core.vmware.com/resource/vmware-cloud-foundation-architecture-guide) -- reference architecture for the full SDDC stack including vSphere, vSAN, NSX, and VCF management suite
-- [VMware vSAN Design Guide](https://core.vmware.com/resource/vmware-vsan-design-guide) -- validated design for hyper-converged storage including sizing, fault domains, and stretched clusters
-- [VMware NSX Reference Design Guide](https://communities.vmware.com/t5/VMware-NSX/ct-p/3200) -- reference architecture for microsegmentation, distributed firewall, and multi-site networking
-- [VMware Tanzu Reference Architecture](https://docs.vmware.com/en/VMware-Tanzu/services/tanzu-reference-architecture/GUID-reference-designs-index.html) -- validated designs for Kubernetes on vSphere with Tanzu namespaces and VM classes
+- [VMware Validated Solutions](https://core.vmware.com/vmware-validated-solutions) -- tested and validated architectures for VCF, private cloud, and edge deployments (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+- [VMware Cloud Foundation Architecture Guide](https://core.vmware.com/resource/vmware-cloud-foundation-architecture-guide) -- reference architecture for the full SDDC stack including vSphere, vSAN, NSX, and VCF management suite (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+- [VMware vSAN Design Guide](https://core.vmware.com/resource/vmware-vsan-design-guide) -- validated design for hyper-converged storage including sizing, fault domains, and stretched clusters (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+- [VMware NSX Reference Design Guide](https://communities.vmware.com/t5/VMware-NSX/ct-p/3200) -- reference architecture for microsegmentation, distributed firewall, and multi-site networking (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+- [VMware Tanzu Reference Architecture](https://docs.vmware.com/en/VMware-Tanzu/services/tanzu-reference-architecture/GUID-reference-designs-index.html) -- validated designs for Kubernetes on vSphere with Tanzu namespaces and VM classes (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)

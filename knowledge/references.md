@@ -68,6 +68,8 @@ Master index of vendor-published reference architecture resources organized by p
 
 ## VMware
 
+> **Note:** VMware documentation URLs may redirect following the Broadcom acquisition (2023). Verify links before citing.
+
 ### Portals
 
 - [VMware Validated Solutions](https://core.vmware.com/vmware-validated-solutions) -- tested and validated SDDC architectures for private cloud and edge
