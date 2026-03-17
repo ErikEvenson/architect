@@ -31,7 +31,7 @@ Ceph recovery after an OSD failure is I/O intensive — the cluster rebalances d
 ## Common Decisions (ADR Triggers)
 
 - **Deployment tool** — cephadm (official, container-based, Octopus+) vs Rook (Kubernetes operator, used by ODF) vs manual (legacy) — cephadm for standalone, Rook for K8s-integrated
-- **Monitoring stack: built-in vs centralized** — cephadm deploys Prometheus, Grafana, Alertmanager, and Node Exporter as containers by default. When a centralized observability stack already exists (common in enterprise environments), running Ceph's built-in stack creates duplicate infrastructure and dashboard fragmentation. Options: (1) disable Ceph's monitoring containers and scrape `ceph-exporter` from the central Prometheus, importing Ceph dashboards into the central Grafana; (2) keep Ceph's stack isolated for storage team autonomy; (3) federate Ceph's Prometheus into the central instance. Rook deployments expose `ServiceMonitor` CRDs for Prometheus Operator — no built-in stack to manage. See also: [Prometheus/Grafana observability](../prometheus-grafana/observability.md)
+- **Monitoring stack: built-in vs centralized** — cephadm deploys Prometheus, Grafana, Alertmanager, and Node Exporter as containers by default (skip with `--skip-monitoring-stack` at bootstrap). When a centralized observability stack already exists (common in enterprise environments), running Ceph's built-in stack creates duplicate infrastructure and dashboard fragmentation. Options: (1) disable Ceph's monitoring containers and scrape `ceph-exporter` from the central Prometheus, importing Ceph dashboards into the central Grafana; (2) keep Ceph's stack isolated for storage team autonomy; (3) federate Ceph's Prometheus into the central instance. Rook deployments expose `ServiceMonitor` CRDs for Prometheus Operator — no built-in stack to manage. See also: [Prometheus/Grafana observability](../prometheus-grafana/observability.md)
 - **Replication vs erasure coding** — 3x replication (simple, fast reads, 3x raw cost) vs EC 4+2 (1.5x raw cost, higher write latency, no partial overwrites for RBD) — use replication for RBD/hot data, EC for RGW/cold data
 - **All-flash vs hybrid** — NVMe/SSD-only (high IOPS, predictable latency) vs HDD with NVMe WAL/DB (high capacity, lower cost, variable latency) — depends on workload IOPS requirements
 - **CephFS vs RGW vs RBD** — block (RBD for VMs/containers), object (RGW for S3-compatible), file (CephFS for shared POSIX) — often all three from one cluster
@@ -54,9 +54,77 @@ Ceph recovery after an OSD failure is I/O intensive — the cluster rebalances d
 | Quincy LTS | — | — | — | — | — | LTS | — | — |
 | Prometheus module | Preview | GA | GA | GA | GA | GA | GA | GA |
 
+## Monitoring Configuration
+
+### Cephadm Built-in Grafana
+
+Cephadm deploys Grafana automatically. To deploy manually or reconfigure:
+
+```bash
+ceph orch apply grafana
+```
+
+Service spec (`grafana.yaml`):
+
+```yaml
+service_type: grafana
+placement:
+  count: 1
+spec:
+  port: 4200
+  protocol: https
+  initial_admin_password: <password>
+  anonymous_access: False
+```
+
+TLS is managed by cephadm's certificate manager by default. For custom certificates:
+
+```bash
+ceph orch certmgr cert set --cert-name grafana_ssl_cert --hostname <host> -i certificate.pem
+ceph orch certmgr key set --key-name grafana_ssl_key --hostname <host> -i key.pem
+ceph orch reconfig grafana
+```
+
+Enable TLS and authentication across all monitoring components:
+
+```bash
+ceph config set mgr mgr/cephadm/secure_monitoring_stack true
+```
+
+Dashboard integration is automatic. If Grafana is in a different DNS zone from users:
+
+```bash
+ceph dashboard set-grafana-api-url <backend-grafana-url>
+ceph dashboard set-grafana-frontend-api-url <browser-accessible-url>
+ceph dashboard set-grafana-api-ssl-verify False  # for self-signed certs
+```
+
+### External Prometheus/Grafana Integration
+
+To scrape Ceph from a centralized Prometheus instead of using the built-in stack:
+
+1. Enable the Prometheus module: `ceph mgr module enable prometheus`
+2. Configure the external Prometheus to scrape ceph-exporter using cephadm's service discovery:
+
+```yaml
+- job_name: 'ceph-exporter'
+  http_sd_configs:
+  - url: https://<mgr-ip>:8765/sd/prometheus/sd-config?service=ceph-exporter
+    basic_auth:
+      username: '<username>'
+      password: '<password>'
+    tls_config:
+      ca_file: '/path/to/ca.crt'
+```
+
+3. Import Ceph Grafana dashboards from the [ceph-mixin dashboards](https://github.com/ceph/ceph/tree/main/monitoring/ceph-mixin/dashboards_out) into the centralized Grafana.
+4. Configure "Dashboard1" as the Prometheus data source name in Grafana (required by Ceph dashboard JSON).
+
 ## Reference Architectures
 
 - [Ceph Documentation — Architecture](https://docs.ceph.com/en/latest/architecture/) — official architecture overview covering RADOS, CRUSH, and client protocols
 - [Ceph Hardware Recommendations](https://docs.ceph.com/en/latest/start/hardware-recommendations/) — official sizing guidance for OSD, MON, MDS, and RGW nodes
 - [Red Hat Ceph Storage Architecture Guide](https://docs.redhat.com/en/documentation/red_hat_ceph_storage/) — enterprise deployment patterns and best practices
 - [Rook Ceph Operator](https://rook.io/docs/rook/latest/) — Kubernetes-native Ceph deployment via Rook (used by ODF)
+- [Ceph Monitoring Services (cephadm)](https://docs.ceph.com/en/latest/cephadm/services/monitoring/) — deploying and configuring Prometheus, Grafana, and Alertmanager via cephadm
+- [Ceph Dashboard — Grafana](https://docs.ceph.com/en/latest/mgr/dashboard/) — configuring Grafana integration with the Ceph Dashboard UI
