@@ -1,6 +1,6 @@
-# CSA CCM v4.1 — Cloud Security Alliance Cloud Controls Matrix
+# CSA CCM v4.0 — Cloud Security Alliance Cloud Controls Matrix
 
-Reference: Cloud Controls Matrix (CCM) v4.1 (released January 2026)
+Reference: Cloud Controls Matrix (CCM) v4.0 (latest verified version as of 2025)
 Published by: Cloud Security Alliance (CSA)
 Scope: Cloud service providers and cloud service customers. The CCM provides a controls framework specifically designed for cloud computing environments and maps to other standards (ISO 27001, NIST SP 800-53, PCI DSS, GDPR, etc.).
 
@@ -12,7 +12,7 @@ The CSA CCM is the de facto cloud security controls framework. Unlike general-pu
 
 CSA STAR (Security, Trust, Assurance, and Risk) certification is based on the CCM and is increasingly requested in cloud procurement. Cloud architects who design against CCM controls can demonstrate security posture to customers through a recognized, cloud-specific framework.
 
-CCM v4.1 (January 2026) expanded the framework to 207 controls across 17 domains, adding coverage for AI/ML security, software supply chain integrity, and zero-trust architecture principles. Each control has a unique identifier (e.g., IAM-01) that can be referenced in Architecture Decision Records, risk assessments, and compliance documentation. Organizations certified against CCM v4.0 (197 controls) should plan their transition to v4.1 to address the 10 new controls.
+CCM v4.0 organizes controls across 17 domains covering cloud-specific security concerns. Each control has a unique identifier (e.g., IAM-01) that can be referenced in Architecture Decision Records, risk assessments, and compliance documentation.
 
 ---
 
