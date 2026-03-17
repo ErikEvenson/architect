@@ -14,7 +14,8 @@ Covers OpenStack observability stack: Ceilometer telemetry, Gnocchi metrics back
 - [ ] **[Recommended]** Is Aodh configured for alarming? (threshold alarms on Gnocchi metrics for autoscaling and alerting, composite alarms combining multiple conditions with `and`/`or` operators, `event` alarms for reacting to specific OpenStack events, alarm actions as webhook URLs to Heat or external systems)
 - [ ] **[Recommended]** Is Monasca evaluated as an alternative monitoring stack? (Retired as of Yoga -- monitoring-as-a-service with multi-tenant metric collection, Kafka-based pipeline; if currently using Monasca, plan migration to Prometheus/Grafana or Ceilometer/Gnocchi/Aodh)
 - [ ] **[Recommended]** Are log retention and rotation policies defined? (logrotate for local logs, index lifecycle management in Elasticsearch/OpenSearch for centralized logs, separate indices per service for targeted retention, consider 30-90 day hot storage with cold/frozen tiers)
-- [ ] **[Recommended]** Is Prometheus + Grafana integrated for infrastructure and service monitoring? (`openstack-exporter` for API-level metrics, `node_exporter` on all hosts, `libvirt_exporter` for hypervisor metrics, `ceph_exporter` for storage metrics, custom Grafana dashboards per service)
+- [ ] **[Recommended]** Is Prometheus + Grafana integrated for infrastructure and service monitoring? (`openstack-exporter` for API-level metrics, `node_exporter` on all hosts, `libvirt_exporter` for hypervisor metrics, `ceph_exporter` for storage metrics — see [Ceph storage](../ceph/storage.md) for exporter configuration, custom Grafana dashboards per service)
+- [ ] **[Recommended]** Is the openstack-exporter configured correctly? (Go-based exporter querying OpenStack APIs via `clouds.yaml` credentials, serves on port 9180; supports single-cloud mode at `/metrics` or multi-cloud mode at `/probe?cloud=<name>`; enable caching with configurable TTL to reduce API load; disable slow metrics like `nova_server_diagnostics` in large deployments; deploy one instance per cloud or use multi-cloud mode)
 - [ ] **[Recommended]** Is Tempest used for functional validation? (`tempest run` after deployments and upgrades, `tempest.conf` configured for the specific cloud, custom test plugins for site-specific validation, integrated into CI/CD pipeline for pre-production verification)
 - [ ] **[Recommended]** Are infrastructure capacity metrics tracked for planning? (compute: vCPU/RAM allocation ratio trends, storage: Ceph pool utilization and growth rate, network: bandwidth utilization per provider network, Keystone: token issuance rate and latency)
 - [ ] **[Recommended]** Are oslo.messaging (RabbitMQ) health and performance monitored? (queue depth, message rate, consumer count, unacknowledged messages, cluster partition detection -- RabbitMQ problems cascade across all OpenStack services)
@@ -35,6 +36,68 @@ OpenStack is composed of dozens of services communicating via REST APIs and mess
 - **Functional validation** -- Tempest in CI/CD (every change validated) vs Tempest post-upgrade only (periodic validation) vs manual smoke tests (lowest coverage) -- deployment confidence vs pipeline complexity
 - **Tracing** -- OpenTelemetry with Jaeger (industry standard, recommended for new deployments) vs OSProfiler (native but maintenance mode) vs no tracing (log correlation only) -- debugging capability vs implementation effort
 - **Metering for billing** -- Ceilometer + CloudKitty (rating engine for chargeback/showback) vs custom metering from Gnocchi/Prometheus (flexible but build-it-yourself) vs external billing platforms -- internal chargeback requirements
+
+## OpenStack Exporter Configuration
+
+The [openstack-exporter](https://github.com/openstack-exporter/openstack-exporter) is a Go-based Prometheus exporter that queries OpenStack APIs and exposes metrics for Nova, Neutron, Cinder, Glance, Keystone, Octavia, Heat, Swift, and 10+ other services.
+
+**Deployment options:** Docker, Snap, Kolla-Ansible, Helm chart, or binary.
+
+**Authentication** uses standard `clouds.yaml`:
+
+```yaml
+clouds:
+  mycloud:
+    auth:
+      auth_url: https://keystone.example.com:5000/v3
+      project_name: admin
+      username: monitoring
+      password: <from-secret>
+      user_domain_name: Default
+      project_domain_name: Default
+    region_name: RegionOne
+```
+
+**Prometheus scrape config** — single-cloud mode (port 9180):
+
+```yaml
+- job_name: 'openstack'
+  scrape_interval: 120s  # OpenStack API calls are slow; avoid overloading
+  scrape_timeout: 60s
+  static_configs:
+  - targets: ['openstack-exporter:9180']
+```
+
+**Multi-cloud mode** — use `/probe` endpoint:
+
+```yaml
+- job_name: 'openstack'
+  scrape_interval: 120s
+  metrics_path: /probe
+  params:
+    cloud: ['mycloud']
+  static_configs:
+  - targets: ['openstack-exporter:9180']
+```
+
+**Performance tuning for large deployments:**
+- Enable caching (`--cache`, `--cache-ttl 300s`) to reduce API calls
+- Disable slow metrics that query per-instance diagnostics: `--disable-metric nova_server_diagnostics`
+- Use domain filtering to limit scope when only monitoring specific projects
+- Set `scrape_interval` to 120s+ (OpenStack API calls are expensive compared to typical exporters)
+
+**Recommended exporter stack for a full OpenStack deployment:**
+
+| Exporter | Port | Metrics |
+|---|---|---|
+| openstack-exporter | 9180 | API-level: servers, volumes, networks, images, quotas |
+| node_exporter | 9100 | Host: CPU, memory, disk, network on all nodes |
+| libvirt_exporter | 9177 | Hypervisor: per-VM CPU, memory, disk I/O, network I/O |
+| ceph_exporter | 9283 | Storage: OSD latency, PG states, pool utilization (see [Ceph storage](../ceph/storage.md)) |
+| ipmi_exporter | 9290 | Hardware: temperatures, fan speeds, power draw, hardware events |
+| rabbitmq_exporter | 9419 | Messaging: queue depth, message rates, consumer counts |
+| mysqld_exporter / postgres_exporter | 9104/9187 | Database: query latency, connections, replication lag |
+| haproxy_exporter | 9101 | Load balancer: request rates, backend health, connection counts |
 
 ## Version Notes
 
