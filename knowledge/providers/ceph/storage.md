@@ -58,7 +58,16 @@ Ceph recovery after an OSD failure is I/O intensive — the cluster rebalances d
 
 ### Cephadm Built-in Grafana
 
-Cephadm deploys Grafana automatically. To deploy manually or reconfigure:
+Cephadm deploys the full monitoring stack (Prometheus, Grafana, Alertmanager, Node Exporter) automatically at bootstrap. If skipped with `--skip-monitoring-stack`, deploy components individually at any time:
+
+```bash
+ceph orch apply prometheus
+ceph orch apply grafana
+ceph orch apply alertmanager
+ceph orch apply node-exporter
+```
+
+To reconfigure Grafana specifically:
 
 ```bash
 ceph orch apply grafana
