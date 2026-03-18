@@ -1,5 +1,9 @@
 # PCI DSS v4.0.1 - Cloud Control Mapping
 
+## Scope
+
+Covers PCI DSS v4.0.1 requirements for protecting cardholder data in cloud environments, including network segmentation, encryption, access control, logging, vulnerability management, and the shared responsibility model. Does not cover general encryption strategy (see `general/security.md`) or provider-specific networking details (see `providers/` files).
+
 ## Overview
 
 PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any entity that stores, processes, or transmits cardholder data. In cloud environments, responsibility is shared between the cloud provider and the customer. The provider typically covers physical security and infrastructure controls; the customer is responsible for configuration, application security, and data handling.
@@ -392,3 +396,10 @@ PCI DSS compliance in the cloud requires understanding the shared responsibility
 - **Access control model** — least privilege implementation, privileged access management, MFA for CDE access
 - **Cloud provider responsibility mapping** — shared responsibility documentation per service, AOC review process
 - **Penetration testing strategy** — application and network pen test scope, frequency, segmentation validation
+
+## See Also
+
+- `general/security.md` — General security controls and encryption architecture
+- `general/networking.md` — Network segmentation and firewall architecture
+- `general/governance.md` — Cloud governance and policy enforcement
+- `compliance/soc2.md` — SOC 2 criteria (complementary audit framework for service providers)

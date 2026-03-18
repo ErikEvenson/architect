@@ -62,3 +62,10 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 - **VCF 4.x vs 5.x:** VCF 5.x bundles vSphere 8, NSX 4.x, and vSAN 8. SDDC Manager in VCF 5.x provides more unified lifecycle management with fewer manual steps. VCF 5.x is the primary licensing model under Broadcom, with per-core subscription pricing replacing perpetual licenses for many customers.
 - **Aria suite rebranding from vRealize (2023):** VMware rebranded the entire vRealize suite to Aria. vRealize Operations became Aria Operations, vRealize Automation became Aria Automation, vRealize Log Insight became Aria Operations for Logs, and SaltStack Config became Aria Automation Config. This intermediate branding has now been superseded by VCF-prefixed names in VCF 9.0.
 - **Broadcom acquisition impact:** The Broadcom acquisition (completed late 2023) significantly changed VMware licensing. Many standalone products were bundled into VCF. Perpetual licenses transitioned to subscription. Tanzu and Aria products were consolidated. Customers should verify current licensing entitlements and availability of individual products vs VCF bundles.
+
+## See Also
+
+- `providers/vmware/infrastructure.md` -- VMware core infrastructure
+- `providers/vmware/vcf-sddc-manager.md` -- VCF lifecycle and SDDC Manager
+- `providers/vmware/vmc-aws.md` -- VMC on AWS hybrid cloud
+- `providers/vmware/avs-azure.md` -- AVS hybrid cloud

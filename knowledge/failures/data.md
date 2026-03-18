@@ -1,5 +1,9 @@
 # Data Failure Patterns
 
+## Scope
+
+Covers common data-layer failure patterns including replication lag, untested backups, encryption key management gaps, connection pool exhaustion, split-brain scenarios, and schema migration failures. Does not cover general data architecture design (see `general/data.md`) or database-specific provider configurations (see `providers/` files).
+
 ## Checklist
 
 - [ ] **[Critical]** **Unmonitored replication lag causing stale reads** — Goes wrong: read replicas fall behind the primary by seconds or minutes, and applications reading from replicas return stale or inconsistent data, leading to incorrect business decisions or user-visible bugs. Happens because: replication lag is not monitored or alerting thresholds are too lenient. Prevent by: monitoring replication lag with alerts at meaningful thresholds (e.g., >1 second), routing critical reads to the primary, and investigating sustained lag as a capacity signal.
@@ -42,3 +46,10 @@ Data is the most valuable and hardest-to-replace asset in any system. Unlike com
 - **Encryption key management** — provider-managed vs customer-managed keys, rotation policy
 - **Cache failure strategy** — degrade gracefully vs fail closed, cache warming approach
 - **Schema migration workflow** — expand-and-contract vs lock-and-migrate, migration tooling selection
+
+## See Also
+
+- `general/data.md` — Data architecture patterns and database selection
+- `general/disaster-recovery.md` — Backup, recovery, and business continuity planning
+- `failures/scaling.md` — Scaling failures that compound data-layer bottlenecks
+- `general/security.md` — Encryption and credential management

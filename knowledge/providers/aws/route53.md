@@ -1,5 +1,9 @@
 # AWS Route 53
 
+## Scope
+
+AWS managed DNS and traffic routing. Covers public/private hosted zones, routing policies (simple, weighted, latency, failover, geolocation, geoproximity, multi-value), health checks, DNSSEC, Resolver endpoints for hybrid DNS, and DNS Firewall.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose hosted zone type: public (resolves from the internet) vs private (resolves only within associated VPCs); a domain can have both for split-horizon DNS serving different records internally vs externally
@@ -45,3 +49,11 @@ Route 53 weighted routing: blue environment at 100%, green at 0%. After green de
 
 ### Global Application with Compliance Routing
 Route 53 geolocation routing: EU users -> eu-west-1 (GDPR-compliant region), US users -> us-east-1, Asia users -> ap-southeast-1. Default record for unmatched locations pointing to nearest region via latency-based routing. Health checks on all endpoints with failover to the geographically next-closest region. DNSSEC enabled for the public hosted zone. Query logging enabled for audit trail of geographic routing decisions.
+
+---
+
+## See Also
+
+- `general/hybrid-dns.md` -- Hybrid DNS patterns for on-premises and cloud integration
+- `providers/aws/cloudfront-waf.md` -- CloudFront distributions using Route 53 alias records
+- `providers/aws/vpc.md` -- VPC DNS resolution and Route 53 Resolver endpoint configuration

@@ -1,5 +1,9 @@
 # AWS Outposts
 
+## Scope
+
+AWS-managed on-premises infrastructure extending AWS services to customer datacenters. Covers Outposts Rack and Server form factors, Service Link networking, Local Gateway, supported services, S3 on Outposts, capacity management, and hybrid EKS patterns.
+
 AWS-managed infrastructure deployed on-premises that extends AWS services, APIs, and tooling to customer datacenters or co-location facilities. Available as Outposts Rack (full 42U rack, 5-96kW power range, now in second-generation with improved performance and power efficiency) or Outposts Server (1U/2U individual servers for smaller locations). Outposts Rack delivers a broad set of AWS services locally; Outposts Server supports EC2 and ECS in a smaller form factor. All Outposts require a persistent Service Link connection back to a parent AWS Region.
 
 ## Checklist
@@ -67,3 +71,12 @@ RDS for MySQL or PostgreSQL running on the Outpost. Provides a fully managed dat
 
 ### Multi-site retail with Outposts Servers
 Outposts Server (1U) deployed in each retail store. EC2 instances run point-of-sale processing, local inventory APIs, and edge inference models. ECS containers handle microservice workloads. Traffic between the store and the parent AWS region flows over VPN or Direct Connect. During WAN outages, existing workloads continue running (transactions are queued locally). A central hub-and-spoke architecture in the parent region aggregates data from all store Outposts for analytics, inventory planning, and ML model training.
+
+---
+
+## See Also
+
+- `patterns/hybrid-cloud.md` -- Hybrid cloud architecture patterns including on-premises extensions
+- `providers/aws/snow-family.md` -- Portable edge compute and offline data transfer as an alternative
+- `providers/aws/vpc.md` -- VPC subnet design for Outpost-hosted resources
+- `providers/aws/ec2-asg.md` -- EC2 instance types available on Outposts

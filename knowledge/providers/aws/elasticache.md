@@ -1,5 +1,9 @@
 # AWS ElastiCache
 
+## Scope
+
+AWS managed in-memory caching with Valkey, Redis OSS, and Memcached engines. Covers engine selection, cluster mode, replication, encryption, ElastiCache Serverless, node sizing, eviction policies, and data tiering.
+
 ## Checklist
 
 - [ ] [Critical] Is **Valkey** selected as the primary engine for new deployments? (AWS adopted Valkey in 2024 — a Linux Foundation fork of Redis, fully compatible, 20-33% lower pricing than Redis OSS on ElastiCache)
@@ -73,3 +77,12 @@ ElastiCache Serverless eliminates capacity planning and node management. Key cha
 - [AWS ElastiCache best practices](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/best-practices.html) -- official best practices for Redis cluster design, scaling, and high availability
 - [AWS Prescriptive Guidance: Caching patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/) -- cache-aside, write-through, and session store reference patterns
 - [AWS ElastiCache for Redis cluster mode architecture](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.Redis-RedisCluster.html) -- reference design for horizontally scaled Redis with sharding
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture patterns including caching strategies
+- `providers/aws/dynamodb.md` -- DAX vs ElastiCache comparison for DynamoDB caching
+- `providers/aws/rds-aurora.md` -- Caching layer in front of relational databases
+- `providers/aws/vpc.md` -- Private subnet deployment and security group configuration for cache clusters

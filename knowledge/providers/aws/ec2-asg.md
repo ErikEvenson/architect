@@ -1,5 +1,9 @@
 # AWS EC2 and Auto Scaling Groups
 
+## Scope
+
+AWS virtual machine compute and auto-scaling. Covers instance families (including Graviton), launch templates, mixed instance policies, Spot Instances, AMI pipelines, IMDSv2, EBS volumes, scaling policies, and Capacity Blocks for ML.
+
 ## Checklist
 
 - [ ] **[Critical]** Are launch templates (not launch configurations) used for all ASG definitions, supporting versioning and mixed instance policies?
@@ -42,3 +46,12 @@ EC2 and ASG configuration directly affects availability, performance, and cost. 
 - [AWS Prescriptive Guidance: EC2 Auto Scaling for predictable and dynamic workloads](https://docs.aws.amazon.com/autoscaling/ec2/userguide/) -- scaling strategies and mixed instance policies
 - [AWS Spot Instances best practices](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html) -- reference patterns for Spot diversification, capacity-optimized allocation, and interruption handling
 - [AWS EC2 Image Builder pipeline architecture](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html) -- reference architecture for automated AMI build and distribution pipelines
+
+---
+
+## See Also
+
+- `general/compute.md` -- General compute patterns and instance selection criteria
+- `providers/aws/vpc.md` -- VPC subnet design and security groups for EC2 instances
+- `providers/aws/observability.md` -- CloudWatch monitoring and alarms for EC2/ASG metrics
+- `providers/aws/iam.md` -- Instance profiles and IMDSv2 for EC2 credential management

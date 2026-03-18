@@ -1,5 +1,9 @@
 # Azure Messaging (Service Bus, Event Hubs, Event Grid)
 
+## Scope
+
+Azure messaging and event streaming services. Covers Service Bus (queues, topics, sessions, tiers), Event Hubs (partitioned streaming, Kafka compatibility, Capture), and Event Grid (reactive event routing, filtering, domains).
+
 ## Checklist
 
 - [ ] **[Critical]** Choose messaging service based on pattern: Service Bus for enterprise messaging (queues and topics with transactions, sessions, ordering), Event Hubs for high-throughput event streaming (millions of events/second with partitioned consumption), Event Grid for reactive event-driven routing (push-based delivery with filtering)
@@ -46,3 +50,11 @@ Event Grid system topics: Blob Storage events (BlobCreated) -> Azure Function pr
 
 ### Multi-Tenant Event Architecture
 Event Grid domain with per-tenant topics (tenant-001, tenant-002, ... tenant-N). Application publishes tenant-scoped events to domain topics. Per-tenant subscriptions route events to tenant-specific Azure Functions or webhooks. Domain-level RBAC: tenant applications authorized to publish/subscribe only to their own topic. Centralized monitoring across all domain topics via Azure Monitor metrics. Dead-letter per subscription for tenant-level failure isolation.
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture including messaging and event streaming patterns
+- `providers/azure/serverless.md` -- Azure Functions as consumers for Service Bus, Event Hubs, and Event Grid
+- `providers/azure/observability.md` -- Azure Monitor for messaging service metrics and alerting

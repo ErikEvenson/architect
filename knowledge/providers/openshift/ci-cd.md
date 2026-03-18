@@ -1,5 +1,10 @@
 # OpenShift CI/CD
 
+## Scope
+
+OpenShift CI/CD: Tekton Pipelines (Tasks, PipelineRuns, Triggers), OpenShift GitOps (ArgoCD), Source-to-Image (S2I) builds, BuildConfig, ImageStreams, Quay registry, OLM operator lifecycle, and promotion strategies.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Deploy OpenShift Pipelines operator (Tekton) for cloud-native CI/CD pipelines
@@ -67,3 +72,10 @@ OLM manages the operator lifecycle -- installation, upgrades, and dependency res
 - **Disconnected / air-gapped CI/CD**: Mirror registry (oc-mirror) for operator catalogs and base images, Tekton pipelines with pre-cached dependencies, Quay mirror for image distribution, ArgoCD syncing from internal Git server (Gitea, GitLab self-hosted).
 - **Developer self-service**: OpenShift Dev Spaces (Eclipse Che) for cloud-based IDEs, Tekton pipeline templates via TektonHub, ArgoCD AppProjects per team with RBAC, namespace provisioning via ProjectRequest or Namespace Configuration Operator.
 - **Compliance-gated pipeline**: Tekton pipeline with mandatory security gates (image scan, compliance check, SBOM generation), Tekton Chains for non-repudiation, OPA/Gatekeeper policies blocking non-compliant deployments, ArgoCD sync waves for ordered rollout (namespace -> RBAC -> secrets -> app).
+
+## See Also
+
+- `general/ci-cd.md` -- general CI/CD pipeline patterns
+- `providers/openshift/security.md` -- image signing, Clair scanning, and content trust
+- `providers/openshift/infrastructure.md` -- OpenShift platform and upgrade channels
+- `providers/harbor/registry.md` -- Harbor as alternative container registry

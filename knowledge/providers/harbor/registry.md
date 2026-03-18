@@ -1,5 +1,10 @@
 # Harbor Container Registry
 
+## Scope
+
+Harbor container registry: TLS configuration, authentication (LDAP/AD, OIDC), Trivy vulnerability scanning, robot accounts for CI/CD, garbage collection, image replication, retention policies, proxy cache, image signing (Cosign/Notation), and external PostgreSQL/Redis/S3 backends.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Configure HTTPS with valid TLS certificates — Docker daemon and Kubernetes refuse to pull from HTTP registries by default; all clients must trust the CA
@@ -159,3 +164,9 @@ Configuration:
   - Credential: Docker Hub account (for 200 pulls/6h limit)
   - K8s: Rewrite image references or use containerd mirror config
 ```
+
+## See Also
+
+- `general/ci-cd.md` -- CI/CD pipeline integration with container registries
+- `general/security.md` -- supply chain security and image verification
+- `providers/kubernetes/security.md` -- Kubernetes image signing and admission policies

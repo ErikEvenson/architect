@@ -52,3 +52,9 @@ Eventarc triggers: (1) Cloud Storage object finalized in upload bucket -> Cloud 
 
 ### High-Throughput Streaming Pipeline
 Application publishers -> Pub/Sub topic (message storage policy: us-central1 region). Two consumer paths: (1) Dataflow streaming pipeline for real-time aggregation (windowed counts, anomaly detection) -> BigQuery streaming insert to real-time dashboard table, (2) BigQuery subscription for raw event archival to cold storage table (partitioned by publish time, clustered by device ID). Topic retention = 7 days for replay capability. Subscription message retention = 7 days matching topic. Cloud Monitoring alert on subscription backlog exceeding 100,000 messages.
+
+## See Also
+
+- `providers/gcp/serverless.md` -- Cloud Run and event-driven architectures
+- `providers/gcp/containers.md` -- GKE workloads consuming Pub/Sub
+- `providers/gcp/observability.md` -- monitoring messaging pipelines

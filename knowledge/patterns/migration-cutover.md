@@ -1,5 +1,9 @@
 # Migration Cutover Runbook Pattern
 
+## Scope
+
+Covers the execution mechanics of production cutover events, including DNS-based traffic switching, rollback procedures, validation checklists, and communication timelines. Applicable to any migration where production traffic must be redirected from a source environment to a target environment.
+
 ## Checklist
 
 - [ ] **[Critical]** Reduce DNS TTL to 300 seconds (or lower) at least 24-48 hours before cutover window
@@ -196,3 +200,10 @@ T+24h:     Stakeholder update — "24h post-cutover: all systems stable"
 | Forgetting source read-only | Split-brain: writes go to both source and target | Explicit step to disable writes on source before DNS switch |
 | No change freeze before cutover | Last-minute source changes create drift | Freeze source changes 24-48h before cutover |
 | Single person cutover | No backup if primary operator makes error or is unavailable | Minimum 2 people, defined roles (operator + validator) |
+
+## See Also
+
+- `general/disaster-recovery.md` — DR planning including rollback and failback strategies
+- `patterns/datacenter-relocation.md` — Full datacenter relocation where cutover is one phase of a larger program
+- `general/hybrid-dns.md` — DNS management across environments relevant to DNS-based cutover
+- `general/database-migration.md` — Database migration and data synchronization for cutover events

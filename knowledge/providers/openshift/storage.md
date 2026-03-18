@@ -1,5 +1,10 @@
 # OpenShift Storage
 
+## Scope
+
+OpenShift storage: OpenShift Data Foundation (ODF/Ceph), cloud-native CSI drivers, vSphere CSI, StorageClasses, dynamic provisioning, volume snapshots, local storage operator, and platform component storage (registry, logging, monitoring).
+
+
 ## Checklist
 
 - [ ] **[Critical]** Select primary storage backend: OpenShift Data Foundation (ODF/Ceph), cloud-native CSI (EBS, Azure Disk, GCE PD), vSphere CSI, NFS, or third-party (NetApp Trident, Pure Storage, Dell CSI)
@@ -42,3 +47,10 @@ The internal registry requires persistent storage for production (emptyDir is de
 - **Bare metal high-performance**: Local storage operator for NVMe (etcd, databases), ODF for distributed block and file, MetalLB for storage network traffic, dedicated storage VLAN via Multus.
 - **vSphere enterprise**: vSphere CSI driver with StoragePolicy-based management, VMFS or vSAN datastores, thin-provisioned VMDKs, vSphere snapshots integrated with CSI VolumeSnapshot.
 - **Hybrid / multi-cluster**: ODF with Regional-DR (async mirroring between clusters), MCG federation for object storage, consistent StorageClass names across clusters for GitOps portability, OADP for cross-cluster backup and restore.
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/kubernetes/storage.md` -- Kubernetes storage patterns (upstream)
+- `providers/ceph/storage.md` -- Ceph storage cluster configuration (ODF backend)
+- `providers/openshift/data-protection.md` -- backup and snapshot strategies

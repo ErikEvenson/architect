@@ -1,5 +1,10 @@
 # Kubernetes Operations
 
+## Scope
+
+Kubernetes operations: Helm and Kustomize package management, GitOps (ArgoCD, Flux), cluster upgrade strategies, etcd backup/restore, certificate rotation, resource quotas, LimitRanges, debugging workflows, and rollback procedures.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Choose package management approach: Helm (templated charts, release management, hooks) vs Kustomize (overlay-based, no templating, built into kubectl) vs hybrid (Helm for third-party, Kustomize for in-house)
@@ -124,3 +129,10 @@ Always upgrade control plane before workers. Never skip minor versions (1.27 -> 
   pre-delete:   Job (data export/backup)
 ```
 OCI registries for chart storage (replacing ChartMuseum). Per-environment values files with ArgoCD managing the lifecycle. Helm hooks for database migrations and other lifecycle tasks execute as Kubernetes Jobs with configurable weight (ordering) and delete policies.
+
+## See Also
+
+- `general/deployment.md` -- deployment strategies and patterns
+- `providers/kubernetes/compute.md` -- workload controllers and disruption budgets
+- `providers/kubernetes/security.md` -- RBAC and admission control
+- `providers/kubernetes/observability.md` -- monitoring and alerting for operations

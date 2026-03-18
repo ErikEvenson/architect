@@ -1,5 +1,9 @@
 # AWS Lambda & Serverless
 
+## Scope
+
+AWS serverless compute and orchestration. Covers Lambda configuration (memory, timeout, concurrency, SnapStart), API Gateway types, Step Functions, Lambda@Edge, CloudFront Functions, function URLs, and deployment frameworks.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose API Gateway type: REST API (feature-rich, API keys, usage plans, WAF) vs HTTP API (lower cost, simpler, JWT authorizer) vs WebSocket API (real-time bidirectional)
@@ -47,3 +51,12 @@ EventBridge Scheduler -> Step Functions -> parallel Lambda invocations (fan-out 
 
 ### Real-Time WebSocket Application
 API Gateway WebSocket API -> Lambda (connect/disconnect/message handlers) -> DynamoDB (connection store) -> Lambda (broadcast via API Gateway Management API). Use $connect route for auth, $default for message routing.
+
+---
+
+## See Also
+
+- `general/compute.md` -- General compute patterns including serverless selection criteria
+- `providers/aws/messaging.md` -- SQS, SNS, and EventBridge as Lambda event sources
+- `providers/aws/dynamodb.md` -- DynamoDB as a serverless data store and Streams trigger
+- `providers/aws/cloudfront-waf.md` -- Lambda@Edge and CloudFront Functions for edge compute

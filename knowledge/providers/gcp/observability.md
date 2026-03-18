@@ -1,5 +1,10 @@
 # GCP Observability
 
+## Scope
+
+Cloud Monitoring (workspaces, custom metrics, uptime checks, alerting), Cloud Logging (log router, sinks, log-based metrics), Cloud Trace, Error Reporting, Cloud Profiler, Managed Service for Prometheus, and Ops Agent.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Is Cloud Monitoring configured with workspaces scoped to the correct set of projects, with a designated metrics-scoping project for multi-project visibility?
@@ -39,3 +44,10 @@ GCP observability is built on the Google Cloud Operations Suite (formerly Stackd
 - [Google Cloud: Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus) -- reference architecture for Prometheus-compatible monitoring on GKE with global query federation
 - [Google Cloud: Designing and deploying a log analytics pipeline](https://cloud.google.com/architecture) -- reference design for log routing, BigQuery analytics, and long-term archival
 - [Google Cloud: Best practices for monitoring with Cloud Operations](https://cloud.google.com/monitoring/docs) -- reference patterns for workspace organization, custom metrics, and alerting policy design
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/gcp/security.md` -- GCP audit logging and Security Command Center
+- `providers/gcp/containers.md` -- GKE-specific monitoring with Managed Prometheus
+- `providers/prometheus-grafana/observability.md` -- open-source Prometheus and Grafana stack

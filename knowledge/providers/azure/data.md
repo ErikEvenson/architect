@@ -1,5 +1,9 @@
 # Azure Data Services
 
+## Scope
+
+Azure managed data platform services. Covers Azure SQL (vCore/DTU/Hyperscale), Cosmos DB (consistency levels, multi-region), Azure Cache for Redis tiers, geo-replication, Private Endpoints, and managed identity authentication.
+
 ## Checklist
 
 - [ ] **[Critical]** Is Azure SQL Database chosen for relational workloads, with the appropriate purchasing model? (vCore for predictable performance, DTU for simpler workloads, Hyperscale for large databases)
@@ -38,3 +42,12 @@ Azure data services have unique pricing models (DTU vs vCore, Request Units) tha
 - [Azure Architecture Center: Cosmos DB multi-region design](https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/globally-distributed-mission-critical-applications-using-cosmos-db) -- reference architecture for globally distributed applications with Cosmos DB
 - [Azure Well-Architected Framework: Azure SQL Database](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-sql-database) -- reliability, security, and cost optimization guidance for Azure SQL
 - [Azure Architecture Center: Caching guidance](https://learn.microsoft.com/en-us/azure/architecture/best-practices/caching) -- reference patterns for Azure Cache for Redis in application architectures
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture patterns and database selection criteria
+- `providers/azure/database.md` -- Detailed Azure database service coverage including PostgreSQL and MySQL
+- `providers/azure/networking.md` -- Private Endpoints for securing database network access
+- `providers/azure/disaster-recovery.md` -- Geo-replication and failover strategies for Azure data services

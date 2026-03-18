@@ -68,3 +68,10 @@ Security in OpenStack is not a single service -- it is a cross-cutting concern t
 - **Service tokens (Stein+):** Service token sending was introduced in Stein to prevent token expiration issues during long-running operations. Services send both the user token and a service token, ensuring operations complete even if the user token expires mid-request. This became enforced in some services starting in 2023.1.
 - **Epoxy (2025.1) security changes:** OAuth 2.0 device authorization grant for CLI and headless authentication flows. Continued secure RBAC improvements across all services.
 - **Flamingo (2025.2) security changes:** Barbican KMIP backend improvements for interoperability with enterprise key management systems. Continued hardening of default security policies.
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `general/identity.md` -- identity and access management patterns
+- `providers/openstack/networking.md` -- security groups and network controls
+- `providers/hashicorp/vault.md` -- Vault as Barbican backend alternative

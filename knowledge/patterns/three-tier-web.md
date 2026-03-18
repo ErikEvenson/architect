@@ -1,5 +1,9 @@
 # Three-Tier Web Application
 
+## Scope
+
+Covers the classic three-tier web application architecture separating presentation, application, and data tiers, including load balancing, caching, session management, auto-scaling, and network security boundaries. Applicable to most traditional web applications requiring server-side processing and database-backed storage.
+
 ## Overview
 
 A three-tier architecture separates presentation (web), business logic (application), and data storage into distinct tiers. Each tier can be scaled, secured, and maintained independently.
@@ -235,3 +239,10 @@ The three-tier architecture is the most common web application pattern because i
 | App servers | Cache | 6379 | Redis/Memcached |
 | App servers | Database | 3306/5432 | Database queries |
 | App servers | NAT GW | 443 | Outbound HTTPS |
+
+## See Also
+
+- `patterns/microservices.md` — Microservices decomposition when the monolithic app tier needs to be split
+- `general/disaster-recovery.md` — DR strategies for three-tier deployments
+- `general/security.md` — Security controls including WAF, network segmentation, and TLS
+- `general/observability.md` — Monitoring and alerting across all three tiers

@@ -1,5 +1,10 @@
 # Kubernetes Secrets Management
 
+## Scope
+
+Kubernetes secrets management: etcd encryption at rest, RBAC for secrets, sealed secrets, External Secrets Operator, CSI secrets store driver, Vault integration, secret rotation, and audit logging for secret access.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Are secrets NEVER committed to git in plain text or base64-encoded form? (base64 is encoding, NOT encryption)
@@ -110,3 +115,9 @@ Mounts secrets directly as files in pods via the Secrets Store CSI driver. Secre
 - [Vault Agent Injector](https://developer.hashicorp.com/vault/docs/platform/k8s/injector) -- sidecar-based secret injection for Kubernetes
 - [AWS Secrets Store CSI Driver](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html) -- mounting AWS secrets directly into pods
 - [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) -- general secrets management guidance
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/kubernetes/security.md` -- Kubernetes security controls and admission policies
+- `providers/hashicorp/vault.md` -- HashiCorp Vault for external secret management

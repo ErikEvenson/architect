@@ -1,5 +1,10 @@
 # OpenShift Compute
 
+## Scope
+
+OpenShift compute: MachineSets, MachineConfigPools, worker node sizing, node labels and taints, HPA/VPA autoscaling, cluster autoscaler, infrastructure nodes, resource quotas, and pod disruption budgets.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Define worker node instance types or VM sizes per workload class (general, memory-optimized, compute-optimized, GPU)
@@ -43,3 +48,10 @@ Infrastructure nodes are a cost optimization lever: workloads running on nodes l
 - **Multi-tenant SaaS**: Multiple worker pools with taints per tenant tier (dedicated, shared), ResourceQuotas per namespace, LimitRanges for default requests/limits, HPA per application, topology spread constraints across zones.
 - **Telco / NFV workload**: Real-time kernel via custom MCP and `performance-addon-operator` (now PAO merged into NTO -- Node Tuning Operator), CPU pinning, NUMA-aware scheduling, hugepages configuration, DPDK support.
 - **Cost-optimized dev/test**: Aggressive overcommit (4:1 CPU), no infra nodes, smaller instance types, scale-to-zero with KEDA operator, single-zone deployment.
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `providers/kubernetes/compute.md` -- Kubernetes compute patterns (upstream)
+- `providers/openshift/infrastructure.md` -- OpenShift platform sizing and Machine API
+- `providers/openshift/storage.md` -- storage for compute workloads

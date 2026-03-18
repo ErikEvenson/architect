@@ -1,5 +1,10 @@
 # Nutanix Compute (AHV and VM Management)
 
+## Scope
+
+Nutanix AHV compute configuration: vCPU/pCPU ratios, CPU pinning and NUMA alignment, VM affinity and anti-affinity rules, VM HA and live migration, AHV host networking bond modes, CVM resource allocation, VM image management via Prism Central, and Nutanix Guest Tools (NGT).
+
+
 ## Checklist
 
 - [ ] **[Critical]** Is the vCPU to pCPU ratio appropriate for the workload? (1:1 to 4:1 for general workloads, 1:1 for latency-sensitive applications like databases, up to 8:1 for VDI with careful monitoring)
@@ -140,3 +145,10 @@ For production sizing, always validate with the **Nutanix Sizer** tool ([sizer.n
 - Power and cooling estimates
 
 Sizer outputs a Bill of Materials (BOM) with specific SKUs and provides a shareable sizing report for procurement and architecture review.
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `providers/nutanix/infrastructure.md` -- Nutanix cluster sizing and hypervisor selection
+- `providers/nutanix/storage.md` -- Distributed Storage Fabric and CVM sizing
+- `providers/nutanix/networking.md` -- AHV networking and Flow microsegmentation

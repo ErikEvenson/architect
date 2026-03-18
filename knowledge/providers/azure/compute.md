@@ -1,5 +1,9 @@
 # Azure Compute
 
+## Scope
+
+Azure virtual machine compute services. Covers VMSS Flexible orchestration, availability zones, VM SKU families (including Confidential VMs and Cobalt 100 Arm-based), managed disks, Azure Bastion, Image Builder, Spot VMs, and Azure Update Manager.
+
 ## Checklist
 
 - [ ] **[Critical]** Are Virtual Machine Scale Sets (VMSS) with Flexible orchestration used instead of standalone VMs for production workloads requiring auto-scaling?
@@ -38,3 +42,12 @@ Azure compute has unique concepts like VMSS orchestration modes, availability se
 - [Azure Well-Architected Framework: Virtual Machines](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/virtual-machines) -- reliability, security, and performance best practices for Azure VMs
 - [Azure Landing Zone: Compute](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/) -- Cloud Adoption Framework guidance for compute platform selection and scaling
 - [Azure Architecture Center: VMSS autoscaling design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/auto-scaling) -- reference patterns for autoscaling Virtual Machine Scale Sets
+
+---
+
+## See Also
+
+- `general/compute.md` -- General compute patterns and instance selection criteria
+- `providers/azure/networking.md` -- VNet design, NSGs, and Azure Bastion for VM access
+- `providers/azure/observability.md` -- Azure Monitor and diagnostics for VM workloads
+- `providers/azure/security.md` -- Disk encryption, managed identities, and Defender for Servers

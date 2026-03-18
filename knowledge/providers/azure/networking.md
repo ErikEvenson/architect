@@ -1,5 +1,9 @@
 # Azure Networking
 
+## Scope
+
+Azure virtual networking and connectivity. Covers VNet design, NSGs/ASGs, Front Door, Application Gateway, WAF, Private Endpoints, Azure Bastion, VNet Peering, Virtual WAN, Azure Firewall, DDoS Protection, and hybrid connectivity (ExpressRoute, VPN Gateway).
+
 ## Checklist
 
 - [ ] **[Critical]** Is the VNet address space planned to avoid overlaps with on-premises networks and peered VNets, with subnets sized for service delegation requirements?
@@ -69,3 +73,12 @@ Azure networking differs significantly from AWS in subnet delegation, NSG behavi
 - [Azure Landing Zone: Network topology and connectivity](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity) -- Cloud Adoption Framework guidance for enterprise-scale network design
 - [Azure Well-Architected Framework: Networking](https://learn.microsoft.com/en-us/azure/well-architected/) -- best practices for VNet design, NSGs, and load balancing
 - [Azure Architecture Center: Zero-trust network for web applications](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall) -- reference design for securing web apps with Front Door, WAF, and Azure Firewall
+
+---
+
+## See Also
+
+- `general/networking.md` -- General networking patterns including segmentation and load balancing
+- `providers/azure/dns.md` -- Azure DNS, Traffic Manager, and Private DNS zone configuration
+- `providers/azure/security.md` -- NSG Flow Logs, Azure Firewall, and DDoS Protection integration
+- `providers/azure/compute.md` -- Azure Bastion and VM network placement

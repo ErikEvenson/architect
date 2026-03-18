@@ -1,5 +1,9 @@
 # AWS Containers (ECS, EKS, ECR)
 
+## Scope
+
+AWS container orchestration and registry services. Covers ECS (Fargate and EC2 launch types), EKS (managed node groups, Karpenter, Pod Identity, Auto Mode), ECR image management, service discovery, and non-EKS ECR authentication patterns.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose orchestrator: ECS (AWS-native, simpler, tighter AWS integration) vs EKS (Kubernetes-compatible, portable, broader ecosystem) based on team expertise and portability requirements
@@ -120,3 +124,12 @@ When pulling images from a different AWS account's ECR:
 
 ### Multi-Region Active-Active
 Global Accelerator -> ALBs in each region -> ECS/EKS services. ECR cross-region replication for images. DynamoDB global tables or Aurora Global Database for state. Route 53 health checks for DNS-level failover. CI/CD pipeline deploys to all regions with canary validation per region.
+
+---
+
+## See Also
+
+- `general/container-orchestration.md` -- General container orchestration patterns and decisions
+- `providers/aws/vpc.md` -- VPC networking for ECS/EKS clusters including subnet design and security groups
+- `providers/aws/iam.md` -- IAM task roles, IRSA, and Pod Identity for container workload authentication
+- `providers/aws/observability.md` -- Container Insights and monitoring for ECS/EKS workloads

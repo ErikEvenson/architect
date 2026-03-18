@@ -1,5 +1,9 @@
 # SOX IT General Controls - Cloud Control Mapping
 
+## Scope
+
+Covers SOX IT General Controls (ITGCs) for cloud environments, including access management, change management, IT operations, and SDLC controls relevant to financial reporting systems. Does not cover SOC 2 audit criteria (see `compliance/soc2.md`) or general CI/CD patterns (see `general/ci-cd.md`).
+
 ## Overview
 
 The **Sarbanes-Oxley Act (SOX)** requires publicly traded companies to establish and maintain internal controls over financial reporting (ICFR). **IT General Controls (ITGCs)** are the technology controls that support the reliability of financial data and systems. SOX does not prescribe specific technical controls — auditors evaluate whether controls are designed effectively and operating consistently.

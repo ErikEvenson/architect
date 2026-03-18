@@ -1,5 +1,10 @@
 # GCP IAM (Identity and Access Management)
 
+## Scope
+
+GCP IAM roles and bindings, Workload Identity Federation, service account strategy, organization policies, VPC Service Controls, IAM Conditions, Policy Analyzer, Cloud Audit Logs, and IAM deny policies.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Apply the principle of least privilege using predefined roles instead of basic roles (Owner, Editor, Viewer); basic roles grant thousands of permissions across all services and are almost never appropriate for production workloads; use IAM Recommender to identify and right-size over-privileged bindings
@@ -46,3 +51,9 @@ GKE cluster with Workload Identity enabled. Each microservice has a dedicated Ku
 
 ### CI/CD with Workload Identity Federation
 GitHub Actions workflow uses google-github-actions/auth action with Workload Identity Federation. Workload Identity Pool maps GitHub repository (attribute.repository == "org/repo") to a GCP service account. Service account has roles/artifactregistry.writer for pushing images and roles/run.developer for deploying to Cloud Run. Attribute conditions restrict to specific branches (attribute.ref == "refs/heads/main" for production). Separate service accounts per environment with different permission sets.
+
+## See Also
+
+- `general/identity.md` -- general identity and access management patterns
+- `providers/gcp/security.md` -- GCP security operations, threat detection, and data protection
+- `providers/gcp/networking.md` -- VPC Service Controls network context

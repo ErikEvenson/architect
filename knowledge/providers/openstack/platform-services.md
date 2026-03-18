@@ -66,3 +66,10 @@ Platform services transform OpenStack from raw IaaS into a platform that offers 
 - **Sahara and Zaqar retirement:** Sahara (data processing) entered maintenance mode in Train and was retired in Wallaby. Zaqar (messaging service) entered maintenance mode in Train and was retired in Xena. For data processing, Kubernetes-based Spark on Magnum is the recommended alternative. For messaging, external services (RabbitMQ, Kafka) are recommended.
 - **Epoxy (2025.1) platform services changes:** Magnum supports K8s 1.30-1.31. Senlin fully retired. Continued Ironic runbook improvements.
 - **Flamingo (2025.2) platform services changes:** Magnum supports K8s 1.31-1.32. Continued Ironic secure boot enhancements. Heat template engine stability improvements.
+
+## See Also
+
+- `providers/openstack/infrastructure.md` -- core OpenStack infrastructure
+- `providers/openstack/heat.md` -- Heat orchestration deep dive
+- `providers/openstack/compute.md` -- Nova compute and Ironic bare metal
+- `providers/kubernetes/compute.md` -- Kubernetes workloads via Magnum

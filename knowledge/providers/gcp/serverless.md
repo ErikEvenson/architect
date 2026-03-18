@@ -43,3 +43,9 @@ GCP's serverless portfolio is more fragmented than AWS Lambda but offers finer-g
 - [Google Cloud: Asynchronous processing with Pub/Sub and Cloud Run](https://cloud.google.com/run/docs/tutorials/pubsub) -- reference pattern for decoupled, scalable event processing with push subscriptions
 - [Google Cloud: Orchestrating microservices with Workflows](https://cloud.google.com/workflows/docs/overview) -- reference architecture for service orchestration with error handling, parallel execution, and API connectors
 - [Google Cloud: Choosing a serverless option](https://cloud.google.com/serverless-options) -- decision guide comparing Cloud Run Functions, Cloud Run services, and App Engine for different workload patterns
+
+## See Also
+
+- `providers/gcp/containers.md` -- GKE and Cloud Run container platform
+- `providers/gcp/messaging.md` -- Pub/Sub and event-driven triggers
+- `providers/gcp/networking.md` -- load balancing and VPC connectors for serverless

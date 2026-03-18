@@ -1,5 +1,9 @@
 # Multi-Cloud Architecture
 
+## Scope
+
+Covers architectures using two or more public cloud providers simultaneously, including cross-cloud networking, identity federation, unified observability, cost management, and workload placement. Distinct from hybrid cloud (public + on-premises). Applicable when regulatory requirements, M&A, best-of-breed services, or negotiation leverage justify multi-provider complexity.
+
 ## Overview
 
 Multi-cloud architecture uses two or more public cloud providers simultaneously to deliver services. This is distinct from hybrid cloud (public + on-premises). Motivations include avoiding vendor lock-in, leveraging best-of-breed services, meeting data sovereignty requirements, and negotiating leverage. Multi-cloud adds significant operational complexity and should be adopted deliberately rather than accidentally.
@@ -102,3 +106,10 @@ Running equivalent services on multiple providers creates cost overlap:
 - **Native vs portable services** — which managed services justify lock-in (e.g., BigQuery, DynamoDB) vs abstracted alternatives
 - **Cost governance** — unified cost tracking, cross-provider FinOps tooling, committed use discount strategy
 - **Operational model** — single team managing all clouds vs specialized teams per provider, on-call rotation
+
+## See Also
+
+- `patterns/hybrid-cloud.md` — Hybrid cloud architecture spanning on-premises and public cloud
+- `general/iac-planning.md` — Infrastructure as Code planning for cross-provider consistency
+- `general/identity.md` — Identity federation across multiple environments
+- `general/cost.md` — Cloud cost management including cross-provider FinOps

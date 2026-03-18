@@ -1,5 +1,9 @@
 # Enterprise Backup Tools and Strategies
 
+## Scope
+
+This file covers **enterprise backup architecture and tool selection** including product comparison (Commvault, Veeam, Veritas, Dell), immutable storage, ransomware resilience, storage tiering, and backup sizing. It does not cover disaster recovery site design or failover orchestration; for those, see `general/disaster-recovery.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Define RPO and RTO targets for each application tier before selecting backup architecture
@@ -226,3 +230,9 @@ Production Network                    Isolated Backup Network
 - Daily incremental: (50 x 0.05) / 3 = ~0.83 TB
 - 30-day repository: 17 + (30 x 0.83) = ~42 TB usable capacity needed
 - Add 20% headroom: ~50 TB usable repository
+
+## See Also
+
+- [disaster-recovery.md](disaster-recovery.md) -- DR site design, failover orchestration, and RTO/RPO planning
+- [data.md](data.md) -- database design and data retention policies that drive backup requirements
+- [security.md](security.md) -- security controls including ransomware protection and data encryption

@@ -1,5 +1,10 @@
 # GCP Data Services
 
+## Scope
+
+Cloud SQL, AlloyDB, Cloud Spanner, Firestore, Bigtable, Memorystore, Database Migration Service, and Cloud SQL Auth Proxy. For data analytics and warehousing (BigQuery, Dataflow, Dataproc), see separate data analytics guidance.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Is Cloud SQL selected for relational workloads, with the appropriate tier and high availability configuration (regional instance with automatic failover)?
@@ -37,3 +42,10 @@ GCP offers a uniquely broad database portfolio, from globally consistent Spanner
 - [Google Cloud: Cloud SQL high availability and disaster recovery](https://cloud.google.com/sql/docs/mysql/high-availability) -- reference architecture for regional HA and cross-region read replicas
 - [Google Cloud: Spanner reference architectures](https://cloud.google.com/spanner/docs) -- design patterns for globally distributed, strongly consistent database workloads
 - [Google Cloud: Best practices for Cloud Bigtable schema design](https://cloud.google.com/bigtable/docs/schema-design) -- reference patterns for row key design and table schema in high-throughput workloads
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `general/database-migration.md` -- database migration strategies
+- `providers/gcp/storage.md` -- GCP Cloud Storage and persistent disks
+- `providers/gcp/disaster-recovery.md` -- GCP cross-region DR including database failover

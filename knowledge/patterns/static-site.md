@@ -1,5 +1,9 @@
 # Static Site Architecture
 
+## Scope
+
+Covers architectures for serving pre-built static files (HTML, CSS, JavaScript) including single-page applications (SPAs), using object storage, CDN delivery, serverless API backends, and platform hosting services. Applicable when the application does not require server-side rendering at request time.
+
 ## Overview
 
 Static sites serve pre-built HTML, CSS, and JavaScript files. They can include client-side applications (SPAs) that call backend APIs. No server-side rendering at request time.
@@ -187,3 +191,10 @@ Static sites are the simplest and most cost-effective architecture, but common m
 - **Hosting**: object storage + CDN vs specialized platform (Netlify, Vercel, Cloudflare Pages)
 - **API strategy**: serverless functions (Lambda@Edge, Cloudflare Workers) vs separate API service
 - **Build pipeline**: CI/CD with preview deployments per PR
+
+## See Also
+
+- `patterns/cdn-fronted-onprem.md` — CDN configuration patterns including caching and WAF
+- `general/tls-certificates.md` — TLS certificate management for custom domains
+- `general/ci-cd.md` — CI/CD pipeline design for automated deployments
+- `general/security.md` — Security headers, HTTPS enforcement, and access control

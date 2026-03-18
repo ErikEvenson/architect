@@ -1,5 +1,9 @@
 # AWS Secrets Manager
 
+## Scope
+
+AWS managed secrets storage and rotation service. Covers automatic credential rotation, multi-region replication, KMS encryption, caching clients, BatchGetSecretValue, VPC endpoints, and comparison with Parameter Store and HashiCorp Vault.
+
 ## Checklist
 
 - [ ] **[Critical]** Are all database credentials, API keys, and sensitive configuration values stored in Secrets Manager rather than environment variables, code, or config files?
@@ -38,3 +42,12 @@ Hardcoded secrets in code repositories are the leading cause of credential leaks
 - [AWS Well-Architected Labs: Security - Data Protection](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for secrets management and encryption best practices
 - [AWS Secrets Manager rotation architecture](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) -- reference design for Lambda-based automatic credential rotation
 - [AWS EKS Secrets Store CSI Driver integration](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html) -- reference architecture for mounting secrets as volumes in Kubernetes pods
+
+---
+
+## See Also
+
+- `general/security.md` -- General security patterns including secrets management strategies
+- `providers/aws/iam.md` -- IAM policies for Secrets Manager access and cross-account sharing
+- `providers/aws/rds-aurora.md` -- Database credential rotation with Secrets Manager
+- `providers/aws/containers.md` -- CSI Secrets Store driver for EKS and task definition secret injection for ECS

@@ -1,5 +1,9 @@
 # Azure Local (formerly Azure Stack HCI)
 
+## Scope
+
+Azure hyper-converged infrastructure for running Azure services on-premises. Covers cluster sizing, Storage Spaces Direct, Network ATC, AKS hybrid, AVD on-premises, stretch clustering, and subscription-based licensing.
+
 Hyper-converged infrastructure (HCI) solution that runs Azure services on-premises using validated hardware. Delivers Azure Arc-enabled management, AKS hybrid clusters, and native Azure service integration on customer-owned infrastructure. Renamed from Azure Stack HCI to Azure Local in late 2024 to reflect its positioning as a local extension of the Azure cloud.
 
 ## Checklist
@@ -63,3 +67,12 @@ Two-node-per-site stretch cluster across two datacenters within 5ms RTT. Synchro
 
 ### SQL Managed Instance on Azure Local
 Deploy SQL Managed Instance (Azure Arc-enabled) on an Azure Local cluster for on-prem managed SQL with automated patching, backup to Azure, and Azure Active Directory authentication. Suitable for regulated industries that cannot place SQL databases in public cloud but want managed-service operational benefits. Pair with Azure Defender for SQL for vulnerability assessment and threat detection.
+
+---
+
+## See Also
+
+- `patterns/hybrid-cloud.md` -- Hybrid cloud architecture patterns including on-premises extensions
+- `providers/azure/azure-stack-edge.md` -- Edge appliances for smaller or ruggedized on-premises deployments
+- `providers/azure/containers.md` -- AKS hybrid running on Azure Local clusters
+- `providers/azure/compute.md` -- VM SKU families and compute patterns for Azure workloads

@@ -1,5 +1,9 @@
 # Microservices Architecture
 
+## Scope
+
+Covers microservices decomposition, inter-service communication (synchronous and asynchronous), API gateway and service mesh patterns, distributed transactions, and observability across service boundaries. Applicable when applications require independent deployment, scaling, and team ownership of individual services.
+
 ## Overview
 
 Microservices decompose an application into small, independently deployable services. Each service owns its data and communicates via APIs or messaging.
@@ -214,3 +218,10 @@ Microservices enable independent deployment, scaling, and team ownership, but th
 - **CQRS**: separate read and write models
 - **Event Sourcing**: append-only event log as source of truth
 - **Strangler Fig**: incrementally migrate from monolith
+
+## See Also
+
+- `patterns/event-driven.md` — Event-driven communication patterns between microservices
+- `general/container-orchestration.md` — Container orchestration platforms for deploying microservices
+- `general/service-mesh.md` — Service mesh for inter-service traffic management and observability
+- `general/api-design.md` — API design principles for service contracts

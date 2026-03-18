@@ -1,5 +1,9 @@
 # FedRAMP Control Families - Cloud Control Mapping
 
+## Scope
+
+Covers FedRAMP authorization requirements, NIST SP 800-53 control families mapped to cloud services, impact level selection (Low/Moderate/High), continuous monitoring, and FIPS cryptography requirements. Does not cover CUI-specific handling (see `compliance/nist-800-171-cmmc.md`) or general security architecture (see `general/security.md`).
+
 ## Overview
 
 FedRAMP (Federal Risk and Authorization Management Program) provides a standardized approach for security assessment, authorization, and continuous monitoring of cloud products and services used by U.S. federal agencies. It is based on NIST SP 800-53 (currently Rev. 5).
@@ -510,3 +514,10 @@ NIST 800-53 Rev. 5 added supply chain controls, relevant for FedRAMP.
 - **Supply chain security model** — SBOM generation, container image provenance, third-party component assessment
 - **Logging and audit architecture** — centralized SIEM, log retention periods, immutable storage, FedRAMP-specific event monitoring
 - **Boundary definition** — system boundary scope, interconnection agreements, shared services model
+
+## See Also
+
+- `compliance/nist-800-171-cmmc.md` — NIST 800-171 and CMMC for CUI protection (builds on FedRAMP controls)
+- `general/security.md` — General security controls and architecture patterns
+- `general/governance.md` — Cloud governance, tagging, and policy enforcement
+- `general/identity.md` — IAM and authentication architecture

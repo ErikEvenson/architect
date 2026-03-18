@@ -1,5 +1,9 @@
 # AWS Well-Architected Framework
 
+## Scope
+
+Covers the six pillars of the AWS Well-Architected Framework (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability) with AWS-specific checklists and guidance for architecture reviews. Does not cover Azure (see `frameworks/azure-well-architected.md`) or GCP (see `frameworks/gcp-architecture-framework.md`) equivalents.
+
 The AWS Well-Architected Framework helps cloud architects build secure, high-performing, resilient, and efficient infrastructure for their applications and workloads. It is organized into six pillars, each representing a foundational area of cloud architecture excellence.
 
 ---
@@ -235,3 +239,10 @@ Cloud computing is not inherently green; it simply shifts the environmental impa
 - **Performance optimization** — caching strategy, database selection, compute right-sizing methodology
 - **Sustainability approach** — instance family selection for energy efficiency, right-sizing for carbon reduction
 - **Well-Architected Review cadence** — how often to conduct reviews, remediation prioritization
+
+## See Also
+
+- `frameworks/azure-well-architected.md` — Azure Well-Architected Framework (five pillars)
+- `frameworks/gcp-architecture-framework.md` — GCP Architecture Framework (six pillars)
+- `providers/aws/vpc.md` — AWS VPC and networking configuration
+- `general/cost.md` — Cloud cost optimization strategies

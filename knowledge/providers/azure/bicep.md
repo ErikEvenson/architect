@@ -1,5 +1,9 @@
 # Azure Bicep
 
+## Scope
+
+Azure-native infrastructure-as-code DSL that compiles to ARM templates. Covers modules, deployment scopes, deployment stacks, user-defined types/functions, Azure Verified Modules, linting, what-if preview, and comparison with Terraform.
+
 Domain-specific language (DSL) for deploying Azure resources declaratively. Bicep compiles to ARM JSON templates, providing cleaner syntax, type safety, and first-class tooling while maintaining full ARM feature parity.
 
 ---
@@ -343,3 +347,11 @@ Environments (each a parameter file):
   main.bicep references registry modules with pinned versions
   Each environment uses the same template with different parameters
 ```
+
+---
+
+## See Also
+
+- `general/iac-planning.md` -- IaC strategy selection and planning across providers
+- `providers/azure/devops.md` -- Azure Pipelines and GitHub Actions for Bicep CI/CD deployment
+- `providers/azure/containers.md` -- Azure Container Registry as a Bicep module registry

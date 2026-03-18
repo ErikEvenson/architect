@@ -1,5 +1,9 @@
 # Data Pipeline Architecture
 
+## Scope
+
+Covers batch, streaming, and hybrid data pipeline architectures including ingestion, transformation (ETL/ELT), orchestration, data quality validation, and storage tiering. Applicable when workloads involve moving data from sources to analytics platforms, data warehouses, or data lakes.
+
 ## Overview
 
 Data pipelines ingest, transform, and store data for analytics, reporting, or downstream consumption. They can be batch, streaming, or hybrid.
@@ -209,3 +213,10 @@ Data pipelines are the backbone of analytics, reporting, and downstream data con
 - **Change Data Capture (CDC)**: stream database changes
 - **Dead Letter Queue**: isolate failed records for investigation
 - **Backpressure**: consumer signals producer to slow down
+
+## See Also
+
+- `patterns/event-driven.md` — Event-driven architecture patterns including streaming and messaging
+- `general/data.md` — Data architecture, storage patterns, and data management
+- `patterns/ai-ml-infrastructure.md` — ML training pipelines that consume data pipeline output
+- `general/observability.md` — Monitoring pipeline health, lag, and data freshness

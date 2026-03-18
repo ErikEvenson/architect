@@ -62,3 +62,10 @@ The Nutanix Distributed Storage Fabric (DSF) runs as a distributed system across
 - **NVMe-oF support:** AOS 7.x adds enhanced NVMe over Fabrics support, enabling external hosts to access Nutanix storage with lower latency than traditional iSCSI.
 - **Disaggregated storage:** While compute-only nodes were supported in AOS 6.x, AOS 7.x improves the experience with more flexible licensing and better performance for remote storage access patterns.
 - **AOS 7.5 (December 2025):** Introduces VM Startup Policies for controlled boot sequencing after cluster or host restarts, and enhanced CVM security with improved integrity validation and hardened default configurations.
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/nutanix/infrastructure.md` -- cluster sizing and CVM configuration
+- `providers/nutanix/compute.md` -- VM storage I/O and CVM resource allocation
+- `providers/ceph/storage.md` -- Ceph as alternative software-defined storage

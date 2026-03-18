@@ -1,5 +1,9 @@
 # NIST 800-171 & CMMC 2.0 - Cloud Control Mapping
 
+## Scope
+
+Covers NIST SP 800-171 security requirements for Controlled Unclassified Information (CUI) and CMMC 2.0 certification levels, including CUI enclave design patterns, control family mappings, and cloud provider FedRAMP/IL status. Does not cover FedRAMP authorization process details (see `compliance/fedramp.md`) or general identity architecture (see `general/identity.md`).
+
 ## Overview
 
 **NIST SP 800-171** defines security requirements for protecting Controlled Unclassified Information (CUI) in non-federal systems. It is the foundation for the **Cybersecurity Maturity Model Certification (CMMC 2.0)**, which the Department of Defense uses to assess contractor cybersecurity posture.

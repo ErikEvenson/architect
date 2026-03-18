@@ -1,5 +1,10 @@
 # VMware Cloud on AWS (VMC on AWS)
 
+## Scope
+
+VMware Cloud on AWS (VMC on AWS): host types (i3.metal, i3en.metal, i4i.metal), SDDC sizing, stretched clusters, linked VPC networking, HCX migration, Elastic vSAN, Elastic DRS, NSX overlay design, and AWS service integration.
+
+
 VMware-managed SDDC running on dedicated AWS bare-metal infrastructure. Provides full VMware stack (vSphere, vSAN, NSX, vCenter) on AWS with native AWS service integration.
 
 ## Checklist
@@ -53,3 +58,10 @@ VMC on AWS eliminates physical infrastructure management while preserving VMware
 - vCenter, NSX Manager, HCX Manager consume resources on management hosts
 - Host scaling is not instant — adding hosts takes 15-20 minutes
 - All VMware licensing (vSphere, vSAN, NSX, vCenter) included in per-host price
+
+## See Also
+
+- `providers/vmware/infrastructure.md` -- VMware vSphere and VCF infrastructure
+- `providers/vmware/networking.md` -- NSX networking design patterns
+- `providers/vmware/avs-azure.md` -- Azure VMware Solution as alternative cloud VMware
+- `providers/vmware/gcve-gcp.md` -- Google Cloud VMware Engine as alternative cloud VMware

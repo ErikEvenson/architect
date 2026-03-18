@@ -1,5 +1,9 @@
 # Cross-Cloud Service Mapping
 
+## Scope
+
+This file covers **cross-cloud and cloud-to-on-premises service mapping** including AWS-to-OpenStack, AWS-to-Azure, and AWS-to-GCP equivalents, API compatibility layers, and feature gap analysis. It does not cover the migration execution process itself; for migration tooling and strategies, see `general/workload-migration.md` and `general/data-migration-tools.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Map every AWS service in use to the target cloud equivalent — identify gaps before migration planning begins
@@ -185,3 +189,10 @@ Use this table for each AWS service in scope. Complete one row per feature actua
 - **Low** — Workaround is proven and well-documented. Unlikely to cause issues.
 - **Medium** — Workaround exists but adds operational complexity. Needs testing.
 - **High** — No clear workaround or workaround significantly changes architecture. Requires careful planning.
+
+## See Also
+
+- [workload-migration.md](workload-migration.md) -- migration strategies and execution planning
+- [data-migration-tools.md](data-migration-tools.md) -- tooling for migrating data between cloud and on-prem environments
+- [cost.md](cost.md) -- cloud cost optimization and pricing model differences
+- [observability.md](observability.md) -- monitoring stack replacement strategies referenced in service mapping

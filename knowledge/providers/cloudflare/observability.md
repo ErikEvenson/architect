@@ -71,3 +71,10 @@ Cloudflare health checks probe origins independently of client traffic. Failed c
                     [Custom Dashboard (Grafana / Retool)]
 ```
 Use Workers Analytics Engine for custom server-side metrics (counters, timers) without Logpush overhead. Web Analytics provides client-side Core Web Vitals. GraphQL API aggregates both for custom dashboards. This avoids high-volume log ingestion for metrics that can be computed at the edge.
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/cloudflare/security.md` -- WAF and firewall event analysis
+- `providers/cloudflare/cdn-dns.md` -- CDN and DNS monitoring
+- `providers/cloudflare/workers.md` -- Workers-specific observability

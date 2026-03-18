@@ -1,5 +1,10 @@
 # OpenShift Observability
 
+## Scope
+
+OpenShift observability: built-in Prometheus/Alertmanager/Grafana stack, user workload monitoring, ServiceMonitor/PodMonitor, OpenShift Logging (LokiStack with Vector), ClusterLogForwarder, distributed tracing (Tempo, OpenTelemetry), and Network Observability operator.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Configure the built-in monitoring stack: Prometheus, Alertmanager, and Grafana (read-only in OCP; custom Grafana for write dashboards)
@@ -44,3 +49,10 @@ The Network Observability operator uses eBPF agents on each node to capture netw
 - **Compliance-focused observability**: Audit logs forwarded to SIEM (QRadar, Splunk), Compliance Operator scan results as Prometheus metrics, custom alerts for SCC violations and failed authentication attempts, network observability for traffic baseline and anomaly detection.
 - **Developer-centric platform**: User workload monitoring with self-service ServiceMonitor creation, OpenShift Console integrated log viewer (Loki), Jaeger/Tempo UI for trace exploration, Grafana dashboards per team namespace, alert routing per team Slack channel.
 - **Cost-optimized observability**: Prometheus with aggressive retention (7 days in-cluster, long-term in S3 via Thanos), Loki with lifecycle policies (hot/warm/cold tiers), sampling on traces (10% head-based), network observability with 50% flow sampling, must-gather on-demand for troubleshooting.
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/kubernetes/observability.md` -- Kubernetes observability patterns (upstream)
+- `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana stack
+- `providers/openshift/infrastructure.md` -- infrastructure monitoring and capacity

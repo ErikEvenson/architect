@@ -1,5 +1,10 @@
 # VMware Observability
 
+## Scope
+
+VMware observability: VCF Operations (formerly Aria Operations) for capacity planning and alerting, VCF Operations for Logs (formerly Aria Operations for Logs), vCenter alarms, NSX Intelligence, SNMP v3 integration, syslog forwarding, vSAN health monitoring, and performance collection intervals.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Is VCF Operations (formerly Aria Operations / vRealize Operations) deployed with appropriate sizing (small, medium, large, extra-large) based on the number of monitored objects, with remote collector nodes placed in each datacenter to minimize WAN dependency for data collection?
@@ -31,3 +36,10 @@ VMware environments degrade silently. CPU ready time above 5% indicates VMs are 
 - **Alert routing strategy** -- direct integration with PagerDuty/ServiceNow/Opsgenie for critical infrastructure alerts vs email-only for informational alerts; avoid alert fatigue by tuning thresholds and suppressing known benign conditions
 - **SNMP vs API-based monitoring** -- SNMP for legacy monitoring platform integration vs REST API and Prometheus endpoints for modern observability stacks; vCenter and NSX expose rich APIs, ESXi is more limited
 - **Capacity planning model** -- demand-based (actual consumption trends, optimistic) vs allocation-based (reserved resources, conservative); demand-based avoids premature purchases but risks under-provisioning for workloads that have not yet scaled
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/vmware/infrastructure.md` -- VMware infrastructure and lifecycle management
+- `providers/vmware/storage.md` -- vSAN health monitoring
+- `providers/prometheus-grafana/observability.md` -- Prometheus/Grafana for external VMware monitoring

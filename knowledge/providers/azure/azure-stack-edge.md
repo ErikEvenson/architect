@@ -1,5 +1,9 @@
 # Azure Stack Edge
 
+## Scope
+
+Azure hardware-as-a-service edge appliances for compute, AI inference, and data transfer at the edge. Covers Pro 2, Pro GPU, and Mini R SKUs, Kubernetes/IoT Edge runtime, local and cloud-tiered shares, GPU-accelerated inference, and network function virtualization.
+
 Purpose-built edge appliances delivered as a service (hardware-as-a-service) for running compute, AI inference, and data transfer workloads at the edge. The product line includes Azure Stack Edge Pro (with GPU or FPGA acceleration) for standard edge deployments and Azure Stack Edge Mini R (ruggedized, portable) for harsh or field environments. Azure manages the device lifecycle; customers order through the Azure portal, receive the hardware, activate it, and pay a monthly fee.
 
 ## Checklist
@@ -66,3 +70,12 @@ Azure Stack Edge Pro deployed at cell tower sites or central offices. Azure Priv
 
 ### Data transfer and migration — Data Box Gateway mode
 Azure Stack Edge configured primarily as a data gateway. NFS/SMB shares are mounted by on-premises servers and applications. Data written to shares is automatically transferred to Azure Blob or Azure Files. Bandwidth schedules control transfer windows. This architecture replaces physical Data Box shipments for ongoing data ingestion from sites with adequate network connectivity. Useful for media production (dailies upload), scientific data collection, and backup-to-cloud workflows.
+
+---
+
+## See Also
+
+- `patterns/edge-computing.md` -- Edge computing architecture patterns and decisions
+- `providers/azure/azure-local.md` -- Azure Local for larger on-premises deployments with full Azure service support
+- `providers/azure/storage.md` -- Azure Blob Storage and Azure Files as cloud-tiered share destinations
+- `providers/azure/containers.md` -- Kubernetes and IoT Edge container runtimes on edge devices

@@ -68,3 +68,10 @@ Neutron architecture is the single most impactful design decision in OpenStack -
 - **Migration considerations:** Migrating from ML2/OVS to ML2/OVN requires careful planning. OVN uses Geneve encapsulation (not VXLAN), so MTU calculations change. DVR behavior differs -- OVN is natively distributed. Security group implementation changes from iptables to OVN ACLs. The migration tool handles most conversions but downtime is required for the control plane switchover.
 - **Epoxy (2025.1) networking changes:** ML2/OVS removal timeline published -- organizations must begin migration planning. OVN QoS improvements for bandwidth enforcement. OVN DPDK performance improvements. OVN interconnection routing improvements for multi-site deployments.
 - **Flamingo (2025.2) networking changes:** OVN 24.09+ required as minimum version. ML2/OVS removal planned for the next release cycle. Continued OVN provider improvements for Octavia health monitors.
+
+## See Also
+
+- `general/networking.md` -- general networking architecture patterns
+- `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
+- `providers/openstack/security.md` -- security groups and network access controls
+- `providers/openstack/compute.md` -- Nova instance networking integration

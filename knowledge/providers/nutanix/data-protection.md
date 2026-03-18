@@ -34,3 +34,10 @@ Nutanix provides multiple data protection tiers, each with different RPO, comple
 - **Snapshot consistency** -- Crash-consistent (default, no guest dependency) vs application-consistent (requires NGT/VSS on Windows, pre/post scripts on Linux)
 - **Retention strategy** -- Short local + long remote (optimize local storage) vs long local + archive offsite (fastest restore) vs tiered with lifecycle policies
 - **DR site architecture** -- Symmetric (identical cluster at DR site, bidirectional replication) vs asymmetric (smaller DR cluster, one-way replication, accept degraded performance during failover)
+
+## See Also
+
+- `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)
+- `general/enterprise-backup.md` -- enterprise backup architecture patterns
+- `providers/nutanix/infrastructure.md` -- Nutanix cluster design for DR
+- `providers/nutanix/storage.md` -- storage replication and snapshot management

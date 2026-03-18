@@ -34,3 +34,9 @@ Nutanix observability is centered on Prism Central, which aggregates metrics fro
 - **Capacity planning approach** -- Prism Central runway forecasting (built-in, trend-based) vs manual spreadsheet planning vs third-party capacity management (CloudPhysics, Densify)
 - **Performance baselining** -- X-Ray synthetic benchmarks (repeatable, controlled) vs production workload observation (real-world but variable) vs vendor-provided reference metrics
 - **Automation level** -- Manual response to alerts (simplest) vs Prism Central playbooks (automated remediation, Nutanix-native) vs external automation (ServiceNow workflows, Ansible Tower triggered by alerts)
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/nutanix/infrastructure.md` -- Nutanix cluster health and lifecycle
+- `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana for external monitoring

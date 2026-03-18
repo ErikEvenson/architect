@@ -1,5 +1,10 @@
 # OpenShift Networking
 
+## Scope
+
+OpenShift networking: OVN-Kubernetes CNI, cluster/service CIDR design, NetworkPolicy, Routes and IngressController (HAProxy), MetalLB, egress controls (EgressFirewall, EgressIP), Multus CNI, Service Mesh, cert-manager, and DNS operator.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Select CNI plugin: OVN-Kubernetes (default since OCP 4.12+) vs OpenShift SDN (legacy, deprecated)
@@ -62,3 +67,10 @@ Multus allows pods to have multiple network interfaces -- essential for telco wo
 - **Telco / 5G Core**: OVN-Kubernetes with hardware offload, Multus with SR-IOV for user plane, DPDK-enabled pods, multiple IngressControllers for signaling vs management traffic, network observability for flow analysis.
 - **Hybrid cloud (on-prem + AWS)**: Submariner or Skupper for cross-cluster service discovery, consistent NetworkPolicy across clusters, split-horizon DNS with external-dns operator, VPN or Direct Connect for cluster-to-cluster communication.
 - **Zero-trust network**: Service mesh with strict mTLS enforcement, default-deny NetworkPolicy, EgressFirewall allowing only approved external endpoints, network observability for anomaly detection, AdminNetworkPolicy for platform-wide baseline rules.
+
+## See Also
+
+- `general/networking.md` -- general networking architecture patterns
+- `providers/kubernetes/networking.md` -- Kubernetes networking patterns (upstream)
+- `providers/openshift/security.md` -- network policies and segmentation
+- `providers/openshift/infrastructure.md` -- platform networking prerequisites

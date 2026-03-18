@@ -1,5 +1,10 @@
 # Kubernetes Networking
 
+## Scope
+
+Kubernetes networking: Service types, Ingress vs Gateway API, CNI plugin selection (Calico, Cilium, Flannel), NetworkPolicy, CoreDNS, service mesh evaluation, MetalLB, IP address management, and egress traffic design.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Choose Service type for each workload: ClusterIP (internal), NodePort (development/legacy), LoadBalancer (external, cloud-integrated), ExternalName (DNS CNAME alias)
@@ -93,3 +98,10 @@ Defense in depth with NetworkPolicies for L3/L4 isolation, service mesh for L7 i
   [Upstream DNS (VPC/Corporate)]
 ```
 Reduce ndots from default 5 to 2 in pod DNS config to minimize unnecessary search domain lookups. NodeLocal DNSCache on each node absorbs repetitive queries. CoreDNS with autopath plugin optimizes search domain resolution. This architecture reduces DNS latency from 5-10ms to <1ms for cached queries and eliminates CoreDNS as a scaling bottleneck.
+
+## See Also
+
+- `general/networking.md` -- general networking architecture patterns
+- `general/service-mesh.md` -- service mesh architecture patterns
+- `providers/kubernetes/security.md` -- NetworkPolicy and network segmentation
+- `providers/kubernetes/compute.md` -- pod scheduling and topology constraints

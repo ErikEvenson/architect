@@ -1,5 +1,9 @@
 # SOC 2 Trust Service Criteria - Cloud Control Mapping
 
+## Scope
+
+Covers SOC 2 Trust Service Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy) mapped to cloud services, including audit preparation, evidence collection, and common audit findings. Does not cover SOX IT General Controls (see `compliance/sox.md`) or general governance patterns (see `general/governance.md`).
+
 ## Overview
 
 SOC 2 (System and Organization Controls 2) is an auditing framework developed by the AICPA (American Institute of Certified Public Accountants). It evaluates an organization's information systems based on five Trust Service Criteria (TSC): Security, Availability, Processing Integrity, Confidentiality, and Privacy.
@@ -491,3 +495,10 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 - **Vendor management** — cloud provider SOC report review cadence, CUEC mapping, subservice organization monitoring
 - **Logging and monitoring architecture** — centralized logging, retention policy, alerting thresholds, anomaly detection
 - **Business continuity and DR** — BCP/DR testing frequency, test documentation, recovery time validation
+
+## See Also
+
+- `general/security.md` — General security controls and architecture patterns
+- `general/governance.md` — Cloud governance, tagging, and policy enforcement
+- `compliance/sox.md` — SOX IT General Controls (complementary for publicly traded companies)
+- `compliance/iso-27001.md` — ISO 27001 ISMS (often pursued alongside SOC 2)

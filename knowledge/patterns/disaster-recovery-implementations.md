@@ -1,5 +1,9 @@
 # Disaster Recovery Implementations
 
+## Scope
+
+Covers implementation details for four DR strategies (Backup & Restore, Pilot Light, Warm Standby, Active-Active), including step-by-step failover/failback procedures, cost comparisons, and testing approaches. For general DR planning concepts and RPO/RTO definitions, see `general/disaster-recovery.md`.
+
 ## Overview
 
 This file covers **implementation details** for the four DR strategies, including step-by-step failover procedures, cost comparisons, and testing approaches. For general DR planning concepts (RPO/RTO definitions, DR planning checklist), see `general/disaster-recovery.md`.

@@ -1,5 +1,10 @@
 # Kubernetes Security
 
+## Scope
+
+Kubernetes security: RBAC, Pod Security Standards (PSS), policy engines (OPA/Gatekeeper, Kyverno), image signing and verification, admission controllers, runtime security (Falco, Tetragon), audit logging, service account tokens, and network segmentation.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Implement RBAC with least-privilege: create namespace-scoped Roles (not ClusterRoles) for application teams, bind to groups (not individual users) via RoleBindings
@@ -103,3 +108,10 @@ Bind to IdP groups (via OIDC) not individual users. Separate secret access from 
   - Requires sidecar or init container
 ```
 External Secrets Operator is the most common pattern: it creates standard Kubernetes Secrets from external stores, compatible with any application. CSI driver is more secure (secrets never stored in etcd) but requires application support for file-based secret consumption. Both support rotation; ESO re-syncs periodically, CSI driver polls the external store.
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/kubernetes/secrets-management.md` -- secrets management strategies
+- `providers/kubernetes/networking.md` -- NetworkPolicy and CNI security features
+- `providers/kubernetes/operations.md` -- RBAC and operational security

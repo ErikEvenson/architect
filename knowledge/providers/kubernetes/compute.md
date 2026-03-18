@@ -1,5 +1,10 @@
 # Kubernetes Compute
 
+## Scope
+
+Kubernetes workload controllers (Deployment, StatefulSet, DaemonSet, Job, CronJob), resource management (requests, limits, QoS classes), autoscaling (HPA, VPA, KEDA), pod scheduling (affinity, topology spread, priority classes), and pod disruption budgets.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Choose appropriate workload controller: Deployment (stateless), StatefulSet (stateful, ordered), DaemonSet (per-node), Job (run-to-completion), CronJob (scheduled)
@@ -202,3 +207,10 @@ Move to multi-node when:
 - Workloads need node-level isolation (different security contexts, GPU vs CPU).
 - The POC must validate scheduling, affinity, or topology spread behavior.
 - Node failure recovery is a POC success criterion.
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `general/container-orchestration.md` -- container orchestration platform selection
+- `providers/kubernetes/storage.md` -- persistent storage for StatefulSets
+- `providers/kubernetes/networking.md` -- service types and ingress for workloads

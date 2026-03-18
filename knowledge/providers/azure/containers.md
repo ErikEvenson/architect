@@ -1,5 +1,9 @@
 # Azure Containers
 
+## Scope
+
+Azure container hosting services. Covers AKS (networking models, workload identity, node pools, GitOps), Azure Container Apps (serverless with Dapr), Azure Container Instances, ACR geo-replication, and ingress controller selection.
+
 ## Checklist
 
 - [ ] **[Critical]** Is AKS deployed with system and user node pools separated, with system pools reserved for critical add-ons (CoreDNS, konnectivity) and user pools for application workloads?
@@ -38,3 +42,12 @@ Azure offers three container hosting options at different abstraction levels: AK
 - [Azure Architecture Center: Azure Container Apps overview](https://learn.microsoft.com/en-us/azure/container-apps/overview) -- decision guide for when to use Container Apps vs AKS vs ACI
 - [Azure Landing Zone: AKS enterprise-scale](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/landing-zone-accelerator) -- Cloud Adoption Framework accelerator for enterprise AKS deployment with governance and networking
 - [Azure Architecture Center: AKS multi-region cluster](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster) -- reference architecture for high availability AKS across multiple Azure regions with global load balancing
+
+---
+
+## See Also
+
+- `general/container-orchestration.md` -- General container orchestration patterns and decisions
+- `providers/azure/networking.md` -- VNet design and CNI networking for AKS clusters
+- `providers/azure/identity.md` -- Workload identity federation for AKS pod authentication
+- `providers/azure/observability.md` -- Container Insights and Prometheus monitoring for AKS

@@ -1,5 +1,9 @@
 # AWS CloudFront and WAF
 
+## Scope
+
+AWS content delivery and edge security services. Covers CloudFront distribution configuration, cache behaviors, Origin Access Control, WAF managed and custom rules, Shield Advanced, and edge compute (CloudFront Functions, Lambda@Edge).
+
 ## Checklist
 
 - [ ] **[Critical]** Is CloudFront configured as the entry point for all public-facing content, with the origin (ALB, S3, API Gateway) not directly accessible?
@@ -40,3 +44,12 @@ CloudFront misconfiguration exposes origins directly to the internet, bypassing 
 - [AWS Well-Architected Labs: Edge Security with CloudFront and WAF](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for securing web applications at the edge
 - [AWS Prescriptive Guidance: DDoS mitigation with Shield and WAF](https://docs.aws.amazon.com/whitepapers/latest/aws-best-practices-ddos-resiliency/) -- reference architecture for layered DDoS protection with CloudFront, WAF, and Shield Advanced
 - [AWS CloudFront origin failover architecture](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html) -- reference design for high-availability content delivery with origin groups
+
+---
+
+## See Also
+
+- `general/networking.md` -- General networking concepts including CDN and edge security patterns
+- `providers/aws/route53.md` -- DNS routing policies used with CloudFront distributions
+- `providers/aws/s3.md` -- S3 as a CloudFront origin for static content hosting
+- `providers/aws/lambda-serverless.md` -- Lambda@Edge and CloudFront Functions for edge compute

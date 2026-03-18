@@ -1,5 +1,9 @@
 # Azure Identity
 
+## Scope
+
+Azure identity and access management with Microsoft Entra ID. Covers managed identities, Conditional Access, Privileged Identity Management (PIM), app registrations, RBAC, Entra External ID, identity governance, and break-glass accounts.
+
 ## Checklist
 
 - [ ] **[Critical]** Is Microsoft Entra ID (formerly Azure AD) configured as the sole identity provider with legacy Azure AD endpoints migrated to the Entra ID branding?
@@ -37,3 +41,12 @@ Microsoft Entra ID is the identity control plane for all Azure resources, Micros
 - [Azure Landing Zone: Identity and access management](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) -- Cloud Adoption Framework guidance for enterprise identity design
 - [Azure Well-Architected Framework: Identity and access management](https://learn.microsoft.com/en-us/azure/well-architected/security/identity-access) -- security pillar guidance for authentication, authorization, and identity governance
 - [Zero Trust identity and access management](https://learn.microsoft.com/en-us/security/zero-trust/deploy/identity) -- Microsoft Zero Trust deployment guide for identity verification, least-privilege access, and breach assumption
+
+---
+
+## See Also
+
+- `general/identity.md` -- General identity and access management patterns
+- `providers/azure/security.md` -- Key Vault, Defender for Cloud, and Azure Policy for security posture
+- `providers/azure/containers.md` -- AKS workload identity federation with Entra ID
+- `providers/azure/devops.md` -- Service connections and workload identity federation for CI/CD

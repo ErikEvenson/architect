@@ -1,5 +1,9 @@
 # Azure Storage
 
+## Scope
+
+Azure storage services including Blob Storage, Azure Files, and Data Lake Gen2. Covers redundancy tiers (LRS/ZRS/GRS/GZRS), access tiers (Hot/Cool/Cold/Archive), lifecycle management, Private Endpoints, immutability policies, and Entra ID authorization.
+
 ## Checklist
 
 - [ ] **[Critical]** Is the storage account redundancy level selected based on durability and availability requirements -- LRS (3 copies, single datacenter), ZRS (3 copies, 3 availability zones), GRS (6 copies, 2 regions), GZRS (zone-redundant + geo-redundant)?
@@ -38,3 +42,12 @@ Azure Storage is the foundational data service underpinning blobs, files, queues
 - [Azure Well-Architected Framework: Data storage](https://learn.microsoft.com/en-us/azure/well-architected/) -- best practices for storage account configuration, security, and cost optimization
 - [Azure Landing Zone: Storage](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/data-management/best-practices/data-lake-overview) -- Cloud Adoption Framework guidance for enterprise data lake and storage design
 - [Azure Architecture Center: Big data with Data Lake Gen2](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-lake) -- reference architecture for analytics workloads using hierarchical namespace storage
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture including storage tier selection
+- `providers/azure/security.md` -- Key Vault for customer-managed encryption keys and managed identity authentication
+- `providers/azure/disaster-recovery.md` -- Storage redundancy tiers and geo-failover behavior
+- `providers/azure/networking.md` -- Private Endpoints and storage firewall configuration

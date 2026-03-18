@@ -1,5 +1,9 @@
 # Azure Security
 
+## Scope
+
+Azure security posture and threat protection. Covers Microsoft Entra ID, managed identities, Key Vault, Azure RBAC, Microsoft Defender for Cloud, Azure Policy, PIM, Private Link, NSG Flow Logs, and Microsoft Sentinel for SIEM/SOAR.
+
 ## Checklist
 
 - [ ] **[Critical]** Is Microsoft Entra ID (formerly Azure AD) configured as the identity provider with Conditional Access policies enforcing MFA, device compliance, and location-based access?
@@ -38,3 +42,12 @@ Azure security is deeply integrated with Microsoft Entra ID, making identity con
 - [Azure Well-Architected Framework: Security pillar](https://learn.microsoft.com/en-us/azure/well-architected/security/) -- security best practices for identity, data protection, and governance
 - [Microsoft Cybersecurity Reference Architectures (MCRA)](https://learn.microsoft.com/en-us/security/adoption/mcra) -- comprehensive reference architecture for Microsoft security services including Entra ID, Defender, and Sentinel
 - [Azure Architecture Center: Identity and access management](https://learn.microsoft.com/en-us/entra/fundamentals/) -- reference architectures for Entra ID, hybrid identity, and conditional access
+
+---
+
+## See Also
+
+- `general/security.md` -- General security patterns including secrets management and zero trust
+- `providers/azure/identity.md` -- Entra ID, managed identities, Conditional Access, and PIM in depth
+- `providers/azure/networking.md` -- Private Endpoints, NSGs, Azure Firewall, and DDoS Protection
+- `providers/azure/observability.md` -- Log Analytics, Sentinel, and diagnostic settings for security monitoring

@@ -44,3 +44,10 @@ The latest machine families offer significant price-performance improvements: C4
 - [Google Cloud: Building scalable and resilient web applications on Compute Engine](https://cloud.google.com/architecture/scalable-and-resilient-apps) -- reference design for auto-scaling multi-tier applications
 - [Google Cloud: Best practices for Compute Engine](https://cloud.google.com/compute/docs/instances) -- official best practices for instance management, images, and disk configuration
 - [Google Cloud: Migrating VMs to Compute Engine](https://cloud.google.com/architecture/migration-to-gcp-getting-started) -- reference architecture for VM migration and modernization patterns
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `providers/gcp/containers.md` -- GKE and Cloud Run container compute
+- `providers/gcp/serverless.md` -- GCP serverless compute options
+- `providers/gcp/networking.md` -- VPC, load balancing, and network configuration

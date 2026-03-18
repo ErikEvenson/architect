@@ -218,3 +218,9 @@ Single-node, all-in-one OpenStack for developers and CI. Installs services direc
 3. Back up databases and configuration
 4. Pull new images/packages, then run the upgrade playbook
 5. Verify all services are running and API endpoints respond
+
+## See Also
+
+- `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
+- `providers/openstack/control-plane-ha.md` -- HA configuration for deployed control plane
+- `providers/ansible/configuration.md` -- Ansible for OpenStack-Ansible (OSA) deployments

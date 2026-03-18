@@ -490,3 +490,10 @@ Alternative Platform TCO (3-5 Year):
 5. Using VMware's published TCO studies without adjusting for actual environment characteristics
 6. Failing to include future VMware price increase risk in the renewal scenario
 7. Assuming migration can be completed in the time available before renewal
+
+## See Also
+
+- `providers/vmware/infrastructure.md` -- VMware infrastructure and VCF editions
+- `providers/nutanix/migration-tools.md` -- migration tooling for VMware exit
+- `patterns/hypervisor-migration.md` -- hypervisor migration patterns
+- `general/cost-onprem.md` -- on-premises cost analysis methodology

@@ -1,5 +1,10 @@
 # Ansible
 
+## Scope
+
+Ansible automation: playbook design, idempotent task authoring, role-based organization, inventory management (static and dynamic), Ansible Vault for secrets, Molecule testing, variable precedence, handlers, and AWX/Ansible Automation Platform.
+
+
 Agentless automation tool for configuration management, application deployment, and infrastructure provisioning. Ansible uses SSH (or WinRM for Windows) to execute tasks defined in YAML playbooks, requiring no agent installation on managed hosts.
 
 ---
@@ -531,3 +536,9 @@ Phase 3: Ansible handles day-2 operations
   |-- On-demand: application deployments, config updates
   |-- Runbooks: incident response, failover procedures
 ```
+
+## See Also
+
+- `general/iac-planning.md` -- infrastructure as code planning patterns
+- `providers/hashicorp/terraform.md` -- Terraform for infrastructure provisioning (complementary to Ansible)
+- `providers/hashicorp/packer.md` -- Packer with Ansible provisioner for image builds

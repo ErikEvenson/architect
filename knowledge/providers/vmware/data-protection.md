@@ -34,3 +34,10 @@ Data protection failures are discovered at the worst possible time -- during rec
 - **Immutable backup architecture** -- Linux hardened repository (XFS, immutable flag) vs object storage with object lock (S3, MinIO) vs purpose-built appliance (Cohesity, Rubrik) vs tape for air-gap
 - **RPO/RTO tiering** -- Tier 1 (RPO <15min, RTO <1hr, synchronous replication + VCF Live Site Recovery) vs Tier 2 (RPO <1hr, RTO <4hr, async replication + backup) vs Tier 3 (RPO <24hr, RTO <24hr, daily backup only)
 - **vSAN native snapshots vs traditional snapshots** -- vSAN ESA native snapshots for improved snapshot performance without chain penalty vs traditional snapshots for vSAN OSA and non-vSAN environments
+
+## See Also
+
+- `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)
+- `general/enterprise-backup.md` -- enterprise backup architecture patterns
+- `providers/vmware/storage.md` -- vSAN replication and snapshot management
+- `providers/vmware/infrastructure.md` -- VMware cluster HA and fault tolerance

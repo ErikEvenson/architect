@@ -1,5 +1,10 @@
 # Ceph Storage
 
+## Scope
+
+Ceph distributed storage: cluster sizing, CRUSH map design, BlueStore, replication and erasure coding, OSD WAL/DB placement, placement groups, network separation, MDS for CephFS, RGW for S3/Swift, monitoring (Dashboard, Prometheus module), and upgrade planning.
+
+
 Ceph is a distributed, software-defined storage platform providing block (RBD), object (RGW/S3), and file (CephFS) storage from a single cluster. Used as the storage backend for OpenStack (Cinder, Glance, Manila), OpenShift Data Foundation (ODF/Rook), Proxmox, and standalone deployments.
 
 ## Checklist
@@ -137,3 +142,10 @@ To scrape Ceph from a centralized Prometheus instead of using the built-in stack
 - [Rook Ceph Operator](https://rook.io/docs/rook/latest/) — Kubernetes-native Ceph deployment via Rook (used by ODF)
 - [Ceph Monitoring Services (cephadm)](https://docs.ceph.com/en/latest/cephadm/services/monitoring/) — deploying and configuring Prometheus, Grafana, and Alertmanager via cephadm
 - [Ceph Dashboard — Grafana](https://docs.ceph.com/en/latest/mgr/dashboard/) — configuring Grafana integration with the Ceph Dashboard UI
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/openstack/storage.md` -- OpenStack Cinder/Glance/Manila with Ceph backend
+- `providers/kubernetes/storage.md` -- Rook-Ceph CSI for Kubernetes
+- `providers/prometheus-grafana/observability.md` -- Prometheus monitoring for Ceph clusters

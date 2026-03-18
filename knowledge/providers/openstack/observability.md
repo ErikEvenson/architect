@@ -130,3 +130,10 @@ clouds:
 - **OSProfiler to OpenTelemetry transition:** OSProfiler remains functional for per-request distributed tracing across OpenStack services but entered maintenance mode in 2024.1 (Caracal). For new deployments, OpenTelemetry with Jaeger is the recommended tracing approach. Existing OSProfiler users should plan migration to OpenTelemetry instrumentation.
 - **Epoxy (2025.1) observability changes:** OSProfiler formally in maintenance mode -- OpenTelemetry recommended for all new tracing instrumentation. Monasca fully retired. Continued Prometheus integration improvements across deployment tools.
 - **Flamingo (2025.2) observability changes:** Continued improvements to OpenTelemetry integration across OpenStack services. OSProfiler remains available but deprecated in favor of OpenTelemetry.
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
+- `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana stack
+- `providers/openstack/control-plane-ha.md` -- monitoring HA control plane health

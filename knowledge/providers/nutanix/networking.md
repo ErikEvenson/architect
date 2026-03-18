@@ -1,5 +1,10 @@
 # Nutanix Networking (AHV and Flow)
 
+## Scope
+
+Nutanix AHV networking: virtual switch configuration, bond modes (active-backup, balance-slb, LACP), VLAN design, Flow microsegmentation (isolation and application policies), CVM backplane isolation, jumbo frames, network function chaining, load balancing, IPAM, and DNS configuration.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Are AHV virtual switches configured with appropriate uplink assignments -- separate virtual switches (or at minimum separate VLANs) for management, VM production traffic, storage (iSCSI/backplane), and backup traffic?
@@ -53,3 +58,10 @@ AHV networking is built on Open vSwitch (OVS), providing VLAN trunking, bonding,
 - **When to use which:** Flow v1 (Network Security) is sufficient when the goal is microsegmentation on existing VLAN-based networks. Flow v2 (Virtual Networking) is needed when the environment requires self-service networking, tenant-isolated VPCs, overlay networking to reduce VLAN sprawl, or VPN connectivity between sites. Flow v2 includes all Flow v1 microsegmentation capabilities.
 - **Licensing:** Flow Network Security is included with AHV at no additional cost. Flow Virtual Networking requires a separate license (included in some Nutanix Cloud Platform tiers).
 - **Migration:** Environments using Flow v1 microsegmentation policies can enable Flow v2 virtual networking without disrupting existing security policies. The microsegmentation rules continue to apply alongside new VPC-based networking.
+
+## See Also
+
+- `general/networking.md` -- general networking architecture patterns
+- `providers/nutanix/infrastructure.md` -- Nutanix cluster and physical network design
+- `providers/nutanix/security.md` -- Flow microsegmentation security controls
+- `providers/nutanix/compute.md` -- AHV host NIC bonding for compute

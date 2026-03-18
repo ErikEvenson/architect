@@ -1,5 +1,10 @@
 # GCP Disaster Recovery (Cross-Region, Backup, Multi-Region Services)
 
+## Scope
+
+GCP cross-region disaster recovery patterns: Cloud SQL HA and replica promotion, Spanner multi-region, Cloud Storage dual/multi-region, GKE multi-cluster failover, Backup and DR Service, global load balancing failover, and DR testing procedures.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Define RPO and RTO targets per workload tier and map to GCP service capabilities: Tier 1 (RPO < 5 min, RTO < 15 min) requires multi-region services and pre-provisioned standby; Tier 2 (RPO < 1 hour, RTO < 4 hours) uses cross-region replication with automated failover; Tier 3 (RPO < 24 hours, RTO < 24 hours) relies on backup and restore
@@ -45,3 +50,10 @@ Primary GKE cluster in us-central1 with Backup for GKE (daily backup of cluster 
 
 ### Tiered DR Strategy
 Tier 1 (payment service): Spanner multi-region (RPO = 0, RTO = 0), Global Load Balancer active/active across regions, Cloud Storage dual-region with turbo replication. Tier 2 (order service): Cloud SQL with cross-region read replica (RPO < 30s, RTO < 15 min), GKE standby cluster in DR region with pilot light configuration. Tier 3 (reporting): Cloud SQL automated backups with cross-region storage (RPO < 24 hours), restore from backup on demand (RTO < 4 hours), no standby infrastructure. All tiers: Terraform for infrastructure provisioning, Cloud Build for automated DR deployment, quarterly DR drill with documented results.
+
+## See Also
+
+- `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering, testing)
+- `providers/gcp/data.md` -- GCP database services and HA configuration
+- `providers/gcp/storage.md` -- GCP Cloud Storage classes and replication
+- `providers/gcp/networking.md` -- GCP global load balancing and Cloud DNS failover routing

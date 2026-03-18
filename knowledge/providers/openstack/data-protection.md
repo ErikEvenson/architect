@@ -64,3 +64,10 @@ OpenStack does not provide data protection by default -- it provides the buildin
 - **Cinder replication v2.1:** Volume replication has been stable across all releases from Pike onward. It enables asynchronous replication between Cinder backends for DR scenarios. Combined with Masakari for compute HA and Cinder replication for storage DR, a comprehensive active-passive DR strategy can be built.
 - **Epoxy (2025.1) data protection changes:** Freezer fully retired. Continued Cinder backup performance improvements. Masakari stability improvements.
 - **Flamingo (2025.2) data protection changes:** Continued improvements to Cinder replication and backup reliability. No major new data protection features.
+
+## See Also
+
+- `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)
+- `general/enterprise-backup.md` -- enterprise backup architecture patterns
+- `providers/openstack/storage.md` -- Cinder snapshots and Swift replication
+- `providers/openstack/control-plane-ha.md` -- control plane HA and recovery

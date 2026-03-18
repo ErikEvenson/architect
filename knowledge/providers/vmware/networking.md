@@ -68,3 +68,10 @@ Networking misconfiguration is the leading cause of vSphere outages that affect 
 - **NSX ALB integration:** The legacy NSX-T load balancer (Tier-1 LB) was deprecated in NSX-T 3.x and removed in NSX 4.x. NSX Advanced Load Balancer (Avi Networks) is now the only supported load balancing solution. NSX 4.x provides tighter integration between NSX ALB and NSX networking/security policies.
 - **Project-based multi-tenancy and VPC:** NSX 4.1 introduced Projects and VPCs, enabling delegated network administration. Tenant administrators can manage their own network segments, security policies, and NAT rules within a Project without affecting other tenants. This is a significant improvement for service provider and large enterprise use cases.
 - **DPU-based acceleration:** NSX 4.x supports offloading distributed firewall and overlay networking to DPUs (SmartNICs), reducing host CPU overhead for networking operations.
+
+## See Also
+
+- `general/networking.md` -- general networking architecture patterns
+- `providers/vmware/nsx-dfw-design.md` -- NSX DFW microsegmentation policy design
+- `providers/vmware/security.md` -- VMware network security controls
+- `providers/vmware/infrastructure.md` -- VMware infrastructure and VDS/NSX deployment

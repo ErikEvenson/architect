@@ -1,5 +1,9 @@
 # Azure Database
 
+## Scope
+
+Azure managed database services in depth. Covers Azure SQL (single database, elastic pool, managed instance, Hyperscale), Cosmos DB (partition keys, consistency, RU sizing), PostgreSQL/MySQL Flexible Server, and Azure Cache for Redis tiers and topology.
+
 ## Checklist
 
 - [ ] **[Critical]** Is the Azure SQL deployment model selected based on workload requirements -- single database (isolated, simple), elastic pool (shared resources across databases), managed instance (SQL Server compatibility), or Hyperscale (up to 128 TB, rapid scale-out)?
@@ -38,3 +42,12 @@ Azure provides purpose-built database services spanning relational (Azure SQL, P
 - [Azure SQL Hyperscale architecture](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tier-hyperscale) -- storage disaggregation architecture enabling 128 TB databases with instant backups and rapid scale-out read replicas
 - [Azure Well-Architected Framework: Azure SQL](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-sql-database) -- reliability, security, cost optimization, and performance best practices for Azure SQL deployments
 - [Azure Architecture Center: Caching guidance](https://learn.microsoft.com/en-us/azure/architecture/best-practices/caching) -- patterns for cache-aside, read-through, and write-behind with Azure Cache for Redis
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture patterns and database selection criteria
+- `providers/azure/data.md` -- Broader Azure data services including high-level service selection
+- `providers/azure/security.md` -- Key Vault for customer-managed encryption keys and managed identity authentication
+- `providers/azure/disaster-recovery.md` -- Geo-replication, failover groups, and backup strategies for databases

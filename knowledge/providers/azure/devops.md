@@ -1,5 +1,9 @@
 # Azure DevOps (Pipelines, Repos, Boards, Artifacts, GitHub Actions)
 
+## Scope
+
+Azure CI/CD and DevOps tooling. Covers Azure Pipelines (multi-stage YAML, environments, approval gates), GitHub Actions integration, ACR Tasks, service connections (workload identity federation), agent pools, Azure Artifacts, and branch policies.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose CI/CD platform: Azure DevOps Pipelines for full Azure DevOps ecosystem integration (Boards, Repos, Artifacts, Test Plans) vs GitHub Actions for GitHub-native workflows with Azure deployment actions; both support YAML pipeline definitions and self-hosted runners/agents
@@ -46,3 +50,12 @@ Infrastructure pipeline: Bicep modules in infra/ directory, triggered on infra f
 
 ### GitOps with Azure DevOps and AKS
 Azure Repos hosts Kubernetes manifests (or Helm charts) in a config repository. Application CI pipeline builds and pushes images to ACR, then updates image tag in config repo via automated PR. Flux or Argo CD on AKS watches config repo and reconciles cluster state. Azure DevOps Boards linked to PRs for change traceability. Pipeline gates validate manifests with kubeval/kubeconform before merge.
+
+---
+
+## See Also
+
+- `general/ci-cd.md` -- General CI/CD patterns and pipeline design
+- `providers/azure/bicep.md` -- Bicep IaC deployment within Azure Pipelines
+- `providers/azure/containers.md` -- AKS and ACR as deployment targets for container CI/CD
+- `providers/azure/security.md` -- Key Vault integration and workload identity for pipeline secrets

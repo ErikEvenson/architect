@@ -1,5 +1,10 @@
 # NSX Distributed Firewall Policy Design
 
+## Scope
+
+NSX Distributed Firewall (DFW) policy design: security posture selection (default deny vs allow), policy category ordering (Emergency, Infrastructure, Environment, Application), tag-based grouping, NSX Intelligence traffic analysis, Identity Firewall, and DFW rule lifecycle management.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Define the target security posture: default deny (zero-trust) or default allow with planned transition to deny
@@ -320,3 +325,9 @@ Actions:
 | Emergency rule left enabled | Broad allow rule from incident response becomes permanent backdoor | Set calendar reminder; use time-based rules if available; review emergency category weekly |
 | No exclusion list for management | DFW blocks NSX Manager or vCenter; loss of management plane | Add management VMs to exclusion list before enabling any deny rules |
 | Testing rules in production | Rule typo blocks production traffic | Always test in non-production; use DFW draft mode to stage and review before publish |
+
+## See Also
+
+- `providers/vmware/networking.md` -- NSX overlay networking and gateway design
+- `providers/vmware/security.md` -- VMware security controls including microsegmentation
+- `providers/vmware/observability.md` -- NSX Intelligence and DFW log analysis

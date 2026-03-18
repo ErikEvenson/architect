@@ -1,5 +1,9 @@
 # Dev/POC DNS Patterns
 
+## Scope
+
+This file covers **development and POC DNS patterns** including nip.io, sslip.io, /etc/hosts, and dnsmasq for local and ephemeral environments. It does not cover production or hybrid DNS architecture; for those, see `general/hybrid-dns.md` and `general/networking.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Is a real domain with proper DNS configured for any staging or production environment, rather than relying on nip.io or sslip.io?
@@ -104,3 +108,9 @@ Plan the real domain and DNS provider early. The application configuration (ingr
 - [Let's Encrypt Rate Limits](https://letsencrypt.org/docs/rate-limits/) -- understanding certificate issuance limits for shared domains
 - [Traefik ACME / Let's Encrypt](https://doc.traefik.io/traefik/https/acme/) -- configuring automatic TLS certificate provisioning with HTTP-01 challenge
 - [dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) -- lightweight local DNS/DHCP server for development environments
+
+## See Also
+
+- [hybrid-dns.md](hybrid-dns.md) -- production hybrid DNS resolution across cloud and on-premises
+- [tls-certificates.md](tls-certificates.md) -- TLS certificate management including Let's Encrypt integration with dev DNS
+- [networking.md](networking.md) -- VPC/VNet design and network architecture

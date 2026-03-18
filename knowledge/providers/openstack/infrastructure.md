@@ -53,3 +53,10 @@ OpenStack provides cloud-like infrastructure on premises but requires significan
 - [OpenStack Reference Architecture: Ceph integration](https://docs.openstack.org/cinder/latest/configuration/block-storage/drivers/ceph-rbd-volume-driver.html) -- reference design for Ceph as unified storage backend for Cinder, Glance, and Manila
 - [OpenStack High Availability Guide](https://docs.openstack.org/ha-guide/) -- reference architecture for HA control plane, database clustering, and message queue resilience
 - [Red Hat OpenStack Platform Reference Architecture](https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/) -- enterprise-supported deployment architectures with director-based installation and lifecycle management
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `general/hardware-sizing.md` -- hardware sizing for OpenStack hosts
+- `providers/openstack/deployment-tools.md` -- deployment tool selection
+- `providers/openstack/control-plane-ha.md` -- control plane HA architecture

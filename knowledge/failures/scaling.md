@@ -1,5 +1,9 @@
 # Scaling Failure Patterns
 
+## Scope
+
+Covers common scaling failure patterns including missing auto-scaling, slow scaling response, thundering herd effects, cold start latency, resource quota exhaustion, AZ imbalance, and database bottlenecks. Does not cover general capacity planning (see `general/capacity-planning.md`) or compute architecture design (see `general/compute.md`).
+
 ## Checklist
 
 - [ ] **[Critical]** **No auto-scaling configured for compute tier** — Goes wrong: traffic increases and the fixed number of instances becomes overwhelmed, response times spike, and the application returns errors or becomes unresponsive. Happens because: auto-scaling is deferred as a "later" optimization, or the team manually scales and nobody is available at 2 AM. Prevent by: configuring auto-scaling from day one with appropriate metrics (CPU, request count, queue depth), minimum/maximum instance counts, and testing scaling behavior under load.
@@ -42,3 +46,10 @@ Scaling failures often manifest at the worst possible time: during peak traffic 
 - **Stateless architecture enforcement** — externalized state store selection, session management
 - **Database scaling strategy** — vertical vs read replicas vs sharding, caching layer selection
 - **Load testing cadence** — continuous in CI vs pre-release vs annual, tooling selection
+
+## See Also
+
+- `general/compute.md` — Compute architecture and auto-scaling design
+- `general/capacity-planning.md` — Capacity planning and resource sizing
+- `failures/data.md` — Data failure patterns including database as scaling bottleneck
+- `general/container-orchestration.md` — Container orchestration scaling patterns

@@ -1,5 +1,9 @@
 # AWS VPC Design
 
+## Scope
+
+AWS Virtual Private Cloud network design. Covers CIDR planning, subnet tiers, NAT Gateways, VPC Endpoints (Gateway and Interface), Security Groups, NACLs, Transit Gateway, Flow Logs, VPC Lattice, and Verified Access.
+
 ## Checklist
 
 - [ ] **[Critical]** What CIDR block size for the VPC? (Plan for growth; /16 gives 65K IPs, avoid overlaps with peered VPCs and on-premises ranges)
@@ -69,3 +73,12 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - [AWS Well-Architected Labs: Networking](https://www.wellarchitectedlabs.com/reliability/) -- hands-on labs for building resilient network architectures
 - [AWS Prescriptive Guidance: Network architecture for multi-account environments](https://docs.aws.amazon.com/prescriptive-guidance/latest/robust-network-design-control-tower/) -- best practices for VPC design in AWS Organizations with Control Tower
 - [AWS Quick Start: VPC with public and private subnets](https://aws.amazon.com/quickstart/architecture/vpc/) -- deployable reference architecture for standard multi-tier VPC design
+
+---
+
+## See Also
+
+- `general/networking.md` -- General networking patterns including segmentation and load balancing
+- `providers/aws/multi-account.md` -- Transit Gateway hub-and-spoke for cross-account VPC connectivity
+- `providers/aws/ec2-asg.md` -- EC2 placement in VPC subnets with security groups
+- `providers/aws/route53.md` -- Route 53 Resolver for hybrid DNS with VPC integration

@@ -42,3 +42,10 @@ Nutanix hyperconverged infrastructure collapses compute, storage, and networking
 - [Nutanix Best Practice Guide for AHV](https://portal.nutanix.com/page/documents/solutions/details?targetId=BP-2071-AHV:BP-2071-AHV) -- official best practices for AHV hypervisor configuration, networking, and storage
 - [Nutanix Cloud Platform Architecture](https://www.nutanixbible.com/) -- "The Nutanix Bible" covering distributed storage fabric, CVM architecture, and cluster design
 - [Nutanix DR and Business Continuity reference architecture](https://portal.nutanix.com/page/documents/solutions) -- validated designs for Leap-based disaster recovery and metro availability
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `general/hardware-sizing.md` -- hardware sizing methodology
+- `providers/nutanix/compute.md` -- AHV VM management and resource allocation
+- `providers/nutanix/storage.md` -- Distributed Storage Fabric configuration

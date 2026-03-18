@@ -1,5 +1,9 @@
 # AWS CloudFormation
 
+## Scope
+
+AWS-native declarative IaC using JSON/YAML templates. Covers template anatomy, intrinsic functions, nested stacks, StackSets, change sets, drift detection, Guard, Hooks, SAM, and Git Sync.
+
 Infrastructure as Code using declarative JSON/YAML templates to provision and manage AWS resources with automatic dependency resolution, rollback, and drift detection.
 
 ---
@@ -359,3 +363,11 @@ SAM Template
   sam local start-api  -->  Local development
   sam deploy --guided  -->  Production deployment
 ```
+
+---
+
+## See Also
+
+- `general/iac-planning.md` -- IaC strategy selection and planning across providers
+- `providers/aws/cdk.md` -- CDK as a programmatic alternative that synthesizes to CloudFormation
+- `providers/aws/lambda-serverless.md` -- SAM extends CloudFormation for serverless workloads

@@ -1,5 +1,9 @@
 # Azure Serverless
 
+## Scope
+
+Azure serverless compute and event-driven architecture. Covers Azure Functions (Consumption, Flex Consumption, Premium, Dedicated plans), Durable Functions, Logic Apps, Event Grid, Service Bus, Event Hubs, and idempotency patterns across at-least-once delivery services.
+
 ## Checklist
 
 - [ ] **[Critical]** Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Flex Consumption (per-function scaling, VNet integration, fast scaling with always-ready instances, GA November 2024) vs Premium (pre-warmed instances, full VNet integration) vs Dedicated (App Service plan, predictable cost)?
@@ -38,3 +42,12 @@ Azure's serverless ecosystem is more fragmented than AWS Lambda + EventBridge, r
 - [Azure Architecture Center: Enterprise integration with queues and events](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/integration/queues-events) -- reference design combining Service Bus, Event Grid, and Logic Apps for enterprise workflow automation
 - [Azure Well-Architected Framework: Azure Functions](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-functions) -- reliability, security, cost, and performance best practices for Functions deployments
 - [Azure Architecture Center: Choosing a messaging service](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/messaging) -- decision matrix for Event Grid vs Service Bus vs Event Hubs based on pattern, throughput, and delivery guarantees
+
+---
+
+## See Also
+
+- `general/compute.md` -- General compute patterns including serverless selection criteria
+- `providers/azure/messaging.md` -- Detailed coverage of Service Bus, Event Hubs, and Event Grid
+- `providers/azure/containers.md` -- Azure Container Apps as a serverless container alternative
+- `providers/azure/networking.md` -- VNet integration for Premium and Flex Consumption Functions

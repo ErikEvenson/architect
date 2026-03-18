@@ -335,3 +335,10 @@ Stack update behavior:
   - rolling_updates policy: max_batch_size: 1, pause_time: 60
   - Ensures zero-downtime deployments for template changes
 ```
+
+## See Also
+
+- `general/iac-planning.md` -- infrastructure as code planning patterns
+- `providers/openstack/platform-services.md` -- Heat among other OpenStack platform services
+- `providers/hashicorp/terraform.md` -- Terraform as alternative IaC for OpenStack
+- `providers/ansible/configuration.md` -- Ansible as alternative automation for OpenStack

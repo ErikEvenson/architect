@@ -36,3 +36,10 @@ Under-provisioning causes outages during peak traffic. Over-provisioning wastes 
 - **Burst capacity approach** — pre-provisioned reserve vs pure auto-scaling vs CDN/edge absorption vs queue-based load leveling
 - **Performance budget** — latency targets per endpoint (p99 < 500ms), error rate thresholds, degradation graceful fallbacks
 - **Cost modeling** — cost per user/transaction at scale, reserved vs on-demand ratio, break-even analysis for architectural changes
+
+## See Also
+
+- [compute.md](compute.md) -- compute instance selection and sizing
+- [testing-strategy.md](testing-strategy.md) -- load testing tools and performance testing strategies
+- [cost.md](cost.md) -- cloud cost optimization and reserved instance planning
+- [hardware-sizing.md](hardware-sizing.md) -- physical server hardware selection for on-premises capacity

@@ -1,5 +1,10 @@
 # OpenShift Infrastructure
 
+## Scope
+
+OpenShift infrastructure: OCP vs OKD, IPI vs UPI deployment, platform selection (bare metal, vSphere, cloud), control plane sizing, RHCOS, Machine API, MachineHealthChecks, cluster autoscaler, and upgrade channels.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Choose between OCP (Red Hat OpenShift Container Platform) and OKD (community upstream)
@@ -63,3 +68,10 @@ Upgrade channels control the pace of updates. The `stable` channel lags behind `
 - **Red Hat Reference Architecture -- OpenShift on Bare Metal**: 3 control plane + 2 worker minimum, provisioning network for PXE/IPMI, MetalLB for ingress VIPs, local storage operator or ODF for persistent storage.
 - **Disconnected/Air-Gapped**: Mirror registry (oc-mirror or Quay), ICSP/IDMS for image content source policies, update graph served locally, catalog sources for operator mirroring.
 - **Edge -- Single Node OpenShift (SNO)**: All-in-one topology for edge/remote sites, minimum 8 vCPU / 32 GB RAM, managed centrally via RHACM and zero-touch provisioning (ZTP).
+
+## See Also
+
+- `general/container-orchestration.md` -- container orchestration platform selection
+- `providers/openshift/compute.md` -- worker node sizing and MachineSets
+- `providers/openshift/networking.md` -- CNI and network configuration
+- `providers/openshift/security.md` -- SCCs, RBAC, and platform security

@@ -1,5 +1,9 @@
 # Azure Observability
 
+## Scope
+
+Azure monitoring, logging, and diagnostics services. Covers Log Analytics workspaces, Application Insights, Azure Monitor alerts and action groups, Network Watcher, Microsoft Sentinel (SIEM), data collection rules, and distributed tracing with W3C TraceContext.
+
 ## Checklist
 
 - [ ] **[Critical]** Is a centralized Log Analytics workspace deployed with appropriate retention period (30-730 days) and pricing tier (per-GB vs commitment tier) for the expected ingestion volume?
@@ -38,3 +42,11 @@ Azure's observability stack is deeply integrated but spread across multiple serv
 - [Azure Well-Architected Framework: Monitoring](https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability) -- operational excellence pillar guidance for observability and diagnostics
 - [Microsoft Sentinel design workspace architecture](https://learn.microsoft.com/en-us/azure/sentinel/design-your-workspace-architecture) -- decision framework for single-tenant, multi-tenant, and multi-workspace Sentinel deployments
 - [Azure Architecture Center: Enterprise monitoring with Azure Monitor](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/monitoring/enterprise-monitoring) -- reference architecture for large-scale monitoring with Log Analytics and Sentinel
+
+---
+
+## See Also
+
+- `general/observability.md` -- General observability patterns including metrics, logs, and traces
+- `providers/azure/security.md` -- Microsoft Sentinel SIEM and Defender for Cloud integration
+- `providers/azure/networking.md` -- Network Watcher and NSG Flow Logs for network observability

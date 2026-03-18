@@ -1,5 +1,9 @@
 # AI/ML Infrastructure
 
+## Scope
+
+Covers GPU/accelerator compute planning, managed ML platform selection, MLOps practices (experiment tracking, model registry, CI/CD for ML), training and inference cost management, and model serving architecture. Applicable when workloads involve machine learning model training, fine-tuning, or production inference.
+
 ## Overview
 
 AI/ML infrastructure encompasses the compute, storage, pipelines, and operational tooling needed to train, serve, and maintain machine learning models in production. This includes GPU/TPU instance selection, managed ML platforms (SageMaker, Vertex AI, Azure ML), MLOps practices (experiment tracking, model registry, CI/CD for ML), and cost management for expensive GPU workloads. The gap between a working notebook and a production ML system is substantial.
@@ -108,3 +112,10 @@ GPU compute is 5-50x more expensive than CPU compute, making infrastructure deci
 - **Model optimization pipeline** — quantization level (FP16, INT8, INT4), distillation strategy, inference runtime (TensorRT, ONNX Runtime, vLLM)
 - **ML CI/CD pipeline** — automated retraining triggers, model validation gates, staged rollout, rollback criteria
 - **Cost guardrails** — training job budgets, idle GPU detection, spot instance interruption handling, inference endpoint auto-scaling policies
+
+## See Also
+
+- `general/cost.md` — General cloud cost management and optimization strategies
+- `general/capacity-planning.md` — Capacity planning for compute-intensive workloads
+- `patterns/data-pipeline.md` — Data ingestion and transformation pipelines feeding ML training
+- `general/observability.md` — Monitoring and alerting for production systems including model serving

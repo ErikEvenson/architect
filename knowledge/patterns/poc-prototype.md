@@ -1,5 +1,9 @@
 # POC/Prototype Architecture Pattern
 
+## Scope
+
+Covers the architecture approach for proof-of-concept and prototype builds, including scope management, production readiness gap tracking, infrastructure minimization, and decision criteria for what to include vs skip. Applicable when validating an architecture hypothesis before committing to production implementation.
+
 ## Checklist
 
 - [ ] **[Critical]** Define success criteria before starting: what specific questions must the POC answer? (performance target, integration feasibility, team capability, cost validation)
@@ -136,3 +140,10 @@ What this does NOT validate:
 - [ ] Infrastructure as Code (Terraform/Pulumi)
 ```
 Copy this template at POC start. Check items as they are addressed. Remaining unchecked items form the production hardening backlog.
+
+## See Also
+
+- `general/testing-strategy.md` — Testing strategies applicable during POC validation
+- `general/ci-cd.md` — CI/CD pipeline design validated during proof-of-concept
+- `general/cost.md` — Cost management for POC infrastructure including spot instances and teardown
+- `patterns/three-tier-web.md` — Common production architecture pattern that POCs often validate

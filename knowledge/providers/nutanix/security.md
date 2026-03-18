@@ -34,3 +34,10 @@ Nutanix security spans multiple layers: infrastructure hardening (STIG, cluster 
 - **Hardening standard** -- Nutanix STIG (CIS-aligned, vendor-supported) vs custom CIS benchmark vs DoD STIG (strictest, may break features), automation of compliance scanning
 - **Guest security** -- Traditional AV agents per VM vs lightweight EDR (CrowdStrike, Carbon Black) vs no in-guest security (relying on network-level controls only)
 - **Cluster access model** -- Lockdown mode (SSH disabled, Prism-only management) vs restricted SSH (key-based, bastion host) vs open SSH (least secure, development only)
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/nutanix/networking.md` -- Flow microsegmentation configuration
+- `providers/nutanix/infrastructure.md` -- cluster hardening and lockdown
+- `general/stig-hardening.md` -- STIG hardening guidance

@@ -1,5 +1,9 @@
 # Hybrid DNS Resolution
 
+## Scope
+
+This file covers **hybrid DNS resolution across cloud and on-premises environments** including resolver endpoints, conditional forwarding, split-horizon DNS, and multi-cloud DNS hub topologies. It does not cover development DNS patterns (nip.io, sslip.io); for those, see `general/dns-dev-patterns.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Are DNS resolver endpoints deployed in each cloud environment for cross-environment name resolution? (AWS Route 53 Resolver inbound/outbound, Azure Private DNS Resolver, GCP Cloud DNS inbound policy)

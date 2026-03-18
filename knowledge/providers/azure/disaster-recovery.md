@@ -1,5 +1,9 @@
 # Azure Disaster Recovery (Site Recovery, Geo-Redundancy, Backup)
 
+## Scope
+
+Azure business continuity and disaster recovery services. Covers Azure Site Recovery (VM replication and recovery plans), storage redundancy (LRS/ZRS/GRS/GZRS), Azure SQL geo-replication and failover groups, Cosmos DB multi-region writes, Azure Backup, and DR drill automation.
+
 ## Checklist
 
 - [ ] **[Critical]** Define RPO and RTO targets per workload tier: Tier 1 (mission-critical, RPO < 5 min, RTO < 1 hour), Tier 2 (important, RPO < 1 hour, RTO < 4 hours), Tier 3 (non-critical, RPO < 24 hours, RTO < 24 hours); map each Azure service's DR capabilities to these targets
@@ -47,3 +51,12 @@ Recovery Services vault with immutable policy (backup data cannot be deleted or 
 
 ### Full-Stack DR Drill Automation
 Azure Automation runbook triggered monthly: (1) ASR test failover to isolated VNet in DR region, (2) Azure SQL failover group planned failover (graceful, no data loss), (3) Cosmos DB manual region failover, (4) Smoke test suite against DR endpoints, (5) Record actual RTO/RPO metrics to Log Analytics, (6) ASR cleanup test failover, (7) SQL failback to primary, (8) Cosmos DB failback. Azure Monitor workbook displaying DR readiness dashboard with last drill date, measured RTO/RPO vs targets, and replication health status.
+
+---
+
+## See Also
+
+- `general/disaster-recovery.md` -- General disaster recovery patterns, RPO/RTO planning, and testing strategies
+- `providers/azure/storage.md` -- Storage redundancy tiers (LRS/ZRS/GRS/GZRS) and failover behavior
+- `providers/azure/database.md` -- Azure SQL failover groups and Cosmos DB multi-region configuration
+- `providers/azure/dns.md` -- Traffic Manager and Front Door for DNS-level failover routing

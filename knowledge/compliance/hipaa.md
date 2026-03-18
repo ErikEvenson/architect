@@ -1,5 +1,9 @@
 # HIPAA Security Rule - Cloud Control Mapping
 
+## Scope
+
+Covers HIPAA Security Rule safeguards (administrative, physical, and technical) mapped to cloud services, including BAA requirements, ePHI encryption, access controls, audit logging, and the proposed Security Rule overhaul. Does not cover HIPAA Privacy Rule operational requirements or general security architecture (see `general/security.md`).
+
 ## Overview
 
 The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) establishes standards for protecting electronic Protected Health Information (ePHI). It requires covered entities and business associates to implement administrative, physical, and technical safeguards.
@@ -545,3 +549,10 @@ GCP maintains a list of HIPAA-covered services:
 - **Network segmentation model** — ePHI enclave design, microsegmentation, zero-trust approach
 - **Incident response architecture** — breach detection, 60-day notification timeline, forensic evidence preservation
 - **Business associate management** — BA verification process, BA security assessment cadence, subcontractor chain management
+
+## See Also
+
+- `general/security.md` — General security controls and encryption architecture
+- `general/governance.md` — Cloud governance and policy enforcement
+- `compliance/soc2.md` — SOC 2 criteria (often pursued alongside HIPAA)
+- `general/disaster-recovery.md` — Disaster recovery and business continuity patterns

@@ -1,5 +1,9 @@
 # AWS Messaging (SQS, SNS, EventBridge, Kinesis, MSK)
 
+## Scope
+
+AWS messaging and event streaming services. Covers SQS (Standard/FIFO), SNS fan-out, EventBridge event routing and Pipes, Kinesis Data Streams, Amazon Data Firehose, and MSK for Kafka-compatible streaming.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose SQS queue type: Standard (nearly unlimited throughput, at-least-once delivery, best-effort ordering) vs FIFO (300 TPS without batching / 3,000 with batching / 70,000 with FIFO high-throughput mode, exactly-once processing, strict ordering per message group)
@@ -46,3 +50,11 @@ Custom EventBridge bus -> schema registry for event contracts. Each microservice
 
 ### Reliable Message Processing with Exactly-Once
 SQS FIFO queue with content-based deduplication. Message group ID based on entity ID (e.g., customer ID) for per-entity ordering. Lambda event source mapping with batch size 10, maximum batching window 5 seconds. DLQ with maxReceiveCount 3. CloudWatch alarm on ApproximateAgeOfOldestMessage for processing delay detection. Redrive policy for manual DLQ inspection and replay.
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture including event streaming and messaging patterns
+- `providers/aws/lambda-serverless.md` -- Lambda as a consumer for SQS, SNS, EventBridge, and Kinesis
+- `providers/aws/observability.md` -- CloudWatch monitoring for queue depths and stream lag

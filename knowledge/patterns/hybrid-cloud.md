@@ -1,5 +1,9 @@
 # Hybrid Cloud Architecture
 
+## Scope
+
+Covers architectures spanning on-premises infrastructure and one or more public cloud providers, including connectivity, identity federation, workload placement, data synchronization, and unified operations. Applicable when workloads must be distributed across on-prem and cloud due to data residency, latency, compliance, cost, or migration phasing.
+
 ## Overview
 
 Hybrid cloud spans on-premises infrastructure and one or more public cloud providers. Workloads are distributed based on requirements for data residency, latency, compliance, or cost.
@@ -118,3 +122,10 @@ Hybrid cloud is a transitional or permanent state for most enterprises, not a te
 - **DR to Cloud**: on-prem primary, cloud standby for disaster recovery
 - **Edge + Cloud**: edge processing on-prem, aggregation and analytics in cloud
 - **Lift and Shift → Refactor**: migrate first, optimize later
+
+## See Also
+
+- `patterns/multi-cloud.md` — Multi-cloud architecture using multiple public cloud providers
+- `general/networking.md` — Network architecture including VPN, dedicated connectivity, and DNS
+- `general/disaster-recovery.md` — DR planning including cloud-as-DR-target for on-premises
+- `patterns/migration-cutover.md` — Cutover procedures for migrating workloads between environments

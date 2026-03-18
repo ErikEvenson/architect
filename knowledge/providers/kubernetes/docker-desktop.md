@@ -1,5 +1,10 @@
 # Docker Desktop Kubernetes
 
+## Scope
+
+Docker Desktop Kubernetes for local development: resource allocation, context management, data persistence, NodePort and LoadBalancer access, image building, Apple Silicon compatibility, and WSL2 backend configuration.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Allocate sufficient CPU and memory in Docker Desktop preferences (Settings > Resources); Kubernetes shares resources with Docker containers, default 2GB is often insufficient for multi-service workloads
@@ -94,3 +99,9 @@ Budget breakdown (8GB allocation example):
   Per-service estimate:    ~500MB-1GB each → 5-7 services
 ```
 Resource allocation is shared between Docker containers and Kubernetes. Monitor actual usage with `docker stats` and `kubectl top nodes` to tune allocation. Over-allocating starves the host OS; under-allocating causes OOMKill in pods.
+
+## See Also
+
+- `providers/kubernetes/compute.md` -- Kubernetes workload controllers and resource management
+- `providers/kubernetes/k3s.md` -- K3s as an alternative lightweight local Kubernetes
+- `providers/kubernetes/networking.md` -- service types and ingress configuration

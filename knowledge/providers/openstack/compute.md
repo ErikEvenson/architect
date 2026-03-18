@@ -68,3 +68,10 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 - **Placement-based allocation ratios:** Starting from Stein, overcommit ratio configuration moved from nova.conf to the Placement service, enabling per-host-aggregate overcommit ratios rather than a global setting. This allows different overcommit policies for different hardware tiers.
 - **Epoxy (2025.1) compute changes:** libvirt 10.x+ required as minimum version. Improved parallel live migration support allows multiple instances to be migrated simultaneously from a single host during maintenance. Ironic runbooks improved with better error handling and retry logic. vGPU live migration improvements for NVIDIA MIG instances.
 - **Flamingo (2025.2) compute changes:** Improved MIG scheduling for multi-instance GPU workloads. Secure boot key management improvements simplify custom key enrollment. Continued improvements to Cyborg accelerator lifecycle management.
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
+- `providers/openstack/networking.md` -- Neutron networking for compute instances
+- `providers/openstack/storage.md` -- Cinder volumes and Glance images for Nova

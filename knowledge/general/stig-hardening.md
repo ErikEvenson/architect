@@ -1,5 +1,9 @@
 # STIG (Security Technical Implementation Guide) Hardening
 
+## Scope
+
+This file covers **STIG compliance and security hardening** including STIG discovery, SCAP scanning, remediation workflows, VMware ESXi hardening, FIPS 140-2 mode, and continuous compliance. It does not cover general security architecture or threat modeling; for those, see `general/security.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Have all applicable STIGs been identified and downloaded from cyber.mil for every component in the environment (OS, hypervisor, database, application server, network device, container platform), and are they the current published versions?
@@ -203,4 +207,11 @@ Phase 5: Continuous Compliance
 │  │ Rapid7       │ Commercial │ Cross-plat │ InsightVM + STIG │  │
 │  └──────────────┴────────────┴────────────┴──────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
+
+## See Also
+
+- [security.md](security.md) -- general security architecture, threat modeling, and security controls
+- [governance.md](governance.md) -- compliance frameworks, audit requirements, and organizational controls
+- [tls-certificates.md](tls-certificates.md) -- TLS configuration and cipher suite management related to STIG requirements
+- [iac-planning.md](iac-planning.md) -- infrastructure-as-code for embedding STIG settings into deployment templates
 ```

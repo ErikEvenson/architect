@@ -1,5 +1,9 @@
 # AWS DynamoDB
 
+## Scope
+
+AWS managed NoSQL key-value and document database. Covers partition key design, single-table vs multi-table patterns, capacity modes, GSIs/LSIs, Streams, TTL, DAX caching, global tables, transactions, and analytics integrations.
+
 ## Checklist
 
 - [ ] **[Critical]** Design primary key carefully: partition key alone (unique item access) or composite key (partition key + sort key for hierarchical data and range queries); key design determines data distribution and query patterns
@@ -46,3 +50,12 @@ DynamoDB global table replicated across us-east-1, eu-west-1, ap-southeast-1. Ro
 
 ### Time-Series Data with TTL
 DynamoDB table with PK=DeviceID, SK=Timestamp. Hot data in DynamoDB with TTL set to 90 days for automatic cleanup. DynamoDB Streams -> Amazon Data Firehose -> S3 (Parquet) for long-term analytics storage before TTL expiration. Separate GSI on status attribute for active alert queries. On-demand capacity for IoT workloads with unpredictable device counts.
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture patterns and database selection criteria
+- `providers/aws/lambda-serverless.md` -- Lambda triggers for DynamoDB Streams processing
+- `providers/aws/elasticache.md` -- DAX vs ElastiCache for caching DynamoDB reads
+- `providers/aws/s3.md` -- S3 as a destination for DynamoDB data archival via Streams

@@ -1,5 +1,9 @@
 # TLS Certificate Management
 
+## Scope
+
+This file covers **TLS certificate management** including CA selection (self-signed, Let's Encrypt, internal CA), cert-manager for Kubernetes, wildcard vs per-service certificates, and certificate distribution methods. It does not cover network-level encryption or VPN configuration; for those, see `general/networking.md` and `general/security.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Never deploy production services with self-signed certificates — clients will reject them unless every consumer's trust store is manually configured
@@ -197,3 +201,10 @@ cert-manager flow:
 Two ClusterIssuers, same cert-manager instance.
 Ingress annotations determine which CA signs each certificate.
 ```
+
+## See Also
+
+- [security.md](security.md) -- security architecture including encryption requirements and key management
+- [dns-dev-patterns.md](dns-dev-patterns.md) -- dev/POC DNS patterns and Let's Encrypt rate limit considerations
+- [load-balancing-onprem.md](load-balancing-onprem.md) -- SSL/TLS termination at on-premises load balancers
+- [stig-hardening.md](stig-hardening.md) -- STIG requirements for TLS versions and cipher suites

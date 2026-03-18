@@ -4,6 +4,10 @@ Reference: Regulation (EU) 2016/679
 Effective: 25 May 2018
 Scope: Any organization processing personal data of EU/EEA residents, regardless of where the organization is established.
 
+## Scope
+
+Covers GDPR compliance requirements for cloud architectures, including data residency, cross-border transfers, right to erasure, consent management, breach notification, and Data Protection Impact Assessments. Does not cover general data architecture patterns (see `general/data.md`) or non-EU privacy frameworks.
+
 ---
 
 ## Why This Matters
@@ -250,3 +254,10 @@ The UK Data Use and Access Act received Royal Assent in June 2025, replacing cer
 - **International transfers** -- new "data protection test" replacing adequacy decisions for certain transfers, potentially simplifying UK-to-third-country data flows
 
 For organizations processing both EU and UK personal data, cloud architectures must accommodate the divergence between EU GDPR and the UK DUAA. Consider separate data processing configurations where requirements differ.
+
+## See Also
+
+- `general/security.md` — General security controls including encryption and access management
+- `general/governance.md` — Cloud governance and policy enforcement
+- `general/data.md` — Data architecture patterns and data lifecycle management
+- `compliance/hipaa.md` — HIPAA compliance (complementary when health data involves EU residents)

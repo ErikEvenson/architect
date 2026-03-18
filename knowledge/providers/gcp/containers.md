@@ -48,3 +48,10 @@ GKE is the most mature managed Kubernetes offering across cloud providers, with 
 - [Google Cloud: Migrate to containers](https://cloud.google.com/architecture/migrating-containers-to-google-cloud) -- reference architecture for modernizing applications from VMs to GKE or Cloud Run
 - [Google Cloud: Multi-cluster Kubernetes with GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/multi-cluster-ingress) -- reference design for multi-region GKE with global load balancing and fleet management
 - [Google Cloud: Cloud Run production best practices](https://cloud.google.com/run/docs/tips/general) -- reference patterns for concurrency tuning, cold start mitigation, and cost optimization for serverless containers
+
+## See Also
+
+- `general/container-orchestration.md` -- general container orchestration patterns
+- `providers/gcp/compute.md` -- GCP Compute Engine for GKE node pools
+- `providers/gcp/networking.md` -- GCP networking for GKE cluster connectivity
+- `providers/gcp/observability.md` -- Managed Prometheus and GKE monitoring

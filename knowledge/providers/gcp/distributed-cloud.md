@@ -73,3 +73,9 @@ Small GKE on bare metal clusters (3 nodes each) deployed in regional distributio
 
 ### Multi-cluster platform with VM migration
 Organizations migrating from VMware to Kubernetes deploy GKE on bare metal with VM Runtime on GKE. Legacy VMs are migrated using Migrate to Containers (generates container artifacts from VM images) or run directly as VM workloads inside GKE. New applications are developed as containers. Both VM and container workloads share the same cluster infrastructure, networking (Cloud Service Mesh provides unified mTLS and observability), and policy framework. Over time, VM workloads are incrementally containerized. This architecture provides a single operational model during the migration period rather than maintaining parallel VM and container platforms.
+
+## See Also
+
+- `providers/gcp/containers.md` -- GKE and GKE Enterprise fleet management
+- `providers/gcp/networking.md` -- GCP networking for hybrid connectivity
+- `providers/gcp/security.md` -- security controls for distributed deployments

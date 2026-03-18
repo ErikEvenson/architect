@@ -1,5 +1,9 @@
 # Azure DNS (Azure DNS, Traffic Manager, Front Door, Private DNS)
 
+## Scope
+
+Azure DNS and global traffic routing services. Covers Azure DNS public/private zones, Traffic Manager routing methods, Front Door Layer 7 routing, DNSSEC, Private DNS Resolver for hybrid DNS, and Private Endpoint DNS resolution patterns.
+
 ## Checklist
 
 - [ ] **[Critical]** Choose zone type: Azure DNS public zones for internet-facing resolution vs Azure Private DNS zones for VNet-scoped name resolution; private zones support auto-registration of VM DNS records within linked VNets
@@ -44,3 +48,11 @@ Traffic Manager profile with priority routing: primary endpoint pointing to Azur
 
 ### Private Endpoint DNS Architecture
 Private DNS zones for each PaaS service (privatelink.database.windows.net, privatelink.blob.core.windows.net, privatelink.vaultcore.azure.net) centralized in a hub/connectivity subscription. Zones linked to hub VNet and all spoke VNets needing resolution. Private Endpoints in spoke VNets auto-register A records in the centralized privatelink zones. Azure Policy to enforce Private DNS zone group creation on Private Endpoint deployment for consistent DNS registration.
+
+---
+
+## See Also
+
+- `general/hybrid-dns.md` -- Hybrid DNS patterns for on-premises and cloud integration
+- `providers/azure/networking.md` -- VNet design, Private Endpoints, and NSGs that interact with DNS resolution
+- `providers/azure/disaster-recovery.md` -- Traffic Manager and Front Door for DNS-based failover

@@ -1,5 +1,9 @@
 # Azure Well-Architected Framework
 
+## Scope
+
+Covers the five pillars of the Azure Well-Architected Framework (Reliability, Security, Cost Optimization, Operational Excellence, Performance Efficiency) with Azure-specific checklists and guidance for architecture reviews. Does not cover AWS (see `frameworks/aws-well-architected.md`) or GCP (see `frameworks/gcp-architecture-framework.md`) equivalents.
+
 The Azure Well-Architected Framework provides architectural guidance for building high-quality solutions on Microsoft Azure. It is organized into five pillars that serve as the foundation for workload quality across the cloud.
 
 ---
@@ -198,3 +202,10 @@ Performance directly impacts user experience and business outcomes. Slow applica
 - **Operational model** — IaC tooling (Bicep vs Terraform), Azure Monitor vs third-party observability
 - **Performance baseline** — Azure Load Testing adoption, autoscale configuration, CDN strategy
 - **Well-Architected Review cadence** — Azure Advisor integration, assessment frequency, remediation tracking
+
+## See Also
+
+- `frameworks/aws-well-architected.md` — AWS Well-Architected Framework (six pillars)
+- `frameworks/gcp-architecture-framework.md` — GCP Architecture Framework (six pillars)
+- `providers/azure/compute.md` — Azure compute services and configuration
+- `general/cost.md` — Cloud cost optimization strategies

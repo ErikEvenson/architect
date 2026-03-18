@@ -59,3 +59,9 @@ Nutanix platform services transform a hyperconverged cluster from basic compute 
 - **AHV 11.0:** Improved live migration performance with reduced vCPU stun times, GPU support enhancements for vGPU profiles, and improved VM placement algorithms.
 - **Prism Central 7.5:** Updated UI with improved dashboards, enhanced playbook capabilities, and better multi-cluster reporting.
 - **AOS 7.5 (December 2025):** VM Startup Policies for controlled boot sequencing, enhanced CVM security with improved integrity validation.
+
+## See Also
+
+- `providers/nutanix/infrastructure.md` -- core Nutanix infrastructure
+- `providers/nutanix/storage.md` -- Objects and Files storage services
+- `providers/kubernetes/compute.md` -- Kubernetes workload patterns for NKE

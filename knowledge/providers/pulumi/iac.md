@@ -1,5 +1,10 @@
 # Pulumi
 
+## Scope
+
+Pulumi infrastructure as code: state backends (Pulumi Cloud, S3, GCS), secrets encryption, stack-per-environment design, component resources, CrossGuard policy packs, stack references, Pulumi ESC, Automation API, and multi-language support (TypeScript, Python, Go, C#, Java).
+
+
 Infrastructure as Code using general-purpose programming languages with real-time state management. Pulumi supports TypeScript, Python, Go, C#, Java, and YAML to define, deploy, and manage cloud resources across AWS, Azure, GCP, Kubernetes, and 100+ providers.
 
 ---
@@ -472,3 +477,9 @@ Git Push
         |-- Deployment history and audit log
         |-- Drift detection (scheduled)
 ```
+
+## See Also
+
+- `general/iac-planning.md` -- infrastructure as code planning patterns
+- `providers/hashicorp/terraform.md` -- Terraform as alternative IaC tool
+- `providers/hashicorp/vault.md` -- Vault for secret management in Pulumi stacks

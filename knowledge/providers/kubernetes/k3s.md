@@ -1,5 +1,10 @@
 # K3s Lightweight Kubernetes
 
+## Scope
+
+K3s lightweight Kubernetes: installation topologies (single-node, HA embedded etcd, external database), secrets encryption, bundled components (Traefik, CoreDNS, local-path-provisioner), CIS hardening, private registries, automated upgrades, and CNI replacement.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Select installation topology: single-node (curl script), HA embedded etcd (3+ server nodes), or external database (MySQL/PostgreSQL/etcd) based on availability requirements
@@ -79,3 +84,10 @@ Three server nodes with embedded etcd for control plane HA. Agent nodes join via
 Install: INSTALL_K3S_SKIP_DOWNLOAD=true ./install.sh
 ```
 For environments without internet access. Pre-download the K3s binary and images tarball, transfer to the target node, and install offline. Configure registries.yaml to point to a local registry mirror for application images. Common in manufacturing, retail edge, and secure government environments.
+
+## See Also
+
+- `general/container-orchestration.md` -- container orchestration platform selection
+- `providers/kubernetes/security.md` -- Kubernetes security controls and RBAC
+- `providers/kubernetes/operations.md` -- Kubernetes operations and upgrade strategies
+- `providers/rancher/infrastructure.md` -- Rancher management for K3s clusters

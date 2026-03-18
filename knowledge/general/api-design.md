@@ -35,3 +35,10 @@ APIs are contracts. Once published, they are difficult to change without breakin
 - **Error format standard** — RFC 7807 adoption, custom error code taxonomy, localization of error messages
 - **Breaking change policy** — what constitutes a breaking change, deprecation notice period, consumer notification process
 - **Contract testing** — Pact or similar for consumer-driven contracts, schema validation in CI/CD, breaking change detection
+
+## See Also
+
+- [security.md](security.md) -- security controls including API authentication and authorization
+- [deployment.md](deployment.md) -- deployment strategies for API services
+- [service-mesh.md](service-mesh.md) -- service-to-service communication, mTLS, and traffic management
+- [testing-strategy.md](testing-strategy.md) -- contract testing and integration test strategies

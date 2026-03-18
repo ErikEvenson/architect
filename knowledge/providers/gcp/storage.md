@@ -1,5 +1,10 @@
 # GCP Storage
 
+## Scope
+
+Cloud Storage (classes, lifecycle, retention, dual/multi-region), Persistent Disk (pd-balanced, pd-ssd, pd-extreme), Filestore (NFS tiers), Cloud Storage FUSE, Storage Transfer Service, and Transfer Appliance.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Is the appropriate Cloud Storage class selected per data access pattern? (Standard for frequent access, Nearline for <1/month, Coldline for <1/quarter, Archive for <1/year)
@@ -38,3 +43,10 @@ GCP Cloud Storage is the foundational object store with a uniquely tiered pricin
 - [Google Cloud: Best practices for Cloud Storage](https://cloud.google.com/storage/docs/best-practices) -- reference patterns for naming, access control, retry handling, and performance optimization
 - [Google Cloud: Persistent Disk deep dive](https://cloud.google.com/compute/docs/disks/performance) -- reference for disk performance characteristics, IOPS scaling by size, and throughput limits per machine type
 - [Google Cloud: Data transfer options](https://cloud.google.com/storage-transfer/docs/overview) -- reference architecture for selecting the right transfer mechanism based on data volume, network bandwidth, and timeline
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/gcp/data.md` -- GCP database and managed data services
+- `providers/gcp/disaster-recovery.md` -- Cloud Storage replication and cross-region DR
+- `providers/gcp/containers.md` -- GKE persistent volume integration

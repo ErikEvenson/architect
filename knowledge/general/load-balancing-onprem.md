@@ -1,5 +1,9 @@
 # On-Premises Load Balancing
 
+## Scope
+
+This file covers **on-premises load balancing** including HAProxy, NGINX, and F5 BIG-IP comparison, HA patterns (active-passive with keepalived, active-active with ECMP), SSL termination, and health check configuration. For cloud-managed load balancers, see the relevant provider knowledge files. For application-level traffic management, see `general/service-mesh.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Is a VIP failover mechanism (keepalived VRRP or equivalent) deployed so that load balancer failure does not take down all ingress traffic?
@@ -103,3 +107,10 @@ On-premises environments lack the managed load balancers available in public clo
 - **keepalived documentation**: [keepalived.org](https://www.keepalived.org/manpage.html) -- VRRP configuration, health check scripts, and notification scripts
 - **Digital Ocean HAProxy HA tutorial**: Practical walkthrough of keepalived + HAProxy active-passive on Linux -- applicable pattern for any on-prem deployment
 - **Red Hat HA Load Balancing**: RHEL documentation covers keepalived + HAProxy integration with SELinux and firewalld considerations
+
+## See Also
+
+- [networking-physical.md](networking-physical.md) -- physical network design including VLAN segmentation and switch architecture
+- [tls-certificates.md](tls-certificates.md) -- TLS certificate management for SSL termination at the load balancer
+- [service-mesh.md](service-mesh.md) -- application-level traffic management, mTLS, and service-to-service load balancing
+- [disaster-recovery.md](disaster-recovery.md) -- failover strategies and multi-site traffic distribution

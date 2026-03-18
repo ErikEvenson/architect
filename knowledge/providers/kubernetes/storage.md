@@ -1,5 +1,10 @@
 # Kubernetes Storage
 
+## Scope
+
+Kubernetes storage: StorageClasses, CSI drivers, StatefulSet storage patterns, access modes (RWO, RWX, ROX), volume snapshots, dynamic provisioning, volume expansion, reclaim policies, local persistent volumes, and backup strategies (Velero).
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Define StorageClasses for each tier: high-performance SSD (io2/pd-ssd), general-purpose (gp3/pd-balanced), cost-optimized HDD (sc1/pd-standard), and set a default StorageClass
@@ -131,3 +136,10 @@ Separate PVCs for data and WAL (write-ahead log) allow independent IOPS tuning. 
   - Elasticsearch: snapshot API to S3 repository
 ```
 Velero handles both Kubernetes resource backup (Deployments, ConfigMaps, Secrets) and PV snapshots via CSI. Application-level backups run in parallel for consistency guarantees. Snapshot cloning enables fast dev/test environment creation from production data (with data masking applied post-clone).
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/kubernetes/compute.md` -- StatefulSet workload patterns
+- `providers/ceph/storage.md` -- Ceph/Rook CSI storage backend
+- `providers/kubernetes/operations.md` -- backup and restore procedures

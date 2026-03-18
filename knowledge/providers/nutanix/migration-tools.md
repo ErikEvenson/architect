@@ -184,3 +184,10 @@ For large-scale migrations (500+ VMs), deploy multiple Move appliances with sepa
 | Move appliance | AHV CVMs | TCP/UDP 111 | Portmapper | NFS service discovery |
 | Move appliance | AWS API | TCP 443 | HTTPS | EC2/EBS API calls |
 | Browser | Move appliance | TCP 8443 | HTTPS | Move web console |
+
+## See Also
+
+- `general/workload-migration.md` -- general workload migration patterns
+- `providers/nutanix/in-place-conversion.md` -- ESXi-to-AHV cluster re-imaging
+- `providers/nutanix/compute.md` -- target AHV compute configuration
+- `providers/vmware/licensing.md` -- VMware licensing driving migration decisions

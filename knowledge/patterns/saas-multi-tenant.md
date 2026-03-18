@@ -1,5 +1,9 @@
 # SaaS Multi-Tenant Architecture
 
+## Scope
+
+Covers multi-tenant SaaS architecture patterns including tenant isolation models (silo, pool, bridge), data isolation strategies, noisy neighbor prevention, tenant-aware routing, onboarding automation, billing and metering, and SLA tiering. Applicable when building a SaaS product that serves multiple customers from shared infrastructure.
+
 ## Overview
 
 Multi-tenant SaaS architectures serve multiple customers (tenants) from shared infrastructure. The central challenge is balancing **isolation** (security, performance, compliance) against **efficiency** (cost, operational simplicity). Every architectural decision must consider the tenant dimension.

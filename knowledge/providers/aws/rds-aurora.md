@@ -1,5 +1,9 @@
 # AWS RDS / Aurora
 
+## Scope
+
+AWS managed relational databases. Covers Aurora vs standard RDS, Multi-AZ, read replicas, Global Database, Aurora Serverless v2, I/O-Optimized, Limitless Database, Performance Insights, security group patterns, and Extended Support pricing.
+
 ## Checklist
 
 - [ ] **[Critical]** Is Aurora chosen over standard RDS for production workloads that benefit from distributed storage, faster failover, and read scaling?
@@ -111,3 +115,12 @@ For multi-account architectures where an application in one AWS account needs to
 - **CIDR-based rules that break when IPs change**: Using specific IP CIDRs instead of security group references means rules become stale during scaling events, instance replacements, or failovers.
 - **Forgetting CI/CD access for migrations**: Database migration tools (Flyway, Liquibase, Alembic) running in CI/CD pipelines need database access. Allow the CI/CD runner's security group (or use SSM port forwarding from the pipeline).
 - **Overly broad VPC CIDR rules**: Allowing the entire VPC CIDR (e.g., 10.0.0.0/16) grants access to every resource in the VPC. Prefer security group references for least-privilege access.
+
+---
+
+## See Also
+
+- `general/data.md` -- General data architecture patterns and database selection criteria
+- `providers/aws/secrets-manager.md` -- Credential rotation for RDS/Aurora database passwords
+- `providers/aws/vpc.md` -- Private subnet deployment and security group patterns for databases
+- `providers/aws/dynamodb.md` -- DynamoDB as a NoSQL alternative for key-value workloads

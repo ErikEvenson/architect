@@ -1,5 +1,9 @@
 # Physical Server Hardware Selection
 
+## Scope
+
+This file covers **physical server hardware selection and sizing** including CPU, RAM, storage, NIC, and power specifications for control plane, compute, and storage node roles. It does not cover software-level capacity planning or cloud instance selection; for those, see `general/capacity-planning.md` and `general/compute.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Server role defined (control plane, compute, storage, converged) with corresponding resource requirements documented
@@ -164,3 +168,10 @@ A single server for testing, development, or proof-of-concept deployments.
 - 1 kW of power = approximately 3,412 BTU/hr of heat
 - Ensure hot aisle/cold aisle containment for efficient cooling
 - GPU-heavy racks may require liquid cooling or rear-door heat exchangers
+
+## See Also
+
+- [capacity-planning.md](capacity-planning.md) -- performance sizing methodology, load testing, and growth projections
+- [cost-onprem.md](cost-onprem.md) -- TCO analysis including hardware depreciation and power costs
+- [networking-physical.md](networking-physical.md) -- physical network design including NIC bonding, switch selection, and cabling
+- [colocation-constraints.md](colocation-constraints.md) -- rack power budgets, cooling, and colocation facility constraints

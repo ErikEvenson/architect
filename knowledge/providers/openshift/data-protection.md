@@ -1,5 +1,10 @@
 # OpenShift Data Protection
 
+## Scope
+
+OpenShift data protection: OADP operator (Velero), backup storage locations, volume snapshots (CSI, Restic/Kopia), scheduled backups, etcd backup/restore, namespace-level backup strategies, cross-cluster restore, and DR runbooks.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Deploy OADP operator (OpenShift API for Data Protection) with Velero and appropriate plugins (AWS, Azure, GCP, CSI)
@@ -45,3 +50,10 @@ A common failure mode is backing up everything but never testing restores. Backu
 - **Multi-cluster DR with RHACM**: Hub cluster with ManagedClusterBackup, spoke clusters with OADP, ApplicationDRPlacement policies for automated failover, ODF Metro-DR for synchronous PV replication (RPO ~0), application placement rules for active-passive failover.
 - **GitOps-first DR**: Cluster infrastructure defined in Terraform/Ansible, all application manifests in Git (ArgoCD), OADP only for stateful PV data, restore procedure: provision new cluster -> bootstrap ArgoCD -> sync from Git -> restore PV snapshots from S3. RTO 2-4 hours depending on cluster size.
 - **Edge / remote site DR**: SNO (Single Node OpenShift) clusters managed by RHACM, OADP with Restic to central S3 (no CSI snapshots on some edge storage), application state replicated to hub via Kafka/MQTT, edge rebuild via ZTP (Zero Touch Provisioning) from hub cluster, RPO 24 hours / RTO 4 hours.
+
+## See Also
+
+- `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)
+- `general/enterprise-backup.md` -- enterprise backup architecture patterns
+- `providers/openshift/storage.md` -- ODF and CSI storage backends for snapshots
+- `providers/kubernetes/operations.md` -- etcd backup and cluster operations

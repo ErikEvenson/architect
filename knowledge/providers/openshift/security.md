@@ -1,5 +1,10 @@
 # OpenShift Security
 
+## Scope
+
+OpenShift security: Security Context Constraints (SCCs), OAuth identity providers, RBAC strategy, Pod Security Admission, image signature verification, Compliance Operator (CIS, NIST, PCI-DSS), audit logging, secrets management, and FIPS mode.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Review and restrict Security Context Constraints (SCCs): avoid granting `anyuid` or `privileged` SCCs to application workloads
@@ -63,3 +68,10 @@ Secret management is a persistent challenge. Kubernetes Secrets are base64-encod
 - **Financial services (PCI-DSS)**: Cardholder data namespaces with `restricted` SCC and strict NetworkPolicy, Compliance Operator with PCI-DSS profile, audit logging to QRadar SIEM, secrets in Vault with automatic rotation, image scanning gates in CI/CD pipeline.
 - **Healthcare (HIPAA)**: Encryption at rest (ODF dm-crypt or cloud KMS), encryption in transit (service mesh mTLS), audit logging for all PHI access, RBAC with principle of least privilege, namespace isolation for PHI workloads, break-glass procedures documented.
 - **Zero-trust platform**: Service mesh with strict mTLS (PeerAuthentication STRICT mode), SPIFFE/SPIRE for workload identity, OPA Gatekeeper or Kyverno for policy enforcement, network observability for anomaly detection, short-lived certificates with cert-manager.
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/kubernetes/security.md` -- Kubernetes security patterns (upstream)
+- `providers/openshift/networking.md` -- network policies and egress controls
+- `providers/hashicorp/vault.md` -- Vault integration for secrets management

@@ -1,5 +1,9 @@
 # GCP Architecture Framework
 
+## Scope
+
+Covers the six pillars of the GCP Architecture Framework (System Design, Operational Excellence, Security/Privacy/Compliance, Reliability, Cost Optimization, Performance Optimization) with GCP-specific checklists and SRE-aligned guidance. Does not cover AWS (see `frameworks/aws-well-architected.md`) or Azure (see `frameworks/azure-well-architected.md`) equivalents.
+
 The Google Cloud Architecture Framework provides best practices and implementation recommendations to help architects, developers, and administrators design and operate cloud topologies on Google Cloud. It is organized into six pillars that cover the full spectrum of cloud workload quality.
 
 ---
@@ -232,3 +236,10 @@ Performance is a feature that directly affects user satisfaction and business ou
 - **Operational model** — IaC tooling (Terraform vs Config Connector vs Pulumi), Cloud Monitoring vs third-party
 - **Reliability architecture** — regional vs multi-regional, Chaos Studio adoption, SLO-based alerting
 - **Architecture review cadence** — framework assessment frequency, risk-based prioritization of improvements
+
+## See Also
+
+- `frameworks/aws-well-architected.md` — AWS Well-Architected Framework (six pillars)
+- `frameworks/azure-well-architected.md` — Azure Well-Architected Framework (five pillars)
+- `providers/gcp/compute.md` — GCP compute services and configuration
+- `general/cost.md` — Cloud cost optimization strategies

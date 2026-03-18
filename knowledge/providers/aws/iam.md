@@ -1,5 +1,9 @@
 # AWS IAM
 
+## Scope
+
+AWS identity and access management. Covers IAM roles, least-privilege policies, permission boundaries, SCPs, cross-account access, IRSA/Pod Identity for EKS, IAM Access Analyzer, MFA enforcement, and CI/CD OIDC federation.
+
 ## Checklist
 
 - [ ] **[Critical]** Are IAM roles used instead of long-lived IAM user access keys for all service and application access?
@@ -38,3 +42,12 @@ IAM is the single most critical security control in AWS. Overly permissive polic
 - [AWS Prescriptive Guidance: IAM best practices for multi-account environments](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/) -- AWS Security Reference Architecture (SRA) covering IAM at scale
 - [AWS Well-Architected Labs: Identity and Access Management](https://www.wellarchitectedlabs.com/security/) -- hands-on labs for implementing least-privilege IAM policies and cross-account access
 - [AWS IAM Identity Center (SSO) architecture](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) -- reference architecture for centralized identity management across AWS accounts
+
+---
+
+## See Also
+
+- `general/identity.md` -- General identity and access management patterns
+- `providers/aws/multi-account.md` -- SCPs, IAM Identity Center, and cross-account role assumption
+- `providers/aws/secrets-manager.md` -- Credential storage and rotation for service accounts
+- `providers/aws/containers.md` -- IRSA and Pod Identity for EKS workload authentication

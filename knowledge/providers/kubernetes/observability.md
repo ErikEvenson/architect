@@ -1,5 +1,10 @@
 # Kubernetes Observability
 
+## Scope
+
+Kubernetes observability: Prometheus deployment, metrics-server, kube-state-metrics, logging stack selection (Fluent Bit, Loki, Elasticsearch), distributed tracing (OpenTelemetry), event collection, Grafana dashboards, Alertmanager, and long-term metric storage (Thanos, Mimir).
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Deploy Prometheus for metrics collection: evaluate kube-prometheus-stack (Prometheus Operator + Grafana + alerting rules) vs lightweight Prometheus (single binary)
@@ -100,3 +105,10 @@ Each cluster runs Prometheus with a Thanos sidecar that uploads blocks to S3. Th
   - Time to budget exhaustion
 ```
 SLO-based alerting replaces threshold-based alerts (CPU > 80%) with business-meaningful alerts (error budget burning too fast). Multi-window burn rates detect both sudden spikes (fast burn: alert in minutes) and gradual degradation (slow burn: alert in hours). This reduces alert fatigue by tying alerts to user-facing impact rather than infrastructure metrics.
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana stack configuration
+- `providers/kubernetes/compute.md` -- HPA custom metrics pipeline
+- `providers/kubernetes/operations.md` -- operational tooling and debugging

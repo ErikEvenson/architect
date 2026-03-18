@@ -1,5 +1,10 @@
 # Rancher Infrastructure
 
+## Scope
+
+Rancher multi-cluster Kubernetes management: RKE2/K3s downstream cluster provisioning, Fleet GitOps, Harvester HCI, Longhorn storage, Prometheus-based monitoring, Fluent Bit logging, authentication integration (AD, LDAP, SAML, OIDC), backup/migration, and CIS hardening.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Design Rancher server high-availability deployment: 3-node RKE2 cluster dedicated to Rancher management, separate from downstream workload clusters
@@ -120,3 +125,10 @@ Harvester provides the bare-metal virtualization layer. Rancher server runs as a
             resources.requests.memory: 128Mi
 ```
 K3s provides lightweight Kubernetes at each edge site with minimal resource requirements. Fleet manages application deployment from central Rancher, using cluster selectors and target customizations to adapt configurations per site characteristics. Each K3s agent registers with Rancher via an outbound connection (no inbound firewall rules needed at edge sites). Fleet handles intermittent connectivity gracefully, reconciling state when sites reconnect.
+
+## See Also
+
+- `general/container-orchestration.md` -- container orchestration platform selection
+- `providers/kubernetes/operations.md` -- Kubernetes operations and lifecycle management
+- `providers/kubernetes/k3s.md` -- K3s lightweight Kubernetes (downstream distribution)
+- `providers/kubernetes/security.md` -- Kubernetes security and CIS benchmarks

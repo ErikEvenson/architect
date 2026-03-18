@@ -1,5 +1,9 @@
 # Edge Computing Architecture
 
+## Scope
+
+Covers edge computing architectures including CDN edge workers (Cloudflare Workers, Lambda@Edge), IoT edge platforms (AWS Greengrass, Azure IoT Edge), and 5G/MEC deployments. Applicable when latency, bandwidth, data locality, or offline operation requirements demand computation closer to users or data sources.
+
 ## Overview
 
 Edge computing moves computation and data storage closer to the sources of data and end users, reducing latency and bandwidth consumption. This spans CDN edge workers (Cloudflare Workers, Lambda@Edge, Cloud Run), IoT edge platforms (AWS Greengrass, Azure IoT Edge), and emerging 5G/MEC deployments. Edge architectures require careful consideration of consistency, deployment, security, and offline operation.
@@ -35,3 +39,10 @@ Users expect sub-100ms response times, which is physically impossible from a sin
 - **Deployment topology** — all-edge-locations vs selected POPs, canary percentage, geographic rollout order
 - **Edge security posture** — which security functions run at edge (WAF, bot detection, rate limiting) vs origin
 - **5G/MEC adoption** — carrier partnership, latency requirements that justify MEC, private network deployment
+
+## See Also
+
+- `patterns/cdn-fronted-onprem.md` — CDN fronting for on-premises origins, including edge caching and WAF
+- `general/networking.md` — Network architecture including DNS, routing, and connectivity
+- `patterns/hybrid-cloud.md` — Hybrid cloud patterns for edge-to-cloud data synchronization
+- `general/security.md` — Security controls for distributed edge environments

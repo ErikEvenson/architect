@@ -1,5 +1,9 @@
 # AWS Snow Family
 
+## Scope
+
+AWS ruggedized portable devices for offline data transfer and edge compute. Covers Snowcone, Snowball Edge (Storage and Compute Optimized), device clustering, OpsHub management, and disconnected operation patterns. Note: Snowcone is discontinued, Snowball Edge is unavailable to new customers, and Snowmobile is retired.
+
 > **SERVICE STATUS NOTICE**
 >
 > - **Snowcone: DISCONTINUED** as of November 12, 2024. No longer available for new orders.
@@ -72,3 +76,12 @@ Snowball Edge Compute Optimized deployed at content production locations (film s
 
 ### Snowball Edge cluster for remote research stations
 A cluster of 5 Snowball Edge devices deployed to an Arctic or Antarctic research station. The cluster provides a combined 1PB+ storage pool and hundreds of vCPUs. Research instruments write data to the cluster's unified S3 endpoint. Compute instances run data analysis and simulation workloads. The cluster operates fully disconnected for months at a time. When seasonal resupply occurs, devices are cycled out — filled devices are shipped to AWS for S3 import, and fresh devices are deployed. This provides both storage capacity and compute power in locations with zero internet connectivity.
+
+---
+
+## See Also
+
+- `general/data-migration-tools.md` -- Data migration tool selection including network vs offline transfer
+- `providers/aws/migration-services.md` -- DataSync as a network-based alternative to Snow devices
+- `providers/aws/s3.md` -- S3 as the destination for Snow Family data imports
+- `providers/aws/outposts.md` -- Outposts as a persistent on-premises alternative to transient Snow devices

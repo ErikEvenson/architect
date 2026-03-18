@@ -35,3 +35,9 @@ Identity is the new perimeter. With cloud infrastructure, remote work, and API-d
 - **Privileged access approach** — PAM tool selection, JIT access workflow, approval process, session recording requirements
 - **Token strategy** — access token lifetime, refresh token rotation policy, token binding, cross-domain token exchange
 - **Directory architecture** — cloud-only vs hybrid with on-prem AD sync, multi-directory federation, group nesting strategy
+
+## See Also
+
+- [governance.md](governance.md) -- organizational controls, policy enforcement, and compliance frameworks
+- [security.md](security.md) -- security controls including encryption, network security, and threat modeling
+- [hybrid-dns.md](hybrid-dns.md) -- DNS resolution required for Active Directory integration in hybrid environments

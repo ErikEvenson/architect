@@ -1,5 +1,9 @@
 # AWS Multi-Account Strategy
 
+## Scope
+
+AWS Organizations multi-account architecture. Covers OU hierarchy, SCPs, Control Tower, centralized logging and security accounts, IAM Identity Center, cross-account role assumption, OIDC federation for CI/CD, and cost governance.
+
 ## Checklist
 
 - [ ] **[Critical]** Create a dedicated management account that handles billing and Organizations only — never deploy workloads here, as compromising this account compromises every account in the organization
@@ -438,3 +442,12 @@ Management Account
 **Overlapping CIDR ranges.** When each account's VPC is created independently, CIDR ranges inevitably overlap, making Transit Gateway peering or VPN routing impossible without re-IPing workloads. Allocate CIDR ranges centrally from the network account using IPAM before creating any VPC.
 
 **Not using permission boundaries.** Without permission boundaries, a developer with IAM permissions in a sandbox account can create an administrator role and escalate privileges. Permission boundaries cap the maximum permissions that any role in the account can have, regardless of the policies attached to it.
+
+---
+
+## See Also
+
+- `general/governance.md` -- General cloud governance patterns and organizational structures
+- `providers/aws/iam.md` -- IAM roles, SCPs, permission boundaries, and Identity Center
+- `providers/aws/vpc.md` -- Transit Gateway and cross-account VPC networking
+- `providers/aws/observability.md` -- Centralized logging and security monitoring across accounts

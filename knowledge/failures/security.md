@@ -1,5 +1,9 @@
 # Security Failure Patterns
 
+## Scope
+
+Covers common security failure patterns including overly permissive IAM, hardcoded secrets, missing encryption in transit, disabled audit logging, public storage exposure, unpatched systems, and missing incident response plans. Does not cover general security architecture design (see `general/security.md`) or compliance-specific controls (see `compliance/` files).
+
 ## Checklist
 
 - [ ] **[Critical]** **Overly permissive IAM policies granting broad access** — Goes wrong: a compromised service or credential has access to far more resources than needed, allowing an attacker to escalate privileges, access other services, or exfiltrate data across the entire account. Happens because: teams use managed policies like AdministratorAccess or wildcards (`*`) in resource and action fields to avoid permission errors during development. Prevent by: following least-privilege principles, scoping policies to specific resources and actions, using IAM Access Analyzer to identify unused permissions, and regularly reviewing and tightening policies.
@@ -42,3 +46,10 @@ Security failures are asymmetric: a single misconfiguration can undo years of ca
 - **Account isolation strategy** — single account vs multi-account (dev/staging/prod), OU structure
 - **Vulnerability management cadence** — patching frequency, image rebuild triggers, scan tooling
 - **Incident response model** — centralized security team vs embedded, runbook automation level
+
+## See Also
+
+- `general/security.md` — General security controls and architecture patterns
+- `general/identity.md` — IAM and authentication architecture
+- `failures/networking.md` — Networking failure patterns with security implications
+- `general/governance.md` — Cloud governance and policy enforcement

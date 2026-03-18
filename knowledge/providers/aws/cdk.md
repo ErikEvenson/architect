@@ -1,5 +1,9 @@
 # AWS CDK (Cloud Development Kit)
 
+## Scope
+
+AWS-specific infrastructure-as-code using general-purpose programming languages that synthesize to CloudFormation. Covers construct levels, CDK Pipelines, Aspects, testing, and asset handling.
+
 Define AWS infrastructure using general-purpose programming languages (TypeScript, Python, Java, Go, C#). CDK synthesizes CloudFormation templates from code, combining the expressiveness of programming with the reliability of declarative infrastructure.
 
 ---
@@ -300,6 +304,14 @@ App
   |     |-- Stage: Production
   |           |-- (same stacks, different parameters)
 ```
+
+---
+
+## See Also
+
+- `general/iac-planning.md` -- IaC strategy selection and planning across providers
+- `providers/aws/cloudformation.md` -- Declarative CloudFormation templates that CDK synthesizes to
+- `providers/aws/containers.md` -- ECS/EKS resources commonly provisioned via CDK constructs
 
 ### Serverless API with Shared Constructs
 

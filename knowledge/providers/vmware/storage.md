@@ -64,3 +64,10 @@ Storage is the most common bottleneck and the most consequential failure domain 
 - **Storage policy changes:** ESA simplifies storage policies by removing cache-tier-specific settings. RAID-5/6 erasure coding on ESA performs significantly better than on OSA due to the single-tier architecture. FTT and RAID policy selection remains the same conceptually but with better write performance on ESA.
 - **Snapshot improvements:** vSAN OSA snapshots are known for performance degradation with deep snapshot chains. ESA uses a new native snapshot implementation that avoids the I/O penalty, making snapshots practical for backup and cloning workflows.
 - **Native Key Provider:** vSphere 8 introduced the vSphere Native Key Provider, allowing vSAN encryption without an external KMS. This simplifies deployment for environments that do not have an existing KMIP-compliant key manager.
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/vmware/compute.md` -- VM storage policies and encryption
+- `providers/vmware/infrastructure.md` -- vSAN cluster configuration
+- `providers/vmware/data-protection.md` -- storage replication and backup

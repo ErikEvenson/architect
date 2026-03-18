@@ -1,5 +1,9 @@
 # Event-Driven Architecture
 
+## Scope
+
+Covers event-driven architecture patterns including event sourcing, CQRS, pub/sub messaging, choreography vs orchestration, saga patterns, and schema governance. Applicable when systems require loose coupling, real-time responsiveness, or asynchronous communication between services.
+
 ## Overview
 
 Event-driven architecture uses events as the primary mechanism for communication between services. Systems produce, detect, consume, and react to events, enabling loose coupling, scalability, and real-time responsiveness. Core patterns include event sourcing, CQRS, pub/sub messaging, and choreography-based workflows.
@@ -95,3 +99,10 @@ Event-driven architectures enable systems to react in real time, scale independe
 - **Saga strategy** — orchestrated sagas (centralized coordinator) vs choreographed sagas (event-driven compensation)
 - **Retention and replay** — how long to retain events, compaction strategy, cold storage for historical events
 - **Backpressure strategy** — consumer auto-scaling thresholds, queue depth limits, producer rate limiting
+
+## See Also
+
+- `patterns/microservices.md` — Microservices architecture where event-driven communication is commonly applied
+- `patterns/data-pipeline.md` — Data pipeline architectures that use streaming and messaging
+- `general/observability.md` — Monitoring event processing lag, consumer health, and distributed tracing
+- `general/data.md` — Data consistency patterns relevant to event sourcing and CQRS

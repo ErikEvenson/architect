@@ -1,5 +1,10 @@
 # Open-Source Observability Stack (Prometheus, Grafana, Loki, AlertManager)
 
+## Scope
+
+Open-source observability stack: Prometheus (retention, sizing, recording rules, federation), AlertManager (routing, grouping, silencing), Grafana (provisioning, authentication, dashboards-as-code), Loki (label design, retention), Promtail/Alloy agents, node_exporter, blackbox_exporter, and Ceph monitoring integration.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Is Prometheus retention configured appropriately for the environment (15d default is often insufficient for capacity planning; extend to 30-90d for local, or configure remote write to Thanos/Cortex/Mimir for long-term storage)?
@@ -98,3 +103,9 @@ Query high-cardinality fields with LogQL filter expressions instead:
 - **kube-prometheus-stack Helm chart**: [github.com/prometheus-community/helm-charts](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) -- production-ready Kubernetes deployment with Prometheus Operator
 - **Awesome Prometheus alerts**: [samber/awesome-prometheus-alerts](https://github.com/samber/awesome-prometheus-alerts) -- community-curated alerting rules for common infrastructure and applications
 - **Grafana dashboards**: [grafana.com/grafana/dashboards](https://grafana.com/grafana/dashboards/) -- community dashboards (Node Exporter Full: ID 1860, Kubernetes: ID 315)
+
+## See Also
+
+- `general/observability.md` -- general observability patterns
+- `providers/kubernetes/observability.md` -- Kubernetes-specific Prometheus deployment
+- `providers/ceph/storage.md` -- Ceph Prometheus module and exporter configuration

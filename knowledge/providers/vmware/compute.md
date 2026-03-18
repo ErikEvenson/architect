@@ -67,3 +67,10 @@ Compute configuration in vSphere directly determines application availability, p
 - **Lifecycle Manager vs Update Manager:** vSphere 7 supported both vLCM (image-based, desired-state) and VUM (baseline-based, legacy). vSphere 8 deprecates VUM in favor of vLCM exclusively. vLCM manages ESXi images, firmware, and drivers as a single desired-state image per cluster. Organizations using VUM-based workflows must migrate to vLCM.
 - **vSphere Configuration Profiles:** New in vSphere 8, these enable host configuration drift detection and remediation at the cluster level, ensuring all hosts maintain consistent settings for networking, storage, and security.
 - **vSphere+:** Cloud-connected SaaS management layer that provides centralized vCenter visibility, subscription-based licensing, and lifecycle management across distributed vSphere environments.
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `providers/vmware/infrastructure.md` -- VMware cluster and host configuration
+- `providers/vmware/storage.md` -- vSAN and storage for VM workloads
+- `providers/vmware/networking.md` -- VDS and NSX networking for VMs

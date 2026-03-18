@@ -1,5 +1,9 @@
 # AWS Observability
 
+## Scope
+
+AWS monitoring, logging, and tracing services. Covers CloudWatch metrics/alarms/dashboards, CloudTrail, X-Ray, GuardDuty, AWS Config, VPC Flow Logs, Application Signals, Amazon Managed Prometheus/Grafana, and centralized logging patterns.
+
 ## Checklist
 
 - [ ] **[Critical]** Is CloudWatch configured with custom metrics, dashboards, and composite alarms for application-specific health signals?
@@ -42,3 +46,11 @@ Without comprehensive observability, outages are detected by customers instead o
 - [AWS Well-Architected Labs: Operational Excellence](https://www.wellarchitectedlabs.com/operational-excellence/) -- hands-on labs for building observability dashboards, alarms, and automated response
 - [AWS Security Reference Architecture (SRA): Logging and monitoring](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/log-archive.html) -- centralized logging account design with CloudTrail, Config, and GuardDuty aggregation
 - [AWS Solutions: Centralized Logging with OpenSearch](https://aws.amazon.com/solutions/implementations/centralized-logging-with-opensearch/) -- deployable solution for cross-account log aggregation and analysis
+
+---
+
+## See Also
+
+- `general/observability.md` -- General observability patterns including metrics, logs, and traces
+- `providers/aws/multi-account.md` -- Centralized logging account architecture for cross-account monitoring
+- `providers/aws/vpc.md` -- VPC Flow Logs for network traffic analysis

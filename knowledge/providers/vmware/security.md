@@ -33,3 +33,10 @@ VMware environments are high-value targets because compromising vCenter or ESXi 
 - **VMCA subordinate mode vs custom certificates** -- VMCA subordinate (VMCA signs leaf certificates under enterprise CA) for simplified management vs full custom certificates for environments where the security team requires direct CA control over all leaf certificates
 - **EDR platform selection** -- CrowdStrike, SentinelOne, or Microsoft Defender for Endpoint for VM workload protection; Carbon Black was divested by Broadcom (2024) and is no longer part of the VMware/VCF ecosystem. Evaluate EDR solutions independently of the VMware stack.
 - **NSX Security Intelligence vs third-party flow analysis** -- NSX Security Intelligence (formerly NSX Intelligence) for native VMware integration and automated policy recommendations vs third-party (Guardicore/Akamai, Illumio) for multi-hypervisor or multi-cloud microsegmentation
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/vmware/nsx-dfw-design.md` -- NSX DFW microsegmentation design
+- `providers/vmware/networking.md` -- NSX networking and firewall architecture
+- `providers/vmware/infrastructure.md` -- vSphere host hardening and configuration

@@ -1,5 +1,9 @@
 # CDN-Fronted On-Premises Architecture
 
+## Scope
+
+Covers placing a CDN (Cloudflare, Akamai, Fastly, Azure Front Door) in front of on-premises origin servers to provide global caching, DDoS protection, and WAF capabilities. Applicable when on-premises infrastructure serves external users and needs edge acceleration or security hardening without migrating to the cloud.
+
 ## Checklist
 
 - [ ] **[Critical]** Is the CDN origin configured with the correct on-prem public IP or hostname, and is the origin reachable over a stable internet circuit with sufficient bandwidth for peak origin-pull traffic?
@@ -81,3 +85,10 @@ On-prem infrastructure lacks the global edge presence and built-in DDoS protecti
 - **Azure Front Door with on-prem**: [AFD with custom origins](https://learn.microsoft.com/en-us/azure/frontdoor/) -- origin groups, health probes, WAF policies, and Private Link for Azure-connected origins
 - **OWASP ModSecurity CRS**: [Core Rule Set](https://coreruleset.org/) -- standard WAF rule set used by CDN WAFs and on-prem WAF deployments
 - **Cloudflare IP ranges**: `https://www.cloudflare.com/ips/` -- must be integrated into firewall automation
+
+## See Also
+
+- `general/tls-certificates.md` — TLS certificate management including origin certificates
+- `general/networking.md` — Network architecture and DNS management
+- `patterns/hybrid-cloud.md` — Hybrid cloud patterns when on-prem is combined with cloud services
+- `general/security.md` — Security controls including WAF and DDoS protection

@@ -1,5 +1,9 @@
 # Deployment Failure Patterns
 
+## Scope
+
+Covers common deployment failure patterns including missing rollback plans, configuration drift, inadequate health checks, simultaneous deployments, missing canary rollouts, and CI/CD pipeline failures. Does not cover general deployment strategy design (see `general/deployment.md`) or CI/CD tooling configuration (see `general/ci-cd.md`).
+
 ## Checklist
 
 - [ ] **[Critical]** **No rollback plan or rollback never tested** — Goes wrong: a bad deployment reaches production and the team cannot revert because the rollback procedure is undocumented, untested, or blocked by database schema changes that are not backward-compatible. The outage extends for hours. Happens because: rollback is assumed to be "just redeploy the old version" without considering state changes, schema migrations, or configuration dependencies. Prevent by: documenting and testing rollback procedures for every release, maintaining backward-compatible schema migrations, keeping previous deployment artifacts readily available, and practicing rollback during non-emergency windows.
@@ -42,3 +46,10 @@ Deployments are the single most common cause of production outages. Every deploy
 - **Pipeline gate policy** — which checks are blocking, override policy, approval requirements
 - **Image tagging strategy** — semantic versioning vs git SHA, tag immutability enforcement
 - **Feature flag management** — build-time vs runtime flags, flag lifecycle and cleanup policy
+
+## See Also
+
+- `general/deployment.md` — Deployment strategy design and rollout patterns
+- `general/ci-cd.md` — CI/CD pipeline architecture and tooling
+- `failures/data.md` — Data failure patterns related to schema migrations during deployment
+- `general/container-orchestration.md` — Container orchestration and health check configuration

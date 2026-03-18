@@ -1,5 +1,10 @@
 # Azure VMware Solution (AVS)
 
+## Scope
+
+Azure VMware Solution (AVS): node types (AV36P, AV52), private cloud sizing, ExpressRoute connectivity, HCX migration, pricing models, Azure service integration, Entra ID identity, NSX-T networking, monitoring, and DR strategies.
+
+
 Microsoft-operated VMware private cloud running on dedicated Azure bare-metal nodes. Provides full VMware stack (vSphere, vSAN, NSX-T, vCenter, HCX) with native Azure service and identity integration.
 
 ## Checklist
@@ -53,3 +58,10 @@ AVS provides a path to Azure for VMware-dependent workloads without re-platformi
 - vCenter admin credentials available but CloudAdmin role (not root); some operations require Run Command
 - HCX is included at no additional cost (unlike VMC where it is an add-on)
 - Quota request required — AVS nodes must be requested and approved per Azure subscription per region
+
+## See Also
+
+- `providers/vmware/infrastructure.md` -- VMware vSphere and VCF infrastructure
+- `providers/vmware/networking.md` -- NSX-T networking design patterns
+- `providers/azure/compute.md` -- Azure compute for hybrid AVS workloads
+- `providers/vmware/vmc-aws.md` -- VMware Cloud on AWS as alternative cloud VMware

@@ -1,5 +1,9 @@
 # Networking Failure Patterns
 
+## Scope
+
+Covers common networking failure patterns including misconfigured security groups, NAT gateway single points of failure, CIDR exhaustion, DNS failover gaps, TLS misconfiguration, and missing network segmentation. Does not cover general network architecture design (see `general/networking.md`) or provider-specific networking services (see `providers/` files).
+
 ## Checklist
 
 - [ ] **[Critical]** **Misconfigured security groups allowing 0.0.0.0/0 ingress** — Goes wrong: database or internal services are exposed to the internet, leading to unauthorized access or data exfiltration. Happens because: engineers copy permissive rules from development environments or use overly broad rules to "get things working." Prevent by: enforcing least-privilege security group rules via IaC with automated policy checks (e.g., AWS Config rules, OPA policies), and scanning for public-facing resources continuously.
@@ -42,3 +46,10 @@ Network failures are among the most disruptive and hardest to diagnose in produc
 - **Network segmentation depth** — flat vs tiered subnets, microsegmentation for zero-trust
 - **VPC endpoint strategy** — which services get private endpoints, gateway vs interface endpoints
 - **Cross-AZ traffic policy** — AZ-affinity routing vs even distribution, cost monitoring approach
+
+## See Also
+
+- `general/networking.md` — Network architecture design and segmentation patterns
+- `general/security.md` — Security controls including firewall and access management
+- `failures/security.md` — Security failure patterns related to network misconfiguration
+- `general/tls-certificates.md` — TLS certificate management and renewal

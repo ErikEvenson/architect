@@ -1,5 +1,9 @@
 # Data Migration Tooling and Strategies
 
+## Scope
+
+This file covers **data migration tooling and execution** including rclone, pg_dump/pg_restore, AWS DMS, bandwidth planning, and data validation. It does not cover migration strategy selection or cutover planning; for those, see `general/database-migration.md` and `general/workload-migration.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Inventory all data stores (databases, object storage, file systems, caches) with sizes and growth rates
@@ -176,3 +180,9 @@ Validation Script Outline:
 | 100 TB    | 100 days | 10 days| 24 hrs  |
 
 *Assumes 80% effective throughput. Multiply by 1.3-1.5 for real-world estimates with encryption, protocol overhead, and retransmissions.*
+
+## See Also
+
+- [database-migration.md](database-migration.md) -- migration strategy selection, cutover planning, and rollback procedures
+- [workload-migration.md](workload-migration.md) -- overall workload migration planning and sequencing
+- [cloud-service-mapping.md](cloud-service-mapping.md) -- service equivalents across cloud providers relevant to migration targets

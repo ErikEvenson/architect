@@ -293,3 +293,9 @@ Listing multiple servers makes OpenStack clients distribute keys across them usi
 - Minor version upgrades support rolling restarts.
 - Feature flag compatibility between versions must be verified — RabbitMQ will refuse to cluster nodes with incompatible feature flags.
 - After upgrading all nodes, enable any new feature flags: `rabbitmqctl enable_feature_flag all`.
+
+## See Also
+
+- `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
+- `providers/openstack/deployment-tools.md` -- deployment tools for HA control plane
+- `providers/openstack/data-protection.md` -- control plane backup and DR
