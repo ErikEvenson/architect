@@ -200,6 +200,8 @@ nav:
     - K3s: providers/kubernetes/k3s.md
     - Docker Desktop: providers/kubernetes/docker-desktop.md
     - Secrets Management: providers/kubernetes/secrets-management.md
+  - Morpheus:
+    - Cloud Management: providers/morpheus/cloud-management.md
   - Prometheus/Grafana:
     - Observability Stack: providers/prometheus-grafana/observability.md
   - Harbor:
