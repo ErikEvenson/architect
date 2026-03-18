@@ -30,7 +30,7 @@ Nutanix security spans multiple layers: infrastructure hardening (STIG, cluster 
 - **Encryption method** -- AOS software encryption (no special hardware, simpler) vs Self-Encrypting Drives with external KMS (FIPS 140-2 compliant, higher operational complexity)
 - **Key management** -- Nutanix native KMS (simple, single-cluster) vs external KMIP server (SafeNet, Thales CipherTrust, Entrust (formerly HyTrust) -- enterprise-grade, HA, multi-cluster key management)
 - **Network security model** -- Flow microsegmentation only (built-in, no cost) vs Flow + virtual firewall appliance (deep packet inspection, IDS/IPS) vs external physical firewall only
-- **Identity provider** -- Active Directory (Kerberos/LDAP, most common) vs SAML 2.0 (Okta, Azure AD, Ping -- modern SSO) vs local accounts (only for break-glass)
+- **Identity provider** -- Active Directory (Kerberos/LDAP, most common) vs SAML 2.0 (Okta, Entra ID, Ping -- modern SSO) vs local accounts (only for break-glass)
 - **Hardening standard** -- Nutanix STIG (CIS-aligned, vendor-supported) vs custom CIS benchmark vs DoD STIG (strictest, may break features), automation of compliance scanning
 - **Guest security** -- Traditional AV agents per VM vs lightweight EDR (CrowdStrike, Carbon Black) vs no in-guest security (relying on network-level controls only)
 - **Cluster access model** -- Lockdown mode (SSH disabled, Prism-only management) vs restricted SSH (key-based, bastion host) vs open SSH (least secure, development only)

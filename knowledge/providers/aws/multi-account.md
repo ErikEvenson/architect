@@ -12,7 +12,7 @@
 - [ ] **[Recommended]** Centralize shared networking in an Infrastructure/Network account: Transit Gateway (shared via RAM), Direct Connect termination, DNS resolution (Route 53 Private Hosted Zones), and egress inspection via Network Firewall
 - [ ] **[Recommended]** Use Account Factory for Terraform (AFT) or Customizations for Control Tower (CfCT) to codify account baselines — each new account should automatically receive VPC configuration, IAM roles, logging agents, and security tooling
 - [ ] **[Recommended]** Implement mandatory cost allocation tags (Environment, Team, Application, CostCenter) enforced by SCP or tag policies, with per-account budgets and anomaly detection alerts
-- [ ] **[Recommended]** Configure IAM Identity Center (successor to AWS SSO) with your identity provider (Okta, Azure AD, etc.) to provide centralized, federated access with permission sets scoped per account and OU
+- [ ] **[Recommended]** Configure IAM Identity Center (successor to AWS SSO) with your identity provider (Okta, Entra ID, etc.) to provide centralized, federated access with permission sets scoped per account and OU
 - [ ] **[Recommended]** Set up OIDC federation for CI/CD pipelines (GitHub Actions, GitLab CI) so they assume short-lived roles in target accounts rather than storing static credentials in pipeline secrets
 - [ ] **[Optional]** Create sandbox accounts with automated resource cleanup (aws-nuke or custom Lambda) on a schedule, allowing developers to experiment without accumulating cost or risk
 - [ ] **[Optional]** Implement a shared services account for ECR repositories, CI/CD tooling (CodePipeline/CodeBuild), and internal package registries, with cross-account resource policies granting pull access to workload accounts

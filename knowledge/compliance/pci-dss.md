@@ -193,7 +193,7 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 
 | Control | AWS | Azure | GCP |
 |---------|-----|-------|-----|
-| Identity and access management | IAM, IAM Identity Center (SSO) | Entra ID (Azure AD), Conditional Access | Cloud IAM, Identity Platform |
+| Identity and access management | IAM, IAM Identity Center (SSO) | Entra ID (formerly Azure AD), Conditional Access | Cloud IAM, Identity Platform |
 | Role-based access control | IAM Roles, Policies | Azure RBAC, PIM | IAM Roles, Conditions |
 | Privileged access management | IAM Identity Center, third-party (CyberArk) | Privileged Identity Management (PIM) | PAM (third-party), IAM Conditions |
 | Access reviews | IAM Access Analyzer | Entra Access Reviews | IAM Recommender, Policy Analyzer |

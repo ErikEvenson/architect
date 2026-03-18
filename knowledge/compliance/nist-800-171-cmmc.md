@@ -56,7 +56,7 @@ The 2024 CMMC final rule made third-party assessments mandatory for Level 2 on c
 
 | Key Controls | Description | Cloud Implementation |
 |--------------|-------------|---------------------|
-| AC 3.1.1 | Limit system access to authorized users | IAM policies, RBAC, identity federation (AWS IAM, Azure AD, GCP IAM) |
+| AC 3.1.1 | Limit system access to authorized users | IAM policies, RBAC, identity federation (AWS IAM, Entra ID (formerly Azure AD), GCP IAM) |
 | AC 3.1.2 | Limit access to authorized transactions/functions | Least privilege policies, service control policies, conditional access |
 | AC 3.1.3 | Control CUI flow per authorizations | VPC flow controls, network segmentation, DLP policies |
 | AC 3.1.5 | Employ least privilege | Scoped IAM roles, no wildcard permissions, regular access reviews |
@@ -107,7 +107,7 @@ The 2024 CMMC final rule made third-party assessments mandatory for Level 2 on c
 | Key Controls | Description | Cloud Implementation |
 |--------------|-------------|---------------------|
 | IA 3.5.1 | Identify system users, processes, devices | Unique user accounts, service accounts, device certificates |
-| IA 3.5.2 | Authenticate identities before access | SSO with MFA (Okta, Azure AD, AWS SSO), SAML/OIDC federation |
+| IA 3.5.2 | Authenticate identities before access | SSO with MFA (Okta, Entra ID, AWS SSO), SAML/OIDC federation |
 | IA 3.5.3 | Use MFA for privileged and network access | FIPS 140-2 validated MFA (hardware tokens, FIDO2, PIV/CAC) |
 | IA 3.5.7 | Enforce minimum password complexity | Password policies, prefer passwordless (FIDO2), minimum 12 characters |
 | IA 3.5.10 | Store and transmit only cryptographically protected passwords | Secrets Manager, no plaintext credentials, bcrypt/scrypt hashing |
@@ -245,7 +245,7 @@ AWS GovCloud (US)
 - Use Azure Policy with NIST 800-171 built-in initiative
 - Azure Defender for Cloud with regulatory compliance dashboard
 - Azure Key Vault with HSM backing (FIPS 140-2 Level 2/3)
-- Azure AD with Conditional Access + FIDO2/PIV MFA
+- Entra ID with Conditional Access + FIDO2/PIV MFA
 
 ### GCP Assured Workloads CUI Enclave
 

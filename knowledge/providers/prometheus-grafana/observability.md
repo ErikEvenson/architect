@@ -8,7 +8,7 @@
 - [ ] **[Critical]** Is AlertManager configured with proper routing tree, grouping (group_by: [alertname, cluster]), group_wait (30s), group_interval (5m), and repeat_interval (4h) to prevent alert storms?
 - [ ] **[Recommended]** Are recording rules created for frequently queried expensive expressions (e.g., pre-compute `rate(http_requests_total[5m])` into `job:http_requests:rate5m`) to reduce query-time CPU load?
 - [ ] **[Recommended]** Is Grafana provisioning configured for dashboards-as-code (JSON/YAML in Git, deployed via provisioning directory or Grafana API) to prevent dashboard drift and enable version control?
-- [ ] **[Recommended]** Is Grafana authentication integrated with the organization's identity provider (LDAP, OIDC via Keycloak/Okta/Azure AD, or SAML) rather than relying on local accounts?
+- [ ] **[Recommended]** Is Grafana authentication integrated with the organization's identity provider (LDAP, OIDC via Keycloak/Okta/Entra ID, or SAML) rather than relying on local accounts?
 - [ ] **[Recommended]** Is Loki label design reviewed to avoid high-cardinality labels (never use user_id, request_id, or IP as labels -- these should be structured log fields queried with LogQL filters)?
 - [ ] **[Recommended]** Are Promtail or Grafana Alloy agents deployed on all hosts with appropriate pipeline stages to parse log formats, extract structured fields, and attach environment/service labels?
 - [ ] **[Optional]** Is Prometheus federation configured for multi-cluster environments, with a global Prometheus scraping aggregated metrics from cluster-level Prometheus instances?

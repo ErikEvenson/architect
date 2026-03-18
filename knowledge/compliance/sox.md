@@ -52,13 +52,13 @@ Ensure that only authorized individuals have access to financially significant s
 
 | Control | Description | AWS | Azure | GCP |
 |---------|-------------|-----|-------|-----|
-| **User Provisioning** | New access requires documented approval before granting | AWS SSO + ServiceNow/ticketing integration | Azure AD + access packages, entitlement management | Google Workspace + IAM, access request workflows |
-| **Access Reviews** | Quarterly recertification of user access | AWS IAM Access Analyzer, custom reports | Azure AD Access Reviews (built-in) | IAM Recommender, Policy Analyzer |
+| **User Provisioning** | New access requires documented approval before granting | AWS SSO + ServiceNow/ticketing integration | Entra ID (formerly Azure AD) + access packages, entitlement management | Google Workspace + IAM, access request workflows |
+| **Access Reviews** | Quarterly recertification of user access | AWS IAM Access Analyzer, custom reports | Entra ID Access Reviews (built-in) | IAM Recommender, Policy Analyzer |
 | **Privileged Access** | Admin access is limited, time-bound, and logged | AWS SSO with elevated permission sets, CloudTrail | Azure PIM (just-in-time elevation, approval, audit) | PAM solutions, time-bound IAM bindings |
-| **Segregation of Duties (SoD)** | Conflicting roles cannot be held by same person | Separate IAM roles (deploy vs approve), SCPs | Azure AD role assignments, SoD checks | Separate IAM roles, organization policy constraints |
-| **Offboarding** | Access removed within 24 hours of termination | Automated via SSO + HR integration | Azure AD lifecycle workflows | Automated via directory sync |
+| **Segregation of Duties (SoD)** | Conflicting roles cannot be held by same person | Separate IAM roles (deploy vs approve), SCPs | Entra ID role assignments, SoD checks | Separate IAM roles, organization policy constraints |
+| **Offboarding** | Access removed within 24 hours of termination | Automated via SSO + HR integration | Entra ID lifecycle workflows | Automated via directory sync |
 | **Service Accounts** | Non-human accounts managed with same rigor | IAM roles (no long-lived keys), Secrets Manager | Managed identities (no passwords), Key Vault | Service account keys (minimize), Workload Identity |
-| **MFA** | Required for all access to financial systems | AWS SSO MFA, IAM MFA policies | Azure AD Conditional Access (MFA required) | 2-Step Verification, context-aware access |
+| **MFA** | Required for all access to financial systems | AWS SSO MFA, IAM MFA policies | Entra ID Conditional Access (MFA required) | 2-Step Verification, context-aware access |
 
 ### Key Evidence for Auditors
 
@@ -223,7 +223,7 @@ Ensure that new systems and modifications are developed with appropriate control
 | **Databases** | RDS, Aurora, Azure SQL, Cloud SQL | Store financial data (GL, AP, AR, billing) |
 | **Data Warehouses** | Redshift, Synapse, BigQuery | Financial reporting and analytics |
 | **ETL/Integration** | Glue, Data Factory, Dataflow | Move financial data between systems |
-| **Identity** | AWS SSO, Azure AD, Google Workspace | Control who accesses financial systems |
+| **Identity** | AWS SSO, Entra ID, Google Workspace | Control who accesses financial systems |
 | **Compute** | EC2, Azure VMs, Compute Engine, ECS/EKS/AKS/GKE | Run financial applications |
 | **Storage** | S3, Azure Blob, Cloud Storage | Store financial documents and backups |
 | **CI/CD** | CodePipeline, Azure DevOps, Cloud Build | Deploy changes to financial systems |

@@ -141,7 +141,7 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 | Control | AWS | Azure | GCP |
 |---------|-----|-------|-----|
-| Identity management | IAM, IAM Identity Center, Cognito | Entra ID, Azure AD B2C | Cloud Identity, Identity Platform |
+| Identity management | IAM, IAM Identity Center, Cognito | Entra ID, Entra External ID (formerly Azure AD B2C) | Cloud Identity, Identity Platform |
 | MFA | IAM MFA, Identity Center MFA | Entra MFA, Conditional Access | 2-Step Verification, Titan Keys |
 | SSO / federation | IAM Identity Center (SAML, OIDC) | Entra ID (SAML, OIDC, WS-Fed) | Cloud Identity (SAML, OIDC) |
 | Network access controls | Security Groups, NACLs, VPC | NSGs, Azure Firewall, VNet | Firewall Rules, Cloud Armor |
@@ -367,7 +367,7 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 
 | Control | AWS | Azure | GCP |
 |---------|-----|-------|-----|
-| Consent management | Cognito (custom attributes), custom | Azure AD B2C (custom flows), custom | Identity Platform, custom |
+| Consent management | Cognito (custom attributes), custom | Entra External ID (custom flows), custom | Identity Platform, custom |
 | Preference storage | DynamoDB, RDS | Cosmos DB, SQL Database | Firestore, Cloud SQL |
 
 #### Architect Checklist

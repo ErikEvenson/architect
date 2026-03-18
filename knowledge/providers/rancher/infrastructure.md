@@ -11,7 +11,7 @@
 - [ ] **[Recommended]** Evaluate Longhorn for distributed block storage: replica count, data locality, backup targets (S3/NFS), disaster recovery volumes, and ReadWriteMany support (via NFS)
 - [ ] **[Recommended]** Configure Rancher monitoring stack (based on Prometheus Operator): cluster monitoring, project monitoring, Grafana dashboards, and alert routing per project/namespace
 - [ ] **[Recommended]** Plan Rancher logging stack (based on Fluent Bit/Fluentd): cluster-level and project-level log collection, output configuration (Elasticsearch, Splunk, Kafka, Syslog)
-- [ ] **[Critical]** Design authentication integration: external auth providers (Active Directory, LDAP, SAML, OIDC, GitHub, Azure AD), local auth for break-glass, and group-to-project mappings
+- [ ] **[Critical]** Design authentication integration: external auth providers (Active Directory, LDAP, SAML, OIDC, GitHub, Entra ID), local auth for break-glass, and group-to-project mappings
 - [ ] **[Critical]** Plan Rancher backup and migration: rancher-backup operator for Rancher server state, etcd snapshots for downstream clusters, disaster recovery procedures
 - [ ] **[Recommended]** Configure CIS hardening: RKE2 CIS 1.6/1.23 profile, Rancher CIS Benchmark scanning for downstream clusters, remediation tracking
 
@@ -37,7 +37,7 @@ Rancher provides a unified management plane for Kubernetes clusters across any i
   - Fleet Controller
   - Rancher Monitoring (self-monitoring)
   - rancher-backup operator
-  - Auth: Azure AD (SAML) + local admin (break-glass)
+  - Auth: Entra ID (SAML) + local admin (break-glass)
         |
   +-----+------+------+------+
   |            |            |            |
@@ -53,7 +53,7 @@ Rancher provides a unified management plane for Kubernetes clusters across any i
   - app-bundle: applications (cluster selector: env=production)
   - edge-bundle: edge agents (cluster selector: type=edge)
 ```
-Dedicated Rancher management cluster isolated from workloads. Fleet deploys infrastructure bundles (monitoring, logging, security policies) to all clusters and application bundles selectively based on cluster labels. Authentication centralized through Rancher with Azure AD, granting appropriate project/namespace access based on group membership.
+Dedicated Rancher management cluster isolated from workloads. Fleet deploys infrastructure bundles (monitoring, logging, security policies) to all clusters and application bundles selectively based on cluster labels. Authentication centralized through Rancher with Entra ID, granting appropriate project/namespace access based on group membership.
 
 ### Harvester HCI + Rancher Stack
 ```

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Covers Cloudflare WAF (managed and custom rules), Bot Management, Turnstile, Zero Trust Access, Cloudflare Tunnel, Gateway, API Shield, mTLS, Cloudflare Email Security, Browser Isolation, CASB, and DLP. Use alongside `networking.md` for tunnel architecture and `cdn-dns.md` for DDoS and SSL/TLS configuration.
+Covers Cloudflare WAF (managed and custom rules), Bot Management, Turnstile, Zero Trust Access, Cloudflare Tunnel, Gateway, API Shield, mTLS, Cloudflare Email Security, Browser Isolation, CASB, and DLP. Use alongside `providers/cloudflare/networking.md` for tunnel architecture and `providers/cloudflare/cdn-dns.md` for DDoS and SSL/TLS configuration.
 
 ## Checklist
 
@@ -11,7 +11,7 @@ Covers Cloudflare WAF (managed and custom rules), Bot Management, Turnstile, Zer
 - [ ] [Critical] Rate limiting rules are configured for login endpoints (e.g., 5 requests/10 seconds per IP), password reset, account creation, and any endpoint that triggers expensive operations
 - [ ] [Recommended] Bot management is configured: verified bots (Googlebot, etc.) are allowed, automated threats are challenged or blocked based on bot score thresholds (typically score < 30 = bot)
 - [ ] [Recommended] Turnstile is deployed on public forms as a CAPTCHA alternative; widget mode (managed, non-interactive, invisible) is chosen based on UX requirements
-- [ ] [Critical] Zero Trust Access policies are configured for internal applications: identity provider integration (Okta, Azure AD, Google Workspace), device posture checks, and session duration limits
+- [ ] [Critical] Zero Trust Access policies are configured for internal applications: identity provider integration (Okta, Entra ID, Google Workspace), device posture checks, and session duration limits
 - [ ] [Critical] Cloudflare Tunnel (cloudflared) replaces VPN for exposing internal services; no public inbound ports required on origin infrastructure
 - [ ] [Recommended] Gateway DNS and HTTP policies filter outbound traffic from corporate networks: block malware domains, enforce SaaS tenant restrictions, log DNS queries for threat hunting
 - [ ] [Recommended] API Shield is configured for API endpoints: schema validation (upload OpenAPI spec), sequence enforcement, and volumetric abuse detection per endpoint

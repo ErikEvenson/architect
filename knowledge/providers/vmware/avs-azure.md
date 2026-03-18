@@ -12,7 +12,7 @@ Microsoft-operated VMware private cloud running on dedicated Azure bare-metal no
 - [ ] **[Critical]** Azure region selection: verify AVS availability and compliance requirements (FedRAMP, HIPAA on Azure Government)?
 - [ ] **[Recommended]** Storage expansion: vSAN only, or add Azure NetApp Files / Azure Elastic SAN for additional capacity?
 - [ ] **[Recommended]** Azure service integration: which Azure services (Azure SQL, Blob Storage, AKS, Azure Functions) will VMware VMs consume?
-- [ ] **[Recommended]** Identity integration: Azure AD for vCenter SSO, RBAC roles mapped to Azure AD groups?
+- [ ] **[Recommended]** Identity integration: Entra ID (formerly Azure AD) for vCenter SSO, RBAC roles mapped to Entra ID groups?
 - [ ] **[Recommended]** NSX-T network design: segments, distributed firewall rules, T0/T1 gateway topology, DNS forwarding?
 - [ ] **[Recommended]** Monitoring strategy: Azure Monitor integration, Azure Arc-enabled VMware VMs, or VMware Aria?
 - [ ] **[Recommended]** DR strategy: VMware SRM, Azure Site Recovery, JetStream DR, or cross-region AVS?
@@ -22,7 +22,7 @@ Microsoft-operated VMware private cloud running on dedicated Azure bare-metal no
 
 ## Why This Matters
 
-AVS provides a path to Azure for VMware-dependent workloads without re-platforming. The minimum 3-node requirement means a baseline cost of ~$30K+/month — under-utilizing nodes is extremely expensive. ExpressRoute is the only connectivity option to Azure VNets (no VPN gateway support), so networking design is non-negotiable. Azure AD integration is a differentiator: if the organization already uses Azure AD, AVS provides seamless identity across VMware and Azure-native workloads. Not planning external storage early leads to vSAN capacity crunches since node storage is fixed.
+AVS provides a path to Azure for VMware-dependent workloads without re-platforming. The minimum 3-node requirement means a baseline cost of ~$30K+/month — under-utilizing nodes is extremely expensive. ExpressRoute is the only connectivity option to Azure VNets (no VPN gateway support), so networking design is non-negotiable. Entra ID integration is a differentiator: if the organization already uses Entra ID, AVS provides seamless identity across VMware and Azure-native workloads. Not planning external storage early leads to vSAN capacity crunches since node storage is fixed.
 
 ## Common Decisions (ADR Triggers)
 
@@ -31,7 +31,7 @@ AVS provides a path to Azure for VMware-dependent workloads without re-platformi
 | Node type selection | Always — AV36P vs. AV52 determines compute/memory ratio and cost |
 | vSAN-only vs. external storage | When storage needs exceed vSAN capacity — ANF adds NFS datastores without adding nodes |
 | ExpressRoute topology | Always — Global Reach for on-prem, FastPath for high-throughput Azure service access |
-| Azure AD integration scope | Always — determines vCenter access model and RBAC strategy |
+| Entra ID integration scope | Always — determines vCenter access model and RBAC strategy |
 | DR approach selection | When DR is required — SRM vs. ASR vs. JetStream have different RPO/RTO and cost profiles |
 | Internet connectivity method | When VMs need internet — managed SNAT is simplest, Azure public IP is most flexible |
 | Monitoring tooling | When observability is scoped — Azure Monitor vs. VMware Aria vs. hybrid approach |
@@ -39,8 +39,8 @@ AVS provides a path to Azure for VMware-dependent workloads without re-platformi
 
 ## Reference Architectures
 
-- **Azure Hybrid Extension**: on-prem vSphere + AVS connected via ExpressRoute Global Reach, Azure AD SSO across both, Azure services via ExpressRoute to VNet
-- **Windows Workload Modernization**: Windows Server VMs on AVS with Azure AD integration, Azure SQL as managed database, Azure Blob for file storage
+- **Azure Hybrid Extension**: on-prem vSphere + AVS connected via ExpressRoute Global Reach, Entra ID SSO across both, Azure services via ExpressRoute to VNet
+- **Windows Workload Modernization**: Windows Server VMs on AVS with Entra ID integration, Azure SQL as managed database, Azure Blob for file storage
 - **Oracle on AVS**: Oracle databases on VMware VMs (preserving Oracle licensing terms), Azure services for application tier, ExpressRoute for low-latency connectivity
 - **DR to Azure**: on-prem primary site, AVS as DR target using SRM or JetStream, Azure Blob for backup storage via Azure Backup
 - **Regulated Workloads**: AVS on Azure Government for FedRAMP/HIPAA compliance, NSX-T microsegmentation, Azure Policy for governance, Azure Sentinel for SIEM

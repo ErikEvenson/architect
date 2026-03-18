@@ -3,7 +3,7 @@
 ## Checklist
 
 - [ ] **[Critical]** Review and restrict Security Context Constraints (SCCs): avoid granting `anyuid` or `privileged` SCCs to application workloads
-- [ ] **[Critical]** Configure OAuth identity provider: LDAP, Active Directory, OIDC (Keycloak, Azure AD, Okta), GitHub, or HTPasswd for break-glass access
+- [ ] **[Critical]** Configure OAuth identity provider: LDAP, Active Directory, OIDC (Keycloak, Entra ID, Okta), GitHub, or HTPasswd for break-glass access
 - [ ] **[Critical]** Define RBAC strategy: ClusterRoles for platform operations, namespaced Roles for application teams, Groups synced from identity provider
 - [ ] **[Critical]** Enable pod security admission (PSA) labels per namespace: `restricted`, `baseline`, or `privileged` (enforces Kubernetes pod security standards)
 - [ ] **[Recommended]** Configure image signature verification and image policy (ImagePolicy admission, Sigstore/cosign integration)
@@ -30,7 +30,7 @@ Secret management is a persistent challenge. Kubernetes Secrets are base64-encod
 ## Common Decisions (ADR Triggers)
 
 - **SCC strategy**: Grant minimum SCCs per workload vs blanket `anyuid` for convenience. Create custom SCCs for specific workload requirements (e.g., allow `NET_BIND_SERVICE` capability without full `anyuid`). Use `oc adm policy who-can use scc/privileged` to audit access.
-- **Identity provider selection**: OIDC (Keycloak, Azure AD) is recommended for SSO integration and MFA. LDAP sync with Group objects enables automatic RBAC assignment. HTPasswd should only be used for break-glass admin access.
+- **Identity provider selection**: OIDC (Keycloak, Entra ID) is recommended for SSO integration and MFA. LDAP sync with Group objects enables automatic RBAC assignment. HTPasswd should only be used for break-glass admin access.
 - **Image security policy**: Block unsigned images vs allow with warnings. Quay Clair scanning vs Trivy operator vs ACS (Red Hat Advanced Cluster Security / StackRox). ACS provides runtime threat detection beyond build-time scanning.
 - **Secrets management approach**: Sealed Secrets (encrypts secrets for Git storage) vs External Secrets Operator (syncs from external vault) vs CSI Secrets Store Driver (mounts secrets as volumes). ESO with Vault is the most common enterprise pattern.
 - **Compliance framework**: CIS Benchmark (general best practices) vs NIST 800-53 (US government) vs PCI-DSS (payment card data) vs custom profiles. The Compliance Operator supports tailored profiles for organization-specific rules.
@@ -58,7 +58,7 @@ Secret management is a persistent challenge. Kubernetes Secrets are base64-encod
 
 ## Reference Architectures
 
-- **Enterprise multi-tenant security**: Azure AD OIDC with group sync, namespace-scoped Roles per team, default-deny NetworkPolicy, `restricted` SCC enforced, Quay with Clair scanning, ESO with HashiCorp Vault, Compliance Operator with CIS benchmark.
+- **Enterprise multi-tenant security**: Entra ID OIDC with group sync, namespace-scoped Roles per team, default-deny NetworkPolicy, `restricted` SCC enforced, Quay with Clair scanning, ESO with HashiCorp Vault, Compliance Operator with CIS benchmark.
 - **US Federal / FedRAMP**: FIPS mode enabled at install, NIST 800-53 compliance scans, ACS for runtime threat detection, audit logs forwarded to Splunk, etcd encryption enabled, signed images only, air-gapped deployment with mirror registry.
 - **Financial services (PCI-DSS)**: Cardholder data namespaces with `restricted` SCC and strict NetworkPolicy, Compliance Operator with PCI-DSS profile, audit logging to QRadar SIEM, secrets in Vault with automatic rotation, image scanning gates in CI/CD pipeline.
 - **Healthcare (HIPAA)**: Encryption at rest (ODF dm-crypt or cloud KMS), encryption in transit (service mesh mTLS), audit logging for all PHI access, RBAC with principle of least privilege, namespace isolation for PHI workloads, break-glass procedures documented.

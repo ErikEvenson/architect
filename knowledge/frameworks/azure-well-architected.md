@@ -51,7 +51,7 @@ Focuses on protecting the workload from threats, including data, identity, netwo
 
 ### Checklist
 
-- [ ] **[Critical]** Use Microsoft Entra ID (Azure AD) for identity management with conditional access policies and MFA
+- [ ] **[Critical]** Use Microsoft Entra ID (formerly Azure AD) for identity management with conditional access policies and MFA
 - [ ] **[Recommended]** Implement least-privilege access using Azure RBAC and Privileged Identity Management (PIM)
 - [ ] **[Recommended]** Segment networks using Virtual Networks, NSGs, and Azure Firewall with zero-trust principles
 - [ ] **[Critical]** Encrypt data at rest (Azure Storage Service Encryption, TDE for databases) and in transit (TLS 1.2+)

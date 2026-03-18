@@ -40,7 +40,7 @@ For air-gapped, regulated, or multi-cloud environments, Harbor is often the only
 
 - **Local database**: Zero dependencies, suitable for small teams. No SSO, users must manage separate credentials.
 - **LDAP/Active Directory**: Enterprise standard, centralizes user management. Configure `ldap_url`, `ldap_base_dn`, `ldap_search_filter`. Users authenticate with corporate credentials. Groups map to Harbor project roles.
-- **OIDC (Keycloak, Dex, Azure AD, Google)**: Modern SSO, supports MFA. Harbor acts as an OIDC client — configure `oidc_endpoint`, `client_id`, `client_secret`, `scope`. Groups claim maps to Harbor roles. Preferred for organizations already using an identity provider.
+- **OIDC (Keycloak, Dex, Entra ID, Google)**: Modern SSO, supports MFA. Harbor acts as an OIDC client — configure `oidc_endpoint`, `client_id`, `client_secret`, `scope`. Groups claim maps to Harbor roles. Preferred for organizations already using an identity provider.
 
 **Decision trigger:** Use OIDC if you have an identity provider. Use LDAP if AD is the corporate standard and no OIDC proxy exists. Use local DB only for POC or isolated environments.
 
@@ -106,7 +106,7 @@ Resources: 2 vCPU, 4 GB RAM, 100 GB disk
      (HA, replicated)         (session + job queue)
 
 TLS: cert-manager with Let's Encrypt or internal CA
-Auth: OIDC (Keycloak / Azure AD)
+Auth: OIDC (Keycloak / Entra ID)
 Scanning: Trivy (adapter runs as sidecar or separate deployment)
 Storage: MinIO cluster (4+ nodes, erasure coding) or AWS S3
 Ingress: nginx-ingress or Traefik with TLS passthrough

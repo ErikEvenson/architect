@@ -113,7 +113,7 @@ Organization Root
 | Provider | Tool | What It Provides |
 |----------|------|-----------------|
 | **AWS** | Control Tower + Account Factory | Automated account provisioning, guardrails, SSO |
-| **Azure** | Cloud Adoption Framework Landing Zones | Management groups, policy, deployment stacks (Blueprints deprecated July 2026), Hub-spoke networking |
+| **Azure** | Cloud Adoption Framework Landing Zones | Management groups, policy, deployment stacks (Azure Blueprints deprecated, replaced by Azure Deployment Stacks; verify current retirement date at docs.microsoft.com), Hub-spoke networking |
 | **GCP** | Cloud Foundation Toolkit | Organization, folders, projects, shared VPC |
 
 ### Account Separation Principles

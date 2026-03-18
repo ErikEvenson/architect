@@ -5,7 +5,7 @@
 - [ ] **[Critical]** Map every AWS service in use to the target cloud equivalent — identify gaps before migration planning begins
 - [ ] **[Critical]** Identify services with NO direct equivalent (Lambda, DynamoDB, Aurora Serverless) and document workaround strategy
 - [ ] **[Critical]** Validate S3 API compatibility layer (Swift s3api, Ceph RGW, MinIO) against actual S3 features used (versioning, lifecycle, events)
-- [ ] **[Critical]** Assess IAM/identity model differences (AWS IAM accounts vs OpenStack Keystone projects vs Azure AD tenants)
+- [ ] **[Critical]** Assess IAM/identity model differences (AWS IAM accounts vs OpenStack Keystone projects vs Entra ID (formerly Azure AD) tenants)
 - [ ] **[Critical]** Complete feature gap analysis for each mapped service with risk assessment and workaround documentation
 - [ ] **[Recommended]** Test API compatibility layers with production-like workloads, not just basic operations
 - [ ] **[Recommended]** Map monitoring and observability stack (CloudWatch → Prometheus/Grafana, X-Ray → Jaeger, CloudTrail → CADF)
@@ -108,7 +108,7 @@ OpenStack environments in particular require a "build vs buy" decision for many 
 | CloudFront | Azure Front Door / Azure CDN | Front Door includes WAF, global load balancing, and CDN. |
 | Route 53 | Azure DNS + Traffic Manager | Azure DNS for hosting. Traffic Manager for routing policies. |
 | CloudWatch | Azure Monitor | Metrics, logs (Log Analytics), alerts, Application Insights for APM. |
-| IAM | Azure AD (Entra ID) + RBAC | Different model: Azure AD for identity, RBAC for authorization, Managed Identities for service auth. |
+| IAM | Entra ID + RBAC | Different model: Entra ID for identity, RBAC for authorization, Managed Identities for service auth. |
 | SQS | Azure Queue Storage / Service Bus | Queue Storage for simple queues. Service Bus for advanced (topics, sessions, transactions). |
 | ECS/EKS | AKS / Container Instances | AKS for Kubernetes. Container Instances for serverless containers (like Fargate). |
 
@@ -143,7 +143,7 @@ OpenStack environments in particular require a "build vs buy" decision for many 
 
 **Azure-specific:**
 - **Cosmos DB** — Multi-model globally distributed DB. No direct equivalent. Closest: CockroachDB (SQL), MongoDB (document), Cassandra (wide-column).
-- **Azure AD B2C** — Customer identity platform. Alternatives: Auth0, Keycloak, AWS Cognito.
+- **Entra External ID (formerly Azure AD B2C)** — Customer identity platform. Alternatives: Auth0, Keycloak, AWS Cognito.
 - **Logic Apps** — Low-code integration workflows. Alternatives: Apache Airflow, n8n, Zapier (SaaS).
 
 **GCP-specific:**

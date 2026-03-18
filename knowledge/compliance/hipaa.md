@@ -429,7 +429,7 @@ The HIPAA Security Rule (45 CFR Part 160 and Subparts A and C of Part 164) estab
 
 | Control | AWS | Azure | GCP |
 |---------|-----|-------|-----|
-| Authentication | IAM, Cognito | Entra ID, Azure AD B2C | Identity Platform, Firebase Auth |
+| Authentication | IAM, Cognito | Entra ID, Entra External ID (formerly Azure AD B2C) | Identity Platform, Firebase Auth |
 | MFA methods | Virtual MFA, hardware tokens, FIDO2 | Authenticator app, FIDO2, phone | Google Authenticator, Titan keys, FIDO2 |
 | Certificate-based auth | IAM SSL/TLS client certs, Private CA | Entra certificate-based auth | mTLS, Certificate Authority Service |
 | API authentication | IAM Signature V4, Cognito tokens | Entra tokens, API Management | OAuth 2.0, API keys, IAM |

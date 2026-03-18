@@ -8,7 +8,7 @@
 - [ ] **[Recommended]** Configure worker types: PKI workers (trusted by controller via certificate) vs KMS workers (join via shared KMS), ingress workers vs egress workers
 - [ ] **[Recommended]** Design multi-hop worker topology for accessing private networks without VPN (ingress worker in DMZ -> egress worker in private subnet)
 - [ ] **[Recommended]** Plan session recording configuration: storage buckets (S3/MinIO), retention policies, and playback access controls
-- [ ] **[Critical]** Architect auth method integration: OIDC (Okta, Azure AD, Auth0), LDAP, password (dev only); map IdP groups to Boundary roles
+- [ ] **[Critical]** Architect auth method integration: OIDC (Okta, Entra ID, Auth0), LDAP, password (dev only); map IdP groups to Boundary roles
 - [ ] **[Recommended]** Define scope hierarchy: global -> org -> project; plan org/project structure aligned to team boundaries and access policies
 - [ ] **[Recommended]** Configure managed groups to auto-assign roles based on IdP group membership (eliminates manual role assignment)
 - [ ] **[Recommended]** Design host catalog strategy: static (manually registered hosts), dynamic (AWS, Azure, GCP plugin-based discovery), or Consul-based
@@ -21,7 +21,7 @@ Boundary implements identity-based access to infrastructure, replacing network-b
 
 ## License
 
-HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. IBM completed its acquisition of HashiCorp in late 2024, which may affect product direction, licensing terms, and commercial offerings over time. Community forks under MPL 2.0 exist for organizations requiring open-source licensing: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms and IBM's product roadmap for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 
@@ -38,7 +38,7 @@ HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The 
 ```
 [User (Browser/CLI/Desktop)]
         |
-  [OIDC Authentication (Okta/Azure AD)]
+  [OIDC Authentication (Okta/Entra ID)]
         |
   [Boundary Controller (HCP or self-managed)]
   - AuthN/AuthZ decisions

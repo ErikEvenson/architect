@@ -10,7 +10,7 @@
 - [ ] **[Optional]** Is Azure Monitor Workbooks used to create shared, interactive dashboards combining metrics, logs, and parameters for operational visibility?
 - [ ] **[Recommended]** Is Network Watcher enabled in every region with NSG flow logs (version 2) streaming to Log Analytics for traffic analytics and anomaly detection?
 - [ ] **[Optional]** Is Connection Monitor configured to continuously test connectivity between Azure VMs, on-premises endpoints, and external URLs with latency and packet-loss thresholds?
-- [ ] **[Recommended]** Is Microsoft Sentinel (SIEM) deployed with data connectors for Azure AD sign-in logs, Azure Activity, Microsoft 365, and threat intelligence feeds?
+- [ ] **[Recommended]** Is Microsoft Sentinel (SIEM) deployed with data connectors for Entra ID (formerly Azure AD) sign-in logs, Azure Activity, Microsoft 365, and threat intelligence feeds?
 - [ ] **[Optional]** Are Kusto Query Language (KQL) queries saved as functions in the workspace for reusable operational and security investigations?
 - [ ] **[Recommended]** Is cost management for monitoring configured -- data collection rules (DCRs) filtering unnecessary logs, ingestion caps on Log Analytics, and daily caps on Application Insights?
 - [ ] **[Optional]** Are Azure Dashboards configured for executive and operational views, pinning key metrics from Azure Monitor, Application Insights, and Resource Health?

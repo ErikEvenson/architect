@@ -2,7 +2,7 @@
 
 ## Checklist
 
-- [ ] **[Critical]** Is Microsoft Entra ID (Azure AD) configured as the identity provider with Conditional Access policies enforcing MFA, device compliance, and location-based access?
+- [ ] **[Critical]** Is Microsoft Entra ID (formerly Azure AD) configured as the identity provider with Conditional Access policies enforcing MFA, device compliance, and location-based access?
 - [ ] **[Critical]** Are managed identities (system-assigned or user-assigned) used for Azure resource-to-resource authentication instead of service principal secrets?
 - [ ] **[Critical]** Is Azure Key Vault deployed for secret, key, and certificate management, with RBAC-based access control (not legacy access policies)?
 - [ ] **[Critical]** Is Key Vault configured with soft-delete and purge protection enabled to prevent accidental or malicious secret deletion?
