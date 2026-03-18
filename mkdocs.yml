@@ -72,6 +72,7 @@ nav:
     - Data Classification: general/data-classification.md
     - Unsolicited Bid Strategy: general/unsolicited-bid-strategy.md
     - CI/CD Pipeline Design: general/ci-cd.md
+    - Local Development Environments: general/local-development-environments.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -92,6 +93,7 @@ nav:
     - CDK: providers/aws/cdk.md
     - Outposts: providers/aws/outposts.md
     - Snow Family: providers/aws/snow-family.md
+    - LocalStack: providers/aws/localstack.md
     - Migration Services: providers/aws/migration-services.md
   - Azure:
     - Networking: providers/azure/networking.md
