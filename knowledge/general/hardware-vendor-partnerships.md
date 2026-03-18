@@ -100,6 +100,40 @@ Platform migration decisions are constrained by these partnerships. A VxRail env
 - **Manual process:** Download firmware from vendor support site, schedule maintenance window, update via BMC or boot media. Highest effort but maximum control. Common for Supermicro and uncertified configurations.
 - Firmware drift (different firmware versions across cluster nodes) is a leading cause of intermittent hardware issues. Integrated lifecycle management tools prevent drift by enforcing consistent versions.
 
+## Reference Links
+
+### Compatibility Guides and HCLs
+
+- [Broadcom/VMware Compatibility Guide](https://compatibilityguide.broadcom.com/) — unified HCL for all VMware products (replaces legacy vmware.com HCL)
+- [Nutanix Hardware Platforms](https://www.nutanix.com/products/hardware-platforms) — supported NX, OEM, and partner platforms
+- [Nutanix Third-Party Hardware Compatibility Lists](https://portal.nutanix.com/page/documents/list?type=compatibilityList) — per-vendor firmware and hardware compatibility
+- [Nutanix Compatibility and Interoperability Matrix](https://portal.nutanix.com/page/documents/compatibility-interoperability-matrix/software) — software compatibility across AOS, AHV, and hypervisors
+- [HPE VMware Support and Certification Matrix](https://www.hpe.com/us/en/collaterals/collateral.a50010842enw.html) — ProLiant models certified for vSphere
+
+### Dell + VMware
+
+- [Dell vSAN Ready Nodes](https://www.dell.com/en-us/shop/ipovw/virtual-san-ready-nodes) — pre-configured PowerEdge servers certified for vSAN
+- [Dell vSAN Getting Started Guide](https://www.dell.com/support/manuals/en-us/vmware-vsan-poweredge/vsan_gsg_pub/) — deployment guide for vSAN on PowerEdge
+- [Dell vSAN Ready Node Firmware Catalog](https://www.dell.com/support/kbdoc/en-us/000183111/firmware-catalog-for-dell-emc-s-vsan-ready-nodes) — certified firmware versions for vLCM
+
+### Dell + Nutanix
+
+- [Dell XC HCI Solutions for Nutanix](https://www.dell.com/en-us/shop/storage-servers-and-networking-for-business/sf/xc-family) — Dell XC series appliances
+- [Nutanix on Dell](https://www.nutanix.com/dell) — partnership overview and certified configurations
+- [Nutanix Dell PowerEdge Compatibility List](https://portal.nutanix.com/page/documents/list?type=compatibilityList&filterKey=Hardware+Generation&filterVal=Dell+PowerEdge) — certified Dell PowerEdge models
+
+### HPE
+
+- [HPE and VMware Alliance](https://www.hpe.com/us/en/alliance.html) — partnership overview and certified solutions
+- [HPE Custom ESXi Images](https://vibsdepot.hpe.com/customimages/Valid-vLCM-Combos.pdf) — valid vLCM combinations for ProLiant
+
+### Lenovo
+
+- [Lenovo ThinkAgile HX Series for Nutanix](https://www.lenovo.com/us/en/servers-storage/sdi/thinkagile-hx-series/) — HX certified nodes and appliances
+- [Lenovo ThinkAgile HX on Lenovo Press](https://lenovopress.lenovo.com/servers/thinkagile/hx-series) — product guides and best recipes
+- [Nutanix on Lenovo](https://www.nutanix.com/lenovo) — partnership overview
+- [Lenovo ThinkAgile Converged Solution for VMware](https://lenovopress.lenovo.com/lp2287-lenovo-thinkagile-converged-solution-for-vmware-v4) — VX series product guide
+
 ## See Also
 
 - [hardware-sizing.md](hardware-sizing.md) — physical server specifications, CPU/RAM/disk selection, and reference architectures per role
