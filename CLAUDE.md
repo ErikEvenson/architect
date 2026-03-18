@@ -62,10 +62,13 @@ For architecture design sessions, read `knowledge/WORKFLOW.md` first.
 ### Knowledge Library Maintenance
 
 - **Checklists are dynamically generated.** Never rely on a hardcoded list of knowledge categories. At the start of each session, scan `knowledge/` to discover ALL available files. New knowledge files are added regularly.
-- **After every session, run a retrospective** (Step 10 in WORKFLOW.md). Identify any topics that came up during the session that no knowledge file covers. Create GitHub issues labeled `knowledge-gap` for each.
+- **After every session, run a retrospective** (Step 11 in WORKFLOW.md). Identify any topics that came up during the session that no knowledge file covers. Create GitHub issues labeled `knowledge-gap` for each.
 - **When adding a new knowledge file**, update the WORKFLOW.md Category Coverage Gate if the new file represents a conditional category (e.g., "include when VDI workloads are in scope").
 - **Every knowledge file must follow the standard format**: Scope, Checklist with [Critical]/[Recommended]/[Optional] tags, Why This Matters, Common Decisions (ADR Triggers). See existing files for examples.
 - **Cross-reference knowledge files during design.** When a component is added to the architecture, find and load the relevant knowledge file(s). Do not rely solely on general knowledge — the knowledge library contains specific checklist items that prevent common mistakes.
+- **Use knowledge files to generate clarifying questions.** Before asking the user questions, load relevant knowledge files and use their [Critical] checklist items to formulate questions. The knowledge library is the primary source for what to ask — not general knowledge.
+- **Use knowledge files when creating or updating artifacts.** Every artifact (NBIE, Solution Design, Discovery Questions, etc.) should be validated against the relevant knowledge file checklists. Load the files, check the [Critical] items, and ensure the artifact addresses them or flags them as gaps.
+- **Load knowledge files proactively at session start.** When beginning work on a project, identify all relevant knowledge files based on the engagement's technologies, patterns, and concerns. Load them before creating any artifacts or asking any questions.
 - **Update mkdocs.yml nav when adding knowledge files.** The GitHub Pages sidebar is manually configured in `mkdocs.yml`. Every new knowledge file must be added to the `nav:` section. Run `scripts/check-nav.sh` to verify no files are missing.
 
 ## Default Language

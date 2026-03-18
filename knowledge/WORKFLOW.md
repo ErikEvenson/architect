@@ -174,7 +174,7 @@ Generate diagrams at appropriate detail levels:
 
 After the architecture is specified, plan the Infrastructure as Code:
 
-1. **Ask which IaC tool(s)** — this is a user decision, not assumed. Options vary by provider (see `knowledge/general/iac-planning.md`). Create an ADR for the choice.
+1. **Ask which IaC tool(s)** — this is a user decision, not assumed. Options vary by provider (see `general/iac-planning.md`). Create an ADR for the choice.
 2. **Define module structure** — group resources by tier, service, or environment.
 3. **Define state management** — remote backend, locking, environment separation.
 4. **Create resource inventory** — list every resource to be provisioned with:
@@ -192,7 +192,7 @@ Create supporting documents:
 - **Cost Estimate** — itemized cost breakdown based on the architecture decisions
 - **Architecture Document** — if requested, summarizing all decisions (can use `POST /templates/render` for starting structure)
 
-### Step 8: Well-Architected Review
+### Step 9: Well-Architected Review
 
 Run the relevant Well-Architected Framework checklist as a final review pass:
 - Load `knowledge/frameworks/{provider}-well-architected.md`
@@ -200,7 +200,7 @@ Run the relevant Well-Architected Framework checklist as a final review pass:
 - Track any findings as questions or ADRs
 - This is a validation step, not a design step — it should confirm the design is sound
 
-### Step 9: Generate Design Document
+### Step 10: Generate Design Document
 
 Create a comprehensive design document artifact that compiles all project data:
 - Executive summary (project scope, providers, pattern, cost)
@@ -258,7 +258,7 @@ The design document should be auto-generated from the API data — not written m
 - Summary: X of Y Critical items addressed, Z deferred
 - Fetch via `GET /versions/{id}/coverage`
 
-### Step 10: Retrospective
+### Step 11: Retrospective
 
 After the session:
 - Note any knowledge gaps discovered during the session

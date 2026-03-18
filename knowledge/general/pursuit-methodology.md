@@ -103,12 +103,16 @@ For infrastructure transformation pursuits, artifacts should be created in this 
    |       |
 3a. Discovery Questions    3b. Proposed Solution Design
    (what we need to know)     (what we propose, with confidence levels)
-       |
-4. Summary
-   (derives from all above -- written last, read first)
+       |                           |
+   +---+---------------------------+
+   |                               |
+4. Summary                    5. NBIE (Non-Binding Indicative Estimate)
+   (written last, read first)     (internal: effort, roles, hours, timeline)
 ```
 
-The Summary should be the last artifact created but the first one the customer reads. It should be generatable from the other artifacts without independent data.
+The Summary should be the last customer-facing artifact created but the first one the customer reads. It should be generatable from the other artifacts without independent data.
+
+The NBIE is an internal artifact that derives effort estimates from the Solution Design and Inventory Data. It is never shared with the customer. See `general/nbie.md` for structure and methodology.
 
 ## Confidence Level Definitions
 
@@ -133,4 +137,5 @@ The Summary should be the last artifact created but the first one the customer r
 - `general/inventory-analysis.md` -- Infrastructure inventory analysis methodology
 - `general/managed-services-scoping.md` -- Managed services commercial and operational scoping
 - `general/capacity-planning.md` -- Capacity planning methodology
+- `general/nbie.md` -- Non-Binding Indicative Estimate structure and methodology
 - `general/multi-site-migration-sequencing.md` -- Multi-site migration wave planning
