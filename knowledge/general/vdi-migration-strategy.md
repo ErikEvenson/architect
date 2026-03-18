@@ -375,6 +375,15 @@ Nutanix sold its Frame DaaS business to Dizzion (via LLR Partners) in June 2023.
 - **Peripheral and printing strategy** — universal drivers vs vendor-specific, USB redirection scope, compatibility validation plan
 - **Migration sequencing** — which user groups migrate first, rollback plan per wave, coexistence duration
 
+## Reference Links
+
+- [Omnissa Horizon Documentation](https://docs.omnissa.com/)
+- [Citrix Virtual Apps and Desktops](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops)
+- [Azure Virtual Desktop](https://learn.microsoft.com/en-us/azure/virtual-desktop/)
+- [NVIDIA vGPU Software](https://www.nvidia.com/en-us/data-center/virtual-gpu-technology/)
+- [Login VSI](https://www.loginvsi.com/)
+- [Lakeside SysTrack](https://www.lakesidesoftware.com/)
+
 ## See Also
 
 - `general/workload-migration.md` — General migration strategy, wave planning, cutover procedures

@@ -307,6 +307,13 @@ Post-Migration:
   [ ] Documentation updated with new platform details
 ```
 
+## Reference Links
+
+- [F5 BIG-IP VE Compatibility](https://my.f5.com/manage/s/article/K9476)
+- [Infoblox vNIOS Deployment](https://docs.infoblox.com/)
+- [Palo Alto VM-Series Compatibility](https://docs.paloaltonetworks.com/compatibility-matrix/vm-series-firewalls)
+- [Cisco ISE Installation Guide](https://www.cisco.com/c/en/us/support/security/identity-services-engine/series.html)
+
 ## See Also
 
 - `general/workload-migration.md` -- General workload migration strategy and wave planning

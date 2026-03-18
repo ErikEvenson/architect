@@ -496,6 +496,12 @@ SOC 2 (System and Organization Controls 2) is an auditing framework developed by
 - **Logging and monitoring architecture** — centralized logging, retention policy, alerting thresholds, anomaly detection
 - **Business continuity and DR** — BCP/DR testing frequency, test documentation, recovery time validation
 
+## Reference Links
+
+- [AICPA SOC 2](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2) — official AICPA SOC 2 reporting framework and Trust Service Criteria
+- [AWS Artifact](https://aws.amazon.com/artifact/) — download AWS compliance reports including SOC 2 Type II
+- [Azure Service Trust Portal](https://servicetrust.microsoft.com/) — access Azure compliance reports including SOC 2 Type II
+
 ## See Also
 
 - `general/security.md` — General security controls and architecture patterns

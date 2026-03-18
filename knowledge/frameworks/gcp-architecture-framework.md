@@ -237,6 +237,11 @@ Performance is a feature that directly affects user satisfaction and business ou
 - **Reliability architecture** — regional vs multi-regional, Chaos Studio adoption, SLO-based alerting
 - **Architecture review cadence** — framework assessment frequency, risk-based prioritization of improvements
 
+## Reference Links
+
+- [GCP Architecture Framework](https://cloud.google.com/architecture/framework)
+- [GCP Architecture Center](https://cloud.google.com/architecture)
+
 ## See Also
 
 - `frameworks/aws-well-architected.md` — AWS Well-Architected Framework (six pillars)

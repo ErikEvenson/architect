@@ -203,6 +203,12 @@ Performance directly impacts user experience and business outcomes. Slow applica
 - **Performance baseline** — Azure Load Testing adoption, autoscale configuration, CDN strategy
 - **Well-Architected Review cadence** — Azure Advisor integration, assessment frequency, remediation tracking
 
+## Reference Links
+
+- [Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/)
+- [Azure Well-Architected Review](https://learn.microsoft.com/en-us/assessments/azure-architecture-review/)
+- [Azure Advisor](https://learn.microsoft.com/en-us/azure/advisor/)
+
 ## See Also
 
 - `frameworks/aws-well-architected.md` — AWS Well-Architected Framework (six pillars)

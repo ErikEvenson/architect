@@ -61,6 +61,13 @@ The licensing trap is the third common failure. Azure Stack HCI includes Azure h
 - **Windows licensing strategy** -- procure new licenses, transfer existing Datacenter licenses, or use BYOL; engage Microsoft licensing specialist before migration
 - **Operational training investment** -- retrain HCI operations team on Nutanix Prism vs. hire Nutanix-skilled staff vs. outsource to managed services provider; timeline and cost implications
 
+## Reference Links
+
+- [Azure Local / Azure Stack HCI](https://learn.microsoft.com/en-us/azure-stack/hci/) -- Microsoft documentation for Azure Stack HCI (Azure Local) deployment, management, and operations
+- [Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/) -- Microsoft documentation for Azure Arc hybrid and multi-cloud management
+- [Windows Admin Center](https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/overview) -- Microsoft documentation for Windows Admin Center management tool
+- [Nutanix Move Hyper-V Support](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Move-v5_0:Nutanix-Move-v5_0) -- Nutanix Move documentation including Hyper-V source support and prerequisites
+
 ## See Also
 
 - `providers/azure/azure-local.md` -- Azure Stack HCI (Azure Local) architecture and operations

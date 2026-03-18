@@ -240,6 +240,12 @@ Cloud computing is not inherently green; it simply shifts the environmental impa
 - **Sustainability approach** — instance family selection for energy efficiency, right-sizing for carbon reduction
 - **Well-Architected Review cadence** — how often to conduct reviews, remediation prioritization
 
+## Reference Links
+
+- [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
+- [AWS Well-Architected Tool](https://aws.amazon.com/well-architected-tool/)
+- [AWS Well-Architected Labs](https://www.wellarchitectedlabs.com/)
+
 ## See Also
 
 - `frameworks/azure-well-architected.md` — Azure Well-Architected Framework (five pillars)

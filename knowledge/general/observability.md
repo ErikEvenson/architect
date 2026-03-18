@@ -94,6 +94,16 @@ Observability also has a significant cost dimension that is frequently underesti
 
 **Decision drivers:** Organizational maturity (SLOs require cultural adoption, not just tooling), number of services to track, whether SLOs are customer-facing commitments (SLAs) or internal targets, and team willingness to enforce error budget policies.
 
+## Reference Links
+
+- [OpenTelemetry](https://opentelemetry.io/)
+- [Prometheus](https://prometheus.io/)
+- [Grafana](https://grafana.com/)
+- [Jaeger](https://www.jaegertracing.io/)
+- [Fluent Bit](https://fluentbit.io/)
+- [PagerDuty](https://www.pagerduty.com/)
+- [OpenSLO](https://openslo.com/)
+
 ## See Also
 
 - `providers/aws/observability.md` — AWS CloudWatch, X-Ray, and logging configuration

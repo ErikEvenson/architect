@@ -51,6 +51,14 @@ Service-managed users are the simplest (SSH keys or passwords stored in Transfer
 ### Discovery approach: agentless (vCenter connector) vs. agent-based [Recommended]
 Agentless discovery via the Application Discovery Service vCenter connector collects VM inventory, CPU/memory/disk configuration, and utilization metrics without installing anything on guest operating systems. Agent-based discovery installs the AWS Discovery Agent on each server and additionally captures running processes, network connections, and inter-server dependencies. Agentless is faster to deploy and less intrusive but cannot map application-level dependencies. Agent-based provides the network dependency data needed to group servers into migration waves. Document the scope of the migration, whether dependency mapping is required, and whether the organization permits agent installation on production servers.
 
+## Reference Links
+
+- [AWS Application Migration Service](https://docs.aws.amazon.com/mgn/)
+- [AWS DataSync](https://docs.aws.amazon.com/datasync/)
+- [AWS Transfer Family](https://docs.aws.amazon.com/transfer/)
+- [AWS Migration Hub](https://docs.aws.amazon.com/migrationhub/)
+- [AWS Application Discovery Service](https://docs.aws.amazon.com/application-discovery/)
+
 ## See Also
 
 - `general/workload-migration.md` — Migration strategy patterns (6 Rs), wave planning, cutover coordination

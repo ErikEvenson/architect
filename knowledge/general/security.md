@@ -94,6 +94,14 @@ A well-designed security architecture assumes breach (zero trust), limits blast 
 
 **Decision drivers:** Number of services (micro-segmentation benefits increase with service count), compliance requirements for network isolation, team familiarity with service mesh operations, and whether east-west traffic poses a significant threat in the environment.
 
+## Reference Links
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [Trivy](https://trivy.dev/)
+- [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
+- [HashiCorp Vault](https://www.vaultproject.io/)
+- [Snyk](https://snyk.io/)
+
 ## See Also
 
 - `providers/aws/iam.md` — AWS IAM roles, policies, and access management

@@ -69,6 +69,11 @@ The correct approach: Tier 0 is the LAST thing to fully migrate, but the FIRST t
 - **PKI migration approach** -- migrate existing CA hierarchy vs. rebuild on target. Migration preserves certificate chain; rebuild provides a clean start but requires re-issuance of all certificates.
 - **Tier 0 migration timing** -- migrate as the final wave (safest), migrate in parallel with late waves (faster), or defer to a separate Phase 3 project (cleanest separation of risk). The decision should be owned by the security team.
 
+## Reference Links
+
+- [Microsoft Tier 0 Model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model)
+- [Microsoft AD Forest Recovery](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-guide)
+
 ## See Also
 
 - `general/security.md` -- Security architecture and controls

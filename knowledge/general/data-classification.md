@@ -53,6 +53,13 @@ Cross-classification data flows are where most architectural mistakes happen. A 
 - **Encryption key management per classification** -- platform-managed keys vs. customer-managed keys (CMEK) vs. customer-supplied keys (CSEK) vs. HSM-backed keys. Higher classification levels typically require more customer control over keys, but customer-managed keys increase operational complexity (key rotation, backup, disaster recovery).
 - **Cross-boundary data flow governance** -- architect-enforced (data flows are reviewed during design) vs. runtime-enforced (DLP and network policies block unauthorized flows) vs. both. Architect-enforced catches flows early but misses runtime surprises; runtime-enforced catches everything but generates false positives. Most mature organizations use both.
 
+## Reference Links
+
+- [NIST SP 800-60](https://csrc.nist.gov/publications/detail/sp/800-60/vol-1-rev-1/final)
+- [Microsoft Purview](https://learn.microsoft.com/en-us/purview/)
+- [AWS Macie](https://aws.amazon.com/macie/)
+- [Google Cloud DLP](https://cloud.google.com/sensitive-data-protection)
+
 ## See Also
 
 - `general/data.md` -- General data architecture and storage patterns

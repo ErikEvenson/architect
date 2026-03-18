@@ -90,6 +90,12 @@ The second most common mistake is attempting conversion on a cluster with vDS-co
 - **VirtIO driver pre-installation method** -- deploy via SCCM/Intune/Ansible before conversion vs. rely on the conversion process to inject drivers; pre-installation is strongly recommended for Windows VMs
 - **vCenter decommission timing** -- decommission vCenter immediately after last cluster conversion vs. maintain for a grace period; license cost vs. rollback safety
 
+## Reference Links
+
+- [Nutanix AOS Release Notes](https://portal.nutanix.com/page/documents/list?type=software)
+- [Nutanix NCC Documentation](https://portal.nutanix.com/page/documents/list?type=software&filterKey=software&filterVal=Nutanix%20Cluster%20Check)
+- [Nutanix Compatibility Matrix](https://portal.nutanix.com/page/documents/compatibility-interoperability-matrix/software)
+
 ## See Also
 
 - `providers/nutanix/migration-tools.md` -- VM-by-VM migration using Nutanix Move, Veeam, Zerto

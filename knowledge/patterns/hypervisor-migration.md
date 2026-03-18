@@ -337,6 +337,13 @@ closed:              Reclaim VMware licenses
 - **Steady state:** 20-50 VMs per wave (depends on network bandwidth for replication and team capacity for validation)
 - **Constraint:** Total migration bandwidth — each VM's disk must be fully replicated. A 500 GB VM over a 1 Gbps link takes ~70 minutes for initial seed. Plan wave sizes against available bandwidth and cutover window duration.
 
+## Reference Links
+
+- [Nutanix Move](https://www.nutanix.com/products/move)
+- [virt-v2v Documentation](https://libguestfs.org/virt-v2v.1.html)
+- [VirtIO Win Drivers](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/)
+- [Broadcom/VMware HCL](https://compatibilityguide.broadcom.com/)
+
 ## See Also
 
 - `general/workload-migration.md` — Cloud migration strategy and the 6 Rs framework

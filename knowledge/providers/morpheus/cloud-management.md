@@ -39,6 +39,11 @@ A cloud management platform sits at the control plane of the entire infrastructu
 - **Agent vs agentless management** -- Morpheus agent on managed VMs (richer monitoring, remote execution) vs agentless (less intrusion, relies on cloud APIs and SSH/WinRM)
 - **Load balancer integration** -- Morpheus-managed F5/NSX/AVI profiles vs external LB management with Morpheus handling only VM provisioning
 
+## Reference Links
+
+- [Morpheus Documentation](https://docs.morpheusdata.com/)
+- [Morpheus Supported Integrations](https://morpheusdata.com/integrations/)
+
 ## See Also
 
 - `general/compute.md` -- general compute architecture patterns

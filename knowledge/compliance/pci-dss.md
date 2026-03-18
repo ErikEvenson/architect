@@ -397,6 +397,13 @@ PCI DSS compliance in the cloud requires understanding the shared responsibility
 - **Cloud provider responsibility mapping** — shared responsibility documentation per service, AOC review process
 - **Penetration testing strategy** — application and network pen test scope, frequency, segmentation validation
 
+## Reference Links
+
+- [PCI SSC Document Library](https://www.pcisecuritystandards.org/document_library/) — official PCI DSS standards, SAQs, ROC templates, and supporting documents
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) — top 10 web application security risks referenced by PCI DSS Requirement 6
+- [AWS PCI DSS](https://aws.amazon.com/compliance/pci-dss-level-1-faqs/) — AWS PCI DSS Level 1 compliance and shared responsibility guidance
+- [Azure PCI DSS](https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-pci-dss) — Azure PCI DSS compliance documentation and attestation of compliance
+
 ## See Also
 
 - `general/security.md` — General security controls and encryption architecture

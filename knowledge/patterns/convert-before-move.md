@@ -71,6 +71,11 @@ The second most common failure: **attempting in-place conversion on clusters wit
 - **Maintenance window scheduling** -- at source or target; coordinate with change management
 - **VirtIO driver deployment** -- pre-install on all Windows VMs before conversion; requires access and a deployment method (SCCM, manual, or Nutanix Guest Tools)
 
+## Reference Links
+
+- [Nutanix In-Place Conversion Guide](https://portal.nutanix.com/page/documents/list?type=software) -- Nutanix documentation for in-place hypervisor conversion from ESXi to AHV
+- [Nutanix VirtIO Drivers](https://portal.nutanix.com/page/downloads?product=virtio) -- Nutanix VirtIO driver downloads required for Windows VMs before hypervisor conversion
+
 ## See Also
 
 - `providers/nutanix/in-place-conversion.md` -- In-place conversion prerequisites and process

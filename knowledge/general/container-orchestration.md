@@ -43,6 +43,16 @@ A common failure pattern is treating container orchestration as purely an infras
 - **Persistent storage strategy** — in-cluster stateful workloads vs external managed services
 - **GitOps adoption** — ArgoCD vs Flux vs imperative deployment pipelines
 
+## Reference Links
+
+- [Kubernetes](https://kubernetes.io/docs/)
+- [containerd](https://containerd.io/)
+- [CRI-O](https://cri-o.io/)
+- [Calico](https://www.tigera.io/project-calico/)
+- [Cilium](https://cilium.io/)
+- [Karpenter](https://karpenter.sh/)
+- [Harbor](https://goharbor.io/)
+
 ## See Also
 
 - `providers/kubernetes/compute.md` — Kubernetes workload scheduling, pod design, and node management

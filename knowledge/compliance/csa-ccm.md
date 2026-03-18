@@ -1047,6 +1047,12 @@ The following architectural decisions should be captured as Architecture Decisio
 - [ ] **[Critical]** Manage encryption keys centrally
 - [ ] **[Critical]** Verify encryption compliance through endpoint management tools
 
+## Reference Links
+
+- [CSA CCM Download](https://cloudsecurityalliance.org/research/cloud-controls-matrix/) — download the Cloud Controls Matrix spreadsheet and supporting documentation
+- [CSA STAR Registry](https://cloudsecurityalliance.org/star/registry/) — public registry of cloud provider security assessments and STAR certifications
+- [CSA CAIQ](https://cloudsecurityalliance.org/research/working-groups/consensus-assessments/) — Consensus Assessments Initiative Questionnaire for cloud security self-assessments
+
 ## See Also
 
 - `general/security.md` — General security controls and architecture patterns

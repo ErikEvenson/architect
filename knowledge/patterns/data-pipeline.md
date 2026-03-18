@@ -214,6 +214,15 @@ Data pipelines are the backbone of analytics, reporting, and downstream data con
 - **Dead Letter Queue**: isolate failed records for investigation
 - **Backpressure**: consumer signals producer to slow down
 
+## Reference Links
+
+- [Apache Kafka](https://kafka.apache.org/) -- Distributed event streaming platform for high-throughput data ingestion and pub/sub messaging
+- [Apache Spark](https://spark.apache.org/) -- Unified analytics engine for large-scale batch and streaming data processing
+- [Apache Airflow](https://airflow.apache.org/) -- Workflow orchestration platform for authoring, scheduling, and monitoring data pipelines
+- [dbt](https://www.getdbt.com/) -- Data transformation tool for analytics engineering using SQL-based ELT workflows
+- [Apache Flink](https://flink.apache.org/) -- Stream processing framework for stateful computations over data streams
+- [Debezium](https://debezium.io/) -- Change data capture platform for streaming database changes into event logs
+
 ## See Also
 
 - `patterns/event-driven.md` — Event-driven architecture patterns including streaming and messaging

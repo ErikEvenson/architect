@@ -39,6 +39,15 @@ Traffic management features (canary deployments, circuit breaking, retries) are 
 - **Multi-cluster mesh topology** -- flat network with shared control plane is simplest but requires cross-cluster network connectivity; federated control planes with service mirroring work across network boundaries but add latency and configuration complexity
 - **Progressive delivery integration** -- mesh-native traffic splitting (VirtualService weights) vs. dedicated progressive delivery controller (Flagger, Argo Rollouts) that automates canary analysis and rollback; dedicated controllers add another component but reduce manual error
 
+## Reference Links
+
+- [Istio](https://istio.io/)
+- [Linkerd](https://linkerd.io/)
+- [Cilium](https://cilium.io/)
+- [Consul Connect](https://developer.hashicorp.com/consul/docs/connect)
+- [Gateway API](https://gateway-api.sigs.k8s.io/)
+- [Envoy Proxy](https://www.envoyproxy.io/)
+
 ## See Also
 
 - `general/networking.md` -- Kubernetes networking, CNI selection, NetworkPolicy

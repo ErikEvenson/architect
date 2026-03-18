@@ -219,6 +219,13 @@ Microservices enable independent deployment, scaling, and team ownership, but th
 - **Event Sourcing**: append-only event log as source of truth
 - **Strangler Fig**: incrementally migrate from monolith
 
+## Reference Links
+
+- [gRPC](https://grpc.io/) -- High-performance RPC framework for synchronous inter-service communication using Protocol Buffers
+- [OpenAPI](https://www.openapis.org/) -- Specification for describing RESTful API contracts and generating client/server code
+- [AsyncAPI](https://www.asyncapi.com/) -- Specification for defining asynchronous messaging APIs and event-driven interfaces
+- [Dapr](https://dapr.io/) -- Distributed application runtime providing building blocks for microservice communication, state management, and pub/sub
+
 ## See Also
 
 - `patterns/event-driven.md` — Event-driven communication patterns between microservices

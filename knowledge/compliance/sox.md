@@ -299,6 +299,12 @@ Financial Application
 - **Evidence collection** — manual evidence gathering vs automated GRC platform (ServiceNow GRC, AuditBoard)
 - **Cloud SOC 1 review process** — who reviews, when, how CUECs are tracked and implemented
 
+## Reference Links
+
+- [SEC Sarbanes-Oxley](https://www.sec.gov/about/laws/soa2002.pdf) — full text of the Sarbanes-Oxley Act of 2002
+- [PCAOB Standards](https://pcaobus.org/oversight/standards) — auditing standards for SOX Section 404 attestation engagements
+- [COSO Framework](https://www.coso.org/guidance-on-ic) — internal control framework widely used to structure SOX compliance programs
+
 ## See Also
 
 - `compliance/soc2.md` — SOC 2 Trust Service Criteria (complementary to SOX ITGC controls)

@@ -185,6 +185,12 @@ For large-scale migrations (500+ VMs), deploy multiple Move appliances with sepa
 | Move appliance | AWS API | TCP 443 | HTTPS | EC2/EBS API calls |
 | Browser | Move appliance | TCP 8443 | HTTPS | Move web console |
 
+## Reference Links
+
+- [Nutanix Move Documentation](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Move-v5_0:Nutanix-Move-v5_0)
+- [Nutanix VirtIO Drivers](https://portal.nutanix.com/page/downloads?product=virtio)
+- [Nutanix Compatibility Matrix](https://portal.nutanix.com/page/documents/compatibility-interoperability-matrix/software)
+
 ## See Also
 
 - `general/workload-migration.md` -- general workload migration patterns

@@ -36,6 +36,14 @@ Database migrations are among the highest-risk infrastructure operations. Data l
 - **Rollback point-of-no-return** — when rollback becomes impossible (e.g., after writes to new schema), contingency plan beyond that point
 - **Engine change implications** — SQL dialect differences, transaction isolation behavior, index types, JSON/array support, vendor-specific features
 
+## Reference Links
+
+- [AWS DMS](https://docs.aws.amazon.com/dms/)
+- [Azure Database Migration Service](https://learn.microsoft.com/en-us/azure/dms/)
+- [pgloader](https://pgloader.io/)
+- [Flyway](https://flywaydb.org/)
+- [Liquibase](https://www.liquibase.com/)
+
 ## See Also
 
 - [data-migration-tools.md](data-migration-tools.md) -- specific tools for data transfer (rclone, pg_dump, AWS DMS)

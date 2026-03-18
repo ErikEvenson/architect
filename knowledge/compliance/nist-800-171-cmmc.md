@@ -269,6 +269,12 @@ AWS GovCloud (US)
 - **CMMC assessment scope** — which systems, Level 1 vs Level 2 vs Level 3
 - **SSP and POA&M ownership** — who maintains, review cadence, assessment preparation
 
+## Reference Links
+
+- [NIST SP 800-171 Rev 2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final) — security requirements for protecting CUI in non-federal systems (current CMMC Level 2 reference)
+- [NIST SP 800-88 Media Sanitization](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final) — guidelines for media sanitization before disposal or reuse
+- [CMMC Official Site](https://dodcio.defense.gov/cmmc/) — DoD CMMC program information, assessment guides, and rulemaking updates
+
 ## See Also
 
 - `compliance/fedramp.md` — FedRAMP authorization process and controls

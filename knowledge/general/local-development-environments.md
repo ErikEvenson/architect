@@ -84,6 +84,16 @@ Dev/prod parity failures are a leading cause of production incidents. When devel
 
 **Recommendation:** Use dotenv files with a committed `.env.example` template for most projects. Generate local database and cache credentials in Docker Compose so developers never need to set passwords manually. For teams using Vault in production, run Vault in dev mode locally to validate integration. Never store production credentials in any local secrets mechanism.
 
+## Reference Links
+
+- [LocalStack](https://localstack.cloud/)
+- [Azurite](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite)
+- [Firebase Emulator Suite](https://firebase.google.com/docs/emulator-suite)
+- [MinIO](https://min.io/)
+- [Tilt](https://tilt.dev/)
+- [Skaffold](https://skaffold.dev/)
+- [DevContainers](https://containers.dev/)
+
 ## See Also
 
 - [Container Orchestration](container-orchestration.md) — local Kubernetes options (Docker Desktop, minikube, kind, K3s) and orchestration decisions

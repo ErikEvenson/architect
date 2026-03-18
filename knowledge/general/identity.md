@@ -36,6 +36,15 @@ Identity is the new perimeter. With cloud infrastructure, remote work, and API-d
 - **Token strategy** — access token lifetime, refresh token rotation policy, token binding, cross-domain token exchange
 - **Directory architecture** — cloud-only vs hybrid with on-prem AD sync, multi-directory federation, group nesting strategy
 
+## Reference Links
+
+- [Okta](https://developer.okta.com/)
+- [SPIFFE/SPIRE](https://spiffe.io/)
+- [Open Policy Agent](https://www.openpolicyagent.org/)
+- [Cedar](https://www.cedarpolicy.com/)
+- [WebAuthn](https://webauthn.guide/)
+- [SCIM RFC 7644](https://datatracker.ietf.org/doc/html/rfc7644)
+
 ## See Also
 
 - [governance.md](governance.md) -- organizational controls, policy enforcement, and compliance frameworks

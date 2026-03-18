@@ -231,6 +231,15 @@ Production Network                    Isolated Backup Network
 - 30-day repository: 17 + (30 x 0.83) = ~42 TB usable capacity needed
 - Add 20% headroom: ~50 TB usable repository
 
+## Reference Links
+
+- [Veeam](https://www.veeam.com/)
+- [Commvault](https://www.commvault.com/)
+- [Rubrik](https://www.rubrik.com/)
+- [HYCU](https://www.hycu.com/)
+- [Cohesity](https://www.cohesity.com/)
+- [Veritas NetBackup](https://www.veritas.com/protection/netbackup)
+
 ## See Also
 
 - [disaster-recovery.md](disaster-recovery.md) -- DR site design, failover orchestration, and RTO/RPO planning

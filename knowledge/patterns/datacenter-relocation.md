@@ -73,6 +73,11 @@ Datacenter relocation is frequently underestimated because teams plan it as "mig
 - **IP addressing strategy** -- full re-IP (clean, most work), L2 stretch (temporary, complex), or gradual re-IP during migration waves; affects application configuration scope
 - **Source site decommission timing** -- decommission immediately after last wave vs. maintain for rollback period; lease cost vs. safety tradeoff
 
+## Reference Links
+
+- [NIST SP 800-88 Media Sanitization](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final) -- NIST guidelines for media sanitization covering data clearing, purging, and destruction methods
+- [Uptime Institute Tier Standards](https://uptimeinstitute.com/tiers) -- Uptime Institute datacenter tier classification system for availability and redundancy
+
 ## See Also
 
 - `patterns/hypervisor-migration.md` -- In-place hypervisor change (VMs stay in same facility)

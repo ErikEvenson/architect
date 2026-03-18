@@ -113,6 +113,16 @@ GPU compute is 5-50x more expensive than CPU compute, making infrastructure deci
 - **ML CI/CD pipeline** — automated retraining triggers, model validation gates, staged rollout, rollback criteria
 - **Cost guardrails** — training job budgets, idle GPU detection, spot instance interruption handling, inference endpoint auto-scaling policies
 
+## Reference Links
+
+- [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) -- NVIDIA CUDA parallel computing platform and programming model for GPU-accelerated workloads
+- [PyTorch](https://pytorch.org/) -- Open-source deep learning framework with dynamic computation graphs and GPU acceleration
+- [TensorFlow](https://www.tensorflow.org/) -- Open-source machine learning framework for training and deploying ML models
+- [MLflow](https://mlflow.org/) -- Open-source platform for ML experiment tracking, model registry, and deployment
+- [Kubeflow](https://www.kubeflow.org/) -- Machine learning toolkit for Kubernetes covering training, serving, and pipelines
+- [Ray](https://www.ray.io/) -- Distributed computing framework for scaling ML workloads including training and serving
+- [Weights & Biases](https://wandb.ai/) -- MLOps platform for experiment tracking, model visualization, and collaboration
+
 ## See Also
 
 - `general/cost.md` — General cloud cost management and optimization strategies

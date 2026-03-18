@@ -550,6 +550,14 @@ GCP maintains a list of HIPAA-covered services:
 - **Incident response architecture** — breach detection, 60-day notification timeline, forensic evidence preservation
 - **Business associate management** — BA verification process, BA security assessment cadence, subcontractor chain management
 
+## Reference Links
+
+- [HHS HIPAA Security Rule](https://www.hhs.gov/hipaa/for-professionals/security/index.html) — official Security Rule guidance from the U.S. Department of Health and Human Services
+- [NIST SP 800-66](https://csrc.nist.gov/publications/detail/sp/800-66/rev-2/final) — implementing the HIPAA Security Rule: a cybersecurity resource guide
+- [HHS Breach Portal](https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf) — public database of HIPAA breach reports affecting 500 or more individuals
+- [AWS HIPAA](https://aws.amazon.com/compliance/hipaa-compliance/) — AWS HIPAA compliance program, BAA information, and eligible services
+- [Azure HIPAA](https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-hipaa-us) — Azure HIPAA/HITRUST compliance documentation and BAA coverage
+
 ## See Also
 
 - `general/security.md` — General security controls and encryption architecture

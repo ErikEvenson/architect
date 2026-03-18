@@ -208,6 +208,15 @@ Phase 5: Continuous Compliance
 │  └──────────────┴────────────┴────────────┴──────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
 
+## Reference Links
+
+- [DISA STIG Library](https://public.cyber.mil/stigs/)
+- [SCAP Compliance Checker](https://public.cyber.mil/stigs/scap/)
+- [OpenSCAP](https://www.open-scap.org/)
+- [STIG Viewer](https://public.cyber.mil/stigs/srg-stig-tools/)
+- [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
+- [Ansible STIG Roles on Galaxy](https://galaxy.ansible.com/search?keywords=stig)
+
 ## See Also
 
 - [security.md](security.md) -- general security architecture, threat modeling, and security controls

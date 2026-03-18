@@ -515,6 +515,14 @@ NIST 800-53 Rev. 5 added supply chain controls, relevant for FedRAMP.
 - **Logging and audit architecture** — centralized SIEM, log retention periods, immutable storage, FedRAMP-specific event monitoring
 - **Boundary definition** — system boundary scope, interconnection agreements, shared services model
 
+## Reference Links
+
+- [FedRAMP Marketplace](https://marketplace.fedramp.gov/) — search for FedRAMP authorized cloud services and their authorization status
+- [NIST SP 800-53 Rev 5](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) — full catalog of security and privacy controls that FedRAMP baselines are built on
+- [FIPS 140-3 CMVP](https://csrc.nist.gov/projects/cryptographic-module-validation-program) — validated cryptographic modules list for verifying FIPS compliance
+- [AWS GovCloud](https://aws.amazon.com/govcloud-us/) — AWS regions designed for FedRAMP High and government workloads
+- [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/) — Azure regions for FedRAMP High and government workloads
+
 ## See Also
 
 - `compliance/nist-800-171-cmmc.md` — NIST 800-171 and CMMC for CUI protection (builds on FedRAMP controls)

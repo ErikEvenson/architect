@@ -55,6 +55,15 @@ When multiple test suites run against the same LocalStack instance, resource nam
 
 ---
 
+## Reference Links
+
+- [LocalStack](https://localstack.cloud/) -- LocalStack product homepage for local AWS cloud emulation
+- [LocalStack Documentation](https://docs.localstack.cloud/) -- Official LocalStack documentation covering configuration, service coverage, and API reference
+- [LocalStack GitHub](https://github.com/localstack/localstack) -- LocalStack open-source repository with Community edition source code and issue tracker
+- [tflocal](https://github.com/localstack/terraform-local) -- Terraform wrapper for LocalStack that automatically rewrites provider endpoint URLs
+- [cdklocal](https://github.com/localstack/aws-cdk-local) -- AWS CDK wrapper for LocalStack that redirects CDK operations to the local endpoint
+- [moto](https://github.com/getmoto/moto) -- Python library for mocking AWS services in-process, alternative to LocalStack for Python unit tests
+
 ## See Also
 
 - `providers/aws/containers.md` -- ECS/EKS services that LocalStack Pro emulates locally

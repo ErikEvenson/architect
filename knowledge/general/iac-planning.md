@@ -111,6 +111,15 @@ Architecture without IaC is just a diagram. IaC makes the architecture reproduci
 - **CI/CD for IaC** — plan on PR, apply on merge, manual approval gates
 - **Drift management** — ignore, detect and alert, auto-remediate
 
+## Reference Links
+
+- [Terraform](https://www.terraform.io/)
+- [OpenTofu](https://opentofu.org/)
+- [Pulumi](https://www.pulumi.com/)
+- [Infracost](https://www.infracost.io/)
+- [Checkov](https://www.checkov.io/)
+- [tflint](https://github.com/terraform-linters/tflint)
+
 ## See Also
 
 - `providers/hashicorp/terraform.md` — Terraform-specific configuration and patterns

@@ -94,6 +94,16 @@ The difference between high-performing and low-performing teams often comes down
 
 **Decision drivers:** Number of services, frequency of cross-service changes, team structure (Conway's Law), and build system maturity.
 
+## Reference Links
+
+- [GitHub Actions](https://docs.github.com/en/actions)
+- [GitLab CI](https://docs.gitlab.com/ee/ci/)
+- [ArgoCD](https://argo-cd.readthedocs.io/)
+- [Flux](https://fluxcd.io/)
+- [Tekton](https://tekton.dev/)
+- [cosign/sigstore](https://www.sigstore.dev/)
+- [SLSA Framework](https://slsa.dev/)
+
 ## See Also
 
 - [Deployment](deployment.md) — deployment strategies (rolling, blue-green, canary) and rollback procedures

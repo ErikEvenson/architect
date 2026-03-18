@@ -100,6 +100,13 @@ Event-driven architectures enable systems to react in real time, scale independe
 - **Retention and replay** — how long to retain events, compaction strategy, cold storage for historical events
 - **Backpressure strategy** — consumer auto-scaling thresholds, queue depth limits, producer rate limiting
 
+## Reference Links
+
+- [Apache Kafka](https://kafka.apache.org/) -- Distributed event streaming platform for high-throughput pub/sub and event sourcing
+- [RabbitMQ](https://www.rabbitmq.com/) -- Open-source message broker supporting AMQP, MQTT, and STOMP protocols
+- [NATS](https://nats.io/) -- Lightweight, high-performance messaging system for cloud-native applications
+- [CloudEvents](https://cloudevents.io/) -- CNCF specification for describing event data in a common, interoperable format
+
 ## See Also
 
 - `patterns/microservices.md` — Microservices architecture where event-driven communication is commonly applied

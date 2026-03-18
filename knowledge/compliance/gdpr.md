@@ -255,6 +255,12 @@ The UK Data Use and Access Act received Royal Assent in June 2025, replacing cer
 
 For organizations processing both EU and UK personal data, cloud architectures must accommodate the divergence between EU GDPR and the UK DUAA. Consider separate data processing configurations where requirements differ.
 
+## Reference Links
+
+- [EUR-Lex GDPR Full Text](https://eur-lex.europa.eu/eli/reg/2016/679/oj) — official published text of Regulation (EU) 2016/679
+- [Standard Contractual Clauses](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en) — EU Commission SCCs for international data transfers
+- [EU Adequacy Decisions](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en) — list of countries with adequate data protection as determined by the EU Commission
+
 ## See Also
 
 - `general/security.md` — General security controls including encryption and access management

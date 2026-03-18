@@ -40,6 +40,13 @@ Users expect sub-100ms response times, which is physically impossible from a sin
 - **Edge security posture** — which security functions run at edge (WAF, bot detection, rate limiting) vs origin
 - **5G/MEC adoption** — carrier partnership, latency requirements that justify MEC, private network deployment
 
+## Reference Links
+
+- [K3s](https://k3s.io/) -- Lightweight Kubernetes distribution for edge, IoT, and resource-constrained environments
+- [KubeEdge](https://kubeedge.io/) -- CNCF project extending Kubernetes to edge nodes with offline autonomy and edge-cloud collaboration
+- [AWS Greengrass](https://aws.amazon.com/greengrass/) -- AWS IoT edge runtime for local compute, messaging, data caching, and ML inference on edge devices
+- [Azure IoT Edge](https://azure.microsoft.com/en-us/products/iot-edge) -- Azure edge runtime for deploying cloud workloads including AI and analytics to IoT edge devices
+
 ## See Also
 
 - `patterns/cdn-fronted-onprem.md` — CDN fronting for on-premises origins, including edge caching and WAF

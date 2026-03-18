@@ -75,6 +75,11 @@ The second most common failure: **undocumented firewall rules.** The source site
 - **Coexistence network design** -- dedicated circuit vs shared MPLS vs VPN; determines bandwidth, latency, and reliability
 - **Application grouping granularity** -- per-VM, per-application, per-tier, per-site; determines wave complexity and split-state risk
 
+## Reference Links
+
+- [Infoblox Documentation](https://docs.infoblox.com/) -- Infoblox DDI (DNS, DHCP, IPAM) documentation for network infrastructure management during coexistence
+- [Microsoft AD Sites and Services](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/creating-a-site-design) -- Microsoft documentation for Active Directory site design and subnet-to-site mapping
+
 ## See Also
 
 - `patterns/datacenter-relocation.md` -- Datacenter relocation planning and execution
