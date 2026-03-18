@@ -2,7 +2,7 @@
 
 ## Scope
 
-Covers Cloudflare R2 (including Super Slurper and Sippy), KV, Durable Objects, D1, Queues, and Hyperdrive. Use alongside `workers.md` for compute bindings to these storage primitives and `cdn-dns.md` for caching strategies in front of R2.
+Covers Cloudflare R2 (including Super Slurper and Sippy), KV, Durable Objects, D1, Queues, and Hyperdrive. Use alongside `providers/cloudflare/workers.md` for compute bindings to these storage primitives and `providers/cloudflare/cdn-dns.md` for caching strategies in front of R2.
 
 ## Checklist
 
@@ -76,3 +76,9 @@ Each collaboration room maps to a single Durable Object. WebSocket connections a
            (legacy PostgreSQL)  (file attachments)
 ```
 Workers route requests to the appropriate storage backend based on data characteristics. KV serves configuration and cached content (sub-millisecond reads). D1 handles relational queries for structured data. Durable Objects manage per-user rate limiting and session state. Hyperdrive connects to existing PostgreSQL databases during migration. R2 stores file attachments with zero egress.
+
+## See Also
+
+- `general/data.md` -- general data architecture patterns
+- `providers/cloudflare/workers.md` -- compute bindings for storage primitives
+- `providers/cloudflare/cdn-dns.md` -- caching strategies in front of R2

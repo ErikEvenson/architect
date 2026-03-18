@@ -4,6 +4,10 @@ Reference: Cloud Controls Matrix (CCM) v4.0 (latest verified version as of 2025)
 Published by: Cloud Security Alliance (CSA)
 Scope: Cloud service providers and cloud service customers. The CCM provides a controls framework specifically designed for cloud computing environments and maps to other standards (ISO 27001, NIST SP 800-53, PCI DSS, GDPR, etc.).
 
+## Scope
+
+Covers cloud-specific security controls from the CSA Cloud Controls Matrix v4.0, including control domain checklists, shared responsibility mapping, and STAR certification considerations. Does not cover general security controls (see `general/security.md`) or provider-specific implementation details (see `providers/` files).
+
 ---
 
 ## Why This Matters
@@ -1042,3 +1046,10 @@ The following architectural decisions should be captured as Architecture Decisio
 - [ ] **[Critical]** Enforce full-disk encryption on all endpoints accessing cloud environments
 - [ ] **[Critical]** Manage encryption keys centrally
 - [ ] **[Critical]** Verify encryption compliance through endpoint management tools
+
+## See Also
+
+- `general/security.md` — General security controls and architecture patterns
+- `general/governance.md` — Cloud governance, tagging, and policy enforcement
+- `compliance/iso-27001.md` — ISO 27001 ISMS controls (CCM maps to ISO 27001)
+- `compliance/soc2.md` — SOC 2 Trust Service Criteria (complementary audit framework)

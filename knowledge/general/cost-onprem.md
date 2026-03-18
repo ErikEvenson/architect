@@ -1,5 +1,9 @@
 # On-Premises Cost Modeling and TCO Analysis
 
+## Scope
+
+This file covers **on-premises cost modeling and total cost of ownership (TCO) analysis** including hardware depreciation, power and cooling, software licensing, staffing overhead, and cloud comparison frameworks. For cloud-native cost optimization, see `general/cost.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Is the hardware depreciation schedule defined (3-year for performance-sensitive/fast-evolving hardware, 5-year for general compute), and is the monthly equivalent cost calculated for CapEx-to-OpEx comparison (monthly = purchase price / depreciation months)?
@@ -99,7 +103,7 @@ TOTAL PER-NODE/MO   = $416.67 + $54.75 + $150 + $1,000 + $75 + $750
 |---|---|---|---|
 | Nutanix (NCI) | Per-node, subscription | $5,000-$15,000/node/yr | Starter/Pro/Ultimate tiers |
 | VMware vSphere | Per-core, subscription | $200-$500/core/yr | Changed from per-socket to per-core in 2024 |
-| Red Hat Enterprise Linux | Per-socket-pair | $800-$1,500/yr | Standard/Premium support tiers |
+| Red Hat Enterprise Linux | Per-subscription (2-socket entitlement for physical servers, unlimited VMs per subscription) | Varies by support tier (Standard $799/yr, Premium $1,299/yr) | Self-support also available at lower cost |
 | Microsoft Windows Server | Per-core (min 16/server) | $800-$6,000/server | Standard (2 VMs) vs Datacenter (unlimited VMs) |
 | SQL Server | Per-core (min 4) | $3,700-$15,000/core | Standard vs Enterprise, SA adds ~25%/yr |
 | Veeam Backup | Per-VM or per-workload | $50-$200/VM/yr | Universal License model |
@@ -113,3 +117,10 @@ TOTAL PER-NODE/MO   = $416.67 + $54.75 + $150 + $1,000 + $75 + $750
 - **Uptime Institute PUE**: [uptimeinstitute.com](https://uptimeinstitute.com/) -- industry benchmarks for Power Usage Effectiveness; global average is ~1.58, best-in-class hyperscalers achieve 1.1-1.2
 - **IDC CloudTrack**: IDC research on cloud vs on-prem cost comparison across enterprise segments -- useful for benchmarking your analysis against industry data
 - **FinOps Foundation**: [finops.org](https://www.finops.org/) -- practices for cloud financial management; applicable to on-prem cost discipline as well
+
+## See Also
+
+- [cost.md](cost.md) -- cloud cost optimization, reserved instances, and FinOps practices
+- [hardware-sizing.md](hardware-sizing.md) -- physical server hardware selection that drives CapEx costs
+- [capacity-planning.md](capacity-planning.md) -- sizing methodology and growth projections that feed cost models
+- [colocation-constraints.md](colocation-constraints.md) -- colocation facility costs and constraints

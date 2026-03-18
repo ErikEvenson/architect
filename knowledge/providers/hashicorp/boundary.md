@@ -1,5 +1,10 @@
 # HashiCorp Boundary
 
+## Scope
+
+HashiCorp Boundary: deployment models (self-managed vs HCP), target types (SSH, RDP, TCP, HTTP, Kubernetes), Vault credential injection, multi-hop worker topology, session recording, auth method integration (OIDC, LDAP), scope hierarchy, and host catalog strategies.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Determine deployment model: self-managed Boundary (controllers + workers) vs HCP Boundary (managed control plane, self-hosted workers)
@@ -110,3 +115,9 @@ Three controllers behind a load balancer for HA. PostgreSQL stores all state (us
               - Roles: data-analyst (connect to PostgreSQL only)
 ```
 Global scope contains org-level auth methods (OIDC). Orgs map to business units. Projects contain targets, host catalogs, and credential libraries. Managed groups auto-assign roles based on IdP group membership (e.g., `engineering-platform` IdP group gets `platform-admin` role in the Platform project).
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/hashicorp/vault.md` -- Vault credential libraries for Boundary
+- `providers/hashicorp/consul.md` -- Consul service discovery for dynamic host catalogs

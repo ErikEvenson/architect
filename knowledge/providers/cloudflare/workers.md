@@ -2,7 +2,7 @@
 
 ## Scope
 
-Covers Cloudflare Workers runtime, Pages, edge storage bindings (KV, Durable Objects, D1, R2, Queues), Hyperdrive, Workers AI, Vectorize, Workflows, and Service Bindings. Use alongside `cdn-dns.md` for caching and `security.md` for WAF/bot management in front of Workers.
+Covers Cloudflare Workers runtime, Pages, edge storage bindings (KV, Durable Objects, D1, R2, Queues), Hyperdrive, Workers AI, Vectorize, Workflows, and Service Bindings. Use alongside `providers/cloudflare/cdn-dns.md` for caching and `providers/cloudflare/security.md` for WAF/bot management in front of Workers.
 
 ## Checklist
 
@@ -117,3 +117,9 @@ Durable Object: Room
 R2: document snapshots and version history
 D1: document metadata, user permissions, search index
 ```
+
+## See Also
+
+- `providers/cloudflare/storage.md` -- KV, Durable Objects, D1, R2 storage bindings
+- `providers/cloudflare/cdn-dns.md` -- caching and CDN integration
+- `providers/cloudflare/security.md` -- WAF and bot management in front of Workers

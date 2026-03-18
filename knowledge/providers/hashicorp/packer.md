@@ -1,5 +1,10 @@
 # HashiCorp Packer
 
+## Scope
+
+HashiCorp Packer: HCL2 templates, multi-platform builders (AWS, Azure, GCP, VMware, QEMU), provisioner strategies (cloud-init, shell, Ansible), post-processors, CI/CD integration, image testing, HCP Packer registry, and golden image hierarchy.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Migrate from JSON templates to HCL2 format (JSON is legacy; HCL2 supports variables, locals, dynamic blocks, and functions)
@@ -21,7 +26,7 @@ Packer automates the creation of machine images, ensuring that every deployment 
 
 ## License
 
-HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. IBM completed its acquisition of HashiCorp in late 2024, which may affect product direction, licensing terms, and commercial offerings over time. Community forks under MPL 2.0 exist for organizations requiring open-source licensing: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms and IBM's product roadmap for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 
@@ -126,3 +131,9 @@ Single build block targets all three clouds. Ansible playbook applies identical 
   - Rolling update of ASG/VMSS/MIG
 ```
 CI triggers on changes to Packer templates or provisioning scripts. Parallel builds produce images for each cloud. Automated tests validate images before channel promotion. Terraform data sources reference HCP Packer channels, automatically picking up promoted images during the next apply.
+
+## See Also
+
+- `general/ci-cd.md` -- CI/CD pipeline integration for image builds
+- `providers/hashicorp/terraform.md` -- Terraform referencing Packer-built images
+- `providers/ansible/configuration.md` -- Ansible as Packer provisioner

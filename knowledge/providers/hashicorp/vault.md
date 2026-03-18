@@ -1,5 +1,10 @@
 # HashiCorp Vault
 
+## Scope
+
+HashiCorp Vault: HA deployment (Raft, Consul), auto-unseal (cloud KMS), auth methods (AppRole, Kubernetes, OIDC, AWS IAM), policy design, KV v2, dynamic secrets (database, AWS), PKI secrets engine, Transit encryption, audit logging, Vault Agent/Sidecar Injector, and disaster recovery.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Vault is deployed in HA mode with Raft storage (integrated) or Consul backend; single-node Vault is never acceptable for production
@@ -152,3 +157,10 @@ transit/
   |-- encrypt/app-encryption-key     (AES-256-GCM, auto-rotate every 90 days)
   |-- decrypt/app-encryption-key
 ```
+
+## See Also
+
+- `general/security.md` -- general security architecture patterns
+- `providers/hashicorp/boundary.md` -- Boundary credential injection from Vault
+- `providers/hashicorp/consul.md` -- Consul as Vault storage backend
+- `providers/kubernetes/secrets-management.md` -- Kubernetes secrets with Vault integration

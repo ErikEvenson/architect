@@ -45,3 +45,10 @@ VMware remains the most widely deployed virtualization platform in enterprise da
 - [VMware vSAN Design Guide](https://core.vmware.com/resource/vmware-vsan-design-guide) -- validated design for hyper-converged storage including sizing, fault domains, and stretched clusters (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
 - [VMware NSX Reference Design Guide](https://communities.vmware.com/t5/VMware-NSX/ct-p/3200) -- reference architecture for microsegmentation, distributed firewall, and multi-site networking (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
 - [VMware Tanzu Reference Architecture](https://docs.vmware.com/en/VMware-Tanzu/services/tanzu-reference-architecture/GUID-reference-designs-index.html) -- validated designs for Kubernetes on vSphere with Tanzu namespaces and VM classes (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+
+## See Also
+
+- `general/compute.md` -- general compute architecture patterns
+- `general/hardware-sizing.md` -- hardware sizing methodology
+- `providers/vmware/compute.md` -- vSphere compute deep dive
+- `providers/vmware/vcf-sddc-manager.md` -- VCF deployment and lifecycle

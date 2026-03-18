@@ -1,5 +1,10 @@
 # HashiCorp Nomad
 
+## Scope
+
+HashiCorp Nomad: job types (service, batch, system), task drivers (Docker, exec, Java), Consul and Vault integration, multi-region federation, autoscaling, CSI storage, ACL policies, resource management, scheduling constraints, and upgrade strategies.
+
+
 ## Checklist
 
 - [ ] **[Recommended]** Determine job type for each workload: service (long-running), batch (short-lived, exit code matters), system (runs on every node matching constraints), sysbatch (batch on every node)
@@ -21,7 +26,7 @@ Nomad provides workload orchestration with significantly lower operational compl
 
 ## License
 
-HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. IBM completed its acquisition of HashiCorp in late 2024, which may affect product direction, licensing terms, and commercial offerings over time. Community forks under MPL 2.0 exist for organizations requiring open-source licensing: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms and IBM's product roadmap for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 
@@ -118,3 +123,10 @@ Bridge networking enables Consul Connect sidecar injection. Upstream blocks defi
   - Azure VMSS for node scaling
 ```
 Nomad Autoscaler runs as a Nomad job. APM plugins query Prometheus, Datadog, or Nomad's own metrics for scaling signals. Task group count scales horizontally based on policies. For cluster-level scaling, target plugins adjust cloud provider auto-scaling groups to add/remove Nomad client nodes.
+
+## See Also
+
+- `general/container-orchestration.md` -- container orchestration platform comparison
+- `providers/hashicorp/consul.md` -- Consul service discovery and mesh for Nomad
+- `providers/hashicorp/vault.md` -- Vault secrets injection for Nomad tasks
+- `providers/kubernetes/compute.md` -- Kubernetes as alternative orchestrator

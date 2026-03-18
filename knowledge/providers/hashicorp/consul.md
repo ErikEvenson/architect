@@ -1,5 +1,10 @@
 # HashiCorp Consul
 
+## Scope
+
+HashiCorp Consul: server cluster sizing, ACL system, gossip and TLS encryption, health checks, DNS interface, service mesh (Connect with Envoy sidecars), Consul on Kubernetes, Consul Dataplane, KV store, WAN federation, and Consul Template.
+
+
 ## Checklist
 
 - [ ] **[Critical]** Consul server cluster has 3 or 5 nodes (odd number required for Raft consensus); 3 nodes tolerates 1 failure, 5 tolerates 2; more than 5 is not recommended due to replication overhead
@@ -23,7 +28,7 @@ Consul provides the service discovery layer that enables dynamic infrastructure.
 
 ## License
 
-HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. IBM completed its acquisition of HashiCorp in late 2024, which may affect product direction, licensing terms, and commercial offerings over time. Community forks under MPL 2.0 exist for organizations requiring open-source licensing: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms and IBM's product roadmap for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 
@@ -158,3 +163,10 @@ Consul KV:
   config/app/features   = "dark_mode=true,beta_api=false"
   config/app/log_level  = "info"
 ```
+
+## See Also
+
+- `general/service-mesh.md` -- service mesh architecture patterns
+- `providers/hashicorp/vault.md` -- Vault integration for Consul Connect certificates
+- `providers/hashicorp/nomad.md` -- Nomad integration with Consul for service discovery
+- `providers/kubernetes/networking.md` -- Kubernetes service mesh alternatives

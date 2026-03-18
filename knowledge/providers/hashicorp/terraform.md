@@ -1,5 +1,10 @@
 # HashiCorp Terraform
 
+## Scope
+
+HashiCorp Terraform: remote state backends (S3, GCS, Terraform Cloud), state locking, provider version constraints, module versioning, workspace and directory-based environment separation, lifecycle rules, import/moved blocks, and CI/CD integration with linting and plan review.
+
+
 ## Checklist
 
 - [ ] **[Critical]** State is stored in a remote backend (S3 + DynamoDB for locking, GCS, Azure Blob, or Terraform Cloud); local state is never used beyond initial prototyping; note that Terraform 1.8+ supports S3 native locking without DynamoDB
@@ -22,7 +27,7 @@ Terraform manages the actual infrastructure. A state file out of sync with reali
 
 ## License
 
-HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. Community forks under MPL 2.0 exist: OpenTofu (Terraform fork) and OpenBao (Vault fork). Evaluate license terms for your specific use case before adoption.
+HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The BSL restricts competitive use of the software — you cannot use it to build a product that competes with HashiCorp's commercial offerings. For internal infrastructure use, the BSL is functionally equivalent to open source. IBM completed its acquisition of HashiCorp in late 2024, which may affect product direction, licensing terms, and commercial offerings over time. Community forks under MPL 2.0 exist for organizations requiring open-source licensing: OpenTofu (Terraform fork, maintained by the Linux Foundation) and OpenBao (Vault fork). Evaluate license terms and IBM's product roadmap for your specific use case before adoption.
 
 ## Common Decisions (ADR Triggers)
 
@@ -154,3 +159,10 @@ Workflow: terraform.yml
               (tfplan artifact from approved PR)
               Post apply summary to Slack
 ```
+
+## See Also
+
+- `general/iac-planning.md` -- infrastructure as code planning patterns
+- `providers/hashicorp/packer.md` -- Packer image builds referenced by Terraform
+- `providers/hashicorp/vault.md` -- Vault for Terraform secret injection
+- `providers/pulumi/iac.md` -- Pulumi as alternative IaC tool

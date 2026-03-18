@@ -1,5 +1,9 @@
 # Physical Network Design for On-Premises Infrastructure
 
+## Scope
+
+This file covers **physical network design for on-premises infrastructure** including VLAN segmentation, NIC bonding, switch selection, spine-leaf vs hierarchical topologies, MTU configuration, and out-of-band management. For cloud virtual networking (VPC/VNet), see `general/networking.md`. For load balancer architecture, see `general/load-balancing-onprem.md`.
+
 ## Checklist
 
 - [ ] **[Critical]** Are VLANs segmented by traffic type -- management (VLAN 10-19), VM/workload (VLAN 20-99), storage/iSCSI/NFS (VLAN 100-109), vMotion/live migration (VLAN 110-119), backup (VLAN 120-129), DMZ (VLAN 200-209) -- with inter-VLAN routing controlled by firewall or L3 switch ACLs?
@@ -98,3 +102,10 @@ Common failure points: switch trunk ports defaulting to 1500, intermediate firew
 - **Dell Networking with PowerEdge**: [Dell Deployment Guides](https://infohub.delltechnologies.com/) -- OS10 switch configuration, VLT (Dell's MLAG), and SmartFabric for automated leaf-spine
 - **IEEE 802.3ad (LACP)**: Standard specification for link aggregation -- understanding LACP timers (fast: 1s, slow: 30s), system/port priority, and hash algorithms
 - **VMware NSX Design Guide**: [VMware Validated Designs](https://core.vmware.com/vmware-validated-solutions) -- microsegmentation, distributed firewall rules, and network overlay architecture (reference even for non-VMware environments) (verify URL -- VMware documentation consolidated under Broadcom post-acquisition)
+
+## See Also
+
+- [networking.md](networking.md) -- cloud virtual networking (VPC/VNet), subnets, and security groups
+- [hardware-sizing.md](hardware-sizing.md) -- physical server NIC and form factor specifications
+- [load-balancing-onprem.md](load-balancing-onprem.md) -- on-premises load balancer architecture and HA patterns
+- [colocation-constraints.md](colocation-constraints.md) -- data center facility constraints including power, cabling, and rack layout
