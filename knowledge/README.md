@@ -1,10 +1,10 @@
 # Knowledge Library
 
-The knowledge library is a curated collection of cloud architecture checklists that Claude Code uses during architecture sessions. Each file contains structured questions and considerations that ensure no critical design decisions are overlooked.
+The knowledge library is a curated collection of cloud architecture checklists used during architecture sessions. Each file contains structured questions and considerations that ensure no critical design decisions are overlooked.
 
 ## Purpose
 
-When Claude acts as a cloud architect in Architect sessions, it draws on these knowledge files to ask the right questions, surface tradeoffs, and identify decisions that warrant an Architecture Decision Record (ADR). The library encodes hard-won lessons from real-world cloud deployments so they are applied consistently across every engagement.
+During architecture sessions, the AI assistant draws on these knowledge files to ask the right questions, surface tradeoffs, and identify decisions that warrant an Architecture Decision Record (ADR). The library encodes hard-won lessons from real-world cloud deployments so they are applied consistently across every engagement.
 
 ## Directory Structure
 
@@ -45,9 +45,9 @@ Checklists for specific compliance frameworks (PCI DSS, HIPAA, SOC 2, FedRAMP, G
 
 Failure mode checklists covering resilience concerns: blast radius analysis, dependency failure scenarios, data loss prevention, and recovery procedures. These help ensure systems are designed to fail gracefully.
 
-## How Claude Code Uses the Library
+## How the Library Is Used
 
-During an architecture session, Claude selects the relevant knowledge files based on:
+During an architecture session, the AI assistant selects the relevant knowledge files based on:
 
 1. **Target cloud provider(s)** -- loads the appropriate `providers/` files
 2. **System pattern** -- loads the matching `patterns/` file
@@ -55,7 +55,7 @@ During an architecture session, Claude selects the relevant knowledge files base
 4. **Compliance requirements** -- loads `compliance/` files if regulatory standards apply
 5. **Resilience requirements** -- loads `failures/` files for high-availability designs
 
-Claude walks through the checklist items as questions during the session. Each unchecked item represents a decision that needs to be made. When a decision is significant or has long-term implications, Claude flags it as an ADR trigger.
+The checklist items are worked through as questions during the session. Each unchecked item represents a decision that needs to be made. When a decision is significant or has long-term implications, it is flagged as an ADR trigger.
 
 ## Browsing in the Web UI
 
