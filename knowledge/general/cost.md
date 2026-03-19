@@ -87,3 +87,4 @@ FinOps — the practice of bringing financial accountability to cloud spending �
 - `general/storage.md` — Storage tier selection and lifecycle management
 - `general/networking.md` — Network architecture including data transfer paths
 - `general/monitoring.md` — Monitoring and observability including cost metric dashboards
+- `general/finops.md` — FinOps practices, frameworks, tooling, and organizational cost management at scale

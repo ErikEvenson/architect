@@ -82,3 +82,4 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - `providers/aws/multi-account.md` -- Transit Gateway hub-and-spoke for cross-account VPC connectivity
 - `providers/aws/ec2-asg.md` -- EC2 placement in VPC subnets with security groups
 - `providers/aws/route53.md` -- Route 53 Resolver for hybrid DNS with VPC integration
+- `providers/aws/networking.md` -- AWS networking services beyond VPC: Transit Gateway, Direct Connect, PrivateLink, Network Firewall, Global Accelerator

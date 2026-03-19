@@ -111,3 +111,4 @@ Observability also has a significant cost dimension that is frequently underesti
 - `providers/gcp/observability.md` — GCP Cloud Monitoring, Cloud Logging, and Cloud Trace
 - `general/security.md` — Audit logging requirements overlap with observability; coordinate log destinations and retention policies
 - `general/disaster-recovery.md` — Observability is critical for detecting failover triggers and validating DR procedures
+- `general/operational-runbooks.md` — Operational runbook design, incident response playbooks, and on-call documentation

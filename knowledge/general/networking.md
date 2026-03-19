@@ -103,3 +103,4 @@ Network costs are often the most surprising line item in cloud bills. Cross-AZ d
 - `general/hybrid-dns.md` — Hybrid DNS resolution for cross-environment name resolution
 - `general/security.md` — Security controls including network-layer protections
 - `general/cost-optimization.md` — Cloud cost management including network transfer costs
+- `patterns/network-segmentation.md` — Network segmentation patterns including micro-segmentation, trust zones, and compliance-driven isolation

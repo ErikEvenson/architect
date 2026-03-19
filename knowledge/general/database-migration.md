@@ -50,3 +50,4 @@ Database migrations are among the highest-risk infrastructure operations. Data l
 - [data.md](data.md) -- database design decisions, storage engines, and data modeling
 - [workload-migration.md](workload-migration.md) -- overall migration planning including application and infrastructure migration
 - [disaster-recovery.md](disaster-recovery.md) -- rollback strategies and recovery procedures relevant to migration cutover
+- [database-ha.md](database-ha.md) -- database high availability patterns, replication topologies, and failover strategies

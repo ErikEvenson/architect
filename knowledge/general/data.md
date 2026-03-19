@@ -90,3 +90,4 @@ Encryption and compliance are not optional add-ons. Regulatory requirements like
 - `providers/gcp/data.md` — GCP database and data services
 - `general/enterprise-backup.md` — Backup tools and strategies (complements the backup checklist items here)
 - `general/security.md` — Broader security controls including data access and audit
+- `general/data-analytics.md` — Data analytics and warehousing architecture, ETL/ELT, and data mesh patterns

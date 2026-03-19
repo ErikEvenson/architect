@@ -42,3 +42,4 @@ APIs are contracts. Once published, they are difficult to change without breakin
 - [deployment.md](deployment.md) -- deployment strategies for API services
 - [service-mesh.md](service-mesh.md) -- service-to-service communication, mTLS, and traffic management
 - [testing-strategy.md](testing-strategy.md) -- contract testing and integration test strategies
+- [api-gateway.md](api-gateway.md) -- API gateway architecture, traffic management, and request transformation

@@ -124,3 +124,5 @@ For multi-account architectures where an application in one AWS account needs to
 - `providers/aws/secrets-manager.md` -- Credential rotation for RDS/Aurora database passwords
 - `providers/aws/vpc.md` -- Private subnet deployment and security group patterns for databases
 - `providers/aws/dynamodb.md` -- DynamoDB as a NoSQL alternative for key-value workloads
+- `providers/aws/database.md` -- AWS database service selection framework: DocumentDB, Neptune, Timestream, Keyspaces, MemoryDB, QLDB
+- `general/database-ha.md` -- Database high availability patterns, replication topologies, and failover strategies

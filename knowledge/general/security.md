@@ -110,3 +110,6 @@ A well-designed security architecture assumes breach (zero trust), limits blast 
 - `providers/gcp/security.md` — GCP security controls and IAM
 - `general/observability.md` — Audit logging overlaps with observability; coordinate log destinations and retention
 - `general/networking.md` — Network segmentation, firewall design, and VPN architecture
+- `patterns/zero-trust.md` — Zero trust architecture principles, identity-aware proxies, and microsegmentation
+- `patterns/network-segmentation.md` — Network segmentation patterns including micro-segmentation and east-west traffic controls
+- `general/ransomware-resilience.md` — Ransomware-specific resilience controls, detection, and recovery playbooks

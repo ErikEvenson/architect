@@ -51,3 +51,4 @@ IAM is the single most critical security control in AWS. Overly permissive polic
 - `providers/aws/multi-account.md` -- SCPs, IAM Identity Center, and cross-account role assumption
 - `providers/aws/secrets-manager.md` -- Credential storage and rotation for service accounts
 - `providers/aws/containers.md` -- IRSA and Pod Identity for EKS workload authentication
+- `providers/aws/security.md` -- AWS security services: GuardDuty, Security Hub, Inspector, Macie, WAF, Shield, and cross-account security patterns

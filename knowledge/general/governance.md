@@ -220,3 +220,5 @@ A CCoE is a cross-functional team that establishes cloud standards and enables a
 - `general/security.md` — Security controls and compliance mapping
 - `general/identity.md` — IAM, SSO, and access management
 - `compliance/soc2.md` — SOC 2 governance controls (CC1)
+- `general/compliance-automation.md` — Automated compliance enforcement, scanning, and evidence collection
+- `general/change-management.md` — Change management practices, CAB processes, and ITSM integration

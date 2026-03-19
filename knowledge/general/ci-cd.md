@@ -112,3 +112,4 @@ The difference between high-performing and low-performing teams often comes down
 - [IaC Planning](iac-planning.md) — infrastructure-as-code tool selection and state management
 - [Governance](governance.md) — change management, approval workflows, compliance gates
 - [Observability](observability.md) — monitoring deployments, tracking DORA metrics
+- [AWS DevOps](../providers/aws/devops.md) — AWS CI/CD services (CodePipeline, CodeBuild, CodeDeploy, ECR)

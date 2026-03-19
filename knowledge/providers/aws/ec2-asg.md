@@ -55,3 +55,4 @@ EC2 and ASG configuration directly affects availability, performance, and cost. 
 - `providers/aws/vpc.md` -- VPC subnet design and security groups for EC2 instances
 - `providers/aws/observability.md` -- CloudWatch monitoring and alarms for EC2/ASG metrics
 - `providers/aws/iam.md` -- Instance profiles and IMDSv2 for EC2 credential management
+- `providers/aws/storage.md` -- AWS block and file storage (EBS volume types, EFS, FSx) for EC2-attached storage

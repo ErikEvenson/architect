@@ -87,3 +87,4 @@ Infrastructure as code has shifted from a best practice to a baseline expectatio
 - `providers/openshift/ci-cd.md` — OpenShift CI/CD pipelines and deployment
 - `general/containers.md` — Container orchestration and runtime configuration
 - `general/disaster-recovery.md` — Failover and recovery procedures
+- `general/change-management.md` — Change management practices, approval workflows, and maintenance windows
