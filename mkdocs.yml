@@ -96,6 +96,12 @@ nav:
     - Outposts: providers/aws/outposts.md
     - Snow Family: providers/aws/snow-family.md
     - LocalStack: providers/aws/localstack.md
+    - Networking: providers/aws/networking.md
+    - Security: providers/aws/security.md
+    - Storage: providers/aws/storage.md
+    - Database: providers/aws/database.md
+    - Disaster Recovery: providers/aws/disaster-recovery.md
+    - DevOps (CI/CD): providers/aws/devops.md
     - Migration Services: providers/aws/migration-services.md
   - Azure:
     - Networking: providers/azure/networking.md
