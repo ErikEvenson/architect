@@ -6,7 +6,7 @@ Covers Neutron networking configuration: ML2 mechanism drivers (OVN, OVS, Linux 
 
 ## Checklist
 
-- [ ] **[Critical]** Is the ML2 mechanism driver selected? (OVN recommended for all new deployments; OVS deprecated since 2023.1 with removal planned after 2025.2 -- migrate to OVN; Linux Bridge for simplicity in small environments, maintenance-only)
+- [ ] **[Critical]** Is the ML2 mechanism driver selected? (OVN recommended for all new deployments; OVS deprecated since 2023.1 with removal planned for the release cycle following 2025.2 Flamingo -- migrate to OVN; Linux Bridge for simplicity in small environments, maintenance-only)
 - [ ] **[Critical]** Are provider networks configured for external/public connectivity using VLAN or flat type drivers, with correct `physical_network` mappings in `ml2_conf.ini` and bridge mappings on compute/network nodes?
 - [ ] **[Critical]** Are security groups configured with default-deny ingress and default-allow egress, port security enabled (`port_security_enabled = True`), and are stateful vs stateless security groups chosen per workload type?
 - [ ] **[Critical]** Is the MTU chain validated end-to-end? (physical network MTU minus overlay overhead -- VXLAN adds 50 bytes, Geneve adds 38+ bytes; `global_physnet_mtu`, `path_mtu`, and `advertised` settings must be consistent)

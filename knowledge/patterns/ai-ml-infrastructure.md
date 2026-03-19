@@ -37,7 +37,6 @@ GPU compute is 5-50x more expensive than CPU compute, making infrastructure deci
 
 | Instance | GPU | vCPUs | Memory | On-Demand/hr | Spot/hr (typical) | Use Case |
 |----------|-----|-------|--------|-------------|-------------------|----------|
-| p3.2xlarge | 1x V100 (16 GB) | 8 | 61 GB | $3.06 | $0.92 | Legacy training, medium inference |
 | p4d.24xlarge | 8x A100 (40 GB) | 96 | 1.1 TB | $32.77 | $13.10 | Large model training |
 | p5.48xlarge | 8x H100 (80 GB) | 192 | 2 TB | $98.32 | $39.33 | Frontier model training, large-scale fine-tuning |
 | g5.xlarge | 1x A10G (24 GB) | 4 | 16 GB | $1.01 | $0.30 | Cost-effective inference, light training |
@@ -104,7 +103,7 @@ GPU compute is 5-50x more expensive than CPU compute, making infrastructure deci
 ## Common Decisions (ADR Triggers)
 
 - **Managed platform vs self-managed** — SageMaker/Vertex AI convenience and cost vs Kubernetes + KubeFlow flexibility and portability
-- **GPU instance selection** — training instances (A100, H100) vs inference instances (T4, L4, Inferentia), spot vs on-demand for training
+- **GPU instance selection** — training instances (A100/p4d, H100/p5) vs inference instances (L4/g6, A10G/g5, Inferentia2/inf2), spot vs on-demand for training; note: p3 (V100) instances were retired December 2025 — migrate to g6/g6e (lower cost, more GPU memory) or p4d/p5
 - **Serving architecture** — real-time endpoints vs batch prediction vs streaming, auto-scaling configuration, scale-to-zero capability
 - **Feature store adoption** — build vs buy, online/offline store split, feature freshness requirements
 - **Experiment tracking tool** — MLflow (open source, self-hosted) vs W&B (managed, better UX) vs platform-native

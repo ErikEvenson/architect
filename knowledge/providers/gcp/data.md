@@ -2,7 +2,7 @@
 
 ## Scope
 
-Cloud SQL, AlloyDB, Cloud Spanner, Firestore, Bigtable, Memorystore, Database Migration Service, and Cloud SQL Auth Proxy. For data analytics and warehousing (BigQuery, Dataflow, Dataproc), see separate data analytics guidance.
+Cloud SQL, AlloyDB, Cloud Spanner, Firestore, Bigtable, Memorystore, Database Migration Service, and Cloud SQL Auth Proxy. This file provides a concise overview of GCP database services for quick reference. For detailed coverage of each service including version-specific features, Enterprise Plus edition, and in-depth configuration guidance, see `providers/gcp/database.md`. For data analytics and warehousing (BigQuery, Dataflow, Dataproc), see separate data analytics guidance.
 
 
 ## Checklist

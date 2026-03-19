@@ -16,6 +16,7 @@ Multi-cloud architecture uses two or more public cloud providers simultaneously 
 - [ ] **[Critical]** How is identity federated across providers? (centralized IdP, cross-cloud role assumption, workload identity federation)
 - [ ] **[Critical]** How is networking connected between clouds? (dedicated interconnects, VPN, DNS delegation, overlapping CIDR avoidance)
 - [ ] **[Critical]** Where does data reside and why? (data sovereignty, data gravity, egress cost implications, replication strategy)
+- [ ] **[Critical]** What data residency and sovereignty requirements apply per region? (GDPR for EU personal data, China data localization laws, India data residency rules, Russia data localization — each may restrict which provider and region can store or process data, and may require in-country data processing, not just storage)
 - [ ] **[Recommended]** Which services are provider-native vs abstracted? (databases, AI/ML, managed services — accept lock-in for high-value differentiators)
 - [ ] **[Recommended]** How is observability unified? (Datadog, Grafana Cloud, or provider-native tools with aggregation — single pane of glass)
 - [ ] **[Critical]** How is security policy enforced consistently? (OPA/Gatekeeper, cloud-agnostic policy engine, unified SIEM)

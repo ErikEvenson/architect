@@ -22,6 +22,7 @@ Multi-tenant SaaS architectures serve multiple customers (tenants) from shared i
 - [ ] **[Recommended]** Is tenant-level monitoring and logging in place? (metrics per tenant, cost attribution)
 - [ ] **[Recommended]** How are tenant-specific customizations handled? (feature flags, configuration, not code branches)
 - [ ] **[Critical]** Is cross-tenant data leakage prevented at every layer? (API, database, cache, logs, error messages)
+- [ ] **[Critical]** Are regulatory isolation requirements met per tenant? (HIPAA may require silo model for PHI, PCI DSS requires network isolation for cardholder data, GDPR requires data residency controls for EU personal data — the isolation model must match the most restrictive tenant's compliance requirements, or the bridge model must support per-tenant isolation upgrades)
 - [ ] **[Recommended]** Is tenant offboarding and data deletion automated? (GDPR right to erasure, data retention policies)
 
 ## Why This Matters

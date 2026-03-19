@@ -49,7 +49,7 @@ Hybrid cloud is a transitional or permanent state for most enterprises, not a te
 | Connection Type | Monthly Cost | Bandwidth | Notes |
 |----------------|-------------|-----------|-------|
 | Site-to-Site VPN (2 tunnels) | $75 | Up to 1.25 Gbps per tunnel | Cheapest option; internet-dependent latency |
-| AWS Direct Connect (1 Gbps, dedicated) | $220 port fee + partner circuit ($500-2,000) | 1 Gbps dedicated | Consistent latency; 1-3 month provisioning |
+| AWS Direct Connect (1 Gbps, dedicated) | $220 port fee + partner circuit ($500-2,000) | 1 Gbps dedicated | Consistent latency; hosted connections provision in hours-days, dedicated connections take weeks-months depending on location |
 | AWS Direct Connect (10 Gbps, dedicated) | $1,575 port fee + partner circuit ($2,000-8,000) | 10 Gbps dedicated | High throughput; required for large data volumes |
 | Direct Connect hosted connection (500 Mbps) | $100 port fee + partner fees ($300-800) | 500 Mbps shared | Lower cost entry to dedicated connectivity |
 | Redundant Direct Connect (2x 1 Gbps) | ~$1,440 + 2x partner circuits | 2 Gbps total | Required for production HA |

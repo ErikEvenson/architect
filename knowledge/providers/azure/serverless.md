@@ -6,7 +6,7 @@ Azure serverless compute and event-driven architecture. Covers Azure Functions (
 
 ## Checklist
 
-- [ ] **[Critical]** Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Flex Consumption (per-function scaling, VNet integration, fast scaling with always-ready instances, GA November 2024) vs Premium (pre-warmed instances, full VNet integration) vs Dedicated (App Service plan, predictable cost)?
+- [ ] **[Critical]** Is the Azure Functions hosting plan selected based on workload characteristics -- Consumption (pay-per-execution, cold starts) vs Flex Consumption (per-function scaling, VNet integration, fast scaling with always-ready instances) vs Premium (pre-warmed instances, full VNet integration) vs Dedicated (App Service plan, predictable cost)?
 - [ ] **[Recommended]** Are Durable Functions used for stateful orchestration patterns -- function chaining, fan-out/fan-in, async HTTP APIs, monitoring, and human interaction workflows?
 - [ ] **[Recommended]** Are Azure Functions bindings and triggers configured to minimize boilerplate -- input/output bindings for Blob Storage, Cosmos DB, Service Bus, and Event Hubs instead of SDK calls?
 - [ ] **[Recommended]** Is Azure Logic Apps (Standard or Consumption) deployed for low-code workflow automation with 400+ managed connectors for SaaS, on-premises, and Azure service integration?

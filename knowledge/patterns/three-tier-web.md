@@ -28,9 +28,11 @@ A three-tier architecture separates presentation (web), business logic (applicat
 ## Tier Boundaries
 
 ```
-Internet → CDN/WAF → Load Balancer → App Servers → Cache → Database
-                                   → Object Storage (static assets, uploads)
+Internet → CDN/WAF → Load Balancer → [API Gateway] → App Servers → Cache → Database
+                                                    → Object Storage (static assets, uploads)
 ```
+
+**Note:** Modern implementations often add an API Gateway layer (AWS API Gateway, Azure API Management, GCP API Gateway, Kong, or similar) between the load balancer and app tier for centralized authentication, rate limiting, request validation, API versioning, and usage metering. This is optional for traditional web applications but recommended when the app tier exposes APIs consumed by mobile clients, third-party integrations, or single-page applications.
 
 ### Web/Presentation Tier
 - CDN for static assets and edge caching

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Cloud DNS (public and private zones, DNSSEC, routing policies), Cloud Service Mesh (formerly Traffic Director and Anthos Service Mesh), Global and Regional Load Balancing, hybrid DNS integration.
+Cloud DNS (public and private zones, DNSSEC, routing policies), Cloud Service Mesh (unified product combining the former Traffic Director managed control plane and Anthos Service Mesh managed service mesh), Global and Regional Load Balancing, hybrid DNS integration.
 
 ## Checklist
 
@@ -21,7 +21,7 @@ Cloud DNS (public and private zones, DNSSEC, routing policies), Cloud Service Me
 
 ## Why This Matters
 
-DNS is the foundation of service discovery and traffic routing in GCP. Cloud DNS provides 100% availability SLA for authoritative DNS, but misconfigured routing policies, missing health checks, or incorrect private zone associations silently direct traffic to wrong or unhealthy endpoints. Unlike AWS Route 53 which combines DNS and traffic routing, GCP separates these concerns across Cloud DNS (authoritative DNS), Global Load Balancer (Layer 7 traffic routing), and Cloud Service Mesh (service mesh control plane, formerly Traffic Director and Anthos Service Mesh -- unified into a single product).
+DNS is the foundation of service discovery and traffic routing in GCP. Cloud DNS provides 100% availability SLA for authoritative DNS, but misconfigured routing policies, missing health checks, or incorrect private zone associations silently direct traffic to wrong or unhealthy endpoints. Unlike AWS Route 53 which combines DNS and traffic routing, GCP separates these concerns across Cloud DNS (authoritative DNS), Global Load Balancer (Layer 7 traffic routing), and Cloud Service Mesh (service mesh control plane -- unified product combining the former Traffic Director managed control plane and Anthos Service Mesh managed service mesh into a single offering).
 
 This separation provides more flexibility but requires understanding which layer to use for each routing requirement. DNS-level routing (Cloud DNS routing policies) works for any protocol but has TTL-dependent failover. Load balancer routing (URL maps, traffic splitting) works only for HTTP/HTTPS but provides instant failover and sophisticated content-based routing. Cloud Service Mesh provides the most advanced routing (header-based, fault injection, circuit breaking) plus mTLS, distributed tracing, and authorization policies, but requires Envoy proxy deployment.
 

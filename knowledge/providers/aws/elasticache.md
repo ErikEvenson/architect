@@ -6,21 +6,21 @@ AWS managed in-memory caching with Valkey, Redis OSS, and Memcached engines. Cov
 
 ## Checklist
 
-- [ ] [Critical] Is **Valkey** selected as the primary engine for new deployments? (AWS adopted Valkey in 2024 — a Linux Foundation fork of Redis, fully compatible, 20-33% lower pricing than Redis OSS on ElastiCache)
-- [ ] [Critical] Is the engine choice documented: Valkey (recommended — best price-performance, active open-source development under Linux Foundation), Redis OSS (legacy, still supported), or Memcached (simple key-value, multi-threaded, no persistence)?
-- [ ] [Critical] Is cluster mode enabled for Valkey/Redis workloads that need horizontal scaling beyond a single node's memory limit?
-- [ ] [Critical] Are read replicas configured (up to 5 per shard) for read-heavy workloads, and is the application using the reader endpoint?
-- [ ] [Critical] Is Multi-AZ with automatic failover enabled for all production replication groups?
-- [ ] [Critical] Is encryption at rest enabled with a customer-managed KMS key?
-- [ ] [Critical] Is encryption in transit (TLS) enabled, and are clients configured to connect over TLS?
-- [ ] [Critical] Is AUTH or IAM-based authentication configured to prevent unauthorized access?
-- [ ] [Critical] Is the ElastiCache cluster deployed in private subnets with security groups restricting access to application-tier only?
-- [ ] [Recommended] Is the node type right-sized based on memory requirements, connection counts, and network bandwidth? (r7g Graviton nodes for cost efficiency)
-- [ ] [Recommended] Are CloudWatch alarms configured for evictions, cache hit ratio, CPU, memory usage, replication lag, and connection count?
-- [ ] [Recommended] Is a cache eviction policy (maxmemory-policy) explicitly set? (allkeys-lru for general caching, volatile-lru for mixed key expiry)
-- [ ] [Recommended] Is the backup/snapshot retention configured for production clusters to enable point-in-time recovery?
-- [ ] [Recommended] Is ElastiCache Serverless evaluated for workloads with unpredictable or spiky cache demand?
-- [ ] [Optional] Are parameter groups version-controlled with tuned settings for timeout, maxclients, and tcp-keepalive?
+- [ ] **[Critical]** Is **Valkey** selected as the primary engine for new deployments? (AWS adopted Valkey in 2024 — a Linux Foundation fork of Redis, fully compatible, 20-33% lower pricing than Redis OSS on ElastiCache)
+- [ ] **[Critical]** Is the engine choice documented: Valkey (recommended — best price-performance, active open-source development under Linux Foundation), Redis OSS (legacy, still supported), or Memcached (simple key-value, multi-threaded, no persistence)?
+- [ ] **[Critical]** Is cluster mode enabled for Valkey/Redis workloads that need horizontal scaling beyond a single node's memory limit?
+- [ ] **[Critical]** Are read replicas configured (up to 5 per shard) for read-heavy workloads, and is the application using the reader endpoint?
+- [ ] **[Critical]** Is Multi-AZ with automatic failover enabled for all production replication groups?
+- [ ] **[Critical]** Is encryption at rest enabled with a customer-managed KMS key?
+- [ ] **[Critical]** Is encryption in transit (TLS) enabled, and are clients configured to connect over TLS?
+- [ ] **[Critical]** Is AUTH or IAM-based authentication configured to prevent unauthorized access?
+- [ ] **[Critical]** Is the ElastiCache cluster deployed in private subnets with security groups restricting access to application-tier only?
+- [ ] **[Recommended]** Is the node type right-sized based on memory requirements, connection counts, and network bandwidth? (r7g Graviton nodes for cost efficiency)
+- [ ] **[Recommended]** Are CloudWatch alarms configured for evictions, cache hit ratio, CPU, memory usage, replication lag, and connection count?
+- [ ] **[Recommended]** Is a cache eviction policy (maxmemory-policy) explicitly set? (allkeys-lru for general caching, volatile-lru for mixed key expiry)
+- [ ] **[Recommended]** Is the backup/snapshot retention configured for production clusters to enable point-in-time recovery?
+- [ ] **[Recommended]** Is ElastiCache Serverless evaluated for workloads with unpredictable or spiky cache demand?
+- [ ] **[Optional]** Are parameter groups version-controlled with tuned settings for timeout, maxclients, and tcp-keepalive?
 
 ## Why This Matters
 

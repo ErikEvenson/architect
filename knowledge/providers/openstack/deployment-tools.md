@@ -64,8 +64,9 @@ Production OpenStack deployments are multi-week efforts. A typical small cluster
 ### ADR: Handling TripleO / RHOSP Deprecation
 **Trigger:** Running Red Hat OpenStack Platform (RHOSP) 16.x or 17.x with TripleO.
 **Considerations:**
-- TripleO is deprecated. Red Hat's replacement is RHOSO (Red Hat OpenStack Services on OpenShift), which runs control plane services as Kubernetes operators on OpenShift.
-- Migration from TripleO to RHOSO is a significant undertaking; evaluate whether migrating to a community tool (Kolla-Ansible) is preferable.
+- TripleO is officially retired as of Epoxy (2025.1). Red Hat's replacement is RHOSO (Red Hat OpenStack Services on OpenShift), which runs control plane services as Kubernetes operators on OpenShift.
+- RHOSO is developed and supported by Red Hat, not the upstream OpenStack community. This represents a shift in the support and licensing model -- organizations should understand that RHOSO requires an OpenShift subscription in addition to Red Hat OpenStack licensing.
+- Migration from TripleO to RHOSO is a significant undertaking; evaluate whether migrating to a community tool (Kolla-Ansible) is preferable, particularly for organizations without an existing OpenShift investment.
 
 ## Reference Architectures
 

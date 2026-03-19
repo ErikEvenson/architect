@@ -472,7 +472,7 @@ FedRAMP requires ongoing monitoring activities after authorization:
 
 FIPS-validated cryptography is mandatory for FedRAMP at all impact levels.
 
-- [ ] **[Critical]** All cryptographic modules are FIPS 140-2 or 140-3 validated
+- [ ] **[Critical]** All cryptographic modules are FIPS 140-2 or 140-3 validated (required for all FedRAMP impact levels; validation can be verified via the NIST CMVP validated modules list; if a specific module lacks validation, document a POA&M with compensating controls and obtain explicit ATO justification from the authorizing official)
 - [ ] **[Critical]** Cloud provider FIPS validation certificates are documented (CMVP certificate numbers)
 - [ ] **[Critical]** FIPS endpoints are used for all API calls to cloud providers
 - [ ] **[Critical]** TLS configurations use only FIPS-approved algorithms

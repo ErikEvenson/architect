@@ -54,5 +54,5 @@ Memorystore for Valkey offers a Redis-compatible, open-source in-memory data sto
 
 - `general/data.md` -- general data architecture patterns
 - `general/database-migration.md` -- database migration strategies
-- `providers/gcp/data.md` -- overlapping GCP data services coverage
+- `providers/gcp/data.md` -- concise GCP data services overview (this file provides detailed coverage)
 - `providers/gcp/disaster-recovery.md` -- database DR and failover patterns
