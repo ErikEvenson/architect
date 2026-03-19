@@ -226,6 +226,8 @@ nav:
     - Storage: providers/ceph/storage.md
   - Pulumi:
     - IaC: providers/pulumi/iac.md
+  - Hystax:
+    - Migration & DR: providers/hystax/migration.md
   - Ansible:
     - Configuration: providers/ansible/configuration.md
   - Rancher:
