@@ -74,6 +74,11 @@ nav:
     - Data Classification: general/data-classification.md
     - Unsolicited Bid Strategy: general/unsolicited-bid-strategy.md
     - CI/CD Pipeline Design: general/ci-cd.md
+    - API Gateway: general/api-gateway.md
+    - Database HA: general/database-ha.md
+    - FinOps: general/finops.md
+    - Compliance Automation: general/compliance-automation.md
+    - Data Analytics: general/data-analytics.md
     - Local Development Environments: general/local-development-environments.md
   - AWS:
     - VPC: providers/aws/vpc.md
@@ -244,6 +249,7 @@ nav:
     - Dual-Platform Operations: patterns/dual-platform-operations.md
     - Private Cloud As-a-Service: patterns/private-cloud-as-a-service.md
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
+    - Zero Trust: patterns/zero-trust.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
