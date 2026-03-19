@@ -228,6 +228,8 @@ nav:
     - IaC: providers/pulumi/iac.md
   - Hystax:
     - Migration & DR: providers/hystax/migration.md
+  - Zerto:
+    - DR & Migration: providers/zerto/dr-migration.md
   - Ansible:
     - Configuration: providers/ansible/configuration.md
   - Rancher:
