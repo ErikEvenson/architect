@@ -15,4 +15,6 @@ diagrams~=0.24.0
 httpx~=0.28.0
 cairosvg~=2.7.0
 pgvector~=0.3.0
-sentence-transformers~=3.0.0
+onnxruntime~=1.19.0
+tokenizers~=0.21.0
+numpy~=1.26.0

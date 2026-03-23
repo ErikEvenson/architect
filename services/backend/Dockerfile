@@ -22,12 +22,16 @@ COPY src/ /app/src/
 COPY knowledge/ /app/knowledge/
 
 RUN useradd -r -u 1000 architect && \
-    mkdir -p /app/data/outputs /app/model-cache && \
+    mkdir -p /app/data/outputs /app/model-cache/onnx && \
     chown -R architect:architect /app
 
-# Pre-download sentence-transformers model into image
-ENV SENTENCE_TRANSFORMERS_HOME=/app/model-cache
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+# Download pre-exported ONNX model for all-MiniLM-L6-v2 from HuggingFace
+# No PyTorch needed — uses onnxruntime + tokenizers at runtime (~300MB vs ~3GB)
+ENV EMBEDDING_MODEL_DIR=/app/model-cache/onnx
+RUN HF_BASE="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main" && \
+    curl -sL "$HF_BASE/onnx/model.onnx" -o /app/model-cache/onnx/model.onnx && \
+    curl -sL "$HF_BASE/tokenizer.json" -o /app/model-cache/onnx/tokenizer.json && \
+    curl -sL "$HF_BASE/config.json" -o /app/model-cache/onnx/config.json
 
 USER architect
 

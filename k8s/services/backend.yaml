@@ -36,8 +36,8 @@ spec:
               value: /app/secrets
             - name: HOME
               value: /home/architect
-            - name: SENTENCE_TRANSFORMERS_HOME
-              value: /app/model-cache
+            - name: EMBEDDING_MODEL_DIR
+              value: /app/model-cache/onnx
           volumeMounts:
             - name: secrets
               mountPath: /app/secrets
@@ -51,10 +51,10 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 512Mi
+              memory: 256Mi
             limits:
               cpu: 500m
-              memory: 1Gi
+              memory: 1536Mi
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000

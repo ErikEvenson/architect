@@ -1,9 +1,17 @@
-"""Vector embedding service for knowledge library search."""
+"""Vector embedding service for knowledge library search.
 
+Uses ONNX Runtime with the all-MiniLM-L6-v2 model for lightweight
+embeddings (~300MB RAM vs ~3GB for PyTorch-backed sentence-transformers).
+"""
+
+import asyncio
+import gc
+import os
 import time
 from pathlib import Path
 
 import httpx
+import numpy as np
 import structlog
 from sqlalchemy import delete, func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -18,26 +26,76 @@ from src.services.knowledge_parser import (
 
 logger = structlog.get_logger()
 
-# Lazy-loaded model singleton
-_model = None
+# Lazy-loaded ONNX session and tokenizer
+_session = None
+_tokenizer = None
+
+MODEL_DIR = Path(os.environ.get("EMBEDDING_MODEL_DIR", "/app/model-cache/onnx"))
 
 
 def get_model():
-    """Lazy-load the sentence-transformers model."""
-    global _model
-    if _model is None:
-        from sentence_transformers import SentenceTransformer
+    """Lazy-load the ONNX Runtime session and tokenizer."""
+    global _session, _tokenizer
+    if _session is None:
+        import onnxruntime as ort
+        from tokenizers import Tokenizer
 
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
-        logger.info("Loaded sentence-transformers model", model="all-MiniLM-L6-v2")
-    return _model
+        model_path = MODEL_DIR / "model.onnx"
+        tokenizer_path = MODEL_DIR / "tokenizer.json"
+
+        _session = ort.InferenceSession(
+            str(model_path),
+            providers=["CPUExecutionProvider"],
+        )
+        _tokenizer = Tokenizer.from_file(str(tokenizer_path))
+        _tokenizer.enable_padding(pad_id=0, pad_token="[PAD]", length=128)
+        _tokenizer.enable_truncation(max_length=128)
+        logger.info("Loaded ONNX embedding model", model_dir=str(MODEL_DIR))
+    return _session, _tokenizer
 
 
-def embed_texts(texts: list[str]) -> list[list[float]]:
-    """Generate embeddings for a list of texts."""
-    model = get_model()
-    embeddings = model.encode(texts, show_progress_bar=False, normalize_embeddings=True)
-    return embeddings.tolist()
+def _mean_pooling(token_embeddings: np.ndarray, attention_mask: np.ndarray) -> np.ndarray:
+    """Apply mean pooling to token embeddings using attention mask."""
+    mask_expanded = np.expand_dims(attention_mask, axis=-1).astype(np.float32)
+    sum_embeddings = np.sum(token_embeddings * mask_expanded, axis=1)
+    sum_mask = np.clip(np.sum(mask_expanded, axis=1), a_min=1e-9, a_max=None)
+    return sum_embeddings / sum_mask
+
+
+def _normalize(embeddings: np.ndarray) -> np.ndarray:
+    """L2-normalize embeddings."""
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    return embeddings / np.clip(norms, a_min=1e-9, a_max=None)
+
+
+def _embed_texts_sync(texts: list[str]) -> list[list[float]]:
+    """Generate embeddings for a list of texts using ONNX Runtime (sync)."""
+    ort_session, tokenizer = get_model()
+
+    encoded = tokenizer.encode_batch(texts)
+    input_ids = np.array([e.ids for e in encoded], dtype=np.int64)
+    attention_mask = np.array([e.attention_mask for e in encoded], dtype=np.int64)
+    token_type_ids = np.zeros_like(input_ids, dtype=np.int64)
+
+    outputs = ort_session.run(
+        None,
+        {
+            "input_ids": input_ids,
+            "attention_mask": attention_mask,
+            "token_type_ids": token_type_ids,
+        },
+    )
+
+    token_embeddings = outputs[0]
+    pooled = _mean_pooling(token_embeddings, attention_mask)
+    normalized = _normalize(pooled)
+
+    return normalized.tolist()
+
+
+async def embed_texts(texts: list[str]) -> list[list[float]]:
+    """Generate embeddings in a thread to avoid blocking the event loop."""
+    return await asyncio.to_thread(_embed_texts_sync, texts)
 
 
 async def reindex_knowledge(
@@ -122,12 +180,12 @@ async def reindex_knowledge(
         new_chunks = all_chunks
 
     if new_chunks:
-        # Generate embeddings in batches
-        batch_size = 64
+        # Generate embeddings in small batches, committing each to limit memory
+        batch_size = 32
         for i in range(0, len(new_chunks), batch_size):
             batch = new_chunks[i : i + batch_size]
             texts = [c.content for c in batch]
-            embeddings = embed_texts(texts)
+            embeddings = await embed_texts(texts)
 
             for chunk, embedding in zip(batch, embeddings):
                 db_embedding = KnowledgeEmbedding(
@@ -142,9 +200,18 @@ async def reindex_knowledge(
                 )
                 session.add(db_embedding)
 
-        await session.flush()
+            # Commit each batch and expire objects to free memory
+            await session.commit()
+            session.expire_all()
+            del texts, embeddings, batch
+            gc.collect()
 
-    await session.commit()
+            if (i // batch_size) % 10 == 0:
+                logger.info(
+                    "Reindex progress",
+                    processed=min(i + batch_size, len(new_chunks)),
+                    total=len(new_chunks),
+                )
 
     duration = time.time() - start_time
     files_processed = len({c.source_file for c in all_chunks if c.source_type == "knowledge_file"})
@@ -182,7 +249,7 @@ async def search_knowledge(
 
     Returns a list of dicts with embedding fields plus a similarity score.
     """
-    query_embedding = embed_texts([query])[0]
+    query_embedding = (await embed_texts([query]))[0]
 
     # Build the query using pgvector cosine distance
     # cosine_distance = 1 - cosine_similarity, so we compute 1 - distance for score
