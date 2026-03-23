@@ -22,8 +22,12 @@ COPY src/ /app/src/
 COPY knowledge/ /app/knowledge/
 
 RUN useradd -r -u 1000 architect && \
-    mkdir -p /app/data/outputs && \
+    mkdir -p /app/data/outputs /app/model-cache && \
     chown -R architect:architect /app
+
+# Pre-download sentence-transformers model into image
+ENV SENTENCE_TRANSFORMERS_HOME=/app/model-cache
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
 
 USER architect
 
