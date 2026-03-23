@@ -2,8 +2,9 @@
 
 ## Overview
 
-PostgreSQL 16 database `architect` with seven tables supporting the core data model:
-Client → Project → Version → Artifact/InventoryItem, plus ADR and Question per project.
+PostgreSQL 16 database `architect` with ten tables supporting the core data model:
+Client → Project → Version → Artifact/InventoryItem, plus ADR and Question per project,
+and a standalone knowledge_embeddings table for vector search over the knowledge library.
 
 All tables use UUID primary keys and UTC timestamps.
 
@@ -189,6 +190,39 @@ All tables use UUID primary keys and UTC timestamps.
 - `original_filename` preserves the user's filename; `stored_filename` may be sanitized
 - `file_size` in bytes
 - Scoped to a version; files on disk deleted via CASCADE trigger or application logic
+
+### knowledge_embeddings
+
+| Column | Type | Constraints |
+|---|---|---|
+| id | UUID | PK, default gen_random_uuid() |
+| source_file | VARCHAR(500) | NOT NULL |
+| source_type | VARCHAR(20) | NOT NULL, default 'knowledge_file', CHECK IN ('knowledge_file', 'vendor_doc') |
+| section | VARCHAR(255) | NOT NULL |
+| checklist_item | TEXT | NULL |
+| priority | VARCHAR(20) | NULL, CHECK IN ('critical', 'recommended', 'optional') |
+| content | TEXT | NOT NULL |
+| content_hash | VARCHAR(64) | NOT NULL |
+| embedding | VECTOR(384) | NOT NULL |
+| created_at | TIMESTAMPTZ | NOT NULL, default now() |
+| updated_at | TIMESTAMPTZ | NOT NULL, default now() |
+
+**Indexes:**
+- `ix_knowledge_embeddings_source_file` on `source_file`
+- `ix_knowledge_embeddings_source_type` on `source_type`
+- `ix_knowledge_embeddings_priority` on `priority`
+- `ix_knowledge_embeddings_content_hash` on `content_hash`
+- `ix_knowledge_embeddings_vector` HNSW on `embedding` using vector_cosine_ops
+
+**Notes:**
+- Requires `pgvector` extension (`CREATE EXTENSION vector;`)
+- `content_hash` is SHA-256 of `content`, used to skip re-embedding unchanged items during reindex
+- `source_file` is the relative path for knowledge files (e.g., `general/api-design.md`) or a URL for vendor docs
+- `source_type` distinguishes knowledge library files from fetched vendor documentation
+- `checklist_item` is the extracted checklist item text (null for non-checklist sections like "Why This Matters")
+- `priority` is extracted from checklist item tags: `[Critical]`, `[Recommended]`, `[Optional]`
+- `embedding` is a 384-dimensional vector from the `all-MiniLM-L6-v2` sentence-transformers model
+- HNSW index provides approximate nearest neighbor search with cosine distance
 
 ## Cascade Behavior
 

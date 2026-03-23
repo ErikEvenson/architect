@@ -781,6 +781,96 @@ paths:
         "404":
           description: Upload not found
 
+  # --- Knowledge ---
+  /knowledge:
+    get:
+      summary: List all available knowledge files organized by category
+      operationId: listKnowledge
+      tags: [knowledge]
+      responses:
+        "200":
+          description: Knowledge file tree
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KnowledgeTree"
+
+  /knowledge/search:
+    post:
+      summary: Semantic search across knowledge embeddings
+      operationId: searchKnowledge
+      tags: [knowledge]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KnowledgeSearchRequest"
+      responses:
+        "200":
+          description: Ranked search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KnowledgeSearchResponse"
+        "400":
+          description: Embeddings not indexed yet
+
+  /knowledge/reindex:
+    post:
+      summary: Re-index knowledge library into vector embeddings
+      operationId: reindexKnowledge
+      tags: [knowledge]
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReindexRequest"
+      responses:
+        "200":
+          description: Reindex completed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReindexResponse"
+
+  /knowledge/reindex/status:
+    get:
+      summary: Get current embedding index status
+      operationId: getReindexStatus
+      tags: [knowledge]
+      responses:
+        "200":
+          description: Index status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReindexStatus"
+
+  /knowledge/{path}:
+    parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Read a specific knowledge file
+      operationId: getKnowledgeFile
+      tags: [knowledge]
+      responses:
+        "200":
+          description: Knowledge file content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KnowledgeContent"
+        "400":
+          description: Invalid path
+        "404":
+          description: Knowledge file not found
+
   # --- Questions ---
   /projects/{project_id}/questions:
     parameters:
@@ -1250,6 +1340,11 @@ components:
         updated_at:
           type: string
           format: date-time
+        suggestions:
+          type: array
+          items:
+            $ref: "#/components/schemas/KnowledgeSuggestion"
+          description: Vector search suggestions based on question/answer content (populated when embeddings are indexed)
       required: [id, project_id, question_text, status, category, created_at, updated_at]
 
     QuestionCreate:
@@ -1367,3 +1462,186 @@ components:
           type: string
           format: date-time
       required: [id, version_id, original_filename, content_type, file_size, created_at, updated_at]
+
+    # --- Knowledge ---
+    KnowledgeFile:
+      type: object
+      properties:
+        path:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+      required: [path, name, category]
+
+    KnowledgeTree:
+      type: object
+      properties:
+        general:
+          type: array
+          items:
+            $ref: "#/components/schemas/KnowledgeFile"
+        providers:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: "#/components/schemas/KnowledgeFile"
+        patterns:
+          type: array
+          items:
+            $ref: "#/components/schemas/KnowledgeFile"
+      required: [general, providers, patterns]
+
+    KnowledgeContent:
+      type: object
+      properties:
+        path:
+          type: string
+        name:
+          type: string
+        content:
+          type: string
+      required: [path, name, content]
+
+    KnowledgeSearchRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: Natural language query to search against knowledge embeddings
+        top_k:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+          description: Number of results to return
+        min_score:
+          type: number
+          default: 0.3
+          minimum: 0.0
+          maximum: 1.0
+          description: Minimum cosine similarity score (0-1)
+        exclude_files:
+          type: array
+          items:
+            type: string
+          default: []
+          description: Knowledge file paths to exclude (e.g., already-loaded files)
+        priority_filter:
+          type: string
+          enum: [critical, recommended, optional]
+          nullable: true
+          description: Filter results by checklist item priority
+      required: [query]
+
+    KnowledgeSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/KnowledgeSearchResult"
+        query:
+          type: string
+        total_results:
+          type: integer
+      required: [results, query, total_results]
+
+    KnowledgeSearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        source_file:
+          type: string
+          description: Path to knowledge file or external reference URL
+        source_type:
+          type: string
+          enum: [knowledge_file, vendor_doc]
+        section:
+          type: string
+          description: Section name within the source
+        checklist_item:
+          type: string
+          nullable: true
+          description: The checklist item text (null for non-checklist chunks)
+        priority:
+          type: string
+          enum: [critical, recommended, optional]
+          nullable: true
+          description: Checklist item priority tag
+        content:
+          type: string
+          description: Full text of the matched chunk
+        score:
+          type: number
+          description: Cosine similarity score (0-1, higher is more relevant)
+      required: [id, source_file, source_type, section, content, score]
+
+    KnowledgeSuggestion:
+      type: object
+      description: Inline vector search suggestion included in API responses
+      properties:
+        source_file:
+          type: string
+        checklist_item:
+          type: string
+        priority:
+          type: string
+          enum: [critical, recommended, optional]
+          nullable: true
+        score:
+          type: number
+      required: [source_file, checklist_item, score]
+
+    ReindexRequest:
+      type: object
+      properties:
+        include_vendor_docs:
+          type: boolean
+          default: true
+          description: Whether to fetch and index vendor docs linked in knowledge files
+        force:
+          type: boolean
+          default: false
+          description: Re-embed all items even if unchanged
+
+    ReindexResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [completed, error]
+        files_processed:
+          type: integer
+        checklist_items_indexed:
+          type: integer
+        vendor_docs_indexed:
+          type: integer
+        duration_seconds:
+          type: number
+        errors:
+          type: array
+          items:
+            type: string
+      required: [status, files_processed, checklist_items_indexed, vendor_docs_indexed, duration_seconds]
+
+    ReindexStatus:
+      type: object
+      properties:
+        indexed:
+          type: boolean
+        total_embeddings:
+          type: integer
+        knowledge_file_count:
+          type: integer
+        vendor_doc_count:
+          type: integer
+        last_indexed_at:
+          type: string
+          format: date-time
+          nullable: true
+      required: [indexed, total_embeddings, knowledge_file_count, vendor_doc_count]
