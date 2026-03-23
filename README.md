@@ -13,6 +13,7 @@ Architect combines a structured knowledge library with an interactive design wor
 - **Document rendering** — Markdown to styled HTML with diagram embedding
 - **PDF export** — professional reports with cover page, table of contents, and embedded diagrams
 - **Knowledge library** — extensible markdown-based best practices, organized by provider, pattern, and compliance framework
+- **Vector search (RAG)** — semantic search over the knowledge library using pgvector embeddings, surfacing relevant checklist items that rule-based loading might miss
 
 ## Architecture
 
@@ -20,7 +21,8 @@ Architect combines a structured knowledge library with an interactive design wor
 |-------|-----------|
 | Backend | FastAPI + Uvicorn (Python 3.12) |
 | Frontend | React + Vite + TypeScript + Tailwind CSS |
-| Database | PostgreSQL 16 (K8s StatefulSet) |
+| Database | PostgreSQL 16 + pgvector (K8s StatefulSet) |
+| Vector Search | pgvector + sentence-transformers (RAG) |
 | Diagrams | Python `diagrams` + D2 |
 | PDFs | WeasyPrint + Jinja2 |
 | Migrations | Alembic |
@@ -108,6 +110,91 @@ Client (1) → (*) Project (1) → (*) Version (1) → (*) Artifact
 - **Artifact** — diagram, document, or PDF report
 - **ADR** — architectural decision record (sequential per project)
 - **Question** — clarifying question with status and category
+- **KnowledgeEmbedding** — vector embedding of a knowledge library chunk (checklist item or section)
+
+## RAG Architecture
+
+Architect uses Retrieval-Augmented Generation (RAG) to enhance the knowledge library with semantic search. This runs alongside the existing rule-based file loading — not as a replacement.
+
+### How It Works
+
+```
+Knowledge Files (231 .md files)          Vendor Docs (linked URLs)
+        │                                        │
+        ▼                                        ▼
+┌─────────────────┐                    ┌──────────────────┐
+│ Markdown Parser │                    │  HTTP Fetch +    │
+│ Extract items   │                    │  Paragraph Chunk │
+│ per checklist   │                    └──────────────────┘
+└─────────────────┘                              │
+        │                                        │
+        ▼                                        ▼
+┌──────────────────────────────────────────────────────┐
+│        all-MiniLM-L6-v2 (sentence-transformers)      │
+│        384-dimensional normalized embeddings          │
+│        Runs locally in backend container              │
+└──────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────┐
+│              PostgreSQL 16 + pgvector                 │
+│  knowledge_embeddings table with HNSW cosine index   │
+│  Content-hash deduplication for incremental reindex  │
+└──────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────┐
+│              Retrieval (dual strategy)                │
+│                                                      │
+│  1. Rule-based: load all files for active provider,  │
+│     pattern, and compliance scope (guarantees no     │
+│     Critical items are missed)                       │
+│                                                      │
+│  2. Vector search: cosine similarity against query   │
+│     text, surfaces related items from NON-loaded     │
+│     files (cross-cutting discovery)                  │
+└──────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────┐
+│              Integration Points                       │
+│                                                      │
+│  • After Q&A pairs — inline suggestions in response  │
+│  • After rule-based loading — additional file recs   │
+│  • During artifact generation — cross-references     │
+└──────────────────────────────────────────────────────┘
+```
+
+### Components
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| Vector store | pgvector (PostgreSQL extension) | Store and query 384-dim embeddings via HNSW index |
+| Embedding model | `all-MiniLM-L6-v2` (sentence-transformers) | Generate embeddings locally, no external API |
+| Chunking | Custom markdown parser | Extract individual checklist items with `[Critical]`/`[Recommended]`/`[Optional]` tags |
+| Indexing | On-demand via `POST /knowledge/reindex` | Content-hash deduplication — only re-embeds changed chunks |
+| Search | Cosine similarity with min-score filter | Configurable top-k, file exclusion, priority filtering |
+| Suggestions | Inline in API responses | `suggestions` array on question responses when answers are provided |
+
+### Key Design Decisions
+
+| Decision | Choice | Why |
+|----------|--------|-----|
+| Vector store | pgvector in existing PostgreSQL | No new infrastructure; single database for all data |
+| Embedding model | Local `all-MiniLM-L6-v2` | Self-contained stack, no API keys or external dependencies |
+| Chunk granularity | Individual checklist items | Matches the workflow's unit of work (one question per item) |
+| Indexing trigger | On-demand only | User controls when to re-index; no startup latency |
+| Deduplication | SHA-256 content hash | Only re-embeds changed chunks on reindex |
+| Fallback | Graceful degradation | If embeddings aren't indexed, suggestions are empty — never errors |
+| Dual retrieval | Rule-based primary + vector secondary | Rules guarantee completeness; vectors add discovery |
+
+### API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/knowledge/search` | POST | Semantic search with query, top-k, min-score, file exclusion, priority filter |
+| `/knowledge/reindex` | POST | Re-index knowledge files and vendor docs into embeddings |
+| `/knowledge/reindex/status` | GET | Check index status (count, last indexed timestamp) |
 
 ## API
 
@@ -123,7 +210,7 @@ All endpoints under `/api/v1/`. See full OpenAPI spec at `/docs` when running.
 | Questions | CRUD + filter at `/projects/{id}/questions` |
 | Rendering | Trigger + outputs at `/versions/{id}/artifacts/{id}/render` |
 | Templates | List + render at `/templates` |
-| Knowledge | Browse at `/knowledge` |
+| Knowledge | Browse + vector search + reindex at `/knowledge` |
 
 ## Rendering Engines
 
