@@ -7,6 +7,7 @@ This document defines the systematic process for conducting architecture design 
 - Architect API is running and accessible
 - API base URL is set via `ARCHITECT_API_URL` environment variable (default: `http://localhost:30010/api/v1`)
 - Knowledge files are available at `knowledge/`
+- Knowledge embeddings are indexed (check via `GET /knowledge/reindex/status`; if not indexed, run `POST /knowledge/reindex`)
 
 ## Workflow Steps
 
@@ -56,6 +57,26 @@ Load files in this order:
 7. **On-prem specific** — `general/load-balancing-onprem.md`, `general/networking-physical.md`, `general/cost-onprem.md` if any provider is on-prem (nutanix, vmware, openstack).
 8. **Cross-cutting tools** — `providers/hashicorp/*` if Terraform/Vault/Consul are in scope, `providers/prometheus-grafana/*` for on-prem observability, `providers/ceph/*` for Ceph storage.
 
+### Step 3b: RAG Discovery Pass
+
+After loading knowledge files by rule, run a vector search to discover additional relevant content that the taxonomy might not connect. This supplements the rule-based loading — it does not replace it.
+
+1. **Search with the project description:**
+   ```
+   POST /knowledge/search
+   {"query": "<project description + cloud providers + pattern>", "top_k": 20, "exclude_files": ["<already loaded files>"]}
+   ```
+
+2. **Review results for cross-cutting items** — the vector search may surface relevant checklist items from:
+   - Compliance files not initially loaded (e.g., a GDPR item triggered by a data residency mention)
+   - Provider files for adjacent technologies (e.g., Ceph storage items for an OpenStack project)
+   - Pattern files that partially overlap (e.g., DR items for a migration project)
+   - General files with niche items that apply (e.g., virtual appliance migration for VMware projects)
+
+3. **Load any additional files** that have multiple high-scoring hits (score > 0.5). These indicate the file is genuinely relevant to the project scope.
+
+4. **Note individual high-scoring items** from files you choose not to fully load — ask these as supplementary questions during Step 4.
+
 ### Step 4: Systematic Questioning
 
 Walk through the loaded knowledge files' checklist items. Process in this order:
@@ -70,6 +91,18 @@ For each checklist item:
 - Record the answer via `PATCH /versions/{id}/questions/{id}`
 - If the answer implies an architectural decision, create an ADR IMMEDIATELY via `POST /versions/{id}/adrs`
 - Track coverage via `POST /versions/{id}/coverage` (record which item was addressed)
+
+**MANDATORY: RAG-Augmented Questioning**
+
+After recording each answer, check the `suggestions` array in the question response. These are vector search results — checklist items from non-loaded files that are semantically related to the answer. For each suggestion with score > 0.5:
+- If it raises a concern not yet addressed, ask it as a follow-up question
+- If it confirms an existing decision, note it in the coverage
+- If it's from a file not yet loaded, consider loading that file
+
+Additionally, combine knowledge library content with general domain expertise when formulating questions and evaluating answers. The knowledge library provides specific checklist items and configuration details; general expertise provides context about why those items matter, how they interact, and what the trade-offs are. Use both together:
+- **Knowledge library** provides the WHAT — specific items to check, configuration values, vendor-specific details
+- **General expertise** provides the WHY — architectural reasoning, trade-off analysis, experience-based judgment
+- **RAG search** provides the CONNECTIONS — related items across the library that the taxonomy doesn't link
 
 **MANDATORY: Hosting Model Question (for on-prem platforms)**
 
@@ -149,6 +182,20 @@ After walking through all checklist items:
 - Check the failure patterns — verify no anti-patterns are present in the design
 - Any gaps discovered should be noted for addition to knowledge files later
 
+**MANDATORY: RAG Gap Scan**
+
+Run a final vector search using the accumulated project context (all questions, answers, and ADR titles) to find any checklist items that were never addressed:
+
+1. **Search with each major ADR decision:**
+   ```
+   POST /knowledge/search
+   {"query": "<ADR title + decision summary>", "top_k": 5, "exclude_files": ["<loaded files>"]}
+   ```
+
+2. **Search with the overall project summary** — combine all answered questions into a project summary and search for anything the library covers that wasn't asked about.
+
+3. **Flag any Critical items** from the results that have no corresponding coverage entry — these are potential gaps that the rule-based loading missed.
+
 ### Step 6: Generate Diagrams
 
 Only after the architecture is fully specified, generate diagrams:
@@ -218,20 +265,27 @@ Create a comprehensive design document artifact that compiles all project data:
 - Coverage checklist (which knowledge categories were addressed, deferred, or N/A)
 - Success criteria
 
-**MANDATORY: Implementation Details from Knowledge Library**
+**MANDATORY: Implementation Details from Knowledge Library + RAG**
 
 For EVERY major component in the architecture (each database, compute tier, network element, storage, security control, monitoring system), generate an implementation detail section by:
 
 1. **Cross-reference the relevant knowledge file** for that component
-2. **Extract Critical and Recommended checklist items** that apply
-3. **Generate a configuration table** with specific settings, not just the decision name:
+2. **Run a RAG search** for the component to find additional relevant items across the entire library:
+   ```
+   POST /knowledge/search
+   {"query": "<component name + technology + key decisions>", "top_k": 10}
+   ```
+   This surfaces related checklist items from compliance files, failure patterns, and other providers that the rule-based loading may not have connected.
+3. **Extract Critical and Recommended checklist items** that apply (from both loaded files AND RAG results)
+4. **Generate a configuration table** with specific settings, not just the decision name:
    - Setting name
    - Recommended value (based on project context: scale, RPO/RTO, compliance)
    - Rationale
-4. **Include security configuration** from the knowledge file
-5. **Include monitoring/alerting recommendations**
-6. **Include common mistakes to avoid** from failure pattern files
-7. **Consult vendor documentation** (via reference links) for current best practices
+5. **Include security configuration** from the knowledge file
+6. **Include monitoring/alerting recommendations**
+7. **Include common mistakes to avoid** from failure pattern files
+8. **Consult vendor documentation** (via reference links) for current best practices
+9. **Apply general domain expertise** — the knowledge library provides specific checklist items, but implementation details should also reflect architectural best practices, performance tuning guidance, and operational experience that go beyond what any checklist covers
 
 Example — instead of just "Aurora Multi-AZ", include:
 
@@ -326,6 +380,9 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 | Update coverage | PATCH | `/versions/{id}/coverage/{id}` |
 | List coverage | GET | `/versions/{id}/coverage` |
 | Coverage summary | GET | `/versions/{id}/coverage/summary` |
+| Search knowledge (RAG) | POST | `/knowledge/search` |
+| Reindex knowledge | POST | `/knowledge/reindex` |
+| Reindex status | GET | `/knowledge/reindex/status` |
 
 ## Rules
 
@@ -341,3 +398,5 @@ All endpoints use the base URL from `ARCHITECT_API_URL` environment variable.
 10. **IaC tool is a user decision** — always ask which IaC tool(s) to use, never assume. Create an ADR for the choice.
 11. **Include IaC plan** — every design document includes a resource inventory with module structure and complexity estimates
 12. **Consult vendor documentation** — use WebFetch to check reference links in knowledge files when answering questions about pricing, feature availability, configuration, or service limits. Don't rely solely on training data.
+13. **Use RAG at every stage** — run vector searches after loading files (Step 3b), after each answer (Step 4 suggestions), during gap analysis (Step 5), and during artifact generation (Step 10). The knowledge library is comprehensive but taxonomically organized — RAG finds the cross-cutting connections.
+14. **Combine all three knowledge sources** — the knowledge library provides specific checklists, RAG provides cross-cutting discovery, and general domain expertise provides architectural reasoning and trade-off analysis. Use all three together for every decision. Never rely on only one source.
