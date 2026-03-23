@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from enum import Enum
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -32,6 +33,13 @@ class QuestionUpdate(BaseModel):
     category: QuestionCategory | None = None
 
 
+class KnowledgeSuggestion(BaseModel):
+    source_file: str
+    checklist_item: str
+    priority: Optional[str] = None
+    score: float
+
+
 class QuestionResponse(BaseModel):
     id: uuid.UUID
     version_id: uuid.UUID
@@ -39,6 +47,7 @@ class QuestionResponse(BaseModel):
     answer_text: str | None
     status: str
     category: str
+    suggestions: list[KnowledgeSuggestion] = []
     created_at: datetime
     updated_at: datetime
 

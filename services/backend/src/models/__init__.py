@@ -8,5 +8,6 @@ from src.models.question import Question
 from src.models.coverage import CoverageItem
 from src.models.inventory_item import InventoryItem
 from src.models.upload import Upload
+from src.models.knowledge_embedding import KnowledgeEmbedding
 
-__all__ = ["Base", "Client", "Project", "Version", "Artifact", "ADR", "Question", "CoverageItem", "InventoryItem", "Upload"]
+__all__ = ["Base", "Client", "Project", "Version", "Artifact", "ADR", "Question", "CoverageItem", "InventoryItem", "Upload", "KnowledgeEmbedding"]

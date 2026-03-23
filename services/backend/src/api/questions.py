@@ -1,5 +1,6 @@
 import uuid
 
+import structlog
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -7,7 +8,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.database import get_session
 from src.models.question import Question
 from src.models.version import Version
-from src.schemas.question import QuestionCreate, QuestionResponse, QuestionUpdate
+from src.schemas.question import KnowledgeSuggestion, QuestionCreate, QuestionResponse, QuestionUpdate
+from src.services import embedding_service
+
+logger = structlog.get_logger()
 
 router = APIRouter(prefix="/versions/{version_id}/questions", tags=["questions"])
 
@@ -90,4 +94,22 @@ async def update_question(
 
     await session.commit()
     await session.refresh(question)
-    return question
+
+    # Generate inline suggestions when an answer is provided
+    response = QuestionResponse.model_validate(question)
+    if question.answer_text:
+        try:
+            index_status = await embedding_service.get_index_status(session)
+            if index_status["indexed"]:
+                search_text = f"{question.question_text} {question.answer_text}"
+                suggestions = await embedding_service.get_suggestions_for_text(
+                    session=session,
+                    text=search_text,
+                )
+                response.suggestions = [
+                    KnowledgeSuggestion(**s) for s in suggestions
+                ]
+        except Exception:
+            logger.warning("Failed to generate suggestions", exc_info=True)
+
+    return response
