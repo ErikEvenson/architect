@@ -137,6 +137,44 @@ async def search_knowledge(
     session: AsyncSession = Depends(get_session),
 ):
     """Semantic search across knowledge embeddings."""
+    return await _do_search(
+        query=request.query,
+        top_k=request.top_k,
+        min_score=request.min_score,
+        exclude_files=request.exclude_files or None,
+        priority_filter=request.priority_filter,
+        session=session,
+    )
+
+
+@router.get("/search", response_model=KnowledgeSearchResponse)
+async def search_knowledge_get(
+    q: str,
+    top_k: int = 10,
+    min_score: float = 0.4,
+    priority: Optional[str] = None,
+    session: AsyncSession = Depends(get_session),
+):
+    """Semantic search via GET for clients that only support URL fetching."""
+    return await _do_search(
+        query=q,
+        top_k=top_k,
+        min_score=min_score,
+        exclude_files=None,
+        priority_filter=priority,
+        session=session,
+    )
+
+
+async def _do_search(
+    query: str,
+    top_k: int,
+    min_score: float,
+    exclude_files: list[str] | None,
+    priority_filter: str | None,
+    session: AsyncSession,
+) -> KnowledgeSearchResponse:
+    """Shared search implementation for GET and POST endpoints."""
     status = await embedding_service.get_index_status(session)
     if not status["indexed"]:
         raise HTTPException(
@@ -146,16 +184,16 @@ async def search_knowledge(
 
     results = await embedding_service.search_knowledge(
         session=session,
-        query=request.query,
-        top_k=request.top_k,
-        min_score=request.min_score,
-        exclude_files=request.exclude_files or None,
-        priority_filter=request.priority_filter,
+        query=query,
+        top_k=top_k,
+        min_score=min_score,
+        exclude_files=exclude_files,
+        priority_filter=priority_filter,
     )
 
     return KnowledgeSearchResponse(
         results=[KnowledgeSearchResult(**r) for r in results],
-        query=request.query,
+        query=query,
         total_results=len(results),
     )
 
