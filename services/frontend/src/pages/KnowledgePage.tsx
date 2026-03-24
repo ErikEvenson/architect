@@ -46,9 +46,10 @@ export function KnowledgePage() {
   const lastResult = indexStatus?.reindex_last_result ?? null;
   const reindexError = indexStatus?.reindex_last_error ?? null;
   const progress = indexStatus?.progress ?? null;
-  const elapsed = indexStatus?.reindex_started_at
+  const elapsedSec = indexStatus?.reindex_started_at
     ? Math.round(Date.now() / 1000 - indexStatus.reindex_started_at)
     : 0;
+  const elapsed = formatElapsed(elapsedSec);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -248,7 +249,17 @@ export function KnowledgePage() {
                     {PHASE_LABELS[progress.phase] || progress.phase}
                   </span>
                 </div>
-                <span className="text-xs text-gray-400">{elapsed}s</span>
+                <span className="text-xs text-gray-400">
+                  {elapsed}
+                  {progress.phase === "embedding" && progress.chunks_processed > 0 && progress.total_chunks > 0 && (
+                    <> &middot; ~{formatElapsed(
+                      Math.round(
+                        (elapsedSec / progress.chunks_processed) *
+                        (progress.total_chunks - progress.chunks_processed)
+                      )
+                    )} remaining</>
+                  )}
+                </span>
               </div>
 
               {/* Progress bar */}
@@ -445,6 +456,16 @@ export function KnowledgePage() {
       </div>
     </div>
   );
+}
+
+function formatElapsed(totalSeconds: number): string {
+  if (totalSeconds < 60) return `${totalSeconds}s`;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  if (minutes < 60) return `${minutes}m ${seconds}s`;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${hours}h ${remainingMinutes}m ${seconds}s`;
 }
 
 function renderMarkdown(md: string): string {

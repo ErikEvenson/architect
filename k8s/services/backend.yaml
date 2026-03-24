@@ -50,11 +50,11 @@ spec:
               mountPath: /home/architect
           resources:
             requests:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 512Mi
             limits:
-              cpu: 500m
-              memory: 1536Mi
+              cpu: "2"
+              memory: 2Gi
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000

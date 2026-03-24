@@ -55,6 +55,10 @@ _reindex_progress: dict = {
 MODEL_DIR = Path(os.environ.get("EMBEDDING_MODEL_DIR", "/app/model-cache/onnx"))
 
 
+EMBEDDING_WORKERS = int(os.environ.get("EMBEDDING_WORKERS", "2"))
+EMBEDDING_BATCH_SIZE = int(os.environ.get("EMBEDDING_BATCH_SIZE", "64"))
+
+
 def get_model():
     """Lazy-load the ONNX Runtime session and tokenizer."""
     global _session, _tokenizer
@@ -65,14 +69,25 @@ def get_model():
         model_path = MODEL_DIR / "model.onnx"
         tokenizer_path = MODEL_DIR / "tokenizer.json"
 
+        sess_options = ort.SessionOptions()
+        sess_options.inter_op_num_threads = EMBEDDING_WORKERS
+        sess_options.intra_op_num_threads = EMBEDDING_WORKERS
+        sess_options.execution_mode = ort.ExecutionMode.ORT_PARALLEL
+
         _session = ort.InferenceSession(
             str(model_path),
+            sess_options=sess_options,
             providers=["CPUExecutionProvider"],
         )
         _tokenizer = Tokenizer.from_file(str(tokenizer_path))
         _tokenizer.enable_padding(pad_id=0, pad_token="[PAD]", length=128)
         _tokenizer.enable_truncation(max_length=128)
-        logger.info("Loaded ONNX embedding model", model_dir=str(MODEL_DIR))
+        logger.info(
+            "Loaded ONNX embedding model",
+            model_dir=str(MODEL_DIR),
+            workers=EMBEDDING_WORKERS,
+            batch_size=EMBEDDING_BATCH_SIZE,
+        )
     return _session, _tokenizer
 
 
@@ -310,7 +325,7 @@ async def reindex_knowledge(
     if stop:
         return _build_result(stop, 0, 0, 0, start_time, errors)
 
-    # --- Phase: fetching vendor docs ---
+    # --- Phase: fetching vendor docs (concurrent) ---
     vendor_chunks: list[ParsedChunk] = []
     vendor_doc_count = 0
     if include_vendor_docs:
@@ -319,13 +334,16 @@ async def reindex_knowledge(
         _reindex_progress["vendor_docs_total"] = len(vendor_urls)
         logger.info("Found vendor doc URLs", url_count=len(vendor_urls))
 
-        async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
-            for url_info in vendor_urls:
-                stop = await _check_signals(start_time)
-                if stop:
-                    break
+        semaphore = asyncio.Semaphore(20)
+        vendor_lock = asyncio.Lock()
+
+        async def _fetch_one(http_client: httpx.AsyncClient, url_info: dict):
+            nonlocal vendor_doc_count
+            async with semaphore:
+                if _reindex_cancelled:
+                    return
                 try:
-                    resp = await client.get(url_info["url"])
+                    resp = await http_client.get(url_info["url"])
                     if resp.status_code == 200:
                         content_type = resp.headers.get("content-type", "")
                         if "text" in content_type or "html" in content_type:
@@ -334,17 +352,24 @@ async def reindex_knowledge(
                                 title=url_info["title"],
                                 content=resp.text,
                             )
-                            vendor_chunks.extend(doc_chunks)
-                            vendor_doc_count += 1
+                            async with vendor_lock:
+                                vendor_chunks.extend(doc_chunks)
+                                vendor_doc_count += 1
+                                _reindex_progress["vendor_docs_fetched"] = vendor_doc_count
                 except Exception as e:
-                    errors.append(f"Failed to fetch {url_info['url']}: {e}")
+                    async with vendor_lock:
+                        errors.append(f"Failed to fetch {url_info['url']}: {e}")
                     logger.warning(
                         "Failed to fetch vendor doc",
                         url=url_info["url"],
                         error=str(e),
                     )
-                _reindex_progress["vendor_docs_fetched"] = vendor_doc_count
 
+        async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as http_client:
+            tasks = [_fetch_one(http_client, url_info) for url_info in vendor_urls]
+            await asyncio.gather(*tasks)
+
+        stop = await _check_signals(start_time)
         if stop:
             return _build_result(stop, 0, 0, vendor_doc_count, 0, start_time, errors)
 
@@ -388,22 +413,35 @@ async def reindex_knowledge(
         await session.execute(delete(KnowledgeEmbedding))
         new_chunks = all_chunks
 
-    batch_size = 32
+    batch_size = EMBEDDING_BATCH_SIZE
     total_batches = (len(new_chunks) + batch_size - 1) // batch_size if new_chunks else 0
     _reindex_progress["total_chunks"] = len(new_chunks)
     _reindex_progress["total_batches"] = total_batches
 
     if new_chunks:
-        for i in range(0, len(new_chunks), batch_size):
+        # Pipelined: embed next batch while committing current batch
+        batches = [
+            new_chunks[i : i + batch_size]
+            for i in range(0, len(new_chunks), batch_size)
+        ]
+
+        # Pre-compute first batch embeddings
+        pending_embeddings = await embed_texts([c.content for c in batches[0]])
+
+        for batch_idx, batch in enumerate(batches):
             stop = await _check_signals(start_time)
             if stop:
                 files_processed = len({c.source_file for c in all_chunks if c.source_type == "knowledge_file"})
                 checklist_items = len([c for c in all_chunks if c.checklist_item is not None])
                 return _build_result(stop, files_processed, checklist_items, vendor_doc_count, uploads_indexed, start_time, errors)
 
-            batch = new_chunks[i : i + batch_size]
-            texts = [c.content for c in batch]
-            embeddings = await embed_texts(texts)
+            embeddings = pending_embeddings
+
+            # Start embedding next batch concurrently with DB write
+            next_embed_task = None
+            if batch_idx + 1 < len(batches):
+                next_texts = [c.content for c in batches[batch_idx + 1]]
+                next_embed_task = asyncio.create_task(embed_texts(next_texts))
 
             for chunk, embedding in zip(batch, embeddings):
                 db_embedding = KnowledgeEmbedding(
@@ -420,12 +458,17 @@ async def reindex_knowledge(
 
             await session.commit()
             session.expire_all()
-            del texts, embeddings, batch
             gc.collect()
 
-            batch_num = i // batch_size + 1
+            # Await next batch embeddings (should already be done or nearly done)
+            if next_embed_task is not None:
+                pending_embeddings = await next_embed_task
+
+            batch_num = batch_idx + 1
             _reindex_progress["current_batch"] = batch_num
-            _reindex_progress["chunks_processed"] = min(i + batch_size, len(new_chunks))
+            _reindex_progress["chunks_processed"] = min(
+                batch_num * batch_size, len(new_chunks)
+            )
 
             if batch_num % 10 == 0:
                 logger.info(

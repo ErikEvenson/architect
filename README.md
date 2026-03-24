@@ -13,7 +13,7 @@ Architect combines a structured knowledge library with an interactive design wor
 - **Document rendering** — Markdown to styled HTML with diagram embedding
 - **PDF export** — professional reports with cover page, table of contents, and embedded diagrams
 - **Knowledge library** — extensible markdown-based best practices, organized by provider, pattern, and compliance framework
-- **Vector search (RAG)** — semantic search over the knowledge library using pgvector embeddings, surfacing relevant checklist items that rule-based loading might miss
+- **Vector search (RAG)** — semantic search over the knowledge library, vendor docs, and uploaded files using pgvector embeddings, with a web UI for index management (start, stop, pause, resume, clear, timeout, progress tracking)
 
 ## Architecture
 
@@ -22,7 +22,7 @@ Architect combines a structured knowledge library with an interactive design wor
 | Backend | FastAPI + Uvicorn (Python 3.12) |
 | Frontend | React + Vite + TypeScript + Tailwind CSS |
 | Database | PostgreSQL 16 + pgvector (K8s StatefulSet) |
-| Vector Search | pgvector + sentence-transformers (RAG) |
+| Vector Search | pgvector + ONNX Runtime (all-MiniLM-L6-v2) |
 | Diagrams | Python `diagrams` + D2 |
 | PDFs | WeasyPrint + Jinja2 |
 | Migrations | Alembic |
@@ -79,8 +79,8 @@ architect/
 │           ├── components/# UI components
 │           ├── pages/    # Route pages
 │           └── stores/   # Zustand state
-├── knowledge/            # Architecture knowledge library
-│   ├── general/          # Universal concerns (8 files)
+├── knowledge/            # Architecture knowledge library (228 files)
+│   ├── general/          # Universal concerns
 │   ├── providers/        # Provider-specific (AWS, Azure, GCP, etc.)
 │   ├── patterns/         # Architecture patterns (three-tier, microservices, etc.)
 │   ├── compliance/       # Compliance frameworks (PCI, HIPAA, SOC2, FedRAMP)
@@ -119,20 +119,21 @@ Architect uses Retrieval-Augmented Generation (RAG) to enhance the knowledge lib
 ### How It Works
 
 ```
-Knowledge Files (231 .md files)          Vendor Docs (linked URLs)
-        │                                        │
-        ▼                                        ▼
-┌─────────────────┐                    ┌──────────────────┐
-│ Markdown Parser │                    │  HTTP Fetch +    │
-│ Extract items   │                    │  Paragraph Chunk │
-│ per checklist   │                    └──────────────────┘
-└─────────────────┘                              │
-        │                                        │
-        ▼                                        ▼
+Knowledge Files (228 .md)    Vendor Docs (550+ URLs)    Uploaded Files
+        │                           │                        │
+        ▼                           ▼                        ▼
+┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+│ Markdown Parser │    │ Concurrent Fetch  │    │  Text Extraction │
+│ Extract items   │    │ (20 parallel)     │    │  .md .txt .csv   │
+│ per checklist   │    │ Paragraph Chunk   │    │  .json .yaml etc │
+└─────────────────┘    └──────────────────┘    └──────────────────┘
+        │                       │                        │
+        └───────────────────────┼────────────────────────┘
+                                ▼
 ┌──────────────────────────────────────────────────────┐
-│        all-MiniLM-L6-v2 (sentence-transformers)      │
-│        384-dimensional normalized embeddings          │
-│        Runs locally in backend container              │
+│         all-MiniLM-L6-v2 (ONNX Runtime)             │
+│         384-dimensional normalized embeddings         │
+│         Parallel threads, pipelined DB writes         │
 └──────────────────────────────────────────────────────┘
                           │
                           ▼
@@ -170,9 +171,10 @@ Knowledge Files (231 .md files)          Vendor Docs (linked URLs)
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | Vector store | pgvector (PostgreSQL extension) | Store and query 384-dim embeddings via HNSW index |
-| Embedding model | `all-MiniLM-L6-v2` (sentence-transformers) | Generate embeddings locally, no external API |
+| Embedding model | `all-MiniLM-L6-v2` (ONNX Runtime) | Generate embeddings locally with parallel threads, no external API |
 | Chunking | Custom markdown parser | Extract individual checklist items with `[Critical]`/`[Recommended]`/`[Optional]` tags |
-| Indexing | On-demand via `POST /knowledge/reindex` | Content-hash deduplication — only re-embeds changed chunks |
+| Indexing | Background task with web UI controls | Start, stop, pause, resume, clear, configurable timeout, real-time progress |
+| Data sources | Knowledge files + vendor docs + uploads | Indexes all three sources; vendor docs fetched concurrently (20 parallel) |
 | Search | Cosine similarity with min-score filter | Configurable top-k, file exclusion, priority filtering |
 | Suggestions | Inline in API responses | `suggestions` array on question responses when answers are provided |
 
@@ -181,9 +183,11 @@ Knowledge Files (231 .md files)          Vendor Docs (linked URLs)
 | Decision | Choice | Why |
 |----------|--------|-----|
 | Vector store | pgvector in existing PostgreSQL | No new infrastructure; single database for all data |
-| Embedding model | Local `all-MiniLM-L6-v2` | Self-contained stack, no API keys or external dependencies |
+| Embedding runtime | ONNX Runtime (not PyTorch) | ~300 MB RAM vs ~3 GB; parallel thread support; no CUDA dependency |
 | Chunk granularity | Individual checklist items | Matches the workflow's unit of work (one question per item) |
-| Indexing trigger | On-demand only | User controls when to re-index; no startup latency |
+| Indexing model | Background task with server-side state | Progress survives page navigation; supports pause/resume/cancel |
+| Vendor doc fetching | 20-way concurrent with semaphore | Reduces fetch phase from minutes to seconds |
+| Embedding pipeline | Pre-fetch next batch during DB commit | Overlaps CPU-bound inference with I/O-bound writes |
 | Deduplication | SHA-256 content hash | Only re-embeds changed chunks on reindex |
 | Fallback | Graceful degradation | If embeddings aren't indexed, suggestions are empty — never errors |
 | Dual retrieval | Rule-based primary + vector secondary | Rules guarantee completeness; vectors add discovery |
@@ -193,8 +197,14 @@ Knowledge Files (231 .md files)          Vendor Docs (linked URLs)
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
 | `/knowledge/search` | POST | Semantic search with query, top-k, min-score, file exclusion, priority filter |
-| `/knowledge/reindex` | POST | Re-index knowledge files and vendor docs into embeddings |
-| `/knowledge/reindex/status` | GET | Check index status (count, last indexed timestamp) |
+| `/knowledge/search` | GET | Search via query params (fetch-only clients) |
+| `/knowledge/reindex` | POST | Start background reindex (knowledge files, vendor docs, uploads) |
+| `/knowledge/reindex/status` | GET | Index status, background task state, and progress |
+| `/knowledge/reindex/stop` | POST | Cancel a running reindex |
+| `/knowledge/reindex/pause` | POST | Pause a running reindex between batches |
+| `/knowledge/reindex/resume` | POST | Resume a paused reindex |
+| `/knowledge/reindex/clear` | POST | Delete all embeddings from the index |
+| `/knowledge/reindex/timeout` | POST | Set or clear the reindex timeout |
 
 ## API
 
