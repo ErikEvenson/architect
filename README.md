@@ -275,4 +275,4 @@ pytest tests/ -v
 
 ## License
 
-Private repository.
+MIT License. See [LICENSE](LICENSE).
