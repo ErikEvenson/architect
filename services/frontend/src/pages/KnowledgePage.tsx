@@ -251,6 +251,14 @@ export function KnowledgePage() {
                 </div>
                 <span className="text-xs text-gray-400">
                   {elapsed}
+                  {progress.phase === "fetching_vendor_docs" && progress.vendor_docs_fetched > 0 && progress.vendor_docs_total > 0 && (
+                    <> &middot; ~{formatElapsed(
+                      Math.round(
+                        (elapsedSec / progress.vendor_docs_fetched) *
+                        (progress.vendor_docs_total - progress.vendor_docs_fetched)
+                      )
+                    )} remaining</>
+                  )}
                   {progress.phase === "embedding" && progress.chunks_processed > 0 && progress.total_chunks > 0 && (
                     <> &middot; ~{formatElapsed(
                       Math.round(

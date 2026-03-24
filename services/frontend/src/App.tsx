@@ -10,6 +10,7 @@ import { ADRDetailPage } from "./pages/ADRDetailPage";
 import { QuestionListPage } from "./pages/QuestionListPage";
 import { ComparisonPage } from "./pages/ComparisonPage";
 import { KnowledgePage } from "./pages/KnowledgePage";
+import { ChatPage } from "./pages/ChatPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/clients/:clientId/projects/:projectId/versions/:versionId/questions" element={<QuestionListPage />} />
             <Route path="/clients/:clientId/projects/:projectId/compare" element={<ComparisonPage />} />
             <Route path="/knowledge" element={<KnowledgePage />} />
+            <Route path="/chat" element={<ChatPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

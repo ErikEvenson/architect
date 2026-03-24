@@ -40,6 +40,7 @@ export function Layout() {
         </div>
         <div className="flex items-center gap-4">
           <Link to="/knowledge" className="text-sm text-gray-400 hover:text-gray-200">Knowledge</Link>
+          <Link to="/chat" className="text-sm text-gray-400 hover:text-gray-200">Chat</Link>
         </div>
       </header>
 
