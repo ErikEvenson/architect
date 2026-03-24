@@ -156,6 +156,7 @@ nav:
     - Observability: providers/nutanix/observability.md
     - Migration Tools: providers/nutanix/migration-tools.md
     - In-Place AHV Conversion: providers/nutanix/in-place-conversion.md
+    - NC2 on Azure: providers/nutanix/nc2-azure.md
   - VMware:
     - Infrastructure: providers/vmware/infrastructure.md
     - Compute: providers/vmware/compute.md

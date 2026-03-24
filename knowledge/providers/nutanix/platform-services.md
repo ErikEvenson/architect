@@ -63,5 +63,6 @@ Nutanix platform services transform a hyperconverged cluster from basic compute 
 ## See Also
 
 - `providers/nutanix/infrastructure.md` -- core Nutanix infrastructure
+- `providers/nutanix/nc2-azure.md` -- NC2 on Azure bare-metal, networking, licensing, and DR
 - `providers/nutanix/storage.md` -- Objects and Files storage services
 - `providers/kubernetes/compute.md` -- Kubernetes workload patterns for NKE
