@@ -129,6 +129,8 @@ nav:
     - Bicep: providers/azure/bicep.md
     - Azure Local: providers/azure/azure-local.md
     - Azure Stack Edge: providers/azure/azure-stack-edge.md
+    - Commercial Programs (EA/MACC/ESF): providers/azure/commercial-programs.md
+    - HCI on Azure: providers/azure/hci-on-azure.md
   - GCP:
     - Networking: providers/gcp/networking.md
     - Compute: providers/gcp/compute.md
@@ -157,6 +159,7 @@ nav:
     - Migration Tools: providers/nutanix/migration-tools.md
     - In-Place AHV Conversion: providers/nutanix/in-place-conversion.md
     - NC2 on Azure: providers/nutanix/nc2-azure.md
+    - Prism Central at Scale: providers/nutanix/prism-central-scale.md
   - VMware:
     - Infrastructure: providers/vmware/infrastructure.md
     - Compute: providers/vmware/compute.md
@@ -259,6 +262,8 @@ nav:
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
     - Zero Trust: patterns/zero-trust.md
     - Network Segmentation: patterns/network-segmentation.md
+    - On-Prem to NC2 Migration: patterns/onprem-to-nc2-migration.md
+    - Managed Cloud Services: patterns/managed-cloud-services.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
