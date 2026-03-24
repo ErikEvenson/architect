@@ -164,3 +164,41 @@ export interface Upload {
   created_at: string;
   updated_at: string;
 }
+
+export interface ReindexProgress {
+  phase: string;
+  chunks_processed: number;
+  total_chunks: number;
+  current_batch: number;
+  total_batches: number;
+  vendor_docs_fetched: number;
+  vendor_docs_total: number;
+  uploads_processed: number;
+  uploads_total: number;
+}
+
+export interface ReindexStatus {
+  indexed: boolean;
+  total_embeddings: number;
+  knowledge_file_count: number;
+  vendor_doc_count: number;
+  upload_count: number;
+  last_indexed_at: string | null;
+  reindexing: boolean;
+  paused: boolean;
+  reindex_started_at: number | null;
+  reindex_timeout: number | null;
+  reindex_last_result: ReindexResponse | null;
+  reindex_last_error: string | null;
+  progress: ReindexProgress | null;
+}
+
+export interface ReindexResponse {
+  status: string;
+  files_processed: number;
+  checklist_items_indexed: number;
+  vendor_docs_indexed: number;
+  uploads_indexed: number;
+  duration_seconds: number;
+  errors: string[];
+}

@@ -6,6 +6,7 @@ import type {
   ADR, ADRCreate, ADRUpdate,
   Question, QuestionCreate, QuestionUpdate,
   Upload,
+  ReindexStatus,
 } from "./types";
 
 const API_BASE = "/api/v1";
@@ -112,6 +113,20 @@ export const uploadsApi = {
     request<void>(`/versions/${versionId}/uploads/${id}`, { method: "DELETE" }),
   downloadUrl: (versionId: string, id: string) =>
     `${API_BASE}/versions/${versionId}/uploads/${id}/download`,
+};
+
+// Knowledge
+export const knowledgeApi = {
+  reindex: (options?: { include_vendor_docs?: boolean; include_uploads?: boolean; force?: boolean; timeout_seconds?: number | null }) =>
+    request<{ status: string }>("/knowledge/reindex", {
+      method: "POST",
+      body: JSON.stringify(options ?? {}),
+    }),
+  reindexStatus: () => request<ReindexStatus>("/knowledge/reindex/status"),
+  stop: () => request<{ status: string }>("/knowledge/reindex/stop", { method: "POST" }),
+  pause: () => request<{ status: string }>("/knowledge/reindex/pause", { method: "POST" }),
+  resume: () => request<{ status: string }>("/knowledge/reindex/resume", { method: "POST" }),
+  clear: () => request<{ status: string; deleted: number }>("/knowledge/reindex/clear", { method: "POST" }),
 };
 
 // Questions (version-scoped)

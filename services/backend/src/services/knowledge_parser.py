@@ -11,7 +11,7 @@ class ParsedChunk:
     """A single chunk extracted from a knowledge file."""
 
     source_file: str
-    source_type: str  # "knowledge_file" or "vendor_doc"
+    source_type: str  # "knowledge_file", "vendor_doc", or "upload"
     section: str
     checklist_item: str | None
     priority: str | None  # "critical", "recommended", "optional"
@@ -182,6 +182,139 @@ def parse_vendor_doc_content(
             checklist_item=None,
             priority=None,
             content=chunk_text,
+        ))
+
+    return chunks
+
+
+# Text-based content types that can be indexed
+INDEXABLE_CONTENT_TYPES = {
+    "text/plain",
+    "text/markdown",
+    "text/csv",
+    "text/html",
+    "text/xml",
+    "application/json",
+    "application/xml",
+    "application/yaml",
+    "application/x-yaml",
+    "text/yaml",
+    "text/x-yaml",
+}
+
+# Extensions to treat as text even if content_type is generic
+INDEXABLE_EXTENSIONS = {
+    ".md", ".txt", ".csv", ".json", ".xml", ".yaml", ".yml",
+    ".html", ".htm", ".log", ".cfg", ".conf", ".ini", ".toml",
+    ".py", ".js", ".ts", ".sh", ".tf", ".hcl",
+}
+
+
+def is_indexable(filename: str, content_type: str) -> bool:
+    """Check whether a file is text-based and suitable for indexing."""
+    if content_type in INDEXABLE_CONTENT_TYPES:
+        return True
+    if content_type.startswith("text/"):
+        return True
+    ext = Path(filename).suffix.lower()
+    return ext in INDEXABLE_EXTENSIONS
+
+
+def parse_upload_content(
+    source_label: str,
+    filename: str,
+    content: str,
+    max_chunk_size: int = 1000,
+) -> list[ParsedChunk]:
+    """Parse uploaded file content into chunks for embedding.
+
+    Args:
+        source_label: Identifier for the upload (e.g. "upload:{upload_id}").
+        filename: Original filename (used as section label).
+        content: The text content of the file.
+        max_chunk_size: Max chars per chunk.
+    """
+    chunks: list[ParsedChunk] = []
+
+    # If it looks like markdown, use the knowledge file parser logic
+    if filename.lower().endswith(".md"):
+        lines = content.split("\n")
+        current_section = filename
+        section_content_lines: list[str] = []
+
+        def flush():
+            if section_content_lines:
+                text = "\n".join(section_content_lines).strip()
+                if text:
+                    chunks.append(ParsedChunk(
+                        source_file=source_label,
+                        source_type="upload",
+                        section=current_section,
+                        checklist_item=None,
+                        priority=None,
+                        content=text,
+                    ))
+
+        for line in lines:
+            heading_match = HEADING_PATTERN.match(line)
+            if heading_match:
+                flush()
+                section_content_lines = []
+                current_section = heading_match.group(2).strip()
+                continue
+
+            checklist_match = CHECKLIST_PATTERN.match(line)
+            if checklist_match:
+                priority = checklist_match.group(1).lower()
+                item_text = checklist_match.group(2).strip()
+                chunks.append(ParsedChunk(
+                    source_file=source_label,
+                    source_type="upload",
+                    section=current_section,
+                    checklist_item=item_text,
+                    priority=priority,
+                    content=item_text,
+                ))
+                continue
+
+            section_content_lines.append(line)
+
+        flush()
+        return chunks
+
+    # For other text files, chunk by paragraphs
+    paragraphs = content.split("\n\n")
+    current_chunk_lines: list[str] = []
+    current_size = 0
+
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+
+        if current_size + len(para) > max_chunk_size and current_chunk_lines:
+            chunks.append(ParsedChunk(
+                source_file=source_label,
+                source_type="upload",
+                section=filename,
+                checklist_item=None,
+                priority=None,
+                content="\n\n".join(current_chunk_lines),
+            ))
+            current_chunk_lines = []
+            current_size = 0
+
+        current_chunk_lines.append(para)
+        current_size += len(para)
+
+    if current_chunk_lines:
+        chunks.append(ParsedChunk(
+            source_file=source_label,
+            source_type="upload",
+            section=filename,
+            checklist_item=None,
+            priority=None,
+            content="\n\n".join(current_chunk_lines),
         ))
 
     return chunks
