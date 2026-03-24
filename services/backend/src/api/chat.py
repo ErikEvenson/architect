@@ -58,9 +58,15 @@ async def chat(
         request.version_id, session
     )
 
+    # Pre-fetch RAG results for the user's latest message
+    rag_context = await chat_service.prefetch_rag_context(
+        request.messages, session
+    )
+
     return StreamingResponse(
         _stream_chat(
             system_prompt=system_prompt,
+            rag_context=rag_context,
             messages=request.messages,
             provider=request.provider,
             version_id=request.version_id,
@@ -82,6 +88,7 @@ def _sse(data: dict) -> str:
 
 async def _stream_chat(
     system_prompt: str,
+    rag_context: str | None,
     messages: list[ChatMessage],
     provider: ProviderConfig,
     version_id: str | None,
@@ -107,6 +114,23 @@ async def _stream_chat(
             m["tool_calls"] = msg.tool_calls
         api_messages.append(m)
 
+    # Inject RAG context as a system message right before the last user message
+    # so the model sees it as immediately relevant context
+    if rag_context:
+        # Find the last user message index and insert RAG before it
+        last_user_idx = None
+        for i in range(len(api_messages) - 1, -1, -1):
+            if api_messages[i].get("role") == "user":
+                last_user_idx = i
+                break
+        if last_user_idx is not None:
+            api_messages.insert(last_user_idx, {
+                "role": "system",
+                "content": rag_context,
+            })
+        else:
+            api_messages.append({"role": "system", "content": rag_context})
+
     use_tools = True
     max_tool_rounds = 20  # Safety limit to prevent infinite tool loops
 
@@ -118,7 +142,7 @@ async def _stream_chat(
                 "stream": True,
             }
             if use_tools:
-                kwargs["tools"] = chat_service.TOOL_DEFINITIONS
+                kwargs["tools"] = chat_service.get_tools(version_id)
 
             stream = await client.chat.completions.create(**kwargs)
         except Exception as e:

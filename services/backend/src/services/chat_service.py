@@ -74,7 +74,19 @@ async def build_system_prompt(
         "- For OpenStack and on-premises designs, always include physical host and "
         "cluster design, not just tenant resources.\n"
         "- Always use stack-specific icons (Python diagrams library) over plain D2 when "
-        "cloud provider icons are available."
+        "cloud provider icons are available.\n"
+        "- **CRITICAL: Always base your answers on knowledge library content, not your "
+        "training data.** When a user asks about a technology or design topic, search "
+        "the knowledge library first, read the relevant files, and present what the "
+        "knowledge library says. Cite the source file (e.g., 'Per providers/azure/compute.md'). "
+        "If the knowledge library doesn't cover a topic, say so explicitly and offer "
+        "your general knowledge as a supplement, clearly marked as such.\n"
+        "- When search results come back, read the top-scoring files in full using "
+        "read_knowledge_file before answering. Do not just summarize the search snippets — "
+        "load the actual files and present their checklist items and recommendations.\n"
+        "- Present knowledge library content in a structured way: list the [Critical], "
+        "[Recommended], and [Optional] checklist items, explain why they matter, and "
+        "highlight the Common Decisions (ADR triggers)."
     )
 
     # --- Available tools ---
@@ -91,9 +103,19 @@ async def build_system_prompt(
         "- **list_adrs / create_adr**: Manage architectural decision records\n"
         "- **list_questions / create_question / update_question**: Manage discovery "
         "questions\n\n"
-        "Use search_knowledge and read_knowledge_file to access the knowledge library "
-        "before making design decisions. The knowledge library contains critical "
-        "checklists that prevent common mistakes."
+        "**How to use the knowledge library:**\n"
+        "1. Use **search_knowledge** first to find relevant content by topic. It returns "
+        "the source file paths and matching content.\n"
+        "2. Use **read_knowledge_file** to load the full file when you need details. "
+        "Pass the relative path from the search results (e.g., 'providers/azure/compute.md').\n"
+        "3. There is NO single file per provider. Content is organized as:\n"
+        "   - general/ — universal concerns (networking.md, compute.md, security.md, disaster-recovery.md, cost.md, etc.)\n"
+        "   - providers/{provider}/ — provider-specific files (e.g., providers/azure/compute.md, providers/azure/networking.md, providers/aws/s3.md)\n"
+        "   - patterns/ — architecture patterns (three-tier-web.md, microservices.md, hybrid-cloud.md, etc.)\n"
+        "   - compliance/ — compliance frameworks (pci-dss.md, hipaa.md, soc2.md, etc.)\n"
+        "   - frameworks/ — well-architected frameworks (aws-well-architected.md, azure-well-architected.md, etc.)\n"
+        "   - failures/ — anti-patterns and failure modes\n\n"
+        "Always search first, then read specific files. Never guess file paths."
     )
 
     # --- CLAUDE.md content ---
@@ -113,6 +135,109 @@ async def build_system_prompt(
             sections.append(f"## Current Project Context\n{context}")
 
     return "\n\n".join(sections)
+
+
+async def prefetch_rag_context(
+    messages: list,
+    session: AsyncSession,
+    top_k: int = 10,
+    min_score: float = 0.35,
+) -> str | None:
+    """Search the knowledge library for the user's latest message and return
+    formatted context to inject into the system prompt.
+
+    This ensures the LLM has relevant knowledge library content directly in
+    its context window, rather than relying on the model to call tools.
+    """
+    # Find the last user message
+    user_query = None
+    for msg in reversed(messages):
+        role = msg.role if hasattr(msg, "role") else msg.get("role")
+        content = msg.content if hasattr(msg, "content") else msg.get("content")
+        if role == "user" and content:
+            user_query = content
+            break
+
+    if not user_query:
+        return None
+
+    # Check if embeddings are indexed
+    try:
+        status = await embedding_service.get_index_status(session)
+        if not status.get("indexed"):
+            return None
+    except Exception:
+        return None
+
+    # Search the knowledge library
+    try:
+        results = await embedding_service.search_knowledge(
+            session=session,
+            query=user_query,
+            top_k=top_k,
+            min_score=min_score,
+        )
+    except Exception:
+        return None
+
+    if not results:
+        return None
+
+    # Group results by source file for cleaner presentation
+    files: dict[str, list[dict]] = {}
+    for r in results:
+        src = r["source_file"]
+        if src not in files:
+            files[src] = []
+        files[src].append(r)
+
+    # Also load the full content of the top-scoring unique files
+    seen_files: set[str] = set()
+    full_file_contents: list[str] = []
+    max_files_to_load = 2  # Limit to keep context focused
+
+    for r in results:
+        src = r["source_file"]
+        if src in seen_files or src.startswith("http"):
+            continue
+        seen_files.add(src)
+        if len(full_file_contents) >= max_files_to_load:
+            break
+        file_path = KNOWLEDGE_DIR / src
+        if file_path.exists() and file_path.is_file():
+            try:
+                content = file_path.read_text(encoding="utf-8")
+                full_file_contents.append(
+                    f"### File: {src}\n\n{content}"
+                )
+            except Exception:
+                pass
+
+    # Build the context section
+    parts = [
+        "## Knowledge Library Context (auto-loaded based on your question)\n",
+        "IMPORTANT: The following knowledge library files were loaded for this question. "
+        "You MUST base your response on this content. Present the checklist items, "
+        "recommendations, and decisions from these files. Do NOT use your training "
+        "data to answer — use ONLY the content below. Cite the source file.\n",
+    ]
+
+    if full_file_contents:
+        parts.append("### Relevant Knowledge Files\n")
+        parts.extend(full_file_contents)
+
+    # Add a summary of additional search hits not fully loaded
+    additional = [
+        src for src in files
+        if src not in seen_files and not src.startswith("http")
+    ]
+    if additional:
+        parts.append(
+            "\n### Additional relevant files (use read_knowledge_file to load):\n"
+            + "\n".join(f"- {f}" for f in additional)
+        )
+
+    return "\n\n".join(parts)
 
 
 async def _build_project_context(
@@ -189,7 +314,8 @@ async def _build_project_context(
 # Tool definitions (OpenAI function-calling format)
 # ---------------------------------------------------------------------------
 
-TOOL_DEFINITIONS = [
+# Knowledge-only tools (always available)
+_KNOWLEDGE_TOOLS = [
     {
         "type": "function",
         "function": {
@@ -236,6 +362,10 @@ TOOL_DEFINITIONS = [
             },
         },
     },
+]
+
+# Project tools (only available when a version is selected)
+_PROJECT_TOOLS = [
     {
         "type": "function",
         "function": {
@@ -466,6 +596,16 @@ TOOL_DEFINITIONS = [
         },
     },
 ]
+
+# Combined for backward compatibility
+TOOL_DEFINITIONS = _KNOWLEDGE_TOOLS + _PROJECT_TOOLS
+
+
+def get_tools(version_id: str | None) -> list[dict]:
+    """Return the appropriate tool set based on whether a project is selected."""
+    if version_id:
+        return _KNOWLEDGE_TOOLS + _PROJECT_TOOLS
+    return _KNOWLEDGE_TOOLS
 
 
 # ---------------------------------------------------------------------------
