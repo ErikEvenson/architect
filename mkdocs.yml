@@ -170,6 +170,7 @@ nav:
     - Platform Services: providers/vmware/platform-services.md
     - Observability: providers/vmware/observability.md
     - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
+    - VCF 5.x to 9.0 Upgrade: providers/vmware/vcf-upgrade-5-to-9.md
     - Licensing: providers/vmware/licensing.md
     - NSX DFW Design: providers/vmware/nsx-dfw-design.md
     - VMC on AWS: providers/vmware/vmc-aws.md
