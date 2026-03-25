@@ -232,3 +232,4 @@ Microservices enable independent deployment, scaling, and team ownership, but th
 - `general/container-orchestration.md` — Container orchestration platforms for deploying microservices
 - `general/service-mesh.md` — Service mesh for inter-service traffic management and observability
 - `general/api-design.md` — API design principles for service contracts
+- `general/api-gateway.md` — API gateway selection, authentication enforcement, and traffic management

@@ -92,3 +92,4 @@ Modern distributed systems introduce DR challenges that traditional backup-and-r
 - `providers/openstack/data-protection.md` — OpenStack backup and recovery
 - `providers/openshift/data-protection.md` — OpenShift data protection
 - `general/ransomware-resilience.md` — Ransomware-specific resilience controls, backup isolation, and recovery playbooks
+- `patterns/disaster-recovery-implementations.md` — Step-by-step failover procedures, DR strategy implementations, and cost comparisons

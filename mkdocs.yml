@@ -49,6 +49,7 @@ nav:
     - Hardware Sizing: general/hardware-sizing.md
     - Hardware Vendor Partnerships: general/hardware-vendor-partnerships.md
     - STIG Hardening: general/stig-hardening.md
+    - Storage Architecture: general/storage.md
     - Cloud Workload Hardening: general/cloud-workload-hardening.md
     - IaC Planning: general/iac-planning.md
     - Data Migration Tools: general/data-migration-tools.md

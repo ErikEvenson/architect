@@ -84,7 +84,7 @@ FinOps — the practice of bringing financial accountability to cloud spending �
 ## See Also
 
 - `general/compute.md` — Instance type selection and compute architecture decisions
-- `general/storage.md` — Storage tier selection and lifecycle management
 - `general/networking.md` — Network architecture including data transfer paths
-- `general/monitoring.md` — Monitoring and observability including cost metric dashboards
+- `general/observability.md` — Monitoring and observability including cost metric dashboards
 - `general/finops.md` — FinOps practices, frameworks, tooling, and organizational cost management at scale
+- `general/cost-onprem.md` — On-premises cost modeling, TCO analysis, hardware depreciation, and cloud comparison frameworks

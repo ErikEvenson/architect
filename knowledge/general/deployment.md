@@ -2,7 +2,7 @@
 
 ## Scope
 
-This file covers deployment strategy decisions: how application code moves from source control to production, including deployment models, rollback procedures, infrastructure as code, database migration coordination, environment promotion, and deployment observability. For provider-specific CI/CD pipeline implementation, see the provider files. For container orchestration details, see `containers.md`.
+This file covers deployment strategy decisions: how application code moves from source control to production, including deployment models, rollback procedures, infrastructure as code, database migration coordination, environment promotion, and deployment observability. For provider-specific CI/CD pipeline implementation, see the provider files. For container orchestration details, see `general/container-orchestration.md`.
 
 ## Checklist
 
@@ -85,6 +85,7 @@ Infrastructure as code has shifted from a best practice to a baseline expectatio
 ## See Also
 
 - `providers/openshift/ci-cd.md` — OpenShift CI/CD pipelines and deployment
-- `general/containers.md` — Container orchestration and runtime configuration
+- `general/container-orchestration.md` — Container orchestration and runtime configuration
 - `general/disaster-recovery.md` — Failover and recovery procedures
 - `general/change-management.md` — Change management practices, approval workflows, and maintenance windows
+- `general/iac-planning.md` — Infrastructure as code planning, tool selection, module structure, and state management

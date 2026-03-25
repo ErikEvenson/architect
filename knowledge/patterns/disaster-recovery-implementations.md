@@ -377,3 +377,4 @@ Failback (returning to the primary region after it recovers) is often harder tha
 - `general/networking.md` — Cross-region connectivity and DNS management
 - `general/data.md` — Data replication and consistency patterns
 - `general/deployment.md` — Multi-region deployment strategies
+- `general/enterprise-backup.md` — Backup tool selection, storage tiering, and ransomware protection

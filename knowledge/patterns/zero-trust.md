@@ -112,6 +112,6 @@ The cost of implementing zero trust is significant, involving identity infrastru
 - `general/security.md` — Foundational security controls including IAM, encryption, and audit logging that underpin zero trust implementations
 - `general/networking.md` — Network segmentation and firewall design that microsegmentation extends
 - `general/service-mesh.md` — Service mesh mTLS and authorization policies for east-west traffic control
-- `general/identity-management.md` — Identity provider selection, federation, and MFA that zero trust relies on
+- `general/identity.md` — Identity provider selection, federation, and MFA that zero trust relies on
 - `patterns/microservices.md` — Microservices communication patterns where service mesh zero trust is most applicable
 - `patterns/hybrid-cloud.md` — Hybrid cloud architectures where zero trust bridges on-premises and cloud trust boundaries

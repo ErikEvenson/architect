@@ -529,3 +529,4 @@ NIST 800-53 Rev. 5 added supply chain controls, relevant for FedRAMP.
 - `general/security.md` — General security controls and architecture patterns
 - `general/governance.md` — Cloud governance, tagging, and policy enforcement
 - `general/identity.md` — IAM and authentication architecture
+- `general/stig-hardening.md` — STIG compliance, SCAP scanning, and security hardening

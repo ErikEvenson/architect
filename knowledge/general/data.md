@@ -91,3 +91,7 @@ Encryption and compliance are not optional add-ons. Regulatory requirements like
 - `general/enterprise-backup.md` — Backup tools and strategies (complements the backup checklist items here)
 - `general/security.md` — Broader security controls including data access and audit
 - `general/data-analytics.md` — Data analytics and warehousing architecture, ETL/ELT, and data mesh patterns
+- `general/database-migration.md` — Database migration strategy, schema migration tooling, replication, and cutover planning
+- `general/database-ha.md` — Database high availability patterns, replication topologies, and failover strategies
+- `general/data-migration-tools.md` — Data migration tooling (rclone, pg_dump, AWS DMS) and bandwidth planning
+- `general/data-classification.md` — Data classification frameworks, labeling standards, and per-level handling requirements

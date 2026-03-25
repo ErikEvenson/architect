@@ -161,4 +161,4 @@ The third most common failure: **exit strategy as an afterthought.** When the ma
 - `patterns/multi-cloud.md` -- Multi-cloud architecture patterns
 - `general/managed-services-scoping.md` -- Managed services operational and commercial scoping
 - `general/pursuit-methodology.md` -- Pursuit process and commercial framing
-- `general/cost-cloud.md` -- Cloud cost modeling and optimization
+- `general/cost.md` -- Cloud cost modeling and optimization

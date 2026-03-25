@@ -223,4 +223,5 @@ Phase 5: Continuous Compliance
 - [governance.md](governance.md) -- compliance frameworks, audit requirements, and organizational controls
 - [tls-certificates.md](tls-certificates.md) -- TLS configuration and cipher suite management related to STIG requirements
 - [iac-planning.md](iac-planning.md) -- infrastructure-as-code for embedding STIG settings into deployment templates
-```
+- [fedramp.md](../compliance/fedramp.md) -- FedRAMP control families and cloud control mapping
+- [nist-800-171-cmmc.md](../compliance/nist-800-171-cmmc.md) -- NIST 800-171 and CMMC 2.0 cloud control mapping

@@ -211,3 +211,7 @@ During migration, workloads exist in both environments. Design for this explicit
 - `general/disaster-recovery.md` — DR planning for migrated workloads
 - `general/networking.md` — Cloud networking and connectivity patterns
 - `general/cost.md` — Cost modeling for cloud vs on-premises
+- `general/inventory-analysis.md` — Systematic analysis of infrastructure inventories before migration planning
+- `general/multi-site-migration-sequencing.md` — Sequencing and coordination of migrations across multiple physical sites
+- `general/vdi-migration-strategy.md` — VDI platform migration, image and profile migration, and GPU considerations
+- `general/virtual-appliance-migration.md` — Vendor virtual appliance migration between hypervisor platforms

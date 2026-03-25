@@ -113,3 +113,7 @@ A well-designed security architecture assumes breach (zero trust), limits blast 
 - `patterns/zero-trust.md` — Zero trust architecture principles, identity-aware proxies, and microsegmentation
 - `patterns/network-segmentation.md` — Network segmentation patterns including micro-segmentation and east-west traffic controls
 - `general/ransomware-resilience.md` — Ransomware-specific resilience controls, detection, and recovery playbooks
+- `general/stig-hardening.md` — STIG compliance, SCAP scanning, remediation workflows, and FIPS 140-2 mode
+- `general/cloud-workload-hardening.md` — CIS Benchmarks, cloud-native hardening services, and golden image pipelines
+- `general/tier0-security-enclaves.md` — Handling highest-security enclaves (Tier 0) during platform transformations
+- `general/data-classification.md` — Data classification frameworks, labeling standards, and per-level handling requirements

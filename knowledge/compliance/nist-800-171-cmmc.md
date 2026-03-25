@@ -281,3 +281,4 @@ AWS GovCloud (US)
 - `general/security.md` — General security controls
 - `general/identity.md` — IAM and authentication architecture
 - `general/governance.md` — Cloud governance and policy-as-code
+- `general/stig-hardening.md` — STIG compliance, SCAP scanning, and security hardening

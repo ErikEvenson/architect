@@ -246,3 +246,4 @@ Production Network                    Isolated Backup Network
 - [data.md](data.md) -- database design and data retention policies that drive backup requirements
 - [security.md](security.md) -- security controls including ransomware protection and data encryption
 - [ransomware-resilience.md](ransomware-resilience.md) -- ransomware-specific resilience architecture, backup isolation, and recovery playbooks
+- `patterns/disaster-recovery-implementations.md` -- DR strategy implementations, failover procedures, and cost comparisons

@@ -88,5 +88,5 @@ OS lifecycle management is the most frequently deferred compute decision and the
 - `providers/aws/ec2-asg.md` — AWS EC2 instances and Auto Scaling Groups
 - `providers/azure/compute.md` — Azure VMs and Scale Sets
 - `providers/gcp/compute.md` — GCP Compute Engine and instance groups
-- `general/containers.md` — Container orchestration and Kubernetes design decisions
-- `general/cost-optimization.md` — Cloud cost management strategies including compute right-sizing
+- `general/container-orchestration.md` — Container orchestration and Kubernetes design decisions
+- `general/finops.md` — Cloud cost management strategies including compute right-sizing

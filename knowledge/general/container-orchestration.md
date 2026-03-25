@@ -70,3 +70,4 @@ A common failure pattern is treating container orchestration as purely an infras
 - `general/deployment.md` — CI/CD pipelines and deployment strategies
 - `general/security.md` — General security considerations including container security context
 - `patterns/microservices.md` — Microservices architecture patterns that drive container orchestration needs
+- `general/service-mesh.md` — Service mesh adoption, mTLS, traffic management, and observability integration

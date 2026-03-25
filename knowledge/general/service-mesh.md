@@ -57,3 +57,4 @@ Traffic management features (canary deployments, circuit breaking, retries) are 
 - `general/tls-certificates.md` -- Certificate management and rotation
 - `providers/kubernetes/networking.md` -- Kubernetes-specific networking and CNI
 - `providers/hashicorp/consul.md` -- Consul Connect details
+- `general/container-orchestration.md` -- Container orchestration platform selection, networking, storage, and multi-tenancy

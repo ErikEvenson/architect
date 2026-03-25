@@ -50,3 +50,5 @@ Identity is the new perimeter. With cloud infrastructure, remote work, and API-d
 - [governance.md](governance.md) -- organizational controls, policy enforcement, and compliance frameworks
 - [security.md](security.md) -- security controls including encryption, network security, and threat modeling
 - [hybrid-dns.md](hybrid-dns.md) -- DNS resolution required for Active Directory integration in hybrid environments
+- [tier0-security-enclaves.md](tier0-security-enclaves.md) -- handling Tier 0 enclaves (identity infrastructure, PKI, privileged access) during platform changes
+- [zero-trust.md](../patterns/zero-trust.md) -- zero trust architecture principles, identity-aware proxies, and microsegmentation

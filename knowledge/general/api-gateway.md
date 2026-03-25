@@ -61,3 +61,4 @@ The boundary between API gateway, load balancer, and service mesh is the most im
 - [networking.md](networking.md) -- Kubernetes networking, CNI, NetworkPolicy
 - [tls-certificates.md](tls-certificates.md) -- certificate management and rotation
 - [observability.md](observability.md) -- metrics, tracing, and logging for gateway monitoring
+- `patterns/microservices.md` -- microservices decomposition, inter-service communication, and service mesh patterns

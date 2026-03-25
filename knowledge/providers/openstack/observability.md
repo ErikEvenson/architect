@@ -14,7 +14,7 @@ Covers OpenStack observability stack: Ceilometer telemetry, Gnocchi metrics back
 - [ ] **[Recommended]** Is Aodh configured for alarming? (threshold alarms on Gnocchi metrics for autoscaling and alerting, composite alarms combining multiple conditions with `and`/`or` operators, `event` alarms for reacting to specific OpenStack events, alarm actions as webhook URLs to Heat or external systems)
 - [ ] **[Recommended]** Is Monasca evaluated as an alternative monitoring stack? (Retired as of Yoga -- monitoring-as-a-service with multi-tenant metric collection, Kafka-based pipeline; if currently using Monasca, plan migration to Prometheus/Grafana or Ceilometer/Gnocchi/Aodh)
 - [ ] **[Recommended]** Are log retention and rotation policies defined? (logrotate for local logs, index lifecycle management in Elasticsearch/OpenSearch for centralized logs, separate indices per service for targeted retention, consider 30-90 day hot storage with cold/frozen tiers)
-- [ ] **[Recommended]** Is Prometheus + Grafana integrated for infrastructure and service monitoring? (`openstack-exporter` for API-level metrics, `node_exporter` on all hosts, `libvirt_exporter` for hypervisor metrics, `ceph_exporter` for storage metrics — see [Ceph storage](../ceph/storage.md) for exporter configuration, custom Grafana dashboards per service)
+- [ ] **[Recommended]** Is Prometheus + Grafana integrated for infrastructure and service monitoring? (`openstack-exporter` for API-level metrics, `node_exporter` on all hosts, `libvirt_exporter` for hypervisor metrics, `ceph_exporter` for storage metrics — see [Ceph storage](providers/ceph/storage.md) for exporter configuration, custom Grafana dashboards per service)
 - [ ] **[Recommended]** Is the openstack-exporter configured correctly? (Go-based exporter querying OpenStack APIs via `clouds.yaml` credentials, serves on port 9180; supports single-cloud mode at `/metrics` or multi-cloud mode at `/probe?cloud=<name>`; enable caching with configurable TTL to reduce API load; disable slow metrics like `nova_server_diagnostics` in large deployments; deploy one instance per cloud or use multi-cloud mode)
 - [ ] **[Recommended]** Is Tempest used for functional validation? (`tempest run` after deployments and upgrades, `tempest.conf` configured for the specific cloud, custom test plugins for site-specific validation, integrated into CI/CD pipeline for pre-production verification)
 - [ ] **[Recommended]** Are infrastructure capacity metrics tracked for planning? (compute: vCPU/RAM allocation ratio trends, storage: Ceph pool utilization and growth rate, network: bandwidth utilization per provider network, Keystone: token issuance rate and latency)
@@ -93,7 +93,7 @@ clouds:
 | openstack-exporter | 9180 | API-level: servers, volumes, networks, images, quotas |
 | node_exporter | 9100 | Host: CPU, memory, disk, network on all nodes |
 | libvirt_exporter | 9177 | Hypervisor: per-VM CPU, memory, disk I/O, network I/O |
-| ceph_exporter | 9283 | Storage: OSD latency, PG states, pool utilization (see [Ceph storage](../ceph/storage.md)) |
+| ceph_exporter | 9283 | Storage: OSD latency, PG states, pool utilization (see [Ceph storage](providers/ceph/storage.md)) |
 | ipmi_exporter | 9290 | Hardware: temperatures, fan speeds, power draw, hardware events |
 | rabbitmq_exporter | 9419 | Messaging: queue depth, message rates, consumer counts |
 | mysqld_exporter / postgres_exporter | 9104/9187 | Database: query latency, connections, replication lag |
