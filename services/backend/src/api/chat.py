@@ -140,6 +140,7 @@ async def _stream_chat(
                 "model": provider.model_name,
                 "messages": api_messages,
                 "stream": True,
+                "max_tokens": 16384,
             }
             if use_tools:
                 kwargs["tools"] = chat_service.get_tools(version_id)

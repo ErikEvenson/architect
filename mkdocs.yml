@@ -84,6 +84,7 @@ nav:
     - Change Management: general/change-management.md
     - Operational Runbooks: general/operational-runbooks.md
     - Local Development Environments: general/local-development-environments.md
+    - Certification and Training: general/certification-training.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -112,6 +113,7 @@ nav:
     - Disaster Recovery: providers/aws/disaster-recovery.md
     - DevOps (CI/CD): providers/aws/devops.md
     - Migration Services: providers/aws/migration-services.md
+    - Certifications: providers/aws/certifications.md
   - Azure:
     - Networking: providers/azure/networking.md
     - Compute: providers/azure/compute.md
@@ -132,6 +134,7 @@ nav:
     - Azure Stack Edge: providers/azure/azure-stack-edge.md
     - Commercial Programs (EA/MACC/ESF): providers/azure/commercial-programs.md
     - HCI on Azure: providers/azure/hci-on-azure.md
+    - Certifications: providers/azure/certifications.md
   - GCP:
     - Networking: providers/gcp/networking.md
     - Compute: providers/gcp/compute.md
@@ -148,6 +151,7 @@ nav:
     - Disaster Recovery: providers/gcp/disaster-recovery.md
     - DevOps: providers/gcp/devops.md
     - Distributed Cloud: providers/gcp/distributed-cloud.md
+    - Certifications: providers/gcp/certifications.md
   - Nutanix:
     - Infrastructure: providers/nutanix/infrastructure.md
     - Compute: providers/nutanix/compute.md
@@ -161,6 +165,7 @@ nav:
     - In-Place AHV Conversion: providers/nutanix/in-place-conversion.md
     - NC2 on Azure: providers/nutanix/nc2-azure.md
     - Prism Central at Scale: providers/nutanix/prism-central-scale.md
+    - Certifications: providers/nutanix/certifications.md
   - VMware:
     - Infrastructure: providers/vmware/infrastructure.md
     - Compute: providers/vmware/compute.md
@@ -177,6 +182,7 @@ nav:
     - VMC on AWS: providers/vmware/vmc-aws.md
     - Azure VMware Solution: providers/vmware/avs-azure.md
     - GCVE (GCP): providers/vmware/gcve-gcp.md
+    - Certifications: providers/vmware/certifications.md
   - OpenStack:
     - Infrastructure: providers/openstack/infrastructure.md
     - Compute: providers/openstack/compute.md
@@ -198,6 +204,7 @@ nav:
     - Security: providers/openshift/security.md
     - CI/CD: providers/openshift/ci-cd.md
     - Observability: providers/openshift/observability.md
+    - Certifications: providers/openshift/certifications.md
   - Cloudflare:
     - CDN & DNS: providers/cloudflare/cdn-dns.md
     - Workers: providers/cloudflare/workers.md
@@ -212,6 +219,7 @@ nav:
     - Nomad: providers/hashicorp/nomad.md
     - Packer: providers/hashicorp/packer.md
     - Boundary: providers/hashicorp/boundary.md
+    - Certifications: providers/hashicorp/certifications.md
   - Kubernetes:
     - Compute: providers/kubernetes/compute.md
     - Networking: providers/kubernetes/networking.md
@@ -222,6 +230,7 @@ nav:
     - K3s: providers/kubernetes/k3s.md
     - Docker Desktop: providers/kubernetes/docker-desktop.md
     - Secrets Management: providers/kubernetes/secrets-management.md
+    - Certifications: providers/kubernetes/certifications.md
   - Morpheus:
     - Cloud Management: providers/morpheus/cloud-management.md
   - Prometheus/Grafana:
