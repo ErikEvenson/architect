@@ -471,6 +471,25 @@ paths:
         "404":
           description: Output file not found
 
+  /versions/{version_id}/artifacts/{artifact_id}/export-pdf:
+    get:
+      summary: Export a single artifact as PDF
+      operationId: exportArtifactPdf
+      tags: [rendering]
+      parameters:
+        - $ref: "#/components/parameters/versionId"
+        - $ref: "#/components/parameters/artifactId"
+      responses:
+        "200":
+          description: PDF file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Artifact not found
+
   # --- ADRs ---
   /projects/{project_id}/adrs:
     parameters:
@@ -971,7 +990,220 @@ paths:
         "404":
           description: Question not found
 
+  # --- Chat ---
+  /chat:
+    post:
+      summary: Stream chat completions via SSE with tool-call loop
+      operationId: chat
+      tags: [chat]
+      description: |
+        Streams architecture chat responses using Server-Sent Events (SSE).
+        Supports multiple LLM providers (local via OpenAI-compatible API, Anthropic).
+        Includes RAG context pre-fetch from knowledge library and tool execution loop
+        (up to 20 rounds) for creating/updating artifacts, ADRs, and questions.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [messages, provider]
+              properties:
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [system, user, assistant, tool]
+                      content:
+                        type: string
+                        nullable: true
+                      tool_call_id:
+                        type: string
+                        nullable: true
+                      name:
+                        type: string
+                        nullable: true
+                      tool_calls:
+                        type: array
+                        items:
+                          type: object
+                        nullable: true
+                provider:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [local, anthropic]
+                      default: local
+                    base_url:
+                      type: string
+                      default: "http://localhost:1234/v1"
+                    model_name:
+                      type: string
+                      default: local-model
+                    api_key:
+                      type: string
+                      nullable: true
+                version_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+                  description: Version context for project-scoped tools
+      responses:
+        "200":
+          description: SSE stream of chat events
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: |
+                  SSE events with JSON data. Event types:
+                  - content: {type: "content", delta: "text chunk"}
+                  - tool_call: {type: "tool_call", name, arguments, tool_call_id}
+                  - tool_result: {type: "tool_result", name, result, tool_call_id}
+                  - error: {type: "error", message}
+                  - done: {type: "done"}
+
+  # --- Coverage Tracking ---
+  /versions/{version_id}/coverage:
+    get:
+      summary: List coverage items for a version
+      operationId: listCoverage
+      tags: [coverage]
+      parameters:
+        - $ref: "#/components/parameters/versionId"
+      responses:
+        "200":
+          description: List of coverage items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CoverageItemResponse"
+    post:
+      summary: Create a coverage item
+      operationId: createCoverage
+      tags: [coverage]
+      parameters:
+        - $ref: "#/components/parameters/versionId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CoverageItemCreate"
+      responses:
+        "201":
+          description: Coverage item created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CoverageItemResponse"
+
+  /versions/{version_id}/coverage/summary:
+    get:
+      summary: Aggregate coverage statistics by priority and status
+      operationId: getCoverageSummary
+      tags: [coverage]
+      parameters:
+        - $ref: "#/components/parameters/versionId"
+      responses:
+        "200":
+          description: Coverage summary
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /versions/{version_id}/coverage/{item_id}:
+    patch:
+      summary: Update a coverage item status
+      operationId: updateCoverage
+      tags: [coverage]
+      parameters:
+        - $ref: "#/components/parameters/versionId"
+        - name: item_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CoverageItemUpdate"
+      responses:
+        "200":
+          description: Coverage item updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CoverageItemResponse"
+
+  # --- Templates ---
+  /templates:
+    get:
+      summary: List available templates
+      operationId: listTemplates
+      tags: [templates]
+      responses:
+        "200":
+          description: List of templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /templates/render:
+    post:
+      summary: Render a template with project context
+      operationId: renderTemplate
+      tags: [templates]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                template_name:
+                  type: string
+                project_name:
+                  type: string
+                  nullable: true
+      responses:
+        "200":
+          description: Rendered template content
+          content:
+            application/json:
+              schema:
+                type: object
+
 components:
+  parameters:
+    versionId:
+      name: version_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    artifactId:
+      name: artifact_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
   schemas:
     HealthResponse:
       type: object
@@ -1645,3 +1877,72 @@ components:
           format: date-time
           nullable: true
       required: [indexed, total_embeddings, knowledge_file_count, vendor_doc_count]
+
+    # --- Coverage Item ---
+    CoverageItemCreate:
+      type: object
+      required: [knowledge_file, item_text, priority]
+      properties:
+        knowledge_file:
+          type: string
+        item_text:
+          type: string
+        priority:
+          type: string
+          enum: [Critical, Recommended, Optional]
+        status:
+          type: string
+          enum: [pending, addressed, deferred, na]
+          default: pending
+        question_id:
+          type: string
+          format: uuid
+          nullable: true
+        reason:
+          type: string
+          nullable: true
+
+    CoverageItemUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [pending, addressed, deferred, na]
+        question_id:
+          type: string
+          format: uuid
+          nullable: true
+        reason:
+          type: string
+          nullable: true
+
+    CoverageItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        version_id:
+          type: string
+          format: uuid
+        knowledge_file:
+          type: string
+        item_text:
+          type: string
+        priority:
+          type: string
+        status:
+          type: string
+        question_id:
+          type: string
+          format: uuid
+          nullable: true
+        reason:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time

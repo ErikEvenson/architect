@@ -28,11 +28,19 @@ A fourth component, **db-migrations**, runs as a Kubernetes Job to apply Alembic
 - Document rendering via Markdown + Jinja2
 - PDF generation via WeasyPrint
 - Artifact output management (filesystem-backed by PVC)
+- Architecture chat via SSE streaming (LLM integration with tool-call loop)
+- Knowledge library semantic search via pgvector embeddings (all-MiniLM-L6-v2 model)
+- RAG context pre-fetch for chat (auto-loads relevant knowledge files)
+- Coverage tracking against knowledge library checklists
+- File upload management (100MB limit, PVC-backed storage)
+- Template listing and rendering
 
 **Key dependencies (system):**
 - Graphviz (for `diagrams` library)
 - D2 binary (for D2 rendering)
 - WeasyPrint system dependencies (fonts, cairo, pango)
+- ONNX Runtime (for embedding model inference)
+- pgvector PostgreSQL extension (for vector similarity search)
 
 **Security:**
 - Runs as non-root user (UID 1000)
@@ -72,6 +80,7 @@ A fourth component, **db-migrations**, runs as a Kubernetes Job to apply Alembic
 **Responsibilities:**
 - Persistent storage for all application data
 - Headless service for stable DNS within namespace
+- Requires `pgvector` extension for knowledge embedding search
 
 **Backup:**
 - Daily CronJob running `pg_dump` to backup PVC
@@ -93,14 +102,17 @@ A fourth component, **db-migrations**, runs as a Kubernetes Job to apply Alembic
 ## Inter-Service Communication
 
 ```
-Browser → (HTTPS :8443) → nginx → (HTTP :8000) → FastAPI → (TCP :5432) → PostgreSQL
+Browser → (HTTPS :8443) → nginx → (HTTP :8000) → FastAPI → (TCP :5432) → PostgreSQL + pgvector
                                                           → (filesystem) → PVC (outputs)
+                                                          → (HTTP) → LLM provider (local or Anthropic API)
 ```
 
 - Frontend proxies API calls to backend via nginx reverse proxy
 - Backend connects to PostgreSQL via async connection pool (asyncpg)
 - Rendered artifacts are written to PVC-backed filesystem
 - No inter-service gRPC or message queues needed (single backend service)
+- Backend connects to LLM provider via OpenAI-compatible API (configurable: local LM Studio or Anthropic)
+- LLM connection is outbound only, initiated per chat request, not persistent
 
 ## Shared Patterns
 
