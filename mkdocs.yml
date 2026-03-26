@@ -221,6 +221,8 @@ nav:
     - CI/CD: providers/openshift/ci-cd.md
     - Observability: providers/openshift/observability.md
     - Certifications: providers/openshift/certifications.md
+  - Confluent:
+    - Kafka: providers/confluent/kafka.md
   - Cloudflare:
     - CDN & DNS: providers/cloudflare/cdn-dns.md
     - Workers: providers/cloudflare/workers.md
@@ -374,6 +376,12 @@ nav:
     - GitOps: providers/argocd/gitops.md
   - FluxCD:
     - GitOps: providers/fluxcd/gitops.md
+  - Okta:
+    - Identity: providers/okta/identity.md
+  - Ping Identity:
+    - Identity: providers/ping/identity.md
+  - CyberArk:
+    - PAM: providers/cyberark/pam.md
   - Patterns:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
@@ -400,6 +408,7 @@ nav:
     - Security Operations: patterns/security-operations.md
     - Network Segmentation: patterns/network-segmentation.md
     - On-Prem to NC2 Migration: patterns/onprem-to-nc2-migration.md
+    - Application Modernization: patterns/application-modernization.md
     - Managed Cloud Services: patterns/managed-cloud-services.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
