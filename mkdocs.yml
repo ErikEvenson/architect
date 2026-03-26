@@ -86,6 +86,7 @@ nav:
     - Local Development Environments: general/local-development-environments.md
     - Certification and Training: general/certification-training.md
     - AI/ML Managed Services: general/ai-ml-services.md
+    - ITSM Integration: general/itsm-integration.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -187,6 +188,7 @@ nav:
     - Azure VMware Solution: providers/vmware/avs-azure.md
     - GCVE (GCP): providers/vmware/gcve-gcp.md
     - Certifications: providers/vmware/certifications.md
+    - Horizon (VDI): providers/vmware/horizon.md
   - OpenStack:
     - Infrastructure: providers/openstack/infrastructure.md
     - Compute: providers/openstack/compute.md
@@ -253,6 +255,61 @@ nav:
     - Configuration: providers/ansible/configuration.md
   - Rancher:
     - Infrastructure: providers/rancher/infrastructure.md
+  - Microsoft:
+    - Windows Server: providers/microsoft/windows-server.md
+    - Active Directory: providers/microsoft/active-directory.md
+    - DNS and DHCP: providers/microsoft/dns-dhcp.md
+    - Microsoft 365: providers/microsoft/m365.md
+    - Exchange Server: providers/microsoft/exchange-onprem.md
+  - SQL Server:
+    - Database: providers/sqlserver/database.md
+  - Oracle:
+    - Database: providers/oracle/database.md
+  - PostgreSQL:
+    - Database: providers/postgresql/database.md
+  - MySQL:
+    - Database: providers/mysql/database.md
+  - Veeam:
+    - Backup: providers/veeam/backup.md
+  - Commvault:
+    - Backup: providers/commvault/backup.md
+  - Rubrik:
+    - Backup: providers/rubrik/backup.md
+  - Cohesity:
+    - Backup: providers/cohesity/backup.md
+  - Palo Alto:
+    - Firewall: providers/paloalto/firewall.md
+  - Fortinet:
+    - Firewall: providers/fortinet/firewall.md
+  - Check Point:
+    - Firewall: providers/checkpoint/firewall.md
+  - F5:
+    - Load Balancer: providers/f5/load-balancer.md
+  - Citrix:
+    - ADC (NetScaler): providers/citrix/adc.md
+    - Virtual Desktops: providers/citrix/virtual-desktops.md
+  - Infoblox:
+    - DDI: providers/infoblox/ddi.md
+  - ServiceNow:
+    - ITSM: providers/servicenow/itsm.md
+  - Atlassian:
+    - Jira Service Management: providers/atlassian/itsm.md
+  - Datadog:
+    - Observability: providers/datadog/observability.md
+  - Splunk:
+    - Observability: providers/splunk/observability.md
+  - Zabbix:
+    - Monitoring: providers/zabbix/monitoring.md
+  - SolarWinds:
+    - Monitoring: providers/solarwinds/monitoring.md
+  - Proxmox:
+    - Infrastructure: providers/proxmox/infrastructure.md
+  - Puppet:
+    - Configuration: providers/puppet/configuration.md
+  - Chef:
+    - Configuration: providers/chef/configuration.md
+  - SaltStack:
+    - Configuration: providers/saltstack/configuration.md
   - Patterns:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
