@@ -12,11 +12,31 @@ Architect combines a structured knowledge library with an interactive design wor
 - **Diagram generation** — Python `diagrams` library (AWS, Azure, GCP, Nutanix, VMware, OpenStack icons) and D2 for flexible layouts
 - **Document rendering** — Markdown to styled HTML with diagram embedding
 - **PDF export** — professional reports with cover page, table of contents, and embedded diagrams
-- **Knowledge library** — 285+ markdown files covering 30+ providers, architecture patterns, compliance frameworks, certifications, and training resources
+- **Knowledge library** — 330+ markdown files covering 45+ providers, architecture patterns, compliance frameworks, certifications, and training resources
 - **Coverage tracking** — track which knowledge library checklist items have been addressed in the design
 - **Inventory management** — attach VM inventories, network data, and analysis to versions
 - **File uploads** — attach reference documents and data files to versions
 - **Vector search (RAG)** — semantic search over the knowledge library, vendor docs, and uploaded files using pgvector embeddings, with a web UI for index management (start, stop, pause, resume, clear, timeout, progress tracking)
+- **MCP server** — public [`@eevenson/architect-knowledge-mcp`](https://www.npmjs.com/package/@eevenson/architect-knowledge-mcp) npm package exposes the knowledge library to Claude Desktop, Claude Code, Cursor, and any MCP-compatible client
+
+## MCP Server
+
+The knowledge library is available as a standalone MCP server for use with any MCP-compatible client. No deployment needed — it runs locally via npx:
+
+```json
+{
+  "mcpServers": {
+    "architect-knowledge": {
+      "command": "npx",
+      "args": ["@eevenson/architect-knowledge-mcp"]
+    }
+  }
+}
+```
+
+Three tools are exposed: `search_knowledge`, `list_categories`, and `read_file`. The server fetches knowledge files from this public repo and caches them locally. No client data is ever included.
+
+See the [architect-knowledge-mcp](https://github.com/ErikEvenson/architect-knowledge-mcp) repo for full documentation.
 
 ## Architecture
 
@@ -83,7 +103,7 @@ architect/
 │           ├── components/# UI components
 │           ├── pages/    # Route pages
 │           └── stores/   # Zustand state
-├── knowledge/            # Architecture knowledge library (285+ files)
+├── knowledge/            # Architecture knowledge library (330+ files)
 │   ├── general/          # Universal concerns
 │   ├── providers/        # Provider-specific (30+ vendors: AWS, Azure, GCP, Nutanix, VMware, etc.)
 │   ├── patterns/         # Architecture patterns (three-tier, microservices, etc.)
@@ -129,7 +149,7 @@ Architect uses Retrieval-Augmented Generation (RAG) to enhance the knowledge lib
 ### How It Works
 
 ```
-Knowledge Files (285+ .md)    Vendor Docs (550+ URLs)    Uploaded Files
+Knowledge Files (330+ .md)    Vendor Docs (550+ URLs)    Uploaded Files
         │                           │                        │
         ▼                           ▼                        ▼
 ┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
@@ -249,10 +269,10 @@ All endpoints under `/api/v1/`. See full OpenAPI spec at `/docs` when running.
 
 The knowledge library drives the architecture design workflow. Files are organized by:
 
-- **General** (60+ files) — compute, networking, data, security, observability, DR, cost, storage, identity, AI/ML services, ITSM, certification/training, and more
-- **Providers** (200+ files) — 30+ vendors: AWS, Azure, GCP, Nutanix, VMware, OpenStack, OpenShift, Kubernetes, HashiCorp, Cloudflare, SQL Server, Oracle, PostgreSQL, MySQL, Veeam, Palo Alto, F5, Infoblox, ServiceNow, Datadog, Splunk, Proxmox, Citrix, and more
-- **Patterns** (25+ files) — three-tier web, microservices, hybrid cloud, zero trust, hypervisor migration, datacenter relocation, managed cloud services, and more
-- **Compliance** (9 files) — PCI DSS, HIPAA, SOC2, FedRAMP, GDPR, ISO 27001, NIST 800-171/CMMC, SOX, CSA CCM
+- **General** (65+ files) — compute, networking, data, security, observability, DR, cost, storage, identity, AI/ML services, ITSM, messaging patterns, supply chain security, performance testing, email migration, certification/training, and more
+- **Providers** (230+ files) — 45+ vendors: AWS, Azure, GCP, Nutanix, VMware, OpenStack, OpenShift, Kubernetes, HashiCorp, Cisco, Dell, HPE, NetApp, Pure Storage, Snowflake, Databricks, Confluent/Kafka, MongoDB, Redis, Elasticsearch, Cassandra, CrowdStrike, Okta, CyberArk, Dynatrace, New Relic, GitLab, GitHub, Jenkins, ArgoCD, FluxCD, Cloudflare, RabbitMQ, Juniper, Arista, and more
+- **Patterns** (30+ files) — three-tier web, microservices, hybrid cloud, zero trust, application modernization, security operations, hypervisor migration, datacenter relocation, managed cloud services, and more
+- **Compliance** (12 files) — PCI DSS, HIPAA, SOC2, FedRAMP, GDPR, CCPA/CPRA, ISO 27001, NIST 800-171/CMMC, SOX, CSA CCM, CJIS, ITAR
 - **Frameworks** (3 files) — AWS/Azure/GCP Well-Architected Framework review checklists
 - **Failures** (5 files) — real-world anti-patterns for networking, data, scaling, security, and deployment
 
