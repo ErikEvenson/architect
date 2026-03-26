@@ -289,6 +289,14 @@ nav:
     - Database: providers/postgresql/database.md
   - MySQL:
     - Database: providers/mysql/database.md
+  - MongoDB:
+    - Database: providers/mongodb/database.md
+  - Redis:
+    - Database: providers/redis/database.md
+  - Elasticsearch:
+    - Search: providers/elasticsearch/search.md
+  - Cassandra:
+    - Database: providers/cassandra/database.md
   - Veeam:
     - Backup: providers/veeam/backup.md
   - Commvault:
@@ -356,6 +364,16 @@ nav:
     - Cloud Security: providers/wiz/cloud-security.md
   - SaltStack:
     - Configuration: providers/saltstack/configuration.md
+  - GitLab:
+    - CI/CD: providers/gitlab/ci-cd.md
+  - GitHub:
+    - Actions: providers/github/actions.md
+  - Jenkins:
+    - CI/CD: providers/jenkins/ci-cd.md
+  - ArgoCD:
+    - GitOps: providers/argocd/gitops.md
+  - FluxCD:
+    - GitOps: providers/fluxcd/gitops.md
   - Patterns:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
