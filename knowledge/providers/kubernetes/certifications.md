@@ -32,7 +32,7 @@ CNCF certifications are vendor-neutral and performance-based — candidates must
 
 ## See Also
 
-- [general/certification-training.md](../../general/certification-training.md)
-- [providers/kubernetes/compute.md](compute.md)
-- [providers/kubernetes/security.md](security.md)
-- [general/container-orchestration.md](../../general/container-orchestration.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/kubernetes/compute.md` -- Kubernetes compute
+- `providers/kubernetes/security.md` -- Kubernetes security
+- `general/container-orchestration.md` -- container orchestration patterns

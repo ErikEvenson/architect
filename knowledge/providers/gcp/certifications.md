@@ -33,7 +33,7 @@ GCP certifications are widely respected and carry weight in the industry, partic
 
 ## See Also
 
-- [general/certification-training.md](../../general/certification-training.md)
-- [providers/gcp/compute.md](compute.md)
-- [providers/gcp/networking.md](networking.md)
-- [providers/gcp/security.md](security.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/gcp/compute.md` -- GCP compute
+- `providers/gcp/networking.md` -- GCP networking
+- `providers/gcp/security.md` -- GCP security

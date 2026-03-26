@@ -34,7 +34,7 @@ AWS certifications are the most widely recognized cloud credentials. APN partner
 
 ## See Also
 
-- [general/certification-training.md](../general/certification-training.md)
-- [providers/aws/vpc.md](vpc.md)
-- [providers/aws/iam.md](iam.md)
-- [providers/aws/multi-account.md](multi-account.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/aws/vpc.md` -- AWS VPC networking
+- `providers/aws/iam.md` -- AWS IAM
+- `providers/aws/multi-account.md` -- AWS multi-account strategy

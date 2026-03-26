@@ -35,8 +35,8 @@ Microsoft's 1-year certification validity is the most aggressive renewal cycle a
 
 ## See Also
 
-- [general/certification-training.md](../general/certification-training.md)
-- [providers/azure/compute.md](compute.md)
-- [providers/azure/networking.md](networking.md)
-- [providers/azure/azure-local.md](azure-local.md)
-- [providers/nutanix/certifications.md](../nutanix/certifications.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/azure/compute.md` -- Azure compute
+- `providers/azure/networking.md` -- Azure networking
+- `providers/azure/azure-local.md` -- Azure Local (Stack HCI)
+- `providers/nutanix/certifications.md` -- Nutanix certifications (dual-cert strategy for NC2)

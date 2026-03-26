@@ -31,8 +31,8 @@ Terraform is the dominant IaC tool across cloud providers, and Terraform Associa
 
 ## See Also
 
-- [general/certification-training.md](../../general/certification-training.md)
-- [providers/hashicorp/terraform.md](terraform.md)
-- [providers/hashicorp/vault.md](vault.md)
-- [providers/hashicorp/consul.md](consul.md)
-- [general/iac-planning.md](../../general/iac-planning.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/hashicorp/terraform.md` -- Terraform IaC
+- `providers/hashicorp/vault.md` -- Vault secrets management
+- `providers/hashicorp/consul.md` -- Consul service mesh
+- `general/iac-planning.md` -- IaC planning patterns

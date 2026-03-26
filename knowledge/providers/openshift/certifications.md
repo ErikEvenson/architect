@@ -32,8 +32,8 @@ Red Hat certifications are entirely performance-based — candidates must comple
 
 ## See Also
 
-- [general/certification-training.md](../../general/certification-training.md)
-- [providers/openshift/infrastructure.md](infrastructure.md)
-- [providers/openshift/security.md](security.md)
-- [providers/kubernetes/certifications.md](../kubernetes/certifications.md)
-- [general/container-orchestration.md](../../general/container-orchestration.md)
+- `general/certification-training.md` -- cross-vendor certification strategy
+- `providers/openshift/infrastructure.md` -- OpenShift infrastructure
+- `providers/openshift/security.md` -- OpenShift security
+- `providers/kubernetes/certifications.md` -- CNCF Kubernetes certifications
+- `general/container-orchestration.md` -- container orchestration patterns
