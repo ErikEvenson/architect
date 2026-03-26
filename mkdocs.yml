@@ -307,12 +307,18 @@ nav:
     - Virtual Desktops: providers/citrix/virtual-desktops.md
   - Infoblox:
     - DDI: providers/infoblox/ddi.md
+  - Juniper:
+    - Networking: providers/juniper/networking.md
   - ServiceNow:
     - ITSM: providers/servicenow/itsm.md
   - Atlassian:
     - Jira Service Management: providers/atlassian/itsm.md
   - Datadog:
     - Observability: providers/datadog/observability.md
+  - Dynatrace:
+    - Observability: providers/dynatrace/observability.md
+  - New Relic:
+    - Observability: providers/newrelic/observability.md
   - Splunk:
     - Observability: providers/splunk/observability.md
   - Zabbix:
@@ -352,6 +358,7 @@ nav:
     - Private Cloud As-a-Service: patterns/private-cloud-as-a-service.md
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
     - Zero Trust: patterns/zero-trust.md
+    - Security Operations: patterns/security-operations.md
     - Network Segmentation: patterns/network-segmentation.md
     - On-Prem to NC2 Migration: patterns/onprem-to-nc2-migration.md
     - Managed Cloud Services: patterns/managed-cloud-services.md
@@ -365,6 +372,7 @@ nav:
     - CSA CCM: compliance/csa-ccm.md
     - NIST 800-171 / CMMC: compliance/nist-800-171-cmmc.md
     - SOX: compliance/sox.md
+    - CCPA/CPRA: compliance/ccpa.md
   - Frameworks:
     - AWS Well-Architected: frameworks/aws-well-architected.md
     - Azure Well-Architected: frameworks/azure-well-architected.md
