@@ -6,13 +6,16 @@ Architect combines a structured knowledge library with an interactive design wor
 
 ## What It Does
 
-- **Conversational architecture design** — Claude Code acts as the architect, using a knowledge library to systematically ask questions, identify gaps, and make decisions
+- **Conversational architecture design** — LLM-powered chat interface with tool-call loop for creating artifacts, recording decisions, and managing questions, backed by RAG over the knowledge library
 - **Architectural Decision Records (ADRs)** — every design decision is documented with context, decision, and consequences
 - **Question tracking** — clarifying questions are tracked per project with status and category
 - **Diagram generation** — Python `diagrams` library (AWS, Azure, GCP, Nutanix, VMware, OpenStack icons) and D2 for flexible layouts
 - **Document rendering** — Markdown to styled HTML with diagram embedding
 - **PDF export** — professional reports with cover page, table of contents, and embedded diagrams
-- **Knowledge library** — extensible markdown-based best practices, organized by provider, pattern, and compliance framework
+- **Knowledge library** — 285+ markdown files covering 30+ providers, architecture patterns, compliance frameworks, certifications, and training resources
+- **Coverage tracking** — track which knowledge library checklist items have been addressed in the design
+- **Inventory management** — attach VM inventories, network data, and analysis to versions
+- **File uploads** — attach reference documents and data files to versions
 - **Vector search (RAG)** — semantic search over the knowledge library, vendor docs, and uploaded files using pgvector embeddings, with a web UI for index management (start, stop, pause, resume, clear, timeout, progress tracking)
 
 ## Architecture
@@ -20,6 +23,7 @@ Architect combines a structured knowledge library with an interactive design wor
 | Layer | Technology |
 |-------|-----------|
 | Backend | FastAPI + Uvicorn (Python 3.12) |
+| Chat/LLM | SSE streaming, OpenAI-compatible API (local or Anthropic) |
 | Frontend | React + Vite + TypeScript + Tailwind CSS |
 | Database | PostgreSQL 16 + pgvector (K8s StatefulSet) |
 | Vector Search | pgvector + ONNX Runtime (all-MiniLM-L6-v2) |
@@ -79,9 +83,9 @@ architect/
 │           ├── components/# UI components
 │           ├── pages/    # Route pages
 │           └── stores/   # Zustand state
-├── knowledge/            # Architecture knowledge library (228 files)
+├── knowledge/            # Architecture knowledge library (285+ files)
 │   ├── general/          # Universal concerns
-│   ├── providers/        # Provider-specific (AWS, Azure, GCP, etc.)
+│   ├── providers/        # Provider-specific (30+ vendors: AWS, Azure, GCP, Nutanix, VMware, etc.)
 │   ├── patterns/         # Architecture patterns (three-tier, microservices, etc.)
 │   ├── compliance/       # Compliance frameworks (PCI, HIPAA, SOC2, FedRAMP)
 │   ├── frameworks/       # Well-Architected Frameworks
@@ -100,17 +104,23 @@ architect/
 
 ```
 Client (1) → (*) Project (1) → (*) Version (1) → (*) Artifact
-                            (1) → (*) ADR
-                            (1) → (*) Question
+                                              (1) → (*) ADR
+                                              (1) → (*) Question
+                                              (1) → (*) InventoryItem
+                                              (1) → (*) Upload
+                                              (1) → (*) CoverageItem
 ```
 
 - **Client** — organization the architecture is for
 - **Project** — specific architecture engagement
-- **Version** — architecture iteration (semver)
+- **Version** — architecture iteration (semver), each version is an independent design
 - **Artifact** — diagram, document, or PDF report
-- **ADR** — architectural decision record (sequential per project)
+- **ADR** — architectural decision record (sequential per version)
 - **Question** — clarifying question with status and category
-- **KnowledgeEmbedding** — vector embedding of a knowledge library chunk (checklist item or section)
+- **InventoryItem** — VM inventory, network data, or analysis attached to a version
+- **Upload** — reference documents and files (PVC-backed, 100MB limit)
+- **CoverageItem** — tracks which knowledge library checklist items are addressed
+- **KnowledgeEmbedding** — vector embedding of a knowledge library chunk
 
 ## RAG Architecture
 
@@ -119,7 +129,7 @@ Architect uses Retrieval-Augmented Generation (RAG) to enhance the knowledge lib
 ### How It Works
 
 ```
-Knowledge Files (228 .md)    Vendor Docs (550+ URLs)    Uploaded Files
+Knowledge Files (285+ .md)    Vendor Docs (550+ URLs)    Uploaded Files
         │                           │                        │
         ▼                           ▼                        ▼
 ┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
@@ -215,10 +225,14 @@ All endpoints under `/api/v1/`. See full OpenAPI spec at `/docs` when running.
 | Clients | CRUD at `/clients` |
 | Projects | CRUD at `/clients/{id}/projects` |
 | Versions | CRUD at `/projects/{id}/versions` |
-| Artifacts | CRUD at `/versions/{id}/artifacts` |
-| ADRs | CRUD + supersede at `/projects/{id}/adrs` |
-| Questions | CRUD + filter at `/projects/{id}/questions` |
-| Rendering | Trigger + outputs at `/versions/{id}/artifacts/{id}/render` |
+| Artifacts | CRUD + clone at `/versions/{id}/artifacts` |
+| ADRs | CRUD at `/versions/{id}/adrs` |
+| Questions | CRUD + filter at `/versions/{id}/questions` |
+| Inventory | CRUD at `/versions/{id}/inventory` |
+| Uploads | Upload/download/delete at `/versions/{id}/uploads` |
+| Coverage | CRUD + summary at `/versions/{id}/coverage` |
+| Rendering | Trigger + outputs + PDF export at `/versions/{id}/artifacts/{id}/render` |
+| Chat | SSE streaming at `/chat` |
 | Templates | List + render at `/templates` |
 | Knowledge | Browse + vector search + reindex at `/knowledge` |
 
@@ -235,12 +249,12 @@ All endpoints under `/api/v1/`. See full OpenAPI spec at `/docs` when running.
 
 The knowledge library drives the architecture design workflow. Files are organized by:
 
-- **General** — universal concerns: compute, networking, data, security, observability, DR, cost, deployment
-- **Providers** — AWS, Azure, GCP, Nutanix, VMware, OpenStack specific guidance
-- **Patterns** — three-tier web, microservices, data pipeline, static site, hybrid cloud
-- **Compliance** — PCI DSS, HIPAA, SOC2, FedRAMP control mappings
-- **Frameworks** — AWS/Azure/GCP Well-Architected Framework review checklists
-- **Failures** — real-world anti-patterns and failure modes
+- **General** (60+ files) — compute, networking, data, security, observability, DR, cost, storage, identity, AI/ML services, ITSM, certification/training, and more
+- **Providers** (200+ files) — 30+ vendors: AWS, Azure, GCP, Nutanix, VMware, OpenStack, OpenShift, Kubernetes, HashiCorp, Cloudflare, SQL Server, Oracle, PostgreSQL, MySQL, Veeam, Palo Alto, F5, Infoblox, ServiceNow, Datadog, Splunk, Proxmox, Citrix, and more
+- **Patterns** (25+ files) — three-tier web, microservices, hybrid cloud, zero trust, hypervisor migration, datacenter relocation, managed cloud services, and more
+- **Compliance** (9 files) — PCI DSS, HIPAA, SOC2, FedRAMP, GDPR, ISO 27001, NIST 800-171/CMMC, SOX, CSA CCM
+- **Frameworks** (3 files) — AWS/Azure/GCP Well-Architected Framework review checklists
+- **Failures** (5 files) — real-world anti-patterns for networking, data, scaling, security, and deployment
 
 Browse the library in the UI via the **Knowledge** link in the header.
 
@@ -267,11 +281,21 @@ pytest tests/ -v
 
 ### Spec-first workflow
 
-1. Write/update specs in `specs/` before implementation
-2. Commit specs separately
-3. Write tests derived from specs
+1. Write/update specs in `specs/` **before** implementation
+2. Commit specs separately from implementation
+3. Write tests derived from specs (TDD)
 4. Implement to make tests pass
-5. Commit implementation
+5. Commit implementation with tests
+
+### Specs
+
+| Directory | Contents |
+|-----------|----------|
+| `specs/api/` | OpenAPI 3.1 spec for all REST endpoints |
+| `specs/architecture/` | System design: services, chat/LLM, knowledge/embeddings, rendering, CI/CD, deployment |
+| `specs/data/` | Database schema: 11 tables with columns, indexes, constraints, cascade behavior |
+| `specs/behavior/` | Gherkin acceptance criteria: 13 feature files covering all user-facing features |
+| `specs/rendering/` | Rendering engine specs: D2, diagrams-py, markdown, PDF, icons |
 
 ## License
 
