@@ -87,6 +87,7 @@ nav:
     - Certification and Training: general/certification-training.md
     - AI/ML Managed Services: general/ai-ml-services.md
     - ITSM Integration: general/itsm-integration.md
+    - Supply Chain Security: general/supply-chain-security.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -314,6 +315,8 @@ nav:
     - Configuration: providers/puppet/configuration.md
   - Chef:
     - Configuration: providers/chef/configuration.md
+  - Snowflake:
+    - Data Platform: providers/snowflake/data-platform.md
   - SaltStack:
     - Configuration: providers/saltstack/configuration.md
   - Patterns:
