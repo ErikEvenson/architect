@@ -101,6 +101,12 @@ Origin (single cluster):
   |-- Origin CA cert covers both domains (SAN)
 ```
 
+## Reference Links
+
+- [Cloudflare DNS Documentation](https://developers.cloudflare.com/dns/) -- zone management, proxy mode, DNSSEC, and DNS record types
+- [Cloudflare Cache Documentation](https://developers.cloudflare.com/cache/) -- cache rules, tiered cache, Cache Reserve, and cache key configuration
+- [Cloudflare SSL/TLS Documentation](https://developers.cloudflare.com/ssl/) -- SSL/TLS modes, Origin CA certificates, and certificate management
+
 ## See Also
 
 - `general/hybrid-dns.md` -- hybrid DNS architecture patterns

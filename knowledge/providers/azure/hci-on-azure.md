@@ -71,6 +71,12 @@ Four-node Azure Local cluster on BareMetal running a mix of Tier 0 infrastructur
 
 ---
 
+## Reference Links
+
+- [Azure Local documentation](https://learn.microsoft.com/en-us/azure/azure-local/) -- cluster deployment, Storage Spaces Direct, and Azure Arc management
+- [Azure BareMetal Infrastructure documentation](https://learn.microsoft.com/en-us/azure/baremetal-infrastructure/) -- bare-metal provisioning, SKUs, and networking for dedicated hardware in Azure datacenters
+- [Azure Arc overview](https://learn.microsoft.com/en-us/azure/azure-arc/overview) -- hybrid and multi-cloud management plane for servers, Kubernetes, and data services
+
 ## See Also
 
 - `providers/azure/azure-local.md` -- On-premises Azure Local (Azure Stack HCI) deployment and management

@@ -68,6 +68,12 @@ Multus allows pods to have multiple network interfaces -- essential for telco wo
 - **Hybrid cloud (on-prem + AWS)**: Submariner or Skupper for cross-cluster service discovery, consistent NetworkPolicy across clusters, split-horizon DNS with external-dns operator, VPN or Direct Connect for cluster-to-cluster communication.
 - **Zero-trust network**: Service mesh with strict mTLS enforcement, default-deny NetworkPolicy, EgressFirewall allowing only approved external endpoints, network observability for anomaly detection, AdminNetworkPolicy for platform-wide baseline rules.
 
+## Reference Links
+
+- [OpenShift networking documentation](https://docs.openshift.com/container-platform/latest/networking/understanding-networking.html) -- OVN-Kubernetes, OpenShift SDN, and cluster networking configuration
+- [OVN-Kubernetes CNI documentation](https://docs.openshift.com/container-platform/latest/networking/ovn_kubernetes_network_provider/about-ovn-kubernetes.html) -- OVN-Kubernetes architecture, features, and migration from OpenShift SDN
+- [OpenShift Ingress and Route configuration](https://docs.openshift.com/container-platform/latest/networking/routes/route-configuration.html) -- HAProxy Ingress controller, routes, and TLS termination
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

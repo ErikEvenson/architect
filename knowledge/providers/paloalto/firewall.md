@@ -64,3 +64,9 @@ Sizing is a common failure point. Vendors quote maximum firewall throughput unde
 - `general/security.md` — Security architecture, hardening, compliance frameworks
 - `patterns/network-segmentation.md` — Segmentation design patterns and trust zone models
 - `patterns/zero-trust.md` — Zero-trust architecture principles and implementation
+
+## Reference Links
+
+- [PAN-OS Technical Documentation](https://docs.paloaltonetworks.com/pan-os) -- security policy, App-ID, zone configuration, and GlobalProtect VPN
+- [Panorama Administration](https://docs.paloaltonetworks.com/panorama) -- centralized management, device groups, templates, and log collection
+- [Palo Alto Networks Reference Architectures](https://www.paloaltonetworks.com/resources/reference-architectures) -- deployment designs for data center, campus, and cloud environments

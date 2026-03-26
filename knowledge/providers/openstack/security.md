@@ -69,6 +69,12 @@ Security in OpenStack is not a single service -- it is a cross-cutting concern t
 - **Epoxy (2025.1) security changes:** OAuth 2.0 device authorization grant for CLI and headless authentication flows. Continued secure RBAC improvements across all services.
 - **Flamingo (2025.2) security changes:** Barbican KMIP backend improvements for interoperability with enterprise key management systems. Continued hardening of default security policies.
 
+## Reference Links
+
+- [OpenStack security guide](https://docs.openstack.org/security-guide/) -- comprehensive security hardening for all OpenStack services
+- [Barbican key manager documentation](https://docs.openstack.org/barbican/latest/) -- secrets management, key storage, and certificate management
+- [Keystone security hardening](https://docs.openstack.org/keystone/latest/admin/security-hardening.html) -- identity service security configuration and federation
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

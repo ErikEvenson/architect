@@ -37,6 +37,12 @@ VMware environments degrade silently. CPU ready time above 5% indicates VMs are 
 - **SNMP vs API-based monitoring** -- SNMP for legacy monitoring platform integration vs REST API and Prometheus endpoints for modern observability stacks; vCenter and NSX expose rich APIs, ESXi is more limited
 - **Capacity planning model** -- demand-based (actual consumption trends, optimistic) vs allocation-based (reserved resources, conservative); demand-based avoids premature purchases but risks under-provisioning for workloads that have not yet scaled
 
+## Reference Links
+
+- [VCF Operations (Aria Operations) documentation](https://docs.vmware.com/en/VMware-Aria-Operations/index.html) -- deployment, dashboards, capacity planning, and alerting configuration
+- [VCF Operations for Logs documentation](https://docs.vmware.com/en/VMware-Aria-Operations-for-Logs/index.html) -- log aggregation, content packs, and log analytics
+- [vSphere monitoring and performance guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-monitoring-performance/GUID-A8B06BE0-E5FC-435C-B12F-A31618B21E2C.html) -- vCenter alarms, statistics collection levels, and performance charts
+
 ## See Also
 
 - `general/observability.md` -- general observability patterns

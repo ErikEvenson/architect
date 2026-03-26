@@ -35,6 +35,12 @@ Nutanix provides multiple data protection tiers, each with different RPO, comple
 - **Retention strategy** -- Short local + long remote (optimize local storage) vs long local + archive offsite (fastest restore) vs tiered with lifecycle policies
 - **DR site architecture** -- Symmetric (identical cluster at DR site, bidirectional replication) vs asymmetric (smaller DR cluster, one-way replication, accept degraded performance during failover)
 
+## Reference Links
+
+- [Nutanix Leap disaster recovery](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:mul-leap-dr-pc-c.html) -- Leap DR orchestration, protection policies, and recovery plans
+- [Nutanix data protection guide](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:mul-data-protection-pc-c.html) -- snapshots, protection domains, and replication configuration
+- [Nutanix Mine backup integration](https://portal.nutanix.com/page/documents/details?targetId=Mine-With-HYCU-Guide:Mine-With-HYCU-Guide) -- integrated backup solution on Nutanix HCI
+
 ## See Also
 
 - `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)

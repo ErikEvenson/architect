@@ -130,6 +130,12 @@ Always upgrade control plane before workers. Never skip minor versions (1.27 -> 
 ```
 OCI registries for chart storage (replacing ChartMuseum). Per-environment values files with ArgoCD managing the lifecycle. Helm hooks for database migrations and other lifecycle tasks execute as Kubernetes Jobs with configurable weight (ordering) and delete policies.
 
+## Reference Links
+
+- [Cluster Administration](https://kubernetes.io/docs/tasks/administer-cluster/) -- upgrading clusters, managing nodes, etcd backup, and resource quotas
+- [Helm Documentation](https://helm.sh/docs/) -- Helm chart management, templating, hooks, and OCI registry support
+- [Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/) -- rolling updates, scaling, and resource quota enforcement
+
 ## See Also
 
 - `general/deployment.md` -- deployment strategies and patterns

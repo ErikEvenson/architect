@@ -160,6 +160,12 @@ Workflow: terraform.yml
               Post apply summary to Slack
 ```
 
+## Reference Links
+
+- [Terraform Documentation](https://developer.hashicorp.com/terraform/docs) -- CLI, configuration language, state management, backends, and provider development
+- [Terraform Registry](https://registry.terraform.io/) -- official provider and module registry with versioned releases
+- [Terraform Tutorials](https://developer.hashicorp.com/terraform/tutorials) -- hands-on guides for state management, modules, CI/CD, and Terraform Cloud
+
 ## See Also
 
 - `general/iac-planning.md` -- infrastructure as code planning patterns

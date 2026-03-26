@@ -29,6 +29,12 @@ Post-Broadcom acquisition, the VMware certification landscape is in flux. Traini
 - Broadcom Learning vs third-party training providers
 - NSX certification priority for environments with microsegmentation policies
 
+## Reference Links
+
+- [Broadcom VMware Certification Portal](https://www.broadcom.com/support/education/vmware/certification) -- current VMware certification paths, exam registration, and recertification under Broadcom
+- [Broadcom Learning (VMware Training)](https://www.broadcom.com/support/education/vmware) -- on-demand courses, Hands-on Labs, and instructor-led training
+- [VMware Hands-on Labs](https://labs.hol.vmware.com/) -- free browser-based lab environments for VMware product practice
+
 ## See Also
 
 - general/certification-training.md

@@ -42,3 +42,9 @@ DNS security through Response Policy Zones is a significant differentiator, prov
 - `general/hybrid-dns.md` -- hybrid and multi-cloud DNS resolution patterns
 - `providers/microsoft/dns-dhcp.md` -- Microsoft DNS and DHCP services
 - `general/networking.md` -- general network architecture patterns
+
+## Reference Links
+
+- [Infoblox NIOS Documentation](https://docs.infoblox.com/space/nios) -- Grid architecture, DNS/DHCP services, IPAM, and WAPI REST API
+- [Infoblox BloxOne DDI](https://docs.infoblox.com/space/BloxOneDDI) -- cloud-managed DDI platform architecture and configuration
+- [Infoblox Deployment Guides](https://docs.infoblox.com/) -- sizing guides, HA design, and migration from Microsoft DNS/DHCP

@@ -38,3 +38,9 @@ Integration architecture is critical because ServiceNow typically sits at the ce
 
 - `general/itsm-integration.md` -- general ITSM integration patterns and boundary decisions
 - `general/managed-services-scoping.md` -- managed services scope definition and ITSM boundary decisions
+
+## Reference Links
+
+- [ServiceNow Product Documentation](https://docs.servicenow.com/) -- ITSM, CMDB, ITOM, Flow Designer, and Integration Hub configuration
+- [ServiceNow Developer Portal](https://developer.servicenow.com/) -- REST API reference, scripting guides, and instance provisioning for development
+- [ServiceNow Architecture](https://docs.servicenow.com/bundle/latest-it-operations-management/page/product/discovery/concept/multi-source-cmdb.html) -- CMDB design, discovery, service mapping, and reconciliation

@@ -77,6 +77,12 @@ Each collaboration room maps to a single Durable Object. WebSocket connections a
 ```
 Workers route requests to the appropriate storage backend based on data characteristics. KV serves configuration and cached content (sub-millisecond reads). D1 handles relational queries for structured data. Durable Objects manage per-user rate limiting and session state. Hyperdrive connects to existing PostgreSQL databases during migration. R2 stores file attachments with zero egress.
 
+## Reference Links
+
+- [Cloudflare R2 Documentation](https://developers.cloudflare.com/r2/) -- S3-compatible object storage, pricing, lifecycle rules, and event notifications
+- [Cloudflare KV Documentation](https://developers.cloudflare.com/kv/) -- globally distributed key-value store, consistency model, and API reference
+- [Cloudflare D1 Documentation](https://developers.cloudflare.com/d1/) -- edge SQLite database, migrations, query API, and read replication
+
 ## See Also
 
 - `general/data.md` -- general data architecture patterns

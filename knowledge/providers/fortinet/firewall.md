@@ -65,3 +65,9 @@ VDOM design is a frequent source of architectural complexity. VDOMs enable multi
 
 - `general/security.md` — Security architecture, hardening, compliance frameworks
 - `patterns/network-segmentation.md` — Segmentation design patterns and trust zone models
+
+## Reference Links
+
+- [FortiOS Documentation](https://docs.fortinet.com/product/fortigate) -- firewall policy, VDOM, SD-WAN, and ZTNA configuration
+- [FortiManager Documentation](https://docs.fortinet.com/product/fortimanager) -- centralized management, ADOM, policy packages, and device provisioning
+- [FortiAnalyzer Documentation](https://docs.fortinet.com/product/fortianalyzer) -- log management, analytics, SOC features, and reporting

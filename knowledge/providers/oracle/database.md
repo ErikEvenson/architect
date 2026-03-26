@@ -74,3 +74,9 @@ On the technical side, Oracle's performance depends heavily on correct memory si
 - `general/database-migration.md` — Database migration strategy, schema migration tooling, replication, and cutover planning
 - `general/database-ha.md` — Database high availability patterns, replication topologies, and failover strategies
 - `providers/postgresql/database.md` — PostgreSQL configuration and HA (common Oracle migration target)
+
+## Reference Links
+
+- [Oracle Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/) -- architecture, RAC, Data Guard, ASM, RMAN, and performance tuning
+- [Oracle Database Licensing](https://docs.oracle.com/en/database/oracle/oracle-database/23/dblic/) -- processor-based vs Named User Plus, options and packs, and audit requirements
+- [Oracle Database Release Notes](https://docs.oracle.com/en/database/oracle/oracle-database/23/rnrdm/) -- new features, deprecated features, and upgrade paths

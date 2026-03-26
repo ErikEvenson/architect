@@ -158,6 +158,12 @@ transit/
   |-- decrypt/app-encryption-key
 ```
 
+## Reference Links
+
+- [Vault Documentation](https://developer.hashicorp.com/vault/docs) -- architecture, auth methods, secrets engines, policies, audit logging, and HA deployment
+- [Vault Tutorials](https://developer.hashicorp.com/vault/tutorials) -- hands-on guides for dynamic secrets, PKI, Kubernetes integration, and disaster recovery
+- [Vault Reference Architecture](https://developer.hashicorp.com/vault/tutorials/day-one-raft/raft-reference-architecture) -- production deployment patterns with integrated Raft storage
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

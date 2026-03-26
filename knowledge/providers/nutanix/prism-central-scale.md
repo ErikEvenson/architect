@@ -171,6 +171,11 @@ Best for: 25,000+ VMs, high WAN latency between sites, regulatory data sovereign
 - **Calm blueprint management** -- Git-based version control (recommended, survives PC loss) vs PC-only storage (lost if PC is destroyed without separate backup)
 - **Category taxonomy** -- Pre-defined enforced taxonomy (consistent, scalable) vs organic growth (flexible, policy drift at scale)
 
+## Reference Links
+
+- [Prism Central sizing guide](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:mul-pc-sizing-requirements-pc-r.html) -- VM sizing, scale limits, and deployment recommendations for Prism Central
+- [Prism Central administration guide](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:Prism-Central-Guide) -- deployment, configuration, and multi-cluster management
+
 ## See Also
 
 - `providers/nutanix/infrastructure.md` -- core Nutanix cluster sizing, AHV, and AOS

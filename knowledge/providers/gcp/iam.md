@@ -52,6 +52,14 @@ GKE cluster with Workload Identity enabled. Each microservice has a dedicated Ku
 ### CI/CD with Workload Identity Federation
 GitHub Actions workflow uses google-github-actions/auth action with Workload Identity Federation. Workload Identity Pool maps GitHub repository (attribute.repository == "org/repo") to a GCP service account. Service account has roles/artifactregistry.writer for pushing images and roles/run.developer for deploying to Cloud Run. Attribute conditions restrict to specific branches (attribute.ref == "refs/heads/main" for production). Separate service accounts per environment with different permission sets.
 
+## Reference Links
+
+- [Cloud IAM documentation](https://cloud.google.com/iam/docs) -- roles, bindings, conditions, deny policies, and IAM Recommender
+- [Workload Identity Federation documentation](https://cloud.google.com/iam/docs/workload-identity-federation) -- OIDC/SAML federation for external workloads without service account keys
+- [VPC Service Controls documentation](https://cloud.google.com/vpc-service-controls/docs) -- service perimeters, access levels, and data exfiltration protection
+- [Organization Policy Service documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) -- security guardrails and constraints across the resource hierarchy
+- [Cloud Audit Logs documentation](https://cloud.google.com/logging/docs/audit) -- Admin Activity, Data Access, and System Event audit logging
+
 ## See Also
 
 - `general/identity.md` -- general identity and access management patterns

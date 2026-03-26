@@ -32,6 +32,11 @@ AWS certifications are the most widely recognized cloud credentials. APN partner
 - Certification count planning against APN tier requirements
 - AWS Training and Certification vs third-party providers (A Cloud Guru, Stephane Maarek)
 
+## Reference Links
+
+- [AWS Certification](https://aws.amazon.com/certification/) -- certification paths, exam guides, and registration
+- [AWS Skill Builder](https://aws.amazon.com/training/digital/) -- free and subscription-based digital training, labs, and exam prep
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

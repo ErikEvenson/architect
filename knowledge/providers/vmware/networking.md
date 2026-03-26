@@ -69,6 +69,15 @@ Networking misconfiguration is the leading cause of vSphere outages that affect 
 - **Project-based multi-tenancy and VPC:** NSX 4.1 introduced Projects and VPCs, enabling delegated network administration. Tenant administrators can manage their own network segments, security policies, and NAT rules within a Project without affecting other tenants. This is a significant improvement for service provider and large enterprise use cases.
 - **DPU-based acceleration:** NSX 4.x supports offloading distributed firewall and overlay networking to DPUs (SmartNICs), reducing host CPU overhead for networking operations.
 
+## Reference Links
+
+- [NSX documentation](https://docs.vmware.com/en/VMware-NSX/index.html) -- NSX deployment, transport zones, gateways, and distributed firewall configuration
+- [vSphere networking guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-35B40B0B-0C13-43B2-BC85-18C9C91BE2D4.html) -- VDS configuration, VMkernel adapters, NIC teaming, and NIOC
+- [NSX reference design guide](https://communities.vmware.com/t5/VMware-NSX-Documents/VMware-NSX-Reference-Design/ta-p/2
+
+
+) -- NSX architecture patterns for T0/T1 gateways, edge clusters, and overlay networking
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

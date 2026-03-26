@@ -70,6 +70,12 @@ Storage decisions in OpenStack are among the hardest to reverse. Cinder backend 
 - **Epoxy (2025.1) storage changes:** NVMe-oF multi-path HA improvements for Cinder, enabling high-availability NVMe-oF connections to storage backends. Continued Ceph RBD driver improvements. Dell PowerStore driver updates.
 - **Flamingo (2025.2) storage changes:** Continued improvements to Cinder backend driver ecosystem. Manila stability improvements. No major new storage features.
 
+## Reference Links
+
+- [Cinder block storage documentation](https://docs.openstack.org/cinder/latest/) -- volume management, backends, and storage driver configuration
+- [Swift object storage documentation](https://docs.openstack.org/swift/latest/) -- object storage architecture, rings, and replication policies
+- [Manila shared file system documentation](https://docs.openstack.org/manila/latest/) -- shared file system service deployment and share driver configuration
+
 ## See Also
 
 - `providers/ceph/storage.md` -- Ceph-specific knowledge: CRUSH maps, BlueStore, replication vs erasure coding, PG tuning, cephadm/Rook deployment, version history. Ceph is the most common Cinder/Glance/Manila backend but is also used independently outside OpenStack.

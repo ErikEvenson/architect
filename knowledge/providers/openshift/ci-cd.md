@@ -73,6 +73,12 @@ OLM manages the operator lifecycle -- installation, upgrades, and dependency res
 - **Developer self-service**: OpenShift Dev Spaces (Eclipse Che) for cloud-based IDEs, Tekton pipeline templates via TektonHub, ArgoCD AppProjects per team with RBAC, namespace provisioning via ProjectRequest or Namespace Configuration Operator.
 - **Compliance-gated pipeline**: Tekton pipeline with mandatory security gates (image scan, compliance check, SBOM generation), Tekton Chains for non-repudiation, OPA/Gatekeeper policies blocking non-compliant deployments, ArgoCD sync waves for ordered rollout (namespace -> RBAC -> secrets -> app).
 
+## Reference Links
+
+- [OpenShift Pipelines (Tekton) documentation](https://docs.openshift.com/pipelines/latest/about/about-pipelines.html) -- Tekton-based CI/CD pipelines, tasks, and triggers on OpenShift
+- [OpenShift GitOps (Argo CD) documentation](https://docs.openshift.com/gitops/latest/about_openshift_gitops/about-openshift-gitops.html) -- Argo CD-based GitOps deployment and application management
+- [OpenShift Builds documentation](https://docs.openshift.com/container-platform/latest/cicd/builds/understanding-buildconfigs.html) -- BuildConfig, Source-to-Image (S2I), and image build strategies
+
 ## See Also
 
 - `general/ci-cd.md` -- general CI/CD pipeline patterns

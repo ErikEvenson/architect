@@ -44,3 +44,9 @@ For VMware migration projects, Proxmox supports importing OVA/VMDK disk images, 
 - `providers/vmware/licensing.md` -- VMware licensing context for migration decisions
 - `patterns/hypervisor-migration.md` -- hypervisor migration planning patterns
 - `providers/ceph/storage.md` -- Ceph storage architecture deep dive
+
+## Reference Links
+
+- [Proxmox VE Administration Guide](https://pve.proxmox.com/wiki/Main_Page) -- cluster setup, KVM/LXC management, storage, SDN, and HA configuration
+- [Proxmox VE API Reference](https://pve.proxmox.com/pve-docs/api-viewer/) -- REST API for automation, VM provisioning, and cluster management
+- [Proxmox Backup Server](https://pbs.proxmox.com/wiki/index.php/Main_Page) -- backup architecture, deduplication, encryption, and restore procedures

@@ -42,3 +42,9 @@ Domain and forest design decisions made during initial deployment are extremely 
 - `providers/azure/identity.md` -- Entra ID (Azure AD) cloud identity services
 - `general/identity.md` -- cross-platform identity and access management patterns
 - `general/tier0-security-enclaves.md` -- Tier 0 security enclave design and hardening
+
+## Reference Links
+
+- [Active Directory Domain Services Overview](https://learn.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) -- AD DS architecture, domain/forest design, and FSMO roles
+- [Securing Active Directory](https://learn.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory) -- tiered administration, privileged access, and AD hardening best practices
+- [Entra Connect (Azure AD Connect)](https://learn.microsoft.com/entra/identity/hybrid/connect/whatis-azure-ad-connect) -- hybrid identity synchronization with Entra ID

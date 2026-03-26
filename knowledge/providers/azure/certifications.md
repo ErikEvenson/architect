@@ -33,6 +33,13 @@ Microsoft's 1-year certification validity is the most aggressive renewal cycle a
 - Dual Azure + Nutanix certification strategy for NC2 engagements
 - 1-year renewal cadence planning (most aggressive among vendors)
 
+## Reference Links
+
+- [Microsoft Learn training platform](https://learn.microsoft.com/en-us/training/) -- free self-paced modules, learning paths, and sandboxed labs for all Azure certifications
+- [Microsoft Certifications overview](https://learn.microsoft.com/en-us/credentials/) -- certification paths, exam requirements, and renewal process
+- [AZ-305 Azure Solutions Architect Expert](https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/) -- exam objectives, prerequisites, and study resources
+- [AZ-104 Azure Administrator Associate](https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/) -- exam objectives and study resources
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

@@ -53,6 +53,12 @@ SQS FIFO queue with content-based deduplication. Message group ID based on entit
 
 ---
 
+## Reference Links
+
+- [Amazon SQS Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/) -- standard and FIFO queues, dead letter queues, and message processing
+- [Amazon SNS Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/) -- topics, subscriptions, message filtering, and fan-out patterns
+- [Amazon EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/) -- event buses, rules, pipes, schema registry, and archive/replay
+
 ## See Also
 
 - `general/data.md` -- General data architecture including event streaming and messaging patterns

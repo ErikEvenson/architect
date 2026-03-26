@@ -69,6 +69,12 @@ Nova is the core of OpenStack compute and every decision -- from driver selectio
 - **Epoxy (2025.1) compute changes:** libvirt 10.x+ required as minimum version. Improved parallel live migration support allows multiple instances to be migrated simultaneously from a single host during maintenance. Ironic runbooks improved with better error handling and retry logic. vGPU live migration improvements for NVIDIA MIG instances.
 - **Flamingo (2025.2) compute changes:** Improved MIG scheduling for multi-instance GPU workloads. Secure boot key management improvements simplify custom key enrollment. Continued improvements to Cyborg accelerator lifecycle management.
 
+## Reference Links
+
+- [Nova documentation](https://docs.openstack.org/nova/latest/) -- Nova compute service architecture, configuration, and administration
+- [Nova configuration reference](https://docs.openstack.org/nova/latest/configuration/index.html) -- scheduler filters, placement API, and hypervisor driver options
+- [Glance documentation](https://docs.openstack.org/glance/latest/) -- image service for VM image management and distribution
+
 ## See Also
 
 - `general/compute.md` -- general compute architecture patterns

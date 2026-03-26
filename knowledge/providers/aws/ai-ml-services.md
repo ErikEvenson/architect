@@ -38,6 +38,12 @@ Bedrock pricing can be surprising at scale — a customer-facing chatbot using C
 - **Textract + Comprehend vs Bedrock for document processing** -- Textract for structured extraction (forms with known fields, tables, specific queries). Bedrock for unstructured understanding (summarization, classification, free-form Q&A over documents). Many production pipelines combine both — Textract extracts structured data, Bedrock handles reasoning over extracted content.
 - **SageMaker real-time vs async vs batch inference** -- Real-time endpoints for low-latency interactive workloads (sub-second response). Async inference with SQS queue for workloads tolerating minutes of latency (document processing, image generation). Batch transform for offline processing of large datasets.
 
+## Reference Links
+
+- [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/) -- foundation model access, knowledge bases, agents, and guardrails
+- [Amazon SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/) -- custom model training, hosting, pipelines, and MLOps
+- [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/) -- on-demand, provisioned throughput, and batch inference pricing
+
 ## See Also
 
 - `general/ai-ml-services.md` -- cross-provider AI service strategy

@@ -59,6 +59,12 @@ AVS provides a path to Azure for VMware-dependent workloads without re-platformi
 - HCX is included at no additional cost (unlike VMC where it is an add-on)
 - Quota request required — AVS nodes must be requested and approved per Azure subscription per region
 
+## Reference Links
+
+- [Azure VMware Solution documentation](https://learn.microsoft.com/en-us/azure/azure-vmware/) -- official Microsoft documentation for AVS deployment, networking, and management
+- [Azure VMware Solution pricing](https://azure.microsoft.com/en-us/pricing/details/azure-vmware/) -- node pricing, reserved instances, and cost estimation
+- [Azure VMware Solution landing zone accelerator](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/azure-vmware/) -- Cloud Adoption Framework guidance for AVS architecture
+
 ## See Also
 
 - `providers/vmware/infrastructure.md` -- VMware vSphere and VCF infrastructure

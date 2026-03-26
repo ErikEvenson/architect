@@ -75,3 +75,9 @@ The MySQL and MariaDB ecosystem split creates a strategic decision that many org
 - `general/database-migration.md` — Database migration strategy, schema migration tooling, replication, and cutover planning
 - `general/database-ha.md` — Database high availability patterns, replication topologies, and failover strategies
 - `providers/aws/rds-aurora.md` — AWS RDS and Aurora MySQL configuration and migration
+
+## Reference Links
+
+- [MySQL Reference Manual](https://dev.mysql.com/doc/refman/8.4/en/) -- InnoDB, replication, performance schema, and server configuration
+- [MySQL InnoDB Cluster](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-innodb-cluster.html) -- Group Replication, MySQL Router, and MySQL Shell for HA deployments
+- [MariaDB Server Documentation](https://mariadb.com/kb/en/documentation/) -- MariaDB-specific features, Galera Cluster, and compatibility with MySQL

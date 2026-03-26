@@ -49,6 +49,13 @@ Global External Application Load Balancer with URL map traffic splitting: stable
 ### Service Mesh with Cloud Service Mesh
 Cloud Service Mesh configured as managed control plane. Envoy sidecar proxies on GKE pods (or GCE VMs) receiving routing configuration from Cloud Service Mesh. Routing rules: 90% traffic to v1 backend, 10% to v2 backend, with header-based routing (x-debug-routing: v2 always routes to v2). Fault injection rules for resilience testing (inject 500 errors to 1% of requests). Circuit breaker on backend services (max 1000 concurrent requests, 5 consecutive 5xx triggers open circuit). Health checks via Envoy with outlier detection (ejecting backends with > 5% error rate). mTLS enforced between all services in the mesh.
 
+## Reference Links
+
+- [Cloud DNS documentation](https://cloud.google.com/dns/docs) -- public zones, private zones, DNSSEC, and routing policies
+- [Cloud DNS routing policies](https://cloud.google.com/dns/docs/overview#routing_policies) -- weighted round robin, geolocation, and failover routing
+- [Cloud Load Balancing documentation](https://cloud.google.com/load-balancing/docs) -- global and regional load balancers, URL maps, and traffic splitting
+- [Cloud Service Mesh documentation](https://cloud.google.com/service-mesh/docs) -- managed Envoy control plane, mTLS, traffic management, and observability
+
 ## See Also
 
 - `general/hybrid-dns.md` -- hybrid DNS architecture patterns

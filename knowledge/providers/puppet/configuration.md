@@ -40,3 +40,9 @@ However, Puppet's learning curve is steeper than alternatives like Ansible due t
 
 - `providers/ansible/configuration.md` -- Ansible configuration management architecture
 - `general/iac-planning.md` -- infrastructure-as-code planning patterns
+
+## Reference Links
+
+- [Puppet Documentation](https://www.puppet.com/docs/puppet/latest/puppet_index.html) -- manifest language, module structure, Hiera data, and server/agent architecture
+- [Puppet Enterprise Documentation](https://www.puppet.com/docs/pe/latest/pe_user_guide.html) -- orchestration, RBAC, code management, and compliance enforcement
+- [Puppet Forge](https://forge.puppet.com/) -- community and supported module repository for infrastructure automation

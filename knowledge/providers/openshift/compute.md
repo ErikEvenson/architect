@@ -49,6 +49,12 @@ Infrastructure nodes are a cost optimization lever: workloads running on nodes l
 - **Telco / NFV workload**: Real-time kernel via custom MCP and `performance-addon-operator` (now PAO merged into NTO -- Node Tuning Operator), CPU pinning, NUMA-aware scheduling, hugepages configuration, DPDK support.
 - **Cost-optimized dev/test**: Aggressive overcommit (4:1 CPU), no infra nodes, smaller instance types, scale-to-zero with KEDA operator, single-zone deployment.
 
+## Reference Links
+
+- [OpenShift compute documentation](https://docs.openshift.com/container-platform/latest/nodes/index.html) -- node management, MachineSets, autoscaling, and resource configuration
+- [OpenShift Machine API](https://docs.openshift.com/container-platform/latest/machine_management/index.html) -- MachineSet, MachineAutoscaler, and infrastructure provider integration
+- [OpenShift resource management](https://docs.openshift.com/container-platform/latest/nodes/clusters/nodes-cluster-resource-configure.html) -- CPU/memory limits, requests, and node resource allocation
+
 ## See Also
 
 - `general/compute.md` -- general compute architecture patterns

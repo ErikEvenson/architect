@@ -68,6 +68,12 @@ Compute configuration in vSphere directly determines application availability, p
 - **vSphere Configuration Profiles:** New in vSphere 8, these enable host configuration drift detection and remediation at the cluster level, ensuring all hosts maintain consistent settings for networking, storage, and security.
 - **vSphere+:** Cloud-connected SaaS management layer that provides centralized vCenter visibility, subscription-based licensing, and lifecycle management across distributed vSphere environments.
 
+## Reference Links
+
+- [vSphere 8 documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-B005CC84-7B16-4BF0-832A-6E1524304523.html) -- ESXi and vCenter configuration, DRS, HA, and resource management
+- [vSphere resource management guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-98BD5A8A-260A-494F-BAAE-74781F5C4B87.html) -- resource pools, shares, reservations, and NUMA scheduling
+- [VMware Configuration Maximums](https://configmax.broadcom.com/) -- supported limits for vSphere clusters, VMs, and hosts
+
 ## See Also
 
 - `general/compute.md` -- general compute architecture patterns

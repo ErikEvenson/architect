@@ -164,6 +164,12 @@ Consul KV:
   config/app/log_level  = "info"
 ```
 
+## Reference Links
+
+- [Consul Documentation](https://developer.hashicorp.com/consul/docs) -- architecture, ACL system, service mesh (Connect), KV store, and multi-datacenter federation
+- [Consul on Kubernetes](https://developer.hashicorp.com/consul/docs/k8s) -- Helm chart configuration, connect-inject, Consul Dataplane, and mesh gateway setup
+- [Consul Tutorials](https://developer.hashicorp.com/consul/tutorials) -- hands-on guides for service discovery, service mesh, and cluster operations
+
 ## See Also
 
 - `general/service-mesh.md` -- service mesh architecture patterns

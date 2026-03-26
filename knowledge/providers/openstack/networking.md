@@ -69,6 +69,12 @@ Neutron architecture is the single most impactful design decision in OpenStack -
 - **Epoxy (2025.1) networking changes:** ML2/OVS removal timeline published -- organizations must begin migration planning. OVN QoS improvements for bandwidth enforcement. OVN DPDK performance improvements. OVN interconnection routing improvements for multi-site deployments.
 - **Flamingo (2025.2) networking changes:** OVN 24.09+ required as minimum version. ML2/OVS removal planned for the next release cycle. Continued OVN provider improvements for Octavia health monitors.
 
+## Reference Links
+
+- [Neutron documentation](https://docs.openstack.org/neutron/latest/) -- Neutron networking architecture, plugins, and configuration
+- [Neutron networking guide](https://docs.openstack.org/neutron/latest/admin/index.html) -- provider networks, self-service networks, routers, and ML2 plugin configuration
+- [OVN integration with Neutron](https://docs.openstack.org/neutron/latest/admin/ovn/index.html) -- OVN-based networking for OpenStack deployment
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

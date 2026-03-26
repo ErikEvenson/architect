@@ -75,3 +75,9 @@ On the technical side, SQL Server's default configuration is optimized for small
 - `general/database-ha.md` — Database high availability patterns, replication topologies, and failover strategies
 - `providers/azure/database.md` — Azure database services including Azure SQL and Managed Instance
 - `providers/aws/rds-aurora.md` — AWS RDS for SQL Server configuration and limitations
+
+## Reference Links
+
+- [SQL Server Technical Documentation](https://learn.microsoft.com/sql/sql-server/) -- installation, Always On AG, FCI, performance tuning, and backup strategies
+- [SQL Server Editions Comparison](https://learn.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-2022) -- feature differences between Standard, Enterprise, and Developer editions
+- [Azure SQL Migration](https://learn.microsoft.com/azure/azure-sql/migration-guides/) -- migration paths to Azure SQL Database, Managed Instance, and SQL Server on Azure VMs

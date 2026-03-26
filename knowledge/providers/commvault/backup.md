@@ -58,3 +58,9 @@ The CommServe is a critical single point of failure. If the CommServe and its da
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/disaster-recovery.md` — DR site design, failover orchestration
+
+## Reference Links
+
+- [Commvault Documentation](https://documentation.commvault.com/2024e/essential/overview.html) -- CommServe, MediaAgent, storage policies, and IntelliSnap configuration
+- [Commvault Architecture Guide](https://documentation.commvault.com/2024e/essential/architecture_overview.html) -- deployment topologies, component sizing, and network requirements
+- [Metallic SaaS Backup](https://documentation.commvault.com/metallic/) -- cloud-managed backup service documentation

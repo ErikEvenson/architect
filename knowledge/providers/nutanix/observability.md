@@ -35,6 +35,11 @@ Nutanix observability is centered on Prism Central, which aggregates metrics fro
 - **Performance baselining** -- X-Ray synthetic benchmarks (repeatable, controlled) vs production workload observation (real-world but variable) vs vendor-provided reference metrics
 - **Automation level** -- Manual response to alerts (simplest) vs Prism Central playbooks (automated remediation, Nutanix-native) vs external automation (ServiceNow workflows, Ansible Tower triggered by alerts)
 
+## Reference Links
+
+- [Prism Central monitoring guide](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:mul-performance-monitoring-pc-c.html) -- dashboards, alerts, capacity planning, and performance analysis
+- [Nutanix Prism Pro documentation](https://portal.nutanix.com/page/documents/details?targetId=Prism-Central-Guide:mul-prism-pro-about-pc-c.html) -- X-Fit machine learning analytics, anomaly detection, and capacity forecasting
+
 ## See Also
 
 - `general/observability.md` -- general observability patterns

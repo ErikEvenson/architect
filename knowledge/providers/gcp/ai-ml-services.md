@@ -39,6 +39,15 @@ GCP's AI portfolio is deeply integrated with its data stack — BigQuery ML enab
 - **BigQuery ML vs Vertex AI training for tabular ML workloads** -- SQL-native vs full MLOps
 - **Supervised fine-tuning vs adapter tuning vs distillation** -- model customization approach
 
+## Reference Links
+
+- [Vertex AI documentation](https://cloud.google.com/vertex-ai/docs) -- model garden, managed endpoints, pipelines, feature store, and vector search
+- [Gemini API documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/overview) -- Gemini model family, prompting, tuning, and grounding
+- [Google AI Studio](https://ai.google.dev/) -- rapid prototyping with Gemini models
+- [Document AI documentation](https://cloud.google.com/document-ai/docs) -- form parsing, OCR, and specialized processors
+- [AlloyDB AI documentation](https://cloud.google.com/alloydb/docs/ai) -- pgvector integration and Vertex AI embeddings for vector search
+- [BigQuery ML documentation](https://cloud.google.com/bigquery/docs/bqml-introduction) -- in-database ML training and prediction using SQL
+
 ## See Also
 
 - `general/ai-ml-services.md` -- cross-provider AI service strategy

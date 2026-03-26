@@ -67,6 +67,12 @@ Platform services transform OpenStack from raw IaaS into a platform that offers 
 - **Epoxy (2025.1) platform services changes:** Magnum supports K8s 1.30-1.31. Senlin fully retired. Continued Ironic runbook improvements.
 - **Flamingo (2025.2) platform services changes:** Magnum supports K8s 1.31-1.32. Continued Ironic secure boot enhancements. Heat template engine stability improvements.
 
+## Reference Links
+
+- [OpenStack service catalog](https://www.openstack.org/software/project-navigator/) -- complete catalog of OpenStack services with maturity and adoption data
+- [Keystone identity service](https://docs.openstack.org/keystone/latest/) -- identity, authentication, and service catalog configuration
+- [Horizon dashboard documentation](https://docs.openstack.org/horizon/latest/) -- web UI deployment, customization, and plugin configuration
+
 ## See Also
 
 - `providers/openstack/infrastructure.md` -- core OpenStack infrastructure

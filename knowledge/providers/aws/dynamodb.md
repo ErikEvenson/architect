@@ -53,6 +53,11 @@ DynamoDB table with PK=DeviceID, SK=Timestamp. Hot data in DynamoDB with TTL set
 
 ---
 
+## Reference Links
+
+- [Amazon DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/) -- data modeling, API operations, streams, DAX, and global tables
+- [Amazon DynamoDB Pricing](https://aws.amazon.com/dynamodb/pricing/) -- on-demand and provisioned capacity pricing, reserved capacity, and storage costs
+
 ## See Also
 
 - `general/data.md` -- General data architecture patterns and database selection criteria

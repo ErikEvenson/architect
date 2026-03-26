@@ -29,6 +29,11 @@ Nutanix partner tiers directly impact deal registration, pricing, and support ac
 - Nutanix University self-paced vs instructor-led training
 - Dual-certification strategy for NC2 on Azure (Nutanix + Azure certs)
 
+## Reference Links
+
+- [Nutanix University](https://www.nutanix.com/support-services/training-certification) -- certification paths, exam registration, and training resources
+- [Nutanix certification program](https://www.nutanix.com/support-services/training-certification/certifications) -- NCP, NCM, and NCS certification details and requirements
+
 ## See Also
 
 - general/certification-training.md

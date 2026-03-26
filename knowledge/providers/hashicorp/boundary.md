@@ -116,6 +116,12 @@ Three controllers behind a load balancer for HA. PostgreSQL stores all state (us
 ```
 Global scope contains org-level auth methods (OIDC). Orgs map to business units. Projects contain targets, host catalogs, and credential libraries. Managed groups auto-assign roles based on IdP group membership (e.g., `engineering-platform` IdP group gets `platform-admin` role in the Platform project).
 
+## Reference Links
+
+- [Boundary Documentation](https://developer.hashicorp.com/boundary/docs) -- architecture, deployment models, targets, credential injection, and session recording
+- [Boundary Tutorials](https://developer.hashicorp.com/boundary/tutorials) -- hands-on guides for HCP Boundary, self-managed deployment, and Vault integration
+- [Boundary Reference Architecture](https://developer.hashicorp.com/boundary/docs/install-boundary/reference/reference-architecture) -- production deployment patterns for self-managed Boundary
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

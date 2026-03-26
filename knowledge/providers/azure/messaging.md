@@ -53,6 +53,12 @@ Event Grid domain with per-tenant topics (tenant-001, tenant-002, ... tenant-N).
 
 ---
 
+## Reference Links
+
+- [Azure Service Bus documentation](https://learn.microsoft.com/en-us/azure/service-bus-messaging/) -- queues, topics, sessions, dead-letter queues, and geo-disaster recovery
+- [Azure Event Hubs documentation](https://learn.microsoft.com/en-us/azure/event-hubs/) -- partitioned streaming, Kafka compatibility, Capture, and Schema Registry
+- [Azure Event Grid documentation](https://learn.microsoft.com/en-us/azure/event-grid/) -- reactive event routing, filtering, system topics, and event domains
+
 ## See Also
 
 - `general/data.md` -- General data architecture including messaging and event streaming patterns

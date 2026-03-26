@@ -30,6 +30,12 @@ Red Hat certifications are entirely performance-based — candidates must comple
 - EX288 priority for development teams vs EX280 only for platform team
 - RHCA certification track for senior engineers vs broad team EX280 coverage
 
+## Reference Links
+
+- [Red Hat certification portal](https://www.redhat.com/en/services/certifications) -- RHCSA, RHCE, and OpenShift certification paths and exam registration
+- [Red Hat Certified Specialist in OpenShift Administration (EX280)](https://www.redhat.com/en/services/training/ex280-red-hat-certified-specialist-in-openshift-administration-exam) -- OpenShift administration exam objectives and preparation
+- [Red Hat training and certification](https://www.redhat.com/en/services/training-and-certification) -- instructor-led and self-paced OpenShift training courses
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

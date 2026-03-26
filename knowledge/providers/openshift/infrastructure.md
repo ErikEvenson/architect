@@ -69,6 +69,12 @@ Upgrade channels control the pace of updates. The `stable` channel lags behind `
 - **Disconnected/Air-Gapped**: Mirror registry (oc-mirror or Quay), ICSP/IDMS for image content source policies, update graph served locally, catalog sources for operator mirroring.
 - **Edge -- Single Node OpenShift (SNO)**: All-in-one topology for edge/remote sites, minimum 8 vCPU / 32 GB RAM, managed centrally via RHACM and zero-touch provisioning (ZTP).
 
+## Reference Links
+
+- [OpenShift installation documentation](https://docs.openshift.com/container-platform/latest/installing/index.html) -- IPI, UPI, and assisted installer deployment methods for all platforms
+- [OpenShift architecture overview](https://docs.openshift.com/container-platform/latest/architecture/architecture.html) -- platform architecture, control plane, and worker node design
+- [OpenShift sizing and subscription guide](https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/scalability_and_performance/recommended-performance-and-scalability-practices) -- cluster sizing, scalability limits, and performance recommendations
+
 ## See Also
 
 - `general/container-orchestration.md` -- container orchestration platform selection

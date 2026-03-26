@@ -137,6 +137,12 @@ Separate PVCs for data and WAL (write-ahead log) allow independent IOPS tuning. 
 ```
 Velero handles both Kubernetes resource backup (Deployments, ConfigMaps, Secrets) and PV snapshots via CSI. Application-level backups run in parallel for consistency guarantees. Snapshot cloning enables fast dev/test environment creation from production data (with data masking applied post-clone).
 
+## Reference Links
+
+- [Kubernetes Storage](https://kubernetes.io/docs/concepts/storage/) -- PersistentVolumes, PersistentVolumeClaims, StorageClasses, and CSI drivers
+- [Volume Snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/) -- VolumeSnapshot, VolumeSnapshotClass, and snapshot-based cloning
+- [Dynamic Volume Provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) -- StorageClass configuration and automatic PV provisioning
+
 ## See Also
 
 - `general/data.md` -- general data architecture patterns

@@ -63,6 +63,12 @@ The Nutanix Distributed Storage Fabric (DSF) runs as a distributed system across
 - **Disaggregated storage:** While compute-only nodes were supported in AOS 6.x, AOS 7.x improves the experience with more flexible licensing and better performance for remote storage access patterns.
 - **AOS 7.5 (December 2025):** Introduces VM Startup Policies for controlled boot sequencing after cluster or host restarts, and enhanced CVM security with improved integrity validation and hardened default configurations.
 
+## Reference Links
+
+- [Nutanix storage guide](https://portal.nutanix.com/page/documents/details?targetId=Web-Console-Guide-Prism-v6_9:wc-storage-management-wc-c.html) -- storage containers, replication factor, compression, and deduplication
+- [Nutanix Files documentation](https://portal.nutanix.com/page/documents/details?targetId=Files-v5_0:Files-v5_0) -- file server deployment, shares, and multi-protocol access
+- [Nutanix Objects documentation](https://portal.nutanix.com/page/documents/details?targetId=Objects-v4_3:Objects-v4_3) -- S3-compatible object storage deployment and bucket management
+
 ## See Also
 
 - `general/data.md` -- general data architecture patterns

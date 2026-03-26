@@ -69,6 +69,12 @@ Secret management is a persistent challenge. Kubernetes Secrets are base64-encod
 - **Healthcare (HIPAA)**: Encryption at rest (ODF dm-crypt or cloud KMS), encryption in transit (service mesh mTLS), audit logging for all PHI access, RBAC with principle of least privilege, namespace isolation for PHI workloads, break-glass procedures documented.
 - **Zero-trust platform**: Service mesh with strict mTLS (PeerAuthentication STRICT mode), SPIFFE/SPIRE for workload identity, OPA Gatekeeper or Kyverno for policy enforcement, network observability for anomaly detection, short-lived certificates with cert-manager.
 
+## Reference Links
+
+- [OpenShift security documentation](https://docs.openshift.com/container-platform/latest/security/index.html) -- SCCs, RBAC, pod security, and platform hardening
+- [OpenShift authentication and authorization](https://docs.openshift.com/container-platform/latest/authentication/index.html) -- identity providers, OAuth, and role-based access control
+- [Red Hat Advanced Cluster Security (ACS)](https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_security_for_kubernetes/) -- vulnerability management, runtime security, and compliance scanning
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

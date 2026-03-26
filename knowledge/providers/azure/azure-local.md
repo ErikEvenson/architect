@@ -70,6 +70,12 @@ Deploy SQL Managed Instance (Azure Arc-enabled) on an Azure Local cluster for on
 
 ---
 
+## Reference Links
+
+- [Azure Local documentation](https://learn.microsoft.com/en-us/azure/azure-local/) -- deployment, cluster management, Storage Spaces Direct, and Network ATC
+- [AKS on Azure Local documentation](https://learn.microsoft.com/en-us/azure/aks/hybrid/) -- AKS hybrid cluster deployment and management on Azure Local
+- [Azure Local licensing and billing](https://learn.microsoft.com/en-us/azure/azure-local/concepts/billing) -- per-core subscription model and included Windows Server guest licenses
+
 ## See Also
 
 - `patterns/hybrid-cloud.md` -- Hybrid cloud architecture patterns including on-premises extensions

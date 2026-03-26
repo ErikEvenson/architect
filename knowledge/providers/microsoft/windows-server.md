@@ -41,3 +41,9 @@ Migration planning from legacy versions is equally important. Windows Server 201
 - `providers/microsoft/active-directory.md` -- Active Directory domain services and identity
 - `providers/azure/azure-local.md` -- Azure Local (formerly Azure Stack HCI) for hybrid cloud
 - `providers/azure/certifications.md` -- Azure certification and compliance requirements
+
+## Reference Links
+
+- [Windows Server Documentation](https://learn.microsoft.com/windows-server/) -- editions, Server Core, Hyper-V, Storage Spaces Direct, and management tools
+- [What's New in Windows Server 2025](https://learn.microsoft.com/windows-server/get-started/whats-new-windows-server-2025) -- new features, security improvements, and migration guidance
+- [Windows Server Licensing](https://learn.microsoft.com/windows-server/get-started/windows-server-release-info) -- per-core licensing, CALs, edition comparison, and ESU program

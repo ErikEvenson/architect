@@ -64,3 +64,9 @@ Rubrik's API-first design makes it highly automatable, but this also means that 
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/ransomware-resilience.md` — Ransomware defense, immutable storage, recovery workflows
+
+## Reference Links
+
+- [Rubrik Documentation](https://docs.rubrik.com/) -- CDM architecture, SLA domains, Live Mount, CloudOut, and API reference
+- [Rubrik Build (API Documentation)](https://docs.rubrik.com/en-us/saas/saas/api_getting_started.html) -- REST API for automation and integration
+- [Rubrik Security Cloud](https://docs.rubrik.com/en-us/saas/saas/introduction_rsc.html) -- ransomware detection, investigation, and recovery workflows

@@ -294,6 +294,12 @@ Listing multiple servers makes OpenStack clients distribute keys across them usi
 - Feature flag compatibility between versions must be verified — RabbitMQ will refuse to cluster nodes with incompatible feature flags.
 - After upgrading all nodes, enable any new feature flags: `rabbitmqctl enable_feature_flag all`.
 
+## Reference Links
+
+- [OpenStack HA guide](https://docs.openstack.org/ha-guide/index.html) -- high availability architecture for control plane and stateless services
+- [OpenStack operations guide -- availability](https://docs.openstack.org/operations-guide/ops-maintenance-availability.html) -- operational practices for maintaining HA control plane
+- [Galera Cluster documentation](https://galeracluster.com/library/documentation/) -- Galera multi-master replication for OpenStack MariaDB/MySQL backend
+
 ## See Also
 
 - `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview

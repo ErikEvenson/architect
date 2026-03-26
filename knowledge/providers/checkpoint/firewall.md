@@ -71,3 +71,9 @@ Policy layers (introduced in R80+) provide the structural tools to decompose mon
 
 - `general/security.md` — Security architecture, hardening, compliance frameworks
 - `patterns/network-segmentation.md` — Segmentation design patterns and trust zone models
+
+## Reference Links
+
+- [Check Point Security Management](https://sc1.checkpoint.com/documents/latest/APIs/) -- SmartConsole, policy layers, and Security Management Server administration
+- [Check Point CloudGuard](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Default.htm) -- cloud-native security, posture management, and workload protection
+- [Check Point R81.x Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuide/Default.htm) -- gateway configuration, VSX, Maestro, and ClusterXL HA

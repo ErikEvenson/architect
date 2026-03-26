@@ -35,6 +35,12 @@ Data protection failures are discovered at the worst possible time -- during rec
 - **RPO/RTO tiering** -- Tier 1 (RPO <15min, RTO <1hr, synchronous replication + VCF Live Site Recovery) vs Tier 2 (RPO <1hr, RTO <4hr, async replication + backup) vs Tier 3 (RPO <24hr, RTO <24hr, daily backup only)
 - **vSAN native snapshots vs traditional snapshots** -- vSAN ESA native snapshots for improved snapshot performance without chain penalty vs traditional snapshots for vSAN OSA and non-vSAN environments
 
+## Reference Links
+
+- [vSphere Replication documentation](https://docs.vmware.com/en/vSphere-Replication/index.html) -- vSphere Replication deployment, configuration, and recovery point objectives
+- [VCF Live Site Recovery documentation](https://docs.vmware.com/en/VMware-Cloud-Foundation/services/vcf-live-site-recovery/GUID-E8C21E2B-7C03-4E0C-8113-4F2E0A3B2E6A.html) -- orchestrated disaster recovery with recovery plans and automated failover
+- [vSphere Storage APIs for Data Protection (VADP)](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-guide/backing-up-virtual-machines/vstorage-apis-for-data-protection.html) -- VADP and Changed Block Tracking for backup integration
+
 ## See Also
 
 - `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)

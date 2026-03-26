@@ -41,3 +41,9 @@ VMware acquired SaltStack in 2020 and integrated it as vRealize Automation SaltS
 - `providers/ansible/configuration.md` -- Ansible configuration management architecture
 - `general/iac-planning.md` -- infrastructure-as-code planning patterns
 - `providers/vmware/platform-services.md` -- VMware platform services including Aria/VCF suite
+
+## Reference Links
+
+- [Salt Documentation](https://docs.saltproject.io/en/latest/) -- master/minion architecture, state files, pillar data, and execution modules
+- [Salt Cloud](https://docs.saltproject.io/en/latest/topics/cloud/) -- cloud infrastructure provisioning across AWS, Azure, GCP, and other providers
+- [Salt Reactor and Event System](https://docs.saltproject.io/en/latest/topics/reactor/) -- event-driven automation, beacons, and orchestration runners

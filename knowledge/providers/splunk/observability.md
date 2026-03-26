@@ -38,3 +38,9 @@ The distributed architecture (indexers, search heads, forwarders) requires caref
 
 - `general/observability.md` -- general observability architecture and monitoring strategy
 - `general/security.md` -- security architecture including SIEM placement and log requirements
+
+## Reference Links
+
+- [Splunk Enterprise Documentation](https://docs.splunk.com/Documentation/Splunk) -- indexer clustering, search heads, forwarder deployment, and SPL reference
+- [Splunk Observability Cloud](https://docs.splunk.com/observability/en/) -- infrastructure monitoring, APM, RUM, and synthetic monitoring
+- [Splunk SOAR Documentation](https://docs.splunk.com/Documentation/SOAR) -- security orchestration, playbooks, and automated response workflows

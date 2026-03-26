@@ -143,6 +143,12 @@ API Origin Servers
   |-- Application-level authz (scopes, roles) still required
 ```
 
+## Reference Links
+
+- [Cloudflare WAF Documentation](https://developers.cloudflare.com/waf/) -- managed rulesets, custom rules, rate limiting, and OWASP configuration
+- [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/policies/access/) -- Access policies, identity provider integration, and device posture checks
+- [Cloudflare API Shield](https://developers.cloudflare.com/api-shield/) -- schema validation, sequence enforcement, and volumetric abuse detection
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

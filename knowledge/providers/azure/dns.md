@@ -51,6 +51,14 @@ Private DNS zones for each PaaS service (privatelink.database.windows.net, priva
 
 ---
 
+## Reference Links
+
+- [Azure DNS documentation](https://learn.microsoft.com/en-us/azure/dns/) -- public zones, private zones, alias records, and DNSSEC
+- [Azure Private DNS documentation](https://learn.microsoft.com/en-us/azure/dns/private-dns-overview) -- private zones, auto-registration, and VNet links
+- [Azure Traffic Manager documentation](https://learn.microsoft.com/en-us/azure/traffic-manager/) -- routing methods, health probes, nested profiles, and endpoint monitoring
+- [Azure Front Door documentation](https://learn.microsoft.com/en-us/azure/frontdoor/) -- Layer 7 global routing, WAF, caching, and origin failover
+- [Azure DNS Private Resolver documentation](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview) -- inbound/outbound endpoints and forwarding rulesets for hybrid DNS
+
 ## See Also
 
 - `general/hybrid-dns.md` -- Hybrid DNS patterns for on-premises and cloud integration

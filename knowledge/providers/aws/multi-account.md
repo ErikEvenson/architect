@@ -445,6 +445,11 @@ Management Account
 
 ---
 
+## Reference Links
+
+- [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/) -- multi-account management, OUs, SCPs, and delegated administration
+- [AWS Control Tower User Guide](https://docs.aws.amazon.com/controltower/latest/userguide/) -- landing zone setup, guardrails, and Account Factory
+
 ## See Also
 
 - `general/governance.md` -- General cloud governance patterns and organizational structures

@@ -53,6 +53,13 @@ Eventarc triggers: (1) Cloud Storage object finalized in upload bucket -> Cloud 
 ### High-Throughput Streaming Pipeline
 Application publishers -> Pub/Sub topic (message storage policy: us-central1 region). Two consumer paths: (1) Dataflow streaming pipeline for real-time aggregation (windowed counts, anomaly detection) -> BigQuery streaming insert to real-time dashboard table, (2) BigQuery subscription for raw event archival to cold storage table (partitioned by publish time, clustered by device ID). Topic retention = 7 days for replay capability. Subscription message retention = 7 days matching topic. Cloud Monitoring alert on subscription backlog exceeding 100,000 messages.
 
+## Reference Links
+
+- [Pub/Sub documentation](https://cloud.google.com/pubsub/docs) -- topics, subscriptions, ordering keys, exactly-once delivery, and BigQuery subscriptions
+- [Eventarc documentation](https://cloud.google.com/eventarc/docs) -- event-driven triggers from GCP services and custom sources
+- [Cloud Tasks documentation](https://cloud.google.com/tasks/docs) -- managed task queues with rate limiting and scheduled delivery
+- [Managed Service for Apache Kafka documentation](https://cloud.google.com/managed-kafka/docs) -- fully managed Kafka clusters with Kafka protocol compatibility
+
 ## See Also
 
 - `providers/gcp/serverless.md` -- Cloud Run and event-driven architectures

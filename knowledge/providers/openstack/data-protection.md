@@ -65,6 +65,11 @@ OpenStack does not provide data protection by default -- it provides the buildin
 - **Epoxy (2025.1) data protection changes:** Freezer fully retired. Continued Cinder backup performance improvements. Masakari stability improvements.
 - **Flamingo (2025.2) data protection changes:** Continued improvements to Cinder replication and backup reliability. No major new data protection features.
 
+## Reference Links
+
+- [OpenStack backup and recovery guide](https://docs.openstack.org/operations-guide/ops-backup-recovery.html) -- control plane and data backup strategies for OpenStack
+- [Cinder backup service](https://docs.openstack.org/cinder/latest/admin/backup.html) -- volume backup to Swift, NFS, or Ceph and restore procedures
+
 ## See Also
 
 - `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)

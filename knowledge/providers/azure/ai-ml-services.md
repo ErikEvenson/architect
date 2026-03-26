@@ -41,6 +41,15 @@ Azure AI Search has become the default RAG backend in the Azure ecosystem due to
 
 ---
 
+## Reference Links
+
+- [Azure OpenAI Service documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/) -- deployment models, quotas, content filtering, fine-tuning, and Assistants API
+- [Azure AI Search documentation](https://learn.microsoft.com/en-us/azure/search/) -- vector search, hybrid search, semantic ranking, and integrated vectorization
+- [Azure Machine Learning documentation](https://learn.microsoft.com/en-us/azure/machine-learning/) -- training compute, managed endpoints, pipelines, and responsible AI
+- [Azure AI Studio documentation](https://learn.microsoft.com/en-us/azure/ai-studio/) -- unified AI development portal, model catalog, and prompt flow
+- [Azure AI Document Intelligence documentation](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/) -- form extraction, layout analysis, and prebuilt models
+- [Microsoft Copilot Studio documentation](https://learn.microsoft.com/en-us/microsoft-copilot-studio/) -- low-code AI agents and chatbot development
+
 ## See Also
 
 - `general/ai-ml-services.md` -- cross-provider AI service strategy

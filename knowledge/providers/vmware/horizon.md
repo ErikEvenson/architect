@@ -36,6 +36,12 @@ The Broadcom acquisition has significantly impacted Horizon licensing and roadma
 - **Multi-site design** -- Cloud Pod Architecture with global entitlements vs independent pods per site, DR strategy for VDI
 - **Horizon licensing** -- VCF bundle inclusion vs standalone Horizon subscription, named vs concurrent user licensing
 
+## Reference Links
+
+- [VMware Horizon documentation](https://docs.vmware.com/en/VMware-Horizon/index.html) -- Connection Server, UAG, instant clones, and desktop pool configuration
+- [Horizon architecture planning guide](https://techdocs.broadcom.com/us/en/vmware-end-user-computing/horizon/horizon/2406/horizon-architecture-planning.html) -- sizing, pod architecture, and protocol selection
+- [VMware Horizon reference architecture](https://techdocs.broadcom.com/us/en/vmware-end-user-computing/horizon/horizon/2406/horizon-architecture-planning/horizon-reference-architecture.html) -- reference deployment topologies for Horizon environments
+
 ## See Also
 
 - `general/vdi-migration-strategy.md` -- VDI migration planning patterns

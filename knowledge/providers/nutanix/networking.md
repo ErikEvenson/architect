@@ -59,6 +59,12 @@ AHV networking is built on Open vSwitch (OVS), providing VLAN trunking, bonding,
 - **Licensing:** Flow Network Security is included with AHV at no additional cost. Flow Virtual Networking requires a separate license (included in some Nutanix Cloud Platform tiers).
 - **Migration:** Environments using Flow v1 microsegmentation policies can enable Flow v2 virtual networking without disrupting existing security policies. The microsegmentation rules continue to apply alongside new VPC-based networking.
 
+## Reference Links
+
+- [AHV networking guide](https://portal.nutanix.com/page/documents/details?targetId=AHV-Admin-Guide:ahv-acr-nw-mgmt-c.html) -- AHV virtual switch configuration, bond modes, and VLAN management
+- [Flow Virtual Networking documentation](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Flow-Networking-Guide:Nutanix-Flow-Networking-Guide) -- VPC overlay networking, VPN, and NAT gateway configuration
+- [Nutanix networking best practices](https://portal.nutanix.com/page/documents/solutions?type=bp&filterByKeyword=networking) -- network design recommendations for Nutanix clusters
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

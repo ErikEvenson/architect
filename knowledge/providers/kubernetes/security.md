@@ -109,6 +109,12 @@ Bind to IdP groups (via OIDC) not individual users. Separate secret access from 
 ```
 External Secrets Operator is the most common pattern: it creates standard Kubernetes Secrets from external stores, compatible with any application. CSI driver is more secure (secrets never stored in etcd) but requires application support for file-based secret consumption. Both support rotation; ESO re-syncs periodically, CSI driver polls the external store.
 
+## Reference Links
+
+- [Kubernetes Security](https://kubernetes.io/docs/concepts/security/) -- RBAC, Pod Security Standards, secrets management, and security best practices
+- [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) -- privileged, baseline, and restricted profiles for pod security
+- [RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) -- Role, ClusterRole, RoleBinding, and ClusterRoleBinding configuration
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

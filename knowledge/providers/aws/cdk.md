@@ -307,6 +307,11 @@ App
 
 ---
 
+## Reference Links
+
+- [AWS CDK Developer Guide](https://docs.aws.amazon.com/cdk/v2/guide/) -- getting started, constructs, stacks, pipelines, and best practices
+- [AWS CDK API Reference](https://docs.aws.amazon.com/cdk/api/v2/) -- construct library reference for all supported languages
+
 ## See Also
 
 - `general/iac-planning.md` -- IaC strategy selection and planning across providers

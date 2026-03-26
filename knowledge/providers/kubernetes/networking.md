@@ -99,6 +99,12 @@ Defense in depth with NetworkPolicies for L3/L4 isolation, service mesh for L7 i
 ```
 Reduce ndots from default 5 to 2 in pod DNS config to minimize unnecessary search domain lookups. NodeLocal DNSCache on each node absorbs repetitive queries. CoreDNS with autopath plugin optimizes search domain resolution. This architecture reduces DNS latency from 5-10ms to <1ms for cached queries and eliminates CoreDNS as a scaling bottleneck.
 
+## Reference Links
+
+- [Kubernetes Networking Concepts](https://kubernetes.io/docs/concepts/services-networking/) -- Services, Ingress, Gateway API, DNS, and NetworkPolicy
+- [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) -- defining ingress and egress rules for pod-level traffic control
+- [Gateway API](https://kubernetes.io/docs/concepts/services-networking/gateway/) -- next-generation Kubernetes routing API replacing Ingress
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

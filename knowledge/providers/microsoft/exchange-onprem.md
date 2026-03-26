@@ -41,3 +41,9 @@ Hybrid configuration is the most common migration approach for organizations wit
 - `providers/microsoft/m365.md` -- Microsoft 365 tenant and Exchange Online architecture
 - `providers/microsoft/active-directory.md` -- Active Directory identity architecture
 - `general/tls-certificates.md` -- TLS certificate management patterns
+
+## Reference Links
+
+- [Exchange Server Documentation](https://learn.microsoft.com/exchange/exchange-server) -- architecture, DAG configuration, mail flow, and namespace planning
+- [Exchange Hybrid Deployments](https://learn.microsoft.com/exchange/exchange-hybrid) -- hybrid configuration wizard, migration paths, and coexistence scenarios
+- [Exchange Server Build Numbers](https://learn.microsoft.com/exchange/new-features/build-numbers-and-release-dates) -- version history, cumulative updates, and security updates

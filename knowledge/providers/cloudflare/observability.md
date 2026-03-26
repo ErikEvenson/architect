@@ -72,6 +72,12 @@ Cloudflare health checks probe origins independently of client traffic. Failed c
 ```
 Use Workers Analytics Engine for custom server-side metrics (counters, timers) without Logpush overhead. Web Analytics provides client-side Core Web Vitals. GraphQL API aggregates both for custom dashboards. This avoids high-volume log ingestion for metrics that can be computed at the edge.
 
+## Reference Links
+
+- [Cloudflare Logpush Documentation](https://developers.cloudflare.com/logs/logpush/) -- log destinations, dataset configuration, filters, and field selection
+- [Cloudflare Analytics](https://developers.cloudflare.com/analytics/) -- GraphQL Analytics API, Web Analytics, and Analytics Engine
+- [Cloudflare Notifications](https://developers.cloudflare.com/notifications/) -- alert types, delivery methods, and PagerDuty/webhook integration
+
 ## See Also
 
 - `general/observability.md` -- general observability patterns

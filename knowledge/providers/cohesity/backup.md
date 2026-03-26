@@ -65,3 +65,9 @@ DataLock and FortKnox represent Cohesity's primary ransomware resilience feature
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/ransomware-resilience.md` — Ransomware defense, immutable storage, recovery workflows
+
+## Reference Links
+
+- [Cohesity Documentation](https://docs.cohesity.com/) -- cluster architecture, protection policies, DataLock WORM, and SmartFiles
+- [Cohesity FortKnox](https://docs.cohesity.com/ui/login) -- SaaS-managed cyber vault for isolated backup copies
+- [Cohesity REST API Reference](https://developer.cohesity.com/) -- API documentation for automation and integration

@@ -38,3 +38,9 @@ Migration scenarios are common as organizations move from MPX hardware to VPX vi
 
 - `general/load-balancing-onprem.md` -- on-premises load balancing patterns and comparison matrix
 - `providers/citrix/virtual-desktops.md` -- Citrix Virtual Apps and Desktops architecture where ADC provides Gateway and StoreFront load balancing
+
+## Reference Links
+
+- [Citrix ADC Documentation](https://docs.citrix.com/en-us/citrix-adc.html) -- virtual servers, content switching, SSL offloading, GSLB, and WAF configuration
+- [Citrix ADC Deployment Guides](https://docs.citrix.com/en-us/tech-zone/build/deployment-guides.html) -- reference architectures for common deployment scenarios
+- [Citrix ADC Pooled Capacity](https://docs.citrix.com/en-us/citrix-application-delivery-management-software/current-release/license-server/adc-pooled-capacity.html) -- flexible licensing across VPX, SDX, and CPX form factors

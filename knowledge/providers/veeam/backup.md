@@ -64,3 +64,9 @@ Veeam's SOBR and immutability features are powerful ransomware defenses, but onl
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/disaster-recovery.md` — DR site design, failover orchestration
 - `providers/nutanix/data-protection.md` — Nutanix-native backup and replication
+
+## Reference Links
+
+- [Veeam Help Center](https://helpcenter.veeam.com/docs/backup/vsphere/overview.html) -- Backup & Replication architecture, proxy/repository design, and job configuration
+- [Veeam Best Practices](https://bp.veeam.com/) -- deployment sizing, SOBR configuration, and immutable backup design
+- [Veeam Technical Documentation](https://helpcenter.veeam.com/) -- product documentation for all Veeam platform components

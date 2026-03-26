@@ -37,3 +37,9 @@ Opsgenie integration is a critical architectural component for incident manageme
 
 - `general/itsm-integration.md` -- general ITSM integration patterns and boundary decisions
 - `general/managed-services-scoping.md` -- managed services scope definition and ITSM tool selection
+
+## Reference Links
+
+- [Jira Service Management Documentation](https://support.atlassian.com/jira-service-management-cloud/) -- request types, SLAs, automation rules, and service desk configuration
+- [Jira Service Management Assets (CMDB)](https://support.atlassian.com/jira-service-management-cloud/docs/manage-assets-with-jira-service-management/) -- asset schemas, object types, and CMDB configuration
+- [Opsgenie Documentation](https://support.atlassian.com/opsgenie/) -- incident alerting, on-call schedules, escalation policies, and integration with JSM

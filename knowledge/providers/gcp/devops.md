@@ -57,6 +57,14 @@ Application CI: Cloud Build builds image, pushes to Artifact Registry, opens PR 
 ### Private Build Environment with VPC Access
 Cloud Build private worker pool in shared VPC (10.0.0.0/24 subnet). Build steps access private Cloud SQL instance for database migration (Flyway/Liquibase), private Memorystore for integration test cache, and internal npm registry hosted on Compute Engine. Artifact Registry in same region for low-latency image push. Build artifacts cached in Cloud Storage bucket (private, same VPC). Custom build images stored in Artifact Registry with pre-installed tooling (Terraform, Helm, custom CLIs). IAM: custom service account per trigger with minimum required roles.
 
+## Reference Links
+
+- [Cloud Build documentation](https://cloud.google.com/build/docs) -- build triggers, configuration, worker pools, and Cloud Build v2
+- [Cloud Deploy documentation](https://cloud.google.com/deploy/docs) -- delivery pipelines, deployment strategies, canary verification, and approvals
+- [Artifact Registry documentation](https://cloud.google.com/artifact-registry/docs) -- container images, language packages, remote repositories, and vulnerability scanning
+- [Binary Authorization documentation](https://cloud.google.com/binary-authorization/docs) -- attestation policies, attestors, and supply chain security enforcement
+- [Software Delivery Shield overview](https://cloud.google.com/software-delivery-shield/docs) -- end-to-end supply chain security posture management
+
 ## See Also
 
 - `general/ci-cd.md` -- general CI/CD pipeline patterns

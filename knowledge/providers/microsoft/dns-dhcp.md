@@ -39,3 +39,9 @@ Active Directory-integrated DNS zones provide significant advantages over standa
 - `providers/microsoft/active-directory.md` -- Active Directory integration and AD-integrated zones
 - `providers/infoblox/ddi.md` -- Infoblox DDI platform for DNS, DHCP, and IPAM
 - `general/hybrid-dns.md` -- hybrid and multi-cloud DNS resolution patterns
+
+## Reference Links
+
+- [DNS Server on Windows Server](https://learn.microsoft.com/windows-server/networking/dns/dns-top) -- DNS zone types, AD-integrated DNS, conditional forwarders, and scavenging
+- [DHCP Server on Windows Server](https://learn.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top) -- DHCP failover, split-scope, reservations, and policies
+- [IPAM Overview](https://learn.microsoft.com/windows-server/networking/technologies/ipam/ipam-top) -- Windows IPAM for unified DNS, DHCP, and IP address management

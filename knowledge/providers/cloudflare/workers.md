@@ -118,6 +118,12 @@ R2: document snapshots and version history
 D1: document metadata, user permissions, search index
 ```
 
+## Reference Links
+
+- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/) -- runtime API, configuration, bindings, deployment, and Wrangler CLI
+- [Cloudflare Pages Documentation](https://developers.cloudflare.com/pages/) -- static site hosting, Functions, build configuration, and framework guides
+- [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/) -- strongly consistent stateful compute, WebSocket support, and storage API
+
 ## See Also
 
 - `providers/cloudflare/storage.md` -- KV, Durable Objects, D1, R2 storage bindings

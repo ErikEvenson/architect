@@ -37,3 +37,9 @@ Template design is the single most impactful architectural decision in a Zabbix 
 
 - `general/observability.md` -- general observability architecture patterns and pillar design
 - `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana for comparison and coexistence patterns
+
+## Reference Links
+
+- [Zabbix Documentation](https://www.zabbix.com/documentation/current/en) -- server/proxy architecture, agent deployment, template design, and trigger configuration
+- [Zabbix API Reference](https://www.zabbix.com/documentation/current/en/manual/api) -- REST API for automation, host management, and template provisioning
+- [Zabbix Best Practices](https://www.zabbix.com/documentation/current/en/manual/installation/requirements) -- sizing, database selection, and distributed monitoring with proxies

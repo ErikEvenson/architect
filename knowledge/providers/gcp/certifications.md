@@ -31,6 +31,13 @@ GCP certifications are widely respected and carry weight in the industry, partic
 - Certification count planning against Partner Advantage specialization requirements
 - GCP certification priority vs other cloud vendors for multi-cloud teams
 
+## Reference Links
+
+- [Google Cloud Certifications](https://cloud.google.com/learn/certification) -- certification paths, exam guides, and registration
+- [Google Cloud Skills Boost](https://www.cloudskillsboost.google/) -- hands-on labs, learning paths, and quests for exam preparation
+- [Professional Cloud Architect certification](https://cloud.google.com/learn/certification/cloud-architect) -- exam objectives, study guide, and sample questions
+- [Google Cloud Partner Advantage](https://cloud.google.com/partners) -- partner program tiers, specialization requirements, and benefits
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

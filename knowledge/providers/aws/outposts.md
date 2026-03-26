@@ -74,6 +74,11 @@ Outposts Server (1U) deployed in each retail store. EC2 instances run point-of-s
 
 ---
 
+## Reference Links
+
+- [AWS Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/) -- rack and server setup, networking, supported services, and capacity management
+- [AWS Outposts Pricing](https://aws.amazon.com/outposts/pricing/) -- rack and server configurations, commitment terms, and payment options
+
 ## See Also
 
 - `patterns/hybrid-cloud.md` -- Hybrid cloud architecture patterns including on-premises extensions

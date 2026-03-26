@@ -483,3 +483,9 @@ Git Push
 - `general/iac-planning.md` -- infrastructure as code planning patterns
 - `providers/hashicorp/terraform.md` -- Terraform as alternative IaC tool
 - `providers/hashicorp/vault.md` -- Vault for secret management in Pulumi stacks
+
+## Reference Links
+
+- [Pulumi Documentation](https://www.pulumi.com/docs/) -- concepts, state management, secrets encryption, and multi-language SDK reference
+- [Pulumi Registry](https://www.pulumi.com/registry/) -- provider catalog for AWS, Azure, GCP, Kubernetes, and 150+ cloud services
+- [Pulumi ESC (Environments, Secrets, Configuration)](https://www.pulumi.com/docs/esc/) -- centralized environment and secrets management across stacks

@@ -51,6 +51,12 @@ A common failure mode is backing up everything but never testing restores. Backu
 - **GitOps-first DR**: Cluster infrastructure defined in Terraform/Ansible, all application manifests in Git (ArgoCD), OADP only for stateful PV data, restore procedure: provision new cluster -> bootstrap ArgoCD -> sync from Git -> restore PV snapshots from S3. RTO 2-4 hours depending on cluster size.
 - **Edge / remote site DR**: SNO (Single Node OpenShift) clusters managed by RHACM, OADP with Restic to central S3 (no CSI snapshots on some edge storage), application state replicated to hub via Kafka/MQTT, edge rebuild via ZTP (Zero Touch Provisioning) from hub cluster, RPO 24 hours / RTO 4 hours.
 
+## Reference Links
+
+- [OADP (OpenShift API for Data Protection) documentation](https://docs.openshift.com/container-platform/latest/backup_and_restore/application_backup_and_restore/oadp-intro.html) -- Velero-based application backup, restore, and migration on OpenShift
+- [OpenShift backup and restore](https://docs.openshift.com/container-platform/latest/backup_and_restore/index.html) -- etcd backup, cluster state recovery, and disaster recovery procedures
+- [OpenShift disaster recovery](https://docs.openshift.com/container-platform/latest/backup_and_restore/control_plane_backup_and_restore/disaster_recovery/about-disaster-recovery.html) -- control plane recovery scenarios and procedures
+
 ## See Also
 
 - `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering)

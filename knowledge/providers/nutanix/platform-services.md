@@ -60,6 +60,12 @@ Nutanix platform services transform a hyperconverged cluster from basic compute 
 - **Prism Central 7.5:** Updated UI with improved dashboards, enhanced playbook capabilities, and better multi-cluster reporting.
 - **AOS 7.5 (December 2025):** VM Startup Policies for controlled boot sequencing, enhanced CVM security with improved integrity validation.
 
+## Reference Links
+
+- [Nutanix platform documentation](https://portal.nutanix.com/page/documents/list?type=software) -- AOS, Prism Central, and platform service administration guides
+- [Nutanix Calm automation](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Calm-Admin-Operations-Guide:Nutanix-Calm-Admin-Operations-Guide) -- self-service provisioning, blueprints, and marketplace configuration
+- [Nutanix developer portal](https://nutanix.dev/) -- APIs, SDKs, and automation tooling for Nutanix platform services
+
 ## See Also
 
 - `providers/nutanix/infrastructure.md` -- core Nutanix infrastructure

@@ -74,3 +74,9 @@ The most dangerous PostgreSQL failure mode is transaction ID wraparound, which o
 - `general/database-ha.md` — Database high availability patterns, replication topologies, and failover strategies
 - `general/ai-ml-services.md` — AI/ML architecture including vector database considerations
 - `providers/gcp/ai-ml-services.md` — GCP AI/ML services including AlloyDB AI integration
+
+## Reference Links
+
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/current/) -- configuration, replication, performance tuning, and extension development
+- [PostgreSQL Wiki: Tuning](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server) -- shared_buffers, work_mem, effective_cache_size, and autovacuum configuration
+- [Patroni Documentation](https://patroni.readthedocs.io/) -- HA cluster management with automatic leader election and failover

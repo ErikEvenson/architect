@@ -65,6 +65,12 @@ Storage is the most common bottleneck and the most consequential failure domain 
 - **Snapshot improvements:** vSAN OSA snapshots are known for performance degradation with deep snapshot chains. ESA uses a new native snapshot implementation that avoids the I/O penalty, making snapshots practical for backup and cloning workflows.
 - **Native Key Provider:** vSphere 8 introduced the vSphere Native Key Provider, allowing vSAN encryption without an external KMS. This simplifies deployment for environments that do not have an existing KMIP-compliant key manager.
 
+## Reference Links
+
+- [vSAN documentation](https://docs.vmware.com/en/VMware-vSAN/index.html) -- vSAN OSA and ESA deployment, storage policies, and capacity planning
+- [vSphere storage guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-storage/GUID-8AE88758-20C1-4873-99C7-181EF9ACFA70.html) -- VMFS, NFS, vVols, SPBM, and Storage DRS configuration
+- [vSAN design guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsan/vsan/8-0/vsan-planning-and-deployment-guide-80/planning-and-designing-a-vsan-cluster.html) -- cluster sizing, disk group design, and fault domain configuration
+
 ## See Also
 
 - `general/data.md` -- general data architecture patterns

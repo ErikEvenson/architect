@@ -34,6 +34,12 @@ VMware environments are high-value targets because compromising vCenter or ESXi 
 - **EDR platform selection** -- CrowdStrike, SentinelOne, or Microsoft Defender for Endpoint for VM workload protection; Broadcom cancelled the planned Carbon Black sale in 2024 and merged it with Symantec into the Enterprise Security Group. Carbon Black is no longer part of the VMware/VCF ecosystem. Evaluate EDR solutions independently of the VMware stack, including Broadcom's Enterprise Security Group offerings.
 - **NSX Security Intelligence vs third-party flow analysis** -- NSX Security Intelligence (formerly NSX Intelligence) for native VMware integration and automated policy recommendations vs third-party (Guardicore/Akamai, Illumio) for multi-hypervisor or multi-cloud microsegmentation
 
+## Reference Links
+
+- [vSphere Security Configuration Guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-security-configuration-guide/8-0/about-this-guide.html) -- ESXi and vCenter hardening baselines (formerly Hardening Guide)
+- [vSphere security guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-52188148-C579-4F6A-8335-CFBCE0DD2167.html) -- encryption, key management, RBAC, certificate management, and audit logging
+- [NSX security documentation](https://docs.vmware.com/en/VMware-NSX/4.2/administration/GUID-31A2D4B8-42A0-4D0F-8B85-1E3C42DD93E6.html) -- distributed firewall, microsegmentation, and IDS/IPS configuration
+
 ## See Also
 
 - `general/security.md` -- general security architecture patterns

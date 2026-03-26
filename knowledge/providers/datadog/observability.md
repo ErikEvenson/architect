@@ -37,3 +37,9 @@ The agent deployment model significantly impacts both coverage and cost. In Kube
 
 - `general/observability.md` -- general observability architecture patterns and pillar design
 - `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana for open-source monitoring comparison
+
+## Reference Links
+
+- [Datadog Documentation](https://docs.datadoghq.com/) -- agent deployment, APM, infrastructure monitoring, log management, and integrations
+- [Datadog Pricing](https://docs.datadoghq.com/account_management/billing/) -- per-host, per-GB, and custom metrics pricing model details
+- [Datadog API Reference](https://docs.datadoghq.com/api/) -- REST API for automation, dashboard creation, and monitor management

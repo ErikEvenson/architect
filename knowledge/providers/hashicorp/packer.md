@@ -132,6 +132,12 @@ Single build block targets all three clouds. Ansible playbook applies identical 
 ```
 CI triggers on changes to Packer templates or provisioning scripts. Parallel builds produce images for each cloud. Automated tests validate images before channel promotion. Terraform data sources reference HCP Packer channels, automatically picking up promoted images during the next apply.
 
+## Reference Links
+
+- [Packer Documentation](https://developer.hashicorp.com/packer/docs) -- HCL2 templates, builders, provisioners, post-processors, and plugin system
+- [Packer Tutorials](https://developer.hashicorp.com/packer/tutorials) -- hands-on guides for multi-cloud image builds, CI/CD integration, and HCP Packer
+- [HCP Packer](https://developer.hashicorp.com/hcp/docs/packer) -- image registry, channel management, ancestry tracking, and Terraform integration
+
 ## See Also
 
 - `general/ci-cd.md` -- CI/CD pipeline integration for image builds

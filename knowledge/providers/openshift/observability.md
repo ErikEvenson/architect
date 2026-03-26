@@ -50,6 +50,12 @@ The Network Observability operator uses eBPF agents on each node to capture netw
 - **Developer-centric platform**: User workload monitoring with self-service ServiceMonitor creation, OpenShift Console integrated log viewer (Loki), Jaeger/Tempo UI for trace exploration, Grafana dashboards per team namespace, alert routing per team Slack channel.
 - **Cost-optimized observability**: Prometheus with aggressive retention (7 days in-cluster, long-term in S3 via Thanos), Loki with lifecycle policies (hot/warm/cold tiers), sampling on traces (10% head-based), network observability with 50% flow sampling, must-gather on-demand for troubleshooting.
 
+## Reference Links
+
+- [OpenShift monitoring documentation](https://docs.openshift.com/container-platform/latest/monitoring/monitoring-overview.html) -- built-in Prometheus stack, alerting, and metrics collection
+- [OpenShift logging documentation](https://docs.openshift.com/container-platform/latest/logging/cluster-logging.html) -- cluster logging with Loki, Elasticsearch, and log forwarding
+- [OpenShift distributed tracing](https://docs.openshift.com/container-platform/latest/observability/distr_tracing/distr_tracing_arch/distr-tracing-architecture.html) -- Jaeger and OpenTelemetry-based distributed tracing
+
 ## See Also
 
 - `general/observability.md` -- general observability patterns

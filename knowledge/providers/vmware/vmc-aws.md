@@ -59,6 +59,12 @@ VMC on AWS eliminates physical infrastructure management while preserving VMware
 - Host scaling is not instant — adding hosts takes 15-20 minutes
 - All VMware licensing (vSphere, vSAN, NSX, vCenter) included in per-host price
 
+## Reference Links
+
+- [VMware Cloud on AWS documentation](https://docs.vmware.com/en/VMware-Cloud-on-AWS/index.html) -- SDDC deployment, host management, and AWS integration
+- [VMC on AWS networking and security guide](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-networking-security/GUID-56D92463-9B34-4C94-B498-200AE3A83490.html) -- linked VPC, Direct Connect, NSX firewall rules, and VPN configuration
+- [VMC on AWS sizing guidance](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-getting-started/GUID-BC3E4B15-F6C4-478C-B7C7-FFF6B5CC0B57.html) -- host types, cluster sizing, and stretched cluster design
+
 ## See Also
 
 - `providers/vmware/infrastructure.md` -- VMware vSphere and VCF infrastructure

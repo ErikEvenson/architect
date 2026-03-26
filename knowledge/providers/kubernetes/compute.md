@@ -208,6 +208,12 @@ Move to multi-node when:
 - The POC must validate scheduling, affinity, or topology spread behavior.
 - Node failure recovery is a POC success criterion.
 
+## Reference Links
+
+- [Kubernetes Workloads](https://kubernetes.io/docs/concepts/workloads/) -- official documentation for Deployments, StatefulSets, DaemonSets, Jobs, and CronJobs
+- [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) -- resource requests, limits, and QoS classes
+- [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) -- HPA configuration, metrics sources, and scaling behavior
+
 ## See Also
 
 - `general/compute.md` -- general compute architecture patterns

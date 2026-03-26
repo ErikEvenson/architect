@@ -100,6 +100,12 @@ Budget breakdown (8GB allocation example):
 ```
 Resource allocation is shared between Docker containers and Kubernetes. Monitor actual usage with `docker stats` and `kubectl top nodes` to tune allocation. Over-allocating starves the host OS; under-allocating causes OOMKill in pods.
 
+## Reference Links
+
+- [Docker Desktop Kubernetes](https://docs.docker.com/desktop/features/kubernetes/) -- enabling and configuring Kubernetes in Docker Desktop
+- [Docker Desktop Settings](https://docs.docker.com/desktop/settings-and-maintenance/settings/) -- resource allocation, WSL2 backend, and network configuration
+- [Docker Desktop Release Notes](https://docs.docker.com/desktop/release-notes/) -- version history and Kubernetes version bundled with each release
+
 ## See Also
 
 - `providers/kubernetes/compute.md` -- Kubernetes workload controllers and resource management

@@ -53,6 +53,13 @@ Azure Repos hosts Kubernetes manifests (or Helm charts) in a config repository. 
 
 ---
 
+## Reference Links
+
+- [Azure DevOps documentation](https://learn.microsoft.com/en-us/azure/devops/) -- Pipelines, Repos, Boards, Artifacts, and Test Plans
+- [Azure Pipelines YAML reference](https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/) -- YAML schema, stages, jobs, steps, templates, and expressions
+- [Azure Container Registry Tasks](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview) -- automated image builds, base image triggers, and multi-step tasks
+- [Workload identity federation for service connections](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure/) -- OIDC-based authentication for Azure deployments
+
 ## See Also
 
 - `general/ci-cd.md` -- General CI/CD patterns and pipeline design

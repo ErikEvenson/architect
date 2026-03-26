@@ -54,6 +54,13 @@ Azure Automation runbook triggered monthly: (1) ASR test failover to isolated VN
 
 ---
 
+## Reference Links
+
+- [Azure Site Recovery documentation](https://learn.microsoft.com/en-us/azure/site-recovery/) -- VM replication, recovery plans, failover, and DR drill automation
+- [Azure Backup documentation](https://learn.microsoft.com/en-us/azure/backup/) -- VM backup, Recovery Services vaults, immutable vaults, and soft delete
+- [Azure SQL geo-replication and failover groups](https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-overview) -- automatic failover, listener endpoints, and grace periods
+- [Azure Storage redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy) -- LRS, ZRS, GRS, GZRS, and read-access options
+
 ## See Also
 
 - `general/disaster-recovery.md` -- General disaster recovery patterns, RPO/RTO planning, and testing strategies

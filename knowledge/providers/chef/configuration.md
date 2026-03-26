@@ -40,3 +40,9 @@ Progress Software acquired Chef in 2020, which has raised questions about long-t
 
 - `providers/ansible/configuration.md` -- Ansible configuration management architecture
 - `general/iac-planning.md` -- infrastructure-as-code planning patterns
+
+## Reference Links
+
+- [Chef Infra Documentation](https://docs.chef.io/chef_overview/) -- server/client architecture, cookbooks, recipes, and resource types
+- [Chef InSpec Documentation](https://docs.chef.io/inspec/) -- compliance-as-code framework for auditing and testing infrastructure
+- [Chef Supermarket](https://supermarket.chef.io/) -- community cookbook repository for reusable infrastructure automation

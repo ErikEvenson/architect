@@ -39,3 +39,9 @@ Migration decisions are increasingly common as organizations move away from expe
 - `general/load-balancing-onprem.md` -- on-premises load balancing patterns, HA designs, and comparison with HAProxy/NGINX
 - `general/tls-certificates.md` -- TLS certificate lifecycle management and automation strategies
 - `general/security.md` -- security architecture including WAF placement and defense-in-depth
+
+## Reference Links
+
+- [F5 BIG-IP LTM Documentation](https://techdocs.f5.com/en-us/bigip-16-1-0/big-ip-local-traffic-management-basics.html) -- virtual servers, pools, health monitors, persistence, and iRules
+- [F5 BIG-IP ASM/Advanced WAF](https://techdocs.f5.com/en-us/bigip-16-1-0/big-ip-asm-getting-started.html) -- web application firewall policy configuration and tuning
+- [F5 Cloud Docs](https://clouddocs.f5.com/) -- BIG-IP VE deployment guides for AWS, Azure, GCP, and automation with AS3/DO

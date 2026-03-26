@@ -52,6 +52,11 @@ Route 53 geolocation routing: EU users -> eu-west-1 (GDPR-compliant region), US 
 
 ---
 
+## Reference Links
+
+- [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) -- hosted zones, routing policies, health checks, Resolver, and DNSSEC
+- [Amazon Route 53 Pricing](https://aws.amazon.com/route53/pricing/) -- hosted zone, query, health check, and Resolver endpoint pricing
+
 ## See Also
 
 - `general/hybrid-dns.md` -- Hybrid DNS patterns for on-premises and cloud integration

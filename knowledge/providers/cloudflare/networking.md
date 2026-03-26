@@ -66,6 +66,12 @@ Each branch establishes IPsec or GRE tunnels to Cloudflare. Magic Firewall appli
 ```
 Cloudflare advertises customer IP prefixes via BGP. All traffic to those prefixes flows through Cloudflare's scrubbing infrastructure. Clean traffic is forwarded via GRE or IPsec tunnels to origin. Always-on mode provides sub-second mitigation; on-demand mode reduces tunnel bandwidth costs but adds failover delay.
 
+## Reference Links
+
+- [Cloudflare Tunnel Documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) -- tunnel architecture, cloudflared configuration, and private network routing
+- [Cloudflare One (SASE)](https://developers.cloudflare.com/cloudflare-one/) -- Zero Trust, Gateway, WARP client, and network connectivity platform
+- [Magic Transit Documentation](https://developers.cloudflare.com/magic-transit/) -- L3 DDoS protection, BGP advertisement, and GRE/IPsec tunnel configuration
+
 ## See Also
 
 - `general/networking.md` -- general networking architecture patterns

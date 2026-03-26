@@ -51,6 +51,13 @@ Primary GKE cluster in us-central1 with Backup for GKE (daily backup of cluster 
 ### Tiered DR Strategy
 Tier 1 (payment service): Spanner multi-region (RPO = 0, RTO = 0), Global Load Balancer active/active across regions, Cloud Storage dual-region with turbo replication. Tier 2 (order service): Cloud SQL with cross-region read replica (RPO < 30s, RTO < 15 min), GKE standby cluster in DR region with pilot light configuration. Tier 3 (reporting): Cloud SQL automated backups with cross-region storage (RPO < 24 hours), restore from backup on demand (RTO < 4 hours), no standby infrastructure. All tiers: Terraform for infrastructure provisioning, Cloud Build for automated DR deployment, quarterly DR drill with documented results.
 
+## Reference Links
+
+- [GCP disaster recovery planning guide](https://cloud.google.com/architecture/dr-scenarios-planning-guide) -- DR patterns, architecture scenarios, and RPO/RTO planning
+- [Cloud SQL high availability documentation](https://cloud.google.com/sql/docs/postgres/high-availability) -- regional HA, cross-region read replicas, and failover configuration
+- [Backup and DR Service documentation](https://cloud.google.com/backup-disaster-recovery/docs) -- policy-driven backup, instant mount recovery, and cross-region vaults
+- [Cloud Storage turbo replication](https://cloud.google.com/storage/docs/turbo-replication) -- RPO guarantees for dual-region buckets
+
 ## See Also
 
 - `general/disaster-recovery.md` -- general DR planning (RPO/RTO, tiering, testing)

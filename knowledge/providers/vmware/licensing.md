@@ -491,6 +491,12 @@ Alternative Platform TCO (3-5 Year):
 6. Failing to include future VMware price increase risk in the renewal scenario
 7. Assuming migration can be completed in the time available before renewal
 
+## Reference Links
+
+- [Broadcom VMware product portfolio](https://www.broadcom.com/products/software/vmware-cloud-foundation) -- VCF and VVF edition details, included components, and subscription information
+- [VMware Cloud Foundation documentation](https://docs.vmware.com/en/VMware-Cloud-Foundation/index.html) -- VCF lifecycle management, edition comparison, and component bundling
+- [VMware end-of-life lifecycle matrix](https://lifecycle.vmware.com/) -- vSphere, vSAN, NSX end-of-support dates and lifecycle policies
+
 ## See Also
 
 - `providers/vmware/infrastructure.md` -- VMware infrastructure and VCF editions

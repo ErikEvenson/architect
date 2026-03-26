@@ -30,6 +30,12 @@ CNCF certifications are vendor-neutral and performance-based — candidates must
 - KCNA as team-wide baseline vs CKA directly for experienced engineers
 - Training approach — Kubernetes the Hard Way + killer.sh vs structured courses
 
+## Reference Links
+
+- [CNCF Certification Programs](https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cloud-containers) -- Linux Foundation catalog of CKA, CKAD, CKS, KCNA, and KCSA exams
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/) -- official docs allowed as open-book reference during CKA/CKAD/CKS exams
+- [CNCF Training Portal](https://training.linuxfoundation.org/training/plan-your-training/) -- self-paced and instructor-led courses aligned to CNCF certifications
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

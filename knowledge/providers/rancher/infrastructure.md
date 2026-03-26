@@ -132,3 +132,9 @@ K3s provides lightweight Kubernetes at each edge site with minimal resource requ
 - `providers/kubernetes/operations.md` -- Kubernetes operations and lifecycle management
 - `providers/kubernetes/k3s.md` -- K3s lightweight Kubernetes (downstream distribution)
 - `providers/kubernetes/security.md` -- Kubernetes security and CIS benchmarks
+
+## Reference Links
+
+- [Rancher Documentation](https://ranchermanager.docs.rancher.com/) -- multi-cluster management, RKE2/K3s provisioning, Fleet GitOps, and authentication
+- [Harvester HCI Documentation](https://docs.harvesterhci.io/) -- hyperconverged infrastructure for VMs and Kubernetes on bare metal
+- [Longhorn Storage Documentation](https://longhorn.io/docs/) -- cloud-native distributed block storage for Kubernetes

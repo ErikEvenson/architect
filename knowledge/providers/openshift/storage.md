@@ -48,6 +48,12 @@ The internal registry requires persistent storage for production (emptyDir is de
 - **vSphere enterprise**: vSphere CSI driver with StoragePolicy-based management, VMFS or vSAN datastores, thin-provisioned VMDKs, vSphere snapshots integrated with CSI VolumeSnapshot.
 - **Hybrid / multi-cluster**: ODF with Regional-DR (async mirroring between clusters), MCG federation for object storage, consistent StorageClass names across clusters for GitOps portability, OADP for cross-cluster backup and restore.
 
+## Reference Links
+
+- [OpenShift Data Foundation (ODF) documentation](https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/) -- ODF deployment, Ceph-based storage, and multi-cloud gateway
+- [OpenShift persistent storage](https://docs.openshift.com/container-platform/latest/storage/understanding-persistent-storage.html) -- PV, PVC, StorageClass, and CSI driver configuration
+- [OpenShift storage overview](https://docs.openshift.com/container-platform/latest/storage/index.html) -- supported storage backends, dynamic provisioning, and volume snapshots
+
 ## See Also
 
 - `general/data.md` -- general data architecture patterns

@@ -150,6 +150,12 @@ Allows: independent upgrades, different hardware,
 higher latency tolerance, simpler operations
 ```
 
+## Reference Links
+
+- [VMware Cloud Foundation documentation](https://docs.vmware.com/en/VMware-Cloud-Foundation/index.html) -- VCF deployment, SDDC Manager, workload domains, and lifecycle management
+- [VCF planning and preparation guide](https://docs.vmware.com/en/VMware-Cloud-Foundation/5.2/vcf-planning/GUID-C4974C6F-B2D4-4E21-8B77-FE6D3F51622D.html) -- Cloud Builder prerequisites, parameter workbook, and network requirements
+- [VCF operations and administration](https://docs.vmware.com/en/VMware-Cloud-Foundation/5.2/vcf-operations/GUID-B3B1B522-A2A8-4705-A85E-3A5E9C5E7B1A.html) -- SDDC Manager backup, certificate management, and upgrade orchestration
+
 ## See Also
 
 - `providers/vmware/infrastructure.md` -- VMware infrastructure overview

@@ -220,6 +220,12 @@ Single-node, all-in-one OpenStack for developers and CI. Installs services direc
 4. Pull new images/packages, then run the upgrade playbook
 5. Verify all services are running and API endpoints respond
 
+## Reference Links
+
+- [OpenStack-Ansible deployment guide](https://docs.openstack.org/openstack-ansible/latest/) -- OSA deployment, configuration, and upgrade procedures
+- [Kolla-Ansible documentation](https://docs.openstack.org/kolla-ansible/latest/) -- containerized OpenStack deployment using Ansible and Docker/Podman
+- [TripleO / Director documentation](https://docs.openstack.org/tripleo-docs/latest/) -- Red Hat OpenStack Platform deployment tooling and undercloud/overcloud architecture
+
 ## See Also
 
 - `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview

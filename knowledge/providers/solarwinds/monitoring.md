@@ -37,3 +37,9 @@ The SolarWinds platform is at an inflection point. The Orion on-premises platfor
 ## See Also
 
 - `general/observability.md` -- general observability architecture patterns and monitoring strategy
+
+## Reference Links
+
+- [SolarWinds Orion Platform Documentation](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-orion-introduction.htm) -- NPM, SAM, VMAN, NCM modules and polling engine architecture
+- [SolarWinds Observability (SaaS)](https://documentation.solarwinds.com/en/success_center/observability/content/intro/introduction.htm) -- cloud-native monitoring platform for hybrid environments
+- [SolarWinds Sizing Guide](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-orion-requirements.htm) -- polling engine sizing, database requirements, and distributed architecture

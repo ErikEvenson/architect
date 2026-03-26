@@ -33,6 +33,11 @@ The OpenStack talent pool is shrinking as organizations migrate to public cloud 
 - **Instructor-led vs self-paced training** — OpenStack operational complexity makes hands-on instructor-led training more effective, but self-paced is more cost-effective for distributed teams
 - **Upstream contribution skills** — invest in upstream development skills for teams maintaining custom deployments vs consume vendor-supported distributions without customization
 
+## Reference Links
+
+- [Certified OpenStack Administrator (COA) exam](https://www.openstack.org/coa) -- COA exam objectives, registration, and preparation resources
+- [OpenStack training marketplace](https://www.openstack.org/marketplace/training/) -- authorized training providers and courses for OpenStack certification
+
 ## See Also
 
 - `general/certification-training.md` -- cross-vendor certification strategy

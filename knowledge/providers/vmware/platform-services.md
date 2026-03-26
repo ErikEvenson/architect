@@ -63,6 +63,15 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 - **Aria suite rebranding from vRealize (2023):** VMware rebranded the entire vRealize suite to Aria. vRealize Operations became Aria Operations, vRealize Automation became Aria Automation, vRealize Log Insight became Aria Operations for Logs, and SaltStack Config became Aria Automation Config. This intermediate branding has now been superseded by VCF-prefixed names in VCF 9.0.
 - **Broadcom acquisition impact:** The Broadcom acquisition (completed late 2023) significantly changed VMware licensing. Many standalone products were bundled into VCF. Perpetual licenses transitioned to subscription. Tanzu and Aria products were consolidated. Customers should verify current licensing entitlements and availability of individual products vs VCF bundles.
 
+## Reference Links
+
+- [vCenter Server documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-18005
+
+
+-A9ED-4819-A3F0-8E4C3B0FF1DA.html) -- vCenter deployment, SSO, and platform service controller configuration
+- [vSphere with Tanzu documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-with-tanzu-concepts-planning/GUID-3E4E6039-BD24-4C40-8575-5AA0EECBBBEC.html) -- Supervisor cluster, vSphere Namespaces, and TKG provisioning
+- [VMware HCX documentation](https://docs.vmware.com/en/VMware-HCX/index.html) -- HCX deployment, migration types, and Network Extension configuration
+
 ## See Also
 
 - `providers/vmware/infrastructure.md` -- VMware core infrastructure

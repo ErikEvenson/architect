@@ -124,6 +124,12 @@ Bridge networking enables Consul Connect sidecar injection. Upstream blocks defi
 ```
 Nomad Autoscaler runs as a Nomad job. APM plugins query Prometheus, Datadog, or Nomad's own metrics for scaling signals. Task group count scales horizontally based on policies. For cluster-level scaling, target plugins adjust cloud provider auto-scaling groups to add/remove Nomad client nodes.
 
+## Reference Links
+
+- [Nomad Documentation](https://developer.hashicorp.com/nomad/docs) -- architecture, job specifications, task drivers, scheduling, and cluster operations
+- [Nomad Tutorials](https://developer.hashicorp.com/nomad/tutorials) -- hands-on guides for deployment, Consul/Vault integration, and autoscaling
+- [Nomad Reference Architecture](https://developer.hashicorp.com/nomad/tutorials/enterprise/production-reference-architecture-vm-with-consul) -- production deployment patterns with Consul and Vault
+
 ## See Also
 
 - `general/container-orchestration.md` -- container orchestration platform comparison

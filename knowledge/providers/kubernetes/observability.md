@@ -106,6 +106,12 @@ Each cluster runs Prometheus with a Thanos sidecar that uploads blocks to S3. Th
 ```
 SLO-based alerting replaces threshold-based alerts (CPU > 80%) with business-meaningful alerts (error budget burning too fast). Multi-window burn rates detect both sudden spikes (fast burn: alert in minutes) and gradual degradation (slow burn: alert in hours). This reduces alert fatigue by tying alerts to user-facing impact rather than infrastructure metrics.
 
+## Reference Links
+
+- [Kubernetes Monitoring Architecture](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/) -- metrics-server, resource metrics pipeline, and custom metrics
+- [Logging Architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/) -- container logging patterns, node-level logging agents, and sidecar approaches
+- [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) -- web-based cluster monitoring and management UI
+
 ## See Also
 
 - `general/observability.md` -- general observability patterns

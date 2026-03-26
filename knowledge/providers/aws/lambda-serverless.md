@@ -54,6 +54,11 @@ API Gateway WebSocket API -> Lambda (connect/disconnect/message handlers) -> Dyn
 
 ---
 
+## Reference Links
+
+- [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/) -- function configuration, event sources, layers, concurrency, and deployment
+- [AWS Serverless Application Model (SAM) Developer Guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/) -- SAM templates, CLI, and serverless application deployment
+
 ## See Also
 
 - `general/compute.md` -- General compute patterns including serverless selection criteria

@@ -73,6 +73,12 @@ Azure Stack Edge configured primarily as a data gateway. NFS/SMB shares are moun
 
 ---
 
+## Reference Links
+
+- [Azure Stack Edge documentation](https://learn.microsoft.com/en-us/azure/databox-online/) -- device setup, activation, compute configuration, and data transfer
+- [Azure Stack Edge Pro 2 specifications](https://learn.microsoft.com/en-us/azure/databox-online/azure-stack-edge-pro-2-overview) -- hardware specs, GPU options, and supported workloads
+- [Azure Stack Edge Mini R overview](https://learn.microsoft.com/en-us/azure/databox-online/azure-stack-edge-mini-r-overview) -- ruggedized edge appliance specifications and deployment scenarios
+
 ## See Also
 
 - `patterns/edge-computing.md` -- Edge computing architecture patterns and decisions

@@ -41,3 +41,9 @@ Citrix Cloud DaaS (the cloud-managed version) substantially reduces on-premises 
 
 - `general/vdi-migration-strategy.md` -- VDI migration planning patterns
 - `providers/citrix/adc.md` -- Citrix ADC (NetScaler) architecture
+
+## Reference Links
+
+- [Citrix Virtual Apps and Desktops Documentation](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops.html) -- Delivery Controller, StoreFront, MCS/PVS, and profile management
+- [Citrix DaaS (Cloud)](https://docs.citrix.com/en-us/citrix-daas.html) -- Citrix Cloud Desktop-as-a-Service architecture and migration guides
+- [Citrix Tech Zone](https://docs.citrix.com/en-us/tech-zone.html) -- reference architectures, design decisions, and deployment guides for CVAD
