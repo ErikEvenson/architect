@@ -157,6 +157,11 @@ nav:
     - Distributed Cloud: providers/gcp/distributed-cloud.md
     - AI/ML Services: providers/gcp/ai-ml-services.md
     - Certifications: providers/gcp/certifications.md
+  - HPE:
+    - ProLiant Servers: providers/hpe/proliant.md
+    - Synergy: providers/hpe/synergy.md
+    - Nimble / Alletra Storage: providers/hpe/nimble-alletra.md
+    - GreenLake: providers/hpe/greenlake.md
   - Nutanix:
     - Infrastructure: providers/nutanix/infrastructure.md
     - Compute: providers/nutanix/compute.md
