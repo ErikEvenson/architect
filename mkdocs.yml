@@ -90,6 +90,7 @@ nav:
     - ITSM Integration: general/itsm-integration.md
     - Supply Chain Security: general/supply-chain-security.md
     - Messaging Patterns: general/messaging-patterns.md
+    - Email Migration: general/email-migration.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -278,6 +279,8 @@ nav:
     - DNS and DHCP: providers/microsoft/dns-dhcp.md
     - Microsoft 365: providers/microsoft/m365.md
     - Exchange Server: providers/microsoft/exchange-onprem.md
+  - Google:
+    - Google Workspace: providers/google/workspace.md
   - SQL Server:
     - Database: providers/sqlserver/database.md
   - Oracle:
@@ -333,6 +336,18 @@ nav:
     - Configuration: providers/chef/configuration.md
   - Snowflake:
     - Data Platform: providers/snowflake/data-platform.md
+  - Dell:
+    - PowerEdge Servers: providers/dell/poweredge.md
+  - CrowdStrike:
+    - Endpoint Security: providers/crowdstrike/endpoint-security.md
+  - Qualys:
+    - Vulnerability Management: providers/qualys/vulnerability-management.md
+  - Wiz:
+    - Cloud Security: providers/wiz/cloud-security.md
+    - PowerStore Storage: providers/dell/powerstore.md
+    - PowerScale (Isilon): providers/dell/powerscale.md
+    - VxRail HCI: providers/dell/vxrail.md
+    - APEX As-a-Service: providers/dell/apex.md
   - SaltStack:
     - Configuration: providers/saltstack/configuration.md
   - Patterns:
