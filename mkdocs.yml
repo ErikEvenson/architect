@@ -338,6 +338,10 @@ nav:
     - Data Platform: providers/snowflake/data-platform.md
   - Dell:
     - PowerEdge Servers: providers/dell/poweredge.md
+    - PowerStore Storage: providers/dell/powerstore.md
+    - PowerScale (Isilon): providers/dell/powerscale.md
+    - VxRail HCI: providers/dell/vxrail.md
+    - APEX As-a-Service: providers/dell/apex.md
   - Qualys:
     - Vulnerability Management: providers/qualys/vulnerability-management.md
   - Wiz:
@@ -381,6 +385,8 @@ nav:
     - CSA CCM: compliance/csa-ccm.md
     - NIST 800-171 / CMMC: compliance/nist-800-171-cmmc.md
     - SOX: compliance/sox.md
+    - CJIS: compliance/cjis.md
+    - ITAR: compliance/itar.md
     - CCPA/CPRA: compliance/ccpa.md
   - Frameworks:
     - AWS Well-Architected: frameworks/aws-well-architected.md
