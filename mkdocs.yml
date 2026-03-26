@@ -310,6 +310,12 @@ nav:
     - Virtual Desktops: providers/citrix/virtual-desktops.md
   - Infoblox:
     - DDI: providers/infoblox/ddi.md
+  - Cisco:
+    - Switching: providers/cisco/switching.md
+    - Routing: providers/cisco/routing.md
+    - UCS Compute: providers/cisco/ucs.md
+    - Meraki: providers/cisco/meraki.md
+    - Wireless: providers/cisco/wireless.md
   - Juniper:
     - Networking: providers/juniper/networking.md
   - ServiceNow:
@@ -342,6 +348,8 @@ nav:
     - PowerScale (Isilon): providers/dell/powerscale.md
     - VxRail HCI: providers/dell/vxrail.md
     - APEX As-a-Service: providers/dell/apex.md
+  - CrowdStrike:
+    - Endpoint Security: providers/crowdstrike/endpoint-security.md
   - Qualys:
     - Vulnerability Management: providers/qualys/vulnerability-management.md
   - Wiz:
