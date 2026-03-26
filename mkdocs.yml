@@ -85,6 +85,7 @@ nav:
     - Operational Runbooks: general/operational-runbooks.md
     - Local Development Environments: general/local-development-environments.md
     - Certification and Training: general/certification-training.md
+    - AI/ML Managed Services: general/ai-ml-services.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -113,6 +114,7 @@ nav:
     - Disaster Recovery: providers/aws/disaster-recovery.md
     - DevOps (CI/CD): providers/aws/devops.md
     - Migration Services: providers/aws/migration-services.md
+    - AI/ML Services: providers/aws/ai-ml-services.md
     - Certifications: providers/aws/certifications.md
   - Azure:
     - Networking: providers/azure/networking.md
@@ -134,6 +136,7 @@ nav:
     - Azure Stack Edge: providers/azure/azure-stack-edge.md
     - Commercial Programs (EA/MACC/ESF): providers/azure/commercial-programs.md
     - HCI on Azure: providers/azure/hci-on-azure.md
+    - AI/ML Services: providers/azure/ai-ml-services.md
     - Certifications: providers/azure/certifications.md
   - GCP:
     - Networking: providers/gcp/networking.md
@@ -151,6 +154,7 @@ nav:
     - Disaster Recovery: providers/gcp/disaster-recovery.md
     - DevOps: providers/gcp/devops.md
     - Distributed Cloud: providers/gcp/distributed-cloud.md
+    - AI/ML Services: providers/gcp/ai-ml-services.md
     - Certifications: providers/gcp/certifications.md
   - Nutanix:
     - Infrastructure: providers/nutanix/infrastructure.md
