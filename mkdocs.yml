@@ -201,6 +201,7 @@ nav:
     - Heat (IaC): providers/openstack/heat.md
     - Deployment Tools: providers/openstack/deployment-tools.md
     - Control Plane HA: providers/openstack/control-plane-ha.md
+    - Certifications: providers/openstack/certifications.md
   - OpenShift:
     - Infrastructure: providers/openshift/infrastructure.md
     - Compute: providers/openshift/compute.md
