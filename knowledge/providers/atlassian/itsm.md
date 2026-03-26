@@ -18,6 +18,8 @@ This file covers **Jira Service Management** (JSM, formerly Jira Service Desk) f
 - [ ] **[Optional]** Are custom dashboards configured for ITSM metrics using JSM reports and Jira dashboards -- open vs resolved trend, SLA compliance percentage, mean time to resolution, request type distribution, and agent workload balance?
 - [ ] **[Optional]** Is the REST API integration architecture defined for external system connectivity, including webhook configuration for outbound events, API token management (OAuth 2.0 for Cloud, PATs for Data Center), and rate limit handling (Cloud enforces rate limits per app)?
 - [ ] **[Optional]** Are forms configured for structured data collection on complex request types, replacing free-text descriptions with validated fields that improve triage accuracy and enable automation?
+- [ ] **[Recommended]** Is Atlassian Intelligence (Rovo) evaluated — AI-powered features including natural language to JQL search, AI work breakdown (epic to user stories), content generation, and AI agents that can be assigned work directly in Jira?
+- [ ] **[Optional]** Is Atlassian's MCP (Model Context Protocol) support evaluated for connecting external AI agents to Jira and Confluence workflows?
 
 ## Why This Matters
 
@@ -32,6 +34,11 @@ Opsgenie integration is a critical architectural component for incident manageme
 - **Opsgenie integrated vs standalone** -- JSM Premium includes Opsgenie-equivalent functionality (incident management, on-call, alerting) directly within JSM. Standalone Opsgenie provides a dedicated alerting platform that can integrate with any ITSM tool, not just JSM. Use integrated JSM Premium when JSM is the primary ITSM tool; standalone Opsgenie when alerting needs to feed multiple ITSM platforms or when existing Opsgenie configurations should not be disrupted.
 - **Single project vs multi-project structure** -- A single service project simplifies customer experience (one portal) and reporting but can become unwieldy with many request types and queues. Multiple projects (per department or service area) provide cleaner separation but fragment the customer portal and require cross-project reporting. Use a single project for organizations with fewer than 50 request types; multiple projects when teams need independent workflows and queue management.
 - **Assets (CMDB) vs external CMDB** -- JSM Assets provides native CMDB within the Atlassian ecosystem with direct linking to issues and automation rule integration. External CMDBs (ServiceNow CMDB, Device42, Lansweeper) may offer more sophisticated discovery, reconciliation, and service mapping. Use Assets when JSM is the primary ITSM platform and CMDB needs are moderate; external CMDB when advanced discovery and service dependency mapping are required.
+- **Atlassian Intelligence adoption** -- Rovo AI features require Cloud Premium or Enterprise plans and Atlassian Intelligence to be enabled by an org admin. Evaluate whether AI-powered JQL search, work breakdown, and Rovo agents add value for the team's workflow maturity level. Consider data residency implications — Atlassian Intelligence processes data through third-party LLMs. Organizations with strict data sovereignty requirements should review Atlassian's AI data handling policies before enabling.
+
+## AI and GenAI Capabilities
+
+**Atlassian Intelligence / Rovo** — AI assistant embedded across Jira and Confluence. Key features: NL→JQL translation (search Jira using plain English), AI work breakdown (auto-suggest user stories from epics), generative AI editor (draft and rewrite content), and AI-powered summarization. Rovo agents can be assigned work in Jira, iterate via comments, and be embedded in automated workflows. February 2026: Atlassian announced open beta of agents in Jira with MCP support for third-party agent integration.
 
 ## See Also
 

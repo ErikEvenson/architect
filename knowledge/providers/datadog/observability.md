@@ -16,6 +16,8 @@ This file covers **Datadog** observability platform including agent deployment a
 - [ ] **[Recommended]** Are tagging conventions standardized across all telemetry (metrics, traces, logs) -- consistent tags for environment, service, team, and cost center -- to enable correlation across data types and accurate cost attribution?
 - [ ] **[Recommended]** Is the cost comparison documented between Datadog and open-source alternatives (Prometheus + Grafana + Loki/ELK) -- considering not just licensing but operational overhead, storage costs, retention capabilities, and feature parity for the specific use case?
 - [ ] **[Optional]** Is RUM configured for customer-facing web applications to capture user session data, performance metrics (Core Web Vitals), and error tracking, with session replay enabled for critical applications?
+- [ ] **[Recommended]** Is Bits AI evaluated for autonomous alert triage and incident resolution -- Bits AI SRE, Dev Agent, and Security Analyst agents read telemetry from across the environment to autonomously investigate alerts, suggest root causes, and recommend remediation actions?
+- [ ] **[Recommended]** Is Datadog LLM Observability evaluated for monitoring AI/LLM workloads -- provides end-to-end tracing of AI agent operations, tracking inputs, outputs, latency, token usage, and errors across frameworks like OpenAI Agent SDK, LangGraph, and CrewAI?
 - [ ] **[Optional]** Are Datadog Notebooks or integrated postmortem templates used for incident response documentation, linking monitors, traces, and logs in a single investigation timeline?
 - [ ] **[Optional]** Is the Datadog API used for programmatic monitor/dashboard management (monitoring-as-code via Terraform Datadog provider or datadog-api-client) to enable version-controlled observability configuration?
 
@@ -32,6 +34,13 @@ The agent deployment model significantly impacts both coverage and cost. In Kube
 - **APM scope -- all services vs critical path only** -- Full APM coverage provides complete distributed trace visibility but APM is priced per underlying host ($31-$40/host/month). In large microservice environments (100+ services on 50+ hosts), selective APM deployment to critical-path services reduces cost while maintaining visibility where it matters most. Use trace propagation headers for context across instrumented and non-instrumented services.
 - **Single Datadog organization vs multi-org** -- A single organization provides unified visibility and simpler management. Multi-org (separate Datadog accounts per business unit or environment) provides cost isolation and access control but prevents cross-org correlation. Use a single organization with RBAC and teams for most scenarios; multi-org only when strict financial or data isolation is required.
 - **Committed use pricing vs on-demand** -- Datadog offers committed use discounts (annual or multi-year) with 20-40% savings over on-demand pricing, but requires accurate forecasting. Over-commitment wastes budget; under-commitment incurs overage charges. Start on-demand for 3-6 months to establish baseline usage, then negotiate committed pricing based on actual consumption with 10-20% growth buffer.
+- **Bits AI adoption** -- enable autonomous alert triage (faster MTTR, reduced toil) vs manual investigation workflows (more control, no AI dependency); LLM Observability for teams deploying AI applications.
+
+## AI and GenAI Capabilities
+
+**Bits AI** — Datadog's autonomous AI agents for DevOps. Three agents: Bits AI SRE (alert triage, incident investigation, root cause analysis), Bits AI Dev Agent (code-level debugging from traces), and Bits AI Security Analyst (threat investigation from security signals). Used by 2,000+ enterprise customers. Reduces MTTR by automating the investigation workflow that previously required manual telemetry correlation.
+
+**LLM Observability** — Monitor AI applications in production. Provides end-to-end tracing across AI agent operations with visibility into inputs, outputs, latency, token usage, and errors at each step. SDK automatically tracks operations built with OpenAI Agent SDK, LangGraph, CrewAI, Bedrock Agent SDK, and other frameworks. Includes AI Guard for prompt injection detection and sensitive data scanning.
 
 ## See Also
 

@@ -18,6 +18,7 @@ This file covers **SolarWinds** monitoring platform including the Orion platform
 - [ ] **[Optional]** Are custom reports configured for capacity planning (trending CPU, memory, disk utilization over 90 days), SLA compliance (uptime percentages per service tier), and inventory reporting (hardware models, firmware versions, end-of-life tracking)?
 - [ ] **[Optional]** Is the SolarWinds API (SWIS - SolarWinds Information Service) used for automation -- bulk node onboarding from CMDB exports, custom property population, and report data extraction for external dashboards or ITSM integration?
 - [ ] **[Optional]** Is database maintenance automated -- including SQL Server index maintenance, statistics updates, Orion database grooming settings (retention periods per data type), and transaction log management to prevent database growth from impacting monitoring performance?
+- [ ] **[Optional]** Are SolarWinds AI-powered troubleshooting features evaluated -- anomaly detection and root cause analysis that correlate across network, server, and application metrics to suggest probable causes?
 - [ ] **[Recommended]** Is the SolarWinds patching strategy defined given the platform's security history (2020 supply chain incident) -- including timely hotfix application, network segmentation of Orion servers, restricted administrative access, and monitoring of SolarWinds security advisories?
 
 ## Why This Matters
@@ -33,6 +34,13 @@ The SolarWinds platform is at an inflection point. The Orion on-premises platfor
 - **Per-node vs subscription vs entity-based licensing** -- Traditional Orion licensing is perpetual per-node (NPM: $1,500-$50,000+ depending on node tier, plus ~20% annual maintenance). Subscription licensing provides annual rights without perpetual ownership. SolarWinds Observability uses entity-based pricing (per monitored entity/month). Evaluate total cost of ownership over 3-5 years: perpetual licensing favors stable environments; subscription favors growing environments; entity-based favors cloud environments with variable scale.
 - **Single polling engine vs distributed** -- A single Orion server handles up to ~12,000 elements (polled metrics) before performance degrades. Organizations exceeding this or monitoring across WAN links need Additional Polling Engines. Each APE requires its own Windows Server infrastructure and SQL connectivity. Distributed architecture adds operational complexity but is mandatory for large or geographically distributed environments.
 - **Orion SAM vs dedicated APM** -- SAM provides basic application monitoring (process, service, log, URL monitoring, AppInsight for SQL/IIS/Exchange) but lacks distributed tracing, code-level profiling, and service dependency mapping found in dedicated APM tools (Datadog, Dynatrace, New Relic). Use SAM for infrastructure-centric application checks (is the service running, is the port responding); dedicated APM for application performance analysis and microservice environments.
+- **AI-powered troubleshooting adoption** -- SolarWinds Observability (SaaS) AI features for anomaly detection and root cause analysis vs Orion platform's more limited baseline deviation alerting; organizations with advanced AI requirements may need a more AI-capable platform.
+
+## AI and GenAI Capabilities
+
+**AI-Powered Troubleshooting** — SolarWinds Observability (SaaS) includes ML-based anomaly detection across infrastructure metrics and AI-assisted root cause analysis. The Orion platform (on-premises) has more limited AI features focused on baseline deviation alerting. AI capabilities are primarily in the SaaS offering, not the legacy Orion platform.
+
+Note: SolarWinds' AI capabilities are less mature than Datadog or Splunk. Organizations evaluating SolarWinds should assess whether the AI features meet their automation requirements or whether a more AI-capable platform is needed.
 
 ## See Also
 

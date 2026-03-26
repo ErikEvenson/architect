@@ -20,6 +20,7 @@ HashiCorp Terraform: remote state backends (S3, GCS, Terraform Cloud), state loc
 - [ ] **[Recommended]** `.terraform.lock.hcl` is committed to version control to ensure consistent provider versions across team members and CI/CD
 - [ ] **[Recommended]** Data sources are used to reference resources managed outside the current Terraform configuration; cross-state references use `terraform_remote_state` or data sources against the actual API
 - [ ] **[Recommended]** CI/CD pipeline runs `terraform fmt -check`, `terraform validate`, and `tflint` or `checkov` before `terraform plan`
+- [ ] **[Optional]** Is HCP Terraform AI-assisted code generation evaluated — provides AI suggestions for Terraform configuration, error remediation guidance, and module recommendations within HCP Terraform workflows?
 
 ## Why This Matters
 
@@ -39,6 +40,10 @@ HashiCorp transitioned all products from MPL 2.0 to BSL 1.1 in August 2023. The 
 - **Terragrunt adoption**: Terragrunt adds DRY configuration, automatic remote state setup, dependency management between modules, and `run-all` for multi-module operations. It adds a tool to the chain (Terragrunt wraps Terraform) but significantly reduces boilerplate in large, multi-environment, multi-account setups. Adopt early or not at all; retrofitting is painful.
 - **Import strategy for existing resources**: `terraform import` (CLI) vs `import` blocks (declarative, plannable). Import blocks are preferred in Terraform 1.5+ because they appear in plan output and can be code-reviewed. Document the process for adopting brownfield infrastructure.
 - **Sensitive data handling**: Terraform state stores all attribute values in plaintext. Options include encrypting the state backend (S3 SSE-KMS), using Vault for dynamic secrets that rotate automatically, or restructuring to keep secrets outside Terraform entirely. The choice affects the security model and operational complexity.
+
+## AI and GenAI Capabilities
+
+**HCP Terraform AI** — AI-assisted features within HashiCorp Cloud Platform Terraform. Provides code generation suggestions for Terraform HCL, error diagnosis and remediation guidance when plans or applies fail, and module recommendations from the Terraform Registry based on the configuration context. Available in HCP Terraform (cloud), not in Terraform OSS CLI. Represents an early-stage AI integration — capabilities are expanding but are not yet comparable to full copilot experiences in other platforms.
 
 ## Reference Architectures
 

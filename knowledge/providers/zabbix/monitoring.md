@@ -17,6 +17,7 @@ This file covers **Zabbix** open-source monitoring platform including server and
 - [ ] **[Recommended]** Is the Zabbix API used for automation -- host registration from CMDB or provisioning systems, bulk template assignment, and report generation -- with API user authentication (API tokens in Zabbix 5.4+) and rate limiting to prevent server overload?
 - [ ] **[Optional]** Is web monitoring configured for critical HTTP/HTTPS endpoints with multi-step scenarios (login, navigate, verify content), appropriate check intervals (1-5 minutes), and authentication support (basic, NTLM, form-based)?
 - [ ] **[Optional]** Is the Zabbix frontend deployed behind a reverse proxy with TLS termination, and is frontend performance optimized (PHP-FPM tuning, separate web server from Zabbix server) for environments with many concurrent dashboard users?
+- [ ] **[Optional]** Are Zabbix trend prediction and anomaly detection features evaluated -- Zabbix provides ML-based trend prediction for capacity planning and anomaly detection for baseline deviation alerting, but does not offer GenAI or natural language features?
 - [ ] **[Optional]** Are Grafana dashboards used alongside or instead of native Zabbix dashboards via the Zabbix data source plugin, providing more flexible visualization options while retaining Zabbix as the data collection and alerting engine?
 
 ## Why This Matters
@@ -32,6 +33,13 @@ Template design is the single most impactful architectural decision in a Zabbix 
 - **Agent vs agentless monitoring** -- Agent-based monitoring (Zabbix Agent/Agent 2) provides deep OS and application metrics, active checks, and log monitoring. Agentless monitoring (SNMP, IPMI, SSH, HTTP) avoids agent deployment overhead but provides limited metric depth. Use agents for servers and workstations; SNMP for network devices, storage, and UPS; IPMI for hardware health; SSH checks only when agent installation is not permitted.
 - **Centralized vs distributed architecture** -- Centralized (single Zabbix server) is simpler but creates a single point of failure and requires all agents to reach the server directly. Distributed (Zabbix proxies at each site) provides local data buffering (survives WAN outages), reduces central server load, and enables monitoring across network boundaries. Deploy proxies for any site with more than 100 hosts or connected via WAN/VPN.
 - **Native alerting vs external integration** -- Zabbix native alerting (email, SMS, webhook) is sufficient for simple environments. For complex escalation, on-call rotation, and multi-channel notification, integrate with dedicated alerting platforms (PagerDuty, Opsgenie) via webhook media type. Use native alerting for small-to-medium deployments; external alerting platform when on-call management requires schedule rotation, acknowledgment tracking, and escalation policies.
+- **AI/ML feature sufficiency** -- Zabbix trend prediction and anomaly detection provide traditional ML capabilities but lack GenAI features (no natural language queries, no AI assistant, no autonomous investigation); organizations requiring AI-powered operations should evaluate whether to pair Zabbix with an AI-capable platform or replace it.
+
+## AI and GenAI Capabilities
+
+**ML-Based Features** — Zabbix provides trend prediction (forecasting future values based on historical data) and anomaly detection (identifying deviations from baseline patterns). These are traditional ML features, not GenAI — there is no natural language query, AI assistant, or LLM integration. For organizations requiring AI-powered investigation, natural language querying, or autonomous remediation, Zabbix should be paired with an AI-capable platform or replaced by one.
+
+Note: Zabbix's open-source model means AI features lag behind commercial platforms. This is a trade-off of the zero-license-cost model.
 
 ## See Also
 

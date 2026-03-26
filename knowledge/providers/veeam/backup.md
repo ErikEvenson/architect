@@ -19,6 +19,7 @@ This file covers **Veeam Backup & Replication architecture and design** includin
 - [ ] **[Optional]** Configure archive tier (S3 Glacier, Azure Archive) within SOBR for long-term retention beyond 90 days to reduce capacity tier costs
 - [ ] **[Optional]** Use Veeam for V2V migration by restoring backups to a different hypervisor target — validate NIC, disk controller, and boot compatibility post-migration
 - [ ] **[Optional]** Implement Veeam CDP (Continuous Data Protection) for Tier-1 workloads requiring RPOs under 15 minutes
+- [ ] **[Optional]** Is Veeam AI Assistant evaluated for backup operations — provides AI-powered troubleshooting, configuration guidance, and log analysis to accelerate backup issue resolution?
 
 ## Why This Matters
 
@@ -58,6 +59,10 @@ Veeam's SOBR and immutability features are powerful ransomware defenses, but onl
 **Context:** Veeam Universal License is portable across workload types but must be allocated against protected instances.
 
 **Decision factors:** Current VM count, physical server count, cloud workload count, projected growth rate, license term length (1/3/5 year), and whether perpetual sockets are already owned.
+
+## AI and GenAI Capabilities
+
+**Veeam AI Assistant** — AI-powered assistant for backup operations. Provides troubleshooting guidance for backup job failures, configuration recommendations based on environment analysis, and log analysis to identify root causes. Available through the Veeam support portal and integrated into Veeam ONE monitoring. Supplements but does not replace Veeam's knowledge base and support channels.
 
 ## See Also
 

@@ -19,6 +19,7 @@ Active Directory Domain Services (AD DS) architecture: domain and forest design,
 - [ ] [Recommended] Are Privileged Access Workstations (PAWs) or at minimum jump servers deployed for all Tier 0 administration, with no internet access and hardware-based MFA enforced?
 - [ ] [Optional] Is AD migration or consolidation planned using ADMT (Active Directory Migration Tool) with SID history preservation, or is a greenfield approach with staged cutover preferred?
 - [ ] [Optional] Is Microsoft Defender for Identity (formerly Azure ATP) deployed on Domain Controllers to detect pass-the-hash, pass-the-ticket, golden ticket, and reconnaissance attacks?
+- [ ] [Optional] Is Microsoft Entra Copilot evaluated for identity governance — provides AI-assisted access reviews, identity risk investigation, and governance recommendations through natural language queries in the Entra admin center?
 
 ## Why This Matters
 
@@ -35,6 +36,10 @@ Domain and forest design decisions made during initial deployment are extremely 
 - **Group Policy strategy** -- Role-based OU structure with inheritance vs flat OU with security-filtered GPOs vs Intune/MDM for modern management
 - **Trust architecture** -- Forest trust (broad access) vs external domain trust (limited scope) vs no trust with selective resource sharing
 - **Migration approach** -- ADMT with SID history (preserves access) vs greenfield rebuild (clean start) vs staged consolidation
+
+## AI and GenAI Capabilities
+
+**Microsoft Entra Copilot** — AI assistant for identity and access management within the Entra admin center. Capabilities: natural language identity queries ("which users have privileged access to production resources?"), AI-assisted access reviews (recommendations for access certification), identity risk investigation (summarize risk events and suggest remediation), and governance policy recommendations. Part of the broader Microsoft Security Copilot ecosystem. Requires appropriate Entra licensing (P2 for full governance features).
 
 ## See Also
 

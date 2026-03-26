@@ -19,6 +19,7 @@ This file covers **F5 BIG-IP** load balancing and application delivery including
 - [ ] **[Optional]** Is APM configured for VPN and application access with appropriate access policies, SSO profiles, and endpoint checks, with session limits aligned to the APM license tier (base 500 CCU vs add-on packs)?
 - [ ] **[Optional]** Are configuration backups (UCS archives) automated on a schedule, stored off-box, and tested for restore -- UCS files contain certificates and keys so must be encrypted and access-controlled?
 - [ ] **[Recommended]** Is monitoring configured for BIG-IP platform metrics (CPU, memory, TMM utilization, SSL TPS) alongside virtual server metrics (current connections, throughput, pool member status) using SNMP, iControl REST, or telemetry streaming to a central observability platform?
+- [ ] **[Optional]** Is F5 AI Gateway evaluated for managing AI application traffic — provides LLM prompt security, token-based rate limiting, AI traffic routing, and observability for AI workloads delivered through F5 infrastructure?
 
 ## Why This Matters
 
@@ -33,6 +34,10 @@ Migration decisions are increasingly common as organizations move away from expe
 - **ASM/AWAF vs external WAF** -- F5 ASM integrates directly with LTM for inline web application firewall, simplifying architecture and reducing latency (no additional hop). External WAFs (Cloudflare, AWS WAF, dedicated appliances) may offer better threat intelligence feeds or cloud-native integration. ASM licensing adds $25K-$75K+ per appliance pair. Decision depends on existing F5 investment, security team expertise, and whether traffic is already flowing through BIG-IP.
 - **F5 on-premises vs F5 Distributed Cloud** -- Distributed Cloud provides SaaS-based load balancing, WAF, and DDoS protection without managing hardware, but requires routing traffic through F5's network (latency impact for on-premises backends). Best suited for internet-facing applications; on-premises BIG-IP remains necessary for internal east-west traffic and applications requiring custom iRules.
 - **vCMP multi-tenancy vs standalone appliances** -- vCMP partitions a single BIG-IP chassis into multiple virtual guests with isolated resources (CPU, memory, interfaces), enabling consolidation and per-tenant configuration. Requires VIPRION chassis or i-series appliances with sufficient resources. Reduces hardware costs but increases operational complexity. Choose vCMP when multiple teams or environments share hardware; standalone for simplicity or isolation requirements.
+
+## AI and GenAI Capabilities
+
+**F5 AI Gateway** — Purpose-built for managing traffic to and from AI applications. Provides prompt security (injection detection, PII filtering), token-based rate limiting, AI-aware load balancing, and observability for LLM API traffic. Positioned as an AI application delivery layer that extends BIG-IP and F5 Distributed Cloud capabilities for organizations deploying AI services behind F5 infrastructure.
 
 ## See Also
 

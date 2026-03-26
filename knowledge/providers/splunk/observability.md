@@ -18,6 +18,8 @@ This file covers **Splunk** platform architecture for observability and security
 - [ ] **[Optional]** Is Splunk Observability Cloud (formerly SignalFx) evaluated for infrastructure and APM use cases separately from log management -- it provides streaming analytics and real-time metrics that complement Splunk's log-centric strengths?
 - [ ] **[Optional]** Are summary indexes and data model acceleration configured for frequently accessed reports to reduce search time and indexer load, with storage overhead monitored and managed?
 - [ ] **[Optional]** Is Splunk integrated with ticketing systems (ServiceNow, Jira) for automated incident creation from notable events, with bidirectional sync for status updates and resolution tracking?
+- [ ] **[Recommended]** Is Splunk AI Assistant for SPL evaluated -- provides natural language to SPL query generation, bi-directional NL/SPL translation, and SPL optimization, reducing the skills barrier for analysts who don't know SPL?
+- [ ] **[Optional]** Are Splunk Enterprise Security 8.2 agentic AI features evaluated -- includes Triage Agent, Malware Reversal Agent, AI Assistant for Security, and Detection Studio for autonomous SOC workflows?
 - [ ] **[Recommended]** Is a data onboarding process defined -- including source type creation, field extraction (regex vs delimited vs JSON auto-extraction), CIM compliance for security use cases, and data quality validation before production use?
 
 ## Why This Matters
@@ -33,6 +35,13 @@ The distributed architecture (indexers, search heads, forwarders) requires caref
 - **Splunk as SIEM vs dedicated SIEM** -- Splunk with Enterprise Security (ES) provides a powerful SIEM with flexible correlation rules, notable events framework, and investigation workbench, but ES adds significant licensing cost (~$30K-$100K+/yr). Dedicated SIEMs (Microsoft Sentinel, Google Chronicle) offer cloud-native security analytics with different pricing models. Use Splunk ES when Splunk is already deployed for operational data and the team has SPL expertise; dedicated cloud SIEM when starting fresh or when log volume makes ingest-based pricing prohibitive.
 - **Universal Forwarder vs Heavy Forwarder vs syslog** -- UF is lightweight (50-100 MB), deployed to every endpoint, with minimal processing overhead but no data transformation. HF provides full Splunk processing (field extraction, filtering, routing) but consumes significant resources (4+ GB RAM). Syslog ingestion (via HF or Splunk Connect for Syslog) handles network devices and legacy systems that cannot run agents. Use UF as default; HF for data transformation requirements; syslog for network infrastructure.
 - **Splunk Observability Cloud vs Splunk Enterprise for metrics** -- Observability Cloud provides real-time streaming analytics, infrastructure monitoring, and APM purpose-built for cloud-native environments. Splunk Enterprise can ingest metrics but is optimized for log search, not real-time metric visualization. Use Observability Cloud for infrastructure metrics and APM; Splunk Enterprise for log analytics and security. The two platforms integrate via federation but are separate products with separate pricing.
+- **AI Assistant for SPL adoption** -- reduces SPL skills barrier for junior analysts vs maintaining SPL training investment; agentic AI features require ES 8.2+ and appropriate licensing tier.
+
+## AI and GenAI Capabilities
+
+**AI Assistant for SPL** — Natural language to SPL bi-directional translation. Analysts describe what they want to search in plain English and the assistant generates the SPL query. Also optimizes existing SPL for performance. Version 1.4 (November 2025) unified all AI capabilities into a single chat window. Supports Splunk-hosted LLMs or Azure OpenAI as the backend model.
+
+**Agentic AI in Enterprise Security** — ES 8.2 introduced agentic AI capabilities: Triage Agent (autonomous alert investigation), Malware Reversal Agent (automated malware analysis), AI Assistant for Security (context-aware security queries), and Detection Studio (AI-assisted detection rule creation). Embedded directly into ES workflows.
 
 ## See Also
 

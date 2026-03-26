@@ -19,6 +19,8 @@ This file covers **Check Point firewall architecture and design** including Smar
 - [ ] **[Optional]** Use VSX (Virtual System Extension) to create multiple virtual firewall contexts on a single physical gateway for multi-tenant or segmented environments
 - [ ] **[Optional]** Deploy CloudGuard Network Security for cloud environments (AWS, Azure, GCP) with automated provisioning using CloudGuard Controller integration
 - [ ] **[Optional]** Leverage SmartMove or migration tools when converting policies from competitor platforms or consolidating multiple Check Point management domains
+- [ ] **[Recommended]** Is Infinity AI Copilot evaluated — natural language security management, policy optimization recommendations, threat investigation, and autonomous event analysis across the Check Point Infinity platform?
+- [ ] **[Optional]** Is ThreatCloud AI evaluated — ML-powered threat prevention with 40+ AI and ML engines providing real-time zero-day threat detection across all Check Point enforcement points?
 
 ## Why This Matters
 
@@ -61,11 +63,23 @@ Policy layers (introduced in R80+) provide the structural tools to decompose mon
 | Use case | High-throughput perimeter | Multi-tenant / segmentation | Distinct security domains |
 | Cost | High (orchestrator + appliances) | Medium (single appliance) | High (multiple appliances) |
 
+### ADR: Infinity AI Copilot Adoption
+
+**Context:** Infinity AI Copilot provides AI-assisted security management and threat investigation across the Check Point platform.
+
+**Decision factors:** Reduces policy management complexity and accelerates threat investigation vs traditional SmartConsole workflows; ThreatCloud AI is included in most Check Point subscriptions and does not require separate licensing.
+
 ### ADR: Cloud Security — CloudGuard vs. Third-Party
 
 **Context:** Extending Check Point policy to cloud environments requires evaluating CloudGuard against cloud-native or alternative solutions.
 
 **Decision factors:** Existing Check Point investment and staff expertise, cloud platform (AWS/Azure/GCP), need for unified policy management across on-premises and cloud, CloudGuard licensing cost, and whether cloud-native security groups and WAF meet requirements without additional gateway deployment.
+
+## AI and GenAI Capabilities
+
+**Infinity AI Copilot** — AI-powered security assistant across the Check Point Infinity platform. Capabilities: natural language policy management and optimization, autonomous event analysis, threat investigation with natural language queries, configuration guidance, and compliance assessment. Copilot integrates with SmartConsole for policy management and with Infinity Portal for cloud security.
+
+**ThreatCloud AI** — Check Point's threat intelligence backbone powered by 40+ AI and ML engines. Processes threat data from 150,000+ connected networks and millions of endpoints. Provides real-time zero-day protection, DNS security, anti-phishing, and campaign hunting. ThreatCloud AI feeds directly into all Check Point enforcement points (gateways, cloud, endpoint).
 
 ## See Also
 

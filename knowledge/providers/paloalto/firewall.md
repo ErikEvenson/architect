@@ -19,6 +19,9 @@ This file covers **Palo Alto Networks firewall architecture and design** includi
 - [ ] **[Optional]** Evaluate CN-Series for Kubernetes environments where east-west container traffic requires Layer 7 inspection and policy enforcement
 - [ ] **[Optional]** Configure HA (active/passive or active/active) with session synchronization and verify failover behavior under load before production deployment
 - [ ] **[Optional]** Integrate with Prisma Cloud for unified visibility across on-premises firewalls, cloud workloads, and container environments
+- [ ] **[Recommended]** Is Cortex XSIAM evaluated as the SOC platform — AI-driven security operations combining SIEM, SOAR, ASM, and XDR with autonomous investigation and response, replacing traditional SIEM+SOAR stacks?
+- [ ] **[Recommended]** Is Cortex Copilot evaluated for security operations — natural language security queries, threat investigation, configuration guidance, and remediation actions initiated with plain language requests?
+- [ ] **[Optional]** Is AgentiX evaluated for custom security automation — build, deploy, and govern custom security agents trained on 1.2 billion real-world playbook executions for organization-specific security workflows?
 
 ## Why This Matters
 
@@ -53,11 +56,27 @@ Sizing is a common failure point. Vendors quote maximum firewall throughput unde
 
 **Decision factors:** Compliance requirements for encrypted traffic inspection, endpoint certificate distribution method (GPO, MDM), privacy policy considerations, exemption list for financial and healthcare sites, and throughput impact on selected firewall model.
 
+### ADR: Cortex XSIAM vs Traditional SIEM+SOAR
+
+**Context:** Cortex XSIAM consolidates SIEM, SOAR, XDR, and ASM into a single AI-driven platform, replacing traditional multi-tool SOC stacks.
+
+**Decision factors:** XSIAM consolidates multiple tools with AI-driven automation vs maintaining separate Splunk/QRadar SIEM + Demisto/Phantom SOAR; significant licensing investment but reduces SOC headcount requirements.
+
 ### ADR: Migration from Legacy Firewall Vendor
 
 **Context:** Replacing an existing firewall vendor (Cisco ASA, Check Point, Fortinet) requires policy conversion and validation.
 
 **Decision factors:** Number of existing rules, use of legacy features (NAT, VPN), Expedition tool compatibility, parallel-run duration, cutover strategy (big-bang vs. phased), and staff training timeline.
+
+## AI and GenAI Capabilities
+
+**Cortex XSIAM** — AI-driven SecOps platform that consolidates SIEM, SOAR, XDR, and attack surface management. Uses ML for alert correlation, automated investigation, and response. Surpassed $1B cumulative bookings in FY25 Q2. XSIAM 3.0 (April 2025) added proactive exposure management and advanced email security. Customers report 257% ROI and 73% cost savings vs traditional SIEM+SOAR (Forrester TEI study).
+
+**Cortex Copilot** — Natural language interface for security operations within XSIAM. Capabilities: answer product knowledge questions, explore and visualize app/user/threat activity, answer targeted environment questions, guide configuration, search for IOCs, assess threat impact, and perform remediation actions — all initiated with natural language requests.
+
+**AgentiX** — Agentic AI framework embedded in XSIAM (October 2025). Allows building custom security agents that plan, reason, and execute complex security tasks. Trained on 1.2 billion real-world playbook executions. Agents operate autonomously with human oversight for sensitive actions.
+
+**PAN-OS AI** — ML-powered threat detection built into the firewall platform: Advanced URL Filtering (real-time ML classification), Advanced WildFire (ML-based malware analysis), DNS Security (ML-powered DGA detection), and Inline ML for zero-day threat prevention.
 
 ## See Also
 

@@ -19,6 +19,8 @@ This file covers **Fortinet FortiGate firewall architecture and design** includi
 - [ ] **[Optional]** Deploy FortiGate VM in cloud environments (AWS, Azure, GCP) using bootstrapping for automated provisioning within infrastructure-as-code pipelines
 - [ ] **[Optional]** Configure automation stitches (event-triggered actions) to automatically quarantine compromised hosts, block threat sources, or escalate alerts without manual intervention
 - [ ] **[Optional]** Plan FortiOS firmware upgrade strategy with staged rollouts — test upgrades on non-production VDOMs or lab devices before applying to production, and verify FortiManager/FortiAnalyzer compatibility
+- [ ] **[Recommended]** Is FortiAI evaluated for SOC automation — AI-powered threat detection, automated investigation, and natural language security queries via the FortiAI Assistant?
+- [ ] **[Optional]** Is FortiGuard AI-Powered Security Services evaluated — ML-driven threat intelligence across FortiGuard services including IPS, anti-malware, web filtering, and application control with real-time model updates?
 
 ## Why This Matters
 
@@ -55,11 +57,25 @@ VDOM design is a frequent source of architectural complexity. VDOMs enable multi
 
 **Decision factors:** Number of branch offices, existing MPLS contracts and termination timelines, internet circuit availability at branch sites, application SLA requirements, FortiManager availability for centralized SD-WAN orchestration, and whether dual-hub or full-mesh overlay topology is needed.
 
+### ADR: FortiAI Adoption
+
+**Context:** FortiAI provides AI-assisted security operations within the Fortinet ecosystem.
+
+**Decision factors:** Enable AI-assisted security operations (faster investigation, reduced analyst workload) vs traditional manual workflows; evaluate whether FortiAI capabilities reduce the need for a separate SIEM/SOAR platform.
+
 ### ADR: VPN vs. ZTNA for Remote Access
 
 **Context:** FortiGate supports both traditional SSL/IPsec VPN and ZTNA proxy-based per-application access.
 
 **Decision factors:** Number of remote users, application access granularity requirements, endpoint agent deployment feasibility (FortiClient required for ZTNA), legacy application compatibility, and organizational readiness for zero-trust principles.
+
+## AI and GenAI Capabilities
+
+**FortiAI** — AI-powered security operations assistant. Provides natural language queries for policy configuration, threat investigation, and troubleshooting. Integrates with FortiAnalyzer and FortiManager for cross-fabric visibility. FortiAI Assistant can explain security events, suggest policy changes, and guide remediation.
+
+**FortiGuard AI Services** — ML-driven threat intelligence powering all FortiGuard security services. Includes AI-based inline malware detection, AI-powered URL/web filtering, and behavioral analysis for unknown threats. Models are trained on FortiGuard Labs threat data and updated in real-time.
+
+**Security Fabric AI** — Fortinet's Security Fabric uses AI/ML across the fabric for automated threat correlation and response across FortiGate, FortiAnalyzer, FortiManager, FortiSIEM, and FortiSOAR.
 
 ## See Also
 
