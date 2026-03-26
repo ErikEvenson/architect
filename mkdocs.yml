@@ -42,6 +42,7 @@ nav:
     - Database Migration: general/database-migration.md
     - Capacity Planning: general/capacity-planning.md
     - Testing Strategy: general/testing-strategy.md
+    - Performance Testing: general/performance-testing.md
     - Governance: general/governance.md
     - Workload Migration: general/workload-migration.md
     - Dev DNS Patterns: general/dns-dev-patterns.md
@@ -88,6 +89,7 @@ nav:
     - AI/ML Managed Services: general/ai-ml-services.md
     - ITSM Integration: general/itsm-integration.md
     - Supply Chain Security: general/supply-chain-security.md
+    - Messaging Patterns: general/messaging-patterns.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
@@ -250,6 +252,10 @@ nav:
     - Observability Stack: providers/prometheus-grafana/observability.md
   - Harbor:
     - Registry: providers/harbor/registry.md
+  - Pure Storage:
+    - FlashArray: providers/purestorage/flasharray.md
+    - FlashBlade: providers/purestorage/flashblade.md
+    - Portworx: providers/purestorage/portworx.md
   - Ceph:
     - Storage: providers/ceph/storage.md
   - Pulumi:
@@ -260,8 +266,12 @@ nav:
     - DR & Migration: providers/zerto/dr-migration.md
   - Ansible:
     - Configuration: providers/ansible/configuration.md
+  - Arista:
+    - Networking: providers/arista/networking.md
   - Rancher:
     - Infrastructure: providers/rancher/infrastructure.md
+  - RabbitMQ:
+    - Messaging: providers/rabbitmq/messaging.md
   - Microsoft:
     - Windows Server: providers/microsoft/windows-server.md
     - Active Directory: providers/microsoft/active-directory.md
