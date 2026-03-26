@@ -30,6 +30,42 @@ CNCF certifications are vendor-neutral and performance-based — candidates must
 - KCNA as team-wide baseline vs CKA directly for experienced engineers
 - Training approach — Kubernetes the Hard Way + killer.sh vs structured courses
 
+## Training Resources
+
+### Official Training Platform
+
+- **Linux Foundation Training** — official self-paced courses ($299-395 bundled with exam), instructor-led courses ($1,500-3,000), often bundled as course+exam packages
+- **killer.sh** — 2 practice exam sessions included with every CKA/CKAD/CKS exam purchase, considered the closest simulation to the actual exam environment, sessions valid for 36 hours each
+
+### Hands-On Labs
+
+- **KodeKloud** — popular third-party platform ($15-25/mo), hands-on labs, practice tests, and guided exercises specifically for CKA/CKAD/CKS
+- **Kubernetes the Hard Way** — free, self-guided tutorial by Kelsey Hightower for building a cluster from scratch — not required for certification but builds deep foundational understanding
+- **killercoda.com** — free Kubernetes playground environments for browser-based practice
+- **minikube/kind** — local cluster tools for hands-on practice on a workstation
+- **Cloud provider free tiers** — EKS, AKS, and GKE managed Kubernetes for practicing with production-grade clusters
+
+### Learning Paths by Role
+
+- **Platform Engineer:** KCNA → CKA → CKS
+- **Application Developer:** KCNA → CKAD
+- **Security:** CKA → CKS
+- **Vendor-Specific:** CKA + managed K8s cert (EKS/AKS/GKE specialty)
+
+### Training Cost and Time Estimates
+
+- ~60-80 hours of study for CKA/CKAD
+- ~40-60 hours for CKS (after CKA)
+- Exam fee: $395 (includes killer.sh practice sessions + 1 free retake)
+- Linux Foundation course+exam bundles: $499-595
+- KodeKloud subscription: $15-25/month
+
+### Enterprise/Volume Options
+
+- Linux Foundation corporate training programs for team-wide certification
+- Kubernetes Forum and KubeCon workshops for in-person training
+- Volume exam voucher purchases available through Linux Foundation
+
 ## Reference Links
 
 - [CNCF Certification Programs](https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cloud-containers) -- Linux Foundation catalog of CKA, CKAD, CKS, KCNA, and KCSA exams

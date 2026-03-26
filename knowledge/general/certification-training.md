@@ -47,6 +47,34 @@ Certification gaps discovered mid-engagement cause staffing delays that cascade 
 - **Certification requirements in contracts** -- whether managed services contracts specify certifications as hard requirements (must have before access is granted) vs preferred qualifications (best-effort staffing); contractual language has compliance and liability implications
 - **Multi-vendor certification prioritization** -- for hybrid and multi-cloud engagements, which vendor certifications to pursue first based on workload volume, contract terms, and partner program tier targets
 
+## Training Planning Framework
+
+### Training Budget Template
+
+- **Exam fees:** $150-500 per certification depending on vendor
+- **Training courses:** $0 (free self-paced) to $5,000 (instructor-led per course) to $7,000/yr (all-access subscriptions)
+- **Lab environments:** $0 (free tiers/trials) to $29-50/mo (subscription labs)
+- **Time cost:** 40-200 hours per certification (opportunity cost of engineer time)
+- **Rule of thumb:** budget $1,500-3,000 per certification including training and exam
+
+### Time-to-Competency Estimates
+
+| Vendor | Entry Cert | Study Hours | Experienced Cert | Study Hours |
+|--------|-----------|-------------|-----------------|-------------|
+| AWS | Cloud Practitioner | 40-60 hrs | SA Professional | 150-200 hrs |
+| Azure | AZ-900 | 20-40 hrs | AZ-305 | 100-150 hrs |
+| GCP | Cloud Digital Leader | 30-50 hrs | PCA | 80-120 hrs |
+| Kubernetes | KCNA | 30-50 hrs | CKA | 60-80 hrs |
+| Nutanix | NCA | 30-50 hrs | NCP-MCI | 60-100 hrs |
+| HashiCorp | Terraform Associate | 40-60 hrs | Vault Professional | 80-120 hrs |
+
+### Training ROI Metrics
+
+- **Partner tier maintenance** — certification counts directly affect tier status and deal economics
+- **Reduced time-to-delivery** — certified teams ramp faster on engagements
+- **Risk reduction** — certified engineers make fewer critical configuration mistakes
+- **Staff retention** — certification programs are a top-cited reason for staying at an employer
+
 ## See Also
 
 - `general/managed-services-scoping.md` -- Contract structure, SLA definition, and operational staffing

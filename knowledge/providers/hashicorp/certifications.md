@@ -29,6 +29,34 @@ Terraform is the dominant IaC tool across cloud providers, and Terraform Associa
 - HashiCorp certification vs hands-on experience weighting in hiring/staffing
 - Free HashiCorp Developer tutorials vs paid instructor-led training
 
+## Training Resources
+
+### Official Training Platform
+
+- **HashiCorp Developer (developer.hashicorp.com)** — free tutorials, documentation, and hands-on exercises for all products, aligned to certification objectives
+
+### Instructor-Led Training
+
+- Delivered by HashiCorp or authorized partners, 2-3 day courses ($1,500-2,500), available for Terraform, Vault, and Consul
+
+### Hands-On Labs
+
+- Instruqt-based interactive labs embedded in tutorials (free)
+- HashiCorp Cloud Platform (HCP) free tier for managed Terraform/Vault/Consul
+
+### Learning Paths by Role
+
+- **IaC Engineer:** Terraform Associate → Terraform Professional (when available)
+- **Security Engineer:** Vault Associate → Vault Professional
+- **Platform Engineer:** Terraform Associate + Consul Associate
+
+### Training Cost and Time Estimates
+
+- ~40-60 hours per Associate cert
+- Exam fee $70.50 (Associate)
+- Free tutorials via HashiCorp Developer
+- Instructor-led training $1,500-2,500 per course
+
 ## Reference Links
 
 - [HashiCorp Certifications](https://developer.hashicorp.com/certifications) -- Terraform Associate, Vault Associate/Professional, and Consul Associate exam details

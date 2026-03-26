@@ -29,6 +29,38 @@ Nutanix partner tiers directly impact deal registration, pricing, and support ac
 - Nutanix University self-paced vs instructor-led training
 - Dual-certification strategy for NC2 on Azure (Nutanix + Azure certs)
 
+## Training Resources
+
+### Official Training Platform
+
+- **Nutanix University (nu.nutanix.com)** — free self-paced online courses for all NCP tracks, video-based with quizzes, aligned to certification objectives
+
+### Hands-On Labs
+
+- **Nutanix Test Drive** — free, browser-based Nutanix cluster for guided lab exercises
+- **Nutanix Community Edition (CE)** — free download for home lab environments, supports nested virtualization
+- **Partner demo environments** — available through ATP/AMP partner programs for hands-on practice
+
+### Learning Paths by Role
+
+- **Infrastructure Architect:** NCA → NCP-MCI → NCM → NPX
+- **Database Admin:** NCA → NCP-MCI → NCP-DB
+- **Automation Engineer:** NCA → NCP-MCI → NCP-MCA
+- **Storage/Data Services:** NCA → NCP-MCI → NCP-DS
+
+### Training Cost and Time Estimates
+
+- ~60-100 hours of study per NCP certification
+- Exam fees: $199 (NCA), $299 (NCP-level exams)
+- Nutanix University self-paced courses: free
+- Instructor-Led Training (ILT): 3-5 day courses, $2,500-4,000 per course, delivered by Nutanix or authorized training partners with hands-on lab exercises
+
+### Enterprise/Volume Options
+
+- ATP (Authorized Technology Partner) and AMP (Authorized Managed Services Partner) tiers require minimum certified headcount
+- Nutanix partner enablement programs provide training resources and certification support
+- Volume training agreements available for organizations certifying multiple engineers
+
 ## Reference Links
 
 - [Nutanix University](https://www.nutanix.com/support-services/training-certification) -- certification paths, exam registration, and training resources

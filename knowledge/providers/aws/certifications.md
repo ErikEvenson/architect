@@ -32,6 +32,45 @@ AWS certifications are the most widely recognized cloud credentials. APN partner
 - Certification count planning against APN tier requirements
 - AWS Training and Certification vs third-party providers (A Cloud Guru, Stephane Maarek)
 
+## Training Resources
+
+### Official Training Platform
+
+AWS Skill Builder (skillbuilder.aws) is the primary training platform. Free tier includes 800+ digital courses and exam readiness content. Subscription tier ($29/mo) adds enhanced labs, practice exams, and jam challenges. Team subscription is available at $449/user/year with usage reporting and admin controls.
+
+AWS Classroom Training provides instructor-led virtual and in-person courses, typically $2,000-3,000 per 3-4 day course, delivered by AWS or authorized training partners (e.g., A Cloud Guru, Pluralsight).
+
+### Hands-On Labs
+
+- **AWS Free Tier** — 12 months of free-tier usage for hands-on practice with core services (EC2, S3, RDS, Lambda)
+- **Skill Builder Sandbox Labs** — guided and open-ended labs included with subscription tier
+- **AWS GameDay** — team-based competitive challenges simulating real-world operational scenarios
+- **AWS Jam** — guided challenge events focused on specific service areas (security, serverless, containers)
+
+### Learning Paths by Role
+
+- **Architect:** Cloud Practitioner (CLF-C02) → Solutions Architect Associate (SAA-C03) → Solutions Architect Professional (SAP-C02)
+- **Administrator:** Cloud Practitioner (CLF-C02) → SysOps Administrator Associate (SOA-C02)
+- **Developer:** Cloud Practitioner (CLF-C02) → Developer Associate (DVA-C02) → DevOps Professional (DOP-C02)
+- **Security:** Cloud Practitioner (CLF-C02) → Solutions Architect Associate (SAA-C03) → Security Specialty (SCS-C02)
+
+### Training Cost and Time Estimates
+
+| Level | Study Hours | Exam Fee |
+|---|---|---|
+| Cloud Practitioner | 40-60 hours | $100 |
+| Associate certifications | 80-120 hours | $150 |
+| Professional certifications | 150-200 hours | $300 |
+| Specialty certifications | 150-200 hours | $300 |
+
+Classroom training adds $2,000-3,000 per course. Skill Builder subscription adds $29/mo or $449/user/year for teams.
+
+### Enterprise and Volume Options
+
+- **AWS Training Subscriptions** — volume pricing for organizations, includes usage dashboards and team management
+- **AWS Partner Training** — APN partners have specific training requirements per tier (Select, Advanced, Premier) with access to partner-exclusive training content
+- **AWS re/Start** — free 12-week workforce training program for organizations building cloud teams
+
 ## Reference Links
 
 - [AWS Certification](https://aws.amazon.com/certification/) -- certification paths, exam guides, and registration

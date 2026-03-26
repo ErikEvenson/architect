@@ -30,6 +30,33 @@ Red Hat certifications are entirely performance-based — candidates must comple
 - EX288 priority for development teams vs EX280 only for platform team
 - RHCA certification track for senior engineers vs broad team EX280 coverage
 
+## Training Resources
+
+### Official Training Platform
+
+- **Red Hat Learning Subscription (RHLS)** — $7,000/year per seat, access to ALL Red Hat courses, hands-on labs, and exam prep, most comprehensive but expensive option
+- **Individual Courses** — DO280 (OpenShift Administration I, ~$3,000-4,000), DO380 (OpenShift Administration II), DO288 (OpenShift Development), each includes lab access
+
+### Hands-On Labs
+
+- Red Hat Interactive Labs (free, limited)
+- RHLS lab environments (subscription)
+- Red Hat Developer Sandbox (free OpenShift cluster, 30 days)
+
+### Learning Paths by Role
+
+- **Platform Admin:** RHCSA (EX200) → DO280 → EX280 → DO380 → EX380
+- **Developer:** DO180 (Containers) → DO288 → EX288
+- **Senior Architect:** RHCE (EX294) → EX280 → 5 specialist certs → RHCA
+
+### Training Cost and Time Estimates
+
+- ~80-120 hours per specialist exam
+- Exam fee $400-500
+- RHLS $7,000/yr
+- Individual courses $3,000-4,000 each
+- **Enterprise:** Red Hat partner program training requirements, volume RHLS agreements, Red Hat Training units
+
 ## Reference Links
 
 - [Red Hat certification portal](https://www.redhat.com/en/services/certifications) -- RHCSA, RHCE, and OpenShift certification paths and exam registration

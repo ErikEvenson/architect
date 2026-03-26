@@ -31,6 +31,47 @@ GCP certifications are widely respected and carry weight in the industry, partic
 - Certification count planning against Partner Advantage specialization requirements
 - GCP certification priority vs other cloud vendors for multi-cloud teams
 
+## Training Resources
+
+### Official Training Platform
+
+**Google Cloud Skills Boost** (cloudskillsboost.google) is the primary training platform. Free tier includes limited labs per month and select learning paths. Subscription tier ($29/mo or $299/yr) provides unlimited hands-on labs, learning paths, and skill badges.
+
+**Google Cloud Training** offers instructor-led courses at $800-2,400 per 1-3 day course, delivered by Google or authorized training partners. Courses are shorter and more focused than AWS or Azure equivalents.
+
+### Hands-On Labs
+
+- **Cloud Skills Boost Labs** — guided Qwiklabs with real GCP project environments, available on free tier (limited) or subscription (unlimited)
+- **Google Cloud Free Trial** — $300 credit for 90 days for hands-on practice with any GCP service
+- **Sandbox Projects** — temporary GCP projects provisioned within Cloud Skills Boost for lab exercises
+- **Skill Badges** — completion-based credentials earned by finishing lab quests, demonstrating practical competency
+
+### Learning Paths by Role
+
+- **Architect:** Cloud Digital Leader → Associate Cloud Engineer → Professional Cloud Architect
+- **Administrator:** Cloud Digital Leader → Associate Cloud Engineer
+- **Security:** Associate Cloud Engineer → Professional Cloud Security Engineer
+- **Data:** Associate Cloud Engineer → Professional Data Engineer
+- **DevOps:** Associate Cloud Engineer → Professional Cloud DevOps Engineer
+- **ML/AI:** Associate Cloud Engineer → Professional Machine Learning Engineer
+
+### Training Cost and Time Estimates
+
+| Level | Study Hours | Exam Fee |
+|---|---|---|
+| Cloud Digital Leader | 30-50 hours | $99 |
+| Associate Cloud Engineer | 60-80 hours | $200 |
+| Professional certifications | 80-120 hours | $200 |
+
+Instructor-led training adds $800-2,400 per course. Cloud Skills Boost subscription adds $29/mo or $299/yr. All certifications are valid for 2 years with full re-examination required for renewal.
+
+### Enterprise and Volume Options
+
+- **Google Cloud Partner Advantage** — training requirements vary by partner specialization; certified individuals count toward specialization thresholds
+- **Partner Training Programs** — Google Cloud consulting and service partners have access to partner-exclusive training and certification vouchers
+- **Google Cloud Skills Boost for Teams** — enterprise subscription with team management, usage tracking, and custom learning paths
+- **Google Cloud Authorized Training Partners** — deliver official Google Cloud curriculum with certified instructors
+
 ## Reference Links
 
 - [Google Cloud Certifications](https://cloud.google.com/learn/certification) -- certification paths, exam guides, and registration

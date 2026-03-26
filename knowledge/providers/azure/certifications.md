@@ -33,6 +33,47 @@ Microsoft's 1-year certification validity is the most aggressive renewal cycle a
 - Dual Azure + Nutanix certification strategy for NC2 engagements
 - 1-year renewal cadence planning (most aggressive among vendors)
 
+## Training Resources
+
+### Official Training Platform
+
+**Microsoft Learn** (learn.microsoft.com) is completely free and includes self-paced modules, learning paths, sandboxed Azure environments, and exam readiness videos. All content is aligned to specific certification exams with hands-on exercises built in.
+
+**Microsoft Official Courseware (MOC)** provides instructor-led training at $2,000-3,500 per 4-5 day course, delivered by Microsoft Certified Trainers (MCTs) at Microsoft Learning Partners.
+
+**Applied Skills** are hands-on assessments (not exams) that validate specific scenario competency — free through Microsoft Learn. Useful for validating focused skills without full certification commitment.
+
+### Hands-On Labs
+
+- **Microsoft Learn Sandbox** — free, time-limited Azure environments embedded directly in learning modules (no Azure subscription required)
+- **Azure Free Account** — $200 credit for 30 days plus 12 months of free-tier services for hands-on practice
+- **Applied Skills Assessments** — scenario-based labs that test practical ability in specific areas (e.g., deploy a container app, configure secure access)
+
+### Learning Paths by Role
+
+- **Architect:** AZ-900 (Fundamentals) → AZ-104 (Administrator) → AZ-305 (Solutions Architect Expert)
+- **Administrator:** AZ-900 (Fundamentals) → AZ-104 (Azure Administrator Associate)
+- **Security:** AZ-900 (Fundamentals) → AZ-500 (Security Engineer) → SC-100 (Cybersecurity Architect Expert)
+- **Network:** AZ-900 (Fundamentals) → AZ-104 (Administrator) → AZ-700 (Network Engineer Associate)
+- **Hybrid:** AZ-900 (Fundamentals) → AZ-800 + AZ-801 (Windows Server Hybrid Administrator Associate)
+
+### Training Cost and Time Estimates
+
+| Certification | Study Hours | Exam Fee | Renewal |
+|---|---|---|---|
+| Fundamentals (AZ-900) | 20-40 hours | $165 | Does not expire |
+| Associate certifications | 60-100 hours | $165 | Free annual renewal on Microsoft Learn |
+| Expert certifications | 100-150 hours | $165 | Free annual renewal on Microsoft Learn |
+
+Instructor-led training adds $2,000-3,500 per course. Microsoft Learn is entirely free including labs.
+
+### Enterprise and Volume Options
+
+- **Enterprise Skills Initiative (ESI)** — free exam vouchers and instructor-led training available to organizations with Microsoft Enterprise Agreements (EA); the most cost-effective path for large teams
+- **Microsoft Learning Partner Network** — authorized training providers offering scheduled and private classes
+- **Volume Exam Vouchers** — bulk exam voucher purchases available through Microsoft or authorized resellers
+- **Microsoft Action Pack** — partner benefit includes training and certification resources
+
 ## Reference Links
 
 - [Microsoft Learn training platform](https://learn.microsoft.com/en-us/training/) -- free self-paced modules, learning paths, and sandboxed labs for all Azure certifications

@@ -33,6 +33,37 @@ The OpenStack talent pool is shrinking as organizations migrate to public cloud 
 - **Instructor-led vs self-paced training** — OpenStack operational complexity makes hands-on instructor-led training more effective, but self-paced is more cost-effective for distributed teams
 - **Upstream contribution skills** — invest in upstream development skills for teams maintaining custom deployments vs consume vendor-supported distributions without customization
 
+## Training Resources
+
+### Official Training Platform
+
+- **OpenInfra Foundation Training** — instructor-led courses through authorized training providers, self-paced content available, OpenStack Administration and Operations courses
+
+### Vendor-Specific Training
+
+- **Red Hat:** CL210 (OpenStack Administration), CL310 (Advanced Administration), included in RHLS
+- **Mirantis:** Mirantis OpenStack training programs aligned to their distribution
+- **Canonical:** Ubuntu OpenStack training covering Charmed OpenStack (Juju-based) deployment and operations
+
+### Hands-On Labs
+
+- DevStack (single-node test deployment, free)
+- Packstack (multi-node lab, free)
+- Vendor trial environments
+- Red Hat Developer Sandbox
+
+### Learning Paths by Role
+
+- **Operator:** Linux fundamentals (RHCSA) → COA → vendor-specific training (CL210 or equivalent)
+- **Architect:** RHCSA → COA → vendor-specific advanced → CKA (if migrating to K8s)
+
+### Training Cost and Time Estimates
+
+- ~80-120 hours for COA
+- COA exam fee $300
+- Vendor courses $2,500-4,000 each
+- RHLS $7,000/yr includes all Red Hat OpenStack courses
+
 ## Reference Links
 
 - [Certified OpenStack Administrator (COA) exam](https://www.openstack.org/coa) -- COA exam objectives, registration, and preparation resources
