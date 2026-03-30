@@ -161,6 +161,8 @@ nav:
     - Distributed Cloud: providers/gcp/distributed-cloud.md
     - AI/ML Services: providers/gcp/ai-ml-services.md
     - Certifications: providers/gcp/certifications.md
+  - Kyndryl:
+    - Private Cloud (KPC): providers/kyndryl/private-cloud.md
   - HPE:
     - ProLiant Servers: providers/hpe/proliant.md
     - Synergy: providers/hpe/synergy.md
