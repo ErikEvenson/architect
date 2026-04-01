@@ -52,6 +52,7 @@ Common failures include: MX record changes propagating unevenly (causing mail de
 - `providers/microsoft/m365.md` -- Microsoft 365 tenant architecture and Exchange Online migration
 - `providers/microsoft/exchange-onprem.md` -- on-premises Exchange Server as migration source
 - `general/workload-migration.md` -- general workload migration patterns and planning
+- `providers/aws/workmail.md` -- Amazon WorkMail setup, end-of-support planning, and migration-off strategy
 - `general/change-management.md` -- organizational change management for IT migrations
 - `patterns/migration-cutover.md` -- migration cutover patterns and scheduling
 

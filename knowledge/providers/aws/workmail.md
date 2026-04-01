@@ -97,4 +97,5 @@ Amazon WorkMail provides a managed email service that avoids the operational bur
 - `providers/aws/security.md` -- IAM policies and security best practices for AWS services
 - `providers/aws/secrets-manager.md` -- managing credentials for service integrations
 - `compliance/hipaa.md` -- HIPAA compliance considerations including email encryption
+- `general/email-migration.md` -- email platform migration patterns, coexistence, MX cutover, and rollback planning
 - `general/data-migration-tools.md` -- general migration planning patterns
