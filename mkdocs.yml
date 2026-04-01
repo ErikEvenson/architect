@@ -396,10 +396,12 @@ nav:
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
     - Static Site: patterns/static-site.md
+    - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
     - Event-Driven: patterns/event-driven.md
     - Multi-Cloud: patterns/multi-cloud.md
     - Edge Computing: patterns/edge-computing.md
+    - Email Forwarding: patterns/email-forwarding.md
     - AI/ML Infrastructure: patterns/ai-ml-infrastructure.md
     - CDN-Fronted On-Prem: patterns/cdn-fronted-onprem.md
     - POC / Prototype: patterns/poc-prototype.md
@@ -415,6 +417,7 @@ nav:
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
     - Zero Trust: patterns/zero-trust.md
     - Security Operations: patterns/security-operations.md
+    - Small Domain Email: patterns/small-domain-email.md
     - Network Segmentation: patterns/network-segmentation.md
     - On-Prem to NC2 Migration: patterns/onprem-to-nc2-migration.md
     - Application Modernization: patterns/application-modernization.md
