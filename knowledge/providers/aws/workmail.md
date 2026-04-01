@@ -81,7 +81,7 @@ Amazon WorkMail provides a managed email service that avoids the operational bur
 - **Journaling architecture** -- direct journaling to S3 via third-party vs dedicated archiving service (Barracuda, Mimecast, Proofpoint); driven by eDiscovery and compliance requirements
 - **Mail flow routing** -- direct WorkMail delivery vs external gateway (e.g., Mimecast, Proofpoint) for advanced threat protection and DLP scanning
 - **Migration tooling** -- audriga (cloud-based, no software install) vs Transend Migrator (batch, on-premises agent) vs manual IMAP migration for small deployments
-- **Migration-off strategy** -- given end-of-support, whether to migrate to Microsoft 365, Google Workspace, or self-hosted Exchange; timeline and coexistence approach during transition
+- **Migration-off strategy** -- given end-of-support (March 31, 2027), selection of target platform and timeline; AWS-recommended destinations are Kopano Cloud, Zoho Mail, and Zoom Mail; other common targets include Microsoft 365, Google Workspace, and self-hosted Exchange
 
 ## Reference Architectures
 
@@ -89,6 +89,8 @@ Amazon WorkMail provides a managed email service that avoids the operational bur
 - [Amazon WorkMail API Reference](https://docs.aws.amazon.com/workmail/latest/APIReference/Welcome.html) -- programmatic user and resource management
 - [AWS SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html) -- outbound email configuration and deliverability best practices
 - [AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) -- encryption key management for WorkMail data at rest
+- [Amazon WorkMail End of Support](https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html) -- EOL timeline, AWS-recommended migration destinations (Kopano Cloud, Zoho Mail, Zoom Mail), and mailbox export guidance
+- [Amazon WorkMail Mailbox Export](https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html) -- exporting mailbox content before service end
 
 ---
 
