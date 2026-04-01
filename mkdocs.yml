@@ -120,6 +120,7 @@ nav:
     - DevOps (CI/CD): providers/aws/devops.md
     - Migration Services: providers/aws/migration-services.md
     - AI/ML Services: providers/aws/ai-ml-services.md
+    - WorkMail: providers/aws/workmail.md
     - Certifications: providers/aws/certifications.md
   - Azure:
     - Networking: providers/azure/networking.md
