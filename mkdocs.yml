@@ -162,6 +162,8 @@ nav:
     - Distributed Cloud: providers/gcp/distributed-cloud.md
     - AI/ML Services: providers/gcp/ai-ml-services.md
     - Certifications: providers/gcp/certifications.md
+  - Kopano:
+    - Cloud: providers/kopano/cloud.md
   - Kyndryl:
     - Private Cloud (KPC): providers/kyndryl/private-cloud.md
   - HPE:
@@ -270,6 +272,8 @@ nav:
     - Migration & DR: providers/hystax/migration.md
   - Zerto:
     - DR & Migration: providers/zerto/dr-migration.md
+  - Zoom:
+    - Mail: providers/zoom/mail.md
   - Ansible:
     - Configuration: providers/ansible/configuration.md
   - Arista:
@@ -385,6 +389,8 @@ nav:
     - Identity: providers/ping/identity.md
   - CyberArk:
     - PAM: providers/cyberark/pam.md
+  - Zoho:
+    - Mail: providers/zoho/mail.md
   - Patterns:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
