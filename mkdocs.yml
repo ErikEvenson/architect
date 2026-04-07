@@ -359,6 +359,8 @@ nav:
     - Configuration: providers/chef/configuration.md
   - Snowflake:
     - Data Platform: providers/snowflake/data-platform.md
+  - Databricks:
+    - Data Platform: providers/databricks/data-platform.md
   - Dell:
     - PowerEdge Servers: providers/dell/poweredge.md
     - PowerStore Storage: providers/dell/powerstore.md
