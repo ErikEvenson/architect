@@ -57,6 +57,7 @@ Enabled via `pymdown-extensions`:
 - **Admonitions** — `!!! note`, `!!! warning`, etc.
 - **Table of contents** — `[TOC]` placeholder
 - **Task lists** — `- [x]` checkboxes
+- **Tilde** (`pymdownx.tilde`) — `~~strikethrough~~` and `~subscript~`
 
 ## Output
 
