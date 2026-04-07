@@ -90,6 +90,7 @@ class MarkdownRenderer(BaseRenderer):
                     "admonition",
                     "toc",
                     "pymdownx.tasklist",
+                    "pymdownx.tilde",
                 ],
                 extension_configs={
                     "codehilite": {"css_class": "highlight", "guess_lang": False},
