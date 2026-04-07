@@ -361,6 +361,9 @@ nav:
     - Data Platform: providers/snowflake/data-platform.md
   - Databricks:
     - Data Platform: providers/databricks/data-platform.md
+  - NetApp:
+    - ONTAP: providers/netapp/ontap.md
+    - Cloud Volumes (CVO, ANF, FSx for ONTAP): providers/netapp/cloud-volumes.md
   - Dell:
     - PowerEdge Servers: providers/dell/poweredge.md
     - PowerStore Storage: providers/dell/powerstore.md
