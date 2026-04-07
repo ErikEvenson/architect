@@ -43,16 +43,10 @@ VxRail is the only jointly engineered HCI platform between Dell and VMware (Broa
 
 - [Dell VxRail Documentation](https://www.dell.com/support/home/en-us/product-support/product/dell-vxrail/docs) -- official VxRail administration and deployment guides
 - [VxRail Planning Guide](https://infohub.delltechnologies.com/en-us/t/vxrail/) -- Dell InfoHub with sizing, networking, and deployment best practices
-- [VxRail Network Guide](https://www.dell.com/support/kbdoc/en-us/000065
-
-
-/vxrail-network-guide) -- network design and VLAN configuration for VxRail
+- [VxRail Network Planning Guide](https://www.dell.com/support/manuals/en-us/vxrail-appliance-series/vxrail_planning_guide/) -- network design and VLAN configuration for VxRail
 - [VCF on VxRail Guide](https://docs.vmware.com/en/VMware-Cloud-Foundation/index.html) -- VMware Cloud Foundation deployment on VxRail
 - [VxRail Sizing Tool](https://vxrailsizing.dell.com/) -- Dell VxRail interactive sizing and configuration tool
-- [VxRail Support Matrix](https://www.dell.com/support/kbdoc/en-us/000021
-
-
-/vxrail-support-matrix) -- validated software and hardware compatibility matrix
+- [VxRail Software Manuals and Support Matrices](https://www.dell.com/support/product-details/en-us/product/vxrail-software/resources/manuals) -- validated software and hardware compatibility matrices and full documentation set
 
 ## See Also
 

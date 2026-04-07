@@ -73,10 +73,7 @@ Networking misconfiguration is the leading cause of vSphere outages that affect 
 
 - [NSX documentation](https://docs.vmware.com/en/VMware-NSX/index.html) -- NSX deployment, transport zones, gateways, and distributed firewall configuration
 - [vSphere networking guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-35B40B0B-0C13-43B2-BC85-18C9C91BE2D4.html) -- VDS configuration, VMkernel adapters, NIC teaming, and NIOC
-- [NSX reference design guide](https://communities.vmware.com/t5/VMware-NSX-Documents/VMware-NSX-Reference-Design/ta-p/2
-
-
-) -- NSX architecture patterns for T0/T1 gateways, edge clusters, and overlay networking
+- [NSX reference design guide announcement (NSX 3.2 update)](https://blogs.vmware.com/networkvirtualization/2022/11/30135.html) -- NSX architecture patterns for T0/T1 gateways, edge clusters, and overlay networking; links out to the current Reference Design Guide PDF
 
 ## See Also
 

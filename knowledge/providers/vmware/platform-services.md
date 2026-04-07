@@ -65,10 +65,7 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 
 ## Reference Links
 
-- [vCenter Server documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-18005
-
-
--A9ED-4819-A3F0-8E4C3B0FF1DA.html) -- vCenter deployment, SSO, and platform service controller configuration
+- [vCenter Server authentication and SSO documentation (vSphere 8.0)](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-authentication/GUID-A2A90265-4A6B-4E23-9681-97B867E55457.html) -- vCenter Single Sign-On with vSphere; note that as of vSphere 7.0+, the external Platform Services Controller is deprecated and all PSC services are consolidated into vCenter Server
 - [vSphere with Tanzu documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-with-tanzu-concepts-planning/GUID-3E4E6039-BD24-4C40-8575-5AA0EECBBBEC.html) -- Supervisor cluster, vSphere Namespaces, and TKG provisioning
 - [VMware HCX documentation](https://docs.vmware.com/en/VMware-HCX/index.html) -- HCX deployment, migration types, and Network Extension configuration
 

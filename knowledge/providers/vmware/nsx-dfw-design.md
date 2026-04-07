@@ -329,10 +329,7 @@ Actions:
 ## Reference Links
 
 - [NSX distributed firewall documentation](https://docs.vmware.com/en/VMware-NSX/4.2/administration/GUID-6AB240DB-949C-4E95-A9A7-4F44C7EF9E97.html) -- DFW policy categories, rule creation, and security group configuration
-- [NSX micro-segmentation design guide](https://communities.vmware.com/t5/VMware-NSX-Documents/NSX-T-Micro-Segmentation-Design-Guide/ta-p/2
-
-
-) -- best practices for DFW rule design, tag taxonomy, and phased rollout
+- [VMware NSX Micro-segmentation white paper](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/nsx/vmware-nsx-microsegmentation.pdf) -- best practices for DFW rule design, tag taxonomy, and phased rollout
 
 ## See Also
 
