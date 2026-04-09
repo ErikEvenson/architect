@@ -159,12 +159,19 @@ nav:
     - Compute: providers/gcp/compute.md
     - Data: providers/gcp/data.md
     - Security: providers/gcp/security.md
+    - Firewall Rules: providers/gcp/firewall-rules.md
+    - VPC Service Controls: providers/gcp/vpc-service-controls.md
     - Observability: providers/gcp/observability.md
     - Storage: providers/gcp/storage.md
+    - Cloud Storage: providers/gcp/cloud-storage.md
     - Containers (GKE): providers/gcp/containers.md
     - Serverless: providers/gcp/serverless.md
     - Database: providers/gcp/database.md
+    - BigQuery: providers/gcp/bigquery.md
     - IAM: providers/gcp/iam.md
+    - IAM and Resource Hierarchy: providers/gcp/iam-organizations.md
+    - KMS: providers/gcp/kms.md
+    - Multi-Project Strategy: providers/gcp/multi-project-strategy.md
     - DNS: providers/gcp/dns.md
     - Messaging: providers/gcp/messaging.md
     - Disaster Recovery: providers/gcp/disaster-recovery.md
