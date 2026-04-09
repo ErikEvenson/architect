@@ -1,13 +1,26 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { DiagramViewer } from "../src/components/Artifact/DiagramViewer";
 
+const mockFetch = vi.fn();
+global.fetch = mockFetch as unknown as typeof fetch;
+
+beforeEach(() => {
+  mockFetch.mockReset();
+  mockFetch.mockResolvedValue({
+    text: () => Promise.resolve('<svg width="100" height="100"><rect /></svg>'),
+  });
+});
+
 describe("DiagramViewer", () => {
-  it("renders an image with the SVG URL", () => {
-    render(<DiagramViewer svgUrl="/api/v1/versions/v1/artifacts/a1/outputs/diagram.svg" />);
-    const img = screen.getByAltText("Diagram");
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute("src", "/api/v1/versions/v1/artifacts/a1/outputs/diagram.svg");
+  it("fetches the SVG from the given URL and renders it inline", async () => {
+    const url = "/api/v1/versions/v1/artifacts/a1/outputs/diagram.svg";
+    const { container } = render(<DiagramViewer svgUrl={url} />);
+
+    expect(mockFetch).toHaveBeenCalledWith(url);
+    await waitFor(() => {
+      expect(container.querySelector("svg")).not.toBeNull();
+    });
   });
 
   it("has zoom controls", () => {

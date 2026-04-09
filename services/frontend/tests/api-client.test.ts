@@ -64,16 +64,16 @@ describe("versionsApi", () => {
 });
 
 describe("adrsApi", () => {
-  it("supersede calls POST /api/v1/projects/:id/adrs/:id/supersede", async () => {
+  it("supersede calls POST /api/v1/versions/:id/adrs/:id/supersede", async () => {
     mockResponse({ id: "a2", adr_number: 2 }, 201);
-    await adrsApi.supersede("p1", "a1", {
+    await adrsApi.supersede("v1", "a1", {
       title: "New ADR",
       context: "ctx",
       decision: "dec",
       consequences: "con",
     });
     expect(mockFetch).toHaveBeenCalledWith(
-      "/api/v1/projects/p1/adrs/a1/supersede",
+      "/api/v1/versions/v1/adrs/a1/supersede",
       expect.objectContaining({ method: "POST" }),
     );
   });
@@ -82,9 +82,9 @@ describe("adrsApi", () => {
 describe("questionsApi", () => {
   it("list with filters appends query params", async () => {
     mockResponse([]);
-    await questionsApi.list("p1", { status: "open", category: "security" });
+    await questionsApi.list("v1", { status: "open", category: "security" });
     expect(mockFetch).toHaveBeenCalledWith(
-      "/api/v1/projects/p1/questions?status=open&category=security",
+      "/api/v1/versions/v1/questions?status=open&category=security",
       expect.any(Object),
     );
   });
