@@ -23,6 +23,7 @@ dependencies = [
     "onnxruntime~=1.19.0",
     "tokenizers~=0.21.0",
     "numpy~=1.26.0",
+    "openai~=1.60.0",
 ]
 
 [project.optional-dependencies]
