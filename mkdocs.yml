@@ -131,12 +131,18 @@ nav:
     - Compute: providers/azure/compute.md
     - Data: providers/azure/data.md
     - Security: providers/azure/security.md
+    - Network Security Groups: providers/azure/network-security-groups.md
     - Observability: providers/azure/observability.md
     - Identity (Entra ID): providers/azure/identity.md
+    - RBAC and Managed Identities: providers/azure/rbac-and-managed-identities.md
+    - Key Vault: providers/azure/key-vault.md
+    - Front Door + App Gateway WAF: providers/azure/front-door-and-app-gateway-waf.md
+    - Landing Zones: providers/azure/landing-zones.md
     - Storage: providers/azure/storage.md
     - Containers (AKS): providers/azure/containers.md
     - Serverless: providers/azure/serverless.md
     - Database: providers/azure/database.md
+    - Cosmos DB: providers/azure/cosmos-db.md
     - DNS: providers/azure/dns.md
     - Messaging: providers/azure/messaging.md
     - DevOps: providers/azure/devops.md
