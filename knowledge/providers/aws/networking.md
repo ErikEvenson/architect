@@ -72,6 +72,36 @@ The Transit Gateway vs VPC Peering decision has long-term cost and operational i
 
 6. **Transit Gateway inter-region peering** — inter-region peering connections incur standard cross-region data transfer rates ($0.02/GB) in addition to the per-attachment hourly charge. Multi-region architectures with significant cross-region traffic should evaluate whether direct inter-region VPC peering is cheaper for specific high-throughput paths.
 
+## NLB Target Groups: Attributes That Are Load-Bearing
+
+NLB target groups carry several attributes that change the security and operational characteristics of any PrivateLink-touching workload. The single most consequential one is `preserve_client_ip`, but several others are worth knowing.
+
+### `preserve_client_ip` and the target SG design
+
+When `preserve_client_ip = true` on an NLB target group with target type `instance`, the target instance sees the **actual consumer client source IP** in the packet, not the NLB's internal IP. This changes the security group design completely:
+
+- **`preserve_client_ip = false`** (default for `ip` target type, can be set on `instance`): the target SG admits the NLB's internal IPs, which are within the VPC CIDR. SG ingress on the application port from the VPC CIDR is the typical pattern. This works.
+- **`preserve_client_ip = true`** (default for `instance` target type, can be set on `ip`): the target SG must admit the **consumer source IPs**, not the VPC CIDR. The NLB does not appear as a source — only the original client does. SG ingress on the VPC CIDR is wrong; the SG either needs the consumer IP ranges directly (a customer-managed prefix list is the right shape) or it needs `0.0.0.0/0` on the application port (which is usually too broad).
+
+The audit consequence: a target SG that "looks correct" for a `preserve_client_ip = true` target group is silently broken. The reviewer must check the target group attribute, not just the SG rules. See `providers/aws/security-groups.md` for the SG side of the same pattern.
+
+### Other target group attributes worth knowing
+
+- **`target_type`** — `instance`, `ip`, `lambda`, or `alb`. `instance` registers EC2 instances by ID. `ip` registers IPs (allowing on-prem targets reached via Direct Connect or VPN, or PrivateLink-routed targets in other VPCs). `lambda` registers a Lambda function. `alb` registers an ALB as a target so an NLB fronts the ALB (the right pattern for "PrivateLink-fronted HTTP service" — NLB for the static IP and PrivateLink integration, ALB for the L7 features).
+- **`deregistration_delay.timeout_seconds`** — default 300s. How long the target group waits for in-flight connections to drain before fully deregistering a target. Tune higher (up to 3600s) for long-lived connections, lower (30s) for stateless services where the long default delays autoscaling responsiveness.
+- **`cross_zone.enabled`** — at the **target group** level, this is independent of the LB-level cross-zone setting and confusingly named. When `true`, the LB can route a request received in AZ-A to a target registered in AZ-B. When `false`, requests stay zone-local. Cross-zone load balancing on NLB has cross-AZ data transfer cost implications ($0.01/GB) that the LB-level cross-zone setting does not warn about. Decide per target group, not per LB.
+- **`stickiness.enabled`** — for non-HTTP target groups, NLB stickiness uses source IP hashing and is a coarser tool than ALB cookie stickiness. Useful for protocols that need session affinity (e.g., gRPC streaming, certain database protocols).
+- **Health check protocol/interval/threshold** — defaults are `TCP` / 30s interval / 3 healthy threshold / 3 unhealthy threshold. The defaults are too slow for any production workload that needs fast failover; tune the interval down to 10s and the unhealthy threshold to 2 for latency-sensitive workloads. The flip side: too-aggressive health checks can flap on transient issues. Tune deliberately, not by accident.
+- **Mixed-protocol listeners** — an NLB can carry both `TLS` and `TCP` listeners targeting the same target group. The audit gotcha: if one listener is `TCP` (cleartext) and the workload is supposed to be TLS-only, the cleartext listener is a finding. Inventory the listeners, not just the target groups.
+
+### The single-AZ deployment trap
+
+A common deployment shape is a multi-AZ NLB with all targets registered in a single AZ (for example, because the targets are in a single-instance ASG, or because someone forgot to spread the targets across zones). NLBs use Route 53 DNS to return per-AZ IPs to clients. If a client resolves to an AZ that has no healthy targets, the request blackholes — there is no cross-zone fallback unless `cross_zone.enabled = true`.
+
+This shape is invisible to most monitoring because the LB itself is healthy and the targets are healthy. Only the per-zone DNS resolution exposes the bug. Symptoms: roughly half (or one-third in 3-AZ deployments) of requests fail with timeout, but the other requests succeed normally. The fix: either spread targets across all AZs the NLB serves, or enable `cross_zone.enabled = true` on the target group with explicit acceptance of the data transfer cost.
+
+The audit signal: any target group with all targets in one AZ behind a multi-AZ NLB. Capture target group registrations from the bundle and check the AZ distribution.
+
 ## Reference Links
 
 - [AWS Transit Gateway Documentation](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html) — architecture, route tables, multicast, peering, and Connect attachments
@@ -95,4 +125,6 @@ The Transit Gateway vs VPC Peering decision has long-term cost and operational i
 - `providers/aws/route53.md` — Route 53 hosted zones, routing policies, health checks, DNSSEC, and Resolver endpoints
 - `providers/aws/multi-account.md` — AWS Organizations, Transit Gateway sharing via RAM, and centralized network account patterns
 - `providers/aws/cloudfront-waf.md` — CloudFront CDN and WAF for edge protection (complements Global Accelerator)
+- `providers/aws/security-groups.md` — SG hygiene, source-SG references, NLB target SG design under `preserve_client_ip`
+- `patterns/aws-data-perimeter.md` — VPC endpoint policies and the canonical condition keys for the data perimeter pattern
 - `general/networking.md` — Cloud-agnostic networking patterns including segmentation and load balancing

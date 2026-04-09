@@ -52,7 +52,11 @@ Cross-account security architecture is foundational. The AWS Security Reference 
 ## See Also
 
 - `providers/aws/iam.md` -- IAM roles, policies, permission boundaries, SCPs, and cross-account access
-- `providers/aws/vpc.md` -- VPC security groups, NACLs, VPC endpoints, and network segmentation
+- `providers/aws/vpc.md` -- VPC security groups, NACLs, VPC endpoints, network segmentation, and Flow Logs
+- `providers/aws/security-groups.md` -- SG hygiene, source-SG references, customer-managed prefix lists, NLB target SGs
+- `providers/aws/kms.md` -- KMS customer-managed key lifecycle, rotation, and policy hygiene
+- `patterns/aws-data-perimeter.md` -- the data perimeter pattern using endpoint policies, bucket policies, and KMS key policies
+- `general/aws-readonly-audit.md` -- read-only AWS audit methodology that exercises all of the above
 - `providers/aws/cloudfront-waf.md` -- CloudFront CDN configuration and WAF rules at the edge
 - `providers/aws/multi-account.md` -- AWS Organizations, SCPs, and multi-account landing zone patterns
 - `providers/aws/secrets-manager.md` -- Secrets Manager for credential storage and automatic rotation

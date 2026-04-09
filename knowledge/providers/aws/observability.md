@@ -39,6 +39,112 @@ Without comprehensive observability, outages are detected by customers instead o
 - **Config rules scope** -- AWS managed rules vs custom rules, remediation automation
 - **GuardDuty findings workflow** -- Security Hub aggregation, automated remediation via EventBridge and Lambda
 
+## CloudWatch Logs Insights Query Patterns
+
+CloudWatch Logs Insights is the query layer over CloudWatch Logs and is the load-bearing operational tool for any review where the question is "is this thing actually working in production". The syntax has a small surface area (`fields`, `filter`, `parse`, `stats`, `sort`, `limit`, `bin`, `dedup`) and the query patterns reviewers need are reusable across engagements.
+
+### Cost characteristics
+
+Insights charges per GB of log data scanned. Time range and log group selection both matter — a query against a multi-month range over a high-volume log group can cost real money. Two practical rules: narrow the time range first, then narrow the log group, then write the query. And avoid `parse` over very large datasets where the parsed field could be precomputed at ingestion time (use a metric filter or a parsed log destination instead).
+
+### Common query patterns
+
+#### Per-ENI flow log query — what did this ENI talk to in the last hour
+
+```
+fields @timestamp, srcAddr, dstAddr, srcPort, dstPort, protocol, action, bytes
+| filter interfaceId = "eni-0123456789abcdef0"
+| sort @timestamp desc
+| limit 200
+```
+
+Replace the ENI ID. Useful when you need to know what a specific instance is connecting to, or whether it has been blocked by SGs/NACLs (filter on `action = "REJECT"`).
+
+#### Per-CIDR flow log query — who is talking to a specific destination CIDR
+
+```
+fields @timestamp, interfaceId, srcAddr, dstAddr, dstPort, action
+| filter dstAddr like /^203\.0\.113\./
+| stats count(*) as flows, sum(bytes) as totalBytes by interfaceId, dstAddr, dstPort
+| sort flows desc
+| limit 50
+```
+
+Use this to triangulate questions like "who is sending traffic to this external IP range" or "is anything in our VPC still talking to the retired vendor". Rough CIDR matching with regex is usually good enough; for precise CIDR matching use a more elaborate `parse` + arithmetic.
+
+#### CloudTrail unauthorized API call query
+
+```
+fields @timestamp, userIdentity.arn, eventSource, eventName, errorCode, sourceIPAddress, awsRegion
+| filter errorCode = "AccessDenied" or errorCode = "UnauthorizedOperation"
+| sort @timestamp desc
+| limit 100
+```
+
+This is the canonical "who is being denied" query and is a good first cut after any IAM policy change. A surge in `AccessDenied` from a specific principal is the symptom of a too-tight policy or an upstream change to the role's effective permissions.
+
+#### CloudTrail IAM policy change query
+
+```
+fields @timestamp, userIdentity.arn, eventName, requestParameters.policyArn, requestParameters.userName, requestParameters.roleName
+| filter eventSource = "iam.amazonaws.com"
+| filter eventName like /^(Create|Update|Put|Delete|Attach|Detach)/
+| sort @timestamp desc
+```
+
+Catches policy creates, updates, deletes, attaches, and detaches across users, groups, and roles. Useful as a daily review query in environments where IAM changes should be infrequent and reviewable.
+
+#### CloudTrail console login from new source query
+
+```
+fields @timestamp, userIdentity.userName, sourceIPAddress, additionalEventData.MFAUsed, errorMessage
+| filter eventName = "ConsoleLogin"
+| sort @timestamp desc
+| limit 200
+```
+
+Pair with a list of expected source IPs (your office VPN, your VPC NAT gateway, etc.) and treat anything outside the list as a candidate for follow-up.
+
+#### Lambda errors by function over the last 24h
+
+```
+fields @timestamp, @message
+| filter @message like /ERROR/
+| stats count(*) as errors by bin(1h), @log
+| sort @timestamp desc
+```
+
+Coarse first-cut for "which functions are misbehaving and when". `@log` gives the log group name, which for Lambda is `/aws/lambda/<function-name>`.
+
+#### KMS Decrypt by principal — who used this CMK
+
+```
+fields @timestamp, userIdentity.arn, eventName, resources.0.ARN, sourceIPAddress
+| filter eventSource = "kms.amazonaws.com"
+| filter eventName in ["Decrypt", "GenerateDataKey", "GenerateDataKeyWithoutPlaintext"]
+| filter resources.0.ARN = "arn:aws:kms:us-east-1:123456789012:key/abcd1234-..."
+| stats count(*) as ops by userIdentity.arn
+| sort ops desc
+```
+
+Requires CloudTrail data events for KMS to be enabled (default is management events only — see `providers/aws/kms.md`). Without data events, this query returns nothing.
+
+#### Cross-log-group query — finding a request across multiple services
+
+```
+fields @timestamp, @log, @message
+| filter @message like /request-id-12345/
+| sort @timestamp asc
+```
+
+Run with multiple log groups selected (the Insights UI lets you select up to 50). Useful for tracing a single request through API Gateway, Lambda, and downstream services when you have a correlation ID.
+
+### Saving queries and integrating with dashboards
+
+- Save commonly used queries to **Saved Queries** in the Insights UI. Name them clearly (`flow-logs-by-eni`, `cloudtrail-access-denied`) and store them in version control if the team is large enough to need shared queries.
+- Pin Insights query results to a CloudWatch dashboard widget. The widget re-runs the query on dashboard load and is a useful way to surface ongoing operational signals (unauthorized API calls, recent IAM changes) on a single pane.
+- Schedule Insights queries via EventBridge + Lambda for daily or hourly review of saved queries that should produce zero results in a healthy environment.
+
 ## Reference Architectures
 
 - [AWS Architecture Center: Management & Governance](https://aws.amazon.com/architecture/management-governance/) -- reference architectures for centralized logging, monitoring, and compliance
@@ -53,4 +159,7 @@ Without comprehensive observability, outages are detected by customers instead o
 
 - `general/observability.md` -- General observability patterns including metrics, logs, and traces
 - `providers/aws/multi-account.md` -- Centralized logging account architecture for cross-account monitoring
-- `providers/aws/vpc.md` -- VPC Flow Logs for network traffic analysis
+- `providers/aws/vpc.md` -- VPC Flow Logs configuration, destination strategy, traffic type capture
+- `providers/aws/security-groups.md` -- SG rules referenced by flow log REJECT investigations
+- `providers/aws/kms.md` -- KMS data events required for the Decrypt-by-principal query
+- `general/aws-readonly-audit.md` -- read-only audit methodology that uses these query patterns

@@ -66,6 +66,58 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 
 6. **VPC Flow Logs volume** — high-traffic environments generate massive log volumes. A busy VPC can produce 100+ GB/day of flow logs. At $0.50/GB (CloudWatch) that is $1,500/mo. Use S3 destination ($0.25/GB) and sampling where possible.
 
+## VPC Flow Logs
+
+VPC Flow Logs capture metadata about IP traffic flowing through ENIs in a VPC. They are the primary record of "what talked to what at the network layer" and are load-bearing for any after-the-fact incident response, security investigation, or capacity question. The configuration choices that matter:
+
+### Destination strategy
+
+- **CloudWatch Logs** — easiest to query (CloudWatch Logs Insights, see `providers/aws/observability.md`), most expensive ($0.50/GB ingestion + log retention storage). Right answer for low-volume VPCs and any case where the team will actually run Insights queries.
+- **S3** — cheapest at scale ($0.25/GB direct flow log charge plus standard S3 storage). Athena over the S3 destination is the query path. Right answer for high-volume VPCs and long-retention compliance requirements. Parquet output is an option and significantly reduces both storage and Athena query costs at the price of some loss of recent-records freshness (parquet output is buffered).
+- **Kinesis Data Firehose** — for streaming flow logs into a SIEM (Splunk, Sumo Logic, Datadog) or a custom log pipeline. Add Firehose cost on top of the flow log charge. Right answer when the org has a SIEM as the system of record and CloudWatch Logs is not the chosen destination for security data.
+
+### Hardening the destination
+
+The destination is itself a security target — flow logs reveal traffic patterns that can be useful to an attacker. Treat it like any other sensitive data store:
+
+- Encrypt at rest (KMS for both CloudWatch Logs and S3 destinations; KMS-encrypted Kinesis streams for Firehose)
+- Restrict read access — log groups and S3 buckets that hold flow logs should have explicit IAM policies, not the default "anyone in the account who has logs:GetLogEvents"
+- Set retention deliberately — default CloudWatch Logs retention is "never expire", which compounds cost; default S3 has no flow-log-aware lifecycle. Compliance retention varies (often 90 days, 1 year, or 7 years).
+- Versioning + Object Lock on the S3 destination if the regulatory regime requires immutable logs
+- Apply the data perimeter pattern to the destination — see `patterns/aws-data-perimeter.md`
+
+### Traffic type capture
+
+- **`ALL`** — captures both `ACCEPT` and `REJECT`. The default and the right answer for any environment where the cost is acceptable. Without rejected traffic, you cannot answer "did the network block this attempted connection or was it never attempted".
+- **`ACCEPT`** — captures only successful flows. Cheaper. Loses the rejection signal that makes SG and NACL audits possible.
+- **`REJECT`** — captures only blocked traffic. Useful for active alerting on attempted policy violations but loses the baseline traffic record.
+
+For most environments `ALL` is the right answer. `REJECT` only is appropriate as a complement to `ALL` at a different aggregation level (e.g., a VPC-level `ALL` for baseline plus per-subnet `REJECT` for tighter alerting on specific subnets).
+
+### Aggregation interval
+
+- **60 seconds** — fine-grained, larger volume. The right answer for forensics, troubleshooting, and any case where minute-level resolution matters.
+- **600 seconds (10 minutes)** — coarser, smaller volume, default. Acceptable for capacity baselines and broad traffic patterns; too coarse for incident response.
+
+The trade-off is real and often miscalibrated. A flow-log dataset at 600s aggregation is hard to use for tracing a specific connection. A flow-log dataset at 60s aggregation produces 10x the records. Pick deliberately and document the choice.
+
+### Custom format and parquet
+
+Default flow log format captures a fixed set of fields. Custom format lets you choose from ~30 available fields, including useful additions like `pkt-srcaddr` / `pkt-dstaddr` (the actual packet source and destination, distinct from `srcaddr` / `dstaddr` which can be the load balancer or NAT gateway IP). For any environment with NAT or load balancers, custom format with the `pkt-*` fields is required to answer "where did this traffic actually originate". Parquet output is available for the S3 destination only and significantly reduces both storage and query cost.
+
+### Per-VPC vs per-subnet vs per-ENI scope
+
+Flow logs can be enabled at three scopes. **Per-VPC** captures all traffic in the VPC (including internal subnet-to-subnet). **Per-subnet** captures traffic in one subnet. **Per-ENI** captures traffic on one ENI. The three are not exclusive — you can have flow logs enabled at multiple scopes simultaneously, but the same traffic gets captured multiple times, multiplying cost.
+
+The right pattern for most environments: per-VPC for baseline coverage, per-ENI temporarily enabled for specific investigations. Per-subnet is rarely the right answer because per-VPC is strictly more comprehensive at marginal additional cost.
+
+### Common gotchas
+
+- Flow logs **do not** capture traffic that does not traverse an ENI: traffic to instance metadata service, traffic to Windows DNS resolution within an instance, traffic between containers in the same pod via the loopback interface, etc.
+- Traffic Mirroring and Flow Logs are independent and can both be enabled on the same ENI without interference.
+- Flow logs can lag by 10–15 minutes at the destination. Real-time alerting against flow logs is only as fast as the slowest part of the pipeline.
+- Flow logs do **not** include packet payloads. They are metadata only (5-tuple, packet count, byte count, action, log status). For payload inspection, use Traffic Mirroring with a destination that can decrypt and inspect (e.g., a Network Firewall or third-party NVA).
+
 ## Reference Architectures
 
 - [AWS VPC Design and Network Architecture](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-web-database-servers.html) -- official VPC scenarios including public/private subnet designs, NAT, and VPN connectivity
@@ -82,4 +134,7 @@ VPC design is the foundation of every AWS deployment and is extremely costly to 
 - `providers/aws/multi-account.md` -- Transit Gateway hub-and-spoke for cross-account VPC connectivity
 - `providers/aws/ec2-asg.md` -- EC2 placement in VPC subnets with security groups
 - `providers/aws/route53.md` -- Route 53 Resolver for hybrid DNS with VPC integration
+- `providers/aws/security-groups.md` -- SG hygiene, source-SG references, customer-managed prefix lists
+- `providers/aws/observability.md` -- CloudWatch Logs Insights query patterns for flow logs
+- `patterns/aws-data-perimeter.md` -- VPC endpoint policies for data perimeter enforcement
 - `providers/aws/networking.md` -- AWS networking services beyond VPC: Transit Gateway, Direct Connect, PrivateLink, Network Firewall, Global Accelerator
