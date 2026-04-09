@@ -34,6 +34,7 @@ FSx selection errors are particularly costly to reverse because file system migr
 - **EFS throughput mode: Bursting vs Provisioned vs Elastic** -- Bursting scales throughput with storage size (50 MiB/s per TiB) and is free but unpredictable for small file systems; Provisioned guarantees consistent throughput at additional cost; Elastic auto-scales throughput on demand up to 10 GiB/s with pay-per-use pricing, ideal for spiky workloads
 - **EFS deployment: Regional vs One Zone** -- Regional provides multi-AZ durability and is required for production workloads with high availability requirements; One Zone saves ~47% and is suitable for dev/test, reproducible data, or workloads already confined to a single AZ
 - **FSx file system selection** -- Windows File Server for SMB/DFS/AD environments; Lustre for HPC/ML with transparent S3 data repository integration; NetApp ONTAP for multi-protocol (NFS+SMB+iSCSI) with automatic capacity tiering to S3; OpenZFS for Linux workloads needing instant snapshots, clones, and compression
+- **File access to data already in S3: S3 Files vs Mountpoint for S3 vs FSx for Lustre vs EFS** -- S3 Files exposes S3 buckets as a POSIX file system with an EFS-backed cache, no copy required, simultaneous object + file access; Mountpoint for S3 is free and read-mostly with limited write semantics; FSx for Lustre links to S3 via import/export for HPC bursts; EFS is a separate file system that requires copying data in. See `providers/aws/s3-files.md` for the full decision framework.
 - **Hybrid storage: Storage Gateway vs DataSync** -- Storage Gateway provides ongoing hybrid access (cache on-premises, store in AWS); DataSync is for one-time or scheduled data transfer tasks with verification; both can be used together (DataSync for initial migration, Storage Gateway for ongoing access)
 - **Storage Gateway mode: File vs Volume vs Tape** -- File Gateway for NFS/SMB access to S3 objects; Volume Gateway cached mode for primary data in S3 with local cache; Volume Gateway stored mode for primary data on-premises with async snapshots to EBS; Tape Gateway replaces physical tape infrastructure with S3 Glacier backend
 - **Encryption key management** -- AWS-managed keys (default, zero operational overhead) vs customer-managed CMKs in KMS (key policy control, rotation, cross-account access, compliance auditing via CloudTrail); some services require encryption at creation time and cannot be changed later
@@ -54,6 +55,7 @@ FSx selection errors are particularly costly to reverse because file system migr
 ## See Also
 
 - `providers/aws/s3.md` -- AWS S3 object storage including storage classes, lifecycle, replication, and encryption
+- `providers/aws/s3-files.md` -- File system interface to S3 (POSIX semantics over S3 buckets, EFS-cached working set)
 - `providers/aws/ec2-asg.md` -- EC2 instance types and EBS-optimized instance considerations
 - `providers/aws/containers.md` -- EFS and EBS CSI drivers for EKS persistent volumes
 - `providers/aws/migration-services.md` -- DataSync and Storage Gateway in the context of cloud migration

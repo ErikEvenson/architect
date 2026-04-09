@@ -103,6 +103,7 @@ nav:
     - Lambda & Serverless: providers/aws/lambda-serverless.md
     - Containers (ECS/EKS): providers/aws/containers.md
     - S3: providers/aws/s3.md
+    - S3 Files: providers/aws/s3-files.md
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
     - Route 53: providers/aws/route53.md
