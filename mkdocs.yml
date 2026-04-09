@@ -455,6 +455,12 @@ nav:
     - AWS Well-Architected: frameworks/aws-well-architected.md
     - Azure Well-Architected: frameworks/azure-well-architected.md
     - GCP Architecture Framework: frameworks/gcp-architecture-framework.md
+    - NIST SP 800-53: frameworks/nist-sp-800-53.md
+    - NIST CSF 2.0: frameworks/nist-csf-2.0.md
+    - NIST SP 800-207 Zero Trust: frameworks/nist-sp-800-207-zero-trust.md
+    - NIST AI RMF: frameworks/nist-ai-rmf.md
+    - AWS Security Reference Architecture: frameworks/aws-security-reference-architecture.md
+    - CIS Benchmarks: frameworks/cis-benchmarks.md
   - Failure Patterns:
     - Networking: failures/networking.md
     - Data: failures/data.md
