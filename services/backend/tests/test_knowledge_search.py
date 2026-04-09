@@ -42,6 +42,7 @@ SAMPLE_INDEX_STATUS = {
     "total_embeddings": 500,
     "knowledge_file_count": 450,
     "vendor_doc_count": 50,
+    "upload_count": 0,
     "last_indexed_at": "2026-03-23T12:00:00+00:00",
 }
 
@@ -50,8 +51,19 @@ SAMPLE_REINDEX_RESULT = {
     "files_processed": 10,
     "checklist_items_indexed": 100,
     "vendor_docs_indexed": 5,
+    "uploads_indexed": 0,
     "duration_seconds": 3.14,
     "errors": [],
+}
+
+IDLE_TASK_STATE = {
+    "running": False,
+    "paused": False,
+    "started_at": None,
+    "timeout": None,
+    "last_result": None,
+    "last_error": None,
+    "progress": None,
 }
 
 
@@ -115,20 +127,21 @@ class TestReindexEndpoint:
     @pytest.mark.asyncio
     @patch("src.api.knowledge.embedding_service")
     async def test_reindex_default(self, mock_service, client):
+        # Reindex is fire-and-forget; the POST schedules a background task
+        # and returns immediately. Result is observed via the status endpoint.
+        mock_service.get_reindex_task_state.return_value = IDLE_TASK_STATE
         mock_service.reindex_knowledge = AsyncMock(return_value=SAMPLE_REINDEX_RESULT)
 
         resp = await client.post(f"{API}/knowledge/reindex")
 
         assert resp.status_code == 200
         data = resp.json()
-        assert data["status"] == "completed"
-        assert data["files_processed"] == 10
-        assert data["checklist_items_indexed"] == 100
-        assert data["vendor_docs_indexed"] == 5
+        assert data["status"] == "started"
 
     @pytest.mark.asyncio
     @patch("src.api.knowledge.embedding_service")
     async def test_reindex_with_options(self, mock_service, client):
+        mock_service.get_reindex_task_state.return_value = IDLE_TASK_STATE
         mock_service.reindex_knowledge = AsyncMock(return_value=SAMPLE_REINDEX_RESULT)
 
         resp = await client.post(
@@ -137,22 +150,18 @@ class TestReindexEndpoint:
         )
 
         assert resp.status_code == 200
-        mock_service.reindex_knowledge.assert_called_once()
+        assert resp.json()["status"] == "started"
 
     @pytest.mark.asyncio
     @patch("src.api.knowledge.embedding_service")
-    async def test_reindex_with_errors(self, mock_service, client):
-        result_with_errors = {
-            **SAMPLE_REINDEX_RESULT,
-            "errors": ["Failed to fetch https://example.com: timeout"],
-        }
-        mock_service.reindex_knowledge = AsyncMock(return_value=result_with_errors)
+    async def test_reindex_rejected_when_already_running(self, mock_service, client):
+        running_state = {**IDLE_TASK_STATE, "running": True, "started_at": 1000.0}
+        mock_service.get_reindex_task_state.return_value = running_state
 
         resp = await client.post(f"{API}/knowledge/reindex")
 
-        assert resp.status_code == 200
-        data = resp.json()
-        assert len(data["errors"]) == 1
+        assert resp.status_code == 409
+        assert "already in progress" in resp.json()["detail"].lower()
 
 
 class TestReindexStatusEndpoint:
@@ -160,6 +169,7 @@ class TestReindexStatusEndpoint:
     @patch("src.api.knowledge.embedding_service")
     async def test_status_when_indexed(self, mock_service, client):
         mock_service.get_index_status = AsyncMock(return_value=SAMPLE_INDEX_STATUS)
+        mock_service.get_reindex_task_state.return_value = IDLE_TASK_STATE
 
         resp = await client.get(f"{API}/knowledge/reindex/status")
 
@@ -167,6 +177,7 @@ class TestReindexStatusEndpoint:
         data = resp.json()
         assert data["indexed"] is True
         assert data["total_embeddings"] == 500
+        assert data["reindexing"] is False
 
     @pytest.mark.asyncio
     @patch("src.api.knowledge.embedding_service")
@@ -176,8 +187,10 @@ class TestReindexStatusEndpoint:
             "total_embeddings": 0,
             "knowledge_file_count": 0,
             "vendor_doc_count": 0,
+            "upload_count": 0,
             "last_indexed_at": None,
         })
+        mock_service.get_reindex_task_state.return_value = IDLE_TASK_STATE
 
         resp = await client.get(f"{API}/knowledge/reindex/status")
 
@@ -185,6 +198,7 @@ class TestReindexStatusEndpoint:
         data = resp.json()
         assert data["indexed"] is False
         assert data["total_embeddings"] == 0
+        assert data["reindexing"] is False
 
 
 class TestQuestionSuggestions:
