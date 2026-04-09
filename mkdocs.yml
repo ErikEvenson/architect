@@ -461,6 +461,12 @@ nav:
     - Scaling: failures/scaling.md
     - Security: failures/security.md
     - Deployment: failures/deployment.md
+    - Identity: failures/identity.md
+    - Observability: failures/observability.md
+    - Cost: failures/cost.md
+    - Dependencies: failures/dependencies.md
+    - Compliance: failures/compliance.md
+    - Operations: failures/operations.md
   - References: references.md
   - Contributing: CONTRIBUTING.md
 
