@@ -13,7 +13,7 @@ from pathlib import Path
 import httpx
 import numpy as np
 import structlog
-from sqlalchemy import delete, func, select, text
+from sqlalchemy import delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.models.knowledge_embedding import KnowledgeEmbedding
