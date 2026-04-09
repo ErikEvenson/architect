@@ -170,7 +170,6 @@ async def _stream_chat(
         # Accumulate the streamed response
         collected_content = ""
         collected_tool_calls: dict[int, dict] = {}  # index -> {id, name, arguments}
-        finish_reason = None
 
         try:
             async for chunk in stream:
@@ -179,7 +178,6 @@ async def _stream_chat(
 
                 choice = chunk.choices[0]
                 delta = choice.delta
-                finish_reason = choice.finish_reason
 
                 # Stream text content
                 if delta.content:

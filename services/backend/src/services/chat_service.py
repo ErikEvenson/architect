@@ -1,6 +1,5 @@
 """Chat service: system prompt assembly and tool execution for architecture chat."""
 
-import json
 import os
 import uuid
 from pathlib import Path

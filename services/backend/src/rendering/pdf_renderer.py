@@ -2,7 +2,6 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-import markdown
 import structlog
 from jinja2 import Environment, FileSystemLoader
 
