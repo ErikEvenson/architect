@@ -44,6 +44,7 @@ nav:
     - Testing Strategy: general/testing-strategy.md
     - Performance Testing: general/performance-testing.md
     - Governance: general/governance.md
+    - AWS Read-Only Audit Methodology: general/aws-readonly-audit.md
     - Workload Migration: general/workload-migration.md
     - Dev DNS Patterns: general/dns-dev-patterns.md
     - TLS Certificates: general/tls-certificates.md
@@ -115,6 +116,8 @@ nav:
     - LocalStack: providers/aws/localstack.md
     - Networking: providers/aws/networking.md
     - Security: providers/aws/security.md
+    - Security Groups: providers/aws/security-groups.md
+    - KMS: providers/aws/kms.md
     - Storage: providers/aws/storage.md
     - Database: providers/aws/database.md
     - Disaster Recovery: providers/aws/disaster-recovery.md
@@ -428,6 +431,7 @@ nav:
     - On-Prem to NC2 Migration: patterns/onprem-to-nc2-migration.md
     - Application Modernization: patterns/application-modernization.md
     - Managed Cloud Services: patterns/managed-cloud-services.md
+    - AWS Data Perimeter: patterns/aws-data-perimeter.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
