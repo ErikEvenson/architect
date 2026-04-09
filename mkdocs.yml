@@ -458,6 +458,13 @@ nav:
     - CJIS: compliance/cjis.md
     - ITAR: compliance/itar.md
     - CCPA/CPRA: compliance/ccpa.md
+    - NIS2: compliance/nis2.md
+    - DORA: compliance/dora.md
+    - HITRUST CSF: compliance/hitrust-csf.md
+    - GLBA: compliance/glba.md
+    - NERC CIP: compliance/nerc-cip.md
+    - PIPEDA & LGPD: compliance/pipeda-lgpd.md
+    - FERPA: compliance/ferpa.md
   - Frameworks:
     - AWS Well-Architected: frameworks/aws-well-architected.md
     - Azure Well-Architected: frameworks/azure-well-architected.md
