@@ -93,6 +93,8 @@ class ReindexProgress(BaseModel):
     total_batches: int
     vendor_docs_fetched: int
     vendor_docs_total: int
+    vendor_docs_failed: int = 0
+    vendor_docs_failed_by_host: dict[str, int] = Field(default_factory=dict)
     uploads_processed: int
     uploads_total: int
 
