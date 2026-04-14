@@ -409,6 +409,9 @@ nav:
     - GitOps: providers/fluxcd/gitops.md
   - Okta:
     - Identity: providers/okta/identity.md
+    - SAML and OIDC Configuration: providers/okta/saml-and-oidc-config.md
+    - Lifecycle Management: providers/okta/lifecycle-management.md
+    - MFA and Policies: providers/okta/mfa-and-policies.md
   - Ping Identity:
     - Identity: providers/ping/identity.md
   - CyberArk:
