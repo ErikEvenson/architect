@@ -45,6 +45,14 @@ knowledge/
 
 Background task controls: cancel, pause, resume, timeout (default 5 minutes).
 
+### Vendor Doc Fetcher
+
+The vendor doc fetcher retrieves pages referenced in `## Reference Links` sections and indexes their extracted text alongside the knowledge files themselves.
+
+- **User-Agent:** Requests are sent with a browser-style `User-Agent` string. The default httpx UA is blocked by common anti-bot protections (Akamai, Cloudflare bot-fight, and aggressively on `hpe.com`). The UA is configurable via `VENDOR_FETCH_USER_AGENT` for debugging.
+- **Retry policy:** Transient failures (connection reset, read timeout, empty body on a 200 response, HTTP 429/5xx) are retried with exponential backoff up to `VENDOR_FETCH_MAX_RETRIES` attempts (default 2 retries, so 3 total attempts). Permanent failures (404, DNS failure) are not retried.
+- **Failure visibility:** The reindex status response exposes both total failure counts and per-host failure counts in `progress.vendor_docs_failed` and `progress.vendor_docs_failed_by_host`. This lets operators detect vendor-side blocking patterns without having to grep the errors array.
+
 ### Search (`POST /api/v1/knowledge/search`)
 
 1. Generate embedding for the query text
