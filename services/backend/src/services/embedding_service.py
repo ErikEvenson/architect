@@ -7,8 +7,10 @@ embeddings (~300MB RAM vs ~3GB for PyTorch-backed sentence-transformers).
 import asyncio
 import gc
 import os
+import random
 import time
 from pathlib import Path
+from urllib.parse import urlparse
 
 import httpx
 import numpy as np
@@ -48,9 +50,67 @@ _reindex_progress: dict = {
     "total_batches": 0,
     "vendor_docs_fetched": 0,
     "vendor_docs_total": 0,
+    "vendor_docs_failed": 0,
+    "vendor_docs_failed_by_host": {},
     "uploads_processed": 0,
     "uploads_total": 0,
 }
+
+VENDOR_FETCH_USER_AGENT = os.environ.get(
+    "VENDOR_FETCH_USER_AGENT",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+)
+VENDOR_FETCH_MAX_RETRIES = int(os.environ.get("VENDOR_FETCH_MAX_RETRIES", "2"))
+VENDOR_FETCH_BACKOFF_BASE = float(os.environ.get("VENDOR_FETCH_BACKOFF_BASE", "1.0"))
+
+
+class _FetchOutcome:
+    __slots__ = ("chunks", "error", "host")
+
+    def __init__(self, chunks=None, error: str = "", host: str = "unknown"):
+        self.chunks = chunks
+        self.error = error
+        self.host = host
+
+
+async def _fetch_vendor_url(http_client: "httpx.AsyncClient", url_info: dict) -> _FetchOutcome:
+    """Fetch a single vendor doc with exponential-backoff retries for transient errors.
+
+    Transient: connection/TLS errors, read timeouts, empty 200 body, HTTP 429/5xx.
+    Permanent: 4xx other than 429, non-HTML content, parse failures. Not retried.
+    """
+    url = url_info["url"]
+    host = urlparse(url).hostname or "unknown"
+    last_err = ""
+    for attempt in range(VENDOR_FETCH_MAX_RETRIES + 1):
+        try:
+            resp = await http_client.get(url)
+            status = resp.status_code
+            if status == 200 and resp.text:
+                content_type = resp.headers.get("content-type", "")
+                if "text" in content_type or "html" in content_type:
+                    chunks = parse_vendor_doc_content(
+                        url=url,
+                        title=url_info["title"],
+                        content=resp.text,
+                    )
+                    return _FetchOutcome(chunks=chunks, host=host)
+                return _FetchOutcome(error=f"non-text content-type: {content_type}", host=host)
+            if status == 200 and not resp.text:
+                last_err = "empty body on 200"
+            elif status == 429 or 500 <= status < 600:
+                last_err = f"HTTP {status}"
+            else:
+                return _FetchOutcome(error=f"HTTP {status}", host=host)
+        except (httpx.TransportError, httpx.TimeoutException) as e:
+            last_err = f"{type(e).__name__}: {e}"
+        except Exception as e:
+            return _FetchOutcome(error=f"{type(e).__name__}: {e}", host=host)
+        if attempt < VENDOR_FETCH_MAX_RETRIES:
+            backoff = VENDOR_FETCH_BACKOFF_BASE * (2 ** attempt)
+            await asyncio.sleep(backoff + random.uniform(0, 0.25))
+    return _FetchOutcome(error=last_err or "max retries exceeded", host=host)
 
 MODEL_DIR = Path(os.environ.get("EMBEDDING_MODEL_DIR", "/app/model-cache/onnx"))
 
@@ -184,6 +244,8 @@ def _reset_progress():
         "total_batches": 0,
         "vendor_docs_fetched": 0,
         "vendor_docs_total": 0,
+        "vendor_docs_failed": 0,
+        "vendor_docs_failed_by_host": {},
         "uploads_processed": 0,
         "uploads_total": 0,
     }
@@ -342,30 +404,28 @@ async def reindex_knowledge(
             async with semaphore:
                 if _reindex_cancelled:
                     return
-                try:
-                    resp = await http_client.get(url_info["url"])
-                    if resp.status_code == 200:
-                        content_type = resp.headers.get("content-type", "")
-                        if "text" in content_type or "html" in content_type:
-                            doc_chunks = parse_vendor_doc_content(
-                                url=url_info["url"],
-                                title=url_info["title"],
-                                content=resp.text,
-                            )
-                            async with vendor_lock:
-                                vendor_chunks.extend(doc_chunks)
-                                vendor_doc_count += 1
-                                _reindex_progress["vendor_docs_fetched"] = vendor_doc_count
-                except Exception as e:
-                    async with vendor_lock:
-                        errors.append(f"Failed to fetch {url_info['url']}: {e}")
-                    logger.warning(
-                        "Failed to fetch vendor doc",
-                        url=url_info["url"],
-                        error=str(e),
-                    )
+                outcome = await _fetch_vendor_url(http_client, url_info)
+                async with vendor_lock:
+                    if outcome.chunks is not None:
+                        vendor_chunks.extend(outcome.chunks)
+                        vendor_doc_count += 1
+                        _reindex_progress["vendor_docs_fetched"] = vendor_doc_count
+                    else:
+                        errors.append(f"Failed to fetch {url_info['url']}: {outcome.error}")
+                        _reindex_progress["vendor_docs_failed"] += 1
+                        by_host = _reindex_progress["vendor_docs_failed_by_host"]
+                        by_host[outcome.host] = by_host.get(outcome.host, 0) + 1
+                        logger.warning(
+                            "Failed to fetch vendor doc",
+                            url=url_info["url"],
+                            error=outcome.error,
+                        )
 
-        async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as http_client:
+        async with httpx.AsyncClient(
+            timeout=30.0,
+            follow_redirects=True,
+            headers={"User-Agent": VENDOR_FETCH_USER_AGENT},
+        ) as http_client:
             tasks = [_fetch_one(http_client, url_info) for url_info in vendor_urls]
             await asyncio.gather(*tasks)
 
