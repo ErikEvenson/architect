@@ -42,6 +42,8 @@ Opsgenie integration is a critical architectural component for incident manageme
 
 ## See Also
 
+- `providers/atlassian/jsm-operations.md` -- SLA engine mechanics, automation rule limits, queue design, approvals, linked-issue discipline
+- `providers/servicenow/itsm-operations.md` -- ServiceNow operational parity (SLA engine, hold_reason, Performance Analytics)
 - `general/itsm-integration.md` -- general ITSM integration patterns and boundary decisions
 - `general/managed-services-scoping.md` -- managed services scope definition and ITSM tool selection
 

@@ -357,6 +357,7 @@ nav:
     - ITSM Operations: providers/servicenow/itsm-operations.md
   - Atlassian:
     - Jira Service Management: providers/atlassian/itsm.md
+    - JSM Operations: providers/atlassian/jsm-operations.md
   - Datadog:
     - Observability: providers/datadog/observability.md
   - Dynatrace:
