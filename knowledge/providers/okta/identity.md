@@ -44,6 +44,9 @@ Rate limiting is a frequently overlooked operational concern. Okta enforces stri
 
 ## See Also
 
+- `providers/okta/saml-and-oidc-config.md` -- SAML/OIDC configuration patterns, NameID, group claims, client types
+- `providers/okta/lifecycle-management.md` -- SCIM provisioning, group rules, profile mastering, Workflows
+- `providers/okta/mfa-and-policies.md` -- sign-on and authentication policies, FastPass, FIDO2, network zones
 - `general/identity.md` -- cross-platform identity and access management patterns
 - `general/tier0-security-enclaves.md` -- Tier 0 security enclave design and hardening
 - `providers/microsoft/active-directory.md` -- Active Directory integration with Okta (AD agent)
