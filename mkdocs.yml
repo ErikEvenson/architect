@@ -354,6 +354,7 @@ nav:
     - Networking: providers/juniper/networking.md
   - ServiceNow:
     - ITSM: providers/servicenow/itsm.md
+    - ITSM Operations: providers/servicenow/itsm-operations.md
   - Atlassian:
     - Jira Service Management: providers/atlassian/itsm.md
   - Datadog:

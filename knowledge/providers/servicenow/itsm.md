@@ -61,6 +61,7 @@ ServiceNow's AI integration layer consists of two components:
 
 ## See Also
 
+- `providers/servicenow/itsm-operations.md` -- SLA engine, hold_reason, Performance Analytics, state model, and automation placement
 - `general/itsm-integration.md` -- general ITSM integration patterns and boundary decisions
 - `general/managed-services-scoping.md` -- managed services scope definition and ITSM boundary decisions
 - `general/ai-ml-services.md` -- cross-provider AI service strategy (model selection, RAG, cost patterns)
