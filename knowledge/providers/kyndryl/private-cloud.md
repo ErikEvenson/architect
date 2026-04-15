@@ -84,6 +84,7 @@ Kyndryl Private Cloud converts infrastructure from a capital expenditure to an o
 
 ## See Also
 
+- `providers/kyndryl/bridge.md` -- Kyndryl Bridge, the managed-services delivery / AIOps platform (separate product layer from KPC)
 - `providers/nutanix/infrastructure.md` -- Nutanix HCI platform decisions (if KPC uses Nutanix AHV)
 - `providers/nutanix/nc2-azure.md` -- NC2 on Azure (alternative to KPC for Nutanix workloads in Azure)
 - `providers/vmware/hypervisor.md` -- VMware hypervisor decisions (if KPC uses vSphere)

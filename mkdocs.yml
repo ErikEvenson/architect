@@ -183,6 +183,7 @@ nav:
     - Cloud: providers/kopano/cloud.md
   - Kyndryl:
     - Private Cloud (KPC): providers/kyndryl/private-cloud.md
+    - Bridge: providers/kyndryl/bridge.md
   - HPE:
     - ProLiant Servers: providers/hpe/proliant.md
     - Synergy: providers/hpe/synergy.md
