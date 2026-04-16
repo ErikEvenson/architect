@@ -12,7 +12,7 @@ AWS virtual machine compute and auto-scaling. Covers instance families (includin
 - [ ] **[Recommended]** Are Spot Instances used for fault-tolerant workloads with Spot placement scores checked and interruption handling implemented?
 - [ ] **[Critical]** Is the instance type selected using the correct family for the workload? (compute-optimized C series, memory-optimized R series, general-purpose M series, Graviton4 R8g/M8g/C8g for best price-performance)
 - [ ] **[Recommended]** Use attribute-based instance type selection (ABS) in ASG mixed instance policies to specify instance requirements (vCPUs, memory, architecture, network bandwidth) instead of explicit instance type lists; ASG automatically selects matching instance types across families, improving Spot availability and simplifying capacity management across instance generations
-- [ ] **[Recommended]** Are AMIs hardened, patched, and built via a pipeline (EC2 Image Builder or Packer) with golden AMI versioning?
+- [ ] **[Recommended]** Are AMIs hardened, patched, and built via a pipeline (EC2 Image Builder or Packer) with golden AMI versioning? (See `providers/aws/ec2-image-builder.md` for the AWS-native pipeline checklist; `providers/hashicorp/packer.md` for the multi-cloud alternative.)
 - [ ] **[Critical]** Is instance metadata service v2 (IMDSv2) enforced to prevent SSRF-based credential theft?
 - [ ] **[Recommended]** Are EBS volumes encrypted with customer-managed KMS keys, and are gp3 volumes used instead of gp2 for cost and performance?
 - [ ] **[Optional]** Are placement groups used where needed? (cluster for low-latency, spread for HA, partition for large distributed workloads)
@@ -56,3 +56,4 @@ EC2 and ASG configuration directly affects availability, performance, and cost. 
 - `providers/aws/observability.md` -- CloudWatch monitoring and alarms for EC2/ASG metrics
 - `providers/aws/iam.md` -- Instance profiles and IMDSv2 for EC2 credential management
 - `providers/aws/storage.md` -- AWS block and file storage (EBS volume types, EFS, FSx) for EC2-attached storage
+- `providers/aws/ec2-image-builder.md` -- AWS-native golden AMI pipeline (recipes, components, distribution, lifecycle) consumed by ASG launch templates
