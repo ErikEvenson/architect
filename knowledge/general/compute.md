@@ -66,7 +66,7 @@ OS lifecycle management is the most frequently deferred compute decision and the
 
 **Options:**
 - **In-place patching with maintenance windows:** Patch running instances during scheduled windows. Simple, requires reboot scheduling. Creates drift over time as instances accumulate unique patch histories. Tools: AWS SSM Patch Manager, WSUS, Ansible.
-- **Immutable image replacement:** Build new golden images (AMI, VM template) via CI/CD pipeline, replace instances via rolling deployment. No drift, fully reproducible. Requires image pipeline investment and longer deployment time. Tools: Packer, EC2 Image Builder, Azure Image Builder.
+- **Immutable image replacement:** Build new golden images (AMI, VM template) via CI/CD pipeline, replace instances via rolling deployment. No drift, fully reproducible. Requires image pipeline investment and longer deployment time. Tools: Packer (`providers/hashicorp/packer.md`), EC2 Image Builder (`providers/aws/ec2-image-builder.md`), Azure Image Builder.
 - **Container base image updates:** Rebuild container images with updated base images, redeploy via Kubernetes rolling update. Fastest patch cycle, but only patches the container OS — host node OS requires separate patching via node rotation (EKS managed node group updates, GKE auto-upgrade).
 
 **Recommendation:** Use immutable image replacement for production workloads and container base image updates for Kubernetes. Reserve in-place patching for legacy workloads that cannot be rebuilt from automation. Regardless of strategy, scan images with vulnerability scanners (Trivy, Qualys, Nessus) before deployment.

@@ -97,6 +97,7 @@ nav:
     - IAM: providers/aws/iam.md
     - RDS & Aurora: providers/aws/rds-aurora.md
     - EC2 & ASG: providers/aws/ec2-asg.md
+    - EC2 Image Builder: providers/aws/ec2-image-builder.md
     - ElastiCache: providers/aws/elasticache.md
     - CloudFront & WAF: providers/aws/cloudfront-waf.md
     - Observability: providers/aws/observability.md

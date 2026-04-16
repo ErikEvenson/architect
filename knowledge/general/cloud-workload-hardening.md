@@ -94,10 +94,10 @@ Notes:
                     registry
 
 Pipeline Tools by Cloud:
-  AWS:   EC2 Image Builder + Inspector + SSM
+  AWS:   EC2 Image Builder + Inspector + SSM   (see providers/aws/ec2-image-builder.md)
   Azure: Azure Image Builder + Defender for Cloud
   GCP:   Packer + Cloud Build + VM Manager
-  Multi: Packer + Ansible + OpenSCAP (cloud-agnostic)
+  Multi: Packer + Ansible + OpenSCAP (cloud-agnostic; see providers/hashicorp/packer.md)
 ```
 
 ### Cloud-Native Security Posture Tools

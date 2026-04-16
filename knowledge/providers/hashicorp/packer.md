@@ -143,3 +143,4 @@ CI triggers on changes to Packer templates or provisioning scripts. Parallel bui
 - `general/ci-cd.md` -- CI/CD pipeline integration for image builds
 - `providers/hashicorp/terraform.md` -- Terraform referencing Packer-built images
 - `providers/ansible/configuration.md` -- Ansible as Packer provisioner
+- `providers/aws/ec2-image-builder.md` -- AWS-native alternative for AWS-only shops (Inspector integration, lifecycle policies, cross-region KMS handling)

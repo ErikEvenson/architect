@@ -55,7 +55,7 @@ PCI DSS (Payment Card Industry Data Security Standard) v4.0.1 applies to any ent
 | Control | AWS | Azure | GCP |
 |---------|-----|-------|-----|
 | Configuration management | AWS Config, Systems Manager | Azure Policy, Azure Automation | Organization Policy, OS Config |
-| Hardened images | EC2 Image Builder, CIS AMIs | Azure Image Builder, CIS images | Custom Images, Shielded VMs |
+| Hardened images | EC2 Image Builder (`providers/aws/ec2-image-builder.md`), CIS AMIs | Azure Image Builder, CIS images | Custom Images, Shielded VMs |
 | Secrets management | Secrets Manager, Parameter Store | Key Vault | Secret Manager |
 | Configuration compliance | AWS Config Rules, Security Hub | Azure Policy, Defender for Cloud | Security Command Center |
 | Inventory management | AWS Config, Systems Manager Inventory | Azure Resource Graph | Cloud Asset Inventory |
