@@ -203,6 +203,7 @@ nav:
     - In-Place AHV Conversion: providers/nutanix/in-place-conversion.md
     - NC2 on Azure: providers/nutanix/nc2-azure.md
     - Prism Central at Scale: providers/nutanix/prism-central-scale.md
+    - Operations: providers/nutanix/operations.md
     - Certifications: providers/nutanix/certifications.md
   - VMware:
     - Infrastructure: providers/vmware/infrastructure.md
@@ -215,6 +216,7 @@ nav:
     - Observability: providers/vmware/observability.md
     - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
     - VCF 5.x to 9.0 Upgrade: providers/vmware/vcf-upgrade-5-to-9.md
+    - Operations: providers/vmware/operations.md
     - Licensing: providers/vmware/licensing.md
     - NSX DFW Design: providers/vmware/nsx-dfw-design.md
     - VMC on AWS: providers/vmware/vmc-aws.md
@@ -234,6 +236,7 @@ nav:
     - Heat (IaC): providers/openstack/heat.md
     - Deployment Tools: providers/openstack/deployment-tools.md
     - Control Plane HA: providers/openstack/control-plane-ha.md
+    - Operations: providers/openstack/operations.md
     - Certifications: providers/openstack/certifications.md
   - OpenShift:
     - Infrastructure: providers/openshift/infrastructure.md
@@ -244,6 +247,7 @@ nav:
     - Security: providers/openshift/security.md
     - CI/CD: providers/openshift/ci-cd.md
     - Observability: providers/openshift/observability.md
+    - Operations: providers/openshift/operations.md
     - Certifications: providers/openshift/certifications.md
   - Confluent:
     - Kafka: providers/confluent/kafka.md
@@ -269,6 +273,7 @@ nav:
     - Security: providers/kubernetes/security.md
     - Observability: providers/kubernetes/observability.md
     - Operations: providers/kubernetes/operations.md
+    - Incident Response: providers/kubernetes/incident-response.md
     - K3s: providers/kubernetes/k3s.md
     - Docker Desktop: providers/kubernetes/docker-desktop.md
     - Secrets Management: providers/kubernetes/secrets-management.md
