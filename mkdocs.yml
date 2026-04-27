@@ -285,6 +285,7 @@ nav:
     - Portworx: providers/purestorage/portworx.md
   - Ceph:
     - Storage: providers/ceph/storage.md
+    - Operations: providers/ceph/operations.md
   - Pulumi:
     - IaC: providers/pulumi/iac.md
   - Hystax:
