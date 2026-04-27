@@ -98,8 +98,13 @@ Post-incident review is where operational maturity compounds. Organizations that
 
 This file covers the **framework** layer of operational runbooks -- structure, severity classification, automation decisions, postmortem process. The **implementation** layer -- the concrete commands, diagnostic-capture flows, daemon-level troubleshooting, and pre-flight branching for a specific provider -- lives in per-provider operations files. When designing a runbook for a particular technology, load both the framework guidance here and the per-provider operations file alongside it.
 
-- `providers/ceph/operations.md` -- Ceph: information-only vs change-control commands, OSD-down branching, admin-socket flows, `noout` discipline, cephadm vs non-containerized vs Rook restart procedures
-- `providers/kubernetes/operations.md` -- Kubernetes: Helm/Kustomize, GitOps, cluster upgrades, etcd backup/restore, debugging workflows
+- `providers/ceph/operations.md` -- Ceph: OSD-down branching, admin-socket flows, `noout` discipline, cephadm vs non-containerized vs Rook restart procedures
+- `providers/openstack/operations.md` -- OpenStack: control-plane triage order, Galera quorum-loss recovery, RabbitMQ split-brain, Neutron agent flapping, Keystone Fernet keys
+- `providers/kubernetes/operations.md` -- Kubernetes lifecycle: Helm/Kustomize, GitOps, cluster upgrades, etcd backup strategy
+- `providers/kubernetes/incident-response.md` -- Kubernetes runtime: pod stuck Pending, CrashLoopBackOff, node NotReady, etcd quorum loss, control-plane recovery
+- `providers/openshift/operations.md` -- OpenShift: ClusterOperator degraded, MCO degraded pools, CVO stuck upgrades, OLM subscription failures, etcd disaster recovery
+- `providers/vmware/operations.md` -- VMware: VCSA File-Based Backup recovery, ESXi PSOD capture, vSAN object inaccessibility, vSphere HA cause vs effect
+- `providers/nutanix/operations.md` -- Nutanix: CVM down branching, `cluster stop`/`start`, AOS upgrade rollback, Prism Central recovery, NCC-first triage
 - `providers/atlassian/jsm-operations.md` -- Jira Service Management: SLA mechanics, automation rule limits, queue design, linked-issue discipline
 - `providers/servicenow/itsm-operations.md` -- ServiceNow: SLA engine, `hold_reason`, Performance Analytics, state model
 - `providers/okta/lifecycle-management.md` -- Okta: lifecycle states, deactivation flows, Universal Directory mappings
