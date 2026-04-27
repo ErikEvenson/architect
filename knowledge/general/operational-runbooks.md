@@ -94,6 +94,16 @@ Post-incident review is where operational maturity compounds. Organizations that
 - [Litmus Chaos](https://litmuschaos.io/)
 - [OpenSLO](https://openslo.com/)
 
+## Per-Provider Operations Files
+
+This file covers the **framework** layer of operational runbooks -- structure, severity classification, automation decisions, postmortem process. The **implementation** layer -- the concrete commands, diagnostic-capture flows, daemon-level troubleshooting, and pre-flight branching for a specific provider -- lives in per-provider operations files. When designing a runbook for a particular technology, load both the framework guidance here and the per-provider operations file alongside it.
+
+- `providers/ceph/operations.md` -- Ceph: information-only vs change-control commands, OSD-down branching, admin-socket flows, `noout` discipline, cephadm vs non-containerized vs Rook restart procedures
+- `providers/kubernetes/operations.md` -- Kubernetes: Helm/Kustomize, GitOps, cluster upgrades, etcd backup/restore, debugging workflows
+- `providers/atlassian/jsm-operations.md` -- Jira Service Management: SLA mechanics, automation rule limits, queue design, linked-issue discipline
+- `providers/servicenow/itsm-operations.md` -- ServiceNow: SLA engine, `hold_reason`, Performance Analytics, state model
+- `providers/okta/lifecycle-management.md` -- Okta: lifecycle states, deactivation flows, Universal Directory mappings
+
 ## See Also
 
 - `general/observability.md` — Alerting, SLO frameworks, and on-call tooling that trigger and inform runbooks
