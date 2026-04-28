@@ -56,3 +56,4 @@ PowerEdge servers are the most widely deployed x86 server platform globally. Con
 - `general/hardware-vendor-partnerships.md` -- vendor partnership and support considerations
 - `providers/dell/vxrail.md` -- Dell VxRail HCI (PowerEdge-based)
 - `providers/vmware/infrastructure.md` -- VMware vSphere on PowerEdge servers
+- `patterns/dell-hybrid-cloud.md` -- Dell-anchored hybrid cloud pattern (Azure Arc enrollment of PowerEdge, APEX integration)

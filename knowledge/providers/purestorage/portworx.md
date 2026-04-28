@@ -65,3 +65,4 @@ Portworx licensing is per-node and can become expensive at scale. The free PX-Es
 - `providers/purestorage/flashblade.md` — FlashBlade file/object storage
 - `providers/kubernetes/storage.md` — Kubernetes CSI and persistent storage patterns
 - `providers/ceph/storage.md` — Ceph distributed storage (alternative to Portworx)
+- `patterns/pure-hybrid-cloud.md` — Pure-Storage-anchored hybrid pattern (Portworx as the Kubernetes data plane spanning environments)

@@ -128,8 +128,10 @@ Hybrid cloud is a transitional or permanent state for most enterprises, not a te
 When the on-prem side is anchored on a specific vendor's infrastructure, the generic hybrid pattern composes with vendor-specific integration points (control planes, SD-WAN backbones, identity bridges, workload-mobility tooling, observability layers). Per-vendor hybrid pattern files cover that connecting layer:
 
 - `patterns/hpe-hybrid-cloud.md` -- HPE-anchored hybrid: GreenLake Central, Aruba EdgeConnect SD-WAN, Azure Arc / AWS Outposts / Anthos integration, Zerto / Morpheus / OpsRamp
-
-(Other vendor-anchored hybrid patterns -- Dell APEX, Cisco Intersight, Lenovo TruScale, Pure-as-a-Service -- are pending; see open knowledge-gap issues.)
+- `patterns/dell-hybrid-cloud.md` -- Dell-anchored hybrid: APEX Console, Dell-Microsoft alliance (APEX Cloud Platform for Microsoft Azure), PowerProtect Data Manager + Cyber Recovery, CloudIQ
+- `patterns/cisco-hybrid-cloud.md` -- Cisco-anchored hybrid (compute and network led): Intersight, Catalyst SD-WAN with cloud onramps, UCS X-Series, ThousandEyes + AppDynamics, ISE / Duo
+- `patterns/lenovo-hybrid-cloud.md` -- Lenovo-anchored hybrid (Microsoft-aligned): TruScale, ThinkAgile MX (Azure Stack HCI on Lenovo), XClarity One, Veeam partnership
+- `patterns/pure-hybrid-cloud.md` -- Pure-Storage-anchored hybrid (storage-led; composes with a compute-anchored pattern): Cloud Block Store, ActiveCluster, CloudSnap, Portworx, Pure1
 
 ## See Also
 

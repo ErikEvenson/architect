@@ -61,3 +61,4 @@ The Evergreen//Forever model means the array hardware is refreshed every 3 years
 - `providers/purestorage/portworx.md` — Portworx Kubernetes-native storage
 - `providers/vmware/storage.md` — VMware storage integration including vVols
 - `providers/kubernetes/storage.md` — Kubernetes CSI and persistent storage
+- `patterns/pure-hybrid-cloud.md` — Pure-Storage-anchored hybrid pattern (Cloud Block Store, ActiveCluster, CloudSnap, composes with compute-anchored hybrid)

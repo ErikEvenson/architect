@@ -60,3 +60,4 @@ The //S vs //E selection significantly impacts both cost and performance. Deploy
 - `providers/purestorage/portworx.md` — Portworx Kubernetes-native storage
 - `providers/veeam/backup.md` — Veeam backup integration with FlashBlade targets
 - `providers/commvault/backup.md` — Commvault backup integration
+- `patterns/pure-hybrid-cloud.md` — Pure-Storage-anchored hybrid pattern (CloudSnap, cross-environment object storage, data mobility)
