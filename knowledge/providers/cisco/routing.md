@@ -49,3 +49,4 @@ Routing architecture determines how traffic flows between sites, to the internet
 - `providers/cisco/switching.md` -- Cisco switching platforms and campus/DC fabric
 - `providers/cisco/meraki.md` -- Cisco Meraki SD-WAN (cloud-managed alternative)
 - `general/wan-design.md` -- general WAN architecture patterns
+- `patterns/cisco-hybrid-cloud.md` -- Cisco-anchored hybrid cloud pattern (Catalyst SD-WAN with cloud onramps, end-to-end Cisco hybrid)

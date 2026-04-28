@@ -52,5 +52,7 @@ APEX represents Dell's shift to as-a-service consumption, competing with HPE Gre
 - `providers/dell/powerscale.md` -- PowerScale (underlies APEX File Storage)
 - `providers/vmware/vcf-sddc-manager.md` -- VCF lifecycle management
 - `patterns/private-cloud-as-a-service.md` -- as-a-service infrastructure patterns
+- `patterns/dell-hybrid-cloud.md` -- Dell-anchored hybrid cloud pattern: APEX Console as cross-environment control plane, Dell-Microsoft alliance, PowerProtect / Cyber Recovery, CloudIQ
+- `patterns/hybrid-cloud.md` -- generic vendor-neutral hybrid cloud pattern (the layer above)
 - `general/cost.md` -- cost modeling and CapEx vs OpEx considerations
 - `general/finops.md` -- FinOps practices for consumption-based infrastructure

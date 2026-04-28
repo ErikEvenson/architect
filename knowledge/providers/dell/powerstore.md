@@ -54,3 +54,4 @@ PowerStore is Dell's modern midrange storage platform, replacing VNX, Unity, and
 - `providers/dell/powerscale.md` -- Dell PowerScale for scale-out NAS workloads
 - `providers/dell/vxrail.md` -- Dell VxRail HCI with PowerStore external storage integration
 - `providers/vmware/storage.md` -- VMware storage integration (vVols, VMFS, NFS)
+- `patterns/dell-hybrid-cloud.md` -- Dell-anchored hybrid cloud pattern (PowerProtect / Cyber Recovery, cross-environment data mobility)

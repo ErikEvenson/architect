@@ -47,3 +47,4 @@ Cisco UCS introduced the concept of stateless computing with service profiles, w
 - `providers/cisco/switching.md` -- Cisco switching and fabric interconnect uplink design
 - `providers/vmware/infrastructure.md` -- VMware on UCS deployment considerations
 - `providers/nutanix/infrastructure.md` -- Nutanix on UCS C-Series deployment
+- `patterns/cisco-hybrid-cloud.md` -- Cisco-anchored hybrid cloud pattern (Intersight as cross-environment management, X-Series, ThousandEyes, AppDynamics)

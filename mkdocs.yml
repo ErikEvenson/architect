@@ -434,6 +434,10 @@ nav:
     - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
     - HPE Hybrid Cloud: patterns/hpe-hybrid-cloud.md
+    - Dell Hybrid Cloud: patterns/dell-hybrid-cloud.md
+    - Cisco Hybrid Cloud: patterns/cisco-hybrid-cloud.md
+    - Lenovo Hybrid Cloud: patterns/lenovo-hybrid-cloud.md
+    - Pure Hybrid Cloud: patterns/pure-hybrid-cloud.md
     - Event-Driven: patterns/event-driven.md
     - Multi-Cloud: patterns/multi-cloud.md
     - Edge Computing: patterns/edge-computing.md
