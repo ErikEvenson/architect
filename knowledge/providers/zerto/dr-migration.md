@@ -74,4 +74,5 @@ Since HPE's acquisition of Zerto in 2021, the product has been integrated into H
 - `providers/aws/disaster-recovery.md` — AWS Elastic Disaster Recovery and cross-region DR patterns
 - `providers/azure/disaster-recovery.md` — Azure Site Recovery and AVS DR patterns
 - `patterns/disaster-recovery-implementations.md` — pilot light, warm standby, hot standby, and active-active patterns
+- `patterns/hpe-hybrid-cloud.md` — HPE-anchored hybrid pattern positioning Zerto for cross-environment DR (HPE acquired Zerto and bundles it for hybrid use cases)
 - `general/ransomware-resilience.md` — ransomware recovery patterns where Zerto journal-based recovery is a key capability

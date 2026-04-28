@@ -433,6 +433,7 @@ nav:
     - Static Site: patterns/static-site.md
     - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
+    - HPE Hybrid Cloud: patterns/hpe-hybrid-cloud.md
     - Event-Driven: patterns/event-driven.md
     - Multi-Cloud: patterns/multi-cloud.md
     - Edge Computing: patterns/edge-computing.md
