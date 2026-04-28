@@ -123,6 +123,14 @@ Hybrid cloud is a transitional or permanent state for most enterprises, not a te
 - **Edge + Cloud**: edge processing on-prem, aggregation and analytics in cloud
 - **Lift and Shift → Refactor**: migrate first, optimize later
 
+## Vendor-Anchored Variants
+
+When the on-prem side is anchored on a specific vendor's infrastructure, the generic hybrid pattern composes with vendor-specific integration points (control planes, SD-WAN backbones, identity bridges, workload-mobility tooling, observability layers). Per-vendor hybrid pattern files cover that connecting layer:
+
+- `patterns/hpe-hybrid-cloud.md` -- HPE-anchored hybrid: GreenLake Central, Aruba EdgeConnect SD-WAN, Azure Arc / AWS Outposts / Anthos integration, Zerto / Morpheus / OpsRamp
+
+(Other vendor-anchored hybrid patterns -- Dell APEX, Cisco Intersight, Lenovo TruScale, Pure-as-a-Service -- are pending; see open knowledge-gap issues.)
+
 ## See Also
 
 - `patterns/multi-cloud.md` — Multi-cloud architecture using multiple public cloud providers

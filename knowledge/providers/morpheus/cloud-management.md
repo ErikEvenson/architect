@@ -55,4 +55,5 @@ A cloud management platform sits at the control plane of the entire infrastructu
 - `providers/hashicorp/terraform.md` -- Terraform integration for IaC-driven provisioning
 - `providers/kubernetes/compute.md` -- Kubernetes cluster management considerations
 - `patterns/hybrid-cloud.md` -- hybrid cloud architecture patterns
+- `patterns/hpe-hybrid-cloud.md` -- HPE-anchored hybrid pattern positioning Morpheus as the cross-environment orchestrator (HPE acquired Morpheus)
 - `patterns/multi-cloud.md` -- multi-cloud architecture patterns

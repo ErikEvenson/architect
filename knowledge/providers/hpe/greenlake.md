@@ -52,3 +52,5 @@ GreenLake is HPE's strategic direction for delivering infrastructure as a servic
 - `providers/hpe/nimble-alletra.md` -- Nimble/Alletra storage arrays available via GreenLake
 - `general/cost.md` -- general cost optimization patterns
 - `patterns/private-cloud-as-a-service.md` -- private cloud as-a-service delivery pattern
+- `patterns/hpe-hybrid-cloud.md` -- HPE-anchored hybrid cloud pattern: GreenLake-to-AWS/Azure/GCP integration, Aruba SD-WAN backbone, Azure Arc, identity bridging, Zerto/Morpheus/OpsRamp
+- `patterns/hybrid-cloud.md` -- generic vendor-neutral hybrid cloud pattern (the layer above)
