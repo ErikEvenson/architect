@@ -295,6 +295,8 @@ nav:
     - IaC: providers/pulumi/iac.md
   - Hystax:
     - Migration & DR: providers/hystax/migration.md
+  - Skytap:
+    - Cloud (Kyndryl Cloud Uplift): providers/skytap/cloud.md
   - Zerto:
     - DR & Migration: providers/zerto/dr-migration.md
   - Zoom:
