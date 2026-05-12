@@ -298,6 +298,8 @@ nav:
     - IaC: providers/pulumi/iac.md
   - Hystax:
     - Migration & DR: providers/hystax/migration.md
+  - IBM:
+    - Power Virtual Server (PowerVS): providers/ibm/powervs.md
   - Skytap:
     - Cloud (Kyndryl Cloud Uplift): providers/skytap/cloud.md
   - Zerto:
