@@ -214,6 +214,7 @@ nav:
     - Security: providers/vmware/security.md
     - Platform Services: providers/vmware/platform-services.md
     - Observability: providers/vmware/observability.md
+    - Aria Suite (vRealize / VCF Operations and Automation): providers/vmware/aria-suite.md
     - VCF / SDDC Manager: providers/vmware/vcf-sddc-manager.md
     - VCF 5.x to 9.0 Upgrade: providers/vmware/vcf-upgrade-5-to-9.md
     - Operations: providers/vmware/operations.md
