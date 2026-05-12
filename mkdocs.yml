@@ -185,6 +185,8 @@ nav:
   - Kyndryl:
     - Private Cloud (KPC): providers/kyndryl/private-cloud.md
     - Bridge: providers/kyndryl/bridge.md
+  - IBM:
+    - Power On-Premises (AIX, IBM i): providers/ibm/power-onprem.md
   - HPE:
     - ProLiant Servers: providers/hpe/proliant.md
     - Synergy: providers/hpe/synergy.md
