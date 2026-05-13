@@ -91,3 +91,4 @@ Migration tooling for Power is its own discipline. There is no equivalent of AWS
 - `general/workload-migration.md` -- migration wave methodology and cutover planning
 - `general/disaster-recovery.md` -- DR architecture patterns including replication-based and snapshot-based DR
 - `general/enterprise-backup.md` -- enterprise backup tooling that targets PowerVS as a source or destination
+- `providers/ibm/power-onprem.md` -- on-prem foundation

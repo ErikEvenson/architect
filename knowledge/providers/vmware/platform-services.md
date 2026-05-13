@@ -75,3 +75,4 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 - `providers/vmware/vcf-sddc-manager.md` -- VCF lifecycle and SDDC Manager
 - `providers/vmware/vmc-aws.md` -- VMC on AWS hybrid cloud
 - `providers/vmware/avs-azure.md` -- AVS hybrid cloud
+- `providers/vmware/aria-suite.md` -- unified suite-level treatment, licensing, deployment model
