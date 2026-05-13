@@ -78,3 +78,4 @@ Finally, the deployment-model question (on-prem vs SaaS vs hybrid) has changed c
 - `providers/morpheus/cloud-management.md` -- Morpheus as a CMP alternative to VCF Automation under Broadcom renewal pressure
 - `providers/prometheus-grafana/observability.md` -- Prometheus + Grafana as an alternative to VCF Operations for VMware observability
 - `providers/hashicorp/terraform.md` -- Terraform as an IaC alternative to VCF Automation for VM and infrastructure provisioning
+- `patterns/vmware-servicenow-chargeback.md` -- VMware-specific chargeback integration pattern

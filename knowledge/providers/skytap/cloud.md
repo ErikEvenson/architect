@@ -90,3 +90,5 @@ The recurring-billing trap deserves explicit callout because it is operationally
 - `general/workload-migration.md` -- migration wave methodology and cutover planning
 - `general/disaster-recovery.md` -- DR architecture patterns including replication-based DR
 - `providers/hystax/migration.md` -- third-party migration tooling that can target Skytap for x86 sources
+- `providers/ibm/powervs.md` -- IBM-hosted alternative to Skytap
+- `providers/ibm/power-onprem.md` -- on-prem foundation for both Skytap and PowerVS migrations

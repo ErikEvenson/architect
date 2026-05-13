@@ -49,3 +49,4 @@ VMware environments degrade silently. CPU ready time above 5% indicates VMs are 
 - `providers/vmware/infrastructure.md` -- VMware infrastructure and lifecycle management
 - `providers/vmware/storage.md` -- vSAN health monitoring
 - `providers/prometheus-grafana/observability.md` -- Prometheus/Grafana for external VMware monitoring
+- `providers/vmware/aria-suite.md` -- unified suite-level treatment, licensing, deployment model

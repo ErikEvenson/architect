@@ -66,6 +66,7 @@ ServiceNow's AI integration layer consists of two components:
 - `general/managed-services-scoping.md` -- managed services scope definition and ITSM boundary decisions
 - `general/ai-ml-services.md` -- cross-provider AI service strategy (model selection, RAG, cost patterns)
 - `providers/azure/ai-ml-services.md` -- Azure OpenAI (common LLM backend for Now Assist)
+- `patterns/vmware-servicenow-chargeback.md` -- VMware-specific chargeback integration pattern
 
 ## Reference Links
 

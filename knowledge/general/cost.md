@@ -88,3 +88,4 @@ FinOps — the practice of bringing financial accountability to cloud spending �
 - `general/observability.md` — Monitoring and observability including cost metric dashboards
 - `general/finops.md` — FinOps practices, frameworks, tooling, and organizational cost management at scale
 - `general/cost-onprem.md` — On-premises cost modeling, TCO analysis, hardware depreciation, and cloud comparison frameworks
+- `patterns/vmware-servicenow-chargeback.md` — VMware-specific chargeback integration pattern

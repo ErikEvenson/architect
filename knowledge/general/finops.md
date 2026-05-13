@@ -119,3 +119,4 @@ Commitment discounts represent the single largest optimization lever, offering 3
 - `general/container-orchestration.md` — Kubernetes resource management and cluster design
 - `general/observability.md` — Monitoring and dashboards including cost metric instrumentation
 - `general/compute.md` — Instance type selection, right-sizing, and auto-scaling strategies
+- `patterns/vmware-servicenow-chargeback.md` — VMware-specific chargeback integration pattern
