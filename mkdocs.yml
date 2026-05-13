@@ -187,6 +187,7 @@ nav:
     - Bridge: providers/kyndryl/bridge.md
   - IBM:
     - Power On-Premises (AIX, IBM i): providers/ibm/power-onprem.md
+    - Power Management (HMC, PowerVC, FSP, LPM): providers/ibm/power-management.md
   - HPE:
     - ProLiant Servers: providers/hpe/proliant.md
     - Synergy: providers/hpe/synergy.md
