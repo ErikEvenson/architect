@@ -471,6 +471,7 @@ nav:
     - Managed Cloud Services: patterns/managed-cloud-services.md
     - AWS Data Perimeter: patterns/aws-data-perimeter.md
     - VMware to ServiceNow Chargeback: patterns/vmware-servicenow-chargeback.md
+    - ServiceNow Catalog FinOps Design: patterns/servicenow-catalog-finops-design.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md
