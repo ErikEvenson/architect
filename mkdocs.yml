@@ -300,6 +300,9 @@ nav:
     - Migration & DR: providers/hystax/migration.md
   - IBM:
     - Power Virtual Server (PowerVS): providers/ibm/powervs.md
+    - Cloud Platform (Account, IAM, Regions, Billing, Key Management): providers/ibm/cloud-platform.md
+    - Networking (VPC, Direct Link, Transit Gateway, CIS, VPN): providers/ibm/networking.md
+    - ROKS and IKS (Managed Kubernetes / OpenShift): providers/ibm/roks-iks.md
   - Skytap:
     - Cloud (Kyndryl Cloud Uplift): providers/skytap/cloud.md
   - Zerto:
