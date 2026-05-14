@@ -499,6 +499,7 @@ Alternative Platform TCO (3-5 Year):
 
 ## See Also
 
+- `providers/vmware/vcf-9-overview.md` -- VCF 9.x conversation-level anchor: how licensing conversion gates the path-choice decision
 - `providers/vmware/infrastructure.md` -- VMware infrastructure and VCF editions
 - `providers/nutanix/migration-tools.md` -- migration tooling for VMware exit
 - `patterns/hypervisor-migration.md` -- hypervisor migration patterns

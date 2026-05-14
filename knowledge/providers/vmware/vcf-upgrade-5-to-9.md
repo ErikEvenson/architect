@@ -86,6 +86,7 @@ VCF 5.x to 9.0 is described by Broadcom as "a major architectural shift, not jus
 - [VCF 9.0 Bill of Materials](https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/release-notes/vmware-cloud-foundation-90-release-notes/vmware-cloud-foundation-bill-of-materials.html) -- exact component versions and build numbers
 - [Broadcom Interoperability Matrix](https://interopmatrix.broadcom.com/Upgrade?productId=285) -- supported upgrade paths and compatibility
 - [VCF 9.0 Licensing](https://blogs.vmware.com/cloud-foundation/2025/06/24/licensing-in-vmware-cloud-foundation-9-0/) -- subscription model, per-core pricing, unified license file
+- `providers/vmware/vcf-9-overview.md` -- VCF 9.x conversation-level anchor: path-choice decision map (existing-hardware vs refresh), alternatives, ADR triggers
 - `providers/vmware/vcf-sddc-manager.md` -- VCF deployment, SDDC Manager lifecycle, workload domain design
 - `providers/vmware/licensing.md` -- VMware/Broadcom licensing models and cost analysis
 - `providers/vmware/infrastructure.md` -- core VMware infrastructure including VCF 9.0 changes

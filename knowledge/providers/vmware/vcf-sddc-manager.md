@@ -158,6 +158,7 @@ higher latency tolerance, simpler operations
 
 ## See Also
 
+- `providers/vmware/vcf-9-overview.md` -- VCF 9.x conversation-level anchor: path-choice decision map, alternatives, irreversible transitions
 - `providers/vmware/infrastructure.md` -- VMware infrastructure overview
 - `providers/vmware/licensing.md` -- VCF edition selection and licensing
 - `providers/vmware/networking.md` -- NSX deployment within VCF workload domains
