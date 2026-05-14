@@ -71,6 +71,7 @@ VMware's platform services transform vSphere from a virtualization layer into a 
 
 ## See Also
 
+- `providers/vmware/vcf-9-overview.md` -- VCF 9.x conversation-level anchor: path-choice decision map, alternatives, irreversible transitions
 - `providers/vmware/infrastructure.md` -- VMware core infrastructure
 - `providers/vmware/vcf-sddc-manager.md` -- VCF lifecycle and SDDC Manager
 - `providers/vmware/vmc-aws.md` -- VMC on AWS hybrid cloud
