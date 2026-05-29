@@ -304,4 +304,5 @@ Listing multiple servers makes OpenStack clients distribute keys across them usi
 
 - `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
 - `providers/openstack/deployment-tools.md` -- deployment tools for HA control plane
+- `providers/openstack/controller-lifecycle.md` -- planned day-2 lifecycle: single-node maintenance runbook, Pacemaker/STONITH operation, director/Ironic node replacement
 - `providers/openstack/data-protection.md` -- control plane backup and DR

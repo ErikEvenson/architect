@@ -230,4 +230,5 @@ Single-node, all-in-one OpenStack for developers and CI. Installs services direc
 
 - `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
 - `providers/openstack/control-plane-ha.md` -- HA configuration for deployed control plane
+- `providers/openstack/controller-lifecycle.md` -- director/Ironic day-2 ops, controller node replacement, BMC-IP-change handling, Pacemaker/STONITH operation
 - `providers/ansible/configuration.md` -- Ansible for OpenStack-Ansible (OSA) deployments

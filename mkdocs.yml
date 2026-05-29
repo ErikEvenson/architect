@@ -241,6 +241,7 @@ nav:
     - Heat (IaC): providers/openstack/heat.md
     - Deployment Tools: providers/openstack/deployment-tools.md
     - Control Plane HA: providers/openstack/control-plane-ha.md
+    - Controller Lifecycle & Day-2 Ops: providers/openstack/controller-lifecycle.md
     - Operations: providers/openstack/operations.md
     - Certifications: providers/openstack/certifications.md
   - OpenShift:
