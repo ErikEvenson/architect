@@ -54,6 +54,7 @@ The **`nova evacuate` versus `nova migrate`** distinction is where operators des
 ## See Also
 
 - `providers/openstack/control-plane-ha.md` -- OpenStack HA design: quorum, fencing, load balancers (this file is the operational counterpart)
+- `providers/openstack/controller-lifecycle.md` -- *planned* day-2 changes: single-node hardware maintenance, Pacemaker standby/maintenance-mode, STONITH/Ironic BMC-IP-change handling (this file covers *unplanned* incident triage)
 - `providers/openstack/deployment-tools.md` -- kolla-ansible, OpenStack-Helm, OpenStack-Ansible, TripleO operational specifics
 - `providers/openstack/networking.md` -- Neutron design decisions, OVS vs OVN, ML2 plugins
 - `providers/openstack/storage.md` -- Cinder, Glance, Manila design decisions
