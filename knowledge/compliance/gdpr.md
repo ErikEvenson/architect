@@ -267,4 +267,5 @@ For organizations processing both EU and UK personal data, cloud architectures m
 - `general/governance.md` — Cloud governance and policy enforcement
 - `general/data.md` — Data architecture patterns and data lifecycle management
 - `patterns/backup-lifecycle-synchronization.md` — propagating Article 17 erasure into backups while honoring legal-hold exemptions (Art. 17(3))
+- `general/legal-hold.md` — the preservation gate that overrides erasure for data under litigation hold (Art. 17(3)(e))
 - `compliance/hipaa.md` — HIPAA compliance (complementary when health data involves EU residents)
