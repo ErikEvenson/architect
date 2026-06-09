@@ -60,10 +60,21 @@ Rubrik's API-first design makes it highly automatable, but this also means that 
 
 **Decision factors:** Number of clusters, compliance requirements for SaaS connectivity, need for Radar/Sonar features, multi-site visibility requirements, and organizational policy on cloud management planes.
 
+## Day-2 Operations: Source-Object Lifecycle
+
+The architecture decisions above (cluster sizing, SLA domains, CloudOut) determine *how* data is protected. Implementing backup-lifecycle synchronization (`patterns/backup-lifecycle-synchronization.md`) requires the Rubrik-specific mechanics for removing an object's protection and reclaiming its snapshots. These map onto the pattern's soft and hard action paths.
+
+- **Unassign SLA / Do Not Protect (soft path).** Setting an object to **Do Not Protect** (or unassigning its SLA Domain) stops new snapshots. Rubrik prompts whether to **retain existing snapshots until they expire** (soft reclamation -- snapshots age out under the SLA's retention) or **expire them now**. Choosing retain-until-expiry is the controlled soft path: protection stops, recovery points recede as their SLA retention lapses.
+- **Retention aging (soft enforcement).** Each SLA Domain defines local retention plus archival (CloudOut) and replication retention; snapshots expire automatically once past it. After an object is set to Do Not Protect with retain-existing, its snapshots reclaim on schedule. Verify SLA retention matches the intended reclamation/erasure deadline.
+- **Explicit snapshot expiration (hard path).** For immediate reclamation or right-to-erasure, **expire/delete the object's snapshots** (per-snapshot expire, or "Do Not Protect → do not keep existing snapshots"), including archived copies in CloudOut targets. This is irreversible. The interaction with **Retention Lock / immutable archive (S3 Object Lock, Azure Immutable Blob)** is the gate: a locked snapshot cannot be expired before its lock window ends -- the vendor-side legal-hold/compliance-lock control. The reclamation loop must treat retention-locked objects as non-reclaimable.
+- **SLA inheritance (governs re-protection).** Rubrik objects can inherit an SLA from their place in the source hierarchy (vSphere folder/host/cluster), so a newly created -- or recreated -- object under a protected container is auto-assigned an SLA. A deleted-then-recreated VM with a reused name can be re-protected automatically; key the reclamation loop on the Rubrik **managed object id / source UUID**, not the name (the pattern's join-key discipline), to avoid name-reuse mis-reclamation.
+- **Automation surface.** Rubrik is API-first: the RSC (Polaris) GraphQL API and the cluster REST API drive SLA assignment, Do Not Protect, and snapshot expiration, so the reclamation loop integrates natively. Keep the automation's RBAC scoped (the same least-privilege concern as the architecture checklist) so it can reclaim but not override Retention Lock.
+
 ## See Also
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/ransomware-resilience.md` — Ransomware defense, immutable storage, recovery workflows
+- `patterns/backup-lifecycle-synchronization.md` — end-to-end source-deletion → backup-reclamation pattern these mechanics implement
 
 ## Reference Links
 

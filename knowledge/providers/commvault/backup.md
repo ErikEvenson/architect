@@ -54,10 +54,22 @@ The CommServe is a critical single point of failure. If the CommServe and its da
 
 **Decision factors:** Number of application tiers, RPO per tier, retention requirements (short-term vs. long-term), copy precedence order, auxiliary copy scheduling, and cloud tiering triggers.
 
+## Day-2 Operations: Source-Object Lifecycle
+
+The architecture decisions above (CommServe sizing, storage policies, dedup) determine *how* data is protected. Implementing backup-lifecycle synchronization (`patterns/backup-lifecycle-synchronization.md`) requires the *operational* mechanics of removing a source object's protection and reclaiming its data. These are the Commvault-specific controls that the pattern's soft and hard action paths map onto.
+
+- **Deconfigure vs Delete a client (soft path).** *Deconfigure* a client or VSA virtual machine (Client → Deconfigure, or `qoperation execute` against the client) releases its license and stops new backups while **leaving existing backup data intact to age out under the storage policy's retention rules**. This is the soft-reclamation action: protection stops immediately, data recedes gradually, and the recovery points remain restorable until retention expires. Deleting the client outright removes the client record but, depending on configuration, can orphan its backup data under the storage policy -- which is why deconfigure-then-age-out is the controlled soft path.
+- **Retention aging (the soft path's enforcement).** Backup data is pruned by the **Data Aging** job, which deletes recovery points that have exceeded their storage-policy-copy retention (basic retention `n days / m cycles`, plus any extended-retention rules). After a source object is deconfigured, its data is reclaimed automatically as Data Aging runs -- no explicit delete needed. Verify the copy's retention actually matches the intended reclamation deadline; an over-long retention rule means a deconfigured object's data persists far longer than the cost or erasure target.
+- **Explicit "delete backup data" (hard path).** For immediate reclamation or a right-to-erasure request, browse the object's backup data and **delete the specific job(s)/contents**, or delete the subclient/backupset, then let the next Data Aging job physically prune the deduplicated blocks (logical delete marks data aged; physical space returns when the DDB prunes). This is irreversible and is the hard-reclamation action -- gate it behind the pattern's legal-hold and approval checks before running it.
+- **Auto-discovery / subclient content rules (governs re-protection).** VSA subclients use **auto-discovery rules** (by VM name pattern, by vCenter folder/resource-pool/tag, or rule-based) plus do-not-back-up filters to decide which source VMs are protected. These rules are why a *re-presented* source object behaves predictably: a deleted-then-recreated VM with the same name can be auto-rediscovered and re-protected. Key lifecycle automation on the VM's **stable GUID/instance UUID**, not the display name, and ensure auto-discovery rules and the reclamation loop agree on identity (this is the join-key discipline from the pattern).
+- **Compliance lock (the legal-hold gate, vendor side).** Worm/immutable storage (hardware WORM, cloud Object Lock on an auxiliary copy) and Commvault **legal hold** prevent the hard path from deleting data even when cost/erasure logic requests it -- the vendor-side implementation of the pattern's compliance-lock gate. Reclamation automation must check for an active hold before issuing any delete.
+- **Automation surface.** `qoperation`/`qcommand`, the Command Line interface, and the Commvault REST API expose deconfigure, browse-and-delete, and job operations, so the reclamation loop can drive Commvault programmatically rather than through Command Center clicks.
+
 ## See Also
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/disaster-recovery.md` — DR site design, failover orchestration
+- `patterns/backup-lifecycle-synchronization.md` — end-to-end source-deletion → backup-reclamation pattern these mechanics implement
 
 ## Reference Links
 

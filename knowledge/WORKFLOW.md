@@ -159,6 +159,7 @@ Provider-Specific (scan knowledge/providers/{provider}/*.md for ALL files):
 Pattern-Specific (if applicable):
 [ ] {pattern} — all checklist items from the pattern file
 [ ] hypervisor-migration — if migrating between hypervisors (VMware to Nutanix, etc.)
+[ ] backup-lifecycle-synchronization — if a backup tool protects resources whose source-system lifecycle (create/delete) must drive backup reclamation (orphan/cost/erasure/legal-hold governance)
 
 Compliance (if applicable):
 [ ] {compliance framework} — all Critical items from the compliance file

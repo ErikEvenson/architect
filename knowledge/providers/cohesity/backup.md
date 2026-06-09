@@ -61,10 +61,21 @@ DataLock and FortKnox represent Cohesity's primary ransomware resilience feature
 
 **Decision factors:** Volume of unstructured data currently on NAS/file servers, test/dev environment provisioning frequency, analytics data pipeline requirements, and whether consolidation reduces total infrastructure cost or creates unacceptable risk concentration.
 
+## Day-2 Operations: Source-Object Lifecycle
+
+The architecture decisions above (cluster sizing, protection policies, DataLock) determine *how* data is protected. Implementing backup-lifecycle synchronization (`patterns/backup-lifecycle-synchronization.md`) requires the Cohesity-specific mechanics for unprotecting a source object and reclaiming its snapshots. These map onto the pattern's soft and hard action paths.
+
+- **Unprotect an object (soft path).** Removing a source object (VM, database, NAS share) from its **protection group** stops new snapshots while **leaving existing snapshots to age out under the protection policy's retention**. This is soft reclamation: protection stops now, snapshots recede as retention expires. Whether to also remove the object's entry depends on the protection-group definition (explicitly listed objects vs auto-protected sets, below).
+- **Retention aging (soft enforcement).** Cohesity protection policies define local-snapshot retention plus replication/archival retention; snapshots are garbage-collected once they exceed it. After an object is unprotected, its snapshots reclaim automatically. Confirm the policy retention equals the intended reclamation deadline -- a long compliance retention means an unprotected object's data lingers accordingly.
+- **Explicit snapshot deletion (hard path).** For immediate reclamation or right-to-erasure, **delete the specific protection-run snapshots** for the object (UI per-object snapshot delete, or the REST API). This is irreversible. Note the interaction with **DataLock**: a DataLock/WORM snapshot **cannot** be deleted until its lock expires -- by design, this is the legal-hold/compliance-lock gate enforced at the storage layer, and the reclamation loop must treat a DataLock-protected object as non-reclaimable rather than erroring on a failed delete.
+- **Auto-protection (governs re-protection).** Cohesity **Auto Protect** can include sources by vCenter folder/tag or hierarchy, so newly created (or recreated) objects are picked up automatically, and excludes can hold objects out. A deleted-then-recreated source with a reused name can be auto-reprotected; key the reclamation loop on the source's stable UUID (the pattern's join-key discipline) so a name-reuse does not cause the new object's snapshots to be reclaimed against the old object's deletion.
+- **Automation surface.** The Cohesity REST API and Helios drive unprotect, snapshot deletion, and protection-group membership programmatically, so the reclamation loop can act on Cohesity without manual UI steps. DataLock-override remains restricted to the security-officer role, keeping the legal-hold gate out of the automation's reach by design.
+
 ## See Also
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/ransomware-resilience.md` — Ransomware defense, immutable storage, recovery workflows
+- `patterns/backup-lifecycle-synchronization.md` — end-to-end source-deletion → backup-reclamation pattern these mechanics implement
 
 ## Reference Links
 

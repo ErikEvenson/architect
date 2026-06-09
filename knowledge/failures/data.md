@@ -51,5 +51,6 @@ Data is the most valuable and hardest-to-replace asset in any system. Unlike com
 
 - `general/data.md` — Data architecture patterns and database selection
 - `general/disaster-recovery.md` — Backup, recovery, and business continuity planning
+- `patterns/backup-lifecycle-synchronization.md` — preventing the orphaned-snapshot/backup accumulation above by syncing source-resource deletion to backup reclamation
 - `failures/scaling.md` — Scaling failures that compound data-layer bottlenecks
 - `general/security.md` — Encryption and credential management
