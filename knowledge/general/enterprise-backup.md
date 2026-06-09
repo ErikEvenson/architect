@@ -247,3 +247,4 @@ Production Network                    Isolated Backup Network
 - [security.md](security.md) -- security controls including ransomware protection and data encryption
 - [ransomware-resilience.md](ransomware-resilience.md) -- ransomware-specific resilience architecture, backup isolation, and recovery playbooks
 - `patterns/disaster-recovery-implementations.md` -- DR strategy implementations, failover procedures, and cost comparisons
+- `patterns/backup-lifecycle-synchronization.md` -- syncing source-resource deletion to backup reclamation (orphan/cost/erasure governance)

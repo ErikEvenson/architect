@@ -64,11 +64,23 @@ Veeam's SOBR and immutability features are powerful ransomware defenses, but onl
 
 **Veeam AI Assistant** — AI-powered assistant for backup operations. Provides troubleshooting guidance for backup job failures, configuration recommendations based on environment analysis, and log analysis to identify root causes. Available through the Veeam support portal and integrated into Veeam ONE monitoring. Supplements but does not replace Veeam's knowledge base and support channels.
 
+## Day-2 Operations: Source-Object Lifecycle
+
+The architecture decisions above (proxy/repository design, SOBR, immutability) determine *how* data is protected. Implementing backup-lifecycle synchronization (`patterns/backup-lifecycle-synchronization.md`) requires the Veeam-specific mechanics for removing a machine's protection and reclaiming its restore points. Veeam distinguishes three distinct removal operations that map directly onto the pattern's soft and hard action paths -- and conflating them is the common mistake.
+
+- **Remove from job (soft path).** Removing a machine from its backup job stops new restore points while **leaving existing restore points on the repository to age out under the job's retention (and GFS) policy**. This is soft reclamation: protection stops, data recedes as retention lapses. The machine's existing backup chain remains restorable until it ages off.
+- **Remove from backup vs Remove from configuration vs Delete from disk (the critical distinction).** In *Backups → Disk*, three operations differ: **Remove from configuration** drops the machine from the Veeam database but **leaves the backup files on the repository** (recoverable by re-import); **Remove from backup** removes the machine from the chain going forward; **Delete from disk** **physically deletes the backup files** and is the hard-reclamation action -- irreversible. Lifecycle automation must select deliberately: soft path = stop the job + let retention age out; hard path (erasure/immediate cost) = Delete from disk, gated by the pattern's legal-hold and approval checks.
+- **Retention aging (soft enforcement).** Job retention (restore points) plus GFS (weekly/monthly/yearly) governs automatic pruning. After a machine is removed from its job, its chain reclaims per retention. Confirm retention/GFS equals the intended reclamation deadline -- a multi-year GFS yearly means a removed machine's data persists for years.
+- **Immutability is the legal-hold gate.** A **hardened Linux repository** (XFS immutable flag) or **S3 Object Lock** capacity tier blocks deletion until the immutability period expires -- by design. Delete-from-disk against an immutable restore point will not free it early; the reclamation loop must treat immutable-locked data as non-reclaimable until its lock lapses, which is exactly the compliance-lock gate the pattern requires.
+- **Dynamic job scope (governs re-protection).** Jobs that target vSphere containers (folders, tags, resource pools) rather than explicit VMs will **auto-include a newly created -- or recreated -- VM** that lands in scope. A deleted-then-recreated VM matching a tag/folder is re-protected automatically. Key the reclamation loop on the VM's stable reference (instance UUID / MoRef), not the name, and be aware that some operations (restore to a new VM, certain migrations) change a VM's reference -- the loop must track the identifier Veeam actually uses so it does not mis-correlate.
+- **Automation surface.** The Veeam PowerShell module and the Veeam REST API drive job membership, remove-from-backup, and delete-from-disk programmatically, so the reclamation loop integrates without UI steps. Scope its credentials so it can reclaim but cannot disable repository immutability.
+
 ## See Also
 
 - `general/enterprise-backup.md` — Backup strategy, 3-2-1-1-0 rule, product comparison
 - `general/disaster-recovery.md` — DR site design, failover orchestration
 - `providers/nutanix/data-protection.md` — Nutanix-native backup and replication
+- `patterns/backup-lifecycle-synchronization.md` — end-to-end source-deletion → backup-reclamation pattern these mechanics implement
 
 ## Reference Links
 

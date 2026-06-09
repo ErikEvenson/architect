@@ -297,6 +297,7 @@ The diagram was not wrong -- it accurately showed VMware VMs at the time it was 
 
 - `general/workload-migration.md` -- Migration strategy, wave planning, cutover procedures
 - `general/physical-server-scope.md` -- Physical server assessment and disposition
+- `patterns/backup-lifecycle-synchronization.md` -- orphaned-resource disposition extended to backup data: syncing source-resource deletion to backup reclamation
 - `general/hardware-sizing.md` -- Target environment capacity planning
 - `general/capacity-planning.md` -- Capacity planning methodology
 - `general/cost-onprem.md` -- On-premises cost modeling
