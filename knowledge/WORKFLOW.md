@@ -145,6 +145,7 @@ Conditional General Categories (include when applicable):
 [ ] Database Migration — if databases are being migrated
 [ ] Capacity Planning — if sizing new infrastructure
 [ ] Hardware Sizing — if on-prem hardware procurement is needed
+[ ] Legal Hold — if any automated retention/deletion/reclamation pipeline must respect litigation-hold or preservation orders
 
 Provider-Specific (scan knowledge/providers/{provider}/*.md for ALL files):
 [ ] {provider}/compute — provider-specific compute items

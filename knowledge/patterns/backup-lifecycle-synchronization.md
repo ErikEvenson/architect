@@ -96,4 +96,6 @@ The pattern implicitly resolves a **three-way tension**, and the governance gate
 - `providers/servicenow/cmdb.md` -- IRE/reconciliation and stable-identifier discipline; the CMDB source-of-truth gate
 - `providers/commvault/backup.md`, `providers/cohesity/backup.md`, `providers/rubrik/backup.md`, `providers/veeam/backup.md` -- per-vendor day-2 mechanics (deconfigure, retention aging, explicit delete, auto-discovery rules) that implement the action path
 - `providers/openstack/operations.md` -- consuming the Nova lifecycle notification bus to drive the event-flagging side
+- `providers/openstack/data-protection.md` -- the OpenStack-native (Cinder snapshot / Glance image) artifacts this reclamation must also handle, dependent vs independent
+- `general/legal-hold.md` -- the integration architecture behind the legal-hold/compliance-lock gate this pattern enforces
 - `patterns/event-driven.md` -- delivery guarantees, idempotency, and dead-letter handling for the event-driven half of the hybrid

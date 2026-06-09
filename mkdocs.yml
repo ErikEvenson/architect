@@ -92,6 +92,7 @@ nav:
     - Supply Chain Security: general/supply-chain-security.md
     - Messaging Patterns: general/messaging-patterns.md
     - Email Migration: general/email-migration.md
+    - Legal Hold: general/legal-hold.md
   - AWS:
     - VPC: providers/aws/vpc.md
     - IAM: providers/aws/iam.md
