@@ -482,6 +482,7 @@ nav:
     - VMware to ServiceNow Chargeback: patterns/vmware-servicenow-chargeback.md
     - ServiceNow Catalog FinOps Design: patterns/servicenow-catalog-finops-design.md
     - Backup Lifecycle Synchronization: patterns/backup-lifecycle-synchronization.md
+    - Change-Window Alert Suppression: patterns/change-window-alert-suppression.md
   - Compliance:
     - PCI DSS: compliance/pci-dss.md
     - HIPAA: compliance/hipaa.md

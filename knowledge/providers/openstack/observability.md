@@ -137,3 +137,4 @@ clouds:
 - `providers/openstack/infrastructure.md` -- OpenStack infrastructure overview
 - `providers/prometheus-grafana/observability.md` -- Prometheus and Grafana stack
 - `providers/openstack/control-plane-ha.md` -- monitoring HA control plane health
+- `patterns/change-window-alert-suppression.md` -- this exporter taxonomy (node_exporter, libvirt, ceph_exporter, ipmi) is the alert taxonomy suppressed by class during planned change windows

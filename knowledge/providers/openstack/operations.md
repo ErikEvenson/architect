@@ -72,3 +72,4 @@ The **`nova evacuate` versus `nova migrate`** distinction is where operators des
 - `providers/ceph/operations.md` -- Ceph operational depth (Cinder/Glance/Manila symptoms often originate in Ceph)
 - `general/operational-runbooks.md` -- runbook framework: structure, severity, automation decisions, postmortem process
 - `patterns/backup-lifecycle-synchronization.md` -- consuming `instance.delete.end` to drive backup-reclamation and CMDB governance (this file is the OpenStack-side event source)
+- `patterns/change-window-alert-suppression.md` -- suppressing the predictable alert storm these `nova service-disable` / live-migration / evacuation operations generate during planned change windows
