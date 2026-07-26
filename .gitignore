@@ -19,8 +19,11 @@ node_modules/
 # Test artifacts
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 coverage/
+test.db
+*.sqlite3
 
 # TLS certificates
 *.pem
@@ -58,3 +61,9 @@ Thumbs.db
 
 # Docker
 *.tar
+
+# Agent workspace
+.claude/
+
+# Sibling repo cloned in-tree for local MCP work (has its own remote)
+architect-knowledge-mcp/
