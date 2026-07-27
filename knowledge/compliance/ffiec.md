@@ -64,7 +64,7 @@ The FFIEC's own site is aggressively bot-protected, so the links below point at 
 | **Business Continuity Management (BCM)** | Issued **November 14, 2019**. Replaces the "Business Continuity Planning" booklet issued **February 2015** and rescinds OCC Bulletin 2015-9 (the outsourced-technology-services resilience appendix). | [OCC Bulletin 2019-57](https://www.occ.gov/news-issuances/bulletins/2019/bulletin-2019-57.html) |
 | **Development, Acquisition, and Maintenance (DA&M)** | Issued **2024** (OCC transmittal dated September 5, 2024). Replaces the "Development and Acquisition" booklet issued **April 2004**. | [OCC Bulletin 2024-26](https://www.occ.gov/news-issuances/bulletins/2024/bulletin-2024-26.html) |
 | **Information Security** | Current booklet in the handbook. Carries the technical security examination procedures; substantively anchored to the Interagency Guidelines Establishing Information Security Standards (below). *Revision date not verified for this page — check the handbook index before citing a date.* | — |
-| **Outsourcing Technology Services** | Still in the handbook, but **materially older than the cloud era**. Read it alongside the 2023 third-party guidance and the 2020 cloud statement, which are where current supervisory expectation actually lives. | — |
+| **Outsourcing Technology Services** | Long-standing booklet, **materially older than the cloud era**. *Current status and revision date not verified for this page — confirm against the handbook index.* Read it alongside the 2023 third-party guidance and the 2020 cloud statement, which are where current supervisory expectation demonstrably lives. | — |
 
 ### Why AIO replacing Operations matters architecturally
 
@@ -93,7 +93,7 @@ Issued **April 30, 2020** by the FFIEC members and distributed by each agency �
 What it changes about a design:
 
 - **The shared-responsibility model becomes an examinable artifact, not a slide.** The statement identifies responsibilities the institution retains when contracting with cloud providers. An examiner can reasonably ask which specific controls the institution owns versus inherits, and expect a documented answer per service — not per provider. "AWS is FedRAMP authorized" is not responsive; "we own key management, IAM configuration, network policy, logging retention, and patching of these layers" is.
-- **Misconfiguration is the named risk.** The guidance directs attention at the institution's own configuration of cloud services rather than at the provider's controls. Budget assurance effort accordingly: continuous configuration assessment against a defined baseline beats an annual provider-attestation review. See `general/compliance-automation.md` and `general/cloud-workload-hardening.md`.
+- **Your own configuration is where the retained risk concentrates.** The FDIC transmittal describes the statement as providing "examples of risk management practices for a financial institution's safe and sound use of cloud computing services and safeguards to protect its customers' sensitive information" — that is, practices the *institution* performs. Budget assurance effort accordingly: continuous configuration assessment against a defined baseline beats an annual provider-attestation review. (The underlying joint statement is a PDF on the FFIEC's site, which blocks automated retrieval; the characterisation here is drawn from the agency transmittal, not from the statement text.) See `general/compliance-automation.md` and `general/cloud-workload-hardening.md`.
 - **Provider attestation reports are an input, not the control.** Expect to review SOC reports for complementary user entity controls and to evidence that you implemented them — the same CUEC discipline described in `compliance/sox.md`.
 
 ## Interagency Guidance on Third-Party Relationships: Risk Management (2023)
@@ -184,7 +184,7 @@ Distilled from the AIO/BCM booklets, the 2020 cloud statement, the 2023 third-pa
 | **Exit and portability plan** — can you actually leave, and have you proven it? | Proprietary managed services versus portable ones; whether data is extractable in a usable format at realistic volumes; whether the exit has ever been tested. An untested exit plan is a document, not a control. |
 | **Right to audit** — what audit rights do you hold contractually, and how are they exercised? | Hyperscalers rarely grant bespoke on-site audit; the practical answer is pooled audit programs, attestation reports, and contractual regulator-access clauses. Negotiate the substitute **before** signing, because it is unwinnable afterward. |
 | **Incident notification** — will the provider tell you in time to meet your 36 hours? | Contractual provider notification SLA, and whether it is short enough to leave you usable time. A 72-hour provider SLA is structurally incompatible with a 36-hour obligation. |
-| **Evidence of access reviews** — show recertification for privileged and application access. | Whether entitlements are modelled reviewably or scattered across bespoke roles. This is the single most common IT exam finding and it is an identity-architecture problem, not a paperwork problem. See `general/identity.md`. |
+| **Evidence of access reviews** — show recertification for privileged and application access. | Whether entitlements are modelled reviewably or scattered across bespoke roles. Widely reported as among the most frequent IT exam findings (practitioner observation, not a published agency statistic), and it is an identity-architecture problem rather than a paperwork problem. See `general/identity.md`. |
 | **Change and configuration control over cloud resources** | IaC with reviewed, evidenced pipelines versus console changes. See `general/change-management.md`. |
 | **Resilience evidence** — RTO/RPO for critical services, and proof they were met in a test. | BCM booklet expectations. Untested recovery is the finding. See `general/disaster-recovery.md`. |
 | **Third-party inventory including subcontractors** | Whether the CMDB models fourth parties at all. See `general/supply-chain-security.md`. |
@@ -213,7 +213,7 @@ Availability and naming change; verify against current provider documentation be
 - [ ] **[Critical]** **Define the incident "determination" step explicitly** — who declares, on what criteria, with what out-of-hours coverage. The 36-hour clock runs from determination; an undefined determination point is an examination finding waiting to happen.
 - [ ] **[Critical]** **Decide key custody deliberately and document the rationale.** Customer-managed keys are not universally required, but the decision must be reasoned and evidenced, and it is effectively irreversible once data volume accumulates.
 - [ ] **[Critical]** **Produce a data-location answer that covers backups, replicas, logs, and support/administrative access** — not just the primary region. Support-personnel location is a data-location question and is regularly missed.
-- [ ] **[Critical]** **Maintain access recertification evidence for privileged and application access.** The most common IT exam finding, and one determined by identity architecture rather than by process documentation.
+- [ ] **[Critical]** **Maintain access recertification evidence for privileged and application access.** Among the most frequently reported IT exam findings, and one determined by identity architecture rather than by process documentation.
 - [ ] **[Recommended]** **Tier third parties by criticality** per the 2023 interagency guidance rather than treating all vendors identically. The guidance explicitly contemplates tailoring; uniform treatment wastes effort on low-risk vendors and under-serves critical ones.
 - [ ] **[Recommended]** **Inventory concentration at the service layer, including fourth parties.** Count what actually runs where, not what the vendor list says.
 - [ ] **[Recommended]** **Test the exit plan at least once for each critical provider relationship.** Extraction rate at production data volume is the number that matters; a plan that assumes an unmeasured throughput has not been tested.
@@ -282,7 +282,7 @@ All links verified reachable as of July 2026. Note the FFIEC's own site (`ithand
 - `compliance/soc2.md` — the attestation reports that carry most of the third-party assurance weight
 - `frameworks/nist-csf-2.0.md` — the usual common control framework underneath a bank's mapping
 - `general/compliance-automation.md` — automated control evidence
-- `general/identity.md` — access recertification, the most common IT exam finding
+- `general/identity.md` — access recertification, a recurring IT exam finding
 - `general/disaster-recovery.md` — resilience evidence for the BCM booklet
 - `general/change-management.md` — change control over cloud resources
 - `general/supply-chain-security.md` — fourth-party and subcontractor risk
