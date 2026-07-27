@@ -187,5 +187,6 @@ S3 table buckets hold Iceberg tables with maintenance (compaction, snapshot expi
 - `providers/aws/lake-formation.md` -- fine-grained access control over catalog-registered tables
 - `providers/aws/s3.md` -- object storage underneath the format, S3 Tables, and lifecycle policies
 - `providers/gcp/bigquery.md` -- BigQuery managed Iceberg tables and BigLake external tables
+- `providers/azure/fabric.md` -- OneLake, Delta as the native format, and Fabric's Iceberg metadata virtualization
 - `providers/gcp/dataplex.md` -- GCP lake governance, discovery, and data quality
 - `general/data-classification.md` -- classification driving column-level policy on lake tables
