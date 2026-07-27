@@ -32,6 +32,28 @@ RED=$'\033[31m'; YEL=$'\033[33m'; GRN=$'\033[32m'; DIM=$'\033[2m'; NC=$'\033[0m'
 HOOKS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLIENT_PATTERNS_FILE="$HOOKS_DIR/client-patterns.local"
 
+# WORKTREE FALLBACK.
+# `client-patterns.local` is gitignored (it names real clients), so it is NEVER
+# present in a linked worktree — `git worktree add` only materialises tracked
+# files. The result was that the CLIENT-DATA guard, this repo's #1 rule, was
+# silently OFF in every worktree while credential scanning kept working, so the
+# hooks still ran and still passed. It warns, but a warning that appears on every
+# commit in a worktree is a warning nobody reads.
+#
+# Resolve the primary clone through the SHARED git dir and reuse its copy.
+# `--git-common-dir` returns the real .git for a linked worktree and plain `.git`
+# for the primary one, so the primary case is a no-op that re-finds the same file.
+if [ ! -f "$CLIENT_PATTERNS_FILE" ]; then
+  _gcd="$(git rev-parse --git-common-dir 2>/dev/null || true)"
+  if [ -n "$_gcd" ]; then
+    _main="$(cd "$(dirname "$_gcd")" 2>/dev/null && pwd || true)"
+    if [ -n "$_main" ] && [ -f "$_main/.githooks/client-patterns.local" ]; then
+      CLIENT_PATTERNS_FILE="$_main/.githooks/client-patterns.local"
+    fi
+  fi
+  unset _gcd _main
+fi
+
 # ---------- credential patterns (versioned; safe to publish) ----------
 # Shapes only — no secret is embedded here.
 CRED_PATTERNS=(
