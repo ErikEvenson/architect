@@ -82,6 +82,8 @@ nav:
     - FinOps: general/finops.md
     - Compliance Automation: general/compliance-automation.md
     - Data Analytics: general/data-analytics.md
+    - Open Table Formats: general/open-table-formats.md
+    - Query Engines: general/query-engines.md
     - Data Governance: general/data-governance.md
     - Data Modelling: general/data-modelling.md
     - Data Ingestion and CDC: general/data-ingestion.md
@@ -110,6 +112,9 @@ nav:
     - Containers (ECS/EKS): providers/aws/containers.md
     - S3: providers/aws/s3.md
     - S3 Files: providers/aws/s3-files.md
+    - Glue: providers/aws/glue.md
+    - Athena: providers/aws/athena.md
+    - Lake Formation: providers/aws/lake-formation.md
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
     - Redshift: providers/aws/redshift.md
@@ -177,6 +182,7 @@ nav:
     - Serverless: providers/gcp/serverless.md
     - Database: providers/gcp/database.md
     - BigQuery: providers/gcp/bigquery.md
+    - Dataplex: providers/gcp/dataplex.md
     - IAM: providers/gcp/iam.md
     - IAM and Resource Hierarchy: providers/gcp/iam-organizations.md
     - KMS: providers/gcp/kms.md
@@ -459,6 +465,7 @@ nav:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
+    - Lakehouse Medallion: patterns/lakehouse-medallion.md
     - Data Platform Selection: patterns/data-platform-selection.md
     - Core Banking Data Integration: patterns/core-banking-data-integration.md
     - Regulated Financial Data Platform: patterns/regulated-financial-data-platform.md
