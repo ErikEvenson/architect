@@ -1145,7 +1145,7 @@ All links checked and returning HTTP 200 on 2026-07-26.
 - `patterns/data-pipeline.md` — the operating pattern once the platform is running
 - `patterns/regulated-financial-data-platform.md` — the regulated-sector variant of this decision
 - `patterns/core-banking-data-integration.md` — system-of-record integration in that sector
-- `providers/microsoft/fabric.md` — Fabric platform detail
+- `providers/azure/fabric.md` — Fabric platform detail
 - `providers/databricks/data-platform.md` — Databricks platform detail
 - `providers/snowflake/data-platform.md` — Snowflake platform detail
 - `providers/gcp/bigquery.md` — BigQuery detail
