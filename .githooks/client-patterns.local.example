@@ -1,0 +1,19 @@
+# TEMPLATE — copy to `client-patterns.local` and fill in.
+#
+#   cp .githooks/client-patterns.local.example .githooks/client-patterns.local
+#
+# `client-patterns.local` is GITIGNORED and must stay that way. This repo is
+# PUBLIC, so committing the real list would publish exactly the names the hook
+# exists to keep out — the guard would become the leak.
+#
+# One case-insensitive extended-regex per line. `\b` gives word boundaries so a
+# short name does not match inside unrelated words. Blank lines and #-comments
+# are ignored.
+#
+# Cover, for each engagement: company name, common abbreviations and former
+# names, site/campus names, and any internal system name that is not a public
+# product.
+
+\bExampleCorp\b
+\bExmplCo\b
+\bNorthCampus\b
