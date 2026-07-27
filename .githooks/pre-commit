@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# .githooks/pre-commit — block client data AND credentials before they reach a
+# PUBLIC repo. See .githooks/guard-lib.sh for why the two classes have different
+# scan scopes.
+#
+# Bypass with `git commit --no-verify` if a finding is genuinely a false positive
+# — but verify first. This repo is public; a committed secret is compromised the
+# moment it is pushed, and rotation is the only remedy.
+set -uo pipefail
+. "$(dirname "$0")/guard-lib.sh"
+
+FAILED=0
+client_regex >/dev/null 2>&1 || warn_missing_client_patterns
+
+# ---------- 1. forbidden paths ----------
+while IFS= read -r -d '' file; do
+  for pat in "${FORBIDDEN_PATHS[@]}"; do
+    if printf '%s' "$file" | grep -qE "$pat"; then
+      case "$file" in *.example|*.sample|*.template) continue ;; esac
+      printf '%s\n' "${RED}BLOCKED: forbidden path staged: $file${NC}" >&2
+      FAILED=1
+    fi
+  done
+done < <(git diff --cached --name-only -z --diff-filter=d)
+
+# ---------- 2. staged content ----------
+while IFS= read -r -d '' file; do
+  # Binary guard FIRST, and via git rather than a shell string test. An earlier
+  # draft used `case "$CONTENT" in *$'\0'*)`, but bash cannot hold NUL in a
+  # variable so $'\0' collapses to the empty string, the pattern degenerates to
+  # `**`, and EVERY file was skipped as binary — the content scan silently ran on
+  # nothing. Caught only by testing the branch.
+  # `--numstat` prints "-\t-" for binary blobs.
+  if git diff --cached --numstat -- "$file" | head -1 | grep -q '^-'"$(printf '\t')"'-'; then
+    continue
+  fi
+  CONTENT="$(git show ":$file" 2>/dev/null || true)"
+  [ -z "$CONTENT" ] && continue
+
+  # CREDENTIALS — every file, no exemptions. A key in a knowledge doc is just as
+  # leaked as one in source.
+  scan_text_for_credentials "$file" "$CONTENT" || FAILED=1
+
+  # CLIENT DATA — everywhere except knowledge/** and mkdocs.yml, where the
+  # 79-vendor library legitimately collides with client names.
+  if ! is_exempt_from_client_scan "$file"; then
+    scan_text_for_client_data "$file" "$CONTENT" || FAILED=1
+  fi
+done < <(git diff --cached --name-only -z --diff-filter=d)
+
+if [ "$FAILED" -eq 1 ]; then
+  printf '\n%s\n' "${RED}Commit rejected.${NC}" >&2
+  printf '%s\n' "  Client data and credentials must never enter this repo — it is PUBLIC." >&2
+  printf '%s\n' "  False positive? ${YEL}git commit --no-verify${NC} (verify first)." >&2
+  exit 1
+fi
+exit 0

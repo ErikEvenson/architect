@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# .githooks/commit-msg — the message itself must not carry client data or
+# credentials. Separate from pre-commit because pre-commit runs BEFORE the message
+# is written, so COMMIT_EDITMSG still holds the PREVIOUS commit's text there.
+set -uo pipefail
+. "$(dirname "$0")/guard-lib.sh"
+
+MSG="$(cat "$1")"
+FAILED=0
+client_regex >/dev/null 2>&1 || warn_missing_client_patterns
+
+# No knowledge/mkdocs exemption applies to a commit message — nothing about a
+# message needs to name a vendor that collides with a client.
+scan_text_for_client_data "commit message" "$MSG" || FAILED=1
+scan_text_for_credentials "commit message" "$MSG" || FAILED=1
+
+if [ "$FAILED" -eq 1 ]; then
+  printf '\n%s\n' "${RED}Commit message rejected.${NC}" >&2
+  printf '%s\n' "  False positive? ${YEL}git commit --no-verify${NC} (verify first)." >&2
+  exit 1
+fi
+exit 0
