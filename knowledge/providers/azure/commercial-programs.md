@@ -94,7 +94,7 @@ Azure commercial programs directly influence architecture decisions in ways that
 - [Azure Hybrid Benefit for Windows Server](https://learn.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit) -- License portability and ESU benefits
 - [Azure Hybrid Benefit for SQL Server](https://learn.microsoft.com/en-us/azure/azure-sql/azure-hybrid-benefit?view=azuresql) -- SQL license portability to Azure SQL services
 - [Microsoft partner incentives guide](https://www.aicloudpartners.com/guides/microsoft-partner-incentives.html) -- FY26 partner incentive programs and co-sell overview
-- [EA pricing tier elimination](https://redresscompliance.com/microsoft-ea-pricing-changes-2025-all-customers-move-to-level-a-pricing/) -- Analysis of November 2025 EA pricing changes
+- [EA pricing tier elimination](https://www.microsoft.com/en-us/licensing/news/online-services-pricing-consistency-update) -- Microsoft's Online Services pricing consistency update: Levels B/C/D retired, all customers to Level A from November 2025
 - `providers/azure/compute.md` -- Azure VM SKU selection and compute architecture
 - `providers/vmware/licensing.md` -- VMware/Broadcom licensing including BYOL to Azure VMware Solution
 - `providers/vmware/avs-azure.md` -- Azure VMware Solution architecture and MACC implications

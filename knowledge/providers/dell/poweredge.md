@@ -47,7 +47,7 @@ PowerEdge servers are the most widely deployed x86 server platform globally. Con
 - [OpenManage Enterprise User Guide](https://www.dell.com/support/kbdoc/en-us/000176472/dell-openmanage-enterprise-user-s-guide) -- centralized server management platform documentation
 - [Dell PowerEdge RAID Controller (PERC) Guide](https://www.dell.com/support/kbdoc/en-us/000178016/dell-poweredge-understanding-raid-levels-and-perc-controllers) -- RAID configuration best practices
 - [Dell OpenManage Ansible Modules](https://github.com/dell/dellemc-openmanage-ansible-modules) -- infrastructure-as-code automation for PowerEdge servers
-- [Dell Support Matrix for VMware](https://www.dell.com/support/kbdoc/en-us/000203498/support-matrix-for-dell-emc-vmware-solutions) -- validated firmware and driver combinations for VMware deployments
+- [Dell Firmware Catalog for Dell-Customized VMware ESXi Images](https://www.dell.com/support/kbdoc/en-us/000126599/firmware-catalog-for-dell-customized-vmware-esxi-images) -- validated firmware and driver combinations for VMware ESXi deployments
 
 ## See Also
 

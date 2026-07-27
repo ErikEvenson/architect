@@ -73,7 +73,7 @@ Patch and OS support discipline is the fourth area where Power estates routinely
 - [IBM License Metric Tool (ILMT) product page](https://www.ibm.com/products/ibm-license-metric-tool) -- agent deployment, weekly snapshot, 90-day retention, sub-capacity audit reporting
 - [Precisely Assure MIMIX](https://www.precisely.com/product/precisely-assure/assure-mimix) -- IBM i journal-based replication, object-level HA
 - [IBM Power Virtualization Best Practices Guide](https://www.ibm.com/support/pages/ibm-power-virtualization-best-practices-guide) -- LPAR sizing, VIOS configuration, performance tuning
-- [IBM HMC documentation](https://www.ibm.com/docs/en/power-hmc) -- Hardware Management Console operations, redundancy, firmware compatibility
+- [IBM HMC documentation](https://www.ibm.com/support/pages/hardware-management-console-related-technical-information) -- Hardware Management Console operations, redundancy, firmware compatibility
 - [IBM PowerVC documentation](https://www.ibm.com/docs/en/powervc) -- OpenStack-style provisioning for on-prem Power
 - [NIM (Network Installation Manager) overview](https://www.ibm.com/docs/en/aix) -- AIX network-based mksysb restore
 - [BRMS for IBM i](https://www.ibm.com/products/backup-recovery-and-media-services-for-i) -- backup scheduling, media management, restore orchestration

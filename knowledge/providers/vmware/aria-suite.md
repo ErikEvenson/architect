@@ -64,7 +64,7 @@ Finally, the deployment-model question (on-prem vs SaaS vs hybrid) has changed c
 
 ## Reference Links
 
-- [VMware Cloud Foundation on Broadcom](https://www.broadcom.com/products/software/vmware-cloud-foundation) -- current VCF product page including which suite components are bundled
+- [VMware Cloud Foundation product page](https://www.vmware.com/products/cloud-infrastructure/vmware-cloud-foundation) -- current VCF product page including which suite components are bundled
 - [Broadcom TechDocs portal](https://techdocs.broadcom.com/) -- post-acquisition consolidated documentation home; the former docs.vmware.com URLs for vRealize and Aria products now redirect here
 - [VMware end-of-life lifecycle matrix](https://lifecycle.vmware.com/) -- vRealize and Aria product end-of-support dates relevant to renewal planning
 

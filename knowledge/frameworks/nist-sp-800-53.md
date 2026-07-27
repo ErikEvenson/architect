@@ -114,7 +114,7 @@ The SSP is the source of truth for the control implementation and is the artifac
 - [NIST SP 800-53A — Assessment Procedures](https://csrc.nist.gov/publications/detail/sp/800-53a/rev-5/final)
 - [NIST SP 800-37 — Risk Management Framework](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final)
 - [NIST OSCAL — Open Security Controls Assessment Language](https://pages.nist.gov/OSCAL/)
-- [FedRAMP control selections](https://www.fedramp.gov/baselines/)
+- [FedRAMP Rev5 control reference](https://www.fedramp.gov/2026/reference/controls/) — FedRAMP's vendored NIST SP 800-53 Rev5 control catalog, with per-class ruleset references for baseline applicability
 
 ## See Also
 

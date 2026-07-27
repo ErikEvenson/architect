@@ -49,6 +49,6 @@ SCIM is the mechanism but not a guarantee. SCIM configuration that pushes new us
 
 - [Okta Universal Directory](https://help.okta.com/en-us/content/topics/directory/about-universal-directory.htm) -- profile mastering, attribute sources, and conflict handling
 - [Okta SCIM provisioning](https://developer.okta.com/docs/concepts/scim/) -- SCIM protocol, supported operations, and troubleshooting
-- [Okta group rules](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-group-rules.htm) -- rule syntax, evaluation, and group membership updates
+- [Okta group rules](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-group-rules-main.htm) -- rule syntax, evaluation, and group membership updates
 - [Okta Workflows](https://help.okta.com/en-us/content/topics/workflows/workflows-main.htm) -- no-code orchestration for identity events
 - [Okta import and provisioning behavior](https://help.okta.com/en-us/content/topics/directory/app-provisioning-settings.htm) -- per-app provisioning settings and their effects

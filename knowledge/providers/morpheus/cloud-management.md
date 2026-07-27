@@ -42,7 +42,7 @@ A cloud management platform sits at the control plane of the entire infrastructu
 ## Reference Links
 
 - [Morpheus Documentation](https://docs.morpheusdata.com/)
-- [Morpheus Supported Integrations](https://morpheusdata.com/integrations/)
+- [Morpheus Codeless Integrations](https://morpheusdata.com/hybrid-cloud-management/codeless-integrations/)
 
 ## See Also
 

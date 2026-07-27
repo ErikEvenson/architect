@@ -101,7 +101,8 @@ The pattern resolves a tension between **noise reduction** and **not going blind
 - [ServiceNow Event Management -- alert suppression and maintenance](https://docs.servicenow.com/bundle/washingtondc-it-operations-management/page/product/event-management/concept/alert-management.html) -- maintenance-window suppression rules and event correlation that drive the change-linked, auditable suppression layer
 - [Prometheus AlertManager -- inhibition](https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule) -- `inhibit_rules` where a host-down alert inhibits child service alerts; the parent-cascade mechanic at the alerting layer
 - [Prometheus AlertManager -- silences](https://prometheus.io/docs/alerting/latest/configuration/) -- time-bound silences for bounding a blackout to the change window
-- [SolarWinds Orion -- dependency-based alert suppression](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-managing-dependencies-sw1450.htm) -- suppress child alerts when the parent node is down; maintenance/unmanage scheduling
+- [SolarWinds Platform -- dependency-based alert suppression](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-managing-dependencies-sw1688.htm) -- network object dependencies mark children Unreachable rather than Down so child alerts do not fire when the parent node is down
+- [SolarWinds Platform -- Maintenance Mode / unmanage scheduling](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-setting-device-management-states-sw2036.htm) -- suspend polling and alerting for nodes over a scheduled window
 - [OpenStack Nova -- migrate and evacuate](https://docs.openstack.org/nova/latest/admin/migration.html) -- the host-evacuating operations whose alert footprint Tier 1 suppression covers
 
 ## See Also
