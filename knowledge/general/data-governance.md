@@ -175,6 +175,8 @@ Finally, product churn in this space is itself a governance risk. Between 2024 a
 - `general/security.md` -- access control, audit logging, and encryption patterns underpinning data policy
 - `general/compliance-automation.md` -- automated control evidence collection and continuous compliance
 - `general/legal-hold.md` -- litigation hold obligations that interact directly with retention and erasure
+- `general/master-data-management.md` -- stewardship applied to the specific problem of deciding which record is the real one, including exception queues, survivorship authority, and what consumers see while a conflict is open
+- `patterns/entity-resolution.md` -- the matching, clustering and un-merge mechanics a stewardship queue adjudicates
 - `patterns/data-pipeline.md` -- pipeline architecture where quality gates and lineage emission are implemented
 - `providers/azure/fabric.md` -- Microsoft Fabric's layered permission model, OneLake security, and Purview integration
 - `providers/azure/analytics.md` -- Synapse and Data Factory as Purview lineage sources

@@ -87,3 +87,4 @@ The second most common failure: **undocumented firewall rules.** The source site
 - `general/multi-site-migration-sequencing.md` -- Multi-site wave planning and sequencing
 - `general/tier0-security-enclaves.md` -- Tier 0 / AD deployment considerations
 - `general/virtual-appliance-migration.md` -- Appliance re-deployment at target sites
+- `general/master-data-management.md` -- the data-layer instance of the same problem: MDM coexistence style, where master data is authored in both the sources and the hub and published back
