@@ -104,7 +104,7 @@ On-premises environments lack the managed load balancers available in public clo
 - **HAProxy official docs**: [Configuration Manual](https://docs.haproxy.org/) -- comprehensive reference for all directives including stick tables, ACLs, and health checks
 - **NGINX Load Balancing Guide**: [HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/) -- upstream configuration, health checks (Plus), and session persistence
 - **F5 BIG-IP Deployment Guides**: [F5 iApp Templates](https://www.f5.com/services/resources/deployment-guides) -- validated configurations for common applications (Exchange, SharePoint, SAP)
-- **keepalived documentation**: [keepalived.org](https://www.keepalived.org/manpage.html) -- VRRP configuration, health check scripts, and notification scripts
+- **keepalived documentation**: [keepalived.org documentation index](https://keepalived.org/documentation/) -- links the `keepalived.conf` man page (the exhaustive keyword reference for VRRP instances, health checkers, and notify scripts) plus the user guide and design papers
 - **Digital Ocean HAProxy HA tutorial**: Practical walkthrough of keepalived + HAProxy active-passive on Linux -- applicable pattern for any on-prem deployment
 - **Red Hat HA Load Balancing**: RHEL documentation covers keepalived + HAProxy integration with SELinux and firewalld considerations
 

@@ -69,7 +69,7 @@ Storage is the most common bottleneck and the most consequential failure domain 
 
 - [vSAN documentation](https://docs.vmware.com/en/VMware-vSAN/index.html) -- vSAN OSA and ESA deployment, storage policies, and capacity planning
 - [vSphere storage guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-storage/GUID-8AE88758-20C1-4873-99C7-181EF9ACFA70.html) -- VMFS, NFS, vVols, SPBM, and Storage DRS configuration
-- [vSAN design guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsan/vsan/8-0/vsan-planning-and-deployment-guide-80/planning-and-designing-a-vsan-cluster.html) -- cluster sizing, disk group design, and fault domain configuration
+- [vSAN design guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsan/vsan/8-0/planning-and-deployment/designing-and-sizing-a-virtual-san-cluster.html) -- cluster sizing, disk group design, and fault domain configuration
 
 ## See Also
 

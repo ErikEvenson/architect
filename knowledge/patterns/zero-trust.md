@@ -102,7 +102,7 @@ The cost of implementing zero trust is significant, involving identity infrastru
 - [SPIRE (SPIFFE Runtime Environment)](https://spiffe.io/docs/latest/spire-about/)
 - [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/)
 - [Zscaler Private Access](https://www.zscaler.com/products/zscaler-private-access)
-- [Google BeyondCorp Enterprise](https://cloud.google.com/beyondcorp-enterprise)
+- [Google BeyondCorp (BeyondCorp Enterprise is now Chrome Enterprise Premium)](https://cloud.google.com/beyondcorp)
 - [AWS Verified Access](https://docs.aws.amazon.com/verified-access/)
 - [Illumio Core](https://www.illumio.com/products/illumio-core)
 - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)

@@ -109,7 +109,7 @@ Commitment discounts represent the single largest optimization lever, offering 3
 - [Kubecost](https://www.kubecost.com/)
 - [OpenCost](https://www.opencost.io/)
 - [Infracost](https://www.infracost.io/)
-- [CloudHealth by VMware](https://www.vmware.com/products/aria-cost.html)
+- [VMware Tanzu CloudHealth (formerly CloudHealth by VMware / Aria Cost)](https://www.broadcom.com/products/software/finops/cloudhealth)
 - [Vantage](https://www.vantage.sh/)
 
 ## See Also

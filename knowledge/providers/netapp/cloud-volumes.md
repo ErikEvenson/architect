@@ -56,7 +56,7 @@ Network placement constraints are stricter than they appear in the marketing mat
 - [BlueXP Documentation](https://docs.netapp.com/us-en/bluexp-family/) -- unified management plane for hybrid and multi-cloud NetApp deployments
 - [NetApp Hybrid Cloud Reference Architectures](https://www.netapp.com/cloud-services/) -- patterns for SnapMirror replication, cloud bursting, and hybrid disaster recovery
 - [Azure NetApp Files Performance Benchmarks](https://learn.microsoft.com/en-us/azure/azure-netapp-files/performance-benchmarks-linux) -- Linux NFS and Windows SMB performance characteristics by service level
-- [FSx for ONTAP with VMware Cloud on AWS](https://aws.amazon.com/blogs/storage/configuring-amazon-fsx-for-netapp-ontap-as-external-storage-for-vmware-cloud-on-aws/) -- supplemental datastore configuration and use cases
+- [FSx for ONTAP with VMware Cloud on AWS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/vmware-cloud-ontap.html) -- supplemental NFS datastore configuration and requirements
 
 ## See Also
 

@@ -61,5 +61,5 @@ The consumption-based pricing (DDU model) is simpler than per-host-per-capabilit
 - [Dynatrace Grail](https://docs.dynatrace.com/docs/platform/grail) -- Grail data lakehouse architecture, retention policies, and DQL querying
 - [Davis AI](https://docs.dynatrace.com/docs/platform/davis-ai) -- Davis AI engine, problem detection, root cause analysis, and alerting configuration
 - [Dynatrace Pricing](https://www.dynatrace.com/pricing/) -- DDU consumption model, platform subscription tiers, and committed use discounts
-- [Dynatrace OpenTelemetry Integration](https://docs.dynatrace.com/docs/extend/opentelemetry) -- OTLP ingestion, OpenTelemetry Collector configuration, and hybrid instrumentation
+- [Dynatrace OpenTelemetry Integration](https://docs.dynatrace.com/docs/ingest-from/opentelemetry) -- OTLP ingestion, OpenTelemetry Collector configuration, and hybrid instrumentation
 - [Dynatrace Hub](https://www.dynatrace.com/hub/) -- Extensions, integrations, and technology support catalog

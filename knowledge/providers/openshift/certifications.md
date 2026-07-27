@@ -60,7 +60,7 @@ Red Hat certifications are entirely performance-based — candidates must comple
 ## Reference Links
 
 - [Red Hat certification portal](https://www.redhat.com/en/services/certifications) -- RHCSA, RHCE, and OpenShift certification paths and exam registration
-- [Red Hat Certified Specialist in OpenShift Administration (EX280)](https://www.redhat.com/en/services/training/ex280-red-hat-certified-specialist-in-openshift-administration-exam) -- OpenShift administration exam objectives and preparation
+- [Red Hat Certified OpenShift Administrator exam (EX280)](https://www.redhat.com/en/services/training/red-hat-certified-openshift-administrator-exam) -- OpenShift administration exam objectives and preparation (formerly "Red Hat Certified Specialist in OpenShift Administration"; exam code unchanged)
 - [Red Hat training and certification](https://www.redhat.com/en/services/training-and-certification) -- instructor-led and self-paced OpenShift training courses
 
 ## See Also

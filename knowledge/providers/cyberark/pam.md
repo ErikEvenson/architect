@@ -61,5 +61,5 @@ Credential rotation failures are the most common operational issue in CyberArk d
 - [CyberArk Privilege Cloud Documentation](https://docs.cyberark.com/privilege-cloud-shared-services/latest/en/Content/Resources/_TopNav/cc_Home.htm) -- SaaS PAM deployment, connector setup, and cloud administration
 - [CyberArk Conjur Documentation](https://docs.cyberark.com/conjur-enterprise/latest/en/Content/Resources/_TopNav/cc_Home.htm) -- Conjur secrets management for DevOps, Kubernetes, and CI/CD integration
 - [CyberArk Secrets Manager Documentation](https://docs.cyberark.com/credential-providers/latest/en/Content/Resources/_TopNav/cc_Home.htm) -- Credential Provider and Central Credential Provider for application credential retrieval
-- [CyberArk Security Hardening Guide](https://docs.cyberark.com/pam-self-hosted/latest/en/Content/PAS%20SysReq/Recommended-Server-Configurations.htm) -- Vault server hardening, network requirements, and infrastructure sizing
+- [CyberArk Recommended Server Specifications](https://docs.cyberark.com/pam-self-hosted/latest/en/content/pas%20sysreq/recommended%20server%20specifications.htm) -- Vault, PVWA, CPM, and PSM server sizing and infrastructure requirements
 - [CyberArk Marketplace](https://cyberark-customers.force.com/mplace/s/#/) -- community-contributed platforms, integrations, and custom connection components

@@ -147,8 +147,8 @@ The penalty regime is aligned with GDPR in terms of magnitude and is designed to
 ## Reference Links
 
 - [Directive (EU) 2022/2555 (NIS2 official text)](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)
-- [ENISA NIS2 guidance](https://www.enisa.europa.eu/topics/nis-directive)
-- [Member state implementation status](https://www.enisa.europa.eu/topics/nis-directive/nis-visual-tool)
+- [ENISA NIS2 guidance](https://www.enisa.europa.eu/topics/state-of-cybersecurity-in-the-eu/cybersecurity-policies/nis-directive-2)
+- [Member state transposition status (European Commission)](https://digital-strategy.ec.europa.eu/en/policies/nis-transposition)
 
 ## See Also
 
