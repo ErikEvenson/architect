@@ -87,6 +87,8 @@ nav:
     - Data Governance: general/data-governance.md
     - Data Modelling: general/data-modelling.md
     - Data Ingestion and CDC: general/data-ingestion.md
+    - Semantic Layer: general/semantic-layer.md
+    - Business Intelligence: general/business-intelligence.md
     - Enterprise Performance Management: general/enterprise-performance-management.md
     - Ransomware Resilience: general/ransomware-resilience.md
     - Change Management: general/change-management.md

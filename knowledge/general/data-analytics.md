@@ -127,6 +127,8 @@ Data governance failures compound over time. Without a catalog, analysts cannot 
 
 ## See Also
 
+- `general/semantic-layer.md` -- metric definitions as governed artefacts, single-tool vs headless layers, and where row- and column-level security is actually enforced
+- `general/business-intelligence.md` -- the consumption tier: BI vendor landscape, Power BI licensing and capacity, governed self-service, embedded analytics, and report lifecycle
 - `general/open-table-formats.md` -- Iceberg vs Delta Lake vs Hudi in depth: metadata layers, partition and schema evolution, copy-on-write vs merge-on-read, catalogs, engine support, and maintenance cost
 - `general/query-engines.md` -- Trino/Presto, Starburst, Dremio, Spark SQL, and DuckDB; cost models, pushdown, concurrency, and federation
 - `patterns/lakehouse-medallion.md` -- bronze/silver/gold layering, idempotent reprocessing, CDC handling, and quality gates between layers

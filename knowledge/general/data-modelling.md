@@ -208,6 +208,8 @@ The auditability dimension is technically real and routinely under-specified. "W
 ## See Also
 
 - `general/data-analytics.md` -- warehouse vs lake vs lakehouse selection, ETL vs ELT, semantic layers, and governance tooling
+- `general/semantic-layer.md` -- where the aggregation rules for non-additive and semi-additive measures live, and metric definitions as governed artefacts
+- `general/business-intelligence.md` -- the BI tools that consume these models, and the modelling defects self-service authors reproduce
 - `general/data-ingestion.md` -- how change data reaches the model, and why the capture method constrains what history you can build
 - `providers/dbt/transformation.md` -- the transformation layer that implements these models, including snapshots as SCD2 and incremental strategies
 - `general/data.md` -- operational database design, engine selection, and normalisation for transactional workloads
