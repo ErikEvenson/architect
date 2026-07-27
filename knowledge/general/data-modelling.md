@@ -211,6 +211,8 @@ The auditability dimension is technically real and routinely under-specified. "W
 - `general/semantic-layer.md` -- where the aggregation rules for non-additive and semi-additive measures live, and metric definitions as governed artefacts
 - `general/business-intelligence.md` -- the BI tools that consume these models, and the modelling defects self-service authors reproduce
 - `general/data-ingestion.md` -- how change data reaches the model, and why the capture method constrains what history you can build
+- `general/master-data-management.md` -- how a conformed dimension gets its members when the same entity exists differently in several sources: MDM styles, survivorship, and stewardship
+- `patterns/entity-resolution.md` -- the matching mechanics that produce the durable entity identifier a Type 2 dimension needs, and the transitive-closure hazards that corrupt it
 - `providers/dbt/transformation.md` -- the transformation layer that implements these models, including snapshots as SCD2 and incremental strategies
 - `general/data.md` -- operational database design, engine selection, and normalisation for transactional workloads
 - `patterns/data-pipeline.md` -- pipeline architecture, orchestration, and cost benchmarks for the pipelines that load these models

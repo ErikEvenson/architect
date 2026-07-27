@@ -260,6 +260,8 @@ Finally, the physical design assumptions are the real payload. A warehouse's sch
 - `providers/databricks/data-platform.md` -- lakehouse as a migration target, especially for Spark and mixed SQL/ML workloads
 - `providers/gcp/bigquery.md` -- BigQuery as a migration target, and the per-TB-scanned cost model that punishes an unmodified star schema
 - `general/data-analytics.md` -- warehouse vs lake vs lakehouse selection, ETL vs ELT, and open table format choice
+- `general/master-data-management.md` -- when the migration is really a customer/product master integration, and why that is a separate funded workstream rather than a platform deliverable
+- `patterns/entity-resolution.md` -- the matching mechanics behind any "one row per customer" acceptance criterion attached to a migration
 - `general/database-migration.md` -- OLTP database migration, where the schema usually does move unchanged
 - `general/data-migration-tools.md` -- bulk transport tooling and physical transfer appliances
 - `patterns/migration-cutover.md` -- generic cutover mechanics, rollback planning, and hypercare

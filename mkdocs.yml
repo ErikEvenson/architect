@@ -87,6 +87,7 @@ nav:
     - Data Governance: general/data-governance.md
     - Data Modelling: general/data-modelling.md
     - Data Ingestion and CDC: general/data-ingestion.md
+    - Master Data Management: general/master-data-management.md
     - Semantic Layer: general/semantic-layer.md
     - Business Intelligence: general/business-intelligence.md
     - Enterprise Performance Management: general/enterprise-performance-management.md
@@ -470,6 +471,7 @@ nav:
     - Data Pipeline: patterns/data-pipeline.md
     - Lakehouse Medallion: patterns/lakehouse-medallion.md
     - Data Platform Selection: patterns/data-platform-selection.md
+    - Entity Resolution: patterns/entity-resolution.md
     - Core Banking Data Integration: patterns/core-banking-data-integration.md
     - Regulated Financial Data Platform: patterns/regulated-financial-data-platform.md
     - Static Site: patterns/static-site.md
