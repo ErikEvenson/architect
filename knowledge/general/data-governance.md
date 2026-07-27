@@ -169,6 +169,8 @@ Finally, product churn in this space is itself a governance risk. Between 2024 a
 ## See Also
 
 - `general/data-analytics.md` -- warehouse vs lake vs lakehouse selection, open table formats, and the analytics platform this governs
+- `general/semantic-layer.md` -- the metric layer where governance either holds or leaks, and why a model-enforced filter is not a boundary when another path to the bytes exists
+- `general/business-intelligence.md` -- the consumption tier these controls must reach: certification in practice, usage telemetry, and content retirement
 - `general/data-classification.md` -- sensitivity taxonomy design that classification and labelling policies enforce
 - `general/governance.md` -- broader organisational governance frameworks and operating models
 - `general/data.md` -- database engine selection, replication, backup, and encryption fundamentals
