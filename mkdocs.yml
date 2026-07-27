@@ -446,6 +446,8 @@ nav:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
+    - Core Banking Data Integration: patterns/core-banking-data-integration.md
+    - Regulated Financial Data Platform: patterns/regulated-financial-data-platform.md
     - Static Site: patterns/static-site.md
     - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
