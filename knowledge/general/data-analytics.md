@@ -83,6 +83,8 @@ Data governance failures compound over time. Without a catalog, analysts cannot 
 
 **Decision drivers:** Engine ecosystem breadth, upsert frequency, existing Databricks investment, community trajectory, and query engine flexibility requirements.
 
+**Depth:** `general/open-table-formats.md` carries the detailed mechanics behind this ADR -- metadata and manifest structure, hidden partitioning and partition evolution, copy-on-write vs merge-on-read, catalog and commit-atomicity requirements, the engine read/write/DML matrix, and the recurring maintenance cost of each format.
+
 ### ADR: Data Governance Platform
 
 **Context:** The organization needs data cataloging, lineage tracking, and access control across the analytics platform.
@@ -125,6 +127,9 @@ Data governance failures compound over time. Without a catalog, analysts cannot 
 
 ## See Also
 
+- `general/open-table-formats.md` -- Iceberg vs Delta Lake vs Hudi in depth: metadata layers, partition and schema evolution, copy-on-write vs merge-on-read, catalogs, engine support, and maintenance cost
+- `general/query-engines.md` -- Trino/Presto, Starburst, Dremio, Spark SQL, and DuckDB; cost models, pushdown, concurrency, and federation
+- `patterns/lakehouse-medallion.md` -- bronze/silver/gold layering, idempotent reprocessing, CDC handling, and quality gates between layers
 - `general/data.md` -- Database engine selection, replication, backup, and encryption fundamentals
 - `patterns/data-pipeline.md` -- Pipeline architecture patterns, orchestration, cost benchmarks, and ingestion tooling
 - `general/cost.md` -- Cloud cost management strategies and FinOps practices

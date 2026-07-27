@@ -82,6 +82,8 @@ nav:
     - FinOps: general/finops.md
     - Compliance Automation: general/compliance-automation.md
     - Data Analytics: general/data-analytics.md
+    - Open Table Formats: general/open-table-formats.md
+    - Query Engines: general/query-engines.md
     - Ransomware Resilience: general/ransomware-resilience.md
     - Change Management: general/change-management.md
     - Operational Runbooks: general/operational-runbooks.md
@@ -107,6 +109,9 @@ nav:
     - Containers (ECS/EKS): providers/aws/containers.md
     - S3: providers/aws/s3.md
     - S3 Files: providers/aws/s3-files.md
+    - Glue: providers/aws/glue.md
+    - Athena: providers/aws/athena.md
+    - Lake Formation: providers/aws/lake-formation.md
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
     - Route 53: providers/aws/route53.md
@@ -170,6 +175,7 @@ nav:
     - Serverless: providers/gcp/serverless.md
     - Database: providers/gcp/database.md
     - BigQuery: providers/gcp/bigquery.md
+    - Dataplex: providers/gcp/dataplex.md
     - IAM: providers/gcp/iam.md
     - IAM and Resource Hierarchy: providers/gcp/iam-organizations.md
     - KMS: providers/gcp/kms.md
@@ -446,6 +452,7 @@ nav:
     - Three-Tier Web: patterns/three-tier-web.md
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
+    - Lakehouse Medallion: patterns/lakehouse-medallion.md
     - Static Site: patterns/static-site.md
     - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
