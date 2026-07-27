@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="960" viewBox="0 0 1720 960" font-family="Helvetica,Arial,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9fb3c8"/></marker></defs>
+<rect width="1720" height="960" fill="#ffffff"/>
+<text x="46" y="52" font-size="25" font-weight="700" fill="#14304f" text-anchor="start">Regulated financial services — data platform reference architecture</text>
+<text x="46" y="78" font-size="13.5" font-weight="400" fill="#6b7f95" text-anchor="start">A pattern for institutions under examination, where retention, lineage and evidence are design inputs rather than afterthoughts.</text>
+<line x1="46" y1="96" x2="1674" y2="96" stroke="#9fb3c8" stroke-width="1"/>
+<rect x="46" y="130" width="250" height="132" rx="7" fill="#eef3f8" stroke="#9fb3c8" stroke-width="1.6"/>
+<text x="60" y="154" font-size="15" font-weight="700" fill="#14304f">Systems of record</text>
+<text x="60" y="172" font-size="12" fill="#6b7f95">core banking · nightly batch</text>
+<text x="62" y="192" font-size="12.5" fill="#2c4a6b">Core banking platform</text>
+<text x="62" y="209" font-size="12.5" fill="#2c4a6b">Loan servicing</text>
+<text x="62" y="226" font-size="12.5" fill="#2c4a6b">Card / payments</text>
+<text x="62" y="243" font-size="12.5" fill="#2c4a6b">GL</text>
+<rect x="46" y="276" width="250" height="132" rx="7" fill="#eef3f8" stroke="#9fb3c8" stroke-width="1.6"/>
+<text x="60" y="300" font-size="15" font-weight="700" fill="#14304f">Risk, lending, compliance</text>
+<text x="60" y="318" font-size="12" fill="#6b7f95">batch / API · daily</text>
+<text x="62" y="338" font-size="12.5" fill="#2c4a6b">Loan origination</text>
+<text x="62" y="355" font-size="12.5" fill="#2c4a6b">Credit / ALLL</text>
+<text x="62" y="372" font-size="12.5" fill="#2c4a6b">Fraud &amp; AML</text>
+<text x="62" y="389" font-size="12.5" fill="#2c4a6b">Mortgage</text>
+<rect x="46" y="422" width="250" height="92" rx="7" fill="#fdf5e6" stroke="#b07d1a" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="60" y="446" font-size="15" font-weight="700" fill="#14304f">Content &amp; file shares</text>
+<text x="60" y="464" font-size="12" fill="#6b7f95">DEFER past phase one</text>
+<text x="62" y="484" font-size="12.5" fill="#2c4a6b">Document &amp; file stores</text>
+<text x="46" y="540" font-size="13.5" font-weight="700" fill="#b03535" text-anchor="start">Extraction constraints</text>
+<text x="54" y="562" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• Batch windows and end-of-day cycles</text>
+<text x="54" y="579" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• Per-extract / per-record access charges</text>
+<text x="54" y="596" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• Contract terms on data leaving the vendor</text>
+<text x="54" y="613" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• Log-based CDC usually unavailable</text>
+<rect x="330" y="130" width="232" height="250" rx="7" fill="#e6f4ec" stroke="#2e7d52" stroke-width="1.6"/>
+<text x="344" y="154" font-size="15" font-weight="700" fill="#14304f">Immutable landing zone</text>
+<text x="344" y="172" font-size="12" fill="#6b7f95">NEW — raw, as received</text>
+<text x="346" y="192" font-size="12.5" fill="#2c4a6b">Object storage with a lock</text>
+<text x="346" y="209" font-size="12.5" fill="#2c4a6b">policy — WORM / legal hold</text>
+<text x="346" y="226" font-size="12.5" fill="#2c4a6b"></text>
+<text x="346" y="243" font-size="12.5" fill="#2c4a6b">Never rewritten, never</text>
+<text x="346" y="260" font-size="12.5" fill="#2c4a6b">compacted, never modelled</text>
+<text x="346" y="277" font-size="12.5" fill="#2c4a6b"></text>
+<text x="346" y="294" font-size="12.5" fill="#2c4a6b">This is what retention and</text>
+<text x="346" y="311" font-size="12.5" fill="#2c4a6b">replay actually attach to</text>
+<line x1="300" y1="192" x2="326" y2="202" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="300" y1="336" x2="326" y2="282" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="330" y="416" font-size="13.5" font-weight="700" fill="#2e7d52" text-anchor="start">Why this layer earns its place</text>
+<text x="338" y="438" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• Retention and legal hold become enforceable</text>
+<text x="338" y="455" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• The lakehouse can be rebuilt from source</text>
+<text x="338" y="472" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• History survives a change of model</text>
+<text x="338" y="489" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">• WORM needs care on HNS accounts</text>
+<rect x="596" y="130" width="196" height="116" rx="7" fill="#eef3f8" stroke="#9fb3c8" stroke-width="1.6"/>
+<text x="610" y="154" font-size="15" font-weight="700" fill="#14304f">Ingestion &amp; orchestration</text>
+<text x="612" y="174" font-size="12.5" fill="#2c4a6b">Batch pipelines</text>
+<text x="612" y="191" font-size="12.5" fill="#2c4a6b">CDC / replication</text>
+<text x="612" y="208" font-size="12.5" fill="#2c4a6b">Managed mirroring</text>
+<rect x="596" y="260" width="214" height="74" rx="7" fill="#fdf5e6" stroke="#b07d1a" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="610" y="284" font-size="15" font-weight="700" fill="#14304f">Streaming ingestion</text>
+<text x="610" y="302" font-size="12" fill="#6b7f95">DEFER — fraud/AML covered</text>
+<line x1="562" y1="250" x2="596" y2="188" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="596" y="366" font-size="13.5" font-weight="700" fill="#b03535" text-anchor="start">State the as-of grain</text>
+<text x="604" y="388" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">If the core delivers nightly</text>
+<text x="604" y="405" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">extracts, the estate has a</text>
+<text x="604" y="422" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">DAILY grain. Say so as a</text>
+<text x="604" y="439" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">design decision.</text>
+<rect x="812" y="114" width="368" height="454" rx="12" fill="#f7f9fb" stroke="#9fb3c8" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="824" y="134" font-size="13" font-weight="700" fill="#14304f" text-anchor="start">Lakehouse — isolated workspace</text>
+<rect x="826" y="152" width="340" height="74" rx="7" fill="#e8d3bd" stroke="#b08d63" stroke-width="1.6"/>
+<text x="840" y="176" font-size="15" font-weight="700" fill="#14304f">Bronze — raw tables</text>
+<text x="840" y="194" font-size="12" fill="#6b7f95">loaded from the landing zone, not from source</text>
+<rect x="826" y="240" width="340" height="92" rx="7" fill="#dfe6ed" stroke="#a9b6c2" stroke-width="1.6"/>
+<text x="840" y="264" font-size="15" font-weight="700" fill="#14304f">Silver — curated &amp; conformed</text>
+<text x="840" y="282" font-size="12" fill="#6b7f95">standardised datasets, quality rules</text>
+<rect x="826" y="346" width="340" height="96" rx="7" fill="#f6e3b4" stroke="#c9a94e" stroke-width="1.6"/>
+<text x="840" y="370" font-size="15" font-weight="700" fill="#14304f">Gold — business ready</text>
+<text x="840" y="388" font-size="12" fill="#6b7f95">metrics, KPIs, regulatory outputs</text>
+<line x1="996.0" y1="226" x2="996.0" y2="238" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="996.0" y1="332" x2="996.0" y2="344" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="792" y1="188" x2="826" y2="188" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="826" y="460" width="340" height="88" rx="7" fill="#fdecec" stroke="#b03535" stroke-width="1.6"/>
+<text x="840" y="484" font-size="15" font-weight="700" fill="#14304f">General ledger reconciliation</text>
+<text x="840" y="502" font-size="12" fill="#6b7f95">control totals · tie-out · sign-off</text>
+<text x="842" y="522" font-size="12.5" fill="#2c4a6b">No number is trusted until it ties to the GL</text>
+<line x1="996.0" y1="442" x2="996.0" y2="458" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="826" y="592" width="340" height="122" rx="7" fill="#f2ecfa" stroke="#6a4c93" stroke-width="1.6"/>
+<text x="840" y="616" font-size="15" font-weight="700" fill="#14304f">Customer &amp; account resolution</text>
+<text x="840" y="634" font-size="12" fill="#6b7f95">SEPARATE WORKSTREAM — own budget, own owner</text>
+<text x="842" y="654" font-size="12.5" fill="#2c4a6b">Entity resolution across source systems</text>
+<text x="842" y="671" font-size="12.5" fill="#2c4a6b">Survivorship rules — which source wins</text>
+<text x="842" y="688" font-size="12.5" fill="#2c4a6b">Stewardship queue for exceptions</text>
+<text x="842" y="705" font-size="12.5" fill="#2c4a6b">Not a transformation step. Size it separately.</text>
+<line x1="996.0" y1="592" x2="996.0" y2="570" stroke="#6a4c93" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="1006.0" y="580" font-size="11.5" font-weight="400" fill="#6a4c93" text-anchor="start">produces the conformed dimensions in Silver</text>
+<rect x="1186" y="114" width="278" height="288" rx="12" fill="#f7f9fb" stroke="#2e7d52" stroke-width="1.6" stroke-dasharray="7 5"/>
+<text x="1198" y="134" font-size="13" font-weight="700" fill="#2e7d52" text-anchor="start">Serving workspace — separate</text>
+<rect x="1200" y="152" width="250" height="112" rx="7" fill="#e6f4ec" stroke="#2e7d52" stroke-width="1.6"/>
+<text x="1214" y="176" font-size="15" font-weight="700" fill="#14304f">Semantic layer</text>
+<text x="1214" y="194" font-size="12" fill="#6b7f95">governed metric definitions</text>
+<text x="1216" y="214" font-size="12.5" fill="#2c4a6b">Kept outside the isolated</text>
+<text x="1216" y="231" font-size="12.5" fill="#2c4a6b">workspace where platform</text>
+<text x="1216" y="248" font-size="12.5" fill="#2c4a6b">constraints require it.</text>
+<rect x="1200" y="280" width="250" height="100" rx="7" fill="#eef3f8" stroke="#9fb3c8" stroke-width="1.6"/>
+<text x="1214" y="304" font-size="15" font-weight="700" fill="#14304f">Reporting &amp; analytics</text>
+<text x="1216" y="324" font-size="12.5" fill="#2c4a6b">Dashboards &amp; reporting</text>
+<text x="1216" y="341" font-size="12.5" fill="#2c4a6b">Regulatory outputs</text>
+<text x="1216" y="358" font-size="12.5" fill="#2c4a6b">ML / predictive (later phase)</text>
+<line x1="1166" y1="280" x2="1200" y2="200" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1325.0" y1="264" x2="1325.0" y2="278" stroke="#9fb3c8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="1200" y="448" font-size="13.5" font-weight="700" fill="#14304f" text-anchor="start">Consumers</text>
+<text x="1208" y="470" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">Below a capacity threshold each</text>
+<text x="1208" y="487" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">viewer needs a per-user licence —</text>
+<text x="1208" y="504" font-size="12" font-weight="400" fill="#6b7f95" text-anchor="start">cost this before it is discovered.</text>
+<rect x="46" y="806" width="1628" height="96" rx="10" fill="#f7f9fb" stroke="#9fb3c8" stroke-width="1.6"/>
+<text x="62" y="834" font-size="15" font-weight="700" fill="#14304f" text-anchor="start">Governance, security &amp; evidence — spans every layer</text>
+<text x="62" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">Catalog &amp; lineage</text>
+<text x="330" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">Classification &amp; labels</text>
+<text x="598" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">RBAC, row/column security</text>
+<text x="866" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">Audit logging</text>
+<text x="1134" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">Data quality</text>
+<text x="1402" y="862" font-size="12.5" font-weight="600" fill="#2c4a6b" text-anchor="start">Retention &amp; legal hold</text>
+<text x="1402" y="880" font-size="11.5" font-weight="600" fill="#2e7d52" text-anchor="start">anchored to the landing zone</text>
+<text x="62" y="880" font-size="11.5" font-weight="400" fill="#6b7f95" text-anchor="start">column-level lineage is what answers “where did this number come from”</text>
+<text x="46" y="934" font-size="11.5" font-weight="400" fill="#6b7f95" text-anchor="start">A pattern, not a product. Verify every platform constraint against current vendor documentation before relying on it.</text>
+</svg>
