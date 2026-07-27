@@ -61,8 +61,8 @@ Google Workspace security relies heavily on correct Admin Console configuration:
 - [Google Workspace Admin Help](https://support.google.com/a) -- Admin Console configuration, user management, and domain setup
 - [Google Workspace Security Best Practices](https://support.google.com/a/answer/7587183) -- security checklist for administrators
 - [Google Cloud Directory Sync](https://support.google.com/a/answer/106368) -- GCDS setup for Active Directory synchronization
-- [Google Workspace Migrate](https://support.google.com/workspacemigrate/answer/10839818) -- migration tool for Exchange, M365, and other platforms
-- [GWMME Administration Guide](https://support.google.com/workspacemigrate/answer/6055847) -- Google Workspace Migration for Microsoft Exchange
+- [Google Workspace Migrate](https://support.google.com/workspacemigrate/answer/9222862) -- migration tool for SharePoint/OneDrive, file shares, Box, and Exchange sources (Exchange Online support ends October 2026)
+- [About GWMME](https://support.google.com/a/answer/180898) -- Google Workspace Migration for Microsoft Exchange
 - [Google Vault Documentation](https://support.google.com/vault) -- retention rules, legal holds, eDiscovery, and audit
 - [Context-Aware Access](https://support.google.com/a/answer/9275380) -- device and context-based access policies
 - [Google Workspace Updates Blog](https://workspaceupdates.googleblog.com/) -- feature announcements and rollout schedules

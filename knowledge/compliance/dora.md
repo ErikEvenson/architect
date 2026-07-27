@@ -124,7 +124,7 @@ For critical third-party providers, the EU-level oversight can also impose remed
 ## Reference Links
 
 - [Regulation (EU) 2022/2554 (DORA official text)](https://eur-lex.europa.eu/eli/reg/2022/2554/oj)
-- [ESA technical standards under DORA](https://www.eba.europa.eu/regulation-and-policy/operational-resilience-cyber-security)
+- [EBA: Digital Operational Resilience Act -- adopted ESA joint technical standards (RTS/ITS)](https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act)
 - [TIBER-EU framework (DORA reference for TLPT)](https://www.ecb.europa.eu/paym/cyber-resilience/tiber-eu/html/index.en.html)
 
 ## See Also

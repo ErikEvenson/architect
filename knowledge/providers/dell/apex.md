@@ -40,8 +40,7 @@ APEX represents Dell's shift to as-a-service consumption, competing with HPE Gre
 
 - [Dell APEX Overview](https://www.dell.com/en-us/dt/apex/index.htm) -- APEX portfolio overview and service descriptions
 - [APEX Cloud Platform Documentation](https://infohub.delltechnologies.com/en-us/t/apex-cloud-platform/) -- Dell InfoHub with deployment and administration guides
-- [APEX Console](https://www.dell.com/en-us/dt/apex/apex-console.htm) -- unified management console for all APEX services
-- [APEX Navigator for Multicloud](https://www.dell.com/en-us/dt/apex/apex-navigator.htm) -- multicloud Kubernetes management with APEX
+- [APEX Navigator overview](https://infohub.delltechnologies.com/en-us/l/dell-apex-navigator/overview-6503/) -- multicloud storage and Kubernetes management delivered through the APEX Console
 - [Dell APEX Pricing and Packaging](https://www.dell.com/en-us/dt/apex/index.htm) -- subscription options and service tiers
 - [APEX Cloud Platform for VCF Reference Architecture](https://infohub.delltechnologies.com/en-us/t/apex-cloud-platform/) -- validated designs for APEX Cloud Platform deployments
 

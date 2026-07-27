@@ -43,9 +43,9 @@ PowerScale is the industry-leading scale-out NAS platform, handling the largest 
 
 - [Dell PowerScale Documentation](https://www.dell.com/support/home/en-us/product-support/product/isilon/docs) -- official OneFS administration and configuration guides
 - [OneFS Best Practices Guide](https://infohub.delltechnologies.com/en-us/t/powerscale-isilon/) -- Dell InfoHub with white papers and best practices for PowerScale
-- [PowerScale SmartConnect Guide](https://www.dell.com/support/kbdoc/en-us/000021938/isilon-smartconnect-overview) -- DNS-based load balancing configuration and troubleshooting
+- [PowerScale Network Design Considerations (SmartConnect)](https://infohub.delltechnologies.com/en-us/l/dell-powerscale-network-design-considerations/) -- SmartConnect DNS-based load balancing, allocation methods, and network design
 - [PowerScale SyncIQ Replication Guide](https://infohub.delltechnologies.com/en-us/t/powerscale-isilon/) -- asynchronous replication configuration for DR
-- [PowerScale Security Configuration Guide](https://www.dell.com/support/kbdoc/en-us/000021933/isilon-authentication-and-access-control) -- authentication, access zones, and RBAC configuration
+- [PowerScale OneFS Authentication, Identity Management, and Authorization](https://infohub.delltechnologies.com/en-us/l/powerscale-onefs-authentication-identity-management-and-authorization/) -- authentication providers, access zones, and RBAC configuration
 - [PowerScale for AI/ML Data Pipelines](https://infohub.delltechnologies.com/en-us/t/powerscale-isilon/) -- reference architectures for NVIDIA GPU clusters with PowerScale storage
 
 ## See Also

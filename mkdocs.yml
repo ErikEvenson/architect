@@ -84,6 +84,9 @@ nav:
     - Data Analytics: general/data-analytics.md
     - Open Table Formats: general/open-table-formats.md
     - Query Engines: general/query-engines.md
+    - Data Governance: general/data-governance.md
+    - Data Modelling: general/data-modelling.md
+    - Data Ingestion and CDC: general/data-ingestion.md
     - Ransomware Resilience: general/ransomware-resilience.md
     - Change Management: general/change-management.md
     - Operational Runbooks: general/operational-runbooks.md
@@ -114,6 +117,7 @@ nav:
     - Lake Formation: providers/aws/lake-formation.md
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
+    - Redshift: providers/aws/redshift.md
     - Route 53: providers/aws/route53.md
     - Multi-Account Strategy: providers/aws/multi-account.md
     - CloudFormation: providers/aws/cloudformation.md
@@ -137,6 +141,9 @@ nav:
     - Networking: providers/azure/networking.md
     - Compute: providers/azure/compute.md
     - Data: providers/azure/data.md
+    - Microsoft Fabric: providers/azure/fabric.md
+    - Analytics (Synapse/ADF/Event Hubs): providers/azure/analytics.md
+    - Data Explorer (Kusto): providers/azure/data-explorer.md
     - Security: providers/azure/security.md
     - Network Security Groups: providers/azure/network-security-groups.md
     - Observability: providers/azure/observability.md
@@ -264,6 +271,8 @@ nav:
     - Certifications: providers/openshift/certifications.md
   - Confluent:
     - Kafka: providers/confluent/kafka.md
+  - dbt:
+    - Transformation: providers/dbt/transformation.md
   - Cloudflare:
     - CDN & DNS: providers/cloudflare/cdn-dns.md
     - Workers: providers/cloudflare/workers.md
@@ -410,6 +419,10 @@ nav:
     - Data Platform: providers/snowflake/data-platform.md
   - Databricks:
     - Data Platform: providers/databricks/data-platform.md
+  - Cloudera:
+    - Data Platform (CDP): providers/cloudera/data-platform.md
+  - Teradata:
+    - Data Warehouse: providers/teradata/data-warehouse.md
   - NetApp:
     - ONTAP: providers/netapp/ontap.md
     - Cloud Volumes (CVO, ANF, FSx for ONTAP): providers/netapp/cloud-volumes.md
@@ -453,6 +466,9 @@ nav:
     - Microservices: patterns/microservices.md
     - Data Pipeline: patterns/data-pipeline.md
     - Lakehouse Medallion: patterns/lakehouse-medallion.md
+    - Data Platform Selection: patterns/data-platform-selection.md
+    - Core Banking Data Integration: patterns/core-banking-data-integration.md
+    - Regulated Financial Data Platform: patterns/regulated-financial-data-platform.md
     - Static Site: patterns/static-site.md
     - Gmail Third-Party Client: patterns/gmail-third-party-client.md
     - Hybrid Cloud: patterns/hybrid-cloud.md
@@ -475,6 +491,7 @@ nav:
     - Azure Stack HCI Migration: patterns/azure-stack-hci-migration.md
     - Datacenter Relocation: patterns/datacenter-relocation.md
     - Migration Coexistence: patterns/migration-coexistence.md
+    - Data Warehouse Migration: patterns/data-warehouse-migration.md
     - Dual-Platform Operations: patterns/dual-platform-operations.md
     - Private Cloud As-a-Service: patterns/private-cloud-as-a-service.md
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
@@ -507,6 +524,8 @@ nav:
     - DORA: compliance/dora.md
     - HITRUST CSF: compliance/hitrust-csf.md
     - GLBA: compliance/glba.md
+    - FFIEC: compliance/ffiec.md
+    - Bank Regulatory Reporting: compliance/bank-regulatory-reporting.md
     - NERC CIP: compliance/nerc-cip.md
     - PIPEDA & LGPD: compliance/pipeda-lgpd.md
     - FERPA: compliance/ferpa.md

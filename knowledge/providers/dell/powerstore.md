@@ -42,7 +42,7 @@ PowerStore is Dell's modern midrange storage platform, replacing VNX, Unity, and
 
 - [Dell PowerStore Documentation](https://www.dell.com/support/home/en-us/product-support/product/powerstore/docs) -- official product documentation and guides
 - [PowerStore Best Practices Guide](https://infohub.delltechnologies.com/en-us/t/powerstore/) -- Dell InfoHub with best practices and white papers
-- [PowerStore Host Configuration Guide](https://www.dell.com/support/kbdoc/en-us/000199067/dell-powerstore-host-configuration-guide) -- multipathing and host connectivity settings for ESXi, Linux, and Windows
+- [PowerStore host configuration best practices](https://infohub.delltechnologies.com/en-us/l/dell-powerstore-best-practices-guide/host-configuration-53/) -- multipathing and host connectivity settings for ESXi, Linux, and Windows
 - [PowerStore Networking Guide](https://infohub.delltechnologies.com/en-us/t/powerstore/) -- network configuration best practices for iSCSI and NVMe-oF
 - [Dell PowerStore Ansible Collection](https://github.com/dell/ansible-powerstore) -- infrastructure-as-code automation for PowerStore provisioning
 - [Dell CloudIQ](https://www.dell.com/en-us/dt/storage/cloudiq.htm) -- proactive monitoring and analytics for Dell storage

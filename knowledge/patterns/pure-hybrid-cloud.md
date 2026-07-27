@@ -89,10 +89,10 @@ The **VMware-on-Pure integration** is one of Pure's longest-standing hybrid surf
 
 - [Pure-as-a-Service](https://www.purestorage.com/products/pure-as-a-service.html) -- consumption-based delivery model
 - [Cloud Block Store](https://www.purestorage.com/products/cloud-block-storage.html) -- FlashArray semantics in AWS / Azure
-- [Pure1 management platform](https://www.purestorage.com/products/pure1.html) -- cross-environment storage observability
+- [Pure1 management platform](https://www.everpuredata.com/products/monitoring-fleet-management.html) -- cross-environment storage observability
 - [Portworx Enterprise](https://portworx.com/products/portworx-enterprise/) -- Kubernetes storage and data services across environments
 - [ActiveCluster synchronous replication](https://support.purestorage.com/Solutions/Pure_Storage_ActiveCluster) -- zero-RPO synchronous replication
-- [CloudSnap](https://www.purestorage.com/products/file-and-object-storage/flashblade-data-services.html) -- snapshot-to-cloud offload
+- [CloudSnap](https://support.everpuredata.com/r/cloudsnap/cloudsnap) -- snapshot-to-cloud offload
 - [VMware vVols on FlashArray](https://support.purestorage.com/Solutions/VMware) -- per-VM storage policy and snapshot management
 
 ## See Also

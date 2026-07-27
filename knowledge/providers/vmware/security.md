@@ -36,7 +36,7 @@ VMware environments are high-value targets because compromising vCenter or ESXi 
 
 ## Reference Links
 
-- [vSphere Security Configuration Guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-security-configuration-guide/8-0/about-this-guide.html) -- ESXi and vCenter hardening baselines (formerly Hardening Guide)
+- [vSphere Security Configuration Guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security/understanding-vsphere-hardening-and-compliance/understanding-vsphere-security-configuration-guide.html) -- ESXi and vCenter hardening baselines (formerly Hardening Guide)
 - [vSphere security guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-52188148-C579-4F6A-8335-CFBCE0DD2167.html) -- encryption, key management, RBAC, certificate management, and audit logging
 - [NSX security documentation](https://docs.vmware.com/en/VMware-NSX/4.2/administration/GUID-31A2D4B8-42A0-4D0F-8B85-1E3C42DD93E6.html) -- distributed firewall, microsegmentation, and IDS/IPS configuration
 

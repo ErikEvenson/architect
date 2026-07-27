@@ -81,6 +81,6 @@ Operational disciplines that are optional in other databases are mandatory in Ca
 
 - [Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/) -- architecture, CQL, configuration, and operational procedures
 - [DataStax Cassandra Documentation](https://docs.datastax.com/) -- DataStax Enterprise features, Astra DB, drivers, and best practices
-- [Cassandra Data Modeling Guide](https://cassandra.apache.org/doc/latest/cassandra/data_modeling/index.html) -- query-driven data modeling, partition design, and denormalization patterns
+- [Cassandra Data Modeling Guide](https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html) -- query-driven data modeling, partition design, and denormalization patterns
 - [K8ssandra Documentation](https://docs.k8ssandra.io/) -- Kubernetes operator for Cassandra with Reaper, Medusa, and Stargate
 - [The Last Pickle - Cassandra Blog](https://thelastpickle.com/blog/) -- advanced Cassandra operations, repair strategies, and performance tuning
