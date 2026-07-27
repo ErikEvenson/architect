@@ -109,6 +109,7 @@ nav:
     - S3 Files: providers/aws/s3-files.md
     - Messaging (SQS/SNS/EventBridge): providers/aws/messaging.md
     - DynamoDB: providers/aws/dynamodb.md
+    - Redshift: providers/aws/redshift.md
     - Route 53: providers/aws/route53.md
     - Multi-Account Strategy: providers/aws/multi-account.md
     - CloudFormation: providers/aws/cloudformation.md
@@ -404,6 +405,10 @@ nav:
     - Data Platform: providers/snowflake/data-platform.md
   - Databricks:
     - Data Platform: providers/databricks/data-platform.md
+  - Cloudera:
+    - Data Platform (CDP): providers/cloudera/data-platform.md
+  - Teradata:
+    - Data Warehouse: providers/teradata/data-warehouse.md
   - NetApp:
     - ONTAP: providers/netapp/ontap.md
     - Cloud Volumes (CVO, ANF, FSx for ONTAP): providers/netapp/cloud-volumes.md
@@ -471,6 +476,7 @@ nav:
     - Azure Stack HCI Migration: patterns/azure-stack-hci-migration.md
     - Datacenter Relocation: patterns/datacenter-relocation.md
     - Migration Coexistence: patterns/migration-coexistence.md
+    - Data Warehouse Migration: patterns/data-warehouse-migration.md
     - Dual-Platform Operations: patterns/dual-platform-operations.md
     - Private Cloud As-a-Service: patterns/private-cloud-as-a-service.md
     - Convert-Before-Move Strategy: patterns/convert-before-move.md
