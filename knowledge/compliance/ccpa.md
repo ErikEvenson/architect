@@ -273,7 +273,7 @@ Numerous US states have enacted comprehensive privacy laws modeled on the CCPA/C
 - [CCPA Full Text (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5) — official statutory text of Civil Code 1798.100-1798.199.100
 - [CPRA Ballot Initiative Text (Proposition 24)](https://vig.cdn.sos.ca.gov/2020/general/pdf/topl-prop24.pdf) — full text of the CPRA as approved by California voters in November 2020
 - [CPPA Official Regulations](https://cppa.ca.gov/regulations/) — California Privacy Protection Agency regulations implementing the CCPA/CPRA
-- [CPPA Enforcement Actions](https://cppa.ca.gov/enforcement/) — published enforcement actions and case summaries
+- [CPPA News & Announcements](https://cppa.ca.gov/announcements/) — published enforcement decisions, orders, and settlements, plus regulatory updates
 - [California Attorney General CCPA Page](https://oag.ca.gov/privacy/ccpa) — Attorney General guidance and resources on CCPA compliance
 - [Global Privacy Control Specification](https://globalprivacycontrol.org/) — technical specification for the GPC browser signal that must be honored under CPRA
 

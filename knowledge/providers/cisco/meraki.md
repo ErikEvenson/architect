@@ -35,7 +35,7 @@ Meraki's cloud-managed model fundamentally changes network operations -- the sim
 ## Reference Links
 
 - [Meraki documentation](https://documentation.meraki.com/) -- Dashboard configuration, MX/MS/MR deployment guides, and API reference
-- [Meraki MX sizing guide](https://documentation.meraki.com/MX/MX_Overview_and_Specifications) -- MX appliance throughput ratings with and without advanced security features
+- [Meraki MX sizing guide](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Architectures_and_Best_Practices/MX_Sizing_Guide_%26_Principles) -- MX appliance throughput ratings with and without advanced security features
 - [Meraki SD-WAN and AutoVPN](https://documentation.meraki.com/MX/Site-to-site_VPN/Meraki_Auto_VPN_-_Configuration_and_Troubleshooting) -- AutoVPN configuration, hub-and-spoke design, and non-Meraki VPN peering
 - [Meraki API documentation](https://developer.cisco.com/meraki/api/) -- REST API reference for dashboard automation, webhook configuration, and integration
 - [Meraki licensing overview](https://documentation.meraki.com/General_Administration/Licensing/Meraki_Licensing_FAQs) -- Per-device licensing model, tier comparison, and renewal management

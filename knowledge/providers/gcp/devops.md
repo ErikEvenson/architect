@@ -63,7 +63,7 @@ Cloud Build private worker pool in shared VPC (10.0.0.0/24 subnet). Build steps 
 - [Cloud Deploy documentation](https://cloud.google.com/deploy/docs) -- delivery pipelines, deployment strategies, canary verification, and approvals
 - [Artifact Registry documentation](https://cloud.google.com/artifact-registry/docs) -- container images, language packages, remote repositories, and vulnerability scanning
 - [Binary Authorization documentation](https://cloud.google.com/binary-authorization/docs) -- attestation policies, attestors, and supply chain security enforcement
-- [Software Delivery Shield overview](https://cloud.google.com/software-delivery-shield/docs) -- end-to-end supply chain security posture management
+- [Software Delivery Shield overview](https://cloud.google.com/software-supply-chain-security/docs/sds/overview) -- end-to-end supply chain security posture management
 
 ## See Also
 
