@@ -354,7 +354,7 @@ Environments (each a parameter file):
 
 - [Bicep documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/) -- language reference, modules, deployment scopes, and best practices
 - [Bicep Playground](https://aka.ms/bicepdemo) -- interactive browser-based Bicep editor with ARM template decompilation
-- [Azure Verified Modules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/azure-verified-modules) -- curated, tested Bicep modules for common Azure resource patterns
+- [Azure Verified Modules](https://learn.microsoft.com/en-us/community/content/azure-verified-modules) -- curated, tested Bicep modules for common Azure resource patterns
 - [Deployment stacks documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deployment-stacks) -- resource lifecycle management and deny assignments
 
 ## See Also

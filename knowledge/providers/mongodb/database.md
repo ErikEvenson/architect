@@ -79,7 +79,7 @@ Connection management is another area where MongoDB deployments fail at scale. U
 
 ## Reference Links
 
-- [MongoDB Architecture Guide](https://www.mongodb.com/docs/manual/core/) -- document model, replication, sharding, and storage engine internals
+- [MongoDB Server Manual](https://www.mongodb.com/docs/manual/) -- document model, replication, sharding, and storage engine internals
 - [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/) -- managed service configuration, Atlas Search, Atlas Vector Search, and serverless instances
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/products/mongodb/schema-design-anti-pattern-summary/) -- embedding vs referencing patterns and common anti-patterns
 - [MongoDB Sharding Documentation](https://www.mongodb.com/docs/manual/sharding/) -- shard key selection, chunk migration, and balancer configuration

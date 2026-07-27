@@ -111,7 +111,7 @@ The 2023 amendment added breach notification requirements: financial institution
 - [FTC Safeguards Rule (16 CFR Part 314)](https://www.ftc.gov/legal-library/browse/rules/safeguards-rule)
 - [FTC Privacy Rule (16 CFR Part 313)](https://www.ftc.gov/legal-library/browse/rules/financial-privacy-rule)
 - [Federal banking agency interagency guidelines](https://www.fdic.gov/resources/supervision-and-examinations/consumer-compliance-examination-manual/documents/8/viii-1-1.pdf)
-- [FTC Safeguards Rule Final Rule (2021 amendment)](https://www.ftc.gov/news-events/news/press-releases/2021/10/ftc-strengthens-security-safeguards-consumer-financial-information)
+- [FTC Safeguards Rule Final Rule (2021 amendment)](https://www.ftc.gov/news-events/news/press-releases/2021/10/ftc-strengthens-security-safeguards-consumer-financial-information-following-widespread-data)
 
 ## See Also
 

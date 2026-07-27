@@ -69,12 +69,12 @@ LPM is the operational capability that separates planned maintenance from planne
 - [Virtual HMC appliance (vHMC) Overview](https://www.ibm.com/support/pages/virtual-hmc-appliance-vhmc-overview) -- vHMC on PowerVM vs vHMC on x86, supported hypervisors, PTF stream separation
 - [Configuring Redundant HMCs](https://www.ibm.com/support/pages/configuring-redundant-hmcs) -- dual-HMC topology, FSP wiring, DHCP IP-range partitioning
 - [Concurrent vs Disruptive Firmware Update and Upgrade on Power Systems](https://www.ibm.com/support/pages/concurrent-vs-disruptive-firmware-update-and-upgrade-power-systems) -- classification rules including Power10 SBE and EMX0/EMXH constraints
-- [Power9, Power10 and Power11 System FW Release Planned Schedule (2025-2026)](https://www.ibm.com/support/pages/power9-power10-and-power11-system-fw-release-planned-schedule-2025-2026-updated-november-2025) -- IBM-published firmware roadmap
+- [Power9, Power10 and Power11 System FW Release Planned Schedule (2025-2027)](https://www.ibm.com/support/pages/power9-power10-and-power11-system-fw-release-planned-schedule-2025-2027-updated-may-2026) -- IBM-published firmware roadmap
 - [IBM Power Virtualization Best Practices Guide v5.0 (October 2025)](https://www.ibm.com/downloads/documents/us-en/107a02e95b48f634) -- LPAR sizing, VIOS, LPM, and management-plane best practices
 - [IBM PowerVC product page](https://www.ibm.com/products/powervc) -- Standard Edition vs Private Cloud Edition positioning
 - [IBM PowerVC for Private Cloud 2.3 documentation](https://www.ibm.com/docs/en/powervc-cloud/2.3.1?topic=introduction) -- current PowerVC documentation, OpenStack API surface, image catalog, placement policies
 - [PowerVC Lifecycle Information](https://www.ibm.com/support/pages/powervc-lifecycle-information) -- PowerVC version support windows
-- [Difference between PowerVC Standard and PowerVC for Private Cloud](https://www.ibm.com/support/pages/what-difference-between-powervc-standard-and-powervc-private-cloud) -- self-service portal, approval workflows, metering
+- [Difference between PowerVC Standard and PowerVC for Private Cloud](https://www.ibm.com/support/pages/node/6549886) -- self-service portal, approval workflows, metering
 - [Live Partition Mobility (IBM Support)](https://www.ibm.com/support/pages/live-partition-mobility) -- LPM prerequisites, mover service partitions, validation workflow
 - [Best Practices for Live Partition Mobility (LPM) Networking](https://www.ibm.com/support/pages/best-practices-live-partition-mobility-lpm-networking) -- MSP bandwidth, management-network latency
 - [Migration combinations of processor compatibility modes](https://www.ibm.com/docs/en/power10/9080-HEX?topic=modes-combinations-active-partition-mobility) -- supported source/target processor-compatibility-mode pairs across Power generations

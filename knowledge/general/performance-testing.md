@@ -228,7 +228,7 @@ Before full rollout, send a percentage of production traffic to the new version:
 - [Gatling Documentation](https://docs.gatling.io/) — JVM-based load testing with Scala/Java/Kotlin
 - [Google Web Vitals](https://web.dev/vitals/) — Core Web Vitals metrics and thresholds
 - [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/) — Automated auditing for performance, accessibility, and best practices
-- [k6 Operator for Kubernetes](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/executing-with-k6-operator/) — Running distributed k6 tests in Kubernetes
+- [k6 Operator for Kubernetes](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/) — Running distributed k6 tests in Kubernetes
 - [Grafana Cloud k6](https://grafana.com/products/cloud/k6/) — Managed cloud load testing service
 - [GoReplay](https://goreplay.org/) — Open-source HTTP traffic replay tool
 - [Istio Traffic Mirroring](https://istio.io/latest/docs/tasks/traffic-management/mirroring/) — Shadow traffic for production testing

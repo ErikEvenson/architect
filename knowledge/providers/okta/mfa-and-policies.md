@@ -47,9 +47,9 @@ Network zones and device trust are what move the policy from "was MFA used" to "
 
 ## Reference Links
 
-- [Okta authentication policies](https://help.okta.com/en-us/content/topics/security/policies/configure-app-auth-policies.htm) -- app-level policy configuration and rule evaluation
-- [Okta FastPass](https://help.okta.com/en-us/content/topics/identity-engine/devices/fastpass-main.htm) -- passwordless, phishing-resistant primary factor
-- [Okta FIDO2 / WebAuthn](https://help.okta.com/en-us/content/topics/security/mfa/webauthn.htm) -- security-key enrollment and fallback policy
+- [Okta authentication policies](https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-authentication-policies.htm) -- app-level policy configuration and rule evaluation
+- [Okta FastPass](https://help.okta.com/oie/en-us/content/topics/identity-engine/devices/fp/fp-main.htm) -- passwordless, phishing-resistant primary factor
+- [Okta FIDO2 / WebAuthn](https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/phishing-resistant-auth.htm) -- security-key enrollment and fallback policy
 - [Okta ThreatInsight](https://help.okta.com/en-us/content/topics/security/threat-insight/about-threatinsight.htm) -- IP reputation, detection modes, and block configuration
 - [Okta network zones](https://help.okta.com/en-us/content/topics/security/network/network-zones.htm) -- trusted/untrusted zone configuration
-- [Okta global session policy](https://help.okta.com/en-us/content/topics/security/policies/configure-session-policy.htm) -- session duration, MFA requirements, and factor-strength rules
+- [Okta global session policy](https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-okta-sign-on-policies.htm) -- session duration, MFA requirements, and factor-strength rules

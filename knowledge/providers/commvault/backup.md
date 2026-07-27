@@ -73,6 +73,6 @@ The architecture decisions above (CommServe sizing, storage policies, dedup) det
 
 ## Reference Links
 
-- [Commvault Documentation](https://documentation.commvault.com/2024e/essential/overview.html) -- CommServe, MediaAgent, storage policies, and IntelliSnap configuration
-- [Commvault Architecture Guide](https://documentation.commvault.com/2024e/essential/architecture_overview.html) -- deployment topologies, component sizing, and network requirements
-- [Metallic SaaS Backup](https://documentation.commvault.com/metallic/) -- cloud-managed backup service documentation
+- [Commvault Documentation (LTS 11.44)](https://documentation.commvault.com/11.44/software/index.html) -- CommServe, MediaAgent, storage policies, and IntelliSnap configuration
+- [CommCell Logical Architecture](https://documentation.commvault.com/11.44/commcell-console/commcell_logical_architecture.html) -- CommServe, MediaAgent, and client components; agents, backup sets, subclients, and storage policies
+- [Commvault SaaS Backup](https://documentation.commvault.com/saas/) -- cloud-managed backup service documentation (formerly branded Metallic)

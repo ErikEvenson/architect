@@ -53,7 +53,7 @@ Agentic automation scope matters because the default -- ~200M automations/month 
 
 - [Kyndryl Bridge platform overview](https://www.kyndryl.com/us/en/services/platform) -- Integrate / Observe / Orchestrate model, service catalog, AI insight volumes, customer outcomes
 - [Kyndryl Bridge service catalog](https://www.kyndryl.com/bridge) -- the 190+ services available through Bridge
-- [Kyndryl Bridge documentation](https://docs.kyndryl.com/us/en/getting-started/introduction-to-kyndryl-bridge) -- getting started, onboarding, technical architecture
+- [Kyndryl Bridge documentation](https://docs.kyndryl.com/introduction-to-kyndryl-bridge) -- getting started, onboarding, technical architecture
 - [Kyndryl Agentic Service Management](https://www.kyndryl.com/in/en/about-us/news/2026/04/new-agentic-service-management) -- 2026 maturity model and blueprint for agentic transformation
 - [Kyndryl Intelligent Recovery Service](https://www.kyndryl.com/us/en/about-us/news/2026/02/new-intelligent-recovery-services) -- KIRS integrated with Bridge for coordinated recovery
 - [Kyndryl Bridge launch announcement (2022)](https://investors.kyndryl.com/news-releases/news-release-details/kyndryl-introduces-new-platform-kyndryl-bridge-orchestrate-it) -- original positioning and platform goals
