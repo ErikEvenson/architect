@@ -47,9 +47,9 @@ Linked-issue discipline underpins proper root-cause analysis. An incident withou
 
 ## Reference Links
 
-- [JSM SLAs](https://support.atlassian.com/jira-service-management-cloud/docs/create-and-edit-slas/) -- configuring start, pause, stop, and goal conditions
-- [SLA smart values](https://support.atlassian.com/cloud-automation/docs/jira-smart-values-service-level-agreements/) -- using SLA fields in automation and JQL
-- [JSM queues](https://support.atlassian.com/jira-service-management-cloud/docs/manage-queues-in-your-service-project/) -- creating and organizing agent queues
-- [Jira automation rules](https://support.atlassian.com/cloud-automation/docs/jira-automation-components/) -- triggers, conditions, actions, and branch rules
+- [JSM SLAs](https://support.atlassian.com/jira-service-management-cloud/docs/create-an-sla/) -- configuring start, pause, stop, and goal conditions
+- [SLA smart values](https://support.atlassian.com/jira/kb/how-to-find-smart-value-of-sla-component-of-jsm-issues/) -- locating SLA smart values (`ongoingCycle`, `completedCycle`) for use in automation rules
+- [JSM queues](https://support.atlassian.com/jira-service-management-cloud/docs/what-are-queues/) -- creating and organizing agent queues
+- [Jira automation rules](https://support.atlassian.com/cloud-automation/docs/what-are-automation-rules/) -- triggers, conditions, actions, and branches
 - [Automation rule execution limits](https://support.atlassian.com/cloud-automation/docs/automation-service-limits/) -- per-plan monthly execution budgets
 - [Linking issues](https://support.atlassian.com/jira-software-cloud/docs/link-issues/) -- issue link types including `is caused by`, `relates to`, `implements`

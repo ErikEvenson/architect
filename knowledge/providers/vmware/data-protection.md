@@ -39,7 +39,7 @@ Data protection failures are discovered at the worst possible time -- during rec
 
 - [vSphere Replication documentation](https://docs.vmware.com/en/vSphere-Replication/index.html) -- vSphere Replication deployment, configuration, and recovery point objectives
 - [VCF Live Site Recovery documentation](https://docs.vmware.com/en/VMware-Cloud-Foundation/services/vcf-live-site-recovery/GUID-E8C21E2B-7C03-4E0C-8113-4F2E0A3B2E6A.html) -- orchestrated disaster recovery with recovery plans and automated failover
-- [vSphere Storage APIs for Data Protection (VADP)](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-guide/backing-up-virtual-machines/vstorage-apis-for-data-protection.html) -- VADP and Changed Block Tracking for backup integration
+- [Virtual Disk Development Kit (VDDK) Programming Guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/virtual-disk-development-kit-programming-guide.html) -- the canonical reference for vSphere Storage APIs for Data Protection (VADP) and Changed Block Tracking in backup integration
 
 ## See Also
 

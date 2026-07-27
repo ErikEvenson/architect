@@ -48,6 +48,6 @@ Note: SolarWinds' AI capabilities are less mature than Datadog or Splunk. Organi
 
 ## Reference Links
 
-- [SolarWinds Orion Platform Documentation](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-orion-introduction.htm) -- NPM, SAM, VMAN, NCM modules and polling engine architecture
-- [SolarWinds Observability (SaaS)](https://documentation.solarwinds.com/en/success_center/observability/content/intro/introduction.htm) -- cloud-native monitoring platform for hybrid environments
-- [SolarWinds Sizing Guide](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-orion-requirements.htm) -- polling engine sizing, database requirements, and distributed architecture
+- [SolarWinds Platform documentation (formerly Orion Platform)](https://documentation.solarwinds.com/en/success_center/orionplatform/content/orion_platform_documentation.htm) -- NPM, SAM, VMAN, NCM modules and polling engine architecture
+- [SolarWinds Observability SaaS documentation](https://documentation.solarwinds.com/en/success_center/observability/content/observability_documentation.htm) -- cloud-native monitoring platform for hybrid environments
+- [SolarWinds Platform deployment sizing guidelines](https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-multi-module-system-guidelines.htm) -- polling engine sizing, database requirements, and distributed architecture

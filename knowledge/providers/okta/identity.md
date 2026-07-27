@@ -57,8 +57,8 @@ Rate limiting is a frequently overlooked operational concern. Okta enforces stri
 
 - [Okta Product Documentation](https://help.okta.com/en-us/content/index.htm) -- official Okta admin and developer documentation
 - [Okta Integration Network](https://www.okta.com/integrations/) -- catalog of pre-built application integrations
-- [Okta Identity Governance](https://help.okta.com/en-us/content/topics/identity-governance/oig-main.htm) -- access certification, entitlement management, and governance workflows
+- [Okta Identity Governance](https://help.okta.com/en-us/content/topics/identity-governance/iga-overview.htm) -- access certification, entitlement management, and governance workflows
 - [Okta Workflows](https://help.okta.com/wf/en-us/content/topics/workflows/workflows-main.htm) -- no-code identity orchestration and automation
 - [Okta Rate Limits](https://developer.okta.com/docs/reference/rate-limits/) -- API rate limit reference by endpoint and org type
-- [Okta Security Technical Whitepaper](https://www.okta.com/resources/whitepaper-okta-security-technical-whitepaper/) -- Okta infrastructure security, SOC 2, and compliance details
+- [Okta Trust Center](https://trust.okta.com/) -- Okta infrastructure security posture, compliance certifications, and security advisories
 - [Okta Adaptive MFA](https://help.okta.com/en-us/content/topics/security/mfa/mfa-home.htm) -- MFA factor configuration, policies, and adaptive risk scoring

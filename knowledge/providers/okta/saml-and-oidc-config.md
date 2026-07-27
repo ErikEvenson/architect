@@ -49,5 +49,5 @@ Session-lifetime coordination between Okta and the SP is the third cluster. User
 - [Okta SAML](https://developer.okta.com/docs/concepts/saml/) -- SAML assertion structure, signing, NameID formats
 - [Okta OIDC / OAuth 2.0](https://developer.okta.com/docs/concepts/oauth-openid/) -- OIDC client types, flows, token lifetimes
 - [Okta custom authorization servers](https://developer.okta.com/docs/concepts/auth-servers/) -- when to use the default vs a custom authorization server
-- [Okta SAML attribute statements](https://developer.okta.com/docs/guides/saml-application-setup/main/) -- attribute mapping and group filtering
-- [Okta certificate rotation](https://help.okta.com/en-us/content/topics/security/certificate-management.htm) -- signing certificate rotation and pre-rotation
+- [Okta SAML attribute statements](https://developer.okta.com/docs/guides/create-an-app-integration/saml2/main/) -- attribute mapping and group filtering
+- [Okta certificate rotation](https://help.okta.com/en-us/content/topics/apps/manage-signing-certificates.htm) -- signing certificate rotation and pre-rotation

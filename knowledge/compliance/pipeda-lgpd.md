@@ -196,7 +196,7 @@ The first significant LGPD enforcement actions occurred in 2022–2023 and have 
 - [PIPEDA (Office of the Privacy Commissioner of Canada)](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/)
 - [Bill C-27 (Digital Charter Implementation Act)](https://www.parl.ca/legisinfo/en/bill/44-1/c-27)
 - [LGPD official text (Portuguese)](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm)
-- [LGPD English translation (IAPP)](https://iapp.org/resources/article/brazilian-data-protection-law-lgpd-english-translation/)
+- [LGPD English translation (IAPP, PDF)](https://iapp.org/media/pdf/resource_center/Brazilian_General_Data_Protection_Law.pdf)
 - [Brazilian National Data Protection Authority (ANPD)](https://www.gov.br/anpd/pt-br)
 
 ## See Also

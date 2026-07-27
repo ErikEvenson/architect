@@ -120,7 +120,7 @@ Global scope contains org-level auth methods (OIDC). Orgs map to business units.
 
 - [Boundary Documentation](https://developer.hashicorp.com/boundary/docs) -- architecture, deployment models, targets, credential injection, and session recording
 - [Boundary Tutorials](https://developer.hashicorp.com/boundary/tutorials) -- hands-on guides for HCP Boundary, self-managed deployment, and Vault integration
-- [Boundary Reference Architecture](https://developer.hashicorp.com/boundary/docs/install-boundary/reference/reference-architecture) -- production deployment patterns for self-managed Boundary
+- [Boundary Recommended Architecture](https://developer.hashicorp.com/boundary/docs/architecture/recommended-architecture) -- production deployment patterns for self-managed Boundary
 
 ## See Also
 
