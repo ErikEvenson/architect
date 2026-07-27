@@ -1140,6 +1140,8 @@ All links checked and returning HTTP 200 on 2026-07-26.
 - `general/query-engines.md` — engine characteristics behind the workload-breadth dimension
 - `general/data-modelling.md` — the modelling layer, which outlives any platform choice
 - `general/data-ingestion.md` — landing data into whichever platform is selected
+- `general/semantic-layer.md` — the metric layer above the platform, and where row/column security is actually enforced
+- `general/business-intelligence.md` — the consumption tier, BI vendor landscape, and the Power BI licensing model that frequently drives the platform decision
 - `patterns/lakehouse-medallion.md` — layered lake design on the chosen platform
 - `patterns/data-warehouse-migration.md` — moving off a legacy warehouse onto the selection
 - `patterns/data-pipeline.md` — the operating pattern once the platform is running
