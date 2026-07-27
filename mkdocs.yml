@@ -82,6 +82,7 @@ nav:
     - FinOps: general/finops.md
     - Compliance Automation: general/compliance-automation.md
     - Data Analytics: general/data-analytics.md
+    - Data Governance: general/data-governance.md
     - Ransomware Resilience: general/ransomware-resilience.md
     - Change Management: general/change-management.md
     - Operational Runbooks: general/operational-runbooks.md
@@ -132,6 +133,9 @@ nav:
     - Networking: providers/azure/networking.md
     - Compute: providers/azure/compute.md
     - Data: providers/azure/data.md
+    - Microsoft Fabric: providers/azure/fabric.md
+    - Analytics (Synapse/ADF/Event Hubs): providers/azure/analytics.md
+    - Data Explorer (Kusto): providers/azure/data-explorer.md
     - Security: providers/azure/security.md
     - Network Security Groups: providers/azure/network-security-groups.md
     - Observability: providers/azure/observability.md
