@@ -47,7 +47,14 @@ Azure data services have unique pricing models (DTU vs vCore, Request Units) tha
 
 ## See Also
 
+> **Looking for analytics, data lake, or data warehouse guidance?** This file covers Azure **operational** databases only. For the analytics layer see `providers/azure/fabric.md` (Microsoft Fabric, OneLake, lakehouse and warehouse, Direct Lake, capacity economics), `providers/azure/analytics.md` (Synapse SQL and Spark pools, Data Factory, Event Hubs, Stream Analytics, Synapse Link), and `providers/azure/data-explorer.md` (telemetry and time-series).
+
+- `providers/azure/fabric.md` -- Microsoft Fabric and OneLake: the analytics and lakehouse platform, and the target for Cosmos DB and Azure SQL mirroring
+- `providers/azure/analytics.md` -- Azure Synapse Analytics, Data Factory, Event Hubs, Stream Analytics, and Synapse Link for Cosmos DB HTAP
+- `providers/azure/data-explorer.md` -- Azure Data Explorer for telemetry, log, and time-series analytics
 - `general/data.md` -- General data architecture patterns and database selection criteria
+- `general/data-governance.md` -- Catalog, lineage, classification, and access governance across data services
 - `providers/azure/database.md` -- Detailed Azure database service coverage including PostgreSQL and MySQL
+- `providers/azure/cosmos-db.md` -- Cosmos DB modelling, partitioning, and consistency in depth
 - `providers/azure/networking.md` -- Private Endpoints for securing database network access
 - `providers/azure/disaster-recovery.md` -- Geo-replication and failover strategies for Azure data services
