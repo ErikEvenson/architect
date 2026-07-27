@@ -145,7 +145,7 @@ Finally, the cost-model inversion is the surprise that lands after the programme
 - [Teradata documentation search](https://docs.teradata.com/search/all?query=primary+index) -- the documentation set is versioned and deep links rot; search from here rather than bookmarking topic URLs
 - [Teradata platform](https://www.teradata.com/platform) -- the Autonomous Knowledge Platform and the 2026 product naming
 - [Teradata Cloud](https://www.teradata.com/platform/cloud) -- cloud deployment across AWS, Azure, and Google Cloud; active versus elastic compute
-- [Teradata pricing](https://www.teradata.com/pricing) -- published tier pricing and storage rates; verify current values directly
+- [Teradata pricing](https://www.teradata.com/getting-started/pricing) -- published tier pricing and storage rates; verify current values directly
 - [Teradata Developers](https://developers.teradata.com/) -- developer resources, drivers, and community content
 - [Teradata Downloads](https://downloads.teradata.com/) -- Teradata Tools and Utilities including BTEQ, TPT, and the load/export utilities
 - [AWS SCT: Teradata source](https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Source.Teradata.html) -- conversion to Amazon Redshift, the `SET`-table emulation option, `UNION ALL` partition emulation, statistics collection via BTEQ, and skew-threshold-driven key selection

@@ -238,13 +238,13 @@ Finally, the physical design assumptions are the real payload. A warehouse's sch
 - [BigQuery interactive SQL translator](https://docs.cloud.google.com/bigquery/docs/interactive-sql-translator) -- single-statement translation for iterative work
 - [Teradata to BigQuery migration overview](https://docs.cloud.google.com/bigquery/docs/migration/teradata-overview) -- documented phases and the migration agent
 - [Amazon Redshift to BigQuery migration overview](https://docs.cloud.google.com/bigquery/docs/migration/redshift-overview) -- the same pattern in the opposite direction
-- [Hive to BigQuery migration overview](https://docs.cloud.google.com/bigquery/docs/migration/hive-overview) -- Hadoop estate migration guidance
-- [Snowflake SnowConvert](https://www.snowflake.com/en/migrate-to-the-cloud/snowconvert/) -- Snowflake's source-code conversion tooling; confirm current source-platform coverage directly
+- [Hive to BigQuery migration overview](https://docs.cloud.google.com/bigquery/docs/migration/hive) -- Hadoop estate migration guidance
+- [Snowflake migration tooling](https://www.snowflake.com/en/migrate-to-the-cloud/) -- Snowflake's migration programme and its SnowConvert source-code conversion tool; the product-specific pages have moved more than once, so confirm current source-platform coverage directly rather than from a bookmark
 - [AWS Prescriptive Guidance patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/welcome.html) -- reference migration patterns including warehouse migrations
 - [Teradata platform](https://www.teradata.com/platform) -- current product naming after the 2026 rename
 - [Teradata documentation](https://docs.teradata.com/) -- SQL reference, utilities, and workload management
 - [IBM Netezza documentation](https://www.ibm.com/docs/en/netezza) -- Netezza SQL, distribution, and administration
-- [IBM Netezza Performance Server](https://www.ibm.com/products/netezza-performance-server) -- the current Netezza product
+- [IBM Netezza](https://www.ibm.com/products/netezza) -- the current Netezza product (Netezza Performance Server)
 - [Oracle Exadata](https://www.oracle.com/engineered-systems/exadata/) -- Smart Scan, Hybrid Columnar Compression, and storage indexes
 - [dbt](https://www.getdbt.com/) -- the common landing point for rewritten in-warehouse ELT logic under version control
 - [Great Expectations](https://greatexpectations.io/) -- data quality assertions usable as part of a reconciliation harness
