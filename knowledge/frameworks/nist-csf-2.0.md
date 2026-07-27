@@ -140,7 +140,7 @@ Practical implementation of Govern:
 ## Reference Links
 
 - [NIST CSF 2.0 main page](https://www.nist.gov/cyberframework)
-- [NIST CSF 2.0 publication (NIST CSWP 29)](https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-20/final)
+- [NIST CSF 2.0 publication (NIST CSWP 29)](https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final)
 - [CSF 2.0 reference tool](https://csrc.nist.gov/Projects/Cybersecurity-Framework/Filters)
 - [NIST CSF 2.0 quick start guides](https://www.nist.gov/cyberframework/getting-started)
 - [Community Profiles](https://www.nist.gov/cyberframework/profiles)

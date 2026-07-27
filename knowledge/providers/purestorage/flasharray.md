@@ -46,7 +46,7 @@ The Evergreen//Forever model means the array hardware is refreshed every 3 years
 - [Pure Storage FlashArray Documentation](https://support.purestorage.com/FlashArray) — official FlashArray administration and configuration guides
 - [Purity//FA REST API Reference](https://support.purestorage.com/FlashArray/PurityFA/Purity_FA_REST_API) — REST API v2.x reference documentation
 - [ActiveCluster Design Guide](https://support.purestorage.com/Solutions/Pure_Storage_ActiveCluster) — synchronous replication architecture and requirements
-- [Pure Storage CSI Driver](https://github.com/purestorage/pso-csi) — Kubernetes CSI driver source and documentation
+- [Pure Storage Kubernetes Integration](https://support.purestorage.com/bundle/m_kubernetes/page/topics/concept/c_kubernetes.html) — Pure Service Orchestrator CSI driver deployment and Kubernetes integration guides
 - [Pure1 Meta](https://pure1.purestorage.com/) — cloud-based monitoring and analytics portal
 - [Pure Storage Ansible Collection](https://galaxy.ansible.com/purestorage/flasharray) — Ansible modules for FlashArray automation
 - [Pure Storage Terraform Provider](https://registry.terraform.io/providers/PureStorage-OpenConnect/flash/latest) — Terraform provider for infrastructure-as-code

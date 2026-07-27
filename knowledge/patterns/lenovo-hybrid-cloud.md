@@ -80,13 +80,13 @@ The **Lenovo-Veeam partnership** is one of the strongest backup-vendor partnersh
 
 ## Reference Links
 
-- [Lenovo TruScale Infrastructure Services](https://www.lenovo.com/us/en/services/truscale/infrastructure-services/) -- consumption-based infrastructure delivery
+- [Lenovo TruScale Infrastructure as a Service datasheet](https://lenovopress.lenovo.com/datasheet/ds0164-lenovo-truscale-infrastructure-as-a-service) -- consumption-based infrastructure delivery
 - [Lenovo ThinkAgile MX Series](https://www.lenovo.com/us/en/p/servers-storage/data-management/integrated-systems/thinkagile-mx-series/wmd00000489) -- Azure Stack HCI on Lenovo hardware
 - [Lenovo XClarity One](https://www.lenovo.com/us/en/data-center/software/management/xclarity-orchestrator/) -- cloud-managed server orchestration
 - [Lenovo ThinkSystem](https://www.lenovo.com/us/en/c/servers-storage/servers/) -- enterprise server portfolio
 - [Azure Arc-enabled servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/overview) -- Microsoft governance for Lenovo on-prem servers
 - [Azure Stack HCI overview](https://learn.microsoft.com/en-us/azure-stack/hci/) -- Microsoft documentation for the platform that ThinkAgile MX delivers
-- [Veeam-Lenovo partnership](https://www.veeam.com/lenovo) -- canonical backup partnership for Lenovo-anchored deployments
+- [Veeam-Lenovo partnership](https://www.veeam.com/solutions/alliance-partner/lenovo.html) -- canonical backup partnership for Lenovo-anchored deployments
 
 ## See Also
 

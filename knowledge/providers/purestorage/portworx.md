@@ -51,9 +51,9 @@ Portworx licensing is per-node and can become expensive at scale. The free PX-Es
 - [PX-Backup Documentation](https://docs.portworx.com/portworx-backup-on-prem/) — application-aware backup for Kubernetes
 - [PX-DR Documentation](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/disaster-recovery/) — synchronous and asynchronous disaster recovery
 - [Portworx StorageClass Parameters](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/create-pvcs/dynamic-provisioning/) — volume parameters including replication factor, io_profile, and encryption
-- [Stork Documentation](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/stork/) — storage orchestrator for hyperconvergence and migration
+- [Stork Documentation](https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/stork) — storage orchestrator for hyperconvergence and migration
 - [PX-Autopilot](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/autopilot/) — automated capacity management rules
-- [Portworx with Pure Storage FlashArray](https://docs.portworx.com/portworx-enterprise/install-portworx/on-premises/other/pure-flash-array/) — FlashArray as backend storage for Portworx
+- [Portworx with Pure Storage FlashArray](https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray) — FlashArray as backend storage for Portworx
 
 ## See Also
 

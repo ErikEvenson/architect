@@ -82,7 +82,7 @@ A cluster of 5 Snowball Edge devices deployed to an Arctic or Antarctic research
 ## Reference Links
 
 - [AWS Snow Family Documentation](https://docs.aws.amazon.com/snowball/latest/developer-guide/) -- Snowcone and Snowball Edge ordering, configuration, data transfer, and edge compute
-- [AWS Snow Family Pricing](https://aws.amazon.com/snow/pricing/) -- device fees, shipping, data transfer, and commitment terms
+- [AWS Snowball Pricing](https://aws.amazon.com/snowball/pricing/) -- device fees, shipping, data transfer, and commitment terms
 
 ## See Also
 

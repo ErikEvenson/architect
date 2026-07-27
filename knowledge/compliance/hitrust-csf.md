@@ -110,7 +110,7 @@ The reverse is not true — a HIPAA risk analysis is not equivalent to a HITRUST
 
 - [HITRUST Alliance](https://hitrustalliance.net/)
 - [HITRUST CSF](https://hitrustalliance.net/product-tool/hitrust-csf/)
-- [HITRUST e1, i1, r2 assessment levels](https://hitrustalliance.net/product-tool/assessments/)
+- [HITRUST e1, i1, r2 assessment levels](https://hitrustalliance.net/assessments-and-certifications)
 - [AWS HITRUST eligibility](https://aws.amazon.com/compliance/hitrust/)
 - [Azure HITRUST guidance](https://learn.microsoft.com/azure/compliance/offerings/offering-hitrust)
 - [GCP HITRUST guidance](https://cloud.google.com/security/compliance/hitrust)

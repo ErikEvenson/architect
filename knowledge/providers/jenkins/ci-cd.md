@@ -50,7 +50,7 @@ Plugin management is an ongoing operational challenge. Plugins frequently have i
 - [Jenkins Plugin Index](https://plugins.jenkins.io/)
 - [Jenkins Security Advisories](https://www.jenkins.io/security/advisories/)
 - [Jenkins LTS Changelog](https://www.jenkins.io/changelog-stable/)
-- [Jenkins X Documentation](https://jenkins-x.io/docs/)
+- [Jenkins X Documentation (project renamed JayeX)](https://jayex.io/v3/)
 - [Managing Jenkins Plugins](https://www.jenkins.io/doc/book/managing/plugins/)
 
 ## See Also

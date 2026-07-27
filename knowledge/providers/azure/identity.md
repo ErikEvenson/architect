@@ -36,7 +36,7 @@ Microsoft Entra ID is the identity control plane for all Azure resources, Micros
 
 ## Reference Architectures
 
-- [Azure Architecture Center: Identity architecture design](https://learn.microsoft.com/en-us/entra/fundamentals/identity-start-here) -- decision tree for identity integration patterns including hybrid, cloud-only, and B2C
+- [Azure Architecture Center: Get started with identity architecture design](https://learn.microsoft.com/en-us/azure/architecture/identity/identity-get-started) -- technology-choice guides and reference architectures for identity integration patterns including hybrid, cloud-only, and external (customer/partner) identities
 - [Microsoft Entra ID deployment guide](https://learn.microsoft.com/en-us/entra/fundamentals/concept-secure-remote-workers) -- phased deployment of conditional access, MFA, and identity protection
 - [Azure Landing Zone: Identity and access management](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) -- Cloud Adoption Framework guidance for enterprise identity design
 - [Azure Well-Architected Framework: Identity and access management](https://learn.microsoft.com/en-us/azure/well-architected/security/identity-access) -- security pillar guidance for authentication, authorization, and identity governance
