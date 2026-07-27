@@ -11,10 +11,20 @@ if config.config_file_name is not None:
 
 target_metadata = None
 
-# Override URL from environment variable if set
-database_url = os.environ.get("DATABASE_URL")
-if database_url:
-    config.set_main_option("sqlalchemy.url", database_url)
+# DATABASE_URL is the ONLY source of the connection URL (#312). alembic.ini used to
+# carry a fallback with an inline password; in a public repo that is a committed
+# credential, and nothing read it — every deployment path sets DATABASE_URL from a
+# secret. Failing explicitly here beats connecting to a hardcoded default, and beats
+# the opaque `None`-typed error alembic would otherwise raise several frames later.
+database_url = os.environ.get("DATABASE_URL") or config.get_main_option("sqlalchemy.url")
+if not database_url:
+    raise RuntimeError(
+        "DATABASE_URL is not set and alembic.ini defines no sqlalchemy.url.\n"
+        "Set it before running migrations, e.g.\n"
+        "  export DATABASE_URL='postgresql://architect:<password>@localhost:5432/architect'\n"
+        "In-cluster this is supplied by k8s/base/migration-job.yaml from the secret."
+    )
+config.set_main_option("sqlalchemy.url", database_url)
 
 
 def run_migrations_offline() -> None:
