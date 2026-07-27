@@ -117,7 +117,7 @@ The largest CIP enforcement actions in recent years have totaled $10M+ for indiv
 - [NERC CIP standards (current version)](https://www.nerc.com/pa/Stand/Pages/CIPStandards.aspx)
 - [NERC enforcement actions](https://www.nerc.com/pa/comp/CE/Pages/default.aspx)
 - [E-ISAC (Electricity Information Sharing and Analysis Center)](https://www.eisac.com/)
-- [NERC Project 2023-09 (Risk Management for Third-Party Cloud Services)](https://www.nerc.com/pa/Stand/Pages/Project2023-09.aspx)
+- [NERC Project 2023-09 (Risk Management for Third-Party Cloud Services)](https://www.nerc.com/standards/reliability-standards-under-development/2023-09-risk-management-for-third-party-cloud-services)
 - [FERC NOPR on cloud services](https://www.ferc.gov/news-events/news/ferc-issues-nopr-cloud-computing)
 
 ## See Also

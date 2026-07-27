@@ -59,9 +59,8 @@ Terraform is the dominant IaC tool across cloud providers, and Terraform Associa
 
 ## Reference Links
 
-- [HashiCorp Certifications](https://developer.hashicorp.com/certifications) -- Terraform Associate, Vault Associate/Professional, and Consul Associate exam details
+- [HashiCorp Certifications](https://developer.hashicorp.com/certifications) -- Terraform Associate, Vault Associate/Professional, and Consul Associate exam details, plus exam format, two-year validity period, and recertification rules
 - [HashiCorp Developer Tutorials](https://developer.hashicorp.com/tutorials) -- free hands-on training aligned to certification topics
-- [HashiCorp Certification FAQ](https://developer.hashicorp.com/certifications/faq) -- exam format, validity period, renewal process, and retake policies
 
 ## See Also
 

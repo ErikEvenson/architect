@@ -52,10 +52,10 @@ PingDirectory's multi-master LDAP replication provides the performance needed fo
 
 ## Reference Links
 
-- [PingFederate Documentation](https://docs.pingidentity.com/pingfederate/latest/overview.html) -- PingFederate server administration, federation configuration, and adapter reference
-- [PingOne Platform Documentation](https://docs.pingidentity.com/pingone/main/p1_landing_page.html) -- PingOne cloud platform setup, SSO, MFA, and directory services
-- [PingAccess Documentation](https://docs.pingidentity.com/pingaccess/latest/overview.html) -- PingAccess deployment, policy configuration, and agent setup
-- [PingDirectory Documentation](https://docs.pingidentity.com/pingdirectory/latest/overview.html) -- PingDirectory LDAP server, replication, and performance tuning
-- [PingOne DaVinci](https://docs.pingidentity.com/davinci/latest/overview.html) -- no-code identity orchestration flows and connector catalog
+- [PingFederate Documentation](https://docs.pingidentity.com/pingfederate/) -- PingFederate server administration, federation configuration, and adapter reference
+- [PingOne Platform Documentation](https://docs.pingidentity.com/pingone/) -- PingOne cloud platform setup, SSO, MFA, and directory services
+- [PingAccess Documentation](https://docs.pingidentity.com/pingaccess/) -- PingAccess deployment, policy configuration, and agent setup
+- [PingDirectory Documentation](https://docs.pingidentity.com/pingdirectory/) -- PingDirectory LDAP server, replication, and performance tuning
+- [PingOne DaVinci](https://docs.pingidentity.com/davinci/) -- no-code identity orchestration flows and connector catalog
 - [Ping Identity Architecture Resources](https://www.pingidentity.com/en/resources.html) -- reference architectures, deployment guides, and best practices
-- [PingFederate Cluster Administration](https://docs.pingidentity.com/pingfederate/latest/administrators_reference_guide/pf_c_clusterManagement.html) -- cluster configuration, node management, and session replication
+- [PingFederate Server Clustering Guide](https://docs.pingidentity.com/pingfederate/latest/server_clustering_guide/pf_overview_cluster.html) -- cluster configuration, node management, and session replication

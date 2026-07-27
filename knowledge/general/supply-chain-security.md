@@ -100,9 +100,9 @@ Beyond compliance, supply chain security directly affects operational resilience
 
 - [SLSA Framework](https://slsa.dev/)
 - [Sigstore](https://www.sigstore.dev/)
-- [cosign](https://docs.sigstore.dev/cosign/overview/)
+- [cosign](https://docs.sigstore.dev/cosign/signing/)
 - [NIST SSDF SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final)
-- [Executive Order 14028](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/)
+- [Executive Order 14028](https://www.federalregister.gov/documents/2021/05/17/2021-10460/improving-the-nations-cybersecurity)
 - [CycloneDX SBOM Standard](https://cyclonedx.org/)
 - [SPDX Specification](https://spdx.dev/)
 - [Syft (SBOM Generator)](https://github.com/anchore/syft)

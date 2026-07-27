@@ -46,7 +46,7 @@ The //S vs //E selection significantly impacts both cost and performance. Deploy
 - [Purity//FB REST API Reference](https://support.purestorage.com/FlashBlade/Purity_FB/Purity_FB_REST_API) — REST API v2.x reference for FlashBlade automation
 - [FlashBlade S3 Object Store Guide](https://support.purestorage.com/FlashBlade/Purity_FB/FlashBlade_Object_Store) — S3-compatible object storage configuration
 - [FlashBlade Best Practices for Backup](https://support.purestorage.com/Solutions/FlashBlade/FlashBlade_Backup) — Veeam, Commvault, and other backup integration guides
-- [Pure Storage FlashBlade for AI](https://www.purestorage.com/solutions/infrastructure/ai-infrastructure.html) — AI/ML training data pipeline architecture
+- [FlashBlade for AI (AIRI with NVIDIA)](https://www.everpuredata.com/solutions/ai/nvidia.html) — AI/ML training data pipeline reference architecture
 - [Pure Storage Ansible Collection for FlashBlade](https://galaxy.ansible.com/purestorage/flashblade) — Ansible modules for FlashBlade automation
 - [FlashBlade SafeMode and Object Lock](https://support.purestorage.com/FlashBlade/Purity_FB/FlashBlade_Security) — immutable snapshots and S3 Object Lock configuration
 

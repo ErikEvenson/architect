@@ -39,8 +39,8 @@ The Broadcom acquisition has significantly impacted Horizon licensing and roadma
 ## Reference Links
 
 - [VMware Horizon documentation](https://docs.vmware.com/en/VMware-Horizon/index.html) -- Connection Server, UAG, instant clones, and desktop pool configuration
-- [Horizon architecture planning guide](https://techdocs.broadcom.com/us/en/vmware-end-user-computing/horizon/horizon/2406/horizon-architecture-planning.html) -- sizing, pod architecture, and protocol selection
-- [VMware Horizon reference architecture](https://techdocs.broadcom.com/us/en/vmware-end-user-computing/horizon/horizon/2406/horizon-architecture-planning/horizon-reference-architecture.html) -- reference deployment topologies for Horizon environments
+- [Horizon overview and deployment planning guide](https://docs.omnissa.com/bundle/HorizonOverviewDeployment/page/HorizonOverviewandDeploymentPlanning.html) -- sizing, pod architecture, and protocol selection (Horizon docs moved to Omnissa after the VMware EUC divestiture)
+- [Omnissa Workspace ONE and Horizon reference architecture](https://techzone.omnissa.com/reference-architecture) -- reference deployment topologies for Horizon environments
 
 ## See Also
 

@@ -90,4 +90,7 @@ Policy layers (introduced in R80+) provide the structural tools to decompose mon
 
 - [Check Point Security Management](https://sc1.checkpoint.com/documents/latest/APIs/) -- SmartConsole, policy layers, and Security Management Server administration
 - [Check Point CloudGuard](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Default.htm) -- cloud-native security, posture management, and workload protection
-- [Check Point R81.x Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuide/Default.htm) -- gateway configuration, VSX, Maestro, and ClusterXL HA
+- [Check Point R81.20 Quantum Security Gateway Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuides/EN/CP_R81.20_SecurityGateway_Guide/Default.htm) -- gateway configuration, SecureXL/CoreXL acceleration, and inspection settings
+- [Check Point R81.20 ClusterXL Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuides/EN/CP_R81.20_ClusterXL_AdminGuide/Default.htm) -- ClusterXL HA and Load Sharing, sync network, and cluster failover
+- [Check Point R81.20 VSX Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuides/EN/CP_R81.20_VSX_AdminGuide/Default.htm) -- virtual systems, virtual routers/switches, and VSLS
+- [Check Point R81.20 Quantum Maestro Administration Guide](https://sc1.checkpoint.com/documents/R81.20/WebAdminGuides/EN/CP_R81.20_Maestro_AdminGuide/Default.htm) -- Security Groups, orchestrator configuration, and scalable platform sizing

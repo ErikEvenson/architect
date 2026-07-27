@@ -77,7 +77,7 @@ Organizations subject to compliance frameworks (SOX, PCI-DSS, FedRAMP, HIPAA) fa
 
 - [ITIL 4 Change Enablement](https://www.axelos.com/certifications/itil-service-management)
 - [ServiceNow Change Management](https://docs.servicenow.com/bundle/change-management/)
-- [Jira Service Management Change Management](https://www.atlassian.com/software/jira/service-management/change-management)
+- [Jira Service Management Change Management](https://www.atlassian.com/software/jira/service-management/product-guide/getting-started/change-management)
 - [BMC Helix ITSM](https://www.bmc.com/it-solutions/bmc-helix-itsm.html)
 - [ArgoCD - GitOps](https://argo-cd.readthedocs.io/)
 - [AWS Config Conformance Packs](https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html)

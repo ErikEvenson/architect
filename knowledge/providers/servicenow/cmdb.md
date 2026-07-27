@@ -63,7 +63,7 @@ Cloud Discovery is the area where the CMDB design most often falls behind the ac
 The following links point to ServiceNow public documentation. ServiceNow gates a portion of its product documentation behind a customer login; verify the current URL and bundle name against the customer's release (Yokohama, Zurich, etc.) before relying on a specific page.
 
 - [ServiceNow CMDB product page](https://www.servicenow.com/products/servicenow-platform/configuration-management-database.html) -- CMDB product positioning, CSDM, and related modules
-- [Common Service Data Model (CSDM)](https://www.servicenow.com/community/csdm/csdm-overview/) -- CSDM four-layer model, application service vs technical service vs service offering
+- [Common Service Data Model (CSDM)](https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html) -- CSDM four-layer model, application service vs technical service vs service offering
 - [ServiceNow Discovery](https://www.servicenow.com/products/discovery.html) -- agentless discovery, MID Server, Patterns, Cloud Discovery
 - [ServiceNow Service Mapping](https://www.servicenow.com/products/service-mapping.html) -- top-down service mapping, ML mapping, Service Graph Connectors
 - [ServiceNow Developer Portal](https://developer.servicenow.com/) -- CMDB schema, IRE configuration, CI class extension, and Pattern Designer references

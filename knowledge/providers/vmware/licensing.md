@@ -493,7 +493,7 @@ Alternative Platform TCO (3-5 Year):
 
 ## Reference Links
 
-- [Broadcom VMware product portfolio](https://www.broadcom.com/products/software/vmware-cloud-foundation) -- VCF and VVF edition details, included components, and subscription information
+- [VCF 9.0 offerings and components](https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/licensing/licensing-overview/offerings-and-components.html) -- VCF and VVF edition details, included components, and subscription information
 - [VMware Cloud Foundation documentation](https://docs.vmware.com/en/VMware-Cloud-Foundation/index.html) -- VCF lifecycle management, edition comparison, and component bundling
 - [VMware end-of-life lifecycle matrix](https://lifecycle.vmware.com/) -- vSphere, vSAN, NSX end-of-support dates and lifecycle policies
 
