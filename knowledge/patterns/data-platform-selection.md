@@ -65,6 +65,14 @@ different winners from the same capability scores.
 - [ ] **[Recommended]** Does the organisation already run the storage layer a candidate would
       use (object storage with established lifecycle, immutability, and key policy)? Reusing a
       hardened storage account or bucket is faster and more defensible than standing up a new one.
+- [ ] **[Critical]** Has the **disposal cost** of the incumbent platform been enumerated as a line
+      item — contract termination charges, decommissioning effort, migration effort, and any
+      accelerated depreciation or impairment — separately from the sunk cost already spent on it?
+      These are different numbers with different relevance, and conflating them derails the decision
+      in both directions. See the disposal-cost section below.
+- [ ] **[Recommended]** For each asset in the incumbent estate, is it recorded whether it would be
+      **retired or repurposed**? Assets that continue serving other workloads are not written off at
+      all, and they are routinely counted as though they were.
 - [ ] **[Optional]** Are there existing third-party tools (catalogue, quality, orchestration,
       reverse ETL) whose contracts constrain or subsidise the choice?
 
@@ -698,17 +706,19 @@ concentration 3, network 4, keys 3, residency 3, lineage 5, retention 5, maturit
 | 4 | AWS-native | 187 | 70.6% |
 | 5 | Self-managed OSS | 173 | 65.3% |
 | 6 | GCP-native | 172 | 64.9% |
-| 7 | **Fabric** | **171** | **64.5%** |
+| 7 | **Fabric** | **168** | **63.4%** |
 | 8 | SoR vendor | 152 | 57.4% |
 
 **Read this correctly.** The top three are separated by three points out of 265 — that is a tie inside
 the model's resolution, and claiming Databricks "wins" by one point would be false precision. The
 honest finding is that **three options are viable and the incumbent-vendor answer is not among them**,
 and the reason is specific and checkable rather than aesthetic: Fabric is dragged down by three
-heavily-weighted dimensions where it scores 1 or 2 — no retention/legal-hold primitive over OneLake,
-a 2023 general-availability date against candidates with a decade or more of regulated production,
-and maximum vendor concentration in an estate that already runs on the same supplier's identity,
-productivity, and BI.
+heavily-weighted dimensions where it scores 1 or 2 — a verified absence of any retention or legal-hold
+primitive over OneLake, a governance and isolation surface whose documented GA dates fall in 2026
+rather than years earlier, and maximum vendor concentration in an estate that already runs on the same
+supplier's identity, productivity, and BI. Note also that the fourth low score, key custody at 2, is
+driven by a documented exclusion rather than an opinion: workspace CMK does not cover the Spark
+compute path.
 
 **What would change it.** Fabric moves into contention the moment the retention obligation is
 architecturally separated — records retained in an immutable ADLS Gen2 container under a locked
@@ -736,7 +746,7 @@ concentration 4, network 2, keys 2, residency 2, lineage 3, retention 1, maturit
 | 4 | Self-managed OSS | 157 | 73.0% |
 | 5 | GCP-native | 150 | 69.8% |
 | 6 | Azure classic | 133 | 61.9% |
-| 7 | Fabric | 126 | 58.6% |
+| 7 | Fabric | 124 | 57.7% |
 | 8 | SoR vendor | 103 | 47.9% |
 
 A clear result rather than a tie: workload breadth and openness at weight 5, with retention at 1 and
@@ -754,19 +764,28 @@ concentration 2, network 2, keys 2, residency 2, lineage 2, retention 1, maturit
 
 | Rank | Candidate | Score (max 205) | |
 |:----:|-----------|:---------------:|---|
-| 1 | **Fabric** | **155** | **75.6%** |
-| 2 | Snowflake | 152 | 74.1% |
-| 3 | Databricks | 147 | 71.7% |
-| 4 | Azure classic | 135 | 65.9% |
+| 1 | **Fabric** | **153** | **74.6%** |
+| =2 | Databricks | 152 | 74.1% |
+| =2 | Snowflake | 152 | 74.1% |
+| 4 | Azure classic | 140 | 68.3% |
 | 5 | GCP-native | 133 | 64.9% |
 | 6 | SoR vendor | 132 | 64.4% |
 | 7 | AWS-native | 131 | 63.9% |
-| 8 | Self-managed OSS | 117 | 57.1% |
+| 8 | Self-managed OSS | 122 | 59.5% |
 
 Same capability scores, different weights, different winner — and a legitimate one. When estate fit,
 incremental cost, operability, and time to first value are all decisive and the evidence dimensions
 are not, the platform that is already partly paid for and already integrated with the identity and BI
 estate is genuinely the right answer.
+
+Be equally honest about the margin: 153 against 152 and 152 is a three-way dead heat, not a victory.
+The finding worth carrying is not "Fabric wins C" but that **Fabric moves from seventh place to joint
+first purely on a change of weights** — the same capability scores, re-weighted for an organisation
+with no records obligation and a lighter evidence burden. Across the four tables the top slot is taken
+by **three different platforms** (Databricks in A and B, Fabric in C, Databricks and Snowflake tied in
+C-prime), which is the point: this framework is a way to expose which dimension is doing the deciding,
+not a league table. If your own weighting produces a winner by a single point, you have learned that
+the decision is not being made by the model — go and find the qualitative tie-break.
 
 ### Sensitivity — profile C after an obligation lands
 
@@ -776,19 +795,68 @@ keys 2 → 4, lineage 2 → 4, maturity 2 → 4.
 
 | Rank | Candidate | Score (max 275) | |
 |:----:|-----------|:---------------:|---|
-| 1 | **Snowflake** | **202** | **73.5%** |
-| 2 | Databricks | 197 | 71.6% |
-| 3 | Azure classic | 193 | 70.2% |
+| =1 | **Databricks** | **202** | **73.5%** |
+| =1 | **Snowflake** | **202** | **73.5%** |
+| 3 | Azure classic | 198 | 72.0% |
 | 4 | AWS-native | 187 | 68.0% |
-| 5 | Fabric | 183 | 66.5% |
-| 6 | GCP-native | 177 | 64.4% |
-| 7 | Self-managed OSS | 173 | 62.9% |
+| 5 | Fabric | 179 | 65.1% |
+| 6 | Self-managed OSS | 178 | 64.7% |
+| 7 | GCP-native | 177 | 64.4% |
 | 8 | SoR vendor | 162 | 58.9% |
 
 Fabric falls from first to fifth without a single capability score changing. **[assessment]** This is
 the most useful output of the whole exercise: it identifies precisely which future change invalidates
 the decision, which turns an architecture choice into a monitorable one. Record the flip condition in
 the ADR and it becomes a review trigger instead of a surprise.
+
+## Sunk Cost Versus Disposal Cost
+
+This distinction is botched in almost every platform conversation, and the resulting argument consumes
+more time than the technical comparison does. It is worth getting right because both sides are usually
+correct about different things and neither realises it.
+
+**Sunk cost is genuinely irrelevant to a comparison of future paths.** Money already spent on the
+incumbent platform cannot be recovered by continuing to use it. The licence fees paid, the
+implementation effort expended, and the training delivered are gone regardless of which option is
+chosen next, so they carry no weight in choosing between options. That is the correct and complete
+statement of the principle.
+
+**Disposal cost is not sunk, and it belongs in the comparison as a line item.** What it will cost to
+*stop* using the incumbent is a future cash and accounting event, it differs between the options, and
+it is therefore exactly the kind of figure a comparison should include. Treating it as sunk — or waving
+it away with the phrase "sunk cost fallacy" — is a straightforward analytical error, and it is also
+dismissive of whoever authorised the original spend, who is frequently a finance stakeholder whose
+support the change requires. Winning the philosophical point and losing that stakeholder is not a win.
+
+**The failure mode runs both ways.** An advocate for the new platform invokes the sunk-cost fallacy to
+dispose of the existing investment rhetorically; this is right about past spend and wrong about what
+happens next. A sceptic points at the write-off as a reason not to proceed; this conflates a real
+future cost with an argument against change, since a one-off disposal cost can be entirely worth
+paying. Both objections dissolve on contact with an actual number.
+
+**So produce the number rather than arguing the principle.** Enumerate what would genuinely be
+disposed of:
+
+- **Assets that continue serving other workloads are not written off at all.** A database platform that
+  keeps running operational and transactional workloads after the analytical workload moves off it is
+  repurposed, not retired, and contributes nothing to the disposal figure. This category is larger than
+  people expect and is the most common source of inflated write-off claims.
+- **Contract termination charges, decommissioning effort, migration effort, and any accelerated
+  depreciation or impairment are real future events.** These are the legitimate contents of the line
+  item. Migration effort in particular is usually the largest component and the least well estimated.
+- **Where the asset does not yet exist, there is nothing to write off.** A partially built or merely
+  planned system has no disposal cost beyond the effort already expended — which is sunk — and possibly
+  some contracted commitments. This objection frequently quantifies to zero, and saying so with a
+  worked figure is far more persuasive than debating whether the objection is a fallacy.
+- **For a listed company an impairment is a disclosed event.** The number therefore has consequences
+  beyond the project — timing, materiality, and disclosure — which is a legitimate reason for finance
+  to care about it and a reason to involve them early rather than present it as a technicality.
+
+**[assessment]** The practical value of doing this is that the enumerated figure is usually far smaller
+than the objection implies, because most of what gets counted falls into the first or third category
+above. That converts a philosophical disagreement into a figure a finance stakeholder can verify and
+challenge on its merits — a much stronger position than conceding the framing, and a much better use
+of the meeting than a debate about fallacies.
 
 ## Vendor Concentration Risk
 
@@ -848,25 +916,54 @@ of the comparison entirely, which is what almost every vendor-produced compariso
 
 ## What Is Verified and What Is Judgement
 
-**Verified against vendor documentation on 2026-07-26** (each has a URL in Reference Links, and each
-returned HTTP 200 when checked): Fabric capacity SKU table and CU/P-SKU mapping; P-SKU support for
-Fabric items and the administrator switch that enables them; the P-SKU retirement statement and the
-absence of a date for it; the F64 per-user viewing threshold; PPU not provisioning a Fabric capacity;
-the F-SKU workspace type's ARM/Terraform/managed-private-endpoint attribution. Azure Synapse
-Analytics listed as "In Support" with no retirement date on Microsoft's product lifecycle page, and
-the redirect of the Synapse what's-new URL to the Fabric what's-new page. Azure Blob immutable
-storage semantics: time-based retention versus legal hold, locked-policy irreversibility, the
-146,000-day maximum, the Cohasset assessment against CFTC 1.31(c)-(d) / FINRA 4511 / SEC 17a-4(f),
-and the non-support of version-level WORM on hierarchical-namespace accounts. Microsoft Purview's
-current solution areas. Databricks: the Unity Catalog Iceberg REST endpoint and its per-table-type
-read/write matrix; CMK scopes and the Premium tier requirement; serverless NCC networking and the
-2026-06-09 storage-allowlist migration deadline; the compliance security profile's standard list,
-the 2026-09-01 HIPAA/HITRUST/IRAP requirement date, and the documented US identity-storage and
-free-text-field residency caveats; current product naming. Snowflake: per-edition gating of
-Tri-Secret Secure, private connectivity, HIPAA/PCI/FedRAMP/ITAR, and failover; the 10-minute key-loss
-behaviour; Time Travel limits by edition; 365-day ACCOUNT_USAGE retention and the Enterprise
-requirement for ACCESS_HISTORY; managed versus externally-managed Iceberg semantics and the
-managed-only restriction on external-engine access.
+Because this file exists to support a decision that will later be defended, the confidence of every
+capability claim is stated. **Sentences marked [verified] in the candidate sections were read from the
+cited vendor page on 2026-07-26.** Sentences marked **[assessment]** are judgement. Anything in
+neither category, and anything on the "could not be pinned down" list below, must be re-checked before
+it is quoted to anyone.
+
+**Verified against vendor documentation on 2026-07-26** (each has a URL in Reference Links; all 34
+cited URLs returned HTTP 200 with no redirect drift and substantive page bodies when checked):
+
+- **Microsoft Fabric** — capacity SKU range and the P→F mapping with Microsoft's own
+  "don't interpret as functional or licensing equivalence" warning; P-SKU support for Fabric items and
+  the tenant switch that enables them; the F-versus-P parity table naming ARM/Terraform, managed
+  private endpoints, workspace-level private links, workspace CMK, trusted workspace access,
+  on-demand resizing, pause/resume and Spark autoscale billing as F-only (independently re-read and
+  confirmed); P-SKU retirement at end of agreement term with no global date, plus the 30/90-day
+  post-expiry throttle-then-reject ladder; the F64 per-user viewing threshold; PPU and Pro not
+  provisioning a capacity; trial capacity being F4 *or* F64 with Private Link disabled; the smoothing
+  windows and the full throttling escalation; OneLake Delta-Parquet-and-Iceberg storage and the
+  shortcut source list; the Iceberg REST catalog being read-only, V2-only, same-region, private-links-
+  unsupported; workspace CMK being F-SKU-only with the enumerated exclusions including the Spark
+  compute path, and the absence of any HYOK/external-key-store option; tenant private link plus Block
+  Public Internet Access, the unsupported-feature casualty list, and tenant-level not being a superset
+  of workspace-level; workspace-scoped one-hop lineage with no column-level lineage documented; the
+  180-day default Purview audit retention and the 28-day Fabric activity API window; Purview Unified
+  Catalog being separately metered rather than bundled; Multi-Geo covering Fabric workloads but
+  workspaces with non-Power-BI items not being movable between regions.
+- **Fabric retention — a verified absence.** Neither the OneLake overview, the soft-delete page, nor
+  the retention-and-recovery page documents WORM, immutability, retention locks, or legal hold; and I
+  independently grepped the full Microsoft Purview retention supported-locations page and found **zero
+  occurrences** of Fabric, OneLake, Power BI, lakehouse, or warehouse. What exists is a fixed 7-day
+  OneLake soft delete, workspace retention, and item recovery that is disabled by default. This is the
+  single most decision-relevant finding in the file and it is verified, not inferred.
+- **Classic Azure** — Azure Synapse Analytics listed as "In Support" under the Modern Lifecycle Policy
+  with **no retirement date**, and the Synapse what's-new URL now resolving to the Fabric what's-new
+  page (confirmed via `url_effective`). Azure Blob immutable storage: time-based retention versus legal
+  hold, locked-policy irreversibility, the 146,000-day maximum, the Cohasset assessment against CFTC
+  1.31(c)-(d) / FINRA 4511 / SEC 17a-4(f), and the non-support of version-level WORM on
+  hierarchical-namespace (ADLS Gen2) accounts. Microsoft Purview's current solution areas.
+- **Databricks** — the Unity Catalog Iceberg REST endpoint and its per-table-type read/write matrix;
+  CMK scopes and the Premium tier requirement; serverless network connectivity configurations and the
+  2026-06-09 storage-allowlist migration deadline; the compliance security profile's standard list,
+  the 2026-09-01 HIPAA/HITRUST/IRAP requirement date, and the documented US identity-storage and
+  free-text-field residency caveats; current product naming.
+- **Snowflake** — per-edition gating of Tri-Secret Secure, private connectivity,
+  HIPAA/PCI/FedRAMP/ITAR and failover; the 10-minute key-unavailability behaviour; Time Travel limits
+  by edition; 365-day ACCOUNT_USAGE retention and the Enterprise requirement for ACCESS_HISTORY;
+  managed versus externally-managed Iceberg semantics and the managed-only restriction on
+  external-engine access.
 
 **Assessment, not vendor claim:** every score in the capability table and every weight in the profiles;
 the characterisation of classic Azure analytics as maintenance-mode-in-practice; the claim that
@@ -876,14 +973,22 @@ rankings; and the entire "do not choose this when" set. These are the parts of t
 reasonable architect may disagree with, and disagreement should change the numbers rather than be
 suppressed.
 
+**Explicitly NOT verified this session — the AWS-native, GCP-native, self-managed open-source, and
+system-of-record candidate sections carry no [verified] markers at all.** Those four sections are
+written entirely as assessment: architectural reasoning and market judgement, not documented
+capability claims. They are deliberately kept at that altitude rather than dressed up with specifics
+I did not check. Treat their *relative scores* as usable and any implied specific as unverified.
+
 **Could not be pinned down this session — do not assert these without checking:**
 
-- Microsoft Fabric: the current GA-versus-preview status and workload exclusions for workspace-level
-  private link; the scope and status of customer-managed keys over OneLake; Multi-Geo behaviour for
-  non-Power-BI Fabric workloads; whether any WORM, retention-policy, or legal-hold capability exists
-  for OneLake data; native lineage granularity and audit-log retention defaults; F-SKU list pricing.
-  **The retention question is the one that most changes the answer for a regulated reader** — verify
-  it directly before relying on the profile A result.
+- Microsoft Fabric: the platform general-availability date (no lifecycle-site entry exists, and the
+  announcement blog is inaccessible to automated retrieval — the file deliberately argues maturity
+  from documented sub-feature GA dates instead); F-SKU list pricing; and the GA-versus-preview status
+  of Delta/Iceberg metadata virtualisation, which **Microsoft's own documentation reports
+  inconsistently** — the archive records GA in February 2026 while the live what's-new page still
+  lists it under preview. Also unstated anywhere reachable: published GA status for tenant and
+  workspace private links, Block Public Internet Access, managed private endpoints, workspace CMK,
+  Multi-Geo, and surge protection.
 - AWS: whether AWS documents any interaction between S3 Object Lock and Iceberg/Delta compaction or
   snapshot expiry (I found no such documentation, which is not the same as confirming none exists);
   which analytics services support KMS External Key Store-backed keys; the current product name and
@@ -931,6 +1036,11 @@ suppressed.
   scope genuinely never leaves one application.
 - **Self-managed open source vs managed platform** — decided by named operators in steady state, not
   by architecture quality or by unit economics.
+- **Treatment of the incumbent platform's disposal cost** — an enumerated line item covering
+  termination charges, decommissioning, migration effort, and any impairment, held separately from the
+  sunk cost already spent and from assets that will be repurposed rather than retired. Worth an ADR
+  because the figure is contested, because it is a disclosed event for a listed company, and because
+  recording the method prevents the argument being re-run every time the decision is reviewed.
 - **Decision review trigger** — the specific weight change or capability GA that would flip the
   outcome, recorded as a monitorable condition rather than left implicit.
 
@@ -955,6 +1065,43 @@ All links checked and returning HTTP 200 on 2026-07-26.
 
 - [Understand Microsoft Fabric licenses](https://learn.microsoft.com/en-us/fabric/enterprise/licenses)
   — F/P SKU table, P-SKU support for Fabric items, P-SKU retirement statement, F64 threshold, PPU limits
+- [Microsoft Fabric features by SKU and capacity](https://learn.microsoft.com/en-us/fabric/enterprise/fabric-features)
+  — the F-versus-P parity table: ARM/Terraform, managed private endpoints, workspace-level private
+  links, workspace CMK, trusted workspace access, pause/resume are F-only
+- [Power BI Premium licence migration FAQ](https://learn.microsoft.com/en-us/power-bi/support/premium-migration-faq)
+  — P-SKU retirement at end of agreement term, P→F mapping, and the 30/90-day post-expiry throttle ladder
+- [Enable Microsoft Fabric for your organization](https://learn.microsoft.com/en-us/fabric/admin/fabric-switch)
+  — the tenant setting that enables Fabric items on an existing capacity
+- [Microsoft Fabric throttling and smoothing](https://learn.microsoft.com/en-us/fabric/enterprise/throttling)
+  — smoothing windows, bursting, and the overage escalation to interactive delay then rejection
+- [Fabric trial capacity](https://learn.microsoft.com/en-us/fabric/fundamentals/fabric-trial)
+  — F4-or-F64 trial sizing, 1 TB OneLake storage, and excluded features
+- [OneLake overview](https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview)
+  — Delta Parquet and Iceberg storage, shortcuts, and supported external sources
+- [Use Iceberg tables with OneLake](https://learn.microsoft.com/en-us/fabric/onelake/onelake-iceberg-tables)
+  — read-only Iceberg REST catalog, V2 only, same-region shortcuts, private links unsupported
+- [Customer-managed keys for Fabric workspaces](https://learn.microsoft.com/en-us/fabric/security/workspace-customer-managed-keys)
+  — F-SKU-only workspace CMK and the enumerated exclusions including the Spark compute path
+- [Fabric private links overview](https://learn.microsoft.com/en-us/fabric/security/security-private-links-overview)
+  — tenant-level private link, Block Public Internet Access, and the unsupported-feature casualty list
+- [Fabric workspace-level private links](https://learn.microsoft.com/en-us/fabric/security/security-workspace-level-private-links-overview)
+  — workspace-level private link scope and why tenant-level is not a superset
+- [Fabric advanced networking admin settings](https://learn.microsoft.com/en-us/fabric/admin/service-admin-portal-advanced-networking)
+  — the tenant switches governing public access and private link enforcement
+- [Fabric lineage view](https://learn.microsoft.com/en-us/fabric/governance/lineage)
+  — workspace-scoped lineage, one-step-upstream external sources, no cross-workspace downstream view
+- [OneLake soft delete](https://learn.microsoft.com/en-us/fabric/onelake/soft-delete)
+  — the fixed 7-day non-configurable soft-delete window
+- [Fabric workspace retention and item recovery](https://learn.microsoft.com/en-us/fabric/admin/retention-recovery)
+  — workspace retention windows and item recovery, which is disabled by default
+- [Fabric Multi-Geo support](https://learn.microsoft.com/en-us/fabric/admin/service-admin-premium-multi-geo)
+  — multi-geo capacity placement, home-region metadata, and the no-region-move constraint
+- [Microsoft Purview audit log retention policies](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies)
+  — the 180-day default retention for records generated on or after 2023-10-17
+- [Microsoft Purview retention policies and labels](https://learn.microsoft.com/en-us/purview/retention)
+  — supported locations; contains no Fabric, OneLake, Power BI, lakehouse, or warehouse entry
+- [Microsoft Purview billing models](https://learn.microsoft.com/en-us/purview/purview-billing-models)
+  — pay-as-you-go metering for governing Fabric assets; Unified Catalog is not bundled with Fabric
 - [What's new in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new)
   — release record; the Azure Synapse what's-new URL now redirects here
 - [What is Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/overview-what-is)
