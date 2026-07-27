@@ -500,6 +500,8 @@ nav:
     - DORA: compliance/dora.md
     - HITRUST CSF: compliance/hitrust-csf.md
     - GLBA: compliance/glba.md
+    - FFIEC: compliance/ffiec.md
+    - Bank Regulatory Reporting: compliance/bank-regulatory-reporting.md
     - NERC CIP: compliance/nerc-cip.md
     - PIPEDA & LGPD: compliance/pipeda-lgpd.md
     - FERPA: compliance/ferpa.md
