@@ -70,3 +70,7 @@ architect-knowledge-mcp/
 
 # Confidential client-name patterns for the git hooks (see .example)
 .githooks/client-patterns.local
+
+# mkdocs build output — `mkdocs build` writes ~400 generated files here, and a
+# `git add -A` after a local docs preview commits every one of them.
+site/
