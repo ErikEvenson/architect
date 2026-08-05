@@ -401,6 +401,8 @@ nav:
   - Atlassian:
     - Jira Service Management: providers/atlassian/itsm.md
     - JSM Operations: providers/atlassian/jsm-operations.md
+  - Backstage:
+    - Software Catalog: providers/backstage/software-catalog.md
   - Port:
     - Internal Developer Portal: providers/port/internal-developer-portal.md
   - Datadog:
